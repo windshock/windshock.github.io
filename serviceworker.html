@@ -1,0 +1,282 @@
+
+<!doctype html>
+<!--
+Copyright 2019 Google Inc. All Rights Reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sample illustrating the use of Basic Service Worker.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Basic Service Worker Sample</title>
+    <script>
+      // Add a global error event listener early on in the page load, to help ensure that browsers
+      // which don't support specific functionality still end up displaying a meaningful message.
+      window.addEventListener('error', function(error) {
+        if (ChromeSamples && ChromeSamples.setStatus) {
+          console.error(error);
+          ChromeSamples.setStatus(error.message + ' (Your browser may not support this feature.)');
+          error.preventDefault();
+        }
+      });
+    </script>
+    
+    
+    
+    
+    <link rel="icon" href="../../images/favicon.ico">
+    
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="styles.css">
+    
+  </head>
+
+  <body>
+    
+    <h1>Basic Service Worker Sample</h1>
+    <p class="availability">
+      Available in <a target="_blank" href="https://www.chromestatus.com/feature/6561526227927040">Chrome 40+</a> |
+      <a target="_blank" href="https://github.com/googlechrome/samples/blob/gh-pages/service-worker/basic/">View on GitHub</a> |
+      <a target="_blank" href="https://www.chromestatus.com/samples">Browse Samples</a>
+    </p>
+    <h3>Background</h3>
+<p>
+  This sample demonstrates a basic service worker that could be used as-is, or
+  as a starting point for further customization.
+</p>
+
+<h4>What It Does</h4>
+<ul>
+  <li>
+    Precaches the HTML, JavaScript, and CSS files needed to display this page offline.
+    (Try it out by reloading the page without a network connection!)
+  </li>
+  <li>Cleans up the previously precached entries when the cache name is updated.</li>
+  <li>Intercepts network requests, returning a cached response when available.</li>
+  <li>
+    If there's no cached response, fetches the response from the network and
+    adds it to the cache for future use.
+  </li>
+</ul>
+<p>
+  You can confirm the service worker's behavior using the
+  <a href="https://developers.google.com/web/tools/chrome-devtools/debug/progressive-web-apps/">Application panel</a>
+  of Chrome's DevTools.
+</p>
+
+<h4>What It Doesn't Do</h4>
+<ul>
+  <li>
+    Automatically version any of the precached resources.<br>
+    <em>
+      You must manually update the <code>CACHES.PRECACHE</code> name to pick up
+      new versions after updating anything!
+    </em>
+  </li>
+  <li>
+    Cache-bust the precaching requests.<br>
+    <em>
+      The <code>cache.addAll()</code> call may be fulfilled with responses from
+      the HTTP cache, depending on the HTTP caching headers you use. If you
+      are using
+      <a href="https://jakearchibald.com/2016/caching-best-practices/">HTTP caching</a>
+      and unversioned resources, it can be safer to
+      <a href="https://github.com/GoogleChrome/samples/blob/5c20f8d74d890fad3d867747d2c3fc853727700c/service-worker/prefetch/service-worker.js#L56">cache-bust</a>
+      your precaching requests.
+    </em>
+  </li>
+  <li>
+    Refresh the entries in the runtime cache.<br>
+    <em>
+      Once an entry is added to the runtime cache, it's used indefinitely,
+      without consulting the network to check for updates. If your runtime cache
+      is used for resources that might be updated, a different strategy, like
+      <a href="https://jakearchibald.com/2014/offline-cookbook/#stale-while-revalidate">stale-while-revalidate</a>
+      could be more appropriate.
+    </em>
+  </li>
+  <li>
+    Clean out the runtime cache.<br>
+    <em>
+      The runtime cache will grow as new resource URLs are requested. In this
+      example, there are only 5 different images that might be loaded, so the
+      cache size isn't a concern. If your web app might request an arbitrary
+      number of unique resource URLs, then using a library like
+      <a href="https://github.com/GoogleChrome/sw-toolbox"><code>sw-toolbox</code></a>
+      which provides
+      <a href="https://github.com/GoogleChrome/sw-toolbox/tree/master/recipes/cache-expiration-options">cache-expiration</a>
+      is recommended.
+    </em>
+  </li>
+</ul>
+
+<h3>Live Demo</h3>
+<p>
+  The following demo illustrates the service worker's runtime caching by loading
+  images in response to clicking the button below.
+</p>
+<p>
+  The first time a given image is requested, the service worker will be load it
+  from the network, but each subsequent time, it will be retrieved from the cache.
+</p>
+<label for="icons">Icons:</label>
+<select id="icons">
+  <option value="icons/ic_create_new_folder_black_48dp.png">New Folder</option>
+  <option value="icons/ic_file_upload_black_48dp.png">File Upload</option>
+  <option value="icons/ic_folder_black_48dp.png">Closed Folder</option>
+  <option value="icons/ic_folder_open_black_48dp.png">Open Folder</option>
+  <option value="icons/ic_folder_shared_black_48dp.png">Shared Folder</option>
+</select>
+<button id="show">Show Icon</button>
+<div id="container"></div>
+
+
+  
+    
+      <script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('https://googlechrome.github.io/samples/service-worker/basic/service-worker.js');
+}
+
+document.querySelector('#show').addEventListener('click', () => {
+  const iconUrl = document.querySelector('select').selectedOptions[0].value;
+  let imgElement = document.createElement('img');
+  imgElement.src = iconUrl;
+  document.querySelector('#container').appendChild(imgElement);
+});
+</script>
+    
+  
+
+  
+    <h3>JavaScript Snippet</h3>
+  
+
+  
+    <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">if</span> <span class="p">(</span><span class="s1">'serviceWorker'</span> <span class="k">in</span> <span class="nb">navigator</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">'service-worker.js'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#show'</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">iconUrl</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'select'</span><span class="p">).</span><span class="nx">selectedOptions</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">value</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">imgElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'img'</span><span class="p">);</span>
+  <span class="nx">imgElement</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">iconUrl</span><span class="p">;</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#container'</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">imgElement</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+  
+
+
+
+  
+
+  
+    <h3>Service Worker's JavaScript</h3>
+  
+
+  
+    <figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="cm">/*
+ Copyright 2016 Google Inc. All Rights Reserved.
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+     http://www.apache.org/licenses/LICENSE-2.0
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+*/</span>
+
+<span class="c1">// Names of the two caches used in this version of the service worker.</span>
+<span class="c1">// Change to v2, etc. when you update any of the local resources, which will</span>
+<span class="c1">// in turn trigger the install event again.</span>
+<span class="kd">const</span> <span class="nx">PRECACHE</span> <span class="o">=</span> <span class="s1">'precache-v1'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">RUNTIME</span> <span class="o">=</span> <span class="s1">'runtime'</span><span class="p">;</span>
+
+<span class="c1">// A list of local resources we always want to be cached.</span>
+<span class="kd">const</span> <span class="nx">PRECACHE_URLS</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'index.html'</span><span class="p">,</span>
+  <span class="s1">'./'</span><span class="p">,</span> <span class="c1">// Alias for index.html</span>
+  <span class="s1">'styles.css'</span><span class="p">,</span>
+  <span class="s1">'../../styles/main.css'</span><span class="p">,</span>
+  <span class="s1">'demo.js'</span>
+<span class="p">];</span>
+
+<span class="c1">// The install handler takes care of precaching the resources we always need.</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'install'</span><span class="p">,</span> <span class="nx">event</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+    <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">PRECACHE</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">cache</span> <span class="o">=&gt;</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">addAll</span><span class="p">(</span><span class="nx">PRECACHE_URLS</span><span class="p">))</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="nx">skipWaiting</span><span class="p">())</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// The activate handler takes care of cleaning up old caches.</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'activate'</span><span class="p">,</span> <span class="nx">event</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">currentCaches</span> <span class="o">=</span> <span class="p">[</span><span class="nx">PRECACHE</span><span class="p">,</span> <span class="nx">RUNTIME</span><span class="p">];</span>
+  <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+    <span class="nx">caches</span><span class="p">.</span><span class="nx">keys</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">cacheNames</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">cacheNames</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">cacheName</span> <span class="o">=&gt;</span> <span class="o">!</span><span class="nx">currentCaches</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">cacheName</span><span class="p">));</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">cachesToDelete</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">cachesToDelete</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">cacheToDelete</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">caches</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">cacheToDelete</span><span class="p">);</span>
+      <span class="p">}));</span>
+    <span class="p">}).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nb">self</span><span class="p">.</span><span class="nx">clients</span><span class="p">.</span><span class="nx">claim</span><span class="p">())</span>
+  <span class="p">);</span>
+<span class="p">});</span>
+
+<span class="c1">// The fetch handler serves responses for same-origin resources from a cache.</span>
+<span class="c1">// If no response is found, it populates the runtime cache with the response</span>
+<span class="c1">// from the network before returning it to the page.</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'fetch'</span><span class="p">,</span> <span class="nx">event</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// Skip cross-origin requests, like those for Google Analytics.</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">origin</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span>
+      <span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">cachedResponse</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">cachedResponse</span><span class="p">)</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="nx">cachedResponse</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">RUNTIME</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">cache</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="c1">// Put a copy of the response in the runtime cache.</span>
+            <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">clone</span><span class="p">()).</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+              <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+            <span class="p">});</span>
+          <span class="p">});</span>
+        <span class="p">});</span>
+      <span class="p">})</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span></code></pre></figure>
+  
+
+
+
+    
+    <script>
+      /* jshint ignore:start */
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-53563471-1', 'auto');
+      ga('send', 'pageview');
+      /* jshint ignore:end */
+    </script>
+  </body>
+</html>
