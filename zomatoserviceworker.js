@@ -13,3 +13,4 @@ self.addEventListener('activate', event => {
     });
   }));
 });
+
