@@ -16,7 +16,7 @@
 	CVE-2012-6708 - https://bugs.jquery.com/ticket/9521, Selector(a[id=...) interpreted as HTML<br/>
 	CVE-2015-9251 - https://github.com/jquery/jquery/issues/2432,  3rd party CORS request may execute in $.get<br/>
 	CVE-2015-9251 - https://bugs.jquery.com/ticket/11974, parseHTML() executes scripts in event handlers (onload, onerror, and so on...)<br/>
-	need to decode url strings(<,>) in chome <br/>
+	need to decode url strings(<,>) in chome - https://stackoverflow.com/questions/3431512/javascript-equivalent-to-phps-urldecode<br/>
 	
 	<script>
 		$.parseHTML($("a[id='test']")[0].href.split('#')[1].replace('%3E', '>').replace('%3C','<'));
