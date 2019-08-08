@@ -1,7 +1,7 @@
 ---
-title: "Welcome to Jekyll!"
-date: 2017-10-20 08:26:28 -0400
-categories: jekyll update
+title: "About the XSSAudit"
+date: 2019-08-08 04:00:00 +0900
+categories: XSS XSSAudit javascript
 ---
 구글은 이제 xssaudit filter를 아웃(retire)하자고 제안한 분이 evn@google.com 인데,
 
