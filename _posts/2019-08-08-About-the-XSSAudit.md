@@ -20,6 +20,8 @@ Javascript framework은 취약하지만, 실제 공격까지 가도록 Garget을
 
 자료도 참고.
 <https://github.com/google/security-research-pocs>
+[enter link description here](/pdf/OWASP_BeNeLux-Day_2017_Bypassing_XSS_mitigations_via_script_gadgets_Sebastian_Lekies.pdf)
+[enter link description here](pdf/p1709-lekiesA.pdf)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3OTA5MTMxMl19
+eyJoaXN0b3J5IjpbLTExNzIxMjgzMTJdfQ==
 -->
