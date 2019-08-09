@@ -19,11 +19,10 @@ Javascript framework은 취약하지만, 실제 공격까지 가도록 Garget을
 3. 등등등…
 
 자료도 참고.
-<https://github.com/google/security-research-pocs>
 
-[Code-Reuse Attacks for the Web: Breaking XSS mitigations via Script Gadgets - ppt version](/pdf/OWASP_BeNeLux-Day_2017_Bypassing_XSS_mitigations_via_script_gadgets_Sebastian_Lekies.pdf)
-
-[Code-Reuse Attacks for the Web: Breaking XSS mitigations via Script Gadgets - pdf version ](/pdf/p1709-lekiesA.pdf)
+- 
+- [Code-Reuse Attacks for the Web: Breaking XSS mitigations via Script Gadgets - ppt version](/pdf/OWASP_BeNeLux-Day_2017_Bypassing_XSS_mitigations_via_script_gadgets_Sebastian_Lekies.pdf)
+- [Code-Reuse Attacks for the Web: Breaking XSS mitigations via Script Gadgets - pdf version ](/pdf/p1709-lekiesA.pdf)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjUwNDY1MTE1LC0xMTcyMTI4MzEyXX0=
+eyJoaXN0b3J5IjpbNDgyMzkxNDE0LC0xMTcyMTI4MzEyXX0=
 -->
