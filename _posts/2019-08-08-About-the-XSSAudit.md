@@ -18,11 +18,8 @@ Javascript framework은 취약하지만, 실제 공격까지 가도록 Garget을
 2. <?php echo $_GET['xss']; ?> = <https://brutelogic.com.br/blog/the-easiest-way-to-bypass-xss-mitigations/>
 3. 등등등…
 
-자료도 참고.
-
-- 
-- [Code-Reuse Attacks for the Web: Breaking XSS mitigations via Script Gadgets - ppt version](/pdf/OWASP_BeNeLux-Day_2017_Bypassing_XSS_mitigations_via_script_gadgets_Sebastian_Lekies.pdf)
-- [Code-Reuse Attacks for the Web: Breaking XSS mitigations via Script Gadgets - pdf version ](/pdf/p1709-lekiesA.pdf)
+### 참고 자료
+- [Code-Reuse Attacks for the Web: Breaking XSS mitigations via Script Gadgets - github](https://github.com/google/security-research-pocs), [ppt](/pdf/OWASP_BeNeLux-Day_2017_Bypassing_XSS_mitigations_via_script_gadgets_Sebastian_Lekies.pdf), [pdf](/pdf/p1709-lekiesA.pdf)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDgyMzkxNDE0LC0xMTcyMTI4MzEyXX0=
+eyJoaXN0b3J5IjpbNjQ3MjA3OTQwLC0xMTcyMTI4MzEyXX0=
 -->
