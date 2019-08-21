@@ -3,6 +3,9 @@ title: "About the XSSAudit"
 date: 2019-08-08 04:00:00 +0900
 categories: XSS XSSAudit javascript
 ---
+
+## 구글 내부에서도 xssaudit 기능의 의견이 분분하다.
+
 구글은 이제 xssaudit filter를 아웃(retire)하자고 제안한 분이 evn@google.com 인데, 그 분이 작성한 논문(첨부)이 그 근거인 듯.
 
 주요 내용은 신규 javascript framework이 나오면서 신규 garget으로 우회되는 것들을 계속 막기는 어려우니, 기존 방어 전략인 mitigation(xssaudit filter)에서 Isolation/prevention(csp) 전략으로 가야 한다는 내용.
@@ -13,14 +16,19 @@ Javascript framework은 취약하지만, 실제 공격까지 가도록 Garget을
 <http://brutelogic.com.br/bypass/bypass-auditor.php?q=%3Csvg+o%3Cscriptnload=alert(1)%3E>
 ![enter image description here](/images/wafw00f_Securi_WAF.png)
 
+## xssaudit 기능을 우회하는 방법은 다양하다.
+
 여튼 글에서 나온 bypass 내용은 링크 추가하다가 귀찮다, 누가 좀 해줘…
 1. innerHTML=XSS injection =  <https://gomakethings.com/preventing-cross-site-scripting-attacks-when-using-innerhtml-in-vanilla-javascript/>
 2. <?php echo $_GET['xss']; ?> = <https://brutelogic.com.br/blog/the-easiest-way-to-bypass-xss-mitigations/>
 3. 등등등…
 
+## 기술의 변화로 xssaudit 기능을 우회하는 방법은 다양하다.
+
+
 ### 참고 자료
 Code-Reuse Attacks for the Web: Breaking XSS mitigations via Script Gadgets: [github](https://github.com/google/security-research-pocs), [ppt](/pdf/OWASP_BeNeLux-Day_2017_Bypassing_XSS_mitigations_via_script_gadgets_Sebastian_Lekies.pdf), [pdf](/pdf/p1709-lekiesA.pdf)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNjMxMTg0NTYsLTExNzIxMjgzMTJdfQ
-==
+eyJoaXN0b3J5IjpbLTg3MzkzMjY2LC0xMzYzMTE4NDU2LC0xMT
+cyMTI4MzEyXX0=
 -->
