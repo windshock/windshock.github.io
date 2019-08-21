@@ -22,6 +22,7 @@ Javascript framework은 취약하지만, 실제 공격까지 가도록 Garget을
 
 ## XSSAudit은 유용하지 않았던가?
 Google과 같은 업체 입장에서는 유지 비용이 소모되고, 경쟁 업체의 브라우저 퍼포먼스 차이로 제거하고 싶어할 듯 합니다. (실제로 MS는 해당 기능을 제거하였습니다.)
+[# Content Security Policy Level 2 RFP](https://www.w3.org/TR/CSP2/#intro)의 내용을 확인하면 
 
 ## xssaudit 기능을 우회하는 방법은 다양하다.
 
@@ -37,7 +38,7 @@ Google과 같은 업체 입장에서는 유지 비용이 소모되고, 경쟁 �
 ### 참고 자료
 Code-Reuse Attacks for the Web: Breaking XSS mitigations via Script Gadgets: [github](https://github.com/google/security-research-pocs), [ppt](/pdf/OWASP_BeNeLux-Day_2017_Bypassing_XSS_mitigations_via_script_gadgets_Sebastian_Lekies.pdf), [pdf](/pdf/p1709-lekiesA.pdf)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjk5NjAyNTMsLTE0MzQwMDAwNzYsLTk4OT
-U0NDA4OSw5Nzc4OTcxOSwtMTM2MzExODQ1NiwtMTE3MjEyODMx
-Ml19
+eyJoaXN0b3J5IjpbLTk2MTY0ODQxOCwtMTQzNDAwMDA3NiwtOT
+g5NTQ0MDg5LDk3Nzg5NzE5LC0xMzYzMTE4NDU2LC0xMTcyMTI4
+MzEyXX0=
 -->
