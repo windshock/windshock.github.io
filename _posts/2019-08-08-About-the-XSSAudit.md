@@ -4,7 +4,10 @@ date: 2019-08-08 04:00:00 +0900
 categories: XSS XSSAudit javascript
 ---
 
-## 구글 내부에서도 xssaudit 기능의 의견이 분분하다.
+## 브라우저에서 xssaudit 기능이 제거되는 이유는 무엇인가?
+Google Chrome에 한해서 , 
+해당 기능이 제거되어야 한다는 주요 이유는 쉽게(?) 우회 가능하기 때문인 것으로 보인다.
+## XSSAudit은 유용하지 않았던가?
 
 구글은 이제 xssaudit filter를 아웃(retire)하자고 제안한 분이 evn@google.com 인데, 그 분이 작성한 논문(첨부)이 그 근거인 듯.
 
@@ -30,6 +33,6 @@ Javascript framework은 취약하지만, 실제 공격까지 가도록 Garget을
 ### 참고 자료
 Code-Reuse Attacks for the Web: Breaking XSS mitigations via Script Gadgets: [github](https://github.com/google/security-research-pocs), [ppt](/pdf/OWASP_BeNeLux-Day_2017_Bypassing_XSS_mitigations_via_script_gadgets_Sebastian_Lekies.pdf), [pdf](/pdf/p1709-lekiesA.pdf)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk4OTU0NDA4OSw5Nzc4OTcxOSwtMTM2Mz
-ExODQ1NiwtMTE3MjEyODMxMl19
+eyJoaXN0b3J5IjpbLTE0MzQwMDAwNzYsLTk4OTU0NDA4OSw5Nz
+c4OTcxOSwtMTM2MzExODQ1NiwtMTE3MjEyODMxMl19
 -->
