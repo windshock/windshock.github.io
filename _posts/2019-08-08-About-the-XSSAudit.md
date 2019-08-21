@@ -8,7 +8,7 @@ categories: XSS XSSAudit javascript
 
 구글은 이제 xssaudit filter를 아웃(retire)하자고 제안한 분이 evn@google.com 인데, 그 분이 작성한 논문(첨부)이 그 근거인 듯.
 
-주요 내용은 신규 javascript framework이 나오면서 신규 garget으로 우회되는 것들을 계속 막기는 어려우니, 기존 방어 전략인 mitigation(xssaudit filter)에서 Isolation/prevention(csp) 전략으로 가야 한다는 내용.
+주요 내용은 신규 javascript framework이 나오면서 신규 garget으로 우회되는 것들을 계속 막기는 어려우니, 기존 완화하는 방법(xssaudit filter)에서  격리/예방하는 방법(csp)으로 변환해야 한다는 내용이다.
 
 Javascript framework은 취약하지만, 실제 공격까지 가도록 Garget을 연결하는 부분이 시간과 노력이 참 많이 걸리고 어렵다는 것.
 
@@ -30,6 +30,6 @@ Javascript framework은 취약하지만, 실제 공격까지 가도록 Garget을
 ### 참고 자료
 Code-Reuse Attacks for the Web: Breaking XSS mitigations via Script Gadgets: [github](https://github.com/google/security-research-pocs), [ppt](/pdf/OWASP_BeNeLux-Day_2017_Bypassing_XSS_mitigations_via_script_gadgets_Sebastian_Lekies.pdf), [pdf](/pdf/p1709-lekiesA.pdf)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTc3ODk3MTksLTEzNjMxMTg0NTYsLTExNz
-IxMjgzMTJdfQ==
+eyJoaXN0b3J5IjpbLTM2ODAxMDM0MSw5Nzc4OTcxOSwtMTM2Mz
+ExODQ1NiwtMTE3MjEyODMxMl19
 -->
