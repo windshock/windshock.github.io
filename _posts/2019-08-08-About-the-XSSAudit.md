@@ -22,13 +22,14 @@ Javascript framework은 취약하지만, 실제 공격까지 가도록 Garget을
 1. innerHTML=XSS injection =  <https://gomakethings.com/preventing-cross-site-scripting-attacks-when-using-innerhtml-in-vanilla-javascript/>
 2. <?php echo $_GET['xss']; ?> = <https://brutelogic.com.br/blog/the-easiest-way-to-bypass-xss-mitigations/>
 3. 등등등…
+4. Chrome extention
 
-## 기술의 변화로 xssaudit 기능을 우회하는 방법은 다양하다.
+## 기술의 변화로 xssaudit 원리(차단)를 개선하거나, CSP 격리 등 보완 방법이 필요하다.
 
 
 ### 참고 자료
 Code-Reuse Attacks for the Web: Breaking XSS mitigations via Script Gadgets: [github](https://github.com/google/security-research-pocs), [ppt](/pdf/OWASP_BeNeLux-Day_2017_Bypassing_XSS_mitigations_via_script_gadgets_Sebastian_Lekies.pdf), [pdf](/pdf/p1709-lekiesA.pdf)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg3MzkzMjY2LC0xMzYzMTE4NDU2LC0xMT
-cyMTI4MzEyXX0=
+eyJoaXN0b3J5IjpbMTI0NDU4MTk1NywtMTM2MzExODQ1NiwtMT
+E3MjEyODMxMl19
 -->
