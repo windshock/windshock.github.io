@@ -1,5 +1,5 @@
 ---
-title: "Hot to bypass XSSAudit"
+title: "How to bypass XSSAudit"
 date: 2019-08-22 00:00:00 +0900
 categories: XSS XSSAudit javascript
 ---
@@ -12,5 +12,5 @@ categories: XSS XSSAudit javascript
 3. 등등등…
 4. Chrome extension을 이용한 우회
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTY2Mzc3NTIxXX0=
+eyJoaXN0b3J5IjpbLTE0NzI3ODQwNzZdfQ==
 -->
