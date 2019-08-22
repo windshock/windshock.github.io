@@ -5,7 +5,7 @@ categories: XSS XSSAudit javascript
 ---
 
 ## 브라우저에서 xssaudit 기능이 제거되는 이유는 무엇인까?
-Google Chrome에 한해서 , 
+Google 보안팀에서는 Chrome 개발팀에게 XSSAudit 기능을 제거하자는 제안을 했지만 한해서 , 
 
 해당 기능이 제거되어야 한다는 주요 이유는 [쉽게(?) 우회 가능](https://windshock.github.io/xss/xssaudit/javascript/How-to-bypass-XSSAudit/)하기 때문인 것으로 보인다.
 구글은 이제 xssaudit filter를 아웃(retire)하자고 제안한 분이 evn@google.com 인데, 그 분이 작성한 논문(첨부)이 그 근거인 듯.
@@ -41,8 +41,8 @@ Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용�
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwMjM4MDI1NywxMzA3ODcyNTY3LDM2Nz
-Y2MzczMywyMDQyMjI1ODM2LC0xNDM0MDAwMDc2LC05ODk1NDQw
-ODksOTc3ODk3MTksLTEzNjMxMTg0NTYsLTExNzIxMjgzMTJdfQ
-==
+eyJoaXN0b3J5IjpbMTQwNTQzMDg1OSwxMzAyMzgwMjU3LDEzMD
+c4NzI1NjcsMzY3NjYzNzMzLDIwNDIyMjU4MzYsLTE0MzQwMDAw
+NzYsLTk4OTU0NDA4OSw5Nzc4OTcxOSwtMTM2MzExODQ1NiwtMT
+E3MjEyODMxMl19
 -->
