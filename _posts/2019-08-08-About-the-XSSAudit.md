@@ -32,13 +32,8 @@ Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용�
 
 구글 등 브라우저 개발사 외에는 모두 유용했던 기능인데 제거하려는 이유가 우회된다는 것 뿐이라면, 업체 중심적인 의사 결정으로 보입니다. Google은 Don't be evil, Do the right thing 아니었나요?
 
-## xssaudit 기능을 우회하는 방법은 다양하다.
 
-여튼 글에서 나온 bypass 내용은 링크 추가하다가 귀찮다, 누가 좀 해줘…
-1. innerHTML=XSS injection =  <https://gomakethings.com/preventing-cross-site-scripting-attacks-when-using-innerhtml-in-vanilla-javascript/>
-2. <?php echo $_GET['xss']; ?> = <https://brutelogic.com.br/blog/the-easiest-way-to-bypass-xss-mitigations/>
-3. 등등등…
-4. Chrome extension을 이용한 우회
+
 
 ## 기술의 변화로 xssaudit 원리(차단)를 개선하거나, CSP 격리 등 보완 방법이 필요하다.
 
@@ -46,7 +41,7 @@ Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용�
 ### 참고 자료
 Code-Reuse Attacks for the Web: Breaking XSS mitigations via Script Gadgets: [github](https://github.com/google/security-research-pocs), [ppt](/pdf/OWASP_BeNeLux-Day_2017_Bypassing_XSS_mitigations_via_script_gadgets_Sebastian_Lekies.pdf), [pdf](/pdf/p1709-lekiesA.pdf)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTc1NjUwMDYsMzY3NjYzNzMzLDIwND
-IyMjU4MzYsLTE0MzQwMDAwNzYsLTk4OTU0NDA4OSw5Nzc4OTcx
-OSwtMTM2MzExODQ1NiwtMTE3MjEyODMxMl19
+eyJoaXN0b3J5IjpbMTEyOTUzNjY3NiwzNjc2NjM3MzMsMjA0Mj
+IyNTgzNiwtMTQzNDAwMDA3NiwtOTg5NTQ0MDg5LDk3Nzg5NzE5
+LC0xMzYzMTE4NDU2LC0xMTcyMTI4MzEyXX0=
 -->
