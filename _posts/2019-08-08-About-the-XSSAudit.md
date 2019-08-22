@@ -13,6 +13,7 @@ Google 보안팀에서는 Chrome 개발팀에게 [XSSAudit 기능을 제거하�
 [Chrome의 XSSAudit 우회 방법](https://windshock.github.io/xss/xssaudit/javascript/How-to-bypass-XSSAudit/)은 별도로 정리했습니다.
 
 ## XSSAudit은 유용하지 않았던가?
+
 Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용이 소모되고 경쟁 업체(MS 등) 브라우저보다 성능이 느려진다면, 이 기능은 제거하고 싶은 것이 당연할 겁니다. (실제로 MS EDGE에서 해당 기능을 제거하였습니다.)
 
 모의해커 등 공격자 입장에서는 매우 비정상적인 상황에서만 XSSAudit 우회가 가능하므로 해당 기능을 매우 귀찮고 성가신 존재입니다. 
@@ -24,18 +25,15 @@ Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용�
 
 구글 등 브라우저 개발사 외에는 모두 유용했던 기능인데 제거하려는 이유가 우회된다는 것 뿐이라면, 업체 중심적인 의사 결정으로 보입니다. Google은 Don't be evil, Do the right thing 아니었나요?
 
-
-
-
 ## 어떻게 되었든 CSP 도입으로 공부를 많이 해야 합니다. ㅠㅠ
 [How do I Content Security Policy](https://www.owasp.org/images/6/6d/2019-02-22_-_How_do_I_Content_Security_Policy_-_Print.pdf)
 [So we broke all CSPs …](https://www.owasp.org/images/c/c4/2017-04-20-OWASPNZ-SpagnuoloWeichselbaum.pdf)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MjUyMDc3MCwyMDQwMTExNTc4LC0xMD
-QwOTQyODE4LDE0Njg2NjI4MTMsMTMwMjM4MDI1NywxMzA3ODcy
-NTY3LDM2NzY2MzczMywyMDQyMjI1ODM2LC0xNDM0MDAwMDc2LC
-05ODk1NDQwODksOTc3ODk3MTksLTEzNjMxMTg0NTYsLTExNzIx
-MjgzMTJdfQ==
+eyJoaXN0b3J5IjpbMTA3OTQzNzk4NiwtMTUyNTIwNzcwLDIwND
+AxMTE1NzgsLTEwNDA5NDI4MTgsMTQ2ODY2MjgxMywxMzAyMzgw
+MjU3LDEzMDc4NzI1NjcsMzY3NjYzNzMzLDIwNDIyMjU4MzYsLT
+E0MzQwMDAwNzYsLTk4OTU0NDA4OSw5Nzc4OTcxOSwtMTM2MzEx
+ODQ1NiwtMTE3MjEyODMxMl19
 -->
