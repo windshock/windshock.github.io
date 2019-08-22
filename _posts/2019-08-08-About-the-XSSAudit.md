@@ -27,14 +27,15 @@ Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용�
 
 
 
-## 기술의 변화로 xssaudit 원리(차단)를 개선하거나, CSP 격리 등 보완 방법이 필요하다.
-
-
+## 어떻게 되었든 CSP 도입으로 공부를 많이 해야 합니다. ㅠㅠ
+[How do I Content Security Policy](https://www.owasp.org/images/6/6d/2019-02-22_-_How_do_I_Content_Security_Policy_-_Print.pdf)
+[So we broke all CSPs …](https://www.owasp.org/images/c/c4/2017-04-20-OWASPNZ-SpagnuoloWeichselbaum.pdf)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA0MDExMTU3OCwtMTA0MDk0MjgxOCwxND
-Y4NjYyODEzLDEzMDIzODAyNTcsMTMwNzg3MjU2NywzNjc2NjM3
-MzMsMjA0MjIyNTgzNiwtMTQzNDAwMDA3NiwtOTg5NTQ0MDg5LD
-k3Nzg5NzE5LC0xMzYzMTE4NDU2LC0xMTcyMTI4MzEyXX0=
+eyJoaXN0b3J5IjpbLTE1MjUyMDc3MCwyMDQwMTExNTc4LC0xMD
+QwOTQyODE4LDE0Njg2NjI4MTMsMTMwMjM4MDI1NywxMzA3ODcy
+NTY3LDM2NzY2MzczMywyMDQyMjI1ODM2LC0xNDM0MDAwMDc2LC
+05ODk1NDQwODksOTc3ODk3MTksLTEzNjMxMTg0NTYsLTExNzIx
+MjgzMTJdfQ==
 -->
