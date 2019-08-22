@@ -6,11 +6,11 @@ categories: XSS XSSAudit javascript
 
 ## Chrome에서 XSSAudit 기능이 제거하는 이유?
 
-Google 보안팀에서는 Chrome 개발팀에게 [XSSAudit 기능을 제거하자는 제안](https://bugs.chromium.org/p/chromium/issues/detail?id=898081)을 했지만, Google 보안팀이 제시한 근거는 우회 가능하다는 내용( evn@google.com의 논문)뿐이라 제거까지 가지 않을 것 같았지만, [Chrome version 에서는 완전히 제외](https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/TuYw-EZhO9g/blGViehIAwAJ)되는 것으로 결정되었다.
+Google 보안팀에서는 Chrome 개발팀에게 [XSSAudit 기능을 제거하자는 제안](https://bugs.chromium.org/p/chromium/issues/detail?id=898081)을 했지만, Google 보안팀이 제시한 근거는 우회 가능하다는 내용( evn@google.com의 논문)뿐이라 제거까지 가지 않을 것 같았지만, [Chrome version 에서는 완전히 제외](https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/TuYw-EZhO9g/blGViehIAwAJ)되는 것으로 결정되었습니다.
 
-[논문](/pdf/p1709-lekiesA.pdf)의 주요 내용은 신규 javascript framework의 garget을 이용한 우회 방법은 방어하기 어려우므로, 기존 완화하는 방법(xssaudit filter)에서  격리/예방하는 방법(Content Security Policy, 이하 CSP)으로 변화하자는 것이 주요 내용이다.
+[논문](/pdf/p1709-lekiesA.pdf)의 주요 내용은 신규 javascript framework의 garget을 이용한 우회 방법은 방어하기 어려우므로, 기존 완화하는 방법(xssaudit filter)에서  격리/예방하는 방법(Content Security Policy, 이하 CSP)으로 변화하자는 것이 주요 내용입니다.
 
-[Chrome의 XSSAudit 우회 방법](https://windshock.github.io/xss/xssaudit/javascript/How-to-bypass-XSSAudit/)은 별도로 정리했다.
+[Chrome의 XSSAudit 우회 방법](https://windshock.github.io/xss/xssaudit/javascript/How-to-bypass-XSSAudit/)은 별도로 정리했습니다.
 
 ## XSSAudit은 유용하지 않았던가?
 Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용이 소모되고 경쟁 업체(MS 등) 브라우저보다 성능이 느려진다면, 이 기능은 제거하고 싶은 것이 당연할 겁니다. (실제로 MS EDGE에서 해당 기능을 제거하였습니다.)
@@ -33,7 +33,7 @@ Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용�
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUwODY3NDQ1NywtMTA0MDk0MjgxOCwxND
+eyJoaXN0b3J5IjpbMjA0MDExMTU3OCwtMTA0MDk0MjgxOCwxND
 Y4NjYyODEzLDEzMDIzODAyNTcsMTMwNzg3MjU2NywzNjc2NjM3
 MzMsMjA0MjIyNTgzNiwtMTQzNDAwMDA3NiwtOTg5NTQ0MDg5LD
 k3Nzg5NzE5LC0xMzYzMTE4NDU2LC0xMTcyMTI4MzEyXX0=
