@@ -38,10 +38,11 @@ Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용�
 ## 기술의 변화로 xssaudit 원리(차단)를 개선하거나, CSP 격리 등 보완 방법이 필요하다.
 
 
-### 참고 자료
-Code-Reuse Attacks for the Web: Breaking XSS mitigations via Script Gadgets: [github](https://github.com/google/security-research-pocs), [ppt](/pdf/OWASP_BeNeLux-Day_2017_Bypassing_XSS_mitigations_via_script_gadgets_Sebastian_Lekies.pdf), [pdf](/pdf/p1709-lekiesA.pdf)
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwNzg3MjU2NywzNjc2NjM3MzMsMjA0Mj
-IyNTgzNiwtMTQzNDAwMDA3NiwtOTg5NTQ0MDg5LDk3Nzg5NzE5
-LC0xMzYzMTE4NDU2LC0xMTcyMTI4MzEyXX0=
+eyJoaXN0b3J5IjpbMTMwMjM4MDI1NywxMzA3ODcyNTY3LDM2Nz
+Y2MzczMywyMDQyMjI1ODM2LC0xNDM0MDAwMDc2LC05ODk1NDQw
+ODksOTc3ODk3MTksLTEzNjMxMTg0NTYsLTExNzIxMjgzMTJdfQ
+==
 -->
