@@ -4,7 +4,7 @@ date: 2019-08-08 04:00:00 +0900
 categories: XSS XSSAudit javascript
 ---
 
-## 브라우저에서 xssaudit 기능이 제거되는 이유는 무엇인가?
+## 브라우저에서 xssaudit 기능이 제거되는 이유는 무엇인까?
 Google Chrome에 한해서 , 
 
 해당 기능이 제거되어야 한다는 주요 이유는 쉽게(?) 우회 가능하기 때문인 것으로 보인다.
@@ -30,7 +30,7 @@ Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용�
 [# Content Security Policy Level 2 RFP](https://www.w3.org/TR/CSP2/#intro)의 내용에서도 CSP는 방어를 강화하는 한가지 방식으로 기술하고 있습니다. 
 > Content Security Policy (CSP) is not intended as a first line of defense against content injection vulnerabilities. Instead, CSP is best used as defense-in-depth, to reduce the harm caused by content injection attacks. As a first line of defense against content injection, server operators should validate their input and encode their output.
 
-구글 외에는 모두 유용했던 기능인데 제거하려는 이유가 우회된다는 것 뿐이라면 합리적인 의사 결정으로 보이지는 않습니다.
+구글 등 브라우저 개발사 외에는 모두 유용했던 기능인데 제거하려는 이유가 우회된다는 것 뿐이라면, 자기 중심적인 의사 결정으로 보입니다. Google은 Don't be evil한 것 아니었나요?
 
 ## xssaudit 기능을 우회하는 방법은 다양하다.
 
@@ -46,7 +46,7 @@ Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용�
 ### 참고 자료
 Code-Reuse Attacks for the Web: Breaking XSS mitigations via Script Gadgets: [github](https://github.com/google/security-research-pocs), [ppt](/pdf/OWASP_BeNeLux-Day_2017_Bypassing_XSS_mitigations_via_script_gadgets_Sebastian_Lekies.pdf), [pdf](/pdf/p1709-lekiesA.pdf)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzY3NjYzNzMzLDIwNDIyMjU4MzYsLTE0Mz
-QwMDAwNzYsLTk4OTU0NDA4OSw5Nzc4OTcxOSwtMTM2MzExODQ1
-NiwtMTE3MjEyODMxMl19
+eyJoaXN0b3J5IjpbLTIwNjIwMjA3NzAsMzY3NjYzNzMzLDIwND
+IyMjU4MzYsLTE0MzQwMDAwNzYsLTk4OTU0NDA4OSw5Nzc4OTcx
+OSwtMTM2MzExODQ1NiwtMTE3MjEyODMxMl19
 -->
