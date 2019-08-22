@@ -5,16 +5,10 @@ categories: XSS XSSAudit javascript
 ---
 
 ## 브라우저에서 xssaudit 기능이 제거되는 이유?
-Google 보안팀에서는 Chrome 개발팀에게 [XSSAudit 기능을 제거하자는 제안](https://bugs.chromium.org/p/chromium/issues/detail?id=898081)을 했지만, Google 보안팀이 제시한 제거되어야 한다는 주장은 우회 가능하다는 내용( evn@google.com의 논문)이라 [쉽게(?) 우회 가능](https://windshock.github.io/xss/xssaudit/javascript/How-to-bypass-XSSAudit/)
 
-이 논문의 주요 내용은 신규 javascript framework의 garget을 이용한 우회 방법은 방어하기 어려우므로, 기존 완화하는 방법(xssaudit filter)에서  격리/예방하는 방법(Content Security Policy, 이하 CSP)으로 변화하자는 것이 주요 내용이다.
+Google 보안팀에서는 Chrome 개발팀에게 [XSSAudit 기능을 제거하자는 제안](https://bugs.chromium.org/p/chromium/issues/detail?id=898081)을 했지만, Google 보안팀이 제시한 근거는 우회 가능하다는 내용( evn@google.com의 논문)이라 
 
-Javascript framework은 취약하지만, 실제 공격까지 가도록 Garget을 연결하는 부분이 시간과 노력이 참 많이 걸리고 어렵다는 것.
-
-글에서 나온 bypass 예제를 보면 bypass 방법이 예전에 waf bypass 로직(<https://www.owasp.org/index.php/Testing_for_HTTP_Parameter_pollution_(OTG-INPVAL-004)>)과 비슷한데, <script 부분을 waf(sucuri cloudproxy WAF)에서 제거해버리니 xssaudit은 탐지(string match…) 못하고 우회되는 것…
-<http://brutelogic.com.br/bypass/bypass-auditor.php?q=%3Csvg+o%3Cscriptnload=alert(1)%3E>
-![enter image description here](/images/wafw00f_Securi_WAF.png)
-
+[쉽게(?) 우회 가능](https://windshock.github.io/xss/xssaudit/javascript/How-to-bypass-XSSAudit/)
 
 
 ## XSSAudit은 유용하지 않았던가?
@@ -38,7 +32,7 @@ Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용�
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjExMTI3NDI2NSwxMzAyMzgwMjU3LDEzMD
+eyJoaXN0b3J5IjpbMTYyMTM2MzYxNiwxMzAyMzgwMjU3LDEzMD
 c4NzI1NjcsMzY3NjYzNzMzLDIwNDIyMjU4MzYsLTE0MzQwMDAw
 NzYsLTk4OTU0NDA4OSw5Nzc4OTcxOSwtMTM2MzExODQ1NiwtMT
 E3MjEyODMxMl19
