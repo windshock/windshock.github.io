@@ -11,6 +11,9 @@ categories: XSS XSSAudit javascript
 2. <?php echo $_GET['xss']; ?> = <https://brutelogic.com.br/blog/the-easiest-way-to-bypass-xss-mitigations/>
 3. 등등등…
 4. Chrome extension을 이용한 우회
+
+### 참고 자료
+Code-Reuse Attacks for the Web: Breaking XSS mitigations via Script Gadgets: [github](https://github.com/google/security-research-pocs), [ppt](/pdf/OWASP_BeNeLux-Day_2017_Bypassing_XSS_mitigations_via_script_gadgets_Sebastian_Lekies.pdf), [pdf](/pdf/p1709-lekiesA.pdf)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NzI3ODQwNzZdfQ==
+eyJoaXN0b3J5IjpbMTE3NTIzNDA0MiwtMTQ3Mjc4NDA3Nl19
 -->
