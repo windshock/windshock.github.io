@@ -4,9 +4,9 @@ date: 2019-08-08 04:00:00 +0900
 categories: XSS XSSAudit javascript
 ---
 
-## Chrome에서 XSSAudit 기능이 제거되어야 하는 이유?
+## Chrome에서 XSSAudit 기능이 제거하는 이유?
 
-Google 보안팀에서는 Chrome 개발팀에게 [XSSAudit 기능을 제거하자는 제안](https://bugs.chromium.org/p/chromium/issues/detail?id=898081)을 했지만, Google 보안팀이 제시한 근거는 우회 가능하다는 내용( evn@google.com의 논문)이라 
+Google 보안팀에서는 Chrome 개발팀에게 [XSSAudit 기능을 제거하자는 제안](https://bugs.chromium.org/p/chromium/issues/detail?id=898081)을 했지만, Google 보안팀이 제시한 근거는 우회 가능하다는 내용( evn@google.com의 논문)뿐이라 제거까지 가지 않을 것 같았지만, [Chrome version 에서는 완전히 제외](https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/TuYw-EZhO9g/blGViehIAwAJ)되는 것으로 결정되었다.
 
 논문의 주요 내용은 신규 javascript framework의 garget을 이용한 우회 방법은 방어하기 어려우므로, 기존 완화하는 방법(xssaudit filter)에서  격리/예방하는 방법(Content Security Policy, 이하 CSP)으로 변화하자는 것이 주요 내용이다.
 
@@ -33,8 +33,8 @@ Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용�
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2ODY2MjgxMywxMzAyMzgwMjU3LDEzMD
-c4NzI1NjcsMzY3NjYzNzMzLDIwNDIyMjU4MzYsLTE0MzQwMDAw
-NzYsLTk4OTU0NDA4OSw5Nzc4OTcxOSwtMTM2MzExODQ1NiwtMT
-E3MjEyODMxMl19
+eyJoaXN0b3J5IjpbLTEwNDA5NDI4MTgsMTQ2ODY2MjgxMywxMz
+AyMzgwMjU3LDEzMDc4NzI1NjcsMzY3NjYzNzMzLDIwNDIyMjU4
+MzYsLTE0MzQwMDAwNzYsLTk4OTU0NDA4OSw5Nzc4OTcxOSwtMT
+M2MzExODQ1NiwtMTE3MjEyODMxMl19
 -->
