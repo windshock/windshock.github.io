@@ -4,6 +4,9 @@ date: 2019-08-22 00:00:00 +0900
 categories: XSS XSSAudit javascript
 ---
 
+#정리 필요.
+https://www.slideshare.net/mindedsecurity/sandboxing-js-and-html-a-lession-learned
+
 ## xssaudit 기능을 우회하는 방법은 다양하다.
 
 Javascript framework은 취약하지만, 실제 공격까지 가도록 Garget을 연결하는 부분이 시간과 노력이 참 많이 걸리고 어렵다는 것.
