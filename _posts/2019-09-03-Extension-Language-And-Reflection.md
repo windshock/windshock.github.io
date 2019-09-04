@@ -20,6 +20,8 @@ https://pdfs.semanticscholar.org/6c6b/38878792ad35fd6b413a4eecb1ac27454441.pdf
  https://www.oracle.com/technetwork/java/seccodeguide-139067.html#9 을 좀 더 봐야 함
  security manager 는 https://codeometry.wordpress.com/2019/04/07/disable-security-manager-in-java/
  https://codeday.me/ko/qa/20190720/1104007.html
+https://codeometry.wordpress.com/2019/04/07/disable-security-manager-in-java/
+https://d2.naver.com/helloworld/1113548
 
 [https://www.sitepoint.com/deep-dive-into-java-9s-stack-walking-api/](https://www.sitepoint.com/deep-dive-into-java-9s-stack-walking-api/)
 [https://stackoverflow.com/questions/11306811/how-to-get-the-caller-class-in-java](https://stackoverflow.com/questions/11306811/how-to-get-the-caller-class-in-java)
@@ -125,7 +127,7 @@ m.n.w.WhoCalledBenchmark.testStackTraceGet              avgt       10  9161.564 
 [http://openjdk.java.net/jeps/176](http://openjdk.java.net/jeps/176)
 [https://github.com/nallar/WhoCalled](https://github.com/nallar/WhoCalled)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDA2NDMzMTM4LC0xODY1NDM0MTY5LC0xNT
-Y0ODQwMTYzLDE5NzY4MTc0MTEsLTEzNzE1MzA5MzIsLTUxNzc4
-NDA0Nl19
+eyJoaXN0b3J5IjpbLTE4ODY2OTUyNDksNDA2NDMzMTM4LC0xOD
+Y1NDM0MTY5LC0xNTY0ODQwMTYzLDE5NzY4MTc0MTEsLTEzNzE1
+MzA5MzIsLTUxNzc4NDA0Nl19
 -->
