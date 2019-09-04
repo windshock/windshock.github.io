@@ -98,6 +98,8 @@ m.n.w.WhoCalledBenchmark.testSecurityManagerGet         avgt       10   502.327 
 m.n.w.WhoCalledBenchmark.testStackTraceCalledBy         avgt       10  8630.241 ± 21.425  ns/op
 m.n.w.WhoCalledBenchmark.testStackTraceGet              avgt       10  9161.564 ± 85.620  ns/op
 ```
+참조 : https://github.com/nallar/WhoCalled/issues/1#issuecomment-180750822
+
 
 ##참고 자료
 [https://stackoverflow.com/questions/22626808/what-does-the-sun-reflect-callersensitive-annotation-mean](https://stackoverflow.com/questions/22626808/what-does-the-sun-reflect-callersensitive-annotation-mean)
@@ -105,5 +107,5 @@ m.n.w.WhoCalledBenchmark.testStackTraceGet              avgt       10  9161.564 
 [http://openjdk.java.net/jeps/176](http://openjdk.java.net/jeps/176)
 [https://github.com/nallar/WhoCalled](https://github.com/nallar/WhoCalled)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjY3Njc4ODQ0LC01MTc3ODQwNDZdfQ==
+eyJoaXN0b3J5IjpbLTEzNzE1MzA5MzIsLTUxNzc4NDA0Nl19
 -->
