@@ -3,7 +3,8 @@ title: "Extension Language and Reflection"
 date: 2019-09-03 05:28:00 +0900
 categories: XSS XSSAudit javascript
 ---
-jdk 9에서부터는   
+jdk 9에서부터는   reflection 의 getCallerClass은 `StackWalker﻿으로 
+https://riptutorial.com/java/topic/9868/stack-walking-api
 
 [https://www.sitepoint.com/deep-dive-into-java-9s-stack-walking-api/](https://www.sitepoint.com/deep-dive-into-java-9s-stack-walking-api/)
 [https://stackoverflow.com/questions/11306811/how-to-get-the-caller-class-in-java](https://stackoverflow.com/questions/11306811/how-to-get-the-caller-class-in-java)
@@ -109,6 +110,6 @@ m.n.w.WhoCalledBenchmark.testStackTraceGet              avgt       10  9161.564 
 [http://openjdk.java.net/jeps/176](http://openjdk.java.net/jeps/176)
 [https://github.com/nallar/WhoCalled](https://github.com/nallar/WhoCalled)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2MjA5MTU0NiwtMTM3MTUzMDkzMiwtNT
-E3Nzg0MDQ2XX0=
+eyJoaXN0b3J5IjpbLTIwNjc0OTA0MTksLTEzNzE1MzA5MzIsLT
+UxNzc4NDA0Nl19
 -->
