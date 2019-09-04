@@ -6,6 +6,10 @@ categories: XSS XSSAudit javascript
 jdk 9에서부터는   reflection 의 getCallerClass은 더이상 사용되지 않으며 StackWalker﻿을 사용해야 합니다.
 https://riptutorial.com/java/topic/9868/stack-walking-api
 
+방어를 위해서는  fullstack walk를 해야 한다?
+https://pdfs.semanticscholar.org/6c6b/38878792ad35fd6b413a4eecb1ac27454441.pdf
+
+Multiple vulnerabilities2like these have been exploited in the Java platform, especiallybetween late 2012 and early 2013. Most of these vulnerabilities exploit a flaw in theimplementation of access control in Java in so-calledcaller-sensitive methods[CGK15].These methods implement shortcuts in the access-control check and usually only checkthe permission of the immediate caller.3Since Java 8, these methods are marked withthe@CallerSensitiveannotation [RTC].
  reflection은 security manager 에 의해 차단할 수 있음(?)
  https://www.oracle.com/technetwork/java/seccodeguide-139067.html#9 을 좀 더 봐야 함
  security manager 는 https://codeometry.wordpress.com/2019/04/07/disable-security-manager-in-java/
@@ -115,7 +119,7 @@ m.n.w.WhoCalledBenchmark.testStackTraceGet              avgt       10  9161.564 
 [http://openjdk.java.net/jeps/176](http://openjdk.java.net/jeps/176)
 [https://github.com/nallar/WhoCalled](https://github.com/nallar/WhoCalled)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI2Nzc0Mjg2MywtMTg2NTQzNDE2OSwtMT
+eyJoaXN0b3J5IjpbLTM5NjYxMzU4MywtMTg2NTQzNDE2OSwtMT
 U2NDg0MDE2MywxOTc2ODE3NDExLC0xMzcxNTMwOTMyLC01MTc3
 ODQwNDZdfQ==
 -->
