@@ -89,6 +89,15 @@ Oracle 시큐어코딩 가이드에 따르면 해당 기능은 호출자의 를 
 이것 외에 stacktrace 등의 방법이 존재합니다만, 성능은 JVM에서 지원하는 annotation이 가장 좋습니다.
  - [StackWalker](https://www.javaworld.com/article/3188289/java-9s-other-new-enhancements-part-5-stack-walking-api.html)
  - [WhoCalled](https://github.com/nallar/WhoCalled)
+```
+Benchmark                                               Mode  Samples     Score    Error  Units
+m.n.w.WhoCalledBenchmark.testReflectionCalledBy         avgt       10  2178.268 ± 86.156  ns/op
+m.n.w.WhoCalledBenchmark.testReflectionGet              avgt       10    86.975 ±  5.302  ns/op
+m.n.w.WhoCalledBenchmark.testSecurityManagerCalledBy    avgt       10   495.695 ± 12.243  ns/op
+m.n.w.WhoCalledBenchmark.testSecurityManagerGet         avgt       10   502.327 ± 22.478  ns/op
+m.n.w.WhoCalledBenchmark.testStackTraceCalledBy         avgt       10  8630.241 ± 21.425  ns/op
+m.n.w.WhoCalledBenchmark.testStackTraceGet              avgt       10  9161.564 ± 85.620  ns/op
+```
 
 ##참고 자료
 [https://stackoverflow.com/questions/22626808/what-does-the-sun-reflect-callersensitive-annotation-mean](https://stackoverflow.com/questions/22626808/what-does-the-sun-reflect-callersensitive-annotation-mean)
@@ -96,5 +105,5 @@ Oracle 시큐어코딩 가이드에 따르면 해당 기능은 호출자의 를 
 [http://openjdk.java.net/jeps/176](http://openjdk.java.net/jeps/176)
 [https://github.com/nallar/WhoCalled](https://github.com/nallar/WhoCalled)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTYxNTY1MDYyLC01MTc3ODQwNDZdfQ==
+eyJoaXN0b3J5IjpbMjY3Njc4ODQ0LC01MTc3ODQwNDZdfQ==
 -->
