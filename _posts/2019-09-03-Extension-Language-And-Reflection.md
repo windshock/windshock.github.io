@@ -8,7 +8,8 @@ https://riptutorial.com/java/topic/9868/stack-walking-api
 
  reflection은 security manager 에 의해 차단할 수 있음(?)
  https://www.oracle.com/technetwork/java/seccodeguide-139067.html#9 을 좀 더 봐야 함
- 
+ security manager 는 https://codeometry.wordpress.com/2019/04/07/disable-security-manager-in-java/
+ https://codeday.me/ko/qa/20190720/1104007.html
 
 [https://www.sitepoint.com/deep-dive-into-java-9s-stack-walking-api/](https://www.sitepoint.com/deep-dive-into-java-9s-stack-walking-api/)
 [https://stackoverflow.com/questions/11306811/how-to-get-the-caller-class-in-java](https://stackoverflow.com/questions/11306811/how-to-get-the-caller-class-in-java)
@@ -114,6 +115,7 @@ m.n.w.WhoCalledBenchmark.testStackTraceGet              avgt       10  9161.564 
 [http://openjdk.java.net/jeps/176](http://openjdk.java.net/jeps/176)
 [https://github.com/nallar/WhoCalled](https://github.com/nallar/WhoCalled)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjU0MzQxNjksLTE1NjQ4NDAxNjMsMT
-k3NjgxNzQxMSwtMTM3MTUzMDkzMiwtNTE3Nzg0MDQ2XX0=
+eyJoaXN0b3J5IjpbMTI2Nzc0Mjg2MywtMTg2NTQzNDE2OSwtMT
+U2NDg0MDE2MywxOTc2ODE3NDExLC0xMzcxNTMwOTMyLC01MTc3
+ODQwNDZdfQ==
 -->
