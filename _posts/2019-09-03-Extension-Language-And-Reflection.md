@@ -6,7 +6,8 @@ categories: XSS XSSAudit javascript
 jdk 9에서부터는   reflection 의 getCallerClass은 더이상 사용되지 않으며 StackWalker﻿을 사용해야 합니다.
 https://riptutorial.com/java/topic/9868/stack-walking-api
 
- reflection은 security manager 에 의해 차단할 수 있음
+ reflection은 security manager 에 의해 차단할 수 있음(?)
+ https://www.oracle.com/technetwork/java/seccodeguide-139067.html#9 을 좀 더 봐야 함
  
 
 [https://www.sitepoint.com/deep-dive-into-java-9s-stack-walking-api/](https://www.sitepoint.com/deep-dive-into-java-9s-stack-walking-api/)
@@ -113,6 +114,6 @@ m.n.w.WhoCalledBenchmark.testStackTraceGet              avgt       10  9161.564 
 [http://openjdk.java.net/jeps/176](http://openjdk.java.net/jeps/176)
 [https://github.com/nallar/WhoCalled](https://github.com/nallar/WhoCalled)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjQ4NDAxNjMsMTk3NjgxNzQxMSwtMT
-M3MTUzMDkzMiwtNTE3Nzg0MDQ2XX0=
+eyJoaXN0b3J5IjpbLTE4NjU0MzQxNjksLTE1NjQ4NDAxNjMsMT
+k3NjgxNzQxMSwtMTM3MTUzMDkzMiwtNTE3Nzg0MDQ2XX0=
 -->
