@@ -3,8 +3,6 @@ title: "Extension Language and Reflection"
 date: 2019-09-03 05:28:00 +0900
 categories: XSS XSSAudit javascript
 ---
-확인 필요
-[http://sip.cs.princeton.edu/pub/sosp97.pdf](http://sip.cs.princeton.edu/pub/sosp97.pdf)
 [https://www.sitepoint.com/deep-dive-into-java-9s-stack-walking-api/](https://www.sitepoint.com/deep-dive-into-java-9s-stack-walking-api/)
 [https://stackoverflow.com/questions/11306811/how-to-get-the-caller-class-in-java](https://stackoverflow.com/questions/11306811/how-to-get-the-caller-class-in-java)
 
@@ -98,5 +96,5 @@ Oracle 시큐어코딩 가이드에 따르면 해당 기능은 호출자의 를 
 [http://openjdk.java.net/jeps/176](http://openjdk.java.net/jeps/176)
 [https://github.com/nallar/WhoCalled](https://github.com/nallar/WhoCalled)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUxNzc4NDA0Nl19
+eyJoaXN0b3J5IjpbNTYxNTY1MDYyLC01MTc3ODQwNDZdfQ==
 -->
