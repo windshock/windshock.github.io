@@ -16,7 +16,7 @@
 <script type="text/javascript" src="https://trend.okcashbag.com/js/jquery/jquery.cookie.js"></script>
 <script>
            $(document).ready(function(){
-                     OcbAndroidJS.requestAuthInfo("getInformation");
+                     OcbAndroidJS.getAuthInfo("getInformation");
                      $('#bb').html('버전정보 : ' + OcbAndroidJS.getAppVersion());
            });
            function getInformation(str){
