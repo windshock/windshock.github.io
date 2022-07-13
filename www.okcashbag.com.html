@@ -19,8 +19,8 @@
 <script>
           
            $(document).ready(function(){
-                     OcbAndroidJS.requestAuthInfo("getInformation");
-                     $('#bb').html('버전정보 : ' + OcbAndroidJS.getAppVersion());
+                     OcbApplicationJS.requestAuthInfo("getInformation");
+                     $('#bb').html('버전정보 : ' + OcbApplicationJS.getAppVersion());
            });
            function getInformation(str){
                      $('#aa').html('OcbAndroidJS 인증정보 콜백 : ' + str + ' in ' + window.location);
@@ -32,6 +32,3 @@
 </script> 
 <div id="aa"></div>
 <div id="bb"></div>
-
-<a href="javascript:window.location='https://m.okcashbag.com';alert(window.location);">windowopen</a>
-<a href="javascript:window.location='https://www.google.com';alert(window.location);window.open('https://www.naver.com')">windowopen2</a>
