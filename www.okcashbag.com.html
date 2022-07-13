@@ -4,8 +4,25 @@
 <script src="https://hybrid.okcashbag.com/common/js/app/OcbiOSTitleViewJS.js"></script>
 <script src="https://hybrid.okcashbag.com/common/js/app/OcbApplicationJS.js?dt=201605171145"></script>
 <script>
+          const getMobileOS = () => {
+                    const ua = navigator.userAgent
+                    if (/android/i.test(ua)) {
+                              return "Android"
+                    }
+                    else if (/iPad|iPhone|iPod/.test(ua))
+                              || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1){
+                              return "iOS"
+                    }
+                    return "Other"
+          }
+          
+          const os = getMobileOS()
+          
           var OcbTitleViewJS = OcbiOSTitleViewJS;
-          var OcbAndroidJS = OcbiOSJS;
+          
+          if (os == "iOS") {
+                    var OcbAndroidJS = OcbiOSJS;
+          }
 </script>
            
 <meta name="viewport" content="width=device-width, initial-scale=1.0 ,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
@@ -15,6 +32,7 @@
 <script type="text/javascript" src="https://trend.okcashbag.com/js/jquery/sly.js"></script>
 <script type="text/javascript" src="https://trend.okcashbag.com/js/jquery/jquery.cookie.js"></script>
 <script>
+          
            $(document).ready(function(){
                      OcbAndroidJS.requestAuthInfo("getInformation");
                      $('#bb').html('버전정보 : ' + OcbAndroidJS.getAppVersion());
