@@ -20,11 +20,10 @@
                      $('#bb').html('버전정보 : ' + OcbAndroidJS.getAppVersion());
            });
            function getInformation(str){
-                     $('#aa').html('OcbAndroidJS 인증정보 콜백 : ' + str);
+                     $('#aa').html('OcbAndroidJS 인증정보 콜백 : ' + str + ' in ' + window.location);
                      //var obj = JSON.parse(str);
                      //alert(str);
            };
-          alert('requestAuthInfo');
 </script>
 <div id="aa"></div>
 <div id="bb"></div>
