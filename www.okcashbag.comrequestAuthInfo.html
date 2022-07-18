@@ -1,0 +1,34 @@
+<script src="https://hybrid.okcashbag.com/common/js/app/OcbiOSJS.js"></script>
+<script src="https://hybrid.okcashbag.com/common/js/app/OcbiOSAuthJS.js"></script>
+<script src="https://hybrid.okcashbag.com/common/js/app/OcbiOSSearchViewJS.js"></script>
+<script src="https://hybrid.okcashbag.com/common/js/app/OcbiOSTitleViewJS.js"></script>
+<script src="https://hybrid.okcashbag.com/common/js/app/OcbApplicationJS.js?dt=201605171145"></script>
+<script>
+          
+          var OcbTitleViewJS = OcbiOSTitleViewJS;
+          var OcbAndroidJS = OcbiOSJS;
+          
+</script>
+           
+<meta name="viewport" content="width=device-width, initial-scale=1.0 ,maximum-scale=1.0, minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
+<script type="text/javascript" src="https://trend.okcashbag.com/js/jquery/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="https://trend.okcashbag.com/js/jquery/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="https://trend.okcashbag.com/js/jquery/owl.carousel.js"></script>
+<script type="text/javascript" src="https://trend.okcashbag.com/js/jquery/sly.js"></script>
+<script type="text/javascript" src="https://trend.okcashbag.com/js/jquery/jquery.cookie.js"></script>
+<script>
+          
+           $(document).ready(function(){
+                     OcbAndroidJS.requestAuthInfo("getInformation");
+                     $('#bb').html('버전정보 : ' + OcbAndroidJS.getAppVersion());
+           });
+           function getInformation(str){
+                     $('#aa').html('OcbAndroidJS 인증정보 콜백 : ' + str + ' in ' + window.location);
+                     //var obj = JSON.parse(str);
+                     alert(window.chrome);
+           };
+          
+          
+</script> 
+<div id="aa"></div>
+<div id="bb"></div>
