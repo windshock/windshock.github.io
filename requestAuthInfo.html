@@ -19,8 +19,8 @@
 <script>
           
            $(document).ready(function(){
-                     OcbApplicationJS.requestAuthInfo("getInformation");
-                     $('#bb').html('버전정보 : ' + OcbApplicationJS.getAppVersion());
+                     OcbAndroidJS.requestAuthInfo("getInformation");
+                     $('#bb').html('버전정보 : ' + OcbAndroidJS.getAppVersion());
            });
            function getInformation(str){
                      $('#aa').html('OcbAndroidJS 인증정보 콜백 : ' + str + ' in ' + window.location);
