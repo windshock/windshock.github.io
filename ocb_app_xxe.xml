@@ -1,7 +1,5 @@
-<!--?xml version="1.0" ?-->
-<!DOCTYPE replace [<!ENTITY example "Doe"> ]>
- <userInfo>
-  <firstName>John</firstName>
-  <lastName>&example;</lastName>
- </userInfo>
-
+<?xml version="1.0"?>
+<!DOCTYPE root [
+ <!ENTITY file SYSTEM "https://windshock.github.io/robots.txt" >
+]>
+<root>&file;</root>
