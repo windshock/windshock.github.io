@@ -24,10 +24,13 @@ def decrypt(key, txt):
     decryptor = cipher.decryptor()
     ddata = decryptor.update(txt) + decryptor.finalize()
     
+    
     #request packet에서는...
     padding_size = int.from_bytes(ddata[-1:],"little")
     ddata = ddata[0:len(ddata)-padding_size]
-    #response packet에서는...
+    
+    #response packet은 jdk8의 javax crypt library를 사용하고 ansix923를 ISO 10126로 해석하는 오류가 있음
+    #https://en.wikipedia.org/wiki/Padding_%28cryptography%29#ANSI_X9.23
     #unpadder = padding.ANSIX923(block_size).unpadder()
     #ddata = unpadder.update(ddata) + unpadder.finalize()
 
