@@ -1,0 +1,15 @@
+#mitmproxy 인증서를 스마트폰 및 burpsuite에 설정
+#openssl x509 -in mitmproxy.pem -out mitmproxy.pem.der -outform DER
+#openssl rsa -in mitmproxy.key -out mitmproxy.key.der -outform DER
+#openssl x509 -in burpsuite.crt.pem -out burpsuite.pem.der -outform DER
+#openssl rsa -in burpsuite.key.pem -out burpsuite.key.der -outform DER
+
+#스마트폰은 172.17.100.2:9090으로 http proxy 연결
+mitmdump --mode upstream:http://127.0.0.1:8080 -p 9090 -s mitmproxy_ocb.py --ssl-insecure
+#burp에서 upstream proxy,tls 설정 -> localhost:9999, mitmproxy 인증서로 설정
+mitmdump -p 9999 -s mitmproxy_ocb_posthandler.py
+
+
+
+
+

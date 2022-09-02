@@ -105,7 +105,7 @@ def parse_http_header(header_string):
 
 class OcbEncrypt:
     ocb_session_id = 'test'
-
+    
     def __init__(self):
         self.ocb_session_id
         self.crypted2_key = {}
@@ -137,22 +137,19 @@ class OcbEncrypt:
         # 복호화
         if crypted_type != None:
             #GET enc 복호화
-            if "enc" in flow.request.query:
-                enc = flow.request.query["enc"]
-                data = decrypt(key, enc)
-                ctx.log.info("decrypt get data:"+data)
+            if flow.request.query:
+                enc = parse.urlencode(flow.request.query)
+                data = encrypt_param(key, enc)
                 flow.request.query.clear()
-                flow.request.query = dict(parse.parse_qsl(data))
+                flow.request.query = {'enc':data}
 
             #POST enc 복호화
             content = flow.request.content.decode('utf-8',errors='ignore')
-            if "enc" in content:
-                enc = content.replace("enc=","").replace("&","")
-                if '%' in content:
-                    enc = parse.unquote(enc)
-                data = decrypt(key, enc)
-                ctx.log.info("decrypt post data:"+data)
-                flow.request.content = data.encode('utf-8')
+            if content:
+                enc = content
+                data = encrypt_param(key, enc)
+                ctx.log.info("encrypt post data:"+data)
+                flow.request.content = ("enc="+parse.quote_plus(data)).encode('utf-8')
                 
     def response(self, flow: http.HTTPFlow):
         # check crypted level
@@ -175,9 +172,12 @@ class OcbEncrypt:
             #POST enc 복호화
             content = flow.response.content.decode('utf-8',errors='ignore')
             if content:
-                enc = content
-                data = encrypt_param(key, enc)
-                ctx.log.info("encrypt response data:"+data)
-                flow.response.content = data.encode('utf-8')        
+                enc = content.replace("enc=","").replace("&","")
+                if '%' in content:
+                    enc = parse.unquote(enc)
+                data = decrypt(key, enc)
+                ctx.log.info("decrypt post data:"+data)
+                flow.response.content = data.encode('utf-8')
+        
     
 addons = [OcbEncrypt()]
