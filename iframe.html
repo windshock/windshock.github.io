@@ -32,6 +32,8 @@
     <script>
       url = findGetParameter("url");
       createIframe(url);
+      win = window.open(url);
+      win.close()
     </script>
   </body>
 </html>  
