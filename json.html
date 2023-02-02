@@ -1,6 +1,7 @@
 <html>
   <body>
     <script>
+      JSON=1;
       evalJSON = typeof JSON === 'object' && JSON.parse ? JSON.parse : function (str) {
               /*jshint evil: true */
               return eval('(' + str + ')');
