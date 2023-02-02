@@ -1,11 +1,11 @@
 <html>
   <body>
     <script>
-      $.evalJSON = typeof JSON === 'object' && JSON.parse ? JSON.parse : function (str) {
+      evalJSON = typeof JSON === 'object' && JSON.parse ? JSON.parse : function (str) {
               /*jshint evil: true */
               return eval('(' + str + ')');
       };
-      $.evalJSON("alert(1)");
+      evalJSON("alert(1)");
     </script>
   </body>
 </html>
