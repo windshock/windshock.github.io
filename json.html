@@ -1,8 +1,12 @@
 <html>
   <body>
     <script>
-      alert(JSON);
+      alert("window : "+window);
+      window=1;
+      alert("window : "+window);
+      alert("JSON : "+JSON);
       JSON=1;
+      alert("JSON : "+JSON);
       evalJSON = typeof JSON === 'object' && JSON.parse ? JSON.parse : function (str) {
               /*jshint evil: true */
               return eval('(' + str + ')');
