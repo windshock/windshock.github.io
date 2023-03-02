@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<xhtml:script xmlns:xhtml="http://www.w3.org/1999/xhtml" language="JScript" type="application/javascript" >
-			var r = new ActiveXObject("WScript.Shell").Run("calc")
-</xhtml:script>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<!-- <meta http-equiv="refresh" content="5; url=https://www.skplanet.com" /> -->
+<title>DevGuru XHTML html Tag Example</title>
+</head>
+<body>
+body content goes here...
+<object classid="clsid:0C3874AA-AB39-4B5E-A768-45F3CE6C6819" id="BarCode1" width="317" height="86" codebase="https://www.idautomation.com/Assets/idascripts/IDAutomationLinear.cab"> <param name="DataToEncode" value="123456789012"> </object>
+</body>
+</html>
