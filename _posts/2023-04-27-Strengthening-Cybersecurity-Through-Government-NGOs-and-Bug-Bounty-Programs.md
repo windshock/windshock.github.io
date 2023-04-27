@@ -61,14 +61,12 @@ The VDI is in a state where network, printer, external hard write read, clipboar
 ## Impact
 For companies that use VDI for logical network separation purposes, this vulnerability can lead to internal information leakage and intrusion of internal servers.
 
-DiscoveryUse process  [monitor(https://learn.microsoft.com/en-us/sysinte…](http://monitor%28https//learn.microsoft.com/en-us/sysinternals/downloads/procmon))  to monitor the functionality of the citrix agent(PicaSvc2.exe).  
+DiscoveryUse process  [monitor(https://learn.microsoft.com/en-us/sysintemonitor)](https//learn.microsoft.com/en-us/sysinternals/downloads/procmon))  to monitor the functionality of the citrix agent(PicaSvc2.exe).  
   
 Check the registry that the citrix agent uses to store policy settings.  
   
 View and manipulate the contents of that registry.
-
-
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTA4ODQ0MjE0LC0yMTEyMTU4MDgzLDE4Nz
-gxMjQzNDhdfQ==
+eyJoaXN0b3J5IjpbMTk2Nzg3NjgzNCw5MDg4NDQyMTQsLTIxMT
+IxNTgwODMsMTg3ODEyNDM0OF19
 -->
