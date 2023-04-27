@@ -2,7 +2,7 @@
 
 ## Note!!
 
-As a result of discussions with Citrix using [VINCE](https://kb.cert.org/vince/comm/case/1022/) from cert.org, it was concluded that this is not a vulnerability, so I can share this information without any concerns. For security reasons, I do not recommend using Xendesktop (VDI) in special environments such as logical network isolation or closed networks for security. If it must be used, please remove administrator privileges and make sure to install security-specific programs.
+As a result of discussions with Citrix using [VINCE](https://kb.cert.org/vince/comm/case/1022/) from cert.org, it was concluded that this is not a vulnerability(is nessesary to os administrator right), so I can share this information without any concerns. For security reasons, I do not recommend using Xendesktop (VDI) in special environments such as logical network isolation or closed networks for security. If it must be used, please remove administrator privileges and make sure to install security-specific programs.
 
 ## Description
 
@@ -74,6 +74,6 @@ Check the registry that the citrix agent uses to store policy settings.
   
 View and manipulate the contents of that registry.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDU4MjAzMDgsOTA4ODQ0MjE0LC0yMTEyMT
-U4MDgzLDE4NzgxMjQzNDhdfQ==
+eyJoaXN0b3J5IjpbLTU5MTg4MjA1OCw5MDg4NDQyMTQsLTIxMT
+IxNTgwODMsMTg3ODEyNDM0OF19
 -->
