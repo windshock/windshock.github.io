@@ -53,6 +53,10 @@ Windows Registry Editor Version 5.00
   
 4. PicaSv2.exe reads the policies recorded in the registry (which were manipulated by the attacker) and reflects the manipulated policies on Windows.
 
+5. 망분리 환경이므로 접속하는 pc의 registry를 변경하면 네트워크가 가능한 하드웨어의 리다이렉트가 가능하다.
+
+6. citrix ㅈ
+
 ## Exploit
 The attacker would have to be logged into the company's Citrix VDI(windows 10 os) after taking over the company's account.  
   
@@ -67,6 +71,6 @@ Check the registry that the citrix agent uses to store policy settings.
   
 View and manipulate the contents of that registry.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk2Nzg3NjgzNCw5MDg4NDQyMTQsLTIxMT
+eyJoaXN0b3J5IjpbMTA4NjM2NjMwNCw5MDg4NDQyMTQsLTIxMT
 IxNTgwODMsMTg3ODEyNDM0OF19
 -->
