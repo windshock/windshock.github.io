@@ -53,9 +53,9 @@ Windows Registry Editor Version 5.00
   
 4. PicaSv2.exe reads the policies recorded in the registry (which were manipulated by the attacker) and reflects the manipulated policies on Windows.
 
-5. 망분리 환경이므로 접속하는 pc의 registry를 변경하면 네트워크가 가능한 하드웨어의 리다이렉트가 가능하다.
+5. 접속하는 pc의 registry를 변경하면 네트워크가 가능한 하드웨어의 리다이렉트가 가능하다.
 
-6. citrix 기본 정책으로 class FF usb은 허용되므로 iphone 레더링, 혹은 usb 형태의 wireless card를 이용하면 네트워크를 연결할 수 있다.
+6. citrix 기본 정책으로 [usb class FFh](https://www.usb.org/defined-class-codes#anchor_BaseClassFFh) 은 허용되므로 iphone 레더링, 혹은 usb 형태의 wireless card를 이용하면 네트워크를 연결할 수 있다.
 
 7. 
 
@@ -73,6 +73,6 @@ Check the registry that the citrix agent uses to store policy settings.
   
 View and manipulate the contents of that registry.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQyNTk3MDU2OSw5MDg4NDQyMTQsLTIxMT
-IxNTgwODMsMTg3ODEyNDM0OF19
+eyJoaXN0b3J5IjpbLTE3ODIwNDIwOTIsOTA4ODQ0MjE0LC0yMT
+EyMTU4MDgzLDE4NzgxMjQzNDhdfQ==
 -->
