@@ -1,13 +1,6 @@
-
----
-title: "About the XSSAudit"
-date: 2019-08-08 04:00:00 +0900
-categories: XSS XSSAudit javascript
----
+# Citrix 정책을 우회할 수 있지만, 취약점이 아닙니다.
 
 ## Description
-
-
 DescriptionThe Citrix VDI Agent(PicaSvc2.exe) seems to have a structure in which it receives policies from the Citrix management server, records them in the registry(HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Citrix\1\User\), and reads the policies from the registry to reflect the policies to the user's VDI.  
   
 An attacker can bypass the Drive, Network, Clipboard, etc. security policies issued by the Citrix Policy Server through registry manipulation.  
@@ -69,5 +62,5 @@ Check the registry that the citrix agent uses to store policy settings.
 View and manipulate the contents of that registry.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg3ODEyNDM0OF19
+eyJoaXN0b3J5IjpbLTIxMTIxNTgwODMsMTg3ODEyNDM0OF19
 -->
