@@ -9,6 +9,8 @@ As a result of discussions with Citrix using [VINCE](https://kb.cert.org/vince/c
 The Citrix VDI Agent(PicaSvc2.exe) seems to have a structure in which it receives policies from the Citrix management server, records them in the registry(HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Citrix\1\User\), and reads the policies from the registry to reflect the policies to the user's VDI.  
   
 An attacker can bypass the Drive, Network, Clipboard, etc. security policies issued by the Citrix Policy Server through registry manipulation.  
+
+법적인 규제로 인해 망분리 환경 혹은 폐쇄망을 사용해야 할 경우 Citrix Policy를 우회하고 해당 VDI를 인터넷에 겨
   
 ## POC  
 1. The attacker logs into VDI and executes a Bat file ([https://windshock.github.io/bypass.zip](https://windshock.github.io/bypass.zip)) that continuously modifies the registry. Then, they close the VDI connection.  
@@ -74,6 +76,6 @@ Check the registry that the citrix agent uses to store policy settings.
   
 View and manipulate the contents of that registry.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzYxMjU2NTcwLDkwODg0NDIxNCwtMjExMj
-E1ODA4MywxODc4MTI0MzQ4XX0=
+eyJoaXN0b3J5IjpbNDY5Njk3MzQsMzYxMjU2NTcwLDkwODg0ND
+IxNCwtMjExMjE1ODA4MywxODc4MTI0MzQ4XX0=
 -->
