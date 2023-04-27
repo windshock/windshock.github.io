@@ -46,7 +46,6 @@ Windows Registry Editor Version 5.00
 "RestrictSessionClipboardWrite"=dword:00000000
 "RestrictClientClipboardWrite"=dword:00000000
 
-
 2. When the attacker logs back into VDI, PicaSvc2.exe communicates with the Citrix server to receive policies and records the corresponding policies in the registry.  
   
 3. While PicaSvc2.exe records and reads the policies, the registry's policy values are tampered with by the Bat file previously executed by the attacker.  
@@ -55,9 +54,9 @@ Windows Registry Editor Version 5.00
 
 5. 접속하는 pc의 registry를 변경하면 네트워크가 가능한 하드웨어의 리다이렉트가 가능하다.
 
-6. citrix 기본 정책으로 [usb class FFh](https://www.usb.org/defined-class-codes#anchor_BaseClassFFh) 은 허용되므로 iphone 레더링, 혹은 usb 형태의 wireless card를 이용하면 네트워크를 연결할 수 있다.
+6. citrix 기본 정책으로 [usb class FFh](https://www.usb.org/defined-class-codes#anchor_BaseClassFFh) 은 허용되므로 iphone 레더링, 혹은 usb 형태의 wireless card를 이용하면 Usb Redirect가 허용되므로 망분리 환경에서 인터넷으로 네트워크를 연결할 수 있다.
 
-7. 
+7. iphone 테더링을 위해서는 itunes 설치 파일에서 추출한 드라이버 2개를 설치해야 한다.
 
 ## Exploit
 The attacker would have to be logged into the company's Citrix VDI(windows 10 os) after taking over the company's account.  
@@ -73,6 +72,6 @@ Check the registry that the citrix agent uses to store policy settings.
   
 View and manipulate the contents of that registry.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODIwNDIwOTIsOTA4ODQ0MjE0LC0yMT
-EyMTU4MDgzLDE4NzgxMjQzNDhdfQ==
+eyJoaXN0b3J5IjpbMTY4NDQ4OTc0NCw5MDg4NDQyMTQsLTIxMT
+IxNTgwODMsMTg3ODEyNDM0OF19
 -->
