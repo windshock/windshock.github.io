@@ -1,4 +1,4 @@
-# You can bypass Citrix policies, but it's not a vulnerability.
+# Bypassing Citrix policy is not a vulnerability, but it can be a violation of the law.
 
 ## Note!!
 
@@ -76,6 +76,6 @@ Check the registry that the citrix agent uses to store policy settings.
   
 View and manipulate the contents of that registry.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ5NDMwODQ3LDM2MTI1NjU3MCw5MDg4ND
-QyMTQsLTIxMTIxNTgwODMsMTg3ODEyNDM0OF19
+eyJoaXN0b3J5IjpbMTc4NDM1MjEyOSwzNjEyNTY1NzAsOTA4OD
+Q0MjE0LC0yMTEyMTU4MDgzLDE4NzgxMjQzNDhdfQ==
 -->
