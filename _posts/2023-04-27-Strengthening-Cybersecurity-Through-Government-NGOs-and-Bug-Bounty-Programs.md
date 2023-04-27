@@ -1,8 +1,7 @@
 # You can bypass Citrix policies, but it's not a vulnerability.
 ## Note!!
-As a result of discussions with Citrix using [VINCE](https://kb.cert.org/vince/comm/case/1022/) from cert.org, it was concluded that this is not a vulnerability, so you can share this information without any concerns. Citrix recommends not using zendesktop (VDI) in a special environment for security. If it must be used, please limit administrator privileges and make sure to install security-specific programs.
+As a result of discussions with Citrix using [VINCE](https://kb.cert.org/vince/comm/case/1022/) from cert.org, it was concluded that this is not a vulnerability, so I can share this information without any concerns. Citrix recommends not using zendesktop (VDI) in a special environment for security. If it must be used, please limit administrator privileges and make sure to install security-specific programs.
 ## Description
-
 
 DescriptionThe Citrix VDI Agent(PicaSvc2.exe) seems to have a structure in which it receives policies from the Citrix management server, records them in the registry(HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Citrix\1\User\), and reads the policies from the registry to reflect the policies to the user's VDI.  
   
@@ -11,6 +10,7 @@ An attacker can bypass the Drive, Network, Clipboard, etc. security policies iss
 ## POC  
 1. The attacker logs into VDI and executes a Bat file ([https://windshock.github.io/bypass.zip](https://windshock.github.io/bypass.zip)) that continuously modifies the registry. Then, they close the VDI connection.  
   
+
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Citrix\1\User]
@@ -64,7 +64,8 @@ Check the registry that the citrix agent uses to store policy settings.
   
 View and manipulate the contents of that registry.
 
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MDYyNDM2MTcsLTIxMTIxNTgwODMsMT
-g3ODEyNDM0OF19
+eyJoaXN0b3J5IjpbNzA2NjAwMDc3LC0yMTEyMTU4MDgzLDE4Nz
+gxMjQzNDhdfQ==
 -->
