@@ -1,6 +1,6 @@
 # You can bypass Citrix policies, but it's not a vulnerability.
 ## Note!!
-As a result of discussions with Citrix using [VINCE](https://kb.cert.org/vince/comm/case/1022/) from cert.org, it was concluded that this is not a vulnerability, so I can share this information without any concerns. Citrix recommends not using zendesktop (VDI) in a special environment for security. If it must be used, please limit administrator privileges and make sure to install security-specific programs.
+As a result of discussions with Citrix using [VINCE](https://kb.cert.org/vince/comm/case/1022/) from cert.org, it was concluded that this is not a vulnerability, so I can share this information without any concerns. For security reasons, I do not recommend using Xendesktop (VDI) in special environments. If it must be used, please limit administrator privileges and make sure to install security-specific programs.
 ## Description
 
 DescriptionThe Citrix VDI Agent(PicaSvc2.exe) seems to have a structure in which it receives policies from the Citrix management server, records them in the registry(HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Citrix\1\User\), and reads the policies from the registry to reflect the policies to the user's VDI.  
@@ -66,6 +66,6 @@ View and manipulate the contents of that registry.
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzA2NjAwMDc3LC0yMTEyMTU4MDgzLDE4Nz
-gxMjQzNDhdfQ==
+eyJoaXN0b3J5IjpbMTY2Njg1MDU5OCwtMjExMjE1ODA4MywxOD
+c4MTI0MzQ4XX0=
 -->
