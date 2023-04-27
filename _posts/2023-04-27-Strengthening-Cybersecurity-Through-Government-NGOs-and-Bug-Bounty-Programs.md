@@ -58,6 +58,8 @@ Windows Registry Editor Version 5.00
 
 7. iphone 테더링을 위해서는 itunes 설치 파일에서 추출한 드라이버 2개([apple network driver](https://windshock.github.io/applenetworkdriver.zip), [apple usb driver](https://windshock.github.io/appleusbdriver.zip))를 설치해야 한다.
 
+8. citrix 접속 화면에서 iphone을 다시 redirect하면 이제 망분리 환경에서 인터넷 사용이 가능하다.
+
 ## Exploit
 The attacker would have to be logged into the company's Citrix VDI(windows 10 os) after taking over the company's account.  
   
@@ -72,6 +74,6 @@ Check the registry that the citrix agent uses to store policy settings.
   
 View and manipulate the contents of that registry.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA5MjczMzY0MSw5MDg4NDQyMTQsLTIxMT
-IxNTgwODMsMTg3ODEyNDM0OF19
+eyJoaXN0b3J5IjpbNDU4MjAzMDgsOTA4ODQ0MjE0LC0yMTEyMT
+U4MDgzLDE4NzgxMjQzNDhdfQ==
 -->
