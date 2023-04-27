@@ -6,11 +6,9 @@ As a result of discussions with Citrix using [VINCE](https://kb.cert.org/vince/c
 
 ## Description
 
-The Citrix VDI Agent(PicaSvc2.exe) seems to have a structure in which it receives policies from the Citrix management server, records them in the registry(HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Citrix\1\User\), and reads the policies from the registry to reflect the policies to the user's VDI.  
-  
-An attacker can bypass the Drive, Network, Clipboard, etc. security policies issued by the Citrix Policy Server through registry manipulation.  
+The Citrix VDI Agent(PicaSvc2.exe) seems to have a structure in which it receives policies from the Citrix management server, records them in the registry(HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Citrix\1\User\), and reads the policies from the registry to reflect the policies to the user's VDI. An attacker can bypass the Drive, Network, Clipboard, etc. security policies issued by the Citrix Policy Server through registry manipulation.  
 
-법적인 규제로 인해 망분리 환경 혹은 폐쇄망을 사용해야 할 경우, Citrix Policy를 우회하고  VDI를 인터넷에 강제로 연결시켜 내부망을 인터넷에 노출시키거나 중요 정보를 외부로 유출시킬 수 있습니다. 한국에서 이것은 명백한 법률 위반이며 망분리 솔루션 혹은 환경을 재검토해야 할 필요가 있습니다.
+As a result of legal regulations, if a closed or isolated network environment must be used, bypassing Citrix Policy and forcibly connecting VDI to the internet can potentially expose the internal network to the internet and leak sensitive information to external parties. In Korea, this is a clear violation of the law and requires a re-evaluation of network isolation solutions or environments.
   
 ## POC  
 1. The attacker logs into VDI and executes a Bat file ([https://windshock.github.io/bypass.zip](https://windshock.github.io/bypass.zip)) that continuously modifies the registry. Then, they close the VDI connection.  
@@ -76,6 +74,6 @@ Check the registry that the citrix agent uses to store policy settings.
   
 View and manipulate the contents of that registry.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg4NzQxNTc3MiwzNjEyNTY1NzAsOTA4OD
-Q0MjE0LC0yMTEyMTU4MDgzLDE4NzgxMjQzNDhdfQ==
+eyJoaXN0b3J5IjpbLTE4MjQ1MTk5OTUsMzYxMjU2NTcwLDkwOD
+g0NDIxNCwtMjExMjE1ODA4MywxODc4MTI0MzQ4XX0=
 -->
