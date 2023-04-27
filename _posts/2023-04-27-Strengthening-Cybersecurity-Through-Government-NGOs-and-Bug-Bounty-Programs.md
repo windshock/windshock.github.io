@@ -56,7 +56,7 @@ Windows Registry Editor Version 5.00
 
 6. citrix 기본 정책으로 [usb class FFh](https://www.usb.org/defined-class-codes#anchor_BaseClassFFh) 은 허용되므로 iphone 레더링, 혹은 usb 형태의 wireless card를 이용하면 Usb Redirect가 허용되므로 망분리 환경에서 인터넷으로 네트워크를 연결할 수 있다.
 
-7. iphone 테더링을 위해서는 itunes 설치 파일에서 추출한 드라이버 2개를 설치해야 한다.
+7. iphone 테더링을 위해서는 itunes 설치 파일에서 추출한 드라이버 2개([apple network driver](https://windshock.github.io/applenetworkdriver.zip), [apple usb driver](https://windshock.github.io/appleusbdriver.zip))를 설치해야 한다.
 
 ## Exploit
 The attacker would have to be logged into the company's Citrix VDI(windows 10 os) after taking over the company's account.  
@@ -72,6 +72,6 @@ Check the registry that the citrix agent uses to store policy settings.
   
 View and manipulate the contents of that registry.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4NDQ4OTc0NCw5MDg4NDQyMTQsLTIxMT
+eyJoaXN0b3J5IjpbMjA5MjczMzY0MSw5MDg4NDQyMTQsLTIxMT
 IxNTgwODMsMTg3ODEyNDM0OF19
 -->
