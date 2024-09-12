@@ -39,6 +39,8 @@
         }
     </style>
     <script>
+        if (!window.console) console = { log: function() {}, error: function() {} };
+        
         function executePhishing() {
             try {
                 var success = false;
