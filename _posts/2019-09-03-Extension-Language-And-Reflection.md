@@ -1,133 +1,160 @@
----
-title: "Extension Language and Reflection"
-date: 2019-09-03 05:28:00 +0900
-categories: XSS XSSAudit javascript
----
-jdk 9에서부터는   reflection 의 getCallerClass은 더이상 사용되지 않으며 StackWalker﻿을 사용해야 합니다.
-https://riptutorial.com/java/topic/9868/stack-walking-api
+### Security Threats and Mitigation Strategies for Java Reflection
 
-방어를 위해서는  fullstack walk를 해야 한다? CVE-2012-4681 예제를 들면서 이야기하는 듯
-https://pdfs.semanticscholar.org/6c6b/38878792ad35fd6b413a4eecb1ac27454441.pdf
-> Multiple vulnerabilities2like these have been exploited in the Java
-> platform, especiallybetween late 2012 and early 2013. Most of these
-> vulnerabilities exploit a flaw in theimplementation of access control
-> in Java in so-calledcaller-sensitive methods[CGK15].These methods
-> implement shortcuts in the access-control check and usually only
-> checkthe permission of the immediate caller.3Since Java 8, these
-> methods are marked withthe@CallerSensitiveannotation [RTC].
+The **Java Reflection API** is a powerful tool that allows dynamic manipulation of classes, methods, and interfaces at runtime. However, due to its flexibility, it introduces significant security risks, as attackers can exploit it to gain unauthorized access to systems. In this article, we will explore the security threats posed by Java Reflection and outline strategies to mitigate these risks.
 
- reflection은 security manager 에 의해 차단할 수 있음(?)
- https://www.oracle.com/technetwork/java/seccodeguide-139067.html#9 을 좀 더 봐야 함
- security manager 는 https://codeometry.wordpress.com/2019/04/07/disable-security-manager-in-java/
- https://codeday.me/ko/qa/20190720/1104007.html
-https://codeometry.wordpress.com/2019/04/07/disable-security-manager-in-java/
-https://d2.naver.com/helloworld/1113548
+#### The Risks of Using Reflection API
 
-[https://www.sitepoint.com/deep-dive-into-java-9s-stack-walking-api/](https://www.sitepoint.com/deep-dive-into-java-9s-stack-walking-api/)
-[https://stackoverflow.com/questions/11306811/how-to-get-the-caller-class-in-java](https://stackoverflow.com/questions/11306811/how-to-get-the-caller-class-in-java)
+Reflection is commonly used to inspect the structure of objects or dynamically invoke methods at runtime. However, without a proper **Security Manager**, sensitive methods (like `execute`, `eval`, etc.) can be accessed, leading to potential **Remote Code Execution (RCE)** attacks.
 
-이유도 작성 필요.
-el과 [Expression Language Injection](https://www.owasp.org/index.php/Expression_Language_Injection)으로 인한 
-EL을 블랙리스트 필터링하는 방식이 기존 패치의 방식, 지속적인 우회
-[https://www.blackhat.com/docs/us-17/thursday/us-17-Munoz-Friday-The-13th-Json-Attacks.pdf](https://www.blackhat.com/docs/us-17/thursday/us-17-Munoz-Friday-The-13th-Json-Attacks.pdf)
-[https://www.blackhat.com/docs/us-14/materials/us-14-Novikov-The-New-Page-Of-Injections-Book-Memcached-Injections-WP.pdf](https://www.blackhat.com/docs/us-14/materials/us-14-Novikov-The-New-Page-Of-Injections-Book-Memcached-Injections-WP.pdf)
-reflection이 가능하므로 exploit 가능
-민감한 api (execute, eval 등)에서 caller의 method 접근제한이 추가되면 reflection 제한 가능
-reflection의 위협 [https://stackoverflow.com/questions/3002904/what-is-the-security-risk-of-object-reflection](https://stackoverflow.com/questions/3002904/what-is-the-security-risk-of-object-reflection)
+For example, the following code demonstrates the risks of using Reflection to execute system commands:
 
-취약한 코드 패턴
-[https://vulncat.fortify.com/en/detail?id=desc.dataflow.java.server_side_template_injection](https://vulncat.fortify.com/en/detail?id=desc.dataflow.java.server_side_template_injection)
-[https://find-sec-bugs.github.io/bugs.htm#TEMPLATE_INJECTION_VELOCITY](https://find-sec-bugs.github.io/bugs.htm#TEMPLATE_INJECTION_VELOCITY)
-[https://wiki.sei.cmu.edu/confluence/display/java/SEC05-J.+Do+not+use+reflection+to+increase+accessibility+of+classes%2C+methods%2C+or+fields](https://wiki.sei.cmu.edu/confluence/display/java/SEC05-J.+Do+not+use+reflection+to+increase+accessibility+of+classes%2C+methods%2C+or+fields)
+```java
+#set($exp="test")
+$exp.getClass().forName("java.lang.Runtime")
+.getMethod("getRuntime", null)
+.invoke(null, null)
+.exec("calc")
+```
 
-Recopick은 confluence를 사용하는데, 관리자 기능을 얻었다는 것은 내부 서버 권한도 받았다는 것으로 이해하는 것이 타당합니다. Confluence는 html 페이지를 동적으로 표시하기 위해 [VELOCITY_TEMPLATE](https://velocity.apache.org/engine/1.7/user-guide.html)을  사용합니다.
+This code uses the Velocity template engine with Reflection to execute a system command, which can be exploited by attackers if proper security measures are not in place. However, Java 9 introduced enhanced security mechanisms to mitigate such risks.
 
-이 경우에 template에서 java코드를 사용하므로 reflection 방식으로 서버 명령 실행(별도로 제한하지 않으면)이 가능합니다.
-> [SecureUberspector](https://velocity.apache.org/engine/2.0/apidocs/org/apache/velocity/util/introspection/SecureUberspector.html) This uberspector prevents classloader related method calls. Use this introspector for situations in which template writers are numerous or untrusted. Specifically, this introspector prevents creation of arbitrary objects or reflection on objects. It is a standalone uberspector.
+#### Java 9 and the StackWalker API
 
-[SecureUberspector의 구현](https://github.com/VISTALL/apache.velocity-engine/blob/master/velocity-engine-core/src/main/java/org/apache/velocity/util/introspection/SecureUberspector.java)은 EL로 실행되는 object를 white 방식으로 제한하여, reflection을 사용하는 공격 코드는 차단됩니다.
+In Java 9, the traditional `Reflection.getCallerClass` method was deprecated and replaced with the **StackWalker API**, which provides a more secure way to inspect the calling class. Previously, security checks were only performed on the immediate caller, but with **StackWalker**, the entire call stack can be examined for more comprehensive security.
 
-        public Iterator getIterator(Object obj, Info i)
-    {
-        if (obj != null)
-        {
-            SecureIntrospectorControl sic = (SecureIntrospectorControl)introspector;
-            if (sic.checkObjectExecutePermission(obj.getClass(), null))
-            {
-                return super.getIterator(obj, i);
-            }
-            else
-            {
-                log.warn("Cannot retrieve iterator from " + obj.getClass() +
-                         " due to security restrictions.");
-            }
+For more details, refer to the [Stack Walking API guide](https://www.sitepoint.com/deep-dive-into-java-9s-stack-walking-api/). This ensures that all potential vulnerabilities along the call chain are addressed, as demonstrated by the **CVE-2012-4681** exploit. In this vulnerability, issues with caller-sensitive methods in Java were exploited, leading to attacks, but since Java 8, the `@CallerSensitive` annotation has helped safeguard such methods.
+
+#### The Problem with Blacklist-Based Security and the Need for Whitelisting
+
+Traditional blacklist-based security approaches focus on blocking specific dangerous elements but often fail to cover all attack vectors. For instance, blacklisting certain methods or classes can easily be bypassed by attackers who find alternate methods that aren't blocked.
+
+**Expression Language Injection** and other dynamic code execution attacks frequently exploit this limitation. As demonstrated in the [Blackhat JSON Attacks](https://www.blackhat.com/docs/us-17/thursday/us-17-Munoz-Friday-The-13th-Json-Attacks.pdf), blacklist filtering methods can be bypassed, and attackers can execute malicious commands through unblocked pathways.
+
+For this reason, a **whitelisting approach** is generally more effective. Whitelisting only allows access to explicitly trusted classes and methods, while blocking everything else by default. This significantly reduces the risk of code execution through unapproved methods or reflection-based attacks.
+
+#### The Role and Limitations of SecureUberspector
+
+**SecureUberspector** in Apache Velocity is a tool that limits class loading and Reflection, especially in scenarios where untrusted or numerous template writers are involved. It prevents the execution of arbitrary objects and reflection on those objects, enhancing security. However, it has limitations.
+
+For example, in **CVE-2019-17558**, SecureUberspector could not fully block all reflection-based attacks. Particularly, it does not prevent the use of **javax.script.ScriptEngineManager**, which can be exploited to execute arbitrary code. [GHSL-2020-048](https://securitylab.github.com/advisories/GHSL-2020-048-apache-velocity/) demonstrates how attackers can bypass SecureUberspector using this vulnerability:
+
+```java
+#set($engine = $scriptEngineManager.getEngineByName("nashorn"))
+#engine.eval("java.lang.Runtime.getRuntime().exec('calc')")
+```
+
+This script bypasses SecureUberspector and allows remote command execution. Similarly, attackers can bypass security mechanisms using **Groovy** scripts, as noted in the [SecureLayer7 analysis](https://blog.securelayer7.net/analyzing-security-vulnerabilities-in-xwiki-in-depth-examination/).
+
+#### Applying Whitelisting: Concrete Strategies
+
+Whitelisting is the preferred security model, allowing only trusted classes, methods, and objects while blocking all others. Below are specific methods for applying whitelisting in Java.
+
+1. **Using the Security Manager**  
+   The Java **Security Manager** can be employed to restrict access to sensitive resources and only allow specific classes or methods to be executed.
+
+   ```java
+   System.setSecurityManager(new SecurityManager());
+
+   // Define permissions for trusted methods/classes
+   PermissionCollection perms = new Permissions();
+   perms.add(new RuntimePermission("accessDeclaredMembers")); // Allow reflection access
+   perms.add(new RuntimePermission("createClassLoader")); // Allow class loader creation
+
+   AccessController.doPrivileged(new PrivilegedAction<Void>() {
+       public Void run() {
+           // Execute only within whitelisted methods
+           secureMethod();
+           return null;
+       }
+   }, new AccessControlContext(new ProtectionDomain[] {new ProtectionDomain(null, perms)}));
+   ```
+
+2. **Controlling Access with Reflection**  
+   When using Reflection, you can manually restrict access to certain classes and methods, rejecting any that are not explicitly allowed.
+
+   ```java
+   private static final Set<String> allowedMethods = Set.of(
+       "java.lang.String", "java.util.List" // Whitelisted classes
+   );
+
+   public static Object invokeMethod(Method method, Object target, Object... args) throws Exception {
+       if (!allowedMethods.contains(method.getDeclaringClass().getName())) {
+           throw new SecurityException("Unauthorized method invocation: " + method.getName());
+       }
+       return method.invoke(target, args); // Only whitelisted methods are executed
+   }
+   ```
+
+3. **Whitelisting in Script Engines**  
+   Script engines such as **javax.script.ScriptEngineManager** can also implement whitelisting to ensure that only safe scripts or commands are executed.
+
+   ```java
+   ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
+   engine.setBindings(new SimpleBindings(allowedMethods), ScriptContext.ENGINE_SCOPE); // Apply whitelisting
+   engine.eval("some safe script here");
+   ```
+
+4. **Whitelisting in Template Engines**  
+   Tools like SecureUberspector can be configured to enforce a whitelisting approach by limiting access to trusted methods and objects in template engines.
+
+   ```java
+   public Iterator getIterator(Object obj, Info i) {
+       if (obj != null) {
+           SecureIntrospectorControl sic = (SecureIntrospectorControl) introspector;
+           if (sic.checkObjectExecutePermission(obj.getClass(), null)) {
+               return super.getIterator(obj, i);
+           } else {
+               log.warn("Cannot retrieve iterator from " + obj.getClass() + " due to security restrictions.");
+           }
+       }
+       return null;
+   }
+   ```
+
+#### Protecting with StackWalker: Caller Validation
+
+Introduced in Java 9, the **StackWalker API** provides a secure way to inspect the call stack, offering better control over method invocations. StackWalker can be used to ensure that methods are only invoked by trusted callers.
+
+Below is an example using StackWalker to validate the caller of a method:
+
+```java
+import java.lang.StackWalker;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+public class SecurityManagerUtil {
+    // Whitelisted caller classes
+    private static final Set<String> allowedCallers = Set.of("com.example.TrustedClass");
+
+    public static void checkCaller() {
+        List<String> stackTrace = StackWalker.getInstance(StackWalker.Option.RETAIN_CLASS_REFERENCE)
+                .walk(frames -> frames.map(frame -> frame.getDeclaringClass().getName())
+                .collect(Collectors.toList()));
+
+        // If caller is not whitelisted, throw an exception
+        boolean isCallerAllowed = stackTrace.stream().anyMatch(allowedCallers::contains);
+        if (!isCallerAllowed) {
+            throw new SecurityException("Unauthorized caller detected: " + stackTrace);
         }
-        return null;
     }
 
-confluence에서 velocity template을 이용하여 RCE(Remote Code Execution)하는 예제는 [https://paper.seebug.org/886/](https://paper.seebug.org/886/) 링크를 참고하세요.
-
-Java reflection은 runtime 상태에서 method,class,interface를 테스트할 수 있는 API로 원격 코드 공격에 주로 사용됩니다. [https://www.geeksforgeeks.org/reflection-in-java/](https://www.geeksforgeeks.org/reflection-in-java/)
-
-#set($exp="test")$exp.getClass().forName("java.lang.Runtime").getMethod("getRuntime",null).invoke(null,null).exec("calc"))
-
-ð  #set은 Velocity template 코드입니다.
-
-ð  getClass 부터가 reflection 코드입니다.
-
-추가 확인 필요
-[https://openjdk.java.net/jeps/118](https://openjdk.java.net/jeps/118)
-[https://bodden.de/pubs/hhl+17hardening.pdf](https://bodden.de/pubs/hhl+17hardening.pdf)
-
-openjsk에서만 지원 하는 것도 확인 필요
-
-@CallerSensitive annotation은 JVM이 사용하는 Annotation으로 reflection에 의한 호출을 무시하고 Reflection.getCallerClass()을 이용하여 CallerClass에 따라 호출 여부를 결정할 수 있습니다.
-> A caller-sensitive method varies its behavior according to the class of its immediate caller. It discovers its caller’s class by invoking the `sun.reflect.Reflection.getCallerClass` method.
-
-Oracle 시큐어코딩 가이드에 따르면 해당 기능은 호출자의 를 검증하는 immediate class loader로 SecurityManager를 우회하여 표준 API를 직접호출 하는 경우를 보완하기 위해 작성된 ([JEP 176](http://openjdk.java.net/jeps/176)) 표준입니다.
-
-하는 [코드 형태](https://www.programcreek.com/java-api-examples/?class=sun.reflect.Reflection&method=getCallerClass)를 보입니다.
-    @CallerSensitive
-    public static java.util.Enumeration<Driver> getDrivers() {
-        java.util.Vector<Driver> result = new java.util.Vector<>();
-    
-        Class<?> callerClass = Reflection.getCallerClass();
-    
-        // Walk through the loaded registeredDrivers.
-        for(DriverInfo aDriver : registeredDrivers) {
-            // If the caller does not have permission to load the driver then
-            // skip it.
-            if(isDriverAllowed(aDriver.driver, callerClass)) {
-                result.addElement(aDriver.driver);
-            } else {
-                println("    skipping: " + aDriver.getClass().getName());
-            }
-        }
-        return (result.elements());
+    public static void secureMethod() {
+        checkCaller(); // Verify caller before execution
+        System.out.println("Secure method executed.");
     }
-
-이것 외에 stacktrace 등의 방법이 존재합니다만, 성능은 JVM에서 지원하는 annotation이 가장 좋습니다.
- - [StackWalker](https://www.javaworld.com/article/3188289/java-9s-other-new-enhancements-part-5-stack-walking-api.html)
- - [WhoCalled](https://github.com/nallar/WhoCalled)
+}
 ```
-Benchmark                                               Mode  Samples     Score    Error  Units
-m.n.w.WhoCalledBenchmark.testReflectionCalledBy         avgt       10  2178.268 ± 86.156  ns/op
-m.n.w.WhoCalledBenchmark.testReflectionGet              avgt       10    86.975 ±  5.302  ns/op
-m.n.w.WhoCalledBenchmark.testSecurityManagerCalledBy    avgt       10   495.695 ± 12.243  ns/op
-m.n.w.WhoCalledBenchmark.testSecurityManagerGet         avgt       10   502.327 ± 22.478  ns/op
-m.n.w.WhoCalledBenchmark.testStackTraceCalledBy         avgt       10  8630.241 ± 21.425  ns/op
-m.n.w.WhoCalledBenchmark.testStackTraceGet              avgt       10  9161.564 ± 85.620  ns/op
-```
-참조 : https://github.com/nallar/WhoCalled/issues/1#issuecomment-180750822
 
+This example ensures that only trusted classes are allowed to invoke `secureMethod()`. If an unauthorized class tries to access the method, an exception is thrown.
 
-##참고 자료
-[https://stackoverflow.com/questions/22626808/what-does-the-sun-reflect-callersensitive-annotation-mean](https://stackoverflow.com/questions/22626808/what-does-the-sun-reflect-callersensitive-annotation-mean)
-[https://www.oracle.com/technetwork/java/seccodeguide-139067.html#9-8](https://www.oracle.com/technetwork/java/seccodeguide-139067.html#9-8)
-[http://openjdk.java.net/jeps/176](http://openjdk.java.net/jeps/176)
-[https://github.com/nallar/WhoCalled](https://github.com/nallar/WhoCalled)
+#### Conclusion: Proper Use and Protection of Reflection
+
+The Java Reflection API is a flexible and powerful tool, but it introduces significant security risks, especially when combined with template engines like Velocity. **Blacklist-based** approaches are prone to bypasses, while **whitelisting** provides stronger protection by allowing only trusted elements to be executed. Furthermore, leveraging the **StackWalker API** enhances security by validating method invocations and blocking unauthorized access.
+
+By combining whitelisting with tools like StackWalker, you can ensure that your Java applications are more secure and resilient against reflection-based attacks.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4ODY2OTUyNDksNDA2NDMzMTM4LC0xOD
-Y1NDM0MTY5LC0xNTY0ODQwMTYzLDE5NzY4MTc0MTEsLTEzNzE1
-MzA5MzIsLTUxNzc4NDA0Nl19
+eyJoaXN0b3J5IjpbLTE2ODg3NTM4NywtMTg4NjY5NTI0OSw0MD
+Y0MzMxMzgsLTE4NjU0MzQxNjksLTE1NjQ4NDAxNjMsMTk3Njgx
+NzQxMSwtMTM3MTUzMDkzMiwtNTE3Nzg0MDQ2XX0=
 -->
