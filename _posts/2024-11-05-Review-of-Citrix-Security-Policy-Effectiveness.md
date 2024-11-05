@@ -1,3 +1,8 @@
+---
+title: "Review of Citrix Security Policy Effectiveness"
+date: 2024-11-05 04:00:00 +0900
+categories: Citrix bypass
+---
 # Review of Citrix Security Policy Effectiveness
 
 ## 1. Introduction
@@ -32,5 +37,5 @@ Furthermore, if Citrix were to enforce security policies at a lower system level
 - [Citrix Group Policy Troubleshooting for XenApp and XenDesktop](https://www.slideshare.net/slideshow/citrix-group-policy-troubleshooting-for-xenapp-and-xendesktop/41412077)
 - [Bypassing Citrix Policy Is Not A Vulnerability, But It Can Be A Violation Of The Law](https://windshock.github.io/Bypassing-Citrix-policy-is-not-a-vulnerability,-but-it-can-be-a-violation-of-the-law)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MDExODk2NzFdfQ==
+eyJoaXN0b3J5IjpbLTQ2ODY5NzkwNywtMTkwMTE4OTY3MV19
 -->
