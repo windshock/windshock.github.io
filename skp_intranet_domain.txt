@@ -1,0 +1,13 @@
+bitbucket.skplanet.com
+ep.skplanet.com
+roladmin-dev.skplanet.com
+arena.web.skplanet.com
+voyager.skplanet.com
+code.skplanet.com
+argocd.skplanet.com
+macowa.skplanet.com
+mvn.skplanet.com
+jira.skplanet.com
+skpfs.skplanet.com
+wiki.skplanet.com
+oraem.skplanet.com
