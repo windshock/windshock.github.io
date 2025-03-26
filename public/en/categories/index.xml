@@ -2,45 +2,87 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Categories on Code Before Breach</title>
-    <link>http://localhost:1313/en/categories/</link>
+    <link>https://windshock.github.io/en/categories/</link>
     <description>Recent content in Categories on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
     <lastBuildDate>Tue, 05 Nov 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://windshock.github.io/en/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bypass</title>
-      <link>http://localhost:1313/en/categories/bypass/</link>
+      <link>https://windshock.github.io/en/categories/bypass/</link>
       <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/categories/bypass/</guid>
+      <guid>https://windshock.github.io/en/categories/bypass/</guid>
       <description></description>
     </item>
     <item>
       <title>Citrix</title>
-      <link>http://localhost:1313/en/categories/citrix/</link>
+      <link>https://windshock.github.io/en/categories/citrix/</link>
       <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/categories/citrix/</guid>
+      <guid>https://windshock.github.io/en/categories/citrix/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>KPI</title>
+      <link>https://windshock.github.io/en/categories/kpi/</link>
+      <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/categories/kpi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Management</title>
+      <link>https://windshock.github.io/en/categories/management/</link>
+      <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/categories/management/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security Assessment</title>
+      <link>https://windshock.github.io/en/categories/security-assessment/</link>
+      <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/categories/security-assessment/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vulnerability Evaluation</title>
+      <link>https://windshock.github.io/en/categories/vulnerability-evaluation/</link>
+      <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/categories/vulnerability-evaluation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Development Culture</title>
+      <link>https://windshock.github.io/en/categories/development-culture/</link>
+      <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/categories/development-culture/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>https://windshock.github.io/en/categories/security/</link>
+      <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/categories/security/</guid>
       <description></description>
     </item>
     <item>
       <title>Javascript</title>
-      <link>http://localhost:1313/en/categories/javascript/</link>
+      <link>https://windshock.github.io/en/categories/javascript/</link>
       <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/categories/javascript/</guid>
+      <guid>https://windshock.github.io/en/categories/javascript/</guid>
       <description></description>
     </item>
     <item>
       <title>XSS</title>
-      <link>http://localhost:1313/en/categories/xss/</link>
+      <link>https://windshock.github.io/en/categories/xss/</link>
       <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/categories/xss/</guid>
+      <guid>https://windshock.github.io/en/categories/xss/</guid>
       <description></description>
     </item>
     <item>
       <title>XSSAudit</title>
-      <link>http://localhost:1313/en/categories/xssaudit/</link>
+      <link>https://windshock.github.io/en/categories/xssaudit/</link>
       <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/categories/xssaudit/</guid>
+      <guid>https://windshock.github.io/en/categories/xssaudit/</guid>
       <description></description>
     </item>
   </channel>

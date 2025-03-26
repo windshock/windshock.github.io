@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Management on Code Before Breach</title>
+    <link>https://windshock.github.io/en/categories/management/</link>
+    <description>Recent content in Management on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 20 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/en/categories/management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KPIs Can Cause Incidents!!!</title>
+      <link>https://windshock.github.io/en/post/2024-06-20-kpi-causes-accidents/</link>
+      <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2024-06-20-kpi-causes-accidents/</guid>
+      <description>&lt;h2 id=&#34;kpis-can-cause-incidents---bad-metrics-produce-bad-outcomes&#34;&gt;KPIs Can Cause Incidents!!! - Bad metrics produce bad outcomes.&lt;/h2&gt;
+&lt;p&gt;Recently, I was going through old emails and found a reply from a junior colleague to a very serious email I had sent. The colleague wrote that after reading my message, they realized they had been mindlessly following instructions without deeper consideration. They promised to carefully consider the ethical implications and correctness of every task, and to proceed based on their own judgment going forward.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
