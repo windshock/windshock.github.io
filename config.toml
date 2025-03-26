@@ -13,6 +13,7 @@ defaultContentLanguageInSubdir = true
   category = "categories"
 
 [params]
+  env = "production"
   mainSections = ["post"]
   ShowReadingTime = true
   ShowShareButtons = true

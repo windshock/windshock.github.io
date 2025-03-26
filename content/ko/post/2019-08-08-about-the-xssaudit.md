@@ -6,7 +6,6 @@ categories: &id001
 - XSSAudit
 - javascript
 tags: *id001
-draft: false
 ---
 
 ## Chrome에서 XSSAudit 기능이 제거하는 이유?

@@ -5,7 +5,6 @@ categories: &id001
 - Citrix
 - bypass
 tags: *id001
-draft: false
 ---
 
 # Review of Citrix Security Policy Effectiveness

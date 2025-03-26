@@ -4,7 +4,7 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>시트릭스 보안 정책 효과성 검토 | Code Before Breach</title>
 <meta name="keywords" content="Citrix, bypass">
 <meta name="description" content="시트릭스 보안 정책 효과성 검토
@@ -61,7 +61,77 @@ Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발
         }
 
     </style>
-</noscript>
+</noscript><meta property="og:url" content="http://localhost:1313/ko/post/2024-11-05-review-of-citrix-security-policy-effectiveness/">
+  <meta property="og:site_name" content="Code Before Breach">
+  <meta property="og:title" content="시트릭스 보안 정책 효과성 검토">
+  <meta property="og:description" content="시트릭스 보안 정책 효과성 검토 1. 서론 시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.
+2. 보안 정책 우회 레지스트리 조작을 통한 우회 Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발생하는 레이스 컨디션을 이용해 레지스트리를 조작함으로써 보안 정책 우회가 가능합니다. 시트릭스는 이 취약점을 완화하기 위해 스텔스 패치를 적용했지만, 레지스트리 보안 설정을 조정하고 쓰기 권한을 거부함으로써 여전히 보안 정책을 비활성화할 수 있습니다.">
+  <meta property="og:locale" content="ko">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2024-11-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-05T00:00:00+00:00">
+    <meta property="article:tag" content="Citrix">
+    <meta property="article:tag" content="Bypass">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="시트릭스 보안 정책 효과성 검토">
+<meta name="twitter:description" content="시트릭스 보안 정책 효과성 검토
+1. 서론
+시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.
+2. 보안 정책 우회
+레지스트리 조작을 통한 우회
+Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발생하는 레이스 컨디션을 이용해 레지스트리를 조작함으로써 보안 정책 우회가 가능합니다. 시트릭스는 이 취약점을 완화하기 위해 스텔스 패치를 적용했지만, 레지스트리 보안 설정을 조정하고 쓰기 권한을 거부함으로써 여전히 보안 정책을 비활성화할 수 있습니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/ko/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "시트릭스 보안 정책 효과성 검토",
+      "item": "http://localhost:1313/ko/post/2024-11-05-review-of-citrix-security-policy-effectiveness/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "시트릭스 보안 정책 효과성 검토",
+  "name": "시트릭스 보안 정책 효과성 검토",
+  "description": "시트릭스 보안 정책 효과성 검토 1. 서론 시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.\n2. 보안 정책 우회 레지스트리 조작을 통한 우회 Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발생하는 레이스 컨디션을 이용해 레지스트리를 조작함으로써 보안 정책 우회가 가능합니다. 시트릭스는 이 취약점을 완화하기 위해 스텔스 패치를 적용했지만, 레지스트리 보안 설정을 조정하고 쓰기 권한을 거부함으로써 여전히 보안 정책을 비활성화할 수 있습니다.\n",
+  "keywords": [
+    "Citrix", "bypass"
+  ],
+  "articleBody": "시트릭스 보안 정책 효과성 검토 1. 서론 시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.\n2. 보안 정책 우회 레지스트리 조작을 통한 우회 Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발생하는 레이스 컨디션을 이용해 레지스트리를 조작함으로써 보안 정책 우회가 가능합니다. 시트릭스는 이 취약점을 완화하기 위해 스텔스 패치를 적용했지만, 레지스트리 보안 설정을 조정하고 쓰기 권한을 거부함으로써 여전히 보안 정책을 비활성화할 수 있습니다.\nCSE의 강제 종료 시트릭스 CSE(시트릭스 서비스 엔진)가 강제로 종료되거나 삭제되면 보안 정책이 적용되지 않아, 제한된 리소스에 대한 무단 접근이 발생할 가능성이 있습니다.\nGPF 파일 조작 GPF(그룹 정책 파일)를 수정하거나 그 권한을 제한하여 보안 정책을 우회하려는 시도도 가능하지만, 이 방법은 불안정하며 여러 한계점이 존재합니다.\n3. 레지스트리 수정 및 쓰기 권한 거부를 통한 우회 사용자가 일반 계정(예: User A)으로 로그인하면, Citrix 보안 정책 설정은 Windows 세션 ID를 기반으로 레지스트리에 생성됩니다. 시트릭스가 보안보다 사용성을 우선시하는 경향으로 인해, 레지스트리 설정(CdmPolicies, IO, VCPolicies)을 수정하고 모든 사용자에 대해 쓰기 권한을 거부함으로써 보안 정책 우회가 가능해집니다. 이로 인해 재접속 시 보안 정책 우회가 이루어집니다.\n테스트 환경에서는 Citrix 보안 정책 레지스트리 설정이 변경되고 권한이 제한되면 자동 로그아웃이 발생합니다. ICA 파일 내의 ClearPassword, Domain, LogonTicket 등의 값을 임의의 값(예: “test”)으로 수정하면, 로컬 계정이 이 자동 로그아웃을 우회할 수 있습니다.\n또한, 로컬 보조 계정으로 로그인하면 강제 로그아웃 제한을 우회할 수 있습니다. 비록 시트릭스가 다중 로그인 세션을 제한하지만, Ctrl-Alt-Del을 눌러 작업 관리자를 실행하고 PicaSessionAgent.exe 프로세스를 종료함으로써 로그인을 완료할 수 있습니다.\n마지막으로, 로컬 계정(예: “windshock”)으로 로그인하면 Windows 세션 1에서 시트릭스 보안 정책이 우회되어 Citrix VDI를 사용할 수 있습니다.\n4. 결론 시트릭스의 보안 정책 적용 방식은 사용성을 우선시하는 것으로 보이며, 이는 사용자 접근성을 향상시킬 수 있지만 보안 정책 우회를 용이하게 하는 구조적 취약점을 초래합니다. 시트릭스를 사용하는 조직은 이러한 잠재적 보안 우회 가능성을 인식하고, 관리자들이 실시간으로 대응할 수 있도록 추가적인 내부 모니터링 또는 경보 시스템을 구현해야 합니다.\n더 나아가, 시트릭스가 Xen Hypervisor와 같은 하위 시스템 수준에서 보안 정책을 강제한다면, 보안과 사용성 사이의 균형을 유지하면서 우회 시도를 효과적으로 차단할 수 있을 것입니다. 이를 통해 조직은 요구되는 보안 수준과 시트릭스가 제공하는 접근성을 모두 달성할 수 있습니다.\nReferences Citrix Group Policy Troubleshooting for XenApp and XenDesktop 시트릭스 정책 우회는 취약점이 아니라 법률 위반이다 ",
+  "wordCount" : "361",
+  "inLanguage": "ko",
+  "datePublished": "2024-11-05T00:00:00Z",
+  "dateModified": "2024-11-05T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/ko/post/2024-11-05-review-of-citrix-security-policy-effectiveness/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Code Before Breach",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">

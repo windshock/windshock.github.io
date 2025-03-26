@@ -5,7 +5,6 @@ categories: &id001
 - Citrix
 - bypass
 tags: *id001
-draft: false
 ---
 
 # 시트릭스 보안 정책 효과성 검토

@@ -6,7 +6,6 @@ categories: &id001
 - XSSAudit
 - javascript
 tags: *id001
-draft: false
 ---
 
 ## Why Was the XSSAudit Feature Removed in Chrome?
