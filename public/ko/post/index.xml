@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Code Before Breach</title>
+    <link>http://localhost:1313/ko/post/</link>
+    <description>Recent content in Posts on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>ko</language>
+    <lastBuildDate>Tue, 05 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/ko/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>시트릭스 보안 정책 효과성 검토</title>
+      <link>http://localhost:1313/ko/post/2024-11-05-review-of-citrix-security-policy-effectiveness/</link>
+      <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/post/2024-11-05-review-of-citrix-security-policy-effectiveness/</guid>
+      <description>&lt;h1 id=&#34;시트릭스-보안-정책-효과성-검토&#34;&gt;시트릭스 보안 정책 효과성 검토&lt;/h1&gt;
+&lt;h2 id=&#34;1-서론&#34;&gt;1. 서론&lt;/h2&gt;
+&lt;p&gt;시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.&lt;/p&gt;
+&lt;h2 id=&#34;2-보안-정책-우회&#34;&gt;2. 보안 정책 우회&lt;/h2&gt;
+&lt;h3 id=&#34;레지스트리-조작을-통한-우회&#34;&gt;레지스트리 조작을 통한 우회&lt;/h3&gt;
+&lt;p&gt;Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발생하는 레이스 컨디션을 이용해 레지스트리를 조작함으로써 보안 정책 우회가 가능합니다. 시트릭스는 이 취약점을 완화하기 위해 스텔스 패치를 적용했지만, 레지스트리 보안 설정을 조정하고 쓰기 권한을 거부함으로써 여전히 보안 정책을 비활성화할 수 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>시트릭스 정책 우회는 취약점이 아니라 법률 위반이다</title>
+      <link>http://localhost:1313/ko/post/2023-04-27-bypassing-citrix-policy-is-not-a-vulnerability-but-it-can-be-a-violation-of-the-law/</link>
+      <pubDate>Thu, 27 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/post/2023-04-27-bypassing-citrix-policy-is-not-a-vulnerability-but-it-can-be-a-violation-of-the-law/</guid>
+      <description>&lt;h3 id=&#34;시트릭스-정책-우회는-취약점이-아니라-법률-위반이다&#34;&gt;시트릭스 정책 우회는 취약점이 아니라 법률 위반이다&lt;/h3&gt;
+&lt;h4 id=&#34;주의&#34;&gt;주의!!&lt;/h4&gt;
+&lt;p&gt;cert.org의 &lt;a href=&#34;https://kb.cert.org/vince/comm/case/1022/&#34;&gt;VINCE&lt;/a&gt;를 통한 Citrix와의 논의를 바탕으로, 이 문제는 관리 권한이 필요하기 때문에 취약점으로 분류되지 않는 것으로 결론지어졌습니다. 따라서 보안상의 문제 없이 이 정보를 공유할 수 있습니다. 그러나 보안상의 이유로, 논리적으로 격리되거나 폐쇄된 네트워크와 같은 특수 환경에서는 Xendesktop (VDI)의 사용을 권장하지 않습니다. 만약 VDI를 반드시 사용해야 한다면, 관리자 권한을 제거하고 보안 전용 소프트웨어를 설치해야 합니다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;관리자 권한이 필요하다는 점은 위험을 낮출 수 있지만, 잠재적인 영향력을 완전히 제거하지는 않습니다. 아래는 Citrix 정책이 어떻게 우회될 수 있는지에 대한 상세한 기술 설명입니다.&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>정부 NGO 및 버그 바운티 프로그램을 통한 사이버 보안 강화</title>
+      <link>http://localhost:1313/ko/post/2023-04-18-strengthening-cybersecurity-through-government-ngos-and-bug-bounty-programs/</link>
+      <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/post/2023-04-18-strengthening-cybersecurity-through-government-ngos-and-bug-bounty-programs/</guid>
+      <description>&lt;p&gt;정부 NGO 및 버그 바운티 프로그램을 통한 사이버 보안 강화: 보안세와 그 실행 사례 살펴보기&lt;/p&gt;
+&lt;p&gt;오늘날의 디지털 시대에서 정보 보안은 개인, 기업, 그리고 정부 모두에게 중요한 이슈가 되었습니다. 사이버 공격과 데이터 유출이 점점 더 빈번해지고 정교해지면서 그 결과는 매우 치명적일 수 있습니다. 이러한 위협에 대비하기 위해 강력한 사이버 보안 대책을 마련하는 것이 필수적입니다.&lt;/p&gt;
+&lt;p&gt;최근 인기를 얻고 있는 한 가지 접근 방식은 정부 NGO(비정부기구)와 버그 바운티 프로그램의 활용입니다. 이 프로그램들은 개인과 조직이 디지털 시스템의 취약점과 약점을 식별하고 신고하도록 장려하여, 적시에 효과적인 대응을 가능하게 합니다. 이들은 포괄적인 사이버 보안 전략의 핵심 요소로서, 그 중요성은 아무리 강조해도 지나치지 않습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>자바 리플렉션의 보안 위협과 완화 전략</title>
+      <link>http://localhost:1313/ko/post/2019-09-03-security-threats-and-mitigation-strategies-for-java-reflection/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/post/2019-09-03-security-threats-and-mitigation-strategies-for-java-reflection/</guid>
+      <description>&lt;h3 id=&#34;자바-리플렉션의-보안-위협과-완화-전략&#34;&gt;자바 리플렉션의 보안 위협과 완화 전략&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;자바 리플렉션 API&lt;/strong&gt;는 런타임에 클래스, 메서드, 인터페이스를 동적으로 조작할 수 있게 해주는 강력한 도구입니다. 하지만 그 유연성 때문에 공격자가 이를 악용해 시스템에 무단 접근할 수 있는 심각한 보안 위험이 발생합니다. 본 문서에서는 자바 리플렉션이 야기하는 보안 위협을 살펴보고, 이러한 위험을 완화하기 위한 전략들을 설명합니다.&lt;/p&gt;
+&lt;h4 id=&#34;리플렉션-api-사용-시의-위험성&#34;&gt;리플렉션 API 사용 시의 위험성&lt;/h4&gt;
+&lt;p&gt;리플렉션은 객체의 구조를 검사하거나 런타임에 메서드를 동적으로 호출하는 데 일반적으로 사용됩니다. 그러나 적절한 **보안 관리자(Security Manager)**가 없는 경우, &lt;code&gt;execute&lt;/code&gt;, &lt;code&gt;eval&lt;/code&gt; 등과 같은 민감한 메서드에 접근할 수 있어 잠재적인 &lt;strong&gt;원격 코드 실행(RCE)&lt;/strong&gt; 공격을 유발할 수 있습니다.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About the XSSAudit</title>
+      <link>http://localhost:1313/ko/post/2019-08-08-about-the-xssaudit/</link>
+      <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/post/2019-08-08-about-the-xssaudit/</guid>
+      <description>&lt;h2 id=&#34;chrome에서-xssaudit-기능이-제거하는-이유&#34;&gt;Chrome에서 XSSAudit 기능이 제거하는 이유?&lt;/h2&gt;
+&lt;p&gt;Google 보안팀에서는 Chrome 개발팀에게 &lt;a href=&#34;https://bugs.chromium.org/p/chromium/issues/detail?id=898081&#34;&gt;XSSAudit 기능을 제거하자는 제안&lt;/a&gt;을 했지만, Google 보안팀이 제시한 근거는 우회 가능하다는 내용( &lt;a href=&#34;mailto:evn@google.com&#34;&gt;evn@google.com&lt;/a&gt;의 논문)뿐이라 제거까지 가지 않을 것 같았지만, &lt;a href=&#34;https://groups.google.com/a/chromium.org/forum/#!msg/blink-dev/TuYw-EZhO9g/blGViehIAwAJ&#34;&gt;Chrome version 에서는 완전히 제외&lt;/a&gt;되는 것으로 결정되었습니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/pdf/p1709-lekiesA.pdf&#34;&gt;논문&lt;/a&gt;의 주요 내용은 신규 javascript framework의 garget을 이용한 우회 방법은 방어하기 어려우므로, 기존 완화하는 방법(xssaudit filter)에서  격리/예방하는 방법(Content Security Policy, 이하 CSP)으로 변화하자는 것이 주요 내용입니다.&lt;/p&gt;
+&lt;h2 id=&#34;xssaudit은-유용하지-않았던가&#34;&gt;XSSAudit은 유용하지 않았던가?&lt;/h2&gt;
+&lt;p&gt;Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용이 소모되고 경쟁 업체(MS 등) 브라우저보다 성능이 느려진다면, 이 기능은 제거하고 싶은 것이 당연할 겁니다. (실제로 MS EDGE에서 해당 기능을 제거하였습니다.)&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

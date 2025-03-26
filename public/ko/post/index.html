@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Posts | Code Before Breach</title>
+<meta name="keywords" content="">
+<meta name="description" content="Posts - Code Before Breach">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/ko/post/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/ko/post/index.xml">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/en/post/">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/ko/post/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/ko/" accesskey="h" title="Code Before Breach (Alt + H)">Code Before Breach</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="http://localhost:1313/en/" title="English"
+                            aria-label="English">En</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/ko/search/" title="검색 (Alt &#43; /)" accesskey=/>
+                    <span>검색</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/ko/tags/" title="태그">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/ko/categories/" title="카테고리">
+                    <span>카테고리</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/ko/archives/" title="아카이브">
+                    <span>아카이브</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/ko/about/" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="http://localhost:1313/ko/">홈</a></div>
+  <h1>
+    Posts
+  </h1>
+</header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">시트릭스 보안 정책 효과성 검토
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>시트릭스 보안 정책 효과성 검토 1. 서론 시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.
+2. 보안 정책 우회 레지스트리 조작을 통한 우회 Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발생하는 레이스 컨디션을 이용해 레지스트리를 조작함으로써 보안 정책 우회가 가능합니다. 시트릭스는 이 취약점을 완화하기 위해 스텔스 패치를 적용했지만, 레지스트리 보안 설정을 조정하고 쓰기 권한을 거부함으로써 여전히 보안 정책을 비활성화할 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-11-05 00:00:00 +0000 UTC'>11월 5, 2024</span>&nbsp;·&nbsp;2 분&nbsp;·&nbsp;361 단어</footer>
+  <a class="entry-link" aria-label="post link to 시트릭스 보안 정책 효과성 검토" href="http://localhost:1313/ko/post/2024-11-05-review-of-citrix-security-policy-effectiveness/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">시트릭스 정책 우회는 취약점이 아니라 법률 위반이다
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>시트릭스 정책 우회는 취약점이 아니라 법률 위반이다 주의!! cert.org의 VINCE를 통한 Citrix와의 논의를 바탕으로, 이 문제는 관리 권한이 필요하기 때문에 취약점으로 분류되지 않는 것으로 결론지어졌습니다. 따라서 보안상의 문제 없이 이 정보를 공유할 수 있습니다. 그러나 보안상의 이유로, 논리적으로 격리되거나 폐쇄된 네트워크와 같은 특수 환경에서는 Xendesktop (VDI)의 사용을 권장하지 않습니다. 만약 VDI를 반드시 사용해야 한다면, 관리자 권한을 제거하고 보안 전용 소프트웨어를 설치해야 합니다.
+관리자 권한이 필요하다는 점은 위험을 낮출 수 있지만, 잠재적인 영향력을 완전히 제거하지는 않습니다. 아래는 Citrix 정책이 어떻게 우회될 수 있는지에 대한 상세한 기술 설명입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-04-27 00:00:00 +0000 UTC'>4월 27, 2023</span>&nbsp;·&nbsp;4 분&nbsp;·&nbsp;727 단어</footer>
+  <a class="entry-link" aria-label="post link to 시트릭스 정책 우회는 취약점이 아니라 법률 위반이다" href="http://localhost:1313/ko/post/2023-04-27-bypassing-citrix-policy-is-not-a-vulnerability-but-it-can-be-a-violation-of-the-law/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">정부 NGO 및 버그 바운티 프로그램을 통한 사이버 보안 강화
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>정부 NGO 및 버그 바운티 프로그램을 통한 사이버 보안 강화: 보안세와 그 실행 사례 살펴보기
+오늘날의 디지털 시대에서 정보 보안은 개인, 기업, 그리고 정부 모두에게 중요한 이슈가 되었습니다. 사이버 공격과 데이터 유출이 점점 더 빈번해지고 정교해지면서 그 결과는 매우 치명적일 수 있습니다. 이러한 위협에 대비하기 위해 강력한 사이버 보안 대책을 마련하는 것이 필수적입니다.
+최근 인기를 얻고 있는 한 가지 접근 방식은 정부 NGO(비정부기구)와 버그 바운티 프로그램의 활용입니다. 이 프로그램들은 개인과 조직이 디지털 시스템의 취약점과 약점을 식별하고 신고하도록 장려하여, 적시에 효과적인 대응을 가능하게 합니다. 이들은 포괄적인 사이버 보안 전략의 핵심 요소로서, 그 중요성은 아무리 강조해도 지나치지 않습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2023-04-18 00:00:00 +0000 UTC'>4월 18, 2023</span>&nbsp;·&nbsp;2 분&nbsp;·&nbsp;383 단어</footer>
+  <a class="entry-link" aria-label="post link to 정부 NGO 및 버그 바운티 프로그램을 통한 사이버 보안 강화" href="http://localhost:1313/ko/post/2023-04-18-strengthening-cybersecurity-through-government-ngos-and-bug-bounty-programs/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">자바 리플렉션의 보안 위협과 완화 전략
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>자바 리플렉션의 보안 위협과 완화 전략 자바 리플렉션 API는 런타임에 클래스, 메서드, 인터페이스를 동적으로 조작할 수 있게 해주는 강력한 도구입니다. 하지만 그 유연성 때문에 공격자가 이를 악용해 시스템에 무단 접근할 수 있는 심각한 보안 위험이 발생합니다. 본 문서에서는 자바 리플렉션이 야기하는 보안 위협을 살펴보고, 이러한 위험을 완화하기 위한 전략들을 설명합니다.
+리플렉션 API 사용 시의 위험성 리플렉션은 객체의 구조를 검사하거나 런타임에 메서드를 동적으로 호출하는 데 일반적으로 사용됩니다. 그러나 적절한 **보안 관리자(Security Manager)**가 없는 경우, execute, eval 등과 같은 민감한 메서드에 접근할 수 있어 잠재적인 원격 코드 실행(RCE) 공격을 유발할 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-09-03 00:00:00 +0000 UTC'>9월 3, 2019</span>&nbsp;·&nbsp;5 분&nbsp;·&nbsp;925 단어</footer>
+  <a class="entry-link" aria-label="post link to 자바 리플렉션의 보안 위협과 완화 전략" href="http://localhost:1313/ko/post/2019-09-03-security-threats-and-mitigation-strategies-for-java-reflection/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">About the XSSAudit
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Chrome에서 XSSAudit 기능이 제거하는 이유? Google 보안팀에서는 Chrome 개발팀에게 XSSAudit 기능을 제거하자는 제안을 했지만, Google 보안팀이 제시한 근거는 우회 가능하다는 내용( evn@google.com의 논문)뿐이라 제거까지 가지 않을 것 같았지만, Chrome version 에서는 완전히 제외되는 것으로 결정되었습니다.
+논문의 주요 내용은 신규 javascript framework의 garget을 이용한 우회 방법은 방어하기 어려우므로, 기존 완화하는 방법(xssaudit filter)에서 격리/예방하는 방법(Content Security Policy, 이하 CSP)으로 변화하자는 것이 주요 내용입니다.
+XSSAudit은 유용하지 않았던가? Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용이 소모되고 경쟁 업체(MS 등) 브라우저보다 성능이 느려진다면, 이 기능은 제거하고 싶은 것이 당연할 겁니다. (실제로 MS EDGE에서 해당 기능을 제거하였습니다.)
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2019-08-08 00:00:00 +0000 UTC'>8월 8, 2019</span>&nbsp;·&nbsp;2 분&nbsp;·&nbsp;243 단어</footer>
+  <a class="entry-link" aria-label="post link to About the XSSAudit" href="http://localhost:1313/ko/post/2019-08-08-about-the-xssaudit/"></a>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/ko/">Code Before Breach</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

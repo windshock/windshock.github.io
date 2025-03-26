@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>보안코딩 on Code Before Breach</title>
+    <link>https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88%EC%BD%94%EB%94%A9/</link>
+    <description>Recent content in 보안코딩 on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>ko</language>
+    <lastBuildDate>Tue, 25 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88%EC%BD%94%EB%94%A9/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>왜 시프트레프트 보안이 중요한가</title>
+      <link>https://windshock.github.io/ko/post/why-shift-left-matters/</link>
+      <pubDate>Tue, 25 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/why-shift-left-matters/</guid>
+      <description>&lt;p&gt;현대 소프트웨어 개발은 속도가 생명입니다. 하지만 보안은 &lt;strong&gt;나중에 붙이는 옵션이 아니어야&lt;/strong&gt; 합니다.&lt;br&gt;
+바로 여기서 &lt;strong&gt;시프트레프트 보안(Shift Left Security)&lt;/strong&gt; 이 필요해집니다.&lt;/p&gt;
+&lt;h2 id=&#34;시프트레프트란&#34;&gt;시프트레프트란?&lt;/h2&gt;
+&lt;p&gt;“시프트레프트”는 보안을 개발 후반이 아닌, &lt;strong&gt;초기 단계(설계, 코딩)부터 반영하는 전략&lt;/strong&gt;입니다.&lt;br&gt;
+문제가 커지기 전에, 애초에 발생하지 않도록 만드는 것이죠.&lt;/p&gt;
+&lt;h2 id=&#34;왜-중요한가요&#34;&gt;왜 중요한가요?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;🕒 &lt;strong&gt;시간 절약&lt;/strong&gt;: 운영 중 수정하는 것보다 개발 중 수정이 10배 저렴합니다.&lt;/li&gt;
+&lt;li&gt;🧠 &lt;strong&gt;개발자 인식 변화&lt;/strong&gt;: 보안이 체크리스트가 아닌 기본 습관이 됩니다.&lt;/li&gt;
+&lt;li&gt;🔁 &lt;strong&gt;DevSecOps 친화적&lt;/strong&gt;: 자동화된 파이프라인에 잘 녹아듭니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;나는-어떻게-적용하는가&#34;&gt;나는 어떻게 적용하는가&lt;/h2&gt;
+&lt;p&gt;저는 코드 기반 분석 도구와 보안 코딩 가이드를 만들어&lt;br&gt;
+&lt;strong&gt;개발자가 보안 팀 도움 없이도 자체적으로 보안을 반영할 수 있도록&lt;/strong&gt; 돕습니다.&lt;br&gt;
+이건 진짜 효율적인 보안 실현입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

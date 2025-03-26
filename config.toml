@@ -1,0 +1,100 @@
+baseURL = "https://windshock.github.io/"
+languageCode = "en-us"
+title = "Code Before Breach"
+theme = "PaperMod"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+
+[params]
+  mainSections = ["post"]
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowCodeCopyButtons = true
+  ShowBreadCrumbs = true
+  ShowToc = true
+  ShowWordCount = true
+  ShowTags = true
+  ShowCategories = true
+  ShowSearch = true
+  assets.logo = "/images/logo.svg"
+
+[languages.en.menu]
+  [[languages.en.menu.main]]
+    identifier = "search"
+    name = "Search"
+    url = "/search/"
+    weight = 10
+
+  [[languages.en.menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 20
+
+  [[languages.en.menu.main]]
+    identifier = "categories"
+    name = "Categories"
+    url = "/categories/"
+    weight = 30
+
+  [[languages.en.menu.main]]
+    identifier = "archive"
+    name = "Archive"
+    url = "/archives/"
+    weight = 40
+
+  [[languages.en.menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 50
+
+[languages.ko.menu]
+  [[languages.ko.menu.main]]
+    identifier = "search"
+    name = "검색"
+    url = "/search/"
+    weight = 10
+
+  [[languages.ko.menu.main]]
+    identifier = "tags"
+    name = "태그"
+    url = "/tags/"
+    weight = 20
+
+  [[languages.ko.menu.main]]
+    identifier = "categories"
+    name = "카테고리"
+    url = "/categories/"
+    weight = 30
+
+  [[languages.ko.menu.main]]
+    identifier = "archive"
+    name = "아카이브"
+    url = "/archives/"
+    weight = 40
+
+  [[languages.ko.menu.main]]
+    identifier = "about"
+    name = "소개"
+    url = "/about/"
+    weight = 50
+
+[languages]
+  [languages.en]
+    contentDir = "content/en"
+    languageName = "English"
+    weight = 1
+
+  [languages.ko]
+    contentDir = "content/ko"
+    languageName = "한국어"
+    weight = 2

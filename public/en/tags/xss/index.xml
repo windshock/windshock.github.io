@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>XSS on Code Before Breach</title>
+    <link>http://localhost:1313/en/tags/xss/</link>
+    <description>Recent content in XSS on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 08 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/tags/xss/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About the XSSAudit</title>
+      <link>http://localhost:1313/en/post/2019-08-08-about-the-xssaudit/</link>
+      <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/post/2019-08-08-about-the-xssaudit/</guid>
+      <description>&lt;h2 id=&#34;why-was-the-xssaudit-feature-removed-in-chrome&#34;&gt;Why Was the XSSAudit Feature Removed in Chrome?&lt;/h2&gt;
+&lt;p&gt;The Google Security Team proposed to the Chrome development team to remove the &lt;a href=&#34;https://bugs.chromium.org/p/chromium/issues/detail?id=898081&#34;&gt;XSSAudit feature&lt;/a&gt;. Although the only rationale provided was that the feature could be bypassed (as argued in a paper by &lt;a href=&#34;mailto:evn@google.com&#34;&gt;evn@google.com&lt;/a&gt;), it initially seemed unlikely that removal would proceed. However, it was ultimately decided that the feature would be completely eliminated in Chrome.&lt;/p&gt;
+&lt;p&gt;The main point of the &lt;a href=&#34;http://localhost:1313/pdf/p1709-lekiesA.pdf&#34;&gt;paper&lt;/a&gt; is that bypass methods using targets within new JavaScript frameworks are difficult to defend against. Therefore, it proposes a shift from the existing mitigation approach (the xssaudit filter) to an isolation/prevention method, namely Content Security Policy (CSP).&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

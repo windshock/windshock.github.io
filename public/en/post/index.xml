@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Code Before Breach</title>
+    <link>http://localhost:1313/en/post/</link>
+    <description>Recent content in Posts on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 05 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Review of Citrix Security Policy Effectiveness</title>
+      <link>http://localhost:1313/en/post/2024-11-05-review-of-citrix-security-policy-effectiveness/</link>
+      <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/post/2024-11-05-review-of-citrix-security-policy-effectiveness/</guid>
+      <description>&lt;h1 id=&#34;review-of-citrix-security-policy-effectiveness&#34;&gt;Review of Citrix Security Policy Effectiveness&lt;/h1&gt;
+&lt;h2 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h2&gt;
+&lt;p&gt;Citrix administrators apply security policies to each user’s VDI (Virtual Desktop Infrastructure) through Citrix Group Policy. However, certain structural vulnerabilities in Citrix CSE (Citrix Service Engine) and the Citrix VDI Agent allow for potential bypassing of these security policies.&lt;/p&gt;
+&lt;h2 id=&#34;2-security-policy-bypass&#34;&gt;2. Security Policy Bypass&lt;/h2&gt;
+&lt;h3 id=&#34;bypass-through-registry-manipulation&#34;&gt;Bypass through Registry Manipulation&lt;/h3&gt;
+&lt;p&gt;A security policy bypass is possible by manipulating the registry using a race condition that occurs during the Citrix VDI Agent (PicaSvc2.exe) policy storage process. While Citrix has implemented a stealth patch to mitigate this vulnerability, it is still possible to disable security policies by adjusting registry security settings and denying write permissions.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Bypassing citrix policy is not a vulnerability, but it can be a violation of the law</title>
+      <link>http://localhost:1313/en/post/2023-04-27-bypassing-citrix-policy-is-not-a-vulnerability-but-it-can-be-a-violation-of-the-law/</link>
+      <pubDate>Thu, 27 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/post/2023-04-27-bypassing-citrix-policy-is-not-a-vulnerability-but-it-can-be-a-violation-of-the-law/</guid>
+      <description>&lt;h3 id=&#34;bypassing-citrix-policy-is-not-a-vulnerability-but-a-legal-violation&#34;&gt;Bypassing Citrix Policy is Not a Vulnerability but a Legal Violation&lt;/h3&gt;
+&lt;h4 id=&#34;note&#34;&gt;Note!!&lt;/h4&gt;
+&lt;p&gt;Based on discussions with Citrix through &lt;a href=&#34;https://kb.cert.org/vince/comm/case/1022/&#34;&gt;VINCE&lt;/a&gt; from cert.org, it was concluded that this is not classified as a vulnerability because it requires administrative privileges. Therefore, I can share this information without security concerns. However, for security reasons, I do not recommend using Xendesktop (VDI) in special environments such as logically isolated or closed networks. If VDI must be used in such environments, please ensure that administrator privileges are removed and security-specific software is installed.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Strengthening cybersecurity through government ngos and bug bounty programs</title>
+      <link>http://localhost:1313/en/post/2023-04-18-strengthening-cybersecurity-through-government-ngos-and-bug-bounty-programs/</link>
+      <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/post/2023-04-18-strengthening-cybersecurity-through-government-ngos-and-bug-bounty-programs/</guid>
+      <description>&lt;p&gt;﻿
+Strengthening Cybersecurity Through Government NGOs and Bug Bounty Programs: A Look at Security Taxes and Their Implementation in Various Countries&lt;/p&gt;
+&lt;p&gt;In today&amp;rsquo;s digital age, information security has become a critical concern for individuals, businesses, and governments alike. Cyber attacks and data breaches have become increasingly common and sophisticated, and the consequences can be devastating. This is why it is essential to have robust cybersecurity measures in place to protect against these threats.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Security threats and mitigation strategies for java reflection</title>
+      <link>http://localhost:1313/en/post/2019-09-03-security-threats-and-mitigation-strategies-for-java-reflection/</link>
+      <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/post/2019-09-03-security-threats-and-mitigation-strategies-for-java-reflection/</guid>
+      <description>&lt;h3 id=&#34;security-threats-and-mitigation-strategies-for-java-reflection&#34;&gt;Security Threats and Mitigation Strategies for Java Reflection&lt;/h3&gt;
+&lt;p&gt;The &lt;strong&gt;Java Reflection API&lt;/strong&gt; is a powerful tool that allows dynamic manipulation of classes, methods, and interfaces at runtime. However, due to its flexibility, it introduces significant security risks, as attackers can exploit it to gain unauthorized access to systems. In this article, we will explore the security threats posed by Java Reflection and outline strategies to mitigate these risks.&lt;/p&gt;
+&lt;h4 id=&#34;the-risks-of-using-reflection-api&#34;&gt;The Risks of Using Reflection API&lt;/h4&gt;
+&lt;p&gt;Reflection is commonly used to inspect the structure of objects or dynamically invoke methods at runtime. However, without a proper &lt;strong&gt;Security Manager&lt;/strong&gt;, sensitive methods (like &lt;code&gt;execute&lt;/code&gt;, &lt;code&gt;eval&lt;/code&gt;, etc.) can be accessed, leading to potential &lt;strong&gt;Remote Code Execution (RCE)&lt;/strong&gt; attacks.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About the XSSAudit</title>
+      <link>http://localhost:1313/en/post/2019-08-08-about-the-xssaudit/</link>
+      <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/post/2019-08-08-about-the-xssaudit/</guid>
+      <description>&lt;h2 id=&#34;why-was-the-xssaudit-feature-removed-in-chrome&#34;&gt;Why Was the XSSAudit Feature Removed in Chrome?&lt;/h2&gt;
+&lt;p&gt;The Google Security Team proposed to the Chrome development team to remove the &lt;a href=&#34;https://bugs.chromium.org/p/chromium/issues/detail?id=898081&#34;&gt;XSSAudit feature&lt;/a&gt;. Although the only rationale provided was that the feature could be bypassed (as argued in a paper by &lt;a href=&#34;mailto:evn@google.com&#34;&gt;evn@google.com&lt;/a&gt;), it initially seemed unlikely that removal would proceed. However, it was ultimately decided that the feature would be completely eliminated in Chrome.&lt;/p&gt;
+&lt;p&gt;The main point of the &lt;a href=&#34;http://localhost:1313/pdf/p1709-lekiesA.pdf&#34;&gt;paper&lt;/a&gt; is that bypass methods using targets within new JavaScript frameworks are difficult to defend against. Therefore, it proposes a shift from the existing mitigation approach (the xssaudit filter) to an isolation/prevention method, namely Content Security Policy (CSP).&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,10 @@
+<svg width="320" height="100" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    text, rect, path { fill: black; }
+    @media (prefers-color-scheme: dark) {
+      text, rect, path { fill: white; }
+    }
+  </style>
+  <text x="20" y="50" font-size="30" font-family="Fira Code, monospace">CodeBeforeBreach</text>
+  <rect x="260" y="28" width="3" height="32" />
+</svg>
