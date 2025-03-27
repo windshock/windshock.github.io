@@ -12,6 +12,11 @@ defaultContentLanguageInSubdir = true
   tag = "tags"
   category = "categories"
 
+[sitemap]
+  changefreq = "weekly"
+  filename = "sitemap.xml"
+  exclude = ["tags", "categories", "archives", "search"]
+
 [params]
   env = "production"
   mainSections = ["post"]
