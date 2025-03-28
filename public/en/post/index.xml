@@ -6,8 +6,24 @@
     <description>Recent content in Posts on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 05 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Mar 2025 08:39:00 +0900</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>XML-RPC Security Vulnerabilities Analysis and Mitigation Strategies</title>
+      <link>https://windshock.github.io/en/post/xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</link>
+      <pubDate>Fri, 28 Mar 2025 08:39:00 +0900</pubDate>
+      <guid>https://windshock.github.io/en/post/xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</guid>
+      <description>&lt;p&gt;&lt;img alt=&#34;XML-RPC background&#34; loading=&#34;lazy&#34; src=&#34;https://windshock.github.io/images/post/xmlrpc-security.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Overview of XML-RPC Vulnerabilities:&lt;/strong&gt; As a lightweight remote call protocol for inter-system communication, XML-RPC is exposed to various threats such as RCE, XXE, DDoS, and privilege escalation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Notable Cases:&lt;/strong&gt; NodeBB (CVE-2023-43187), Apache OFBiz (CVE-2020-9496), PHP XML-RPC (CVE-2005-1921), etc.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-World Use Cases:&lt;/strong&gt; In addition to WordPress, Bugzilla, ManageEngine, and Apache OFBiz, XML-RPC is still used in some legacy systems.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mitigation Strategies:&lt;/strong&gt; Disabling XML-RPC, enhancing input validation, reinforcing authentication systems, applying up-to-date security patches, implementing access control, and deploying WAFs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;what-is-xml-rpc&#34;&gt;What is XML-RPC?&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;XML-RPC (XML Remote Procedure Call)&lt;/strong&gt; is a remote procedure call protocol that uses XML as its data format and HTTP as its transport mechanism. Proposed jointly by Dave Winer and Microsoft in 1998, it was designed to simplify cross-platform communication.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Review of Citrix Security Policy Effectiveness</title>
       <link>https://windshock.github.io/en/post/2024-11-05-review-of-citrix-security-policy-effectiveness/</link>
