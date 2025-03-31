@@ -15,3 +15,6 @@ done
 echo '</urlset>' >> "$OUT"
 
 cp public/sitemap.xml docs/sitemap.xml
+cp public/sitemap.xml docs/ko/sitemap.xml
+cp public/sitemap.xml docs/en/sitemap.xml
+
