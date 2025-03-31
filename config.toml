@@ -1,6 +1,6 @@
 baseURL = "https://windshock.github.io/"
 languageCode = "en-us"
-title = "Code Before Breach"
+title = "Code Before Breach - Secure Coding, Automation & Shift-Left"
 theme = "PaperMod"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
