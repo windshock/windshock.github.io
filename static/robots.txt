@@ -1,6 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://windshock.github.io/sitemap.xml
-Sitemap: https://windshock.github.io/en/sitemap.xml
-Sitemap: https://windshock.github.io/ko/sitemap.xml
