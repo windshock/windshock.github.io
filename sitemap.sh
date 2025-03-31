@@ -14,3 +14,4 @@ done
 
 echo '</urlset>' >> "$OUT"
 
+cp public/sitemap.xml docs/sitemap.xml
