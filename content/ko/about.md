@@ -23,6 +23,8 @@ description: "시프트레프트 보안과 데이터 기반 보안을 실현합�
   보안 커뮤니티에 적극 기여하며 CVE 및 CWE 취약점을 보고합니다. 또한 이러한 취약점을 해결하기 위한 도구를 개발하여 GitHub에 공유합니다. 이러한 재능 기부는 글로벌 보안 생태계를 강화하고 조직이 중요한 보안 문제를 해결하는 데 도움을 줍니다.
 
   📧 **Email:** [windshock@gmail.com](mailto:windshock@gmail.com)
+
   🔗 **Website:** [https://windshock.github.io/](https://windshock.github.io/) 
+
   💼 **LinkedIn:** [https://www.linkedin.com/in/windshock/](https://www.linkedin.com/in/windshock/)
 

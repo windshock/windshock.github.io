@@ -25,6 +25,8 @@ I actively contribute to the security community by reporting CVE and CWE vulnera
 I am dedicated to coding solutions for discovered vulnerabilities and sharing these tools to help organizations implement effective security measures. By promoting shift-left security, security automation, and data-driven analysis, I continue to drive security innovation. Let’s connect and explore ways to enhance security together!
 
 📧 Email: windshock@gmail.com
+
 🔗 Website: https://windshock.github.io/
+
 💼 **LinkedIn:** [https://www.linkedin.com/in/windshock/](https://www.linkedin.com/in/windshock/)
 
