@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
     <url>
       <loc>https://windshock.github.io/en/post/2025-03-31-dnsmasq-ech-doh-block/</loc>
       <lastmod>2025-03-31T00:00:00Z</lastmod>

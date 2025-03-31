@@ -1,8 +1,9 @@
 #!/bin/bash
 
 OUT="public/sitemap.xml"
-echo '<?xml version="1.0" encoding="utf-8"?>' > "$OUT"
-echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> "$OUT"
+echo '<?xml version="1.0" encoding="UTF-8"?>' > "$OUT"
+echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">' >> "$OUT"
 
 for lang in en; do
   FILE="public/$lang/sitemap.xml"
