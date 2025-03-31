@@ -2,6 +2,136 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://windshock.github.io/en/tags/dns/</loc>
+    <lastmod>2025-03-31T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://windshock.github.io/ko/tags/dns/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://windshock.github.io/en/tags/dns/"
+                />
+  </url><url>
+    <loc>https://windshock.github.io/en/tags/dnsmasq/</loc>
+    <lastmod>2025-03-31T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://windshock.github.io/ko/tags/dnsmasq/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://windshock.github.io/en/tags/dnsmasq/"
+                />
+  </url><url>
+    <loc>https://windshock.github.io/en/tags/doh/</loc>
+    <lastmod>2025-03-31T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://windshock.github.io/ko/tags/doh/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://windshock.github.io/en/tags/doh/"
+                />
+  </url><url>
+    <loc>https://windshock.github.io/en/tags/ech/</loc>
+    <lastmod>2025-03-31T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://windshock.github.io/ko/tags/ech/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://windshock.github.io/en/tags/ech/"
+                />
+  </url><url>
+    <loc>https://windshock.github.io/en/tags/enterprise-security/</loc>
+    <lastmod>2025-03-31T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>https://windshock.github.io/en/tags/esni/</loc>
+    <lastmod>2025-03-31T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://windshock.github.io/ko/tags/esni/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://windshock.github.io/en/tags/esni/"
+                />
+  </url><url>
+    <loc>https://windshock.github.io/en/post/2025-03-31-dnsmasq-ech-doh-block/</loc>
+    <lastmod>2025-03-31T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://windshock.github.io/ko/post/2025-03-31-dnsmasq-ech-doh-block/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://windshock.github.io/en/post/2025-03-31-dnsmasq-ech-doh-block/"
+                />
+  </url><url>
+    <loc>https://windshock.github.io/en/post/</loc>
+    <lastmod>2025-03-31T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://windshock.github.io/ko/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://windshock.github.io/en/post/"
+                />
+  </url><url>
+    <loc>https://windshock.github.io/en/tags/</loc>
+    <lastmod>2025-03-31T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://windshock.github.io/ko/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://windshock.github.io/en/tags/"
+                />
+  </url><url>
+    <loc>https://windshock.github.io/en/</loc>
+    <lastmod>2025-03-31T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <xhtml:link
+                rel="alternate"
+                hreflang="ko"
+                href="https://windshock.github.io/ko/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://windshock.github.io/en/"
+                />
+  </url><url>
     <loc>https://windshock.github.io/en/categories/</loc>
     <lastmod>2025-03-28T08:39:00+09:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -44,20 +174,6 @@
                 href="https://windshock.github.io/en/tags/exploit/"
                 />
   </url><url>
-    <loc>https://windshock.github.io/en/post/</loc>
-    <lastmod>2025-03-28T08:39:00+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ko"
-                href="https://windshock.github.io/ko/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://windshock.github.io/en/post/"
-                />
-  </url><url>
     <loc>https://windshock.github.io/en/tags/rce/</loc>
     <lastmod>2025-03-28T08:39:00+09:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -86,34 +202,6 @@
                 href="https://windshock.github.io/en/tags/security/"
                 />
   </url><url>
-    <loc>https://windshock.github.io/en/tags/</loc>
-    <lastmod>2025-03-28T08:39:00+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ko"
-                href="https://windshock.github.io/ko/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://windshock.github.io/en/tags/"
-                />
-  </url><url>
-    <loc>https://windshock.github.io/en/</loc>
-    <lastmod>2025-03-28T08:39:00+09:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ko"
-                href="https://windshock.github.io/ko/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://windshock.github.io/en/"
-                />
-  </url><url>
     <loc>https://windshock.github.io/en/tags/xml-rpc/</loc>
     <lastmod>2025-03-28T08:39:00+09:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -128,18 +216,18 @@
                 href="https://windshock.github.io/en/tags/xml-rpc/"
                 />
   </url><url>
-    <loc>https://windshock.github.io/en/post/xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</loc>
+    <loc>https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</loc>
     <lastmod>2025-03-28T08:39:00+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
-                href="https://windshock.github.io/ko/post/xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/"
+                href="https://windshock.github.io/ko/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://windshock.github.io/en/post/xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/"
+                href="https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/"
                 />
   </url><url>
     <loc>https://windshock.github.io/en/categories/bypass/</loc>

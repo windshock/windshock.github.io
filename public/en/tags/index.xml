@@ -6,8 +6,50 @@
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 28 Mar 2025 08:39:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 31 Mar 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DNS</title>
+      <link>https://windshock.github.io/en/tags/dns/</link>
+      <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/dns/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dnsmasq</title>
+      <link>https://windshock.github.io/en/tags/dnsmasq/</link>
+      <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/dnsmasq/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DoH</title>
+      <link>https://windshock.github.io/en/tags/doh/</link>
+      <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/doh/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ECH</title>
+      <link>https://windshock.github.io/en/tags/ech/</link>
+      <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/ech/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Enterprise Security</title>
+      <link>https://windshock.github.io/en/tags/enterprise-security/</link>
+      <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/enterprise-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ESNI</title>
+      <link>https://windshock.github.io/en/tags/esni/</link>
+      <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/esni/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Exploit</title>
       <link>https://windshock.github.io/en/tags/exploit/</link>
