@@ -1,6 +1,6 @@
 ---
 title: "XML-RPC Security Vulnerabilities Analysis and Mitigation Strategies"
-date: 2025-03-28T08:39:00+09:00
+date: 2025-03-28
 draft: false
 tags: ["XML-RPC", "Security", "RCE", "Exploit"]
 categories: ["Cybersecurity"]
