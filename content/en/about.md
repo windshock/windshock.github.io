@@ -26,4 +26,5 @@ I am dedicated to coding solutions for discovered vulnerabilities and sharing th
 
 📧 Email: windshock@gmail.com
 🔗 Website: https://windshock.github.io/
+💼 **LinkedIn:** [https://www.linkedin.com/in/windshock/](https://www.linkedin.com/in/windshock/)
 

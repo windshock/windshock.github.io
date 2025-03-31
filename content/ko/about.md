@@ -24,3 +24,5 @@ description: "시프트레프트 보안과 데이터 기반 보안을 실현합�
 
   📧 **Email:** [windshock@gmail.com](mailto:windshock@gmail.com)
   🔗 **Website:** [https://windshock.github.io/](https://windshock.github.io/) 
+  💼 **LinkedIn:** [https://www.linkedin.com/in/windshock/](https://www.linkedin.com/in/windshock/)
+
