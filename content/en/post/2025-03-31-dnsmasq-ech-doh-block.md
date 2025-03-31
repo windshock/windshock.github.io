@@ -106,5 +106,6 @@ Visit `https://crypto.cloudflare.com/cdn-cgi/trace` to check ECH status.
 
 - [Cloudflare on ECH](https://blog.cloudflare.com/encrypted-client-hello/)
 - [dnsmasq official documentation](http://www.thekelleys.org.uk/dnsmasq/doc.html)
+- [National Security Agency - Adopting Encrypted DNS in Enterprise Environments](https://media.defense.gov/2021/Jan/14/2002564889/-1/-1/0/CSI_ADOPTING_ENCRYPTED_DNS_U_OO_102904_21.PDF)
 - [Cisco Umbrella Guide on Preventing DoH Circumvention](https://support.umbrella.com/hc/en-us/articles/230904088-How-to-Prevent-Users-from-Circumventing-Cisco-Umbrella-with-Firewall-Rules)
 - [Broadcom's OS-specific DoH blocking strategies](https://knowledge.broadcom.com/external/article/193388)

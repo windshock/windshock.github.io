@@ -106,5 +106,6 @@ Cloudflare의 `https://crypto.cloudflare.com/cdn-cgi/trace` 페이지에 접속�
 
 - [Cloudflare의 ECH 설명](https://blog.cloudflare.com/encrypted-client-hello/)
 - [dnsmasq 공식 문서](http://www.thekelleys.org.uk/dnsmasq/doc.html)
+- [National Security Agency - Adopting Encrypted DNS in Enterprise Environments](https://media.defense.gov/2021/Jan/14/2002564889/-1/-1/0/CSI_ADOPTING_ENCRYPTED_DNS_U_OO_102904_21.PDF)
 - [Cisco Umbrella의 DoH 우회 방지 가이드](https://support.umbrella.com/hc/en-us/articles/230904088-How-to-Prevent-Users-from-Circumventing-Cisco-Umbrella-with-Firewall-Rules)
 - [Broadcom의 다양한 운영체제 기반 DoH 차단 방법](https://knowledge.broadcom.com/external/article/369322/how-to-block-dns-over-https-doh-traffic.html)
