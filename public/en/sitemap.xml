@@ -4,7 +4,6 @@
   <url>
     <loc>https://windshock.github.io/en/tags/dns/</loc>
     <lastmod>2025-03-31T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -18,7 +17,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/tags/dnsmasq/</loc>
     <lastmod>2025-03-31T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -32,7 +30,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/tags/doh/</loc>
     <lastmod>2025-03-31T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -46,7 +43,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/tags/ech/</loc>
     <lastmod>2025-03-31T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -60,11 +56,9 @@
   </url><url>
     <loc>https://windshock.github.io/en/tags/enterprise-security/</loc>
     <lastmod>2025-03-31T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://windshock.github.io/en/tags/esni/</loc>
     <lastmod>2025-03-31T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -78,7 +72,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/post/2025-03-31-dnsmasq-ech-doh-block/</loc>
     <lastmod>2025-03-31T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -92,7 +85,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/post/</loc>
     <lastmod>2025-03-31T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -106,7 +98,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/tags/</loc>
     <lastmod>2025-03-31T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -120,7 +111,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/</loc>
     <lastmod>2025-03-31T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -134,7 +124,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/categories/</loc>
     <lastmod>2025-03-28T08:39:00+09:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -148,7 +137,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/categories/cybersecurity/</loc>
     <lastmod>2025-03-28T08:39:00+09:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -162,7 +150,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/tags/exploit/</loc>
     <lastmod>2025-03-28T08:39:00+09:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -176,7 +163,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/tags/rce/</loc>
     <lastmod>2025-03-28T08:39:00+09:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -190,7 +176,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/tags/security/</loc>
     <lastmod>2025-03-28T08:39:00+09:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -204,7 +189,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/tags/xml-rpc/</loc>
     <lastmod>2025-03-28T08:39:00+09:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -218,7 +202,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</loc>
     <lastmod>2025-03-28T08:39:00+09:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -232,7 +215,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/categories/bypass/</loc>
     <lastmod>2024-11-05T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -246,7 +228,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/tags/bypass/</loc>
     <lastmod>2024-11-05T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -260,7 +241,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/categories/citrix/</loc>
     <lastmod>2024-11-05T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -274,7 +254,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/tags/citrix/</loc>
     <lastmod>2024-11-05T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -288,7 +267,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/post/2024-11-05-review-of-citrix-security-policy-effectiveness/</loc>
     <lastmod>2024-11-05T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -302,15 +280,12 @@
   </url><url>
     <loc>https://windshock.github.io/en/tags/evaluation/</loc>
     <lastmod>2024-06-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://windshock.github.io/en/tags/incident/</loc>
     <lastmod>2024-06-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://windshock.github.io/en/categories/kpi/</loc>
     <lastmod>2024-06-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -324,7 +299,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/tags/kpi/</loc>
     <lastmod>2024-06-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -338,7 +312,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/post/2024-06-20-kpi-causes-accidents/</loc>
     <lastmod>2024-06-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -352,11 +325,9 @@
   </url><url>
     <loc>https://windshock.github.io/en/categories/management/</loc>
     <lastmod>2024-06-20T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://windshock.github.io/en/post/2024-06-16-common-misconceptions-of-security-assessors/</loc>
     <lastmod>2024-06-16T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -370,23 +341,18 @@
   </url><url>
     <loc>https://windshock.github.io/en/categories/security-assessment/</loc>
     <lastmod>2024-06-16T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://windshock.github.io/en/tags/security-operations/</loc>
     <lastmod>2024-06-16T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://windshock.github.io/en/tags/vulnerability/</loc>
     <lastmod>2024-06-16T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://windshock.github.io/en/categories/vulnerability-evaluation/</loc>
     <lastmod>2024-06-16T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://windshock.github.io/en/post/2024-05-22-can-development-culture-influence-security-levels/</loc>
     <lastmod>2024-05-22T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -400,27 +366,21 @@
   </url><url>
     <loc>https://windshock.github.io/en/categories/development-culture/</loc>
     <lastmod>2024-05-22T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://windshock.github.io/en/tags/development-culture/</loc>
     <lastmod>2024-05-22T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://windshock.github.io/en/categories/security/</loc>
     <lastmod>2024-05-22T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://windshock.github.io/en/tags/security-evaluation/</loc>
     <lastmod>2024-05-22T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://windshock.github.io/en/tags/static-analysis-tools/</loc>
     <lastmod>2024-05-22T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://windshock.github.io/en/post/2023-04-27-bypassing-citrix-policy-is-not-a-vulnerability-but-it-can-be-a-violation-of-the-law/</loc>
     <lastmod>2023-04-27T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -434,7 +394,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/post/2023-04-18-strengthening-cybersecurity-through-government-ngos-and-bug-bounty-programs/</loc>
     <lastmod>2023-04-18T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -448,7 +407,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/post/2019-09-03-security-threats-and-mitigation-strategies-for-java-reflection/</loc>
     <lastmod>2019-09-03T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -462,7 +420,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/post/2019-08-08-about-the-xssaudit/</loc>
     <lastmod>2019-08-08T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -476,7 +433,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/categories/javascript/</loc>
     <lastmod>2019-08-08T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -490,7 +446,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/tags/javascript/</loc>
     <lastmod>2019-08-08T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -504,7 +459,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/categories/xss/</loc>
     <lastmod>2019-08-08T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -518,7 +472,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/tags/xss/</loc>
     <lastmod>2019-08-08T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -532,7 +485,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/categories/xssaudit/</loc>
     <lastmod>2019-08-08T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -546,7 +498,6 @@
   </url><url>
     <loc>https://windshock.github.io/en/tags/xssaudit/</loc>
     <lastmod>2019-08-08T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -559,7 +510,6 @@
                 />
   </url><url>
     <loc>https://windshock.github.io/en/about/</loc>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -572,10 +522,8 @@
                 />
   </url><url>
     <loc>https://windshock.github.io/archive/</loc>
-    <changefreq>weekly</changefreq>
   </url><url>
     <loc>https://windshock.github.io/en/archives/</loc>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
@@ -588,7 +536,6 @@
                 />
   </url><url>
     <loc>https://windshock.github.io/en/search/</loc>
-    <changefreq>weekly</changefreq>
     <xhtml:link
                 rel="alternate"
                 hreflang="ko"
