@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Developer Security on Code Before Breach</title>
+    <link>https://windshock.github.io/en/tags/developer-security/</link>
+    <description>Recent content in Developer Security on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 01 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/en/tags/developer-security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Common Security Myths Developers Tell Themselves</title>
+      <link>https://windshock.github.io/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</guid>
+      <description>This article breaks down common developer security myths—responsibility deflection, overconfidence in technology, and security underestimation—and offers realistic countermeasures.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>개발자들 말하는 보안에 대한 흔한 거짓말 | Code Before Breach</title>
+<meta name="keywords" content="security, devsecops, 개발 보안, supply chain, Rust">
+<meta name="description" content="개발자들이 보안에 대해 자주 믿는 &lsquo;책임 전가형&rsquo;, &lsquo;기술 과신형&rsquo;, &lsquo;보안 과소평가형&rsquo; 거짓말을 분석하고, 현실적인 대응 방안을 제시합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://windshock.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://windshock.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://windshock.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://windshock.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://windshock.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://windshock.github.io/en/post/2025-04-01-common-security-myths-developers-tell-themselves/">
+<link rel="alternate" hreflang="ko" href="https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/">
+  <meta property="og:site_name" content="Code Before Breach">
+  <meta property="og:title" content="개발자들 말하는 보안에 대한 흔한 거짓말">
+  <meta property="og:description" content="개발자들이 보안에 대해 자주 믿는 ‘책임 전가형’, ‘기술 과신형’, ‘보안 과소평가형’ 거짓말을 분석하고, 현실적인 대응 방안을 제시합니다.">
+  <meta property="og:locale" content="ko-KR">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-04-01T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-01T00:00:00+00:00">
+    <meta property="article:tag" content="Security">
+    <meta property="article:tag" content="Devsecops">
+    <meta property="article:tag" content="개발 보안">
+    <meta property="article:tag" content="Supply Chain">
+    <meta property="article:tag" content="Rust">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="개발자들 말하는 보안에 대한 흔한 거짓말">
+<meta name="twitter:description" content="개발자들이 보안에 대해 자주 믿는 &lsquo;책임 전가형&rsquo;, &lsquo;기술 과신형&rsquo;, &lsquo;보안 과소평가형&rsquo; 거짓말을 분석하고, 현실적인 대응 방안을 제시합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://windshock.github.io/ko/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "개발자들 말하는 보안에 대한 흔한 거짓말",
+      "item": "https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "개발자들 말하는 보안에 대한 흔한 거짓말",
+  "name": "개발자들 말하는 보안에 대한 흔한 거짓말",
+  "description": "개발자들이 보안에 대해 자주 믿는 \u0026lsquo;책임 전가형\u0026rsquo;, \u0026lsquo;기술 과신형\u0026rsquo;, \u0026lsquo;보안 과소평가형\u0026rsquo; 거짓말을 분석하고, 현실적인 대응 방안을 제시합니다.",
+  "keywords": [
+    "security", "devsecops", "개발 보안", "supply chain", "Rust"
+  ],
+  "articleBody": "\n소프트웨어 개발 환경이 복잡해지고 보안 위협이 다양해지면서, 개발자들은 종종 보안과 관련하여 잘못된 믿음이나 오해를 가지게 됩니다. 이는 실제 보안 위협에 효과적으로 대응하는 데 큰 걸림돌이 될 수 있습니다. 본 보고서는 개발자들이 자주 믿는 흔한 보안 관련 거짓말들을 “책임 전가형”, “기술 과신형”, “보안의 과소평가형\"으로 구분하여 명확히 제시하고, 이를 바로잡기 위한 현실적인 접근 방안을 제시합니다.\n📌 1. 책임 전가형 거짓말: “보안은 보안 팀의 책임이지, 내 책임은 아닙니다.”\n현실: 개발자도 보안의 핵심 역할을 수행하며, DevSecOps 환경에서는 보안이 모든 팀 구성원의 공동 책임입니다. 개발 초기 단계부터 개발자가 보안을 고려하지 않으면 코드에 취약점이 남을 수 있습니다 (출처).\n거짓말: “우리는 GitHub, AWS 같은 SaaS를 쓰니까 안전합니다.”\n현실: SaaS 제공업체가 보안의 일부를 책임지지만, 사용자의 설정 오류나 취약한 타사 통합 등 공급망 공격의 위협은 여전히 존재합니다. 최근 GitHub Actions 공급망 공격 사례(tj-actions/changed-files)는 이러한 위험을 분명히 보여줍니다 (출처).\n📌 2. 기술 과신형 거짓말: “우리 코드는 Rust와 같은 안전한 언어로 작성되었으니 안전합니다.”\n현실: Rust는 메모리 안전성과 데이터 경쟁 방지 기능을 통해 버퍼 오버플로우나 메모리 누수 같은 문제는 예방할 수 있지만, SQL 주입이나 크로스 사이트 스크립팅(XSS) 같은 보안 위협까지 자동으로 해결하지 않습니다. 또한 unsafe 블록을 사용하면 메모리 안전성이 손상될 수 있습니다. Carnegie Mellon University(SEI)의 분석에 따르면, Rust가 모든 보안 문제를 해결하지 못하며, 특히 주입 공격이나 타사 라이브러리 오용 같은 문제는 별도의 보안 설계가 필요합니다 (출처).\n거짓말: “최신 프레임워크와 라이브러리를 사용하니 안전합니다.”\n현실: 최신 기술이라도 올바른 설정과 정기적인 업데이트가 이루어지지 않으면 보안 취약점이 발생할 수 있습니다. 오픈소스 라이브러리 중 86%가 취약점을 포함하고 있다는 연구 결과가 이를 입증합니다 (출처).\n거짓말: “HTTPS를 쓰니 데이터는 안전합니다.”\n현실: HTTPS는 데이터 전송 중 암호화를 보장하지만, 서버 측 취약점이나 내부 위협 등 다른 공격을 방어하지 않습니다.\n거짓말: “방화벽으로 보호되니 외부 공격에서 안전합니다.”\n현실: 방화벽은 잘못 설정될 수 있고, 내부 공격자나 신뢰된 연결을 통한 공격은 방어하지 못합니다.\n📌 3. 보안의 과소평가형 거짓말: “우리의 데이터는 민감하지 않으니 보안 걱정은 필요 없습니다.”\n현실: 민감하지 않은 데이터라도 공격자가 네트워크 침투의 진입점으로 악용할 수 있습니다.\n거짓말: “코드 리뷰만으로 모든 보안 문제를 잡을 수 있습니다.”\n현실: 코드 리뷰는 중요하지만, 전문적인 보안 지식 없이는 모든 보안 문제를 발견하기 어렵습니다. 추가적인 자동화된 보안 도구와 전문가의 정기적 검토가 필요합니다.\n거짓말: “우리는 이미 테스트를 거쳤으니 안전합니다.”\n현실: 일반적인 기능 테스트로는 모든 보안 취약점을 찾을 수 없습니다. 보안 테스트는 별도로 수행되어야 하며, 지속적인 점검과 설계 수준의 리뷰가 필요합니다.\n📌 대표적인 실제 사고 사례 GitHub Actions 공급망 공격 (2025년)\n→ 23,000개 이상의 저장소에서 CI/CD 비밀 정보가 유출될 위험이 발생했습니다 (출처). Log4Shell 취약점 (2021년)\n→ Apache Log4j의 원격 코드 실행 취약점으로 전 세계적으로 큰 보안 문제를 야기했습니다 (출처). 📌 보안을 위한 권장사항 정기적 보안 교육 제공\n최신 OWASP Top 10을 중심으로 한 개발자 보안 교육을 정기적으로 진행합니다 (출처).\n보안 자동화 도구 도입\nSAST(정적 분석), DAST(동적 분석), SBOM(소프트웨어 자재명세서) 같은 도구를 활용하여 지속적으로 보안 문제를 탐지합니다.\n오픈소스 라이브러리 관리 강화\nDependabot, Renovate 등의 도구로 지속적으로 오픈소스 취약점을 관리하고 업데이트합니다.\n태그 고정(pinning) 정책 적용\nGitHub Actions 사용 시 commit-hash 방식을 통해 버전을 고정하여 공급망 공격을 예방합니다.\n이러한 접근을 통해 보다 실질적이고 지속 가능한 보안 문화를 구축할 수 있습니다.\n",
+  "wordCount" : "475",
+  "inLanguage": "ko",
+  "datePublished": "2025-04-01T00:00:00Z",
+  "dateModified": "2025-04-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Code Before Breach",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://windshock.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://windshock.github.io/ko/" accesskey="h" title="Code Before Breach (Alt + H)">Code Before Breach</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://windshock.github.io/en/" title="English"
+                            aria-label="English">En</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://windshock.github.io/ko/search/" title="검색 (Alt &#43; /)" accesskey=/>
+                    <span>검색</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/tags/" title="태그">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/categories/" title="카테고리">
+                    <span>카테고리</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/archives/" title="아카이브">
+                    <span>아카이브</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/about/" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://windshock.github.io/ko/">홈</a>&nbsp;»&nbsp;<a href="https://windshock.github.io/ko/post/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      개발자들 말하는 보안에 대한 흔한 거짓말
+    </h1>
+    <div class="post-meta"><span title='2025-04-01 00:00:00 +0000 UTC'>4월 1, 2025</span>&nbsp;·&nbsp;3 분&nbsp;·&nbsp;475 단어&nbsp;|&nbsp;번역:
+<ul class="i18n_list">
+    <li>
+        <a href="https://windshock.github.io/en/post/2025-04-01-common-security-myths-developers-tell-themselves/">En</a>
+    </li>
+</ul>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">목차</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#-1-%ec%b1%85%ec%9e%84-%ec%a0%84%ea%b0%80%ed%98%95" aria-label="📌 1. 책임 전가형">📌 1. 책임 전가형</a></li>
+                <li>
+                    <a href="#-2-%ea%b8%b0%ec%88%a0-%ea%b3%bc%ec%8b%a0%ed%98%95" aria-label="📌 2. 기술 과신형">📌 2. 기술 과신형</a></li>
+                <li>
+                    <a href="#-3-%eb%b3%b4%ec%95%88%ec%9d%98-%ea%b3%bc%ec%86%8c%ed%8f%89%ea%b0%80%ed%98%95" aria-label="📌 3. 보안의 과소평가형">📌 3. 보안의 과소평가형</a></li>
+                <li>
+                    <a href="#-%eb%8c%80%ed%91%9c%ec%a0%81%ec%9d%b8-%ec%8b%a4%ec%a0%9c-%ec%82%ac%ea%b3%a0-%ec%82%ac%eb%a1%80" aria-label="📌 대표적인 실제 사고 사례">📌 대표적인 실제 사고 사례</a></li>
+                <li>
+                    <a href="#-%eb%b3%b4%ec%95%88%ec%9d%84-%ec%9c%84%ed%95%9c-%ea%b6%8c%ec%9e%a5%ec%82%ac%ed%95%ad" aria-label="📌 보안을 위한 권장사항">📌 보안을 위한 권장사항</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p><img alt="개발자 보안 거짓말 만화" loading="lazy" src="/images/post/dev-security-myths-cover.png"></p>
+<p>소프트웨어 개발 환경이 복잡해지고 보안 위협이 다양해지면서, 개발자들은 종종 보안과 관련하여 잘못된 믿음이나 오해를 가지게 됩니다. 이는 실제 보안 위협에 효과적으로 대응하는 데 큰 걸림돌이 될 수 있습니다. 본 보고서는 개발자들이 자주 믿는 흔한 보안 관련 거짓말들을 &ldquo;책임 전가형&rdquo;, &ldquo;기술 과신형&rdquo;, &ldquo;보안의 과소평가형&quot;으로 구분하여 명확히 제시하고, 이를 바로잡기 위한 현실적인 접근 방안을 제시합니다.</p>
+<h3 id="-1-책임-전가형">📌 1. 책임 전가형<a hidden class="anchor" aria-hidden="true" href="#-1-책임-전가형">#</a></h3>
+<p><strong>거짓말:</strong> &ldquo;보안은 보안 팀의 책임이지, 내 책임은 아닙니다.&rdquo;<br>
+<strong>현실:</strong> 개발자도 보안의 핵심 역할을 수행하며, DevSecOps 환경에서는 보안이 모든 팀 구성원의 공동 책임입니다. 개발 초기 단계부터 개발자가 보안을 고려하지 않으면 코드에 취약점이 남을 수 있습니다 <a href="https://www.computerweekly.com/news/450424614/Developers-lack-skills-needed-for-secure-DevOps-survey-shows">(출처)</a>.</p>
+<p><strong>거짓말:</strong> &ldquo;우리는 GitHub, AWS 같은 SaaS를 쓰니까 안전합니다.&rdquo;<br>
+<strong>현실:</strong> SaaS 제공업체가 보안의 일부를 책임지지만, 사용자의 설정 오류나 취약한 타사 통합 등 공급망 공격의 위협은 여전히 존재합니다. 최근 GitHub Actions 공급망 공격 사례(tj-actions/changed-files)는 이러한 위험을 분명히 보여줍니다 <a href="https://thehackernews.com/2025/03/github-action-compromise-puts-cicd.html?m=1">(출처)</a>.</p>
+<hr>
+<h3 id="-2-기술-과신형">📌 2. 기술 과신형<a hidden class="anchor" aria-hidden="true" href="#-2-기술-과신형">#</a></h3>
+<p><strong>거짓말:</strong> &ldquo;우리 코드는 Rust와 같은 안전한 언어로 작성되었으니 안전합니다.&rdquo;<br>
+<strong>현실:</strong> Rust는 메모리 안전성과 데이터 경쟁 방지 기능을 통해 버퍼 오버플로우나 메모리 누수 같은 문제는 예방할 수 있지만, SQL 주입이나 크로스 사이트 스크립팅(XSS) 같은 보안 위협까지 자동으로 해결하지 않습니다. 또한 unsafe 블록을 사용하면 메모리 안전성이 손상될 수 있습니다. Carnegie Mellon University(SEI)의 분석에 따르면, Rust가 모든 보안 문제를 해결하지 못하며, 특히 주입 공격이나 타사 라이브러리 오용 같은 문제는 별도의 보안 설계가 필요합니다 <a href="https://insights.sei.cmu.edu/blog/rust-software-security-a-current-state-assessment/">(출처)</a>.</p>
+<p><strong>거짓말:</strong> &ldquo;최신 프레임워크와 라이브러리를 사용하니 안전합니다.&rdquo;<br>
+<strong>현실:</strong> 최신 기술이라도 올바른 설정과 정기적인 업데이트가 이루어지지 않으면 보안 취약점이 발생할 수 있습니다. 오픈소스 라이브러리 중 86%가 취약점을 포함하고 있다는 연구 결과가 이를 입증합니다 <a href="https://www.scworld.com/news/report-86-of-codebases-contain-vulnerable-open-source-components">(출처)</a>.</p>
+<p><strong>거짓말:</strong> &ldquo;HTTPS를 쓰니 데이터는 안전합니다.&rdquo;<br>
+<strong>현실:</strong> HTTPS는 데이터 전송 중 암호화를 보장하지만, 서버 측 취약점이나 내부 위협 등 다른 공격을 방어하지 않습니다.</p>
+<p><strong>거짓말:</strong> &ldquo;방화벽으로 보호되니 외부 공격에서 안전합니다.&rdquo;<br>
+<strong>현실:</strong> 방화벽은 잘못 설정될 수 있고, 내부 공격자나 신뢰된 연결을 통한 공격은 방어하지 못합니다.</p>
+<hr>
+<h3 id="-3-보안의-과소평가형">📌 3. 보안의 과소평가형<a hidden class="anchor" aria-hidden="true" href="#-3-보안의-과소평가형">#</a></h3>
+<p><strong>거짓말:</strong> &ldquo;우리의 데이터는 민감하지 않으니 보안 걱정은 필요 없습니다.&rdquo;<br>
+<strong>현실:</strong> 민감하지 않은 데이터라도 공격자가 네트워크 침투의 진입점으로 악용할 수 있습니다.</p>
+<p><strong>거짓말:</strong> &ldquo;코드 리뷰만으로 모든 보안 문제를 잡을 수 있습니다.&rdquo;<br>
+<strong>현실:</strong> 코드 리뷰는 중요하지만, 전문적인 보안 지식 없이는 모든 보안 문제를 발견하기 어렵습니다. 추가적인 자동화된 보안 도구와 전문가의 정기적 검토가 필요합니다.</p>
+<p><strong>거짓말:</strong> &ldquo;우리는 이미 테스트를 거쳤으니 안전합니다.&rdquo;<br>
+<strong>현실:</strong> 일반적인 기능 테스트로는 모든 보안 취약점을 찾을 수 없습니다. 보안 테스트는 별도로 수행되어야 하며, 지속적인 점검과 설계 수준의 리뷰가 필요합니다.</p>
+<hr>
+<h3 id="-대표적인-실제-사고-사례">📌 대표적인 실제 사고 사례<a hidden class="anchor" aria-hidden="true" href="#-대표적인-실제-사고-사례">#</a></h3>
+<ul>
+<li><strong>GitHub Actions 공급망 공격 (2025년)</strong><br>
+→ 23,000개 이상의 저장소에서 CI/CD 비밀 정보가 유출될 위험이 발생했습니다 <a href="https://thehackernews.com/2025/03/github-action-compromise-puts-cicd.html?m=1">(출처)</a>.</li>
+<li><strong>Log4Shell 취약점 (2021년)</strong><br>
+→ Apache Log4j의 원격 코드 실행 취약점으로 전 세계적으로 큰 보안 문제를 야기했습니다 <a href="https://www.scworld.com/news/report-86-of-codebases-contain-vulnerable-open-source-components">(출처)</a>.</li>
+</ul>
+<hr>
+<h3 id="-보안을-위한-권장사항">📌 보안을 위한 권장사항<a hidden class="anchor" aria-hidden="true" href="#-보안을-위한-권장사항">#</a></h3>
+<ul>
+<li>
+<p><strong>정기적 보안 교육 제공</strong><br>
+최신 OWASP Top 10을 중심으로 한 개발자 보안 교육을 정기적으로 진행합니다 <a href="https://www.securecodewarrior.com/press-releases/secure-code-warrior-survey-finds-86-of-developers-do-not-view-application-security-as-a-top-priority">(출처)</a>.</p>
+</li>
+<li>
+<p><strong>보안 자동화 도구 도입</strong><br>
+SAST(정적 분석), DAST(동적 분석), SBOM(소프트웨어 자재명세서) 같은 도구를 활용하여 지속적으로 보안 문제를 탐지합니다.</p>
+</li>
+<li>
+<p><strong>오픈소스 라이브러리 관리 강화</strong><br>
+Dependabot, Renovate 등의 도구로 지속적으로 오픈소스 취약점을 관리하고 업데이트합니다.</p>
+</li>
+<li>
+<p><strong>태그 고정(pinning) 정책 적용</strong><br>
+GitHub Actions 사용 시 commit-hash 방식을 통해 버전을 고정하여 공급망 공격을 예방합니다.</p>
+</li>
+</ul>
+<p>이러한 접근을 통해 보다 실질적이고 지속 가능한 보안 문화를 구축할 수 있습니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://windshock.github.io/ko/tags/security/">Security</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/devsecops/">Devsecops</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/%EA%B0%9C%EB%B0%9C-%EB%B3%B4%EC%95%88/">개발 보안</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/supply-chain/">Supply Chain</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/rust/">Rust</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://windshock.github.io/ko/post/2025-03-31-dnsmasq-ech-doh-block/">
+    <span class="title">다음 페이지 »</span>
+    <br>
+    <span>기업 네트워크 보안을 위한 ECH 차단 및 DoH 대응 전략</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 개발자들 말하는 보안에 대한 흔한 거짓말 on x"
+            href="https://x.com/intent/tweet/?text=%ea%b0%9c%eb%b0%9c%ec%9e%90%eb%93%a4%20%eb%a7%90%ed%95%98%eb%8a%94%20%eb%b3%b4%ec%95%88%ec%97%90%20%eb%8c%80%ed%95%9c%20%ed%9d%94%ed%95%9c%20%ea%b1%b0%ec%a7%93%eb%a7%90&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-04-01-common-security-myths-developers-tell-themselves%2f&amp;hashtags=security%2cdevsecops%2c%ea%b0%9c%eb%b0%9c%eb%b3%b4%ec%95%88%2csupplychain%2cRust">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 개발자들 말하는 보안에 대한 흔한 거짓말 on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-04-01-common-security-myths-developers-tell-themselves%2f&amp;title=%ea%b0%9c%eb%b0%9c%ec%9e%90%eb%93%a4%20%eb%a7%90%ed%95%98%eb%8a%94%20%eb%b3%b4%ec%95%88%ec%97%90%20%eb%8c%80%ed%95%9c%20%ed%9d%94%ed%95%9c%20%ea%b1%b0%ec%a7%93%eb%a7%90&amp;summary=%ea%b0%9c%eb%b0%9c%ec%9e%90%eb%93%a4%20%eb%a7%90%ed%95%98%eb%8a%94%20%eb%b3%b4%ec%95%88%ec%97%90%20%eb%8c%80%ed%95%9c%20%ed%9d%94%ed%95%9c%20%ea%b1%b0%ec%a7%93%eb%a7%90&amp;source=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-04-01-common-security-myths-developers-tell-themselves%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 개발자들 말하는 보안에 대한 흔한 거짓말 on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-04-01-common-security-myths-developers-tell-themselves%2f&title=%ea%b0%9c%eb%b0%9c%ec%9e%90%eb%93%a4%20%eb%a7%90%ed%95%98%eb%8a%94%20%eb%b3%b4%ec%95%88%ec%97%90%20%eb%8c%80%ed%95%9c%20%ed%9d%94%ed%95%9c%20%ea%b1%b0%ec%a7%93%eb%a7%90">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 개발자들 말하는 보안에 대한 흔한 거짓말 on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-04-01-common-security-myths-developers-tell-themselves%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 개발자들 말하는 보안에 대한 흔한 거짓말 on whatsapp"
+            href="https://api.whatsapp.com/send?text=%ea%b0%9c%eb%b0%9c%ec%9e%90%eb%93%a4%20%eb%a7%90%ed%95%98%eb%8a%94%20%eb%b3%b4%ec%95%88%ec%97%90%20%eb%8c%80%ed%95%9c%20%ed%9d%94%ed%95%9c%20%ea%b1%b0%ec%a7%93%eb%a7%90%20-%20https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-04-01-common-security-myths-developers-tell-themselves%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 개발자들 말하는 보안에 대한 흔한 거짓말 on telegram"
+            href="https://telegram.me/share/url?text=%ea%b0%9c%eb%b0%9c%ec%9e%90%eb%93%a4%20%eb%a7%90%ed%95%98%eb%8a%94%20%eb%b3%b4%ec%95%88%ec%97%90%20%eb%8c%80%ed%95%9c%20%ed%9d%94%ed%95%9c%20%ea%b1%b0%ec%a7%93%eb%a7%90&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-04-01-common-security-myths-developers-tell-themselves%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 개발자들 말하는 보안에 대한 흔한 거짓말 on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=%ea%b0%9c%eb%b0%9c%ec%9e%90%eb%93%a4%20%eb%a7%90%ed%95%98%eb%8a%94%20%eb%b3%b4%ec%95%88%ec%97%90%20%eb%8c%80%ed%95%9c%20%ed%9d%94%ed%95%9c%20%ea%b1%b0%ec%a7%93%eb%a7%90&u=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-04-01-common-security-myths-developers-tell-themselves%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://windshock.github.io/ko/">Code Before Breach</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '복사';
+
+        function copyingDone() {
+            copybutton.innerHTML = '복사 완료!';
+            setTimeout(() => {
+                copybutton.innerHTML = '복사';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

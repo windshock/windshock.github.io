@@ -2,6 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
     <url>
+      <loc>https://windshock.github.io/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</loc>
+      <lastmod>2025-04-01T00:00:00Z</lastmod>
+    </url>
+    <url>
       <loc>https://windshock.github.io/en/post/2025-03-31-dnsmasq-ech-doh-block/</loc>
       <lastmod>2025-03-31T00:00:00Z</lastmod>
     </url>
@@ -56,6 +60,10 @@
     <url>
       <loc>https://windshock.github.io/en/search/</loc>
       <lastmod>0001-01-01T00:00:00Z</lastmod>
+    </url>
+    <url>
+      <loc>https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/</loc>
+      <lastmod>2025-04-01T00:00:00Z</lastmod>
     </url>
     <url>
       <loc>https://windshock.github.io/ko/post/2025-03-31-dnsmasq-ech-doh-block/</loc>

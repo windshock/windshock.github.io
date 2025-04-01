@@ -6,8 +6,15 @@
     <description>Recent content in Code Before Breach - 보안 코딩, 자동화, 시프트 레프트 on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Mon, 31 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>개발자들 말하는 보안에 대한 흔한 거짓말</title>
+      <link>https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/</guid>
+      <description>개발자들이 보안에 대해 자주 믿는 &amp;lsquo;책임 전가형&amp;rsquo;, &amp;lsquo;기술 과신형&amp;rsquo;, &amp;lsquo;보안 과소평가형&amp;rsquo; 거짓말을 분석하고, 현실적인 대응 방안을 제시합니다.</description>
+    </item>
     <item>
       <title>기업 네트워크 보안을 위한 ECH 차단 및 DoH 대응 전략</title>
       <link>https://windshock.github.io/ko/post/2025-03-31-dnsmasq-ech-doh-block/</link>

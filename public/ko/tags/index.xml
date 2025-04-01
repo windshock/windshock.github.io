@@ -6,8 +6,43 @@
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Mon, 31 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 01 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Devsecops</title>
+      <link>https://windshock.github.io/ko/tags/devsecops/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/devsecops/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rust</title>
+      <link>https://windshock.github.io/ko/tags/rust/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/rust/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>https://windshock.github.io/ko/tags/security/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Supply Chain</title>
+      <link>https://windshock.github.io/ko/tags/supply-chain/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/supply-chain/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>개발 보안</title>
+      <link>https://windshock.github.io/ko/tags/%EA%B0%9C%EB%B0%9C-%EB%B3%B4%EC%95%88/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/%EA%B0%9C%EB%B0%9C-%EB%B3%B4%EC%95%88/</guid>
+      <description></description>
+    </item>
     <item>
       <title>DNS</title>
       <link>https://windshock.github.io/ko/tags/dns/</link>
@@ -62,13 +97,6 @@
       <link>https://windshock.github.io/ko/tags/rce/</link>
       <pubDate>Fri, 28 Mar 2025 08:39:00 +0900</pubDate>
       <guid>https://windshock.github.io/ko/tags/rce/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Security</title>
-      <link>https://windshock.github.io/ko/tags/security/</link>
-      <pubDate>Fri, 28 Mar 2025 08:39:00 +0900</pubDate>
-      <guid>https://windshock.github.io/ko/tags/security/</guid>
       <description></description>
     </item>
     <item>

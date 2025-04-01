@@ -6,8 +6,15 @@
     <description>Recent content in Categories on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Fri, 28 Mar 2025 08:39:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 01 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>보안</title>
+      <link>https://windshock.github.io/ko/categories/%EB%B3%B4%EC%95%88/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/categories/%EB%B3%B4%EC%95%88/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Cybersecurity</title>
       <link>https://windshock.github.io/ko/categories/cybersecurity/</link>
@@ -62,13 +69,6 @@
       <link>https://windshock.github.io/ko/categories/%EA%B0%9C%EB%B0%9C%EB%AC%B8%ED%99%94/</link>
       <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/ko/categories/%EA%B0%9C%EB%B0%9C%EB%AC%B8%ED%99%94/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>보안</title>
-      <link>https://windshock.github.io/ko/categories/%EB%B3%B4%EC%95%88/</link>
-      <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/categories/%EB%B3%B4%EC%95%88/</guid>
       <description></description>
     </item>
     <item>
