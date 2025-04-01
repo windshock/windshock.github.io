@@ -27,6 +27,18 @@ defaultContentLanguageInSubdir = true
   ShowSearch = true
   assets.logo = "/images/logo.svg"
 
+[params.giscus]
+    repo = "windshock/windshock.github.io"
+    repo_id = "MDEwOlJlcG9zaXRvcnkxODQ2MDMyMTk="
+    category = "General"
+    category_id = "DIC_kwDOCwDSU84CoqLg"
+    mapping = "pathname"
+    reactions_enabled = "1"
+    theme = "preferred_color_scheme"
+    input_position = "bottom"
+    lang = "en"
+    loading = "lazy"
+
 [languages.en.menu]
   [[languages.en.menu.main]]
     identifier = "search"
