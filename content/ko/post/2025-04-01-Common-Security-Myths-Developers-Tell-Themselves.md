@@ -61,7 +61,7 @@ summary: "개발자들이 보안에 대해 자주 믿는 '책임 전가형', '�
 ### 📌 보안을 위한 권장사항
 
 - **정기적 보안 교육 제공**  
-  최신 OWASP Top 10을 중심으로 한 개발자 보안 교육을 정기적으로 진행합니다 [(출처)](https://www.securecodewarrior.com/press-releases/secure-code-warrior-survey-finds-86-of-developers-do-not-view-application-security-as-a-top-priority).
+  최신 OWASP Top 10을 중심으로 한 개발자 보안 교육을 정기적으로 진행합니다 [(출처)](https://owasp.org/projects/).
 
 - **보안 자동화 도구 도입**  
   SAST(정적 분석), DAST(동적 분석), SBOM(소프트웨어 자재명세서) 같은 도구를 활용하여 지속적으로 보안 문제를 탐지합니다.

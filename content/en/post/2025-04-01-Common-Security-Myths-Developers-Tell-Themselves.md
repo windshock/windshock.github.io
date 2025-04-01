@@ -63,7 +63,7 @@ As modern software development grows more complex and security threats more freq
 ### 📌 Recommendations for Developers
 
 - **Provide Regular Security Training**  
-  Focus on practical awareness, using OWASP Top 10 as a foundational guide [(source)](https://www.securecodewarrior.com/press-releases/secure-code-warrior-survey-finds-86-of-developers-do-not-view-application-security-as-a-top-priority).
+  Focus on practical awareness, using OWASP Top 10 as a foundational guide [(source)](https://owasp.org/projects/).
 
 - **Integrate Security Automation**  
   Use tools like SAST (Static Analysis), DAST (Dynamic Analysis), and SBOM (Software Bill of Materials) to continuously monitor code.
