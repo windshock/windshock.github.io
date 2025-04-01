@@ -1,0 +1,67 @@
+
+<svg viewBox="0 0 1000 160" width="500" height="160" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .code {
+      font-family: monospace;
+      font-size: 50px;
+      fill: black;
+    }
+
+  .a-line {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: grow 5s steps(30, end) infinite;
+    color: red;
+    font-family: monospace;
+    font-size: 50px;
+  }
+
+  @keyframes grow {
+    from { width: 0; }
+    to { width: 32ch; }
+  }
+
+    .secret {
+      font-family: monospace;
+      font-size: 50px;
+      fill: orange;
+      opacity: 0;
+      animation: popSecret 6s ease-in-out infinite;
+    }
+
+    /* 여러 개의 secret이 시간차로 등장 */
+    .secret:nth-of-type(4) { animation-delay: 1s; }
+    .secret:nth-of-type(5) { animation-delay: 2s; }
+    .secret:nth-of-type(6) { animation-delay: 3s; }
+    .secret:nth-of-type(7) { animation-delay: 4s; }
+    .secret:nth-of-type(8) { animation-delay: 5s; }
+
+    @media (prefers-color-scheme: dark) {
+      .code {
+        fill: white;
+      }
+    }
+
+    @keyframes popSecret {
+      0%   { opacity: 0; transform: translate(0, 0); }
+      50%  { opacity: 1; transform: translate(-20px, -40px) rotate(-10deg); }
+      100% { opacity: 0; transform: translate(-70px, -90px) rotate(-30deg); }
+    }
+  </style>
+
+  <!-- 고정된 코드 -->
+  <text x="20" y="45" class="code">char buffer[<span class="a-line">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</span>];</text>
+  <text x="20" y="85" class="code">gets(buffer);</text>
+
+  <!-- 점점 길어지는 A 시퀀스 -->
+  <text x="360" y="45" class="code"><tspan class="a-line"></tspan></text>
+
+  <!-- 유출되는 secret 데이터 여러 개 -->
+  <text x="650" y="120" class="secret">secret: root_token</text>
+  <text x="720" y="120" class="secret">secret: admin_pass</text>
+  <text x="800" y="120" class="secret">secret: jwt_key</text>
+  <text x="680" y="145" class="secret">secret: 2fa_seed</text>
+  <text x="760" y="145" class="secret">secret: api_key</text>
+</svg>

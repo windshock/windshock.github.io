@@ -25,7 +25,11 @@ defaultContentLanguageInSubdir = true
   ShowTags = true
   ShowCategories = true
   ShowSearch = true
-  assets.logo = "/images/logo.svg"
+#  assets.logo = "/images/logo.svg"
+
+[params.label]
+  icon = "/images/logo-terminal-animated.svg"
+  iconHeight = 36
 
 [params.giscus]
     repo = "windshock/windshock.github.io"
