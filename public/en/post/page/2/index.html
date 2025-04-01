@@ -202,70 +202,27 @@ The main point of the paper is that bypass methods using targets within new Java
 </a>
 
 <script>
-  function getCurrentTheme() {
-    return document.body.classList.contains("dark") ? "dark" : "light";
-  }
+  
+  const giscusTheme = document.body.classList.contains("dark") ? "dark" : "light";
 
   
-  function sendGiscusTheme() {
-    const iframe = document.querySelector('iframe.giscus-frame');
-    if (!iframe) return;
+  const giscusScript = document.createElement("script");
+  giscusScript.src = "https://giscus.app/client.js";
+  giscusScript.setAttribute("data-repo", "windshock\/windshock.github.io");
+  giscusScript.setAttribute("data-repo-id", "MDEwOlJlcG9zaXRvcnkxODQ2MDMyMTk=");
+  giscusScript.setAttribute("data-category", "General");
+  giscusScript.setAttribute("data-category-id", "DIC_kwDOCwDSU84CoqLg");
+  giscusScript.setAttribute("data-mapping", "pathname");
+  giscusScript.setAttribute("data-reactions-enabled", "1");
+  giscusScript.setAttribute("data-theme", giscusTheme); 
+  giscusScript.setAttribute("data-lang", "en");
+  giscusScript.setAttribute("data-input-position", "bottom");
+  giscusScript.setAttribute("data-loading", "lazy");
+  giscusScript.crossOrigin = "anonymous";
+  giscusScript.async = true;
 
-    try {
-      iframe.contentWindow.postMessage({
-        giscus: {
-          setConfig: {
-            theme: getCurrentTheme(),
-          }
-        }
-      }, '*');
-    } catch (e) {
-      console.warn('[Giscus] 테마 적용 실패:', e);
-    }
-  }
-
-  
-  const maxAttempts = 20;
-  let attempt = 0;
-  const interval = setInterval(() => {
-    const iframe = document.querySelector('iframe.giscus-frame');
-    if (iframe && iframe.contentWindow) {
-      sendGiscusTheme();
-      clearInterval(interval);
-    }
-
-    attempt++;
-    if (attempt > maxAttempts) {
-      clearInterval(interval);
-      console.warn('[Giscus] iframe 로드를 감지하지 못했습니다.');
-    }
-  }, 500);
-  
-  const observer = new MutationObserver(() => {
-    sendGiscusTheme();
-  });
-
-  observer.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ['class'],
-  });
-
+  document.body.appendChild(giscusScript);
 </script>
-
-  <script src="https://giscus.app/client.js"
-    data-repo="windshock/windshock.github.io"
-    data-repo-id="MDEwOlJlcG9zaXRvcnkxODQ2MDMyMTk="
-    data-category="General"
-    data-category-id="DIC_kwDOCwDSU84CoqLg"
-    data-mapping="pathname"
-    data-reactions-enabled="1"
-    data-theme="light"
-    data-lang="en"
-    data-input-position="bottom"
-    data-loading="lazy"
-    crossorigin="anonymous"
-    async>
-  </script>
 
 
 <script>
