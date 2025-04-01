@@ -409,7 +409,7 @@ A security policy bypass is possible by manipulating the registry using a race c
             theme: getCurrentTheme(),
           }
         }
-      }, 'https://giscus.app');
+      }, '*');
     } catch (e) {
       console.warn('[Giscus] 테마 적용 실패:', e);
     }
