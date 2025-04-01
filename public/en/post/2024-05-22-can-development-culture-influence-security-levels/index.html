@@ -434,7 +434,7 @@ Unlike companies like Google with an open and collaborative development culture,
 
 <script>
   function getCurrentTheme() {
-    return localStorage.getItem("pref-theme") === "dark" ? "dark" : "light";
+    return document.body.classList.contains("dark") ? "dark" : "light";
   }
 
   

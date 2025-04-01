@@ -365,7 +365,7 @@ Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용�
 
 <script>
   function getCurrentTheme() {
-    return localStorage.getItem("pref-theme") === "dark" ? "dark" : "light";
+    return document.body.classList.contains("dark") ? "dark" : "light";
   }
 
   

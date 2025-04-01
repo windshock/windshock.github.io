@@ -599,7 +599,7 @@ XML-RPC (XML Remote Procedure Call) is a remote procedure call protocol that use
 
 <script>
   function getCurrentTheme() {
-    return localStorage.getItem("pref-theme") === "dark" ? "dark" : "light";
+    return document.body.classList.contains("dark") ? "dark" : "light";
   }
 
   

@@ -338,7 +338,7 @@ Strengthening Cybersecurity Through Government NGOs and Bug Bounty Programs: A L
 
 <script>
   function getCurrentTheme() {
-    return localStorage.getItem("pref-theme") === "dark" ? "dark" : "light";
+    return document.body.classList.contains("dark") ? "dark" : "light";
   }
 
   

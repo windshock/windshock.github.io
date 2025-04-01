@@ -359,7 +359,7 @@ Recently, I was going through old emails and found a reply from a junior colleag
 
 <script>
   function getCurrentTheme() {
-    return localStorage.getItem("pref-theme") === "dark" ? "dark" : "light";
+    return document.body.classList.contains("dark") ? "dark" : "light";
   }
 
   

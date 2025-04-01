@@ -474,7 +474,7 @@ SecureUberspector와 같은 도구는 템플릿 엔진 내에서 신뢰할 수 �
 
 <script>
   function getCurrentTheme() {
-    return localStorage.getItem("pref-theme") === "dark" ? "dark" : "light";
+    return document.body.classList.contains("dark") ? "dark" : "light";
   }
 
   

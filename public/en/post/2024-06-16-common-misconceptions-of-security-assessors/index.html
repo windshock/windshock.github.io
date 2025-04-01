@@ -414,7 +414,7 @@ As the cybersecurity landscape constantly evolves, vulnerability assessment has 
 
 <script>
   function getCurrentTheme() {
-    return localStorage.getItem("pref-theme") === "dark" ? "dark" : "light";
+    return document.body.classList.contains("dark") ? "dark" : "light";
   }
 
   

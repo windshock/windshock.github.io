@@ -474,7 +474,7 @@ Tools like SecureUberspector can be configured to enforce a whitelisting approac
 
 <script>
   function getCurrentTheme() {
-    return localStorage.getItem("pref-theme") === "dark" ? "dark" : "light";
+    return document.body.classList.contains("dark") ? "dark" : "light";
   }
 
   

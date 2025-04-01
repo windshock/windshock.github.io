@@ -394,7 +394,7 @@ Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발
 
 <script>
   function getCurrentTheme() {
-    return localStorage.getItem("pref-theme") === "dark" ? "dark" : "light";
+    return document.body.classList.contains("dark") ? "dark" : "light";
   }
 
   

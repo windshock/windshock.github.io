@@ -204,7 +204,7 @@ XSSAudit은 유용하지 않았던가? Google과 같은 업체 입장에서는 X
 
 <script>
   function getCurrentTheme() {
-    return localStorage.getItem("pref-theme") === "dark" ? "dark" : "light";
+    return document.body.classList.contains("dark") ? "dark" : "light";
   }
 
   

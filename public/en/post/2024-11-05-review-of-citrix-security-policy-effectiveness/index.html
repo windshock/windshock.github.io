@@ -394,7 +394,7 @@ A security policy bypass is possible by manipulating the registry using a race c
 
 <script>
   function getCurrentTheme() {
-    return localStorage.getItem("pref-theme") === "dark" ? "dark" : "light";
+    return document.body.classList.contains("dark") ? "dark" : "light";
   }
 
   

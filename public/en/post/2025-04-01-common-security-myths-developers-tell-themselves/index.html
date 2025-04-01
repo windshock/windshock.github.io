@@ -407,7 +407,7 @@ Use commit hashes instead of floating tags (e.g., <code>@v3</code>) in GitHub Ac
 
 <script>
   function getCurrentTheme() {
-    return localStorage.getItem("pref-theme") === "dark" ? "dark" : "light";
+    return document.body.classList.contains("dark") ? "dark" : "light";
   }
 
   
