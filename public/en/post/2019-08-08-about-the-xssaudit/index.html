@@ -358,6 +358,43 @@ The main point of the paper is that bypass methods using targets within new Java
     </svg>
 </a>
 
+<script>
+  function setGiscusTheme() {
+    const isDark = document.documentElement.classList.contains('dark');
+    const theme = isDark ? 'dark' : 'light';
+
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (!iframe) return;
+
+    try {
+      iframe.contentWindow.postMessage(
+        {
+          giscus: {
+            setConfig: {
+              theme: theme,
+            },
+          },
+        },
+        'https://giscus.app'
+      );
+    } catch (e) {
+      console.warn('Giscus theme switch failed:', e);
+    }
+  }
+
+  
+  window.addEventListener('message', (event) => {
+    if (event.origin !== 'https://giscus.app') return;
+    if (event.data.giscus && event.data.giscus.setConfig) return; 
+
+    setGiscusTheme();
+  });
+
+  
+  const observer = new MutationObserver(setGiscusTheme);
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+</script>
+
   <script src="https://giscus.app/client.js"
     data-repo="windshock/windshock.github.io"
     data-repo-id="MDEwOlJlcG9zaXRvcnkxODQ2MDMyMTk="
@@ -365,7 +402,7 @@ The main point of the paper is that bypass methods using targets within new Java
     data-category-id="DIC_kwDOCwDSU84CoqLg"
     data-mapping="pathname"
     data-reactions-enabled="1"
-    data-theme="preferred_color_scheme"
+    data-theme="light"
     data-lang="en"
     data-input-position="bottom"
     data-loading="lazy"
