@@ -413,40 +413,54 @@ As the cybersecurity landscape constantly evolves, vulnerability assessment has 
 </a>
 
 <script>
-  function setGiscusTheme() {
-    const isDark = localStorage.getItem("pref-theme")==="dark";
-    const theme = isDark ? 'dark' : 'light';
+  function getCurrentTheme() {
+    return localStorage.getItem("pref-theme") === "dark" ? "dark" : "light";
+  }
 
+  
+  function sendGiscusTheme() {
     const iframe = document.querySelector('iframe.giscus-frame');
     if (!iframe) return;
 
     try {
-      iframe.contentWindow.postMessage(
-        {
-          giscus: {
-            setConfig: {
-              theme: theme,
-            },
-          },
-        },
-        'https://giscus.app'
-      );
+      iframe.contentWindow.postMessage({
+        giscus: {
+          setConfig: {
+            theme: getCurrentTheme(),
+          }
+        }
+      }, 'https://giscus.app');
     } catch (e) {
-      console.warn('Giscus theme switch failed:', e);
+      console.warn('[Giscus] 테마 적용 실패:', e);
     }
   }
 
   
-  window.addEventListener('message', (event) => {
-    if (event.origin !== 'https://giscus.app') return;
-    if (event.data.giscus && event.data.giscus.setConfig) return; 
+  const maxAttempts = 20;
+  let attempt = 0;
+  const interval = setInterval(() => {
+    const iframe = document.querySelector('iframe.giscus-frame');
+    if (iframe && iframe.contentWindow) {
+      sendGiscusTheme();
+      clearInterval(interval);
+    }
 
-    setGiscusTheme();
+    attempt++;
+    if (attempt > maxAttempts) {
+      clearInterval(interval);
+      console.warn('[Giscus] iframe 로드를 감지하지 못했습니다.');
+    }
+  }, 500);
+  
+  const observer = new MutationObserver(() => {
+    sendGiscusTheme();
   });
 
-  
-  const observer = new MutationObserver(setGiscusTheme);
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class'],
+  });
+
 </script>
 
   <script src="https://giscus.app/client.js"
