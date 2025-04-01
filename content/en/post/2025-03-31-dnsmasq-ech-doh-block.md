@@ -100,6 +100,8 @@ Visit `https://crypto.cloudflare.com/cdn-cgi/trace` to check ECH status.
 - For non-macOS users, refer to OS-specific guides or implement firewall/DNS-layer defenses.
 - While blocking ECH improves enterprise visibility, it may reduce user privacy—this trade-off should be acknowledged.
 
+> **Note**: Finally, for readers who are more deeply interested in technologies related to internet censorship, the [net4people/bbs GitHub issues page](https://github.com/net4people/bbs/issues) is a valuable resource where the global community discusses censorship circumvention strategies and the latest research. This forum covers a wide range of topics including the Great Firewall (GFW), Encrypted Client Hello (ECH), DNS encryption, and more, sharing technical insights and solutions.
+
 ---
 
 ## References
