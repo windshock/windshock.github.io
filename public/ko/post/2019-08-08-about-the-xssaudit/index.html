@@ -365,7 +365,7 @@ Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용�
 
 <script>
   function setGiscusTheme() {
-    const isDark = document.documentElement.classList.contains('dark');
+    const isDark = localStorage.getItem("pref-theme")==="dark";
     const theme = isDark ? 'dark' : 'light';
 
     const iframe = document.querySelector('iframe.giscus-frame');

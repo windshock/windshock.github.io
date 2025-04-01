@@ -394,7 +394,7 @@ Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발
 
 <script>
   function setGiscusTheme() {
-    const isDark = document.documentElement.classList.contains('dark');
+    const isDark = localStorage.getItem("pref-theme")==="dark";
     const theme = isDark ? 'dark' : 'light';
 
     const iframe = document.querySelector('iframe.giscus-frame');
