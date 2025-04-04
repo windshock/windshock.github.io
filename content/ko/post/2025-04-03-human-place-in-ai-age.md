@@ -8,7 +8,7 @@ draft: false
 tags: ["에세이", "AI윤리", "창작자의권리"]
 keywords: ["AI", "창작자", "철학", "윤리", "지식재산", "windshock"]
 cover:
-  image: "/images/human-place-abstract.png"
+  image: "/images/human-place-abstract.webp"
   alt: "Abstract illustration representing human presence in AI"
 ---
 

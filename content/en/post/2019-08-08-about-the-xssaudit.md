@@ -21,7 +21,7 @@ From the perspective of companies like Google, if the XSSAudit feature incurs ma
 For ethical hackers and attackers, bypassing XSSAudit is only possible under very unusual circumstances, making the feature a particularly annoying and troublesome obstacle.
 
 For security professionals and defenders, implementing the [challenging CSP](https://infosec.mozilla.org/guidelines/web_security#web-security-cheat-sheet) adds significant workload. Moreover, CSP is not a perfect defense mechanism.
-![Attacks that CSP can or cannot protect against](/images/Current-state-of-CSP.png)
+![Attacks that CSP can or cannot protect against](/images/Current-state-of-CSP.webp)
 
 The [Content Security Policy Level 2 RFP](https://www.w3.org/TR/CSP2/#intro) also describes CSP as one way to enhance defenses:
 > Content Security Policy (CSP) is not intended as a first line of defense against content injection vulnerabilities. Instead, CSP is best used as defense-in-depth, to reduce the harm caused by content injection attacks. As a first line of defense against content injection, server operators should validate their input and encode their output.

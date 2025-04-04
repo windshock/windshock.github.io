@@ -7,7 +7,7 @@ categories: ["Security"]
 summary: "This article breaks down common developer security myths—responsibility deflection, overconfidence in technology, and security underestimation—and offers realistic countermeasures."
 ---
 
-![Developers Security Myths Catoon](/images/post/dev-security-myths-cover.png)
+![Developers Security Myths Catoon](/images/post/dev-security-myths-cover.webp)
 
 As modern software development grows more complex and security threats more frequent, developers often fall into common misconceptions about security responsibilities and protections. This article categorizes the most common developer security myths into three groups—**Responsibility Deflection**, **Overconfidence in Technology**, and **Security Underestimation**—and provides realistic, actionable counterpoints.
 

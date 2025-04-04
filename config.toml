@@ -27,6 +27,11 @@ defaultContentLanguageInSubdir = true
   ShowSearch = true
 #  assets.logo = "/images/logo.svg"
 
+[imaging]
+  quality = 70
+  resampleFilter = "lanczos"
+  anchor = "smart"
+
 [params.label]
   icon = "/images/logo-terminal-animated.svg"
   iconHeight = 36

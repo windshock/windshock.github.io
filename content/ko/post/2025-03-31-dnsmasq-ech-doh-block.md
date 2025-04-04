@@ -5,7 +5,7 @@ description: "dnsmasq를 사용하여 SVCB와 HTTPS 레코드를 필터링함으
 tags: ["DNS", "DoH", "ECH", "ESNI", "dnsmasq", "기업보안"]
 ---
 
-![DNSMASQ-block background](/images/post/dnsmasq-ech-doh-block.png)
+![DNSMASQ-block background](/images/post/dnsmasq-ech-doh-block.webp)
 
 ## 배경
 
@@ -87,7 +87,7 @@ networksetup -setdnsservers Wi-Fi 127.0.0.1
 Cloudflare의 `https://crypto.cloudflare.com/cdn-cgi/trace` 페이지에 접속하면 현재 연결에서 ECH가 활성화되었는지 확인할 수 있습니다.
 
 ### 예시 화면:
-![Cloudflare-trace image](/images/post/crypto.cloudflare.com-cdn-cgi-trace.jpeg)
+![Cloudflare-trace image](/images/post/crypto.cloudflare.com-cdn-cgi-trace.webp)
 
 - `sni=encrypted` 또는 `sni=plaintext`으로 표시됩니다.
 

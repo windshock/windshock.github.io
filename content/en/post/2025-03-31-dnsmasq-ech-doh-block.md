@@ -5,7 +5,7 @@ description: "A hands-on guide using dnsmasq to filter SVCB and HTTPS records fo
 tags: ["DNS", "DoH", "ECH", "ESNI", "dnsmasq", "Enterprise Security"]
 ---
 
-![DNSMASQ-block background](/images/post/dnsmasq-ech-doh-block.png)
+![DNSMASQ-block background](/images/post/dnsmasq-ech-doh-block.webp)
 
 ## Background
 
@@ -87,7 +87,7 @@ networksetup -setdnsservers Wi-Fi 127.0.0.1
 Visit `https://crypto.cloudflare.com/cdn-cgi/trace` to check ECH status.
 
 ### Example Output:
-![Cloudflare-trace image](/images/post/crypto.cloudflare.com-cdn-cgi-trace.jpeg)
+![Cloudflare-trace image](/images/post/crypto.cloudflare.com-cdn-cgi-trace.webp)
 
 - Look for `sni=encrypted` or `sni=plaintext`
 

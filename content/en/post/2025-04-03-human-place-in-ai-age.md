@@ -8,7 +8,7 @@ draft: false
 tags: ["essay", "AI ethics", "creator rights"]
 keywords: ["AI", "creator", "ethics", "philosophy", "intellectual property", "windshock"]
 cover:
-  image: "/images/human-place-abstract.png"
+  image: "/images/human-place-abstract.webp"
   alt: "Abstract illustration representing human presence in AI"
 ---
 

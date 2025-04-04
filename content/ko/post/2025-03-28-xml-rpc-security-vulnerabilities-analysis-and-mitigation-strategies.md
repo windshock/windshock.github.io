@@ -5,7 +5,7 @@ draft: false
 tags: ["XML-RPC", "Security", "RCE", "Exploit"]
 categories: ["Cybersecurity"]
 -----------------------------
-![xmlrpc 배경화면](/images/post/xmlrpc-security.png)
+![xmlrpc 배경화면](/images/post/xmlrpc-security.webp)
 
 ## 주요 요약
 
@@ -62,7 +62,7 @@ RESTful API 및 gRPC 등 최신 기술의 등장으로 사용이 점차 감소�
 
 아래는 Python 기반으로 동작하는 XML-RPC의 RCE 취약점 탐지 Python 코드와 실행 화면입니다.
 
-![xmlrpc poc code 실행 화면](/images/post/xmlrpc-rce.png)
+![xmlrpc poc code 실행 화면](/images/post/xmlrpc-rce.webp)
 
 ```python
 import xmlrpc.client

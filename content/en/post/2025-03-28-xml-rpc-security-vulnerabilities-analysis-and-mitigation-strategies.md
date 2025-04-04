@@ -6,7 +6,7 @@ tags: ["XML-RPC", "Security", "RCE", "Exploit"]
 categories: ["Cybersecurity"]
 ---
 
-![XML-RPC background](/images/post/xmlrpc-security.png)
+![XML-RPC background](/images/post/xmlrpc-security.webp)
 
 ## Summary
 
@@ -63,7 +63,7 @@ Its use is declining with the advent of newer technologies such as RESTful APIs 
 
 The following is a Python-based PoC code to detect RCE vulnerabilities in XML-RPC and its execution screen:
 
-![xmlrpc poc code output](/images/post/xmlrpc-rce.png)
+![xmlrpc poc code output](/images/post/xmlrpc-rce.webp)
 
 ```python
 import xmlrpc.client
