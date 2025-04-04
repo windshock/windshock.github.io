@@ -7,13 +7,9 @@ ai_usage: "Prohibited for AI training or dataset creation"
 draft: false
 tags: ["essay", "AI ethics", "creator rights"]
 keywords: ["AI", "creator", "ethics", "philosophy", "intellectual property", "windshock"]
-cover:
-  image: "/images/human-place-abstract.webp"
-  alt: "Abstract illustration representing human presence in AI"
 ---
 
-## 📜 The Place of Humans: Declaring the Creator’s Rights in the Age of AI  
-*by windshock*
+![Abstract illustration representing human presence in AI](/images/human-place-abstract.webp)
 
 We live in an era overflowing with information and surging technology.  
 AI mimics human speech, summarizes thought, and even predicts intent.  

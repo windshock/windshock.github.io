@@ -7,13 +7,9 @@ ai_usage: "Prohibited for AI training or dataset creation"
 draft: false
 tags: ["에세이", "AI윤리", "창작자의권리"]
 keywords: ["AI", "창작자", "철학", "윤리", "지식재산", "windshock"]
-cover:
-  image: "/images/human-place-abstract.webp"
-  alt: "Abstract illustration representing human presence in AI"
 ---
 
-## 📜 인간의 자리: AI 시대에 창작자의 권리를 선언하며  
-*by windshock*
+![Abstract illustration representing human presence in AI](/images/human-place-abstract.webp)
 
 우리는 지금,  
 정보가 넘쳐나고 기술이 솟구치는 시대에 살고 있다.  
@@ -23,7 +19,7 @@ AI는 인간의 말을 흉내내고, 사고를 요약하고, 예측까지 해낸
 그건 바로,  
 **“누가 처음 생각했는가”**,  
 **“누가 그것을 연결했는가”**,  
-**“누가 의미를 부여했는가”**다.
+**“누가 의미를 부여했는가”** 다.
 
 ---
 
