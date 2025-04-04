@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>취약점 on Code Before Breach</title>
-    <link>http://localhost:1313/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/</link>
+    <link>https://windshock.github.io/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/</link>
     <description>Recent content in 취약점 on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
     <lastBuildDate>Sun, 16 Jun 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://windshock.github.io/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>보안진단 담당자의 흔한 착각</title>
-      <link>http://localhost:1313/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</link>
+      <link>https://windshock.github.io/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</guid>
+      <guid>https://windshock.github.io/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</guid>
       <description>&lt;h1 id=&#34;보안진단-담당자의-흔한-착각&#34;&gt;보안진단 담당자의 흔한 착각&lt;/h1&gt;
 &lt;h2 id=&#34;비효율적인-취약점-평가-구조와-대응-방법&#34;&gt;비효율적인 취약점 평가 구조와 대응 방법&lt;/h2&gt;
 &lt;h1 id=&#34;서론&#34;&gt;서론&lt;/h1&gt;
