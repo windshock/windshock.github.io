@@ -395,6 +395,45 @@ Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발
 </a>
 
 <script>
+  function loadGiscus(theme) {
+    
+    document.querySelectorAll('.giscus-frame, script[src*="giscus.app"]').forEach(el => el.remove());
+
+    
+    const giscusScript = document.createElement("script");
+    giscusScript.src = "https://giscus.app/client.js";
+    giscusScript.setAttribute("data-repo", "windshock\/windshock.github.io");
+    giscusScript.setAttribute("data-repo-id", "MDEwOlJlcG9zaXRvcnkxODQ2MDMyMTk=");
+    giscusScript.setAttribute("data-category", "General");
+    giscusScript.setAttribute("data-category-id", "DIC_kwDOCwDSU84CoqLg");
+    giscusScript.setAttribute("data-mapping", "pathname");
+    giscusScript.setAttribute("data-reactions-enabled", "1");
+    giscusScript.setAttribute("data-theme", theme); 
+    giscusScript.setAttribute("data-lang", "en");
+    giscusScript.setAttribute("data-input-position", "bottom");
+    giscusScript.setAttribute("data-loading", "lazy");
+    giscusScript.crossOrigin = "anonymous";
+    giscusScript.async = true;
+
+    document.body.appendChild(giscusScript);
+  }
+
+  
+  const currentTheme = document.body.classList.contains("dark") ? "dark" : "light";
+  loadGiscus(currentTheme);
+
+  
+  const observer = new MutationObserver(() => {
+    const newTheme = document.body.classList.contains("dark") ? "dark" : "light";
+    loadGiscus(newTheme);
+  });
+
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+</script>
+
+
+
+<script>
     let menu = document.getElementById('menu')
     if (menu) {
         menu.scrollLeft = localStorage.getItem("menu-scroll-position");

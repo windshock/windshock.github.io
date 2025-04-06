@@ -1,0 +1,43 @@
+{{- /* Footer custom content area start */ -}}
+{{- /*     Insert any custom code web-analytics, resources, etc. here */ -}}
+{{ $url := .Permalink }}
+{{ if (and (strings.Contains $url "/post/") .Site.Params.giscus.repo) }}
+<script>
+  function loadGiscus(theme) {
+    // 기존 Giscus iframe + script 제거
+    document.querySelectorAll('.giscus-frame, script[src*="giscus.app"]').forEach(el => el.remove());
+
+    // 새로운 Giscus 스크립트 생성
+    const giscusScript = document.createElement("script");
+    giscusScript.src = "https://giscus.app/client.js";
+    giscusScript.setAttribute("data-repo", "{{ .Site.Params.giscus.repo }}");
+    giscusScript.setAttribute("data-repo-id", "{{ .Site.Params.giscus.repo_id }}");
+    giscusScript.setAttribute("data-category", "{{ .Site.Params.giscus.category }}");
+    giscusScript.setAttribute("data-category-id", "{{ .Site.Params.giscus.category_id }}");
+    giscusScript.setAttribute("data-mapping", "{{ .Site.Params.giscus.mapping }}");
+    giscusScript.setAttribute("data-reactions-enabled", "{{ .Site.Params.giscus.reactions_enabled }}");
+    giscusScript.setAttribute("data-theme", theme); // 👈 다크/라이트 반영
+    giscusScript.setAttribute("data-lang", "{{ .Site.Params.giscus.lang }}");
+    giscusScript.setAttribute("data-input-position", "{{ .Site.Params.giscus.input_position }}");
+    giscusScript.setAttribute("data-loading", "{{ .Site.Params.giscus.loading }}");
+    giscusScript.crossOrigin = "anonymous";
+    giscusScript.async = true;
+
+    document.body.appendChild(giscusScript);
+  }
+
+  // 최초 로딩 시 적용
+  const currentTheme = document.body.classList.contains("dark") ? "dark" : "light";
+  loadGiscus(currentTheme);
+
+  // 테마 전환 감지 → 다시 Giscus 로드
+  const observer = new MutationObserver(() => {
+    const newTheme = document.body.classList.contains("dark") ? "dark" : "light";
+    loadGiscus(newTheme);
+  });
+
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+</script>
+
+{{ end }}
+{{- /* Footer custom content area end */ -}}
