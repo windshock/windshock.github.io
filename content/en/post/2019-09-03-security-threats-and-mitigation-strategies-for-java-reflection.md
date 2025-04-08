@@ -6,6 +6,7 @@ tags: *id001
 aliases:
   - /xss/xssaudit/javascript/Extension-Language-And-Reflection/
   - /Security-Threats-and-Mitigation-Strategies-for-Java-Reflection/
+  - /security-threats-and-mitigation-strategies-for-java-reflection
 ---
 
 ### Security Threats and Mitigation Strategies for Java Reflection

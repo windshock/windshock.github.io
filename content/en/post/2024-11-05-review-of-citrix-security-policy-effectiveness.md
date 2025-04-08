@@ -7,6 +7,7 @@ categories: &id001
 tags: *id001
 aliases:
   - /2024-11-05-Review-of-Citrix-Security-Policy-Effectiveness/
+  - /2024-11-05-review-of-citrix-security-policy-effectiveness
 ---
 
 # Review of Citrix Security Policy Effectiveness
