@@ -6,6 +6,9 @@ categories: &id001
 - XSSAudit
 - javascript
 tags: *id001
+aliases:
+  - /xss/xssaudit/javascript/About-the-XSSAudit/
+  - /xss/xssaudit/javascript/How-to-bypass-XSSAudit/
 ---
 
 ## Why Was the XSSAudit Feature Removed in Chrome?
