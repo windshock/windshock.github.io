@@ -14,6 +14,8 @@ draft: false
 
 # Common Misconceptions of Security Assessors
 
+![Common Misconceptions Toon](/images/post/misconceptions-of-security-assessors.webp)
+
 ## Inefficient Vulnerability Evaluation Structure and Response Methods
 
 ### Introduction

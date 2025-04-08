@@ -14,6 +14,8 @@ draft: false
 
 # 보안진단 담당자의 흔한 착각
 
+![Common Misconceptions Toon](/images/post/misconceptions-of-security-assessors.webp)
+
 ## 비효율적인 취약점 평가 구조와 대응 방법
 
 # 서론
