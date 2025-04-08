@@ -5,6 +5,8 @@ categories: &id001
 - Citrix
 - bypass
 tags: *id001
+aliases:
+  - /2024-11-05-Review-of-Citrix-Security-Policy-Effectiveness/
 ---
 
 # Review of Citrix Security Policy Effectiveness
