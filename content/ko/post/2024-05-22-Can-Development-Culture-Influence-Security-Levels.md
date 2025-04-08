@@ -13,6 +13,8 @@ draft: false
 
 # 개발문화가 보안수준에 영향을 미칠 수 있을까?
 
+![Development Culture](/images/post/development-culture.webp)
+
 ## 정적 분석 도구(joern)를 이용한 코드 품질과 보안 수준의 평가
 
 # 배경

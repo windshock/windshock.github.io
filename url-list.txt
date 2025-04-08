@@ -1,3 +1,4 @@
+https://windshock.github.io/en/post/2025-04-07-evil-management-manual/
 https://windshock.github.io/en/post/2025-04-03-human-place-in-ai-age/
 https://windshock.github.io/en/post/2025-04-01-common-security-myths-developers-tell-themselves/
 https://windshock.github.io/en/post/2025-03-31-dnsmasq-ech-doh-block/
@@ -14,6 +15,7 @@ https://windshock.github.io/en/about/
 https://windshock.github.io/archive/
 https://windshock.github.io/en/archives/
 https://windshock.github.io/en/search/
+https://windshock.github.io/ko/post/2025-04-07-evil-management-manual/
 https://windshock.github.io/ko/post/2025-04-03-human-place-in-ai-age/
 https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/
 https://windshock.github.io/ko/post/2025-03-31-dnsmasq-ech-doh-block/
@@ -29,6 +31,7 @@ https://windshock.github.io/ko/post/2019-08-08-about-the-xssaudit/
 https://windshock.github.io/ko/search/
 https://windshock.github.io/ko/about/
 https://windshock.github.io/ko/archives/
+https://windshock.github.io/en/post/2025-04-07-evil-management-manual/
 https://windshock.github.io/en/post/2025-04-03-human-place-in-ai-age/
 https://windshock.github.io/en/post/2025-04-01-common-security-myths-developers-tell-themselves/
 https://windshock.github.io/en/post/2025-03-31-dnsmasq-ech-doh-block/
@@ -45,6 +48,7 @@ https://windshock.github.io/en/about/
 https://windshock.github.io/archive/
 https://windshock.github.io/en/archives/
 https://windshock.github.io/en/search/
+https://windshock.github.io/ko/post/2025-04-07-evil-management-manual/
 https://windshock.github.io/ko/post/2025-04-03-human-place-in-ai-age/
 https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/
 https://windshock.github.io/ko/post/2025-03-31-dnsmasq-ech-doh-block/

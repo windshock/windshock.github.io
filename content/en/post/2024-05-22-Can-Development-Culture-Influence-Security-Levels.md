@@ -13,6 +13,8 @@ draft: false
 
 # Can Development Culture Influence Security Levels?
 
+![Development Culture](/images/post/development-culture.webp)
+
 ## Evaluating Code Quality and Security Levels Using Static Analysis Tools (Joern)
 
 ### Background
