@@ -13,6 +13,8 @@ draft: false
 
 ## KPIs Can Cause Incidents!!! - Bad metrics produce bad outcomes.
 
+![KPIs Incidents Toon](/images/post/kpis_incidents.webp)
+
 Recently, I was going through old emails and found a reply from a junior colleague to a very serious email I had sent. The colleague wrote that after reading my message, they realized they had been mindlessly following instructions without deeper consideration. They promised to carefully consider the ethical implications and correctness of every task, and to proceed based on their own judgment going forward.
 
 Upon further investigation, I realized this colleague managed our vulnerability tracking system. They had been instructed by their team leader to uniformly downgrade the severity ratings of high-risk vulnerabilities. My email had warned them about the potential ethical problems associated with such actions. (Although much time has passed and things have changed, this colleague was very sincere at that time...)
