@@ -58,7 +58,21 @@ The main point of the paper is that bypass methods using targets within new Java
         }
 
     </style>
-</noscript><meta property="og:url" content="https://windshock.github.io/en/post/2019-08-08-about-the-xssaudit/">
+</noscript>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-6N6EEJ259T"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-6N6EEJ259T');
+        }
+      </script><meta property="og:url" content="https://windshock.github.io/en/post/2019-08-08-about-the-xssaudit/">
   <meta property="og:site_name" content="Code Before Breach">
   <meta property="og:title" content="About the XSSAudit">
   <meta property="og:description" content="Why Was the XSSAudit Feature Removed in Chrome? The Google Security Team proposed to the Chrome development team to remove the XSSAudit feature. Although the only rationale provided was that the feature could be bypassed (as argued in a paper by evn@google.com), it initially seemed unlikely that removal would proceed. However, it was ultimately decided that the feature would be completely eliminated in Chrome.

@@ -4,6 +4,7 @@ title = "Code Before Breach"
 theme = "PaperMod"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
+googleAnalytics = "G-6N6EEJ259T"
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]

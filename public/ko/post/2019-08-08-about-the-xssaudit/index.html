@@ -60,7 +60,21 @@ Google과 같은 업체 입장에서는 XSSAudit 기능에 의해 유지 비용�
         }
 
     </style>
-</noscript><meta property="og:url" content="https://windshock.github.io/ko/post/2019-08-08-about-the-xssaudit/">
+</noscript>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-6N6EEJ259T"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-6N6EEJ259T');
+        }
+      </script><meta property="og:url" content="https://windshock.github.io/ko/post/2019-08-08-about-the-xssaudit/">
   <meta property="og:site_name" content="Code Before Breach">
   <meta property="og:title" content="About the XSSAudit">
   <meta property="og:description" content="Chrome에서 XSSAudit 기능이 제거하는 이유? Google 보안팀에서는 Chrome 개발팀에게 XSSAudit 기능을 제거하자는 제안을 했지만, Google 보안팀이 제시한 근거는 우회 가능하다는 내용( evn@google.com의 논문)뿐이라 제거까지 가지 않을 것 같았지만, Chrome version 에서는 완전히 제외되는 것으로 결정되었습니다.
