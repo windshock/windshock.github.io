@@ -3,6 +3,9 @@ title: Security threats and mitigation strategies for java reflection
 date: '2019-09-03'
 categories: &id001 []
 tags: *id001
+aliases:
+  - /xss/xssaudit/javascript/Extension-Language-And-Reflection/
+  - /Security-Threats-and-Mitigation-Strategies-for-Java-Reflection/
 ---
 
 ### Security Threats and Mitigation Strategies for Java Reflection
