@@ -12,6 +12,7 @@
 최근 인기를 얻고 있는 한 가지 접근 방식은 정부 NGO(비정부기구)와 버그 바운티 프로그램의 활용입니다. 이 프로그램들은 개인과 조직이 디지털 시스템의 취약점과 약점을 식별하고 신고하도록 장려하여, 적시에 효과적인 대응을 가능하게 합니다. 이들은 포괄적인 사이버 보안 전략의 핵심 요소로서, 그 중요성은 아무리 강조해도 지나치지 않습니다.">
 <meta name="author" content="">
 <link rel="canonical" href="https://windshock.github.io/ko/post/2023-04-18-strengthening-cybersecurity-through-government-ngos-and-bug-bounty-programs/">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://windshock.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://windshock.github.io/favicon-16x16.png">
@@ -22,6 +23,10 @@
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="en" href="https://windshock.github.io/en/post/2023-04-18-strengthening-cybersecurity-through-government-ngos-and-bug-bounty-programs/">
 <link rel="alternate" hreflang="ko" href="https://windshock.github.io/ko/post/2023-04-18-strengthening-cybersecurity-through-government-ngos-and-bug-bounty-programs/">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <noscript>
     <style>
         #theme-toggle,
@@ -157,8 +162,8 @@
     <nav class="nav">
         <div class="logo">
             <a href="https://windshock.github.io/ko/" accesskey="h" title="Code Before Breach (Alt + H)">
-                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo"
-                    height="36">Code Before Breach</a>
+                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo" class="h-7 w-auto"
+                    height="28">Code Before Breach</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -390,6 +395,46 @@
 </script>
 
 
+
+<script>
+  function initSwiperIfNeeded() {
+    if (typeof Swiper === 'undefined') {
+      
+      return setTimeout(initSwiperIfNeeded, 50);
+    }
+
+    if (document.querySelector('.swiper')) {
+      new Swiper('.swiper', {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        loop: true,
+        preloadImages: false,
+        lazy: {
+          loadOnTransitionStart: true,
+          loadPrevNext: true,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        breakpoints: {
+          768: { slidesPerView: 2.5 },
+          1024: { slidesPerView: 3.2 }
+        }
+      });
+
+      
+      document.querySelectorAll('img.swiper-lazy').forEach(img => {
+        img.src = img.dataset.src;
+      });
+    } else {
+      setTimeout(initSwiperIfNeeded, 100);
+    }
+  }
+
+  
+  initSwiperIfNeeded();
+</script>
 
 <script>
     let menu = document.getElementById('menu')

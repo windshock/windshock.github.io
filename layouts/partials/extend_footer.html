@@ -40,4 +40,45 @@
 </script>
 
 {{ end }}
+
+<script>
+  function initSwiperIfNeeded() {
+    if (typeof Swiper === 'undefined') {
+      // ✅ Swiper 객체가 아직 없으면 다시 대기
+      return setTimeout(initSwiperIfNeeded, 50);
+    }
+
+    if (document.querySelector('.swiper')) {
+      new Swiper('.swiper', {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        loop: true,
+        preloadImages: false,
+        lazy: {
+          loadOnTransitionStart: true,
+          loadPrevNext: true,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        breakpoints: {
+          768: { slidesPerView: 2.5 },
+          1024: { slidesPerView: 3.2 }
+        }
+      });
+
+      // ✅ Lazy 강제 적용
+      document.querySelectorAll('img.swiper-lazy').forEach(img => {
+        img.src = img.dataset.src;
+      });
+    } else {
+      setTimeout(initSwiperIfNeeded, 100);
+    }
+  }
+
+  // 즉시 실행
+  initSwiperIfNeeded();
+</script>
+
 {{- /* Footer custom content area end */ -}}

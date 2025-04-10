@@ -5,6 +5,9 @@ categories: &id001
 - Citrix
 - bypass
 tags: *id001
+featured: true
+image: "/images/post/citrix-security-bypass.webp"
+description: "시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다."
 ---
 
 # 시트릭스 보안 정책 효과성 검토

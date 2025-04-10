@@ -91,12 +91,7 @@ It is a human act of context-building and&lt;br&gt;
       <link>https://windshock.github.io/en/post/2024-11-05-review-of-citrix-security-policy-effectiveness/</link>
       <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/en/post/2024-11-05-review-of-citrix-security-policy-effectiveness/</guid>
-      <description>&lt;h1 id=&#34;review-of-citrix-security-policy-effectiveness&#34;&gt;Review of Citrix Security Policy Effectiveness&lt;/h1&gt;
-&lt;h2 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h2&gt;
-&lt;p&gt;Citrix administrators apply security policies to each user’s VDI (Virtual Desktop Infrastructure) through Citrix Group Policy. However, certain structural vulnerabilities in Citrix CSE (Citrix Service Engine) and the Citrix VDI Agent allow for potential bypassing of these security policies.&lt;/p&gt;
-&lt;h2 id=&#34;2-security-policy-bypass&#34;&gt;2. Security Policy Bypass&lt;/h2&gt;
-&lt;h3 id=&#34;bypass-through-registry-manipulation&#34;&gt;Bypass through Registry Manipulation&lt;/h3&gt;
-&lt;p&gt;A security policy bypass is possible by manipulating the registry using a race condition that occurs during the Citrix VDI Agent (PicaSvc2.exe) policy storage process. While Citrix has implemented a stealth patch to mitigate this vulnerability, it is still possible to disable security policies by adjusting registry security settings and denying write permissions.&lt;/p&gt;</description>
+      <description>Citrix administrators apply security policies to each user’s VDI (Virtual Desktop Infrastructure) through Citrix Group Policy. However, certain structural vulnerabilities in Citrix CSE (Citrix Service Engine) and the Citrix VDI Agent allow for potential bypassing of these security policies.</description>
     </item>
     <item>
       <title>KPIs Can Cause Incidents!!!</title>
@@ -152,10 +147,7 @@ Strengthening Cybersecurity Through Government NGOs and Bug Bounty Programs: A L
       <link>https://windshock.github.io/en/post/2019-09-03-security-threats-and-mitigation-strategies-for-java-reflection/</link>
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/en/post/2019-09-03-security-threats-and-mitigation-strategies-for-java-reflection/</guid>
-      <description>&lt;h3 id=&#34;security-threats-and-mitigation-strategies-for-java-reflection&#34;&gt;Security Threats and Mitigation Strategies for Java Reflection&lt;/h3&gt;
-&lt;p&gt;The &lt;strong&gt;Java Reflection API&lt;/strong&gt; is a powerful tool that allows dynamic manipulation of classes, methods, and interfaces at runtime. However, due to its flexibility, it introduces significant security risks, as attackers can exploit it to gain unauthorized access to systems. In this article, we will explore the security threats posed by Java Reflection and outline strategies to mitigate these risks.&lt;/p&gt;
-&lt;h4 id=&#34;the-risks-of-using-reflection-api&#34;&gt;The Risks of Using Reflection API&lt;/h4&gt;
-&lt;p&gt;Reflection is commonly used to inspect the structure of objects or dynamically invoke methods at runtime. However, without a proper &lt;strong&gt;Security Manager&lt;/strong&gt;, sensitive methods (like &lt;code&gt;execute&lt;/code&gt;, &lt;code&gt;eval&lt;/code&gt;, etc.) can be accessed, leading to potential &lt;strong&gt;Remote Code Execution (RCE)&lt;/strong&gt; attacks.&lt;/p&gt;</description>
+      <description>The **Java Reflection API** is a powerful tool that allows dynamic manipulation of classes, methods, and interfaces at runtime. However, due to its flexibility, it introduces significant security risks, as attackers can exploit it to gain unauthorized access to systems. In this article, we will explore the security threats posed by Java Reflection and outline strategies to mitigate these risks.</description>
     </item>
     <item>
       <title>About the XSSAudit</title>

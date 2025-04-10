@@ -1,4 +1,4 @@
-<svg viewBox="0 0 650 170" width="650" height="170" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 650 170" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
   <style>
     .keyword {
       font-family: monospace;
@@ -57,13 +57,13 @@
     }
   </style>
 
-  <!-- 고정된 코드 -->
+  <!-- 코드 텍스트 -->
   <text x="0" y="60" class="code">
-    <tspan class="keyword">char</tspan> buffer[</text>
+    <tspan class="keyword">char</tspan> buffer[
+  </text>
   <text x="340" y="55" class="typing">"AAAAAAAAAAAAAAAAAAAAAAAA"</text>
   <text x="430" y="60" class="code">];</text>
-  <text x="0" y="150" class="code"><tspan class="identifier">leak</tspan>(data);
-  </text>
+  <text x="0" y="150" class="code"><tspan class="identifier">leak</tspan>(data);</text>
 
   <!-- 비밀 데이터 팝업 -->
   <text x="330" y="100" class="secret">root_token</text>

@@ -10,6 +10,7 @@
 <meta name="description" content="개발자들이 보안에 대해 자주 믿는 &lsquo;책임 전가형&rsquo;, &lsquo;기술 과신형&rsquo;, &lsquo;보안 과소평가형&rsquo; 거짓말을 분석하고, 현실적인 대응 방안을 제시합니다.">
 <meta name="author" content="">
 <link rel="canonical" href="https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://windshock.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://windshock.github.io/favicon-16x16.png">
@@ -20,6 +21,10 @@
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="en" href="https://windshock.github.io/en/post/2025-04-01-common-security-myths-developers-tell-themselves/">
 <link rel="alternate" hreflang="ko" href="https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <noscript>
     <style>
         #theme-toggle,
@@ -156,8 +161,8 @@
     <nav class="nav">
         <div class="logo">
             <a href="https://windshock.github.io/ko/" accesskey="h" title="Code Before Breach (Alt + H)">
-                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo"
-                    height="36">Code Before Breach</a>
+                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo" class="h-7 w-auto"
+                    height="28">Code Before Breach</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -459,6 +464,46 @@ GitHub Actions 사용 시 commit-hash 방식을 통해 버전을 고정하여 �
 </script>
 
 
+
+<script>
+  function initSwiperIfNeeded() {
+    if (typeof Swiper === 'undefined') {
+      
+      return setTimeout(initSwiperIfNeeded, 50);
+    }
+
+    if (document.querySelector('.swiper')) {
+      new Swiper('.swiper', {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        loop: true,
+        preloadImages: false,
+        lazy: {
+          loadOnTransitionStart: true,
+          loadPrevNext: true,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        breakpoints: {
+          768: { slidesPerView: 2.5 },
+          1024: { slidesPerView: 3.2 }
+        }
+      });
+
+      
+      document.querySelectorAll('img.swiper-lazy').forEach(img => {
+        img.src = img.dataset.src;
+      });
+    } else {
+      setTimeout(initSwiperIfNeeded, 100);
+    }
+  }
+
+  
+  initSwiperIfNeeded();
+</script>
 
 <script>
     let menu = document.getElementById('menu')

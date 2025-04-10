@@ -1,0 +1,181 @@
+{{- define "main" }}
+
+{{- if (and site.Params.profileMode.enabled .IsHome) }}
+{{- partial "index_profile.html" . }}
+{{- else }} {{/* if not profileMode */}}
+
+{{- if not .IsHome | and .Title }}
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>
+    {{ .Title }}
+    {{- if and (or (eq .Kind `term`) (eq .Kind `section`)) (.Param "ShowRssButtonInSectionTermList") }}
+    {{- with .OutputFormats.Get "rss" }}
+    <a href="{{ .RelPermalink }}" title="RSS" aria-label="RSS">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" height="23">
+        <path d="M4 11a9 9 0 0 1 9 9" />
+        <path d="M4 4a16 16 0 0 1 16 16" />
+        <circle cx="5" cy="19" r="1" />
+      </svg>
+    </a>
+    {{- end }}
+    {{- end }}
+  </h1>
+  {{- if .Description }}
+  <div class="post-description">
+    {{ .Description | markdownify }}
+  </div>
+  {{- end }}
+</header>
+{{- end }}
+
+{{/* 필터링: featured = true 인 포스트만 추출 */}}
+{{ $featured := where (where .Site.RegularPages "Params.featured" true) ".Lang" .Site.Language.Lang }}
+{{ $lang := .Site.Language.Lang }}
+
+{{ if gt (len $featured) 0 }}
+
+{{ $style := resources.Get "css/tailwind.css" | postCSS (dict "config" "./postcss.config.js") | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+
+<!-- Featured Posts 섹션 -->
+{{ $borderColors := slice "border-red-400" "border-orange-400" "border-yellow-400" "border-lime-400" "border-emerald-400" "border-sky-400" "border-indigo-400" "border-pink-400" }}
+
+<section class="py-6 max-w-6xl mx-auto">
+  <h2 class="text-2xl font-semibold mb-4 font-spectral text-orange-100 flex items-center gap-2">
+    🔥 {{ if eq .Site.Language.Lang "ko" }}추천 글{{ else }}Featured Posts{{ end }}
+  </h2>
+
+  <div class="swiper mySwiper px-4 md:px-0">
+    <div class="swiper-wrapper">
+      {{ range $index, $post := $featured }}
+        {{ $borderColor := index $borderColors (mod $index (len $borderColors)) }}
+
+        <div class="swiper-slide transition-transform transform hover:scale-[1.03] hover:rotate-[0.3deg] duration-300">
+          <a href="{{ $post.Permalink }}"
+             class="relative block rounded-xl overflow-hidden border {{ $borderColor }} shadow-xl bg-black/90 backdrop-blur-md">
+
+            <!-- 🔖 시리즈 뱃지 -->
+            {{ with $post.Params.series }}
+              <div class="absolute top-2 right-2 bg-orange-500 text-white text-xs font-bold px-2 py-1 rounded shadow-md z-10">
+                📚 {{ . }}
+              </div>
+            {{ end }}
+
+            <!-- 이미지 -->
+            <img data-src="{{ $post.Params.image | default "/images/default-thumbnail.webp" }}"
+                 class="swiper-lazy w-full aspect-[16/9] object-cover rounded-t-xl"
+                 alt="{{ $post.Title }}"
+                 onerror="this.onerror=null;this.dataset.src='/images/default-thumbnail.webp';" />
+            <div class="swiper-lazy-preloader"></div>
+
+            <!-- 텍스트 -->
+            <div class="p-4">
+              <h3 class="text-lg font-bold text-white font-spectral truncate">
+                {{ $post.Title }}
+              </h3>
+              <p class="text-sm text-neutral-300 line-clamp-3 mt-1 leading-relaxed">
+                {{ $post.Params.description | default $post.Summary }}
+              </p>
+            </div>
+          </a>
+        </div>
+      {{ end }}
+    </div>
+    <div class="swiper-pagination mt-2"></div>
+  </div>
+</section>
+
+
+{{ end }}
+
+{{- if .Content }}
+<div class="post-content">
+  {{- if not (.Param "disableAnchoredHeadings") }}
+  {{- partial "anchored_headings.html" .Content -}}
+  {{- else }}{{ .Content }}{{ end }}
+</div>
+{{- end }}
+
+{{- $pages := union .RegularPages .Sections }}
+
+{{- if .IsHome }}
+{{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true"  }}
+{{- end }}
+
+{{- $paginator := .Paginate $pages }}
+
+{{- if and .IsHome site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
+{{- partial "home_info.html" . }}
+{{- end }}
+
+{{- $term := .Data.Term }}
+{{- range $index, $page := $paginator.Pages }}
+
+{{- $class := "post-entry" }}
+
+{{- $user_preferred := or site.Params.disableSpecial1stPost site.Params.homeInfoParams }}
+{{- if (and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) (not $user_preferred)) }}
+{{- $class = "first-entry" }}
+{{- else if $term }}
+{{- $class = "post-entry tag-entry" }}
+{{- end }}
+
+<article class="{{ $class }}">
+  {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
+  {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">
+      {{- .Title }}
+      {{- if .Draft }}
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+      {{- end }}
+    </h2>
+  </header>
+  {{- if (ne (.Param "hideSummary") true) }}
+  <div class="entry-content">
+    <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+  </div>
+  {{- end }}
+  {{- if not (.Param "hideMeta") }}
+  <footer class="entry-footer">
+    {{- partial "post_meta.html" . -}}
+  </footer>
+  {{- end }}
+  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+</article>
+{{- end }}
+
+{{- if gt $paginator.TotalPages 1 }}
+<footer class="page-footer">
+  <nav class="pagination">
+    {{- if $paginator.HasPrev }}
+    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">
+      «&nbsp;{{ i18n "prev_page" }}&nbsp;
+      {{- if (.Param "ShowPageNums") }}
+      {{- sub $paginator.PageNumber 1 }}/{{ $paginator.TotalPages }}
+      {{- end }}
+    </a>
+    {{- end }}
+    {{- if $paginator.HasNext }}
+    <a class="next" href="{{ $paginator.Next.URL | absURL }}">
+      {{- i18n "next_page" }}&nbsp;
+      {{- if (.Param "ShowPageNums") }}
+      {{- add 1 $paginator.PageNumber }}/{{ $paginator.TotalPages }}
+      {{- end }}&nbsp;»
+    </a>
+    {{- end }}
+  </nav>
+</footer>
+{{- end }}
+
+{{- end }}{{/* end profileMode */}}
+
+{{- end }}{{- /* end main */ -}}

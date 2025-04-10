@@ -3,6 +3,8 @@ title: "How to Block ECH and Mitigate DoH in Enterprise Networks"
 date: 2025-03-31
 description: "A hands-on guide using dnsmasq to filter SVCB and HTTPS records for disabling ECH and enforcing central DNS policies. Notes that DoH requires separate network-layer policies."
 tags: ["DNS", "DoH", "ECH", "ESNI", "dnsmasq", "Enterprise Security"]
+featured: true
+image: "/images/post/dnsmasq-ech-doh-block.webp"
 ---
 
 ![DNSMASQ-block background](/images/post/dnsmasq-ech-doh-block.webp)

@@ -35,7 +35,8 @@ googleAnalytics = "G-6N6EEJ259T"
 
 [params.label]
   icon = "/images/logo-terminal-animated.svg"
-  iconHeight = 36
+  iconHeight = 28
+
 
 [params.giscus]
     repo = "windshock/windshock.github.io"
@@ -123,3 +124,4 @@ googleAnalytics = "G-6N6EEJ259T"
     languageName = "한국어"
     languageCode = "ko-KR"
     weight = 2
+

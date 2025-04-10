@@ -13,12 +13,7 @@
       <link>https://windshock.github.io/en/post/2024-11-05-review-of-citrix-security-policy-effectiveness/</link>
       <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/en/post/2024-11-05-review-of-citrix-security-policy-effectiveness/</guid>
-      <description>&lt;h1 id=&#34;review-of-citrix-security-policy-effectiveness&#34;&gt;Review of Citrix Security Policy Effectiveness&lt;/h1&gt;
-&lt;h2 id=&#34;1-introduction&#34;&gt;1. Introduction&lt;/h2&gt;
-&lt;p&gt;Citrix administrators apply security policies to each user’s VDI (Virtual Desktop Infrastructure) through Citrix Group Policy. However, certain structural vulnerabilities in Citrix CSE (Citrix Service Engine) and the Citrix VDI Agent allow for potential bypassing of these security policies.&lt;/p&gt;
-&lt;h2 id=&#34;2-security-policy-bypass&#34;&gt;2. Security Policy Bypass&lt;/h2&gt;
-&lt;h3 id=&#34;bypass-through-registry-manipulation&#34;&gt;Bypass through Registry Manipulation&lt;/h3&gt;
-&lt;p&gt;A security policy bypass is possible by manipulating the registry using a race condition that occurs during the Citrix VDI Agent (PicaSvc2.exe) policy storage process. While Citrix has implemented a stealth patch to mitigate this vulnerability, it is still possible to disable security policies by adjusting registry security settings and denying write permissions.&lt;/p&gt;</description>
+      <description>Citrix administrators apply security policies to each user’s VDI (Virtual Desktop Infrastructure) through Citrix Group Policy. However, certain structural vulnerabilities in Citrix CSE (Citrix Service Engine) and the Citrix VDI Agent allow for potential bypassing of these security policies.</description>
     </item>
   </channel>
 </rss>

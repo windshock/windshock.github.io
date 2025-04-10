@@ -10,6 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="canonical" href="https://windshock.github.io/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://windshock.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://windshock.github.io/favicon-16x16.png">
@@ -20,6 +21,10 @@
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" type="application/rss+xml" href="https://windshock.github.io/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/index.xml">
 <link rel="alternate" hreflang="ko" href="https://windshock.github.io/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <noscript>
     <style>
         #theme-toggle,
@@ -97,8 +102,8 @@
     <nav class="nav">
         <div class="logo">
             <a href="https://windshock.github.io/ko/" accesskey="h" title="Code Before Breach (Alt + H)">
-                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo"
-                    height="36">Code Before Breach</a>
+                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo" class="h-7 w-auto"
+                    height="28">Code Before Breach</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -164,6 +169,118 @@
   </h1>
 </header>
 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/tailwind.min.f0d67dd42a6b7bbe230ad591e9e22e97878123f7401fed883b35d2fe43e2e18f.css" integrity="sha256-8NZ91Cpre74jCtWR6eIul4eBI/dAH&#43;2IOzXS/kPi4Y8=">
+
+
+
+
+<section class="py-6 max-w-6xl mx-auto">
+  <h2 class="text-2xl font-semibold mb-4 font-spectral text-orange-100 flex items-center gap-2">
+    🔥 추천 글
+  </h2>
+
+  <div class="swiper mySwiper px-4 md:px-0">
+    <div class="swiper-wrapper">
+      
+        
+
+        <div class="swiper-slide transition-transform transform hover:scale-[1.03] hover:rotate-[0.3deg] duration-300">
+          <a href="https://windshock.github.io/ko/post/2025-03-31-dnsmasq-ech-doh-block/"
+             class="relative block rounded-xl overflow-hidden border border-red-400 shadow-xl bg-black/90 backdrop-blur-md">
+
+            
+            
+
+            
+            <img data-src="/images/post/dnsmasq-ech-doh-block.webp"
+                 class="swiper-lazy w-full aspect-[16/9] object-cover rounded-t-xl"
+                 alt="기업 네트워크 보안을 위한 ECH 차단 및 DoH 대응 전략"
+                 onerror="this.onerror=null;this.dataset.src='/images/default-thumbnail.webp';" />
+            <div class="swiper-lazy-preloader"></div>
+
+            
+            <div class="p-4">
+              <h3 class="text-lg font-bold text-white font-spectral truncate">
+                기업 네트워크 보안을 위한 ECH 차단 및 DoH 대응 전략
+              </h3>
+              <p class="text-sm text-neutral-300 line-clamp-3 mt-1 leading-relaxed">
+                dnsmasq를 사용하여 SVCB와 HTTPS 레코드를 필터링함으로써 ECH를 비활성화하고 중앙 DNS 정책을 적용하는 실습 가이드. DoH 차단은 별도의 네트워크 정책이 필요함을 함께 안내합니다.
+              </p>
+            </div>
+          </a>
+        </div>
+      
+        
+
+        <div class="swiper-slide transition-transform transform hover:scale-[1.03] hover:rotate-[0.3deg] duration-300">
+          <a href="https://windshock.github.io/ko/post/2024-11-05-review-of-citrix-security-policy-effectiveness/"
+             class="relative block rounded-xl overflow-hidden border border-orange-400 shadow-xl bg-black/90 backdrop-blur-md">
+
+            
+            
+
+            
+            <img data-src="/images/post/citrix-security-bypass.webp"
+                 class="swiper-lazy w-full aspect-[16/9] object-cover rounded-t-xl"
+                 alt="시트릭스 보안 정책 효과성 검토"
+                 onerror="this.onerror=null;this.dataset.src='/images/default-thumbnail.webp';" />
+            <div class="swiper-lazy-preloader"></div>
+
+            
+            <div class="p-4">
+              <h3 class="text-lg font-bold text-white font-spectral truncate">
+                시트릭스 보안 정책 효과성 검토
+              </h3>
+              <p class="text-sm text-neutral-300 line-clamp-3 mt-1 leading-relaxed">
+                시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.
+              </p>
+            </div>
+          </a>
+        </div>
+      
+        
+
+        <div class="swiper-slide transition-transform transform hover:scale-[1.03] hover:rotate-[0.3deg] duration-300">
+          <a href="https://windshock.github.io/ko/post/2019-09-03-security-threats-and-mitigation-strategies-for-java-reflection/"
+             class="relative block rounded-xl overflow-hidden border border-yellow-400 shadow-xl bg-black/90 backdrop-blur-md">
+
+            
+            
+
+            
+            <img data-src="/images/post/java-reflection-security.webp"
+                 class="swiper-lazy w-full aspect-[16/9] object-cover rounded-t-xl"
+                 alt="자바 리플렉션의 보안 위협과 완화 전략"
+                 onerror="this.onerror=null;this.dataset.src='/images/default-thumbnail.webp';" />
+            <div class="swiper-lazy-preloader"></div>
+
+            
+            <div class="p-4">
+              <h3 class="text-lg font-bold text-white font-spectral truncate">
+                자바 리플렉션의 보안 위협과 완화 전략
+              </h3>
+              <p class="text-sm text-neutral-300 line-clamp-3 mt-1 leading-relaxed">
+                **자바 리플렉션 API**는 런타임에 클래스, 메서드, 인터페이스를 동적으로 조작할 수 있게 해주는 강력한 도구입니다. 하지만 그 유연성 때문에 공격자가 이를 악용해 시스템에 무단 접근할 수 있는 심각한 보안 위험이 발생합니다. 본 문서에서는 자바 리플렉션이 야기하는 보안 위협을 살펴보고, 이러한 위험을 완화하기 위한 전략들을 설명합니다.
+              </p>
+            </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="swiper-pagination mt-2"></div>
+  </div>
+</section>
+
+
+
+
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
     <h2 class="entry-hint-parent">보안진단 담당자의 흔한 착각
@@ -194,6 +311,46 @@
     </svg>
 </a>
 
+
+<script>
+  function initSwiperIfNeeded() {
+    if (typeof Swiper === 'undefined') {
+      
+      return setTimeout(initSwiperIfNeeded, 50);
+    }
+
+    if (document.querySelector('.swiper')) {
+      new Swiper('.swiper', {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        loop: true,
+        preloadImages: false,
+        lazy: {
+          loadOnTransitionStart: true,
+          loadPrevNext: true,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        breakpoints: {
+          768: { slidesPerView: 2.5 },
+          1024: { slidesPerView: 3.2 }
+        }
+      });
+
+      
+      document.querySelectorAll('img.swiper-lazy').forEach(img => {
+        img.src = img.dataset.src;
+      });
+    } else {
+      setTimeout(initSwiperIfNeeded, 100);
+    }
+  }
+
+  
+  initSwiperIfNeeded();
+</script>
 
 <script>
     let menu = document.getElementById('menu')

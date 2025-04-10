@@ -102,12 +102,7 @@ GPT가 할 수 있는 일이 아니다.&lt;br&gt;
       <link>https://windshock.github.io/ko/post/2024-11-05-review-of-citrix-security-policy-effectiveness/</link>
       <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/ko/post/2024-11-05-review-of-citrix-security-policy-effectiveness/</guid>
-      <description>&lt;h1 id=&#34;시트릭스-보안-정책-효과성-검토&#34;&gt;시트릭스 보안 정책 효과성 검토&lt;/h1&gt;
-&lt;h2 id=&#34;1-서론&#34;&gt;1. 서론&lt;/h2&gt;
-&lt;p&gt;시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.&lt;/p&gt;
-&lt;h2 id=&#34;2-보안-정책-우회&#34;&gt;2. 보안 정책 우회&lt;/h2&gt;
-&lt;h3 id=&#34;레지스트리-조작을-통한-우회&#34;&gt;레지스트리 조작을 통한 우회&lt;/h3&gt;
-&lt;p&gt;Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발생하는 레이스 컨디션을 이용해 레지스트리를 조작함으로써 보안 정책 우회가 가능합니다. 시트릭스는 이 취약점을 완화하기 위해 스텔스 패치를 적용했지만, 레지스트리 보안 설정을 조정하고 쓰기 권한을 거부함으로써 여전히 보안 정책을 비활성화할 수 있습니다.&lt;/p&gt;</description>
+      <description>시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.</description>
     </item>
     <item>
       <title>KPI가 사고를 일으킨다!!!</title>
@@ -168,10 +163,7 @@ GPT가 할 수 있는 일이 아니다.&lt;br&gt;
       <link>https://windshock.github.io/ko/post/2019-09-03-security-threats-and-mitigation-strategies-for-java-reflection/</link>
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/ko/post/2019-09-03-security-threats-and-mitigation-strategies-for-java-reflection/</guid>
-      <description>&lt;h3 id=&#34;자바-리플렉션의-보안-위협과-완화-전략&#34;&gt;자바 리플렉션의 보안 위협과 완화 전략&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;자바 리플렉션 API&lt;/strong&gt;는 런타임에 클래스, 메서드, 인터페이스를 동적으로 조작할 수 있게 해주는 강력한 도구입니다. 하지만 그 유연성 때문에 공격자가 이를 악용해 시스템에 무단 접근할 수 있는 심각한 보안 위험이 발생합니다. 본 문서에서는 자바 리플렉션이 야기하는 보안 위협을 살펴보고, 이러한 위험을 완화하기 위한 전략들을 설명합니다.&lt;/p&gt;
-&lt;h4 id=&#34;리플렉션-api-사용-시의-위험성&#34;&gt;리플렉션 API 사용 시의 위험성&lt;/h4&gt;
-&lt;p&gt;리플렉션은 객체의 구조를 검사하거나 런타임에 메서드를 동적으로 호출하는 데 일반적으로 사용됩니다. 그러나 적절한 **보안 관리자(Security Manager)**가 없는 경우, &lt;code&gt;execute&lt;/code&gt;, &lt;code&gt;eval&lt;/code&gt; 등과 같은 민감한 메서드에 접근할 수 있어 잠재적인 &lt;strong&gt;원격 코드 실행(RCE)&lt;/strong&gt; 공격을 유발할 수 있습니다.&lt;/p&gt;</description>
+      <description>**자바 리플렉션 API**는 런타임에 클래스, 메서드, 인터페이스를 동적으로 조작할 수 있게 해주는 강력한 도구입니다. 하지만 그 유연성 때문에 공격자가 이를 악용해 시스템에 무단 접근할 수 있는 심각한 보안 위험이 발생합니다. 본 문서에서는 자바 리플렉션이 야기하는 보안 위협을 살펴보고, 이러한 위험을 완화하기 위한 전략들을 설명합니다.</description>
     </item>
     <item>
       <title>About the XSSAudit</title>

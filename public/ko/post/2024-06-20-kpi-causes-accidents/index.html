@@ -13,6 +13,7 @@
 메일을 자세히 살펴보니, 그 후배는 취약점 현황 시스템을 관리하던 사람이었고, 팀장의 명령으로 고위험 취약점의 위험도를 일괄 낮추도록 조치한 뒤, 내가 윤리적 문제를 제기한 메일에 대해 답변한 것이었다. (오랜 시간이 지난 지금은 상황이 달라졌지만, 당시에는 참 착한 후배였다&hellip;)">
 <meta name="author" content="">
 <link rel="canonical" href="https://windshock.github.io/ko/post/2024-06-20-kpi-causes-accidents/">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://windshock.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://windshock.github.io/favicon-16x16.png">
@@ -23,6 +24,10 @@
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="en" href="https://windshock.github.io/en/post/2024-06-20-kpi-causes-accidents/">
 <link rel="alternate" hreflang="ko" href="https://windshock.github.io/ko/post/2024-06-20-kpi-causes-accidents/">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <noscript>
     <style>
         #theme-toggle,
@@ -161,8 +166,8 @@
     <nav class="nav">
         <div class="logo">
             <a href="https://windshock.github.io/ko/" accesskey="h" title="Code Before Breach (Alt + H)">
-                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo"
-                    height="36">Code Before Breach</a>
+                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo" class="h-7 w-auto"
+                    height="28">Code Before Breach</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -416,6 +421,46 @@
 </script>
 
 
+
+<script>
+  function initSwiperIfNeeded() {
+    if (typeof Swiper === 'undefined') {
+      
+      return setTimeout(initSwiperIfNeeded, 50);
+    }
+
+    if (document.querySelector('.swiper')) {
+      new Swiper('.swiper', {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        loop: true,
+        preloadImages: false,
+        lazy: {
+          loadOnTransitionStart: true,
+          loadPrevNext: true,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        breakpoints: {
+          768: { slidesPerView: 2.5 },
+          1024: { slidesPerView: 3.2 }
+        }
+      });
+
+      
+      document.querySelectorAll('img.swiper-lazy').forEach(img => {
+        img.src = img.dataset.src;
+      });
+    } else {
+      setTimeout(initSwiperIfNeeded, 100);
+    }
+  }
+
+  
+  initSwiperIfNeeded();
+</script>
 
 <script>
     let menu = document.getElementById('menu')

@@ -20,6 +20,7 @@ XML-RPC란 무엇인가?
 **XML-RPC (XML Remote Procedure Call)**는 XML을 데이터 포맷으로, HTTP를 전송 수단으로 사용하는 원격 프로시저 호출(RPC) 프로토콜입니다. 1998년 Dave Winer와 Microsoft가 공동 제안했으며, 플랫폼 간 통신을 간편화하기 위해 설계되었습니다.">
 <meta name="author" content="">
 <link rel="canonical" href="https://windshock.github.io/ko/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://windshock.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://windshock.github.io/favicon-16x16.png">
@@ -30,6 +31,10 @@ XML-RPC란 무엇인가?
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="en" href="https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/">
 <link rel="alternate" hreflang="ko" href="https://windshock.github.io/ko/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <noscript>
     <style>
         #theme-toggle,
@@ -175,8 +180,8 @@ XML-RPC란 무엇인가?
     <nav class="nav">
         <div class="logo">
             <a href="https://windshock.github.io/ko/" accesskey="h" title="Code Before Breach (Alt + H)">
-                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo"
-                    height="36">Code Before Breach</a>
+                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo" class="h-7 w-auto"
+                    height="28">Code Before Breach</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -653,6 +658,46 @@ XML-RPC란 무엇인가?
 </script>
 
 
+
+<script>
+  function initSwiperIfNeeded() {
+    if (typeof Swiper === 'undefined') {
+      
+      return setTimeout(initSwiperIfNeeded, 50);
+    }
+
+    if (document.querySelector('.swiper')) {
+      new Swiper('.swiper', {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        loop: true,
+        preloadImages: false,
+        lazy: {
+          loadOnTransitionStart: true,
+          loadPrevNext: true,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        breakpoints: {
+          768: { slidesPerView: 2.5 },
+          1024: { slidesPerView: 3.2 }
+        }
+      });
+
+      
+      document.querySelectorAll('img.swiper-lazy').forEach(img => {
+        img.src = img.dataset.src;
+      });
+    } else {
+      setTimeout(initSwiperIfNeeded, 100);
+    }
+  }
+
+  
+  initSwiperIfNeeded();
+</script>
 
 <script>
     let menu = document.getElementById('menu')

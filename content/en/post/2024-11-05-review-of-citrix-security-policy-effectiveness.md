@@ -8,6 +8,9 @@ tags: *id001
 aliases:
   - /2024-11-05-Review-of-Citrix-Security-Policy-Effectiveness/
   - /2024-11-05-review-of-citrix-security-policy-effectiveness
+featured: true
+image: "/images/post/citrix-security-bypass.webp"
+description: "Citrix administrators apply security policies to each user’s VDI (Virtual Desktop Infrastructure) through Citrix Group Policy. However, certain structural vulnerabilities in Citrix CSE (Citrix Service Engine) and the Citrix VDI Agent allow for potential bypassing of these security policies."
 ---
 
 # Review of Citrix Security Policy Effectiveness

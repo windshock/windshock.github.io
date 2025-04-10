@@ -7,14 +7,10 @@
 <meta name="robots" content="index, follow">
 <title>시트릭스 보안 정책 효과성 검토 | Code Before Breach</title>
 <meta name="keywords" content="Citrix, bypass">
-<meta name="description" content="시트릭스 보안 정책 효과성 검토
-1. 서론
-시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.
-2. 보안 정책 우회
-레지스트리 조작을 통한 우회
-Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발생하는 레이스 컨디션을 이용해 레지스트리를 조작함으로써 보안 정책 우회가 가능합니다. 시트릭스는 이 취약점을 완화하기 위해 스텔스 패치를 적용했지만, 레지스트리 보안 설정을 조정하고 쓰기 권한을 거부함으로써 여전히 보안 정책을 비활성화할 수 있습니다.">
+<meta name="description" content="시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.">
 <meta name="author" content="">
 <link rel="canonical" href="https://windshock.github.io/ko/post/2024-11-05-review-of-citrix-security-policy-effectiveness/">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://windshock.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://windshock.github.io/favicon-16x16.png">
@@ -25,6 +21,10 @@ Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발
 <meta name="msapplication-TileColor" content="#2e2e33">
 <link rel="alternate" hreflang="en" href="https://windshock.github.io/en/post/2024-11-05-review-of-citrix-security-policy-effectiveness/">
 <link rel="alternate" hreflang="ko" href="https://windshock.github.io/ko/post/2024-11-05-review-of-citrix-security-policy-effectiveness/">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <noscript>
     <style>
         #theme-toggle,
@@ -78,8 +78,7 @@ Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발
       </script><meta property="og:url" content="https://windshock.github.io/ko/post/2024-11-05-review-of-citrix-security-policy-effectiveness/">
   <meta property="og:site_name" content="Code Before Breach">
   <meta property="og:title" content="시트릭스 보안 정책 효과성 검토">
-  <meta property="og:description" content="시트릭스 보안 정책 효과성 검토 1. 서론 시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.
-2. 보안 정책 우회 레지스트리 조작을 통한 우회 Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발생하는 레이스 컨디션을 이용해 레지스트리를 조작함으로써 보안 정책 우회가 가능합니다. 시트릭스는 이 취약점을 완화하기 위해 스텔스 패치를 적용했지만, 레지스트리 보안 설정을 조정하고 쓰기 권한을 거부함으로써 여전히 보안 정책을 비활성화할 수 있습니다.">
+  <meta property="og:description" content="시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.">
   <meta property="og:locale" content="ko-KR">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -89,12 +88,7 @@ Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발
     <meta property="article:tag" content="Bypass">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="시트릭스 보안 정책 효과성 검토">
-<meta name="twitter:description" content="시트릭스 보안 정책 효과성 검토
-1. 서론
-시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.
-2. 보안 정책 우회
-레지스트리 조작을 통한 우회
-Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발생하는 레이스 컨디션을 이용해 레지스트리를 조작함으로써 보안 정책 우회가 가능합니다. 시트릭스는 이 취약점을 완화하기 위해 스텔스 패치를 적용했지만, 레지스트리 보안 설정을 조정하고 쓰기 권한을 거부함으로써 여전히 보안 정책을 비활성화할 수 있습니다.">
+<meta name="twitter:description" content="시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.">
 
 
 <script type="application/ld+json">
@@ -123,7 +117,7 @@ Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발
   "@type": "BlogPosting",
   "headline": "시트릭스 보안 정책 효과성 검토",
   "name": "시트릭스 보안 정책 효과성 검토",
-  "description": "시트릭스 보안 정책 효과성 검토 1. 서론 시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.\n2. 보안 정책 우회 레지스트리 조작을 통한 우회 Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발생하는 레이스 컨디션을 이용해 레지스트리를 조작함으로써 보안 정책 우회가 가능합니다. 시트릭스는 이 취약점을 완화하기 위해 스텔스 패치를 적용했지만, 레지스트리 보안 설정을 조정하고 쓰기 권한을 거부함으로써 여전히 보안 정책을 비활성화할 수 있습니다.\n",
+  "description": "시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.",
   "keywords": [
     "Citrix", "bypass"
   ],
@@ -164,8 +158,8 @@ Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발
     <nav class="nav">
         <div class="logo">
             <a href="https://windshock.github.io/ko/" accesskey="h" title="Code Before Breach (Alt + H)">
-                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo"
-                    height="36">Code Before Breach</a>
+                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo" class="h-7 w-auto"
+                    height="28">Code Before Breach</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -232,6 +226,9 @@ Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발
     <h1 class="post-title entry-hint-parent">
       시트릭스 보안 정책 효과성 검토
     </h1>
+    <div class="post-description">
+      시트릭스 관리자들은 Citrix 그룹 정책을 통해 각 사용자의 VDI(가상 데스크탑 인프라)에 보안 정책을 적용합니다. 그러나 Citrix CSE(시트릭스 서비스 엔진)와 Citrix VDI 에이전트 내의 일부 구조적 취약점으로 인해 이러한 보안 정책을 우회할 가능성이 존재합니다.
+    </div>
     <div class="post-meta"><span title='2024-11-05 00:00:00 +0000 UTC'>11월 5, 2024</span>&nbsp;·&nbsp;2 분&nbsp;·&nbsp;361 단어&nbsp;|&nbsp;번역:
 <ul class="i18n_list">
     <li>
@@ -446,6 +443,46 @@ Citrix VDI 에이전트(PicaSvc2.exe)가 정책을 저장하는 과정에서 발
 </script>
 
 
+
+<script>
+  function initSwiperIfNeeded() {
+    if (typeof Swiper === 'undefined') {
+      
+      return setTimeout(initSwiperIfNeeded, 50);
+    }
+
+    if (document.querySelector('.swiper')) {
+      new Swiper('.swiper', {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        loop: true,
+        preloadImages: false,
+        lazy: {
+          loadOnTransitionStart: true,
+          loadPrevNext: true,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        breakpoints: {
+          768: { slidesPerView: 2.5 },
+          1024: { slidesPerView: 3.2 }
+        }
+      });
+
+      
+      document.querySelectorAll('img.swiper-lazy').forEach(img => {
+        img.src = img.dataset.src;
+      });
+    } else {
+      setTimeout(initSwiperIfNeeded, 100);
+    }
+  }
+
+  
+  initSwiperIfNeeded();
+</script>
 
 <script>
     let menu = document.getElementById('menu')

@@ -1,0 +1,57 @@
+{{/* 현재 언어 */}}
+{{ warnf "🧪 [DEBUG] featured-posts.html 실행 시작" }}
+{{ $lang := .Site.Language.Lang }}
+{{ warnf "📦 .Kind: %s" .Kind }}
+{{ warnf "📍 .IsHome: %v | .IsPage: %v | .IsNode: %v" .IsHome .IsPage .IsNode }}
+
+{{ with .Site.Language }}
+  {{ warnf "🧾 Language: %s" .Lang }}
+{{ else }}
+  {{ warnf "❌ .Site.Language is nil" }}
+{{ end }}
+
+{{ if .featured }}
+  {{ warnf "✅ .featured 있음 - 길이: %d" (len .featured) }}
+  {{ warnf "🧪 DEBUG: .Site.Language = %#v" .Site.Language }}
+{{ else }}
+  {{ warnf "❌ .featured 없음 (비어 있음 또는 nil)" }}
+{{ end }}
+
+{{/* featured == true 이고 언어가 현재 언어와 같은 글만 필터링 */}}
+{{ $featured := where (where site.RegularPages "Params.featured" true) "Lang" $lang }}
+
+{{ if gt (len $featured) 0 }}
+<section class="py-6 max-w-6xl mx-auto">
+  <h2 class="text-xl font-semibold mb-4">
+    🔥 {{ if eq $lang "ko" }}추천 글{{ else }}Featured Posts{{ end }}
+  </h2>
+
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      {{ range $featured }}
+      {{ warnf "📄 Featured: %s | URL: %s" .Title .RelPermalink }}
+      {{ warnf "🧾 Rendering: %s (%s)" .Title .Lang }}
+      <div class="swiper-slide">
+        <a href="{{ .RelPermalink }}"
+           class="block bg-white dark:bg-neutral-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+          <img src="{{ .Params.image | default "/images/default-thumbnail.webp" }}"
+               alt="{{ .Title }}"
+               class="w-full h-48 object-cover"
+               onerror="this.onerror=null;this.src='/images/default-thumbnail.webp';" />
+          <div class="p-4">
+            <h3 class="text-base font-semibold text-gray-800 dark:text-white mb-1 truncate">
+              {{ .Title }}
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+              {{ or .Params.description .Params.summary .Summary }}
+            </p>
+          </div>
+        </a>
+      </div>
+      {{ end }}
+    </div>
+    <div class="swiper-pagination mt-2"></div>
+  </div>
+</section>
+{{ end }}
+

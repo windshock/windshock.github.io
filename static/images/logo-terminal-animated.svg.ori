@@ -1,0 +1,72 @@
+<svg viewBox="0 0 650 170" width="650" height="170" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .keyword {
+      font-family: monospace;
+      font-size: 50px;
+      fill: #007acc;
+    }
+    .identifier {
+      font-family: monospace;
+      font-size: 45px;
+      fill: #2aa198;
+    }
+    .symbol {
+      font-family: monospace;
+      font-size: 45px;
+      fill: #839496;
+    }
+    .code {
+      font-family: monospace;
+      font-size: 45px;
+      fill: gray;
+    }
+
+    .typing {
+      font-family: monospace;
+      font-size: 36px;
+      fill: red;
+      clip-path: inset(0 100% 0 0);
+      animation: typeA 4s steps(24, end) infinite;
+    }
+
+    .secret {
+      font-family: monospace;
+      font-size: 50px;
+      fill: orange;
+      opacity: 0;
+      animation: secretPop 5s ease-in-out infinite;
+    }
+
+    .secret:nth-of-type(4) { animation-delay: 1s; }
+    .secret:nth-of-type(5) { animation-delay: 2s; }
+    .secret:nth-of-type(6) { animation-delay: 4s; }
+
+    @media (prefers-color-scheme: dark) {
+      .code { fill: gray; }
+    }
+
+    @keyframes typeA {
+      from { clip-path: inset(0 100% 0 0); }
+      to { clip-path: inset(0 0% 0 0); }
+    }
+
+    @keyframes secretPop {
+      0%   { opacity: 0; transform: translate(0, 0); }
+      50%  { opacity: 1; transform: translate(-10px, -30px) rotate(10deg); }
+      100% { opacity: 0; transform: translate(-40px, -60px) rotate(25deg); }
+    }
+  </style>
+
+  <!-- 고정된 코드 -->
+  <text x="0" y="60" class="code">
+    <tspan class="keyword">char</tspan> buffer[</text>
+  <text x="340" y="55" class="typing">"AAAAAAAAAAAAAAAAAAAAAAAA"</text>
+  <text x="430" y="60" class="code">];</text>
+  <text x="0" y="150" class="code"><tspan class="identifier">leak</tspan>(data);
+  </text>
+
+  <!-- 비밀 데이터 팝업 -->
+  <text x="330" y="100" class="secret">root_token</text>
+  <text x="335" y="100" class="secret">db_password</text>
+  <text x="345" y="100" class="secret">api_key</text>
+</svg>
