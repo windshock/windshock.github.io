@@ -209,9 +209,10 @@
     const alreadyShown = localStorage.getItem("langBannerDismissed");
     alert(lang + "navigator.language=" + navigator.language + ", navigator.userLanguage" + navigator.userLanguage + ", isRoot=" + isRoot + ", alreadyShown=" + alreadyShown)
 
-    if (alreadyShown) {
+    if (alreadyShown || !lang.startsWith("ko")) {
       const banner = document.getElementById("lang-banner");
       if (banner) banner.classList.add("hidden");
+      localStorage.setItem("langBannerDismissed", "true");
     }
 
     if (lang.startsWith("ko") && isRoot && !alreadyShown) {
