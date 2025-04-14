@@ -17,4 +17,4 @@ find public/ -type f -name "*.html" -exec sed -i '' 's/content="noindex"/content
 git add .
 git commit -m "$COMMIT_MSG"
 git push origin master
-./indexnow.sh
+#./indexnow.sh

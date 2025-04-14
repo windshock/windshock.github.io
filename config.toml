@@ -14,7 +14,7 @@ googleAnalytics = "G-6N6EEJ259T"
   category = "categories"
 
 [params]
-  env = "production"
+#  env = "production"
   mainSections = ["post"]
   ShowReadingTime = true
   ShowShareButtons = true

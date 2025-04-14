@@ -4,6 +4,7 @@ module.exports = {
     "./content/**/*.{html,md}",
     "./assets/**/*.{js,html}",
   ],
+  darkMode: 'class', // ✅ 꼭 필요!
   theme: {
     extend: {
       fontFamily: {
