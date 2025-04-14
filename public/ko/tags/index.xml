@@ -2,255 +2,255 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Code Before Breach</title>
-    <link>https://windshock.github.io/ko/tags/</link>
+    <link>http://localhost:1313/ko/tags/</link>
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
     <lastBuildDate>Mon, 07 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://windshock.github.io/ko/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/ko/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
-      <link>https://windshock.github.io/ko/tags/ai/</link>
+      <link>http://localhost:1313/ko/tags/ai/</link>
       <pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/ai/</guid>
+      <guid>http://localhost:1313/ko/tags/ai/</guid>
       <description></description>
     </item>
     <item>
       <title>디스토피아</title>
-      <link>https://windshock.github.io/ko/tags/%EB%94%94%EC%8A%A4%ED%86%A0%ED%94%BC%EC%95%84/</link>
+      <link>http://localhost:1313/ko/tags/%EB%94%94%EC%8A%A4%ED%86%A0%ED%94%BC%EC%95%84/</link>
       <pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/%EB%94%94%EC%8A%A4%ED%86%A0%ED%94%BC%EC%95%84/</guid>
+      <guid>http://localhost:1313/ko/tags/%EB%94%94%EC%8A%A4%ED%86%A0%ED%94%BC%EC%95%84/</guid>
       <description></description>
     </item>
     <item>
       <title>조직</title>
-      <link>https://windshock.github.io/ko/tags/%EC%A1%B0%EC%A7%81/</link>
+      <link>http://localhost:1313/ko/tags/%EC%A1%B0%EC%A7%81/</link>
       <pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/%EC%A1%B0%EC%A7%81/</guid>
+      <guid>http://localhost:1313/ko/tags/%EC%A1%B0%EC%A7%81/</guid>
       <description></description>
     </item>
     <item>
       <title>풍자</title>
-      <link>https://windshock.github.io/ko/tags/%ED%92%8D%EC%9E%90/</link>
+      <link>http://localhost:1313/ko/tags/%ED%92%8D%EC%9E%90/</link>
       <pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/%ED%92%8D%EC%9E%90/</guid>
+      <guid>http://localhost:1313/ko/tags/%ED%92%8D%EC%9E%90/</guid>
       <description></description>
     </item>
     <item>
       <title>AI윤리</title>
-      <link>https://windshock.github.io/ko/tags/ai%EC%9C%A4%EB%A6%AC/</link>
+      <link>http://localhost:1313/ko/tags/ai%EC%9C%A4%EB%A6%AC/</link>
       <pubDate>Thu, 03 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/ai%EC%9C%A4%EB%A6%AC/</guid>
+      <guid>http://localhost:1313/ko/tags/ai%EC%9C%A4%EB%A6%AC/</guid>
       <description></description>
     </item>
     <item>
       <title>에세이</title>
-      <link>https://windshock.github.io/ko/tags/%EC%97%90%EC%84%B8%EC%9D%B4/</link>
+      <link>http://localhost:1313/ko/tags/%EC%97%90%EC%84%B8%EC%9D%B4/</link>
       <pubDate>Thu, 03 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/%EC%97%90%EC%84%B8%EC%9D%B4/</guid>
+      <guid>http://localhost:1313/ko/tags/%EC%97%90%EC%84%B8%EC%9D%B4/</guid>
       <description></description>
     </item>
     <item>
       <title>창작자의권리</title>
-      <link>https://windshock.github.io/ko/tags/%EC%B0%BD%EC%9E%91%EC%9E%90%EC%9D%98%EA%B6%8C%EB%A6%AC/</link>
+      <link>http://localhost:1313/ko/tags/%EC%B0%BD%EC%9E%91%EC%9E%90%EC%9D%98%EA%B6%8C%EB%A6%AC/</link>
       <pubDate>Thu, 03 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/%EC%B0%BD%EC%9E%91%EC%9E%90%EC%9D%98%EA%B6%8C%EB%A6%AC/</guid>
+      <guid>http://localhost:1313/ko/tags/%EC%B0%BD%EC%9E%91%EC%9E%90%EC%9D%98%EA%B6%8C%EB%A6%AC/</guid>
       <description></description>
     </item>
     <item>
       <title>Devsecops</title>
-      <link>https://windshock.github.io/ko/tags/devsecops/</link>
+      <link>http://localhost:1313/ko/tags/devsecops/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/devsecops/</guid>
+      <guid>http://localhost:1313/ko/tags/devsecops/</guid>
       <description></description>
     </item>
     <item>
       <title>Rust</title>
-      <link>https://windshock.github.io/ko/tags/rust/</link>
+      <link>http://localhost:1313/ko/tags/rust/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/rust/</guid>
+      <guid>http://localhost:1313/ko/tags/rust/</guid>
       <description></description>
     </item>
     <item>
       <title>Security</title>
-      <link>https://windshock.github.io/ko/tags/security/</link>
+      <link>http://localhost:1313/ko/tags/security/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/security/</guid>
+      <guid>http://localhost:1313/ko/tags/security/</guid>
       <description></description>
     </item>
     <item>
       <title>Supply Chain</title>
-      <link>https://windshock.github.io/ko/tags/supply-chain/</link>
+      <link>http://localhost:1313/ko/tags/supply-chain/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/supply-chain/</guid>
+      <guid>http://localhost:1313/ko/tags/supply-chain/</guid>
       <description></description>
     </item>
     <item>
       <title>개발 보안</title>
-      <link>https://windshock.github.io/ko/tags/%EA%B0%9C%EB%B0%9C-%EB%B3%B4%EC%95%88/</link>
+      <link>http://localhost:1313/ko/tags/%EA%B0%9C%EB%B0%9C-%EB%B3%B4%EC%95%88/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/%EA%B0%9C%EB%B0%9C-%EB%B3%B4%EC%95%88/</guid>
+      <guid>http://localhost:1313/ko/tags/%EA%B0%9C%EB%B0%9C-%EB%B3%B4%EC%95%88/</guid>
       <description></description>
     </item>
     <item>
       <title>DNS</title>
-      <link>https://windshock.github.io/ko/tags/dns/</link>
+      <link>http://localhost:1313/ko/tags/dns/</link>
       <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/dns/</guid>
+      <guid>http://localhost:1313/ko/tags/dns/</guid>
       <description></description>
     </item>
     <item>
       <title>Dnsmasq</title>
-      <link>https://windshock.github.io/ko/tags/dnsmasq/</link>
+      <link>http://localhost:1313/ko/tags/dnsmasq/</link>
       <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/dnsmasq/</guid>
+      <guid>http://localhost:1313/ko/tags/dnsmasq/</guid>
       <description></description>
     </item>
     <item>
       <title>DoH</title>
-      <link>https://windshock.github.io/ko/tags/doh/</link>
+      <link>http://localhost:1313/ko/tags/doh/</link>
       <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/doh/</guid>
+      <guid>http://localhost:1313/ko/tags/doh/</guid>
       <description></description>
     </item>
     <item>
       <title>ECH</title>
-      <link>https://windshock.github.io/ko/tags/ech/</link>
+      <link>http://localhost:1313/ko/tags/ech/</link>
       <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/ech/</guid>
+      <guid>http://localhost:1313/ko/tags/ech/</guid>
       <description></description>
     </item>
     <item>
       <title>ESNI</title>
-      <link>https://windshock.github.io/ko/tags/esni/</link>
+      <link>http://localhost:1313/ko/tags/esni/</link>
       <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/esni/</guid>
+      <guid>http://localhost:1313/ko/tags/esni/</guid>
       <description></description>
     </item>
     <item>
       <title>기업보안</title>
-      <link>https://windshock.github.io/ko/tags/%EA%B8%B0%EC%97%85%EB%B3%B4%EC%95%88/</link>
+      <link>http://localhost:1313/ko/tags/%EA%B8%B0%EC%97%85%EB%B3%B4%EC%95%88/</link>
       <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/%EA%B8%B0%EC%97%85%EB%B3%B4%EC%95%88/</guid>
+      <guid>http://localhost:1313/ko/tags/%EA%B8%B0%EC%97%85%EB%B3%B4%EC%95%88/</guid>
       <description></description>
     </item>
     <item>
       <title>Exploit</title>
-      <link>https://windshock.github.io/ko/tags/exploit/</link>
+      <link>http://localhost:1313/ko/tags/exploit/</link>
       <pubDate>Fri, 28 Mar 2025 08:39:00 +0900</pubDate>
-      <guid>https://windshock.github.io/ko/tags/exploit/</guid>
+      <guid>http://localhost:1313/ko/tags/exploit/</guid>
       <description></description>
     </item>
     <item>
       <title>RCE</title>
-      <link>https://windshock.github.io/ko/tags/rce/</link>
+      <link>http://localhost:1313/ko/tags/rce/</link>
       <pubDate>Fri, 28 Mar 2025 08:39:00 +0900</pubDate>
-      <guid>https://windshock.github.io/ko/tags/rce/</guid>
+      <guid>http://localhost:1313/ko/tags/rce/</guid>
       <description></description>
     </item>
     <item>
       <title>XML-RPC</title>
-      <link>https://windshock.github.io/ko/tags/xml-rpc/</link>
+      <link>http://localhost:1313/ko/tags/xml-rpc/</link>
       <pubDate>Fri, 28 Mar 2025 08:39:00 +0900</pubDate>
-      <guid>https://windshock.github.io/ko/tags/xml-rpc/</guid>
+      <guid>http://localhost:1313/ko/tags/xml-rpc/</guid>
       <description></description>
     </item>
     <item>
       <title>Bypass</title>
-      <link>https://windshock.github.io/ko/tags/bypass/</link>
+      <link>http://localhost:1313/ko/tags/bypass/</link>
       <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/bypass/</guid>
+      <guid>http://localhost:1313/ko/tags/bypass/</guid>
       <description></description>
     </item>
     <item>
       <title>Citrix</title>
-      <link>https://windshock.github.io/ko/tags/citrix/</link>
+      <link>http://localhost:1313/ko/tags/citrix/</link>
       <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/citrix/</guid>
+      <guid>http://localhost:1313/ko/tags/citrix/</guid>
       <description></description>
     </item>
     <item>
       <title>KPI</title>
-      <link>https://windshock.github.io/ko/tags/kpi/</link>
+      <link>http://localhost:1313/ko/tags/kpi/</link>
       <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/kpi/</guid>
+      <guid>http://localhost:1313/ko/tags/kpi/</guid>
       <description></description>
     </item>
     <item>
       <title>사고</title>
-      <link>https://windshock.github.io/ko/tags/%EC%82%AC%EA%B3%A0/</link>
+      <link>http://localhost:1313/ko/tags/%EC%82%AC%EA%B3%A0/</link>
       <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/%EC%82%AC%EA%B3%A0/</guid>
+      <guid>http://localhost:1313/ko/tags/%EC%82%AC%EA%B3%A0/</guid>
       <description></description>
     </item>
     <item>
       <title>평가</title>
-      <link>https://windshock.github.io/ko/tags/%ED%8F%89%EA%B0%80/</link>
+      <link>http://localhost:1313/ko/tags/%ED%8F%89%EA%B0%80/</link>
       <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/%ED%8F%89%EA%B0%80/</guid>
+      <guid>http://localhost:1313/ko/tags/%ED%8F%89%EA%B0%80/</guid>
       <description></description>
     </item>
     <item>
       <title>보안</title>
-      <link>https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88/</link>
+      <link>http://localhost:1313/ko/tags/%EB%B3%B4%EC%95%88/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88/</guid>
+      <guid>http://localhost:1313/ko/tags/%EB%B3%B4%EC%95%88/</guid>
       <description></description>
     </item>
     <item>
       <title>보안운영</title>
-      <link>https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88%EC%9A%B4%EC%98%81/</link>
+      <link>http://localhost:1313/ko/tags/%EB%B3%B4%EC%95%88%EC%9A%B4%EC%98%81/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88%EC%9A%B4%EC%98%81/</guid>
+      <guid>http://localhost:1313/ko/tags/%EB%B3%B4%EC%95%88%EC%9A%B4%EC%98%81/</guid>
       <description></description>
     </item>
     <item>
       <title>취약점</title>
-      <link>https://windshock.github.io/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/</link>
+      <link>http://localhost:1313/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/</guid>
+      <guid>http://localhost:1313/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/</guid>
       <description></description>
     </item>
     <item>
       <title>개발문화</title>
-      <link>https://windshock.github.io/ko/tags/%EA%B0%9C%EB%B0%9C%EB%AC%B8%ED%99%94/</link>
+      <link>http://localhost:1313/ko/tags/%EA%B0%9C%EB%B0%9C%EB%AC%B8%ED%99%94/</link>
       <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/%EA%B0%9C%EB%B0%9C%EB%AC%B8%ED%99%94/</guid>
+      <guid>http://localhost:1313/ko/tags/%EA%B0%9C%EB%B0%9C%EB%AC%B8%ED%99%94/</guid>
       <description></description>
     </item>
     <item>
       <title>보안 평가</title>
-      <link>https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88-%ED%8F%89%EA%B0%80/</link>
+      <link>http://localhost:1313/ko/tags/%EB%B3%B4%EC%95%88-%ED%8F%89%EA%B0%80/</link>
       <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88-%ED%8F%89%EA%B0%80/</guid>
+      <guid>http://localhost:1313/ko/tags/%EB%B3%B4%EC%95%88-%ED%8F%89%EA%B0%80/</guid>
       <description></description>
     </item>
     <item>
       <title>정적 분석 도구</title>
-      <link>https://windshock.github.io/ko/tags/%EC%A0%95%EC%A0%81-%EB%B6%84%EC%84%9D-%EB%8F%84%EA%B5%AC/</link>
+      <link>http://localhost:1313/ko/tags/%EC%A0%95%EC%A0%81-%EB%B6%84%EC%84%9D-%EB%8F%84%EA%B5%AC/</link>
       <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/%EC%A0%95%EC%A0%81-%EB%B6%84%EC%84%9D-%EB%8F%84%EA%B5%AC/</guid>
+      <guid>http://localhost:1313/ko/tags/%EC%A0%95%EC%A0%81-%EB%B6%84%EC%84%9D-%EB%8F%84%EA%B5%AC/</guid>
       <description></description>
     </item>
     <item>
       <title>Javascript</title>
-      <link>https://windshock.github.io/ko/tags/javascript/</link>
+      <link>http://localhost:1313/ko/tags/javascript/</link>
       <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/javascript/</guid>
+      <guid>http://localhost:1313/ko/tags/javascript/</guid>
       <description></description>
     </item>
     <item>
       <title>XSS</title>
-      <link>https://windshock.github.io/ko/tags/xss/</link>
+      <link>http://localhost:1313/ko/tags/xss/</link>
       <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/xss/</guid>
+      <guid>http://localhost:1313/ko/tags/xss/</guid>
       <description></description>
     </item>
     <item>
       <title>XSSAudit</title>
-      <link>https://windshock.github.io/ko/tags/xssaudit/</link>
+      <link>http://localhost:1313/ko/tags/xssaudit/</link>
       <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/xssaudit/</guid>
+      <guid>http://localhost:1313/ko/tags/xssaudit/</guid>
       <description></description>
     </item>
   </channel>
