@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>취약점 on Code Before Breach</title>
-    <link>http://localhost:1313/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/</link>
+    <link>https://windshock.github.io/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/</link>
     <description>Recent content in 취약점 on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
     <lastBuildDate>Sun, 16 Jun 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://windshock.github.io/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>보안진단 담당자의 흔한 착각</title>
-      <link>http://localhost:1313/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</link>
+      <link>https://windshock.github.io/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</guid>
+      <guid>https://windshock.github.io/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</guid>
       <description>&lt;h1 id=&#34;보안진단-담당자의-흔한-착각&#34;&gt;보안진단 담당자의 흔한 착각&lt;/h1&gt;
-&lt;p&gt;&lt;img alt=&#34;Common Misconceptions Toon&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/post/misconceptions-of-security-assessors.webp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Common Misconceptions Toon&#34; loading=&#34;lazy&#34; src=&#34;https://windshock.github.io/images/post/misconceptions-of-security-assessors.webp&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;비효율적인-취약점-평가-구조와-대응-방법&#34;&gt;비효율적인 취약점 평가 구조와 대응 방법&lt;/h2&gt;
 &lt;h1 id=&#34;서론&#34;&gt;서론&lt;/h1&gt;
 &lt;p&gt;사이버 보안 환경이 끊임없이 변화하면서 보안 취약점 평가는 잠재적인 보안 침해에 대한 주요 방어수단으로 자리잡고 있습니다. 그러나 이에 대한 일반적인 오해로 인해 평가의 실효성이 저하되는 경우가 많습니다. 본 글에서는 보안 취약점 평가에 대한 잘못된 인식을 살펴보고, 이를 극복할 수 있는 효과적인 전략을 제시함으로써 조직의 보안 수준 향상을 지원하고자 합니다.&lt;/p&gt;

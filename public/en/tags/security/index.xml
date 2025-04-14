@@ -2,25 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Security on Code Before Breach</title>
-    <link>http://localhost:1313/en/tags/security/</link>
+    <link>https://windshock.github.io/en/tags/security/</link>
     <description>Recent content in Security on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
     <lastBuildDate>Tue, 01 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://windshock.github.io/en/tags/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Common Security Myths Developers Tell Themselves</title>
-      <link>http://localhost:1313/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</link>
+      <link>https://windshock.github.io/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</guid>
+      <guid>https://windshock.github.io/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</guid>
       <description>This article breaks down common developer security myths—responsibility deflection, overconfidence in technology, and security underestimation—and offers realistic countermeasures.</description>
     </item>
     <item>
       <title>XML-RPC Security Vulnerabilities Analysis and Mitigation Strategies</title>
-      <link>http://localhost:1313/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</link>
+      <link>https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</link>
       <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</guid>
-      <description>&lt;p&gt;&lt;img alt=&#34;XML-RPC background&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/post/xmlrpc-security.webp&#34;&gt;&lt;/p&gt;
+      <guid>https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</guid>
+      <description>&lt;p&gt;&lt;img alt=&#34;XML-RPC background&#34; loading=&#34;lazy&#34; src=&#34;https://windshock.github.io/images/post/xmlrpc-security.webp&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Overview of XML-RPC Vulnerabilities:&lt;/strong&gt; As a lightweight remote call protocol for inter-system communication, XML-RPC is exposed to various threats such as RCE, XXE, DDoS, and privilege escalation.&lt;/li&gt;
@@ -33,11 +33,11 @@
     </item>
     <item>
       <title>Common Misconceptions of Security Assessors</title>
-      <link>http://localhost:1313/en/post/2024-06-16-common-misconceptions-of-security-assessors/</link>
+      <link>https://windshock.github.io/en/post/2024-06-16-common-misconceptions-of-security-assessors/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2024-06-16-common-misconceptions-of-security-assessors/</guid>
+      <guid>https://windshock.github.io/en/post/2024-06-16-common-misconceptions-of-security-assessors/</guid>
       <description>&lt;h1 id=&#34;common-misconceptions-of-security-assessors&#34;&gt;Common Misconceptions of Security Assessors&lt;/h1&gt;
-&lt;p&gt;&lt;img alt=&#34;Common Misconceptions Toon&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/post/misconceptions-of-security-assessors.webp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Common Misconceptions Toon&#34; loading=&#34;lazy&#34; src=&#34;https://windshock.github.io/images/post/misconceptions-of-security-assessors.webp&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;inefficient-vulnerability-evaluation-structure-and-response-methods&#34;&gt;Inefficient Vulnerability Evaluation Structure and Response Methods&lt;/h2&gt;
 &lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;As the cybersecurity landscape constantly evolves, vulnerability assessment has become a critical defense against potential security breaches. However, due to common misconceptions, the effectiveness of these evaluations often diminishes. In this article, we will explore the common misconceptions about security vulnerability assessments and suggest effective strategies to overcome these issues, ultimately supporting the improvement of organizational security levels.&lt;/p&gt;</description>

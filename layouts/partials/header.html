@@ -177,7 +177,7 @@
     const lang = navigator.language || navigator.userLanguage;
     const isRoot = window.location.pathname === "/en/";
     const alreadyShown = localStorage.getItem("langBannerDismissed");
-    alert("lang="+ lang + ", isRoot=" + isRoot + ", alreadyShown=" + alreadyShown)
+    alert(lang + "navigator.language=" + navigator.language + ", navigator.userLanguage" + navigator.userLanguage + ", isRoot=" + isRoot + ", alreadyShown=" + alreadyShown)
 
     if (alreadyShown) {
       const banner = document.getElementById("lang-banner");
