@@ -42,18 +42,19 @@
 <!-- Featured Posts 섹션 -->
 {{ $borderColors := slice "border-red-400" "border-orange-400" "border-yellow-400" "border-lime-400" "border-emerald-400" "border-sky-400" "border-indigo-400" "border-pink-400" }}
 
-<section class="py-6 max-w-6xl mx-auto">
+<section class="py-6 max-w-6xl mx-auto animate-fade-in-up">
   <h2 class="text-xl font-extrabold mb-4 flex items-center gap-2 text-wes-muted dark:text-wes-light">
     🔥 {{ if eq .Site.Language.Lang "ko" }}추천 글{{ else }}Featured Posts{{ end }}
   </h2>
 
-
   <div class="swiper mySwiper px-4 md:px-0">
     <div class="swiper-wrapper">
       {{ range $index, $post := $featured }}
+        {{ $borderColors := slice "border-red-400" "border-orange-400" "border-yellow-400" }}
         {{ $borderColor := index $borderColors (mod $index (len $borderColors)) }}
+        
+        <div class="swiper-slide transform transition duration-500 hover:scale-[1.04] hover:-translate-y-1 hover:shadow-lg">
 
-        <div class="swiper-slide transition-transform transform hover:scale-[1.03] hover:rotate-[0.3deg] duration-300">
           <a href="{{ $post.Permalink }}"
              class="relative block rounded-xl overflow-hidden border {{ $borderColor }} shadow-xl bg-black/90 backdrop-blur-md">
 
@@ -84,10 +85,11 @@
         </div>
       {{ end }}
     </div>
+
+    <!-- 페이지네이션 -->
     <div class="swiper-pagination mt-2"></div>
   </div>
 </section>
-
 
 {{ end }}
 
