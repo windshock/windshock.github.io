@@ -1,3 +1,26 @@
+{{ if and (eq .Kind "home") (eq .Lang "en") }}
+<div id="lang-banner" 
+     class="bg-amber-600 dark:bg-amber-700 text-white font-medium px-4 py-2 text-sm flex justify-between items-center shadow-md rounded-b-md z-50" hidden>
+  
+  <div class="flex items-center space-x-2">
+    <span class="text-xl">🇰🇷</span>
+    <span class="tracking-tight">한국어 페이지로 이동하시겠습니까?</span>
+  </div>
+
+  <div class="flex items-center space-x-4">
+    <a href="/ko/" 
+       class="underline font-semibold hover:text-yellow-200 dark:hover:text-yellow-100 transition">
+      이동
+    </a>
+    <button 
+       onclick="document.getElementById('lang-banner').classList.add('hidden')" 
+       class="underline hover:text-yellow-100 dark:hover:text-yellow-300 transition">
+      닫기
+    </button>
+  </div>
+</div>
+{{ end }}
+
 {{- /* theme-toggle is enabled */}}
 {{- if (not site.Params.disableThemeToggle) }}
 {{- /* theme is light */}}
@@ -147,3 +170,32 @@
         </ul>
     </nav>
 </header>
+
+{{ if and (eq .Kind "home") (eq .Lang "en") }}
+<script>
+  (function () {
+    const lang = navigator.language || navigator.userLanguage;
+    const isRoot = window.location.pathname === "/en/";
+    const alreadyShown = localStorage.getItem("langBannerDismissed");
+
+    if (isRoot && alreadyShown) {
+      const banner = document.getElementById("lang-banner");
+      if (banner) banner.classList.add("hidden");
+    }
+
+    if (lang.startsWith("ko") && isRoot && !alreadyShown) {
+      const banner = document.getElementById("lang-banner");
+      if (banner) banner.classList.remove("hidden");
+      localStorage.setItem("langBannerDismissed", "true");
+    }
+
+    // 배너 닫기 시 localStorage 저장
+    window.addEventListener('click', function (e) {
+      if (e.target && (e.target.textContent === '닫기' || e.target.textContent === '이동')) {
+        localStorage.setItem("langBannerDismissed", "true");
+      }
+    });
+  })();
+</script>
+{{ end }}
+
