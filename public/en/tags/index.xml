@@ -6,8 +6,43 @@
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 07 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 17 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CVE</title>
+      <link>https://windshock.github.io/en/tags/cve/</link>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/cve/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Open Source</title>
+      <link>https://windshock.github.io/en/tags/open-source/</link>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/open-source/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Policy</title>
+      <link>https://windshock.github.io/en/tags/policy/</link>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/policy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Public Goods</title>
+      <link>https://windshock.github.io/en/tags/public-goods/</link>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/public-goods/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>https://windshock.github.io/en/tags/security/</link>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/security/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AI</title>
       <link>https://windshock.github.io/en/tags/ai/</link>
@@ -76,13 +111,6 @@
       <link>https://windshock.github.io/en/tags/rust/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/en/tags/rust/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Security</title>
-      <link>https://windshock.github.io/en/tags/security/</link>
-      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/security/</guid>
       <description></description>
     </item>
     <item>

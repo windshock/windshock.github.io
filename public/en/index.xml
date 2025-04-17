@@ -6,8 +6,15 @@
     <description>Recent content in Code Before Breach - Secure Coding, Automation &amp; Shift-Left on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 07 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 17 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>There’s No Such Thing as a Free Lunch, But Security Was Free</title>
+      <link>https://windshock.github.io/en/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</link>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</guid>
+      <description>The global security community has depended on CVE for decades without ever paying a dime. As the system nears collapse, it&amp;rsquo;s time to ask who should bear the cost of public cybersecurity infrastructure.</description>
+    </item>
     <item>
       <title>In the AI Era, Employees Are Isolated and Organizations Thrive</title>
       <link>https://windshock.github.io/en/post/2025-04-07-evil-management-manual/</link>

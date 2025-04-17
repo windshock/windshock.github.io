@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Policy on Code Before Breach</title>
+    <link>https://windshock.github.io/ko/categories/policy/</link>
+    <description>Recent content in Policy on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>ko-KR</language>
+    <lastBuildDate>Thu, 17 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/ko/categories/policy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>공짜 점심은 없지만, 보안에는 공짜가 있었다</title>
+      <link>https://windshock.github.io/ko/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</link>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</guid>
+      <description>전 세계 보안 커뮤니티는 수십 년 동안 CVE 시스템에 의존해왔지만, 그 대가를 지불한 적은 거의 없습니다. 이제 이 공공 보안 인프라의 지속 가능성을 위해 누가 비용을 부담해야 할지 물어야 할 때입니다.</description>
+    </item>
+  </channel>
+</rss>

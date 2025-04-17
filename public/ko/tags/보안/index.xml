@@ -6,8 +6,15 @@
     <description>Recent content in 보안 on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Sun, 16 Jun 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 17 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>공짜 점심은 없지만, 보안에는 공짜가 있었다</title>
+      <link>https://windshock.github.io/ko/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</link>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</guid>
+      <description>전 세계 보안 커뮤니티는 수십 년 동안 CVE 시스템에 의존해왔지만, 그 대가를 지불한 적은 거의 없습니다. 이제 이 공공 보안 인프라의 지속 가능성을 위해 누가 비용을 부담해야 할지 물어야 할 때입니다.</description>
+    </item>
     <item>
       <title>보안진단 담당자의 흔한 착각</title>
       <link>https://windshock.github.io/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</link>

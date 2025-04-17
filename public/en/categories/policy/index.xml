@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Policy on Code Before Breach</title>
+    <link>https://windshock.github.io/en/categories/policy/</link>
+    <description>Recent content in Policy on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 17 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/en/categories/policy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>There’s No Such Thing as a Free Lunch, But Security Was Free</title>
+      <link>https://windshock.github.io/en/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</link>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</guid>
+      <description>The global security community has depended on CVE for decades without ever paying a dime. As the system nears collapse, it&amp;rsquo;s time to ask who should bear the cost of public cybersecurity infrastructure.</description>
+    </item>
+  </channel>
+</rss>
