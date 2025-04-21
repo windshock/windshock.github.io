@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>KakaoPay on Code Before Breach</title>
+    <link>http://localhost:1313/en/tags/kakaopay/</link>
+    <description>Recent content in KakaoPay on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 21 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/tags/kakaopay/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Is Your Data in the Cat&#39;s Paws?</title>
+      <link>http://localhost:1313/en/post/2025-04-21-expert-personal-data-report/</link>
+      <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/post/2025-04-21-expert-personal-data-report/</guid>
+      <description>The 2025 KakaoPay case exposed the limits of formal consent and self-regulation. Data democracy must be achieved through AI-based DPIA verification and civic oversight.</description>
+    </item>
+  </channel>
+</rss>

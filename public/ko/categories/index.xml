@@ -2,122 +2,122 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Categories on Code Before Breach</title>
-    <link>https://windshock.github.io/ko/categories/</link>
+    <link>http://localhost:1313/ko/categories/</link>
     <description>Recent content in Categories on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Thu, 17 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://windshock.github.io/ko/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/ko/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Policy</title>
-      <link>https://windshock.github.io/ko/categories/policy/</link>
-      <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/categories/policy/</guid>
+      <link>http://localhost:1313/ko/categories/policy/</link>
+      <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/categories/policy/</guid>
       <description></description>
     </item>
     <item>
       <title>Security</title>
-      <link>https://windshock.github.io/ko/categories/security/</link>
-      <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/categories/security/</guid>
+      <link>http://localhost:1313/ko/categories/security/</link>
+      <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/categories/security/</guid>
       <description></description>
     </item>
     <item>
       <title>기획</title>
-      <link>https://windshock.github.io/ko/categories/%EA%B8%B0%ED%9A%8D/</link>
+      <link>http://localhost:1313/ko/categories/%EA%B8%B0%ED%9A%8D/</link>
       <pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/categories/%EA%B8%B0%ED%9A%8D/</guid>
+      <guid>http://localhost:1313/ko/categories/%EA%B8%B0%ED%9A%8D/</guid>
       <description></description>
     </item>
     <item>
       <title>에세이</title>
-      <link>https://windshock.github.io/ko/categories/%EC%97%90%EC%84%B8%EC%9D%B4/</link>
+      <link>http://localhost:1313/ko/categories/%EC%97%90%EC%84%B8%EC%9D%B4/</link>
       <pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/categories/%EC%97%90%EC%84%B8%EC%9D%B4/</guid>
+      <guid>http://localhost:1313/ko/categories/%EC%97%90%EC%84%B8%EC%9D%B4/</guid>
       <description></description>
     </item>
     <item>
       <title>보안</title>
-      <link>https://windshock.github.io/ko/categories/%EB%B3%B4%EC%95%88/</link>
+      <link>http://localhost:1313/ko/categories/%EB%B3%B4%EC%95%88/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/categories/%EB%B3%B4%EC%95%88/</guid>
+      <guid>http://localhost:1313/ko/categories/%EB%B3%B4%EC%95%88/</guid>
       <description></description>
     </item>
     <item>
       <title>Cybersecurity</title>
-      <link>https://windshock.github.io/ko/categories/cybersecurity/</link>
+      <link>http://localhost:1313/ko/categories/cybersecurity/</link>
       <pubDate>Fri, 28 Mar 2025 08:39:00 +0900</pubDate>
-      <guid>https://windshock.github.io/ko/categories/cybersecurity/</guid>
+      <guid>http://localhost:1313/ko/categories/cybersecurity/</guid>
       <description></description>
     </item>
     <item>
       <title>Bypass</title>
-      <link>https://windshock.github.io/ko/categories/bypass/</link>
+      <link>http://localhost:1313/ko/categories/bypass/</link>
       <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/categories/bypass/</guid>
+      <guid>http://localhost:1313/ko/categories/bypass/</guid>
       <description></description>
     </item>
     <item>
       <title>Citrix</title>
-      <link>https://windshock.github.io/ko/categories/citrix/</link>
+      <link>http://localhost:1313/ko/categories/citrix/</link>
       <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/categories/citrix/</guid>
+      <guid>http://localhost:1313/ko/categories/citrix/</guid>
       <description></description>
     </item>
     <item>
       <title>KPI</title>
-      <link>https://windshock.github.io/ko/categories/kpi/</link>
+      <link>http://localhost:1313/ko/categories/kpi/</link>
       <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/categories/kpi/</guid>
+      <guid>http://localhost:1313/ko/categories/kpi/</guid>
       <description></description>
     </item>
     <item>
       <title>조직관리</title>
-      <link>https://windshock.github.io/ko/categories/%EC%A1%B0%EC%A7%81%EA%B4%80%EB%A6%AC/</link>
+      <link>http://localhost:1313/ko/categories/%EC%A1%B0%EC%A7%81%EA%B4%80%EB%A6%AC/</link>
       <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/categories/%EC%A1%B0%EC%A7%81%EA%B4%80%EB%A6%AC/</guid>
+      <guid>http://localhost:1313/ko/categories/%EC%A1%B0%EC%A7%81%EA%B4%80%EB%A6%AC/</guid>
       <description></description>
     </item>
     <item>
       <title>보안진단</title>
-      <link>https://windshock.github.io/ko/categories/%EB%B3%B4%EC%95%88%EC%A7%84%EB%8B%A8/</link>
+      <link>http://localhost:1313/ko/categories/%EB%B3%B4%EC%95%88%EC%A7%84%EB%8B%A8/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/categories/%EB%B3%B4%EC%95%88%EC%A7%84%EB%8B%A8/</guid>
+      <guid>http://localhost:1313/ko/categories/%EB%B3%B4%EC%95%88%EC%A7%84%EB%8B%A8/</guid>
       <description></description>
     </item>
     <item>
       <title>취약점평가</title>
-      <link>https://windshock.github.io/ko/categories/%EC%B7%A8%EC%95%BD%EC%A0%90%ED%8F%89%EA%B0%80/</link>
+      <link>http://localhost:1313/ko/categories/%EC%B7%A8%EC%95%BD%EC%A0%90%ED%8F%89%EA%B0%80/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/categories/%EC%B7%A8%EC%95%BD%EC%A0%90%ED%8F%89%EA%B0%80/</guid>
+      <guid>http://localhost:1313/ko/categories/%EC%B7%A8%EC%95%BD%EC%A0%90%ED%8F%89%EA%B0%80/</guid>
       <description></description>
     </item>
     <item>
       <title>개발문화</title>
-      <link>https://windshock.github.io/ko/categories/%EA%B0%9C%EB%B0%9C%EB%AC%B8%ED%99%94/</link>
+      <link>http://localhost:1313/ko/categories/%EA%B0%9C%EB%B0%9C%EB%AC%B8%ED%99%94/</link>
       <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/categories/%EA%B0%9C%EB%B0%9C%EB%AC%B8%ED%99%94/</guid>
+      <guid>http://localhost:1313/ko/categories/%EA%B0%9C%EB%B0%9C%EB%AC%B8%ED%99%94/</guid>
       <description></description>
     </item>
     <item>
       <title>Javascript</title>
-      <link>https://windshock.github.io/ko/categories/javascript/</link>
+      <link>http://localhost:1313/ko/categories/javascript/</link>
       <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/categories/javascript/</guid>
+      <guid>http://localhost:1313/ko/categories/javascript/</guid>
       <description></description>
     </item>
     <item>
       <title>XSS</title>
-      <link>https://windshock.github.io/ko/categories/xss/</link>
+      <link>http://localhost:1313/ko/categories/xss/</link>
       <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/categories/xss/</guid>
+      <guid>http://localhost:1313/ko/categories/xss/</guid>
       <description></description>
     </item>
     <item>
       <title>XSSAudit</title>
-      <link>https://windshock.github.io/ko/categories/xssaudit/</link>
+      <link>http://localhost:1313/ko/categories/xssaudit/</link>
       <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/categories/xssaudit/</guid>
+      <guid>http://localhost:1313/ko/categories/xssaudit/</guid>
       <description></description>
     </item>
   </channel>

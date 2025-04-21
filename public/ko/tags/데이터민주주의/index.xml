@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>데이터민주주의 on Code Before Breach</title>
+    <link>http://localhost:1313/ko/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%AF%BC%EC%A3%BC%EC%A3%BC%EC%9D%98/</link>
+    <description>Recent content in 데이터민주주의 on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>ko-KR</language>
+    <lastBuildDate>Mon, 21 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/ko/tags/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%AF%BC%EC%A3%BC%EC%A3%BC%EC%9D%98/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>내 정보, 고양이 손에 맡겼나요?</title>
+      <link>http://localhost:1313/ko/post/2025-04-21-expert-personal-data-report/</link>
+      <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/post/2025-04-21-expert-personal-data-report/</guid>
+      <description>2025년 카카오페이 사건은 형식적 동의와 자율 규제의 한계를 드러냈습니다. AI 기반 DPIA 검증과 시민 감시를 통해 데이터 민주주의를 실현해야 합니다.</description>
+    </item>
+    <item>
+      <title>내 정보, 고양이 손에 맡겼나요?</title>
+      <link>http://localhost:1313/ko/post/2025-04-21-expert-personal-data-report2/</link>
+      <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/post/2025-04-21-expert-personal-data-report2/</guid>
+      <description>2025년 카카오페이 사건은 개인정보 보호 체계의 구조적 한계를 드러냈습니다. 형식적 동의와 자율 규제의 실패를 넘어, 시민 감시와 제도 개혁의 필요성을 제기합니다.</description>
+    </item>
+  </channel>
+</rss>
