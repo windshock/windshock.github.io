@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Mon, 21 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CVE-2019-17570 Apache XML-RPC 취약점 분석 보고서</title>
+      <link>https://windshock.github.io/ko/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</link>
+      <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</guid>
+      <description>Apache XML-RPC 라이브러리의 역직렬화 취약점 CVE-2019-17570에 대한 상세 분석과 패치 방법 및 안전한 구현 방법을 제시합니다.</description>
+    </item>
     <item>
       <title>내 정보, 고양이 손에 맡겼나요?</title>
       <link>https://windshock.github.io/ko/post/2025-04-21-expert-personal-data-report/</link>

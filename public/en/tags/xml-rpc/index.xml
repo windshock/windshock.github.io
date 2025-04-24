@@ -6,8 +6,15 @@
     <description>Recent content in XML-RPC on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 28 Mar 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/tags/xml-rpc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CVE-2019-17570 Apache XML-RPC Vulnerability Analysis Report</title>
+      <link>https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</link>
+      <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</guid>
+      <description>A detailed analysis of the CVE-2019-17570 deserialization vulnerability in the Apache XML-RPC library, including patching methods and secure implementation practices.</description>
+    </item>
     <item>
       <title>XML-RPC Security Vulnerabilities Analysis and Mitigation Strategies</title>
       <link>https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</link>

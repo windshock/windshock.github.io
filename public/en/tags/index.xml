@@ -6,8 +6,43 @@
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 21 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apache</title>
+      <link>https://windshock.github.io/en/tags/apache/</link>
+      <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/apache/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deserialization</title>
+      <link>https://windshock.github.io/en/tags/deserialization/</link>
+      <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/deserialization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RCE</title>
+      <link>https://windshock.github.io/en/tags/rce/</link>
+      <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/rce/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vulnerability Analysis</title>
+      <link>https://windshock.github.io/en/tags/vulnerability-analysis/</link>
+      <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/vulnerability-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>XML-RPC</title>
+      <link>https://windshock.github.io/en/tags/xml-rpc/</link>
+      <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/xml-rpc/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AI</title>
       <link>https://windshock.github.io/en/tags/ai/</link>
@@ -195,20 +230,6 @@
       <link>https://windshock.github.io/en/tags/exploit/</link>
       <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/en/tags/exploit/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>RCE</title>
-      <link>https://windshock.github.io/en/tags/rce/</link>
-      <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/rce/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>XML-RPC</title>
-      <link>https://windshock.github.io/en/tags/xml-rpc/</link>
-      <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/xml-rpc/</guid>
       <description></description>
     </item>
     <item>
