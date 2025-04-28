@@ -6,8 +6,22 @@
     <description>Recent content in Categories on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Thu, 24 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 28 Apr 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Security Research</title>
+      <link>https://windshock.github.io/ko/categories/security-research/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/categories/security-research/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Telecom Security</title>
+      <link>https://windshock.github.io/ko/categories/telecom-security/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/categories/telecom-security/</guid>
+      <description></description>
+    </item>
     <item>
       <title>보안 리서치</title>
       <link>https://windshock.github.io/ko/categories/%EB%B3%B4%EC%95%88-%EB%A6%AC%EC%84%9C%EC%B9%98/</link>

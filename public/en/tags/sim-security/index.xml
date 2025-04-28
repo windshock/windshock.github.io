@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SIM Security on Code Before Breach</title>
+    <link>https://windshock.github.io/en/tags/sim-security/</link>
+    <description>Recent content in SIM Security on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 28 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/en/tags/sim-security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>In-Depth Report on Telecommunication Security: SKT Breach and Global Case Studies</title>
+      <link>https://windshock.github.io/en/post/2025-04-28-telecom-security-breach-analysis/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2025-04-28-telecom-security-breach-analysis/</guid>
+      <description>An in-depth analysis focusing on the 2025 SKT breach, the core security structures of telecom infrastructure, and historical global incidents (Gemalto, APT10, Circles). Also covers subscriber authentication (Ki, SUPI/SUCI) and security differences between 5G SA and NSA.</description>
+    </item>
+  </channel>
+</rss>
