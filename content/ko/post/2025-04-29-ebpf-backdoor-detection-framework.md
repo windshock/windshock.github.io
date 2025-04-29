@@ -358,5 +358,21 @@ eBPF 기반 백도어에 대응하기 위해서는 **다층적인 탐지와 예�
 
 **참고 자료:** 주요 내용은 2023\~2025년에 발표된 공개 자료를 참고하였으며, Aqua Security, Sysdig, Trend Micro, Red Canary 등의 공식 블로그와 학술 연구​[scitepress.org](https://www.scitepress.org/Papers/2024/124708/124708.pdf#:~:text=Rootkits%20based%20on%20eBPF%20programs,to%20detect%20malicious%20eBPF%20programs)​[scitepress.org](https://www.scitepress.org/Papers/2024/124708/124708.pdf#:~:text=out%3A%20Tracee%20,event%20oc%02curs%20whenever%20an%20eBPF)를 기반으로 정리되었습니다. 각주에 표시된 출처를 통해 세부 내용을 확인할 수 있습니다.
 
+## 📌 추가 참고: 국가용 보안요구사항에서도 커널 무결성 검증은 강화되어야 합니다
+
+국가용 보안요구사항에서도 커널 무결성 검증은 '조건부 필수'로 규정되어 있습니다.  
+하지만 **중요 기반시설, 외부 노출 서버, 중요정보 처리 서버**에서는 선택사항이 아니라 **반드시 필수 요건**으로 강화되어야 합니다.  
+커널 무결성 검증 없이는 시스템의 보안성을 스스로 입증할 수 없습니다.
+
+- 📄 National security requirements reference (Korean): [국가정보원 국가용 보안요구사항 공식 링크](https://www.nis.go.kr/AF/1_7_2_4/view.do?seq=98)
+
+> ※ 현재 기준(서버 공통보안요구사항 v3.0)에서는 운영체제 커널 또는 커널 레벨 모듈에 대해 '조건부 필수'로 무결성 검증 기능을 요구하고 있습니다.
+
+### 관련 자료
+
+| 구분 | 이미지 |
+|:----|:----|
+| 국가용 보안요구사항 체계도 | ![국가용 보안요구사항 체계](/images/post/NationalSecurityRequirementsFramework.webp) |
+| 커널 무결성 검증 항목 (서버 공통보안요구사항 발췌) | ![커널 무결성 검증 항목](/images/post/KernelIntegrityValidationItem.webp) |
 
 

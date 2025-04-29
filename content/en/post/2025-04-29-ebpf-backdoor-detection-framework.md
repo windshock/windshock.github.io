@@ -426,3 +426,21 @@ Here are actionable recommendations for practical environments:
 
 ---
 
+## 📌 Additional Note: Kernel Integrity Validation Must Be Strengthened in National Security Requirements
+
+In the National Security Requirements (South Korea), kernel integrity validation is currently marked as "conditionally mandatory."  
+However, for **critical infrastructure**, **public-facing servers**, and **sensitive information servers**,  
+it should be treated as an **absolute mandatory** requirement.  
+Without kernel integrity validation, it is impossible to prove the security of the system.
+
+- 📄 National security requirements reference (Korean): [Official link from the National Intelligence Service (NIS)](https://www.nis.go.kr/AF/1_7_2_4/view.do?seq=98)
+
+> ※ As of the latest version (Server Common Security Requirements v3.0), integrity validation of the operating system kernel or kernel-level modules is required conditionally.
+
+### Related Materials
+
+| Category | Image |
+|:----|:----|
+| National Security Requirements Framework | ![National Security Requirements Framework](/images/post/NationalSecurityRequirementsFramework.webp) |
+| Kernel Integrity Validation Requirements (Excerpt) | ![Kernel Integrity Validation Item](/images/post/KernelIntegrityValidationItem.webp) |
+
