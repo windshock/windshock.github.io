@@ -2,367 +2,423 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Code Before Breach</title>
-    <link>https://windshock.github.io/en/tags/</link>
+    <link>http://localhost:1313/en/tags/</link>
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
     <lastBuildDate>Mon, 28 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://windshock.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>5G Security</title>
-      <link>https://windshock.github.io/en/tags/5g-security/</link>
+      <link>http://localhost:1313/en/tags/5g-security/</link>
       <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/5g-security/</guid>
+      <guid>http://localhost:1313/en/tags/5g-security/</guid>
       <description></description>
     </item>
     <item>
       <title>APT Attacks</title>
-      <link>https://windshock.github.io/en/tags/apt-attacks/</link>
+      <link>http://localhost:1313/en/tags/apt-attacks/</link>
       <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/apt-attacks/</guid>
+      <guid>http://localhost:1313/en/tags/apt-attacks/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>BPFDoor</title>
+      <link>http://localhost:1313/en/tags/bpfdoor/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/bpfdoor/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>EBPF</title>
+      <link>http://localhost:1313/en/tags/ebpf/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/ebpf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Forensics</title>
+      <link>http://localhost:1313/en/tags/forensics/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/forensics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hypervisor Audit</title>
+      <link>http://localhost:1313/en/tags/hypervisor-audit/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/hypervisor-audit/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kernel Security</title>
+      <link>http://localhost:1313/en/tags/kernel-security/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/kernel-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LKRG</title>
+      <link>http://localhost:1313/en/tags/lkrg/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/lkrg/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Rootkit Detection</title>
+      <link>http://localhost:1313/en/tags/rootkit-detection/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/rootkit-detection/</guid>
       <description></description>
     </item>
     <item>
       <title>SIM Security</title>
-      <link>https://windshock.github.io/en/tags/sim-security/</link>
+      <link>http://localhost:1313/en/tags/sim-security/</link>
       <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/sim-security/</guid>
+      <guid>http://localhost:1313/en/tags/sim-security/</guid>
       <description></description>
     </item>
     <item>
       <title>SKT Breach</title>
-      <link>https://windshock.github.io/en/tags/skt-breach/</link>
+      <link>http://localhost:1313/en/tags/skt-breach/</link>
       <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/skt-breach/</guid>
+      <guid>http://localhost:1313/en/tags/skt-breach/</guid>
       <description></description>
     </item>
     <item>
       <title>SS7 Vulnerability</title>
-      <link>https://windshock.github.io/en/tags/ss7-vulnerability/</link>
+      <link>http://localhost:1313/en/tags/ss7-vulnerability/</link>
       <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/ss7-vulnerability/</guid>
+      <guid>http://localhost:1313/en/tags/ss7-vulnerability/</guid>
       <description></description>
     </item>
     <item>
       <title>Telecom Security</title>
-      <link>https://windshock.github.io/en/tags/telecom-security/</link>
+      <link>http://localhost:1313/en/tags/telecom-security/</link>
       <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/telecom-security/</guid>
+      <guid>http://localhost:1313/en/tags/telecom-security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tracee</title>
+      <link>http://localhost:1313/en/tags/tracee/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/tracee/</guid>
       <description></description>
     </item>
     <item>
       <title>Apache</title>
-      <link>https://windshock.github.io/en/tags/apache/</link>
+      <link>http://localhost:1313/en/tags/apache/</link>
       <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/apache/</guid>
+      <guid>http://localhost:1313/en/tags/apache/</guid>
       <description></description>
     </item>
     <item>
       <title>Deserialization</title>
-      <link>https://windshock.github.io/en/tags/deserialization/</link>
+      <link>http://localhost:1313/en/tags/deserialization/</link>
       <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/deserialization/</guid>
+      <guid>http://localhost:1313/en/tags/deserialization/</guid>
       <description></description>
     </item>
     <item>
       <title>RCE</title>
-      <link>https://windshock.github.io/en/tags/rce/</link>
+      <link>http://localhost:1313/en/tags/rce/</link>
       <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/rce/</guid>
+      <guid>http://localhost:1313/en/tags/rce/</guid>
       <description></description>
     </item>
     <item>
       <title>Vulnerability Analysis</title>
-      <link>https://windshock.github.io/en/tags/vulnerability-analysis/</link>
+      <link>http://localhost:1313/en/tags/vulnerability-analysis/</link>
       <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/vulnerability-analysis/</guid>
+      <guid>http://localhost:1313/en/tags/vulnerability-analysis/</guid>
       <description></description>
     </item>
     <item>
       <title>XML-RPC</title>
-      <link>https://windshock.github.io/en/tags/xml-rpc/</link>
+      <link>http://localhost:1313/en/tags/xml-rpc/</link>
       <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/xml-rpc/</guid>
+      <guid>http://localhost:1313/en/tags/xml-rpc/</guid>
       <description></description>
     </item>
     <item>
       <title>AI</title>
-      <link>https://windshock.github.io/en/tags/ai/</link>
+      <link>http://localhost:1313/en/tags/ai/</link>
       <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/ai/</guid>
+      <guid>http://localhost:1313/en/tags/ai/</guid>
       <description></description>
     </item>
     <item>
       <title>Civic Participation</title>
-      <link>https://windshock.github.io/en/tags/civic-participation/</link>
+      <link>http://localhost:1313/en/tags/civic-participation/</link>
       <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/civic-participation/</guid>
+      <guid>http://localhost:1313/en/tags/civic-participation/</guid>
       <description></description>
     </item>
     <item>
       <title>Data Democracy</title>
-      <link>https://windshock.github.io/en/tags/data-democracy/</link>
+      <link>http://localhost:1313/en/tags/data-democracy/</link>
       <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/data-democracy/</guid>
+      <guid>http://localhost:1313/en/tags/data-democracy/</guid>
       <description></description>
     </item>
     <item>
       <title>KakaoPay</title>
-      <link>https://windshock.github.io/en/tags/kakaopay/</link>
+      <link>http://localhost:1313/en/tags/kakaopay/</link>
       <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/kakaopay/</guid>
+      <guid>http://localhost:1313/en/tags/kakaopay/</guid>
       <description></description>
     </item>
     <item>
       <title>Policy</title>
-      <link>https://windshock.github.io/en/tags/policy/</link>
+      <link>http://localhost:1313/en/tags/policy/</link>
       <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/policy/</guid>
+      <guid>http://localhost:1313/en/tags/policy/</guid>
       <description></description>
     </item>
     <item>
       <title>Privacy Protection</title>
-      <link>https://windshock.github.io/en/tags/privacy-protection/</link>
+      <link>http://localhost:1313/en/tags/privacy-protection/</link>
       <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/privacy-protection/</guid>
+      <guid>http://localhost:1313/en/tags/privacy-protection/</guid>
       <description></description>
     </item>
     <item>
       <title>CVE</title>
-      <link>https://windshock.github.io/en/tags/cve/</link>
+      <link>http://localhost:1313/en/tags/cve/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/cve/</guid>
+      <guid>http://localhost:1313/en/tags/cve/</guid>
       <description></description>
     </item>
     <item>
       <title>Open Source</title>
-      <link>https://windshock.github.io/en/tags/open-source/</link>
+      <link>http://localhost:1313/en/tags/open-source/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/open-source/</guid>
+      <guid>http://localhost:1313/en/tags/open-source/</guid>
       <description></description>
     </item>
     <item>
       <title>Public Goods</title>
-      <link>https://windshock.github.io/en/tags/public-goods/</link>
+      <link>http://localhost:1313/en/tags/public-goods/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/public-goods/</guid>
+      <guid>http://localhost:1313/en/tags/public-goods/</guid>
       <description></description>
     </item>
     <item>
       <title>Security</title>
-      <link>https://windshock.github.io/en/tags/security/</link>
+      <link>http://localhost:1313/en/tags/security/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/security/</guid>
+      <guid>http://localhost:1313/en/tags/security/</guid>
       <description></description>
     </item>
     <item>
       <title>Dystopia</title>
-      <link>https://windshock.github.io/en/tags/dystopia/</link>
+      <link>http://localhost:1313/en/tags/dystopia/</link>
       <pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/dystopia/</guid>
+      <guid>http://localhost:1313/en/tags/dystopia/</guid>
       <description></description>
     </item>
     <item>
       <title>Organization</title>
-      <link>https://windshock.github.io/en/tags/organization/</link>
+      <link>http://localhost:1313/en/tags/organization/</link>
       <pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/organization/</guid>
+      <guid>http://localhost:1313/en/tags/organization/</guid>
       <description></description>
     </item>
     <item>
       <title>Satire</title>
-      <link>https://windshock.github.io/en/tags/satire/</link>
+      <link>http://localhost:1313/en/tags/satire/</link>
       <pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/satire/</guid>
+      <guid>http://localhost:1313/en/tags/satire/</guid>
       <description></description>
     </item>
     <item>
       <title>AI Ethics</title>
-      <link>https://windshock.github.io/en/tags/ai-ethics/</link>
+      <link>http://localhost:1313/en/tags/ai-ethics/</link>
       <pubDate>Thu, 03 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/ai-ethics/</guid>
+      <guid>http://localhost:1313/en/tags/ai-ethics/</guid>
       <description></description>
     </item>
     <item>
       <title>Creator Rights</title>
-      <link>https://windshock.github.io/en/tags/creator-rights/</link>
+      <link>http://localhost:1313/en/tags/creator-rights/</link>
       <pubDate>Thu, 03 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/creator-rights/</guid>
+      <guid>http://localhost:1313/en/tags/creator-rights/</guid>
       <description></description>
     </item>
     <item>
       <title>Essay</title>
-      <link>https://windshock.github.io/en/tags/essay/</link>
+      <link>http://localhost:1313/en/tags/essay/</link>
       <pubDate>Thu, 03 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/essay/</guid>
+      <guid>http://localhost:1313/en/tags/essay/</guid>
       <description></description>
     </item>
     <item>
       <title>Developer Security</title>
-      <link>https://windshock.github.io/en/tags/developer-security/</link>
+      <link>http://localhost:1313/en/tags/developer-security/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/developer-security/</guid>
+      <guid>http://localhost:1313/en/tags/developer-security/</guid>
       <description></description>
     </item>
     <item>
       <title>Devsecops</title>
-      <link>https://windshock.github.io/en/tags/devsecops/</link>
+      <link>http://localhost:1313/en/tags/devsecops/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/devsecops/</guid>
+      <guid>http://localhost:1313/en/tags/devsecops/</guid>
       <description></description>
     </item>
     <item>
       <title>Rust</title>
-      <link>https://windshock.github.io/en/tags/rust/</link>
+      <link>http://localhost:1313/en/tags/rust/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/rust/</guid>
+      <guid>http://localhost:1313/en/tags/rust/</guid>
       <description></description>
     </item>
     <item>
       <title>Supply Chain</title>
-      <link>https://windshock.github.io/en/tags/supply-chain/</link>
+      <link>http://localhost:1313/en/tags/supply-chain/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/supply-chain/</guid>
+      <guid>http://localhost:1313/en/tags/supply-chain/</guid>
       <description></description>
     </item>
     <item>
       <title>DNS</title>
-      <link>https://windshock.github.io/en/tags/dns/</link>
+      <link>http://localhost:1313/en/tags/dns/</link>
       <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/dns/</guid>
+      <guid>http://localhost:1313/en/tags/dns/</guid>
       <description></description>
     </item>
     <item>
       <title>Dnsmasq</title>
-      <link>https://windshock.github.io/en/tags/dnsmasq/</link>
+      <link>http://localhost:1313/en/tags/dnsmasq/</link>
       <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/dnsmasq/</guid>
+      <guid>http://localhost:1313/en/tags/dnsmasq/</guid>
       <description></description>
     </item>
     <item>
       <title>DoH</title>
-      <link>https://windshock.github.io/en/tags/doh/</link>
+      <link>http://localhost:1313/en/tags/doh/</link>
       <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/doh/</guid>
+      <guid>http://localhost:1313/en/tags/doh/</guid>
       <description></description>
     </item>
     <item>
       <title>ECH</title>
-      <link>https://windshock.github.io/en/tags/ech/</link>
+      <link>http://localhost:1313/en/tags/ech/</link>
       <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/ech/</guid>
+      <guid>http://localhost:1313/en/tags/ech/</guid>
       <description></description>
     </item>
     <item>
       <title>Enterprise Security</title>
-      <link>https://windshock.github.io/en/tags/enterprise-security/</link>
+      <link>http://localhost:1313/en/tags/enterprise-security/</link>
       <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/enterprise-security/</guid>
+      <guid>http://localhost:1313/en/tags/enterprise-security/</guid>
       <description></description>
     </item>
     <item>
       <title>ESNI</title>
-      <link>https://windshock.github.io/en/tags/esni/</link>
+      <link>http://localhost:1313/en/tags/esni/</link>
       <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/esni/</guid>
+      <guid>http://localhost:1313/en/tags/esni/</guid>
       <description></description>
     </item>
     <item>
       <title>Exploit</title>
-      <link>https://windshock.github.io/en/tags/exploit/</link>
+      <link>http://localhost:1313/en/tags/exploit/</link>
       <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/exploit/</guid>
+      <guid>http://localhost:1313/en/tags/exploit/</guid>
       <description></description>
     </item>
     <item>
       <title>Bypass</title>
-      <link>https://windshock.github.io/en/tags/bypass/</link>
+      <link>http://localhost:1313/en/tags/bypass/</link>
       <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/bypass/</guid>
+      <guid>http://localhost:1313/en/tags/bypass/</guid>
       <description></description>
     </item>
     <item>
       <title>Citrix</title>
-      <link>https://windshock.github.io/en/tags/citrix/</link>
+      <link>http://localhost:1313/en/tags/citrix/</link>
       <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/citrix/</guid>
+      <guid>http://localhost:1313/en/tags/citrix/</guid>
       <description></description>
     </item>
     <item>
       <title>Evaluation</title>
-      <link>https://windshock.github.io/en/tags/evaluation/</link>
+      <link>http://localhost:1313/en/tags/evaluation/</link>
       <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/evaluation/</guid>
+      <guid>http://localhost:1313/en/tags/evaluation/</guid>
       <description></description>
     </item>
     <item>
       <title>Incident</title>
-      <link>https://windshock.github.io/en/tags/incident/</link>
+      <link>http://localhost:1313/en/tags/incident/</link>
       <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/incident/</guid>
+      <guid>http://localhost:1313/en/tags/incident/</guid>
       <description></description>
     </item>
     <item>
       <title>KPI</title>
-      <link>https://windshock.github.io/en/tags/kpi/</link>
+      <link>http://localhost:1313/en/tags/kpi/</link>
       <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/kpi/</guid>
+      <guid>http://localhost:1313/en/tags/kpi/</guid>
       <description></description>
     </item>
     <item>
       <title>Security Operations</title>
-      <link>https://windshock.github.io/en/tags/security-operations/</link>
+      <link>http://localhost:1313/en/tags/security-operations/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/security-operations/</guid>
+      <guid>http://localhost:1313/en/tags/security-operations/</guid>
       <description></description>
     </item>
     <item>
       <title>Vulnerability</title>
-      <link>https://windshock.github.io/en/tags/vulnerability/</link>
+      <link>http://localhost:1313/en/tags/vulnerability/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/vulnerability/</guid>
+      <guid>http://localhost:1313/en/tags/vulnerability/</guid>
       <description></description>
     </item>
     <item>
       <title>Development Culture</title>
-      <link>https://windshock.github.io/en/tags/development-culture/</link>
+      <link>http://localhost:1313/en/tags/development-culture/</link>
       <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/development-culture/</guid>
+      <guid>http://localhost:1313/en/tags/development-culture/</guid>
       <description></description>
     </item>
     <item>
       <title>Security Evaluation</title>
-      <link>https://windshock.github.io/en/tags/security-evaluation/</link>
+      <link>http://localhost:1313/en/tags/security-evaluation/</link>
       <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/security-evaluation/</guid>
+      <guid>http://localhost:1313/en/tags/security-evaluation/</guid>
       <description></description>
     </item>
     <item>
       <title>Static Analysis Tools</title>
-      <link>https://windshock.github.io/en/tags/static-analysis-tools/</link>
+      <link>http://localhost:1313/en/tags/static-analysis-tools/</link>
       <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/static-analysis-tools/</guid>
+      <guid>http://localhost:1313/en/tags/static-analysis-tools/</guid>
       <description></description>
     </item>
     <item>
       <title>Javascript</title>
-      <link>https://windshock.github.io/en/tags/javascript/</link>
+      <link>http://localhost:1313/en/tags/javascript/</link>
       <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/javascript/</guid>
+      <guid>http://localhost:1313/en/tags/javascript/</guid>
       <description></description>
     </item>
     <item>
       <title>XSS</title>
-      <link>https://windshock.github.io/en/tags/xss/</link>
+      <link>http://localhost:1313/en/tags/xss/</link>
       <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/xss/</guid>
+      <guid>http://localhost:1313/en/tags/xss/</guid>
       <description></description>
     </item>
     <item>
       <title>XSSAudit</title>
-      <link>https://windshock.github.io/en/tags/xssaudit/</link>
+      <link>http://localhost:1313/en/tags/xssaudit/</link>
       <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/xssaudit/</guid>
+      <guid>http://localhost:1313/en/tags/xssaudit/</guid>
       <description></description>
     </item>
   </channel>
