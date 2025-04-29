@@ -170,9 +170,13 @@ echo "[*] Detection completed."
 
 ## **Checking for eBPF Backdoors in OpenStack Environments**
 
-In OpenStack environments, you can directly inspect eBPF activities from the host OS (KVM Hypervisor).
+In OpenStack environments, you can directly inspect eBPF activities occurring on the host OS (KVM Hypervisor), but you cannot directly observe eBPF activities inside guest VMs without additional interaction.
+This command allows you to inspect eBPF activities inside guest VMs directly from the host OS in an OpenStack environment:
 
-### **Inspection Script Using bpftool**
+### **Usage**
+openstack server ssh --vm-id "$VM_ID" -- bash -c "$(cat scan_bpf.sh)" > "result_${VM_ID}.txt" 2>&1
+
+### **Inspection Script Using bpftool(scan_bpf.sh)**
 
 ```bash
 #!/bin/bash

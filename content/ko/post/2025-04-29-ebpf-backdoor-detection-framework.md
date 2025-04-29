@@ -149,9 +149,13 @@ Without kernel integrity protection like LKRG, even detection results can be fak
 
 ## **OpenStack 환경에서의 eBPF 백도어 점검 방법**
 
-OpenStack 환경에서는 호스트 OS(KVM Hypervisor)에서 직접 eBPF 활동을 점검할 수 있습니다.
+OpenStack 환경에서는 호스트 OS(KVM 하이퍼바이저)에서 발생하는 eBPF 활동을 직접 검사할 수 있지만, 추가적인 상호 작용 없이는 게스트 VM 내부의 eBPF 활동을 직접 관찰할 수 없습니다. 다음 명령을 사용하면 OpenStack 환경의 호스트 OS에서 게스트 VM 내부의 eBPF 활동을 직접 검사할 수 있습니다.
 
-### **bpftool을 이용한 점검 스크립트**
+### **사용법** 
+
+openstack server ssh --vm-id "$VM_ID" -- bash -c "$(cat scan_bpf.sh)" > "result_${VM_ID}.txt" 2>&1
+
+### **bpftool을 이용한 점검 스크립트(scan_bpf.sh)**
 
 ```bash
 #!/bin/bash
