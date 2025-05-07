@@ -15,10 +15,7 @@ cover:
 
 ---
 
-<div style="width: 100%; margin: 2rem 0;">
-  <img src="/images/post/ai-insight-vs-human.webp" alt="AI and Human" style="width: 100%; border-radius: 12px;">
-</div>
-
+{{< youtube skG8_7LhmPQ >}}
 
 ## I Realized Something. But Why Don't You Change?
 
