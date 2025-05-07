@@ -50,6 +50,12 @@ googleAnalytics = "G-6N6EEJ259T"
     lang = "en"
     loading = "lazy"
 
+# ✅ iframe 등 HTML 삽입 허용 설정 추가
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 [languages.en.menu]
   [[languages.en.menu.main]]
     identifier = "search"

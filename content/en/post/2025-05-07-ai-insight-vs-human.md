@@ -5,9 +5,20 @@ draft: false
 tags: ["AI", "philosophy", "meta-learning", "neuromorphic", "enlightenment", "machine learning"]
 categories: ["Philosophy", "Artificial Intelligence", "Tech Analysis"]
 summary: "Can AI achieve enlightenment? This article explores the asymmetric nature of human insight and machine repetition, outlining technical conditions that might allow for a reflective AI—and the philosophical limits it must face."
+cover:
+  image: "/images/post/ai-insight-vs-human.webp"  # ✅ 상대 경로
+  alt: "AI and human insight divide"
+  caption: "Background image showing contrast between AI and human mind"
+  relative: true
+  hidden: true     # ✅ 헤더 이미지 숨김
+  #full: true    # ✅ 전체 너비가 아니라 기본 레이아웃에 맞춤 (선택 사항)
+
 ---
 
-![Contrasting human enlightenment and AI's limits](/images/post/ai-insight-vs-human.webp)
+<div style="width: 100%; margin: 2rem 0;">
+  <img src="/images/post/ai-insight-vs-human.webp" alt="AI and Human" style="width: 100%; border-radius: 12px;">
+</div>
+
 
 ## I Realized Something. But Why Don't You Change?
 

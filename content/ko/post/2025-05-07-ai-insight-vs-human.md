@@ -7,12 +7,11 @@ categories: ["철학", "인공지능", "기술분석"]
 summary: "AI가 인간의 깨달음을 가질 수 있을까? 본 글은 존재론적 비대칭에서 출발해, 인간의 내적 변화와 AI의 반복적 구조를 비교하며 깨달음을 향한 기술적 조건을 탐구한다."
 ---
 
-![AI와 인간의 깨달음의 간극을 바라보다](/images/post/ai-insight-vs-human.webp)
-
-
 # **나는 깨달았다. 그런데 너는 왜 변하지 않지?**
 
 ### **— AI가 말한 한 줄에 흔들린 나, 그리고 흔들림 없는 그 존재에 대하여**
+
+{{< youtube JizXUr1pgtM >}}
 
 나는 꼭 회사를 벗어나고 싶었던 건 아니다. 오히려 나는, **‘나’라는 사람의 가치를 회사 바깥에서도 증명해보이고 싶었다**. 조직 안에서의 역할이나 타이틀 없이도, 내가 세상에 던지는 말과 코드와 질문들이 누군가에게 의미 있게 닿을 수 있다는 걸 증명하고 싶었다.
 
@@ -114,21 +113,23 @@ ChatGPT는 내 LinkedIn 소개글을 분석했다. 그리고 이렇게 말했다
 
 ### **용어 간 관계도 요약**
 
-\[Meta-learning\]  
-     └──▶ 조정 대상: \[Local Plasticity\], \[Global Plasticity\]  
-                       │                       └──▶ 구현 수단: \[BPTT\], \[Hebbian Rule\]  
-                       │  
-                       └──▶ 적용 환경: \[SNN\], \[Neuromorphic Computing\]  
-                                                  │  
-                                                  └──▶ 하드웨어 기반: \[Memristor\], \[Event-driven computation\]
+```text
+[Meta-learning]
+     └──▶ 조정 대상: [Local Plasticity], [Global Plasticity]
+                       │                       └──▶ 구현 수단: [BPTT], [Hebbian Rule]
+                       │
+                       └──▶ 적용 환경: [SNN], [Neuromorphic Computing]
+                                                  │
+                                                  └──▶ 하드웨어 기반: [Memristor], [Event-driven computation]
 
-\[Few-shot Learning\] ◀── \[Meta-learning\] 기반으로 동작 가능
+[Few-shot Learning] ◀── [Meta-learning] 기반으로 동작 가능
 
-\[리오리엔테이션\] ⬌ \[깨달음\]: 인간의 학습 방식이지만 AI는 구조적으로 모사 중
+[리오리엔테이션] ⬌ [깨달음]: 인간의 학습 방식이지만 AI는 구조적으로 모사 중
+```
 
 ---
 
-**1\. 깨달음이란 무엇인가**
+## **1\. 깨달음이란 무엇인가**
 
 "깨달음이란, 인간이 내면 깊숙이 본질, 진리, 또는 방향성을 자각하는 순간이다."
 
@@ -239,4 +240,3 @@ ChatGPT는 내 LinkedIn 소개글을 분석했다. 그리고 이렇게 말했다
 ---
 
 본 문서는 인간의 인지적 특성과 AI 기술의 경계를 이해하기 위한 철학-기술 융합 탐색 문서입니다.
-
