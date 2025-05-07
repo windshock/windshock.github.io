@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Philosophy on Code Before Breach</title>
+    <link>https://windshock.github.io/en/tags/philosophy/</link>
+    <description>Recent content in Philosophy on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 07 May 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/en/tags/philosophy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Human Insight and Artificial Intelligence: Dialogue at an Impossible Crossroads</title>
+      <link>https://windshock.github.io/en/post/2025-05-07-ai-insight-vs-human/</link>
+      <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2025-05-07-ai-insight-vs-human/</guid>
+      <description>Can AI achieve enlightenment? This article explores the asymmetric nature of human insight and machine repetition, outlining technical conditions that might allow for a reflective AI—and the philosophical limits it must face.</description>
+    </item>
+  </channel>
+</rss>

@@ -6,8 +6,50 @@
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Mon, 28 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://windshock.github.io/ko/tags/ai/</link>
+      <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Meta-Learning</title>
+      <link>https://windshock.github.io/ko/tags/meta-learning/</link>
+      <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/meta-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Neuromorphic</title>
+      <link>https://windshock.github.io/ko/tags/neuromorphic/</link>
+      <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/neuromorphic/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>기계학습</title>
+      <link>https://windshock.github.io/ko/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/</link>
+      <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>깨달음</title>
+      <link>https://windshock.github.io/ko/tags/%EA%B9%A8%EB%8B%AC%EC%9D%8C/</link>
+      <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/%EA%B9%A8%EB%8B%AC%EC%9D%8C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>철학</title>
+      <link>https://windshock.github.io/ko/tags/%EC%B2%A0%ED%95%99/</link>
+      <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/%EC%B2%A0%ED%95%99/</guid>
+      <description></description>
+    </item>
     <item>
       <title>5G 보안</title>
       <link>https://windshock.github.io/ko/tags/5g-%EB%B3%B4%EC%95%88/</link>
@@ -139,13 +181,6 @@
       <link>https://windshock.github.io/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90-%EB%B6%84%EC%84%9D/</link>
       <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90-%EB%B6%84%EC%84%9D/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>AI</title>
-      <link>https://windshock.github.io/ko/tags/ai/</link>
-      <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/ai/</guid>
       <description></description>
     </item>
     <item>
