@@ -6,8 +6,15 @@
     <description>Recent content in Security on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Tue, 01 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>유지보수 중단 오픈소스를 Gmail과 Snyk 알림으로 관리한 방법</title>
+      <link>https://windshock.github.io/ko/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</guid>
+      <description>Snyk의 웹 UI에만 노출되는 정보를 자동으로 수집해야 했습니다. Gmail과 Apps Script를 활용한 취약점 알림 자동 수집기 구현 사례를 소개합니다.</description>
+    </item>
     <item>
       <title>개발자들 말하는 보안에 대한 흔한 거짓말</title>
       <link>https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/</link>

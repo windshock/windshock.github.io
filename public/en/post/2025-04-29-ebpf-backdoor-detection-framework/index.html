@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,18 +9,18 @@
 <meta name="keywords" content="eBPF, Rootkit Detection, BPFDoor, Kernel Security, Tracee, LKRG, Hypervisor Audit, Forensics">
 <meta name="description" content="This article analyzes the rise of backdoors and rootkits exploiting eBPF, the detection challenges they pose, and comprehensively summarizes the latest countermeasures and research trends (2023–2025), including Tracee, LKRG, bpftool, and hypervisor-based auditing.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/en/post/2025-04-29-ebpf-backdoor-detection-framework/">
+<link rel="canonical" href="https://windshock.github.io/en/post/2025-04-29-ebpf-backdoor-detection-framework/">
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://windshock.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://windshock.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://windshock.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://windshock.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://windshock.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/en/post/2025-04-29-ebpf-backdoor-detection-framework/">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/ko/post/2025-04-29-ebpf-backdoor-detection-framework/">
+<link rel="alternate" hreflang="en" href="https://windshock.github.io/en/post/2025-04-29-ebpf-backdoor-detection-framework/">
+<link rel="alternate" hreflang="ko" href="https://windshock.github.io/ko/post/2025-04-29-ebpf-backdoor-detection-framework/">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -62,6 +62,88 @@
 
     </style>
 </noscript>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-6N6EEJ259T"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-6N6EEJ259T');
+        }
+      </script><meta property="og:url" content="https://windshock.github.io/en/post/2025-04-29-ebpf-backdoor-detection-framework/">
+  <meta property="og:site_name" content="Code Before Breach">
+  <meta property="og:title" content="Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors">
+  <meta property="og:description" content="This article analyzes the rise of backdoors and rootkits exploiting eBPF, the detection challenges they pose, and comprehensively summarizes the latest countermeasures and research trends (2023–2025), including Tracee, LKRG, bpftool, and hypervisor-based auditing.">
+  <meta property="og:locale" content="en-US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-04-28T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-04-28T00:00:00+00:00">
+    <meta property="article:tag" content="EBPF">
+    <meta property="article:tag" content="Rootkit Detection">
+    <meta property="article:tag" content="BPFDoor">
+    <meta property="article:tag" content="Kernel Security">
+    <meta property="article:tag" content="Tracee">
+    <meta property="article:tag" content="LKRG">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors">
+<meta name="twitter:description" content="This article analyzes the rise of backdoors and rootkits exploiting eBPF, the detection challenges they pose, and comprehensively summarizes the latest countermeasures and research trends (2023–2025), including Tracee, LKRG, bpftool, and hypervisor-based auditing.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://windshock.github.io/en/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors",
+      "item": "https://windshock.github.io/en/post/2025-04-29-ebpf-backdoor-detection-framework/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors",
+  "name": "Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors",
+  "description": "This article analyzes the rise of backdoors and rootkits exploiting eBPF, the detection challenges they pose, and comprehensively summarizes the latest countermeasures and research trends (2023–2025), including Tracee, LKRG, bpftool, and hypervisor-based auditing.",
+  "keywords": [
+    "eBPF", "Rootkit Detection", "BPFDoor", "Kernel Security", "Tracee", "LKRG", "Hypervisor Audit", "Forensics"
+  ],
+  "articleBody": "\nOverview: The Rise of eBPF Backdoors and Detection Challenges eBPF (extended BPF) is a powerful technology that allows dynamic injection of programs into the Linux kernel, originally intended for legitimate use cases such as performance monitoring and security enforcement​ (sysdig.com)​ (sysdig.com). However, in recent years, attackers have increasingly abused eBPF to develop backdoors and rootkits, making eBPF a double-edged sword in the security landscape​ (aquasec.com).\nSince 2023, several rootkits (ebpfkit, TripleCross) and malware (Pamspy) utilizing eBPF have emerged, enabling malicious activities such as credential theft and firewall evasion​ (aquasec.com).\nBecause eBPF-based backdoors operate at the kernel level, they are extremely difficult to detect and are often missed by traditional security tools​ (trendmicro.com)​ (redcanary.com).\nIn this article, we comprehensively summarize open detection frameworks, tools, the latest research trends, challenges, strategies, case studies, and practical utilities for dealing with eBPF-based backdoors.\nDetection Challenges of eBPF Backdoors eBPF backdoors are extremely difficult to detect using traditional rootkit detection methods.\nUnlike conventional kernel modules, eBPF programs do not appear as separate modules; instead, they execute inside the kernel’s BPF virtual machine, making them inherently stealthy.\nFor example, the BPFDoor backdoor used in APT attacks inserted packet filters into the kernel to bypass firewall rules while masquerading as if no network ports were open​ (trendmicro.com).\nOnce an eBPF rootkit is installed, it can even manipulate the outputs of system diagnostic tools to hide its presence​ (redcanary.com).\nAccording to Red Canary’s analysis, once loaded, eBPF malware can stealthily alter results from tools like bpftool and debugfs, making post-compromise detection extremely difficult​ (redcanary.com).\nThus, if detection fails at the loading stage, identifying the backdoor afterward becomes extremely challenging—this is the core difficulty in detecting eBPF backdoors​ (redcanary.com).\nTo overcome these challenges, a strategy combining real-time monitoring and post-incident forensic techniques is essential.\nFor example, kernel-level monitoring tools that intercept eBPF program loading events can detect malicious eBPF activity at its inception​ (scitepress.org).\nConversely, if a rootkit is already active, hypervisor-based or memory forensic approaches must be employed to examine kernel memory externally​ (scitepress.org).\nBelow, we will explore these real-time detection frameworks and research-driven methodologies, analyzing their characteristics and limitations in detail.\nWhy Linux Anti-Virus Cannot Cover eBPF Backdoors Conclusion:\nGeneral-purpose Linux anti-virus solutions cannot detect or block eBPF-based backdoors.\nKey Reasons eBPF backdoors are not file-based:\nTraditional Linux anti-virus tools are optimized for scanning malicious files in the file system.\nHowever, eBPF programs are loaded into the kernel’s BPF subsystem and are executed upon specific events, meaning they do not exist directly in the file system.\nInability to monitor internal kernel activities:\nConventional Linux AV solutions primarily monitor user-space processes and disk I/O activities.\neBPF programs operate within kernel space, far beyond the reach of traditional AV monitoring.\nPotential for information manipulation:\neBPF rootkits can tamper with system calls, process lists, and file lists.\nTherefore, the data seen by the AV scanner itself may already be forged.\nInability to detect BPF-level hooks:\nTraditional anti-virus scanners cannot capture kernel-level activities like system call table hooking, kprobe/uprobes attachment, or eBPF event interception.\nPractical Summary File-based malware (e.g., web shells, trojans): Detectable Kernel-space eBPF backdoors: Not detectable Kernel module-based rootkits: Not detectable “Linux antivirus solutions fundamentally cannot detect eBPF backdoors.\nWithout kernel-level integrity protection, no output can be trusted.”\nTherefore, the use of kernel integrity protection modules like LKRG (Linux Kernel Runtime Guard) is strongly recommended.\nTracee vs LKRG: Their Complementary Roles When addressing eBPF backdoors and kernel rootkits, Tracee and LKRG complement each other at different layers.\nAspect Tracee LKRG What is monitored? Kernel events (e.g., bpf calls, execve, open) Kernel object integrity (e.g., syscall table, credentials) When is monitoring performed? Detection upon the occurrence of attack events Detection upon attempts to tamper with kernel structures Detection focus System call level Kernel memory structure level Primary goal Threat hunting (detect anomalies) Integrity enforcement and protection Operation method Passive event logging and alerting Active prevention or alerting on integrity violations Nature Incident response-oriented Incident prevention-oriented Summary Tracee acts as a security camera, recording anomalous activities after they happen. LKRG serves as security bars, actively monitoring kernel structures and preventing tampering. “Using only Tracee records incidents but cannot block them.\nUsing only LKRG blocks tampering but leaves no forensic trail.\nUsing both together provides the strongest protection, combining detection and prevention.”\nSimple Script for Detecting BPFDoor-like Behavior: bpfdoor_detector.sh This is a lightweight script designed to detect processes exhibiting behaviors similar to the BPFDoor eBPF backdoor.\nScript Features Detects processes running with deleted executables ((deleted) state). Filters processes that are using BPF sockets. Excludes legitimate programs that use BPF, such as tcpdump, wireshark, and dhclient. Displays basic network connection information for suspicious processes. Usage sudo ./bpfdoor_detector.sh Must be run with root privileges. Required commands: ps, grep, readlink, ss Full Script Code #!/bin/bash # BPFDoor-like Suspicious Process Detector # Check for root permission if [ \"$(id -u)\" -ne 0 ]; then echo \"[!] This script must be run as root.\" exit 1 fi # Check required commands for cmd in ps grep readlink ss; do if ! command -v $cmd \u0026\u003e/dev/null; then echo \"[!] $cmd command is required. Please install it first.\" exit 1 fi done echo \"[*] Starting focused BPFDoor-like process detection...\" found=0 # Iterate over all PIDs for pid in $(ls /proc/ | grep -E '^[0-9]+$'); do [ -d \"/proc/$pid\" ] || continue exe_path=$(readlink /proc/$pid/exe 2\u003e/dev/null) if [[ $exe_path == *\"(deleted)\" ]]; then if [ -r /proc/$pid/net/packet ] \u0026\u0026 [ -s /proc/$pid/net/packet ]; then cmdline=$(ps -p $pid -o cmd= 2\u003e/dev/null) if [[ ! $cmdline =~ \"tcpdump|wireshark|dhclient\" ]]; then echo \"[!] Suspicious process detected:\" echo \" - PID: $pid\" echo \" - Command: $cmdline\" echo \" - Deleted executable: $exe_path\" echo \" - BPF socket is active\" ss -p -n 2\u003e/dev/null | grep \"pid=$pid,\" | awk '{print \" - Network: \" $0}' echo \"\" found=1 fi fi fi done [ $found -eq 0 ] \u0026\u0026 echo \"[*] No suspicious processes found.\" echo \"[*] Detection completed.\" Cautions This script provides only lightweight hints at the process level. Advanced eBPF rootkits can tamper with /proc, so relying solely on this script is not sufficient. It is strongly recommended to use this script in combination with kernel integrity protection modules like LKRG. Without kernel integrity protection like LKRG, even detection results may be forged.\nChecking for eBPF Backdoors in OpenStack Environments In OpenStack environments, you can directly inspect eBPF activities occurring on the host OS (KVM Hypervisor), but you cannot directly observe eBPF activities inside guest VMs without additional interaction. This command allows you to inspect eBPF activities inside guest VMs directly from the host OS in an OpenStack environment:\nUsage openstack server ssh –vm-id “$VM_ID” – bash -c “$(cat scan_bpf.sh)” \u003e “result_${VM_ID}.txt” 2\u003e\u00261\nInspection Script Using bpftool(scan_bpf.sh) #!/bin/bash # List all BPF programs echo \"[*] Listing currently loaded BPF programs...\" bpftool prog show # List all BPF maps echo \"[*] Listing currently loaded BPF maps...\" bpftool map show # Optional: Check for unexpected XDP attachments echo \"[*] Checking for XDP programs attached to network interfaces...\" for iface in $(ls /sys/class/net/); do ip link show dev \"$iface\" | grep -q \"xdp\" \u0026\u0026 echo \"[!] XDP attached: $iface\" done # Optional: Check for TC filters echo \"[*] Checking for TC filters...\" for iface in $(ls /sys/class/net/); do tc filter show dev \"$iface\" 2\u003e/dev/null | grep -i \"bpf\" \u0026\u0026 echo \"[!] BPF TC filter detected on: $iface\" done echo \"[*] BPF scan completed.\" Script Explanation bpftool prog show: Lists all currently loaded eBPF programs in the kernel. Essential for spotting potentially malicious BPF programs. bpftool map show: Lists all BPF maps. Malicious actors may exploit maps for C2 command control or session management. Checking XDP attachments: Use ip link show to check if any XDP programs are attached to network interfaces. XDP (eXpress Data Path) allows direct packet interception at the NIC (Layer 2) level and may be exploited by backdoors like BPFDoor to manipulate traffic stealthily. Checking TC (Traffic Control) filters: Use tc filter show to check if BPF-based traffic filters are applied to network interfaces. TC filters can be used to selectively manipulate network traffic. Summary:\nBy inspecting BPF programs, maps, XDP attachments, and TC filters, you can detect traces of eBPF backdoors early from the OpenStack host level.\nDealing with eBPF Backdoors in vSphere + VMware NSX Environments In vSphere (ESXi) environments, direct inspection inside guest OSs is difficult,\nbut NSX allows detection of abnormal behaviors at the network level.\nPossible Detection Strategies Method Description Using Distributed Firewall (DFW) Rules Detect or block unexpected outbound port usage or C2 server connection attempts. Activating NSX IDS/IPS Features Detect communication patterns similar to BPFDoor (e.g., abnormal UDP, ICMP tunneling). Using Flow Analytics Analyze East-West traffic between VMs to detect abnormal communication flows. Leveraging NSX Threat Intelligence If NSX ATP (Advanced Threat Protection) modules are enabled, detect known IOCs (Indicators of Compromise). Cautions NSX cannot detect internal kernel tampering. (Detection is purely from a network perspective.) Separate monitoring inside guest OSs is still necessary. (e.g., using Tracee, EDR, etc.) “In vSphere environments, the most effective approach is a dual-layered structure:\nuse NSX for network-level anomaly detection, and deploy separate runtime security tools inside guest OSs for kernel monitoring.”\nPublicly Available eBPF Backdoor Detection Frameworks and Tools Several open-source tools and frameworks have recently been developed to detect malicious eBPF activities.\nHere are key tools and their characteristics:\nTool/Framework Approach and Features Remarks Tracee (Aqua Security) An eBPF-based real-time monitoring tool that traces kernel events to detect malicious behaviors. Especially captures bpf_attach events at the moment an eBPF program attaches to a kprobe/tracepoint, recording ID, name, type, and used helper functions​ (scitepress.org)​ (aquasec.com). Open-source (available on GitHub). Developed by Aqua Security for detecting eBPF rootkits and malware. ebpfkit-monitor A specialized tool developed by Datadog researchers (Fournier) that statically analyzes eBPF bytecode or monitors execution to detect malicious eBPF loading​ (scitepress.org). Open-source (available on GitHub). Originally designed to detect the ebpfkit rootkit. Falco (CNCF/Sysdig) A Host Intrusion Detection System (HIDS) that uses eBPF to monitor system calls for malicious activities. Recent versions can monitor bpf() syscall invocations to detect privilege escalation attempts using eBPF​ (sysdig.com). Open-source CNCF project. Often used in container/cloud environments with customizable rules. bpftool (Linux native tool) A built-in BPF debugging/management tool that lists loaded eBPF programs, maps, and links. Manual inspection using bpftool prog, bpftool map, etc., can help detect suspicious BPF objects and attachment points​ (redcanary.com). Available in Linux 4.x and above. Useful for manual inspections or lightweight scripting. Volatility eBPF Plugin A plugin for the memory forensic tool Volatility, allowing extraction and analysis of eBPF programs from memory dumps by searching the prog_idr structure​ (scitepress.org). Includes a classifier to identify potentially malicious programs. Research-grade tool (released in 2024). Most effective for hypervisor/offline memory dump analysis, as active rootkits can tamper with live systems. These tools vary in strengths and use cases.\nFor example, Tracee and Falco are strong in real-time detection, catching the exact moment an eBPF program is loaded or detecting suspicious system call patterns​ (scitepress.org)​ (sysdig.com).\nIn contrast, forensic tools like the Volatility plugin are valuable for post-compromise investigations, enabling detection of stealthy backdoors by analyzing hypervisor-level memory dumps​ (scitepress.org).\nSummary:\nCombining these tools according to the situation allows building a multi-layered eBPF threat detection strategy.\nLatest Detection Methodologies (2023–2025) and Research Trends Recent academic papers, security reports, and technical blogs have introduced various approaches and improvements for detecting eBPF-based backdoors.\nKey methodologies include:\n1. Real-Time Load Monitoring The most effective detection occurs at the moment an eBPF program is loaded into the kernel​ (redcanary.com).\nAccording to Red Canary, if you miss the loading event, detecting eBPF malware becomes extremely difficult.\nThus, EDR (Endpoint Detection and Response) solutions or custom monitoring tools must watch for bpf() syscalls, kprobe registrations, and similar events in real-time​ (redcanary.com).\nAqua Security incorporated bpf_attach event monitoring into Tracee, enabling automatic detection the moment a malicious eBPF program hooks into a kprobe or uretprobe​ (scitepress.org)​ (aquasec.com).\nIn 2023, Aqua detected the Pamspy malware, which hijacked PAM authentication using an eBPF uretprobe.\nBy capturing the loading event of the trace_pam_get_a eBPF program, they identified plaintext credential theft attempts​ (aquasec.com).\nSummary:\nKernel event hook monitoring is becoming a crucial trend in modern EDRs and open-source tools.\n2. Kernel Integrity Checking and Hardening Research efforts also focus on embedding security controls inside the kernel to block or detect eBPF backdoors proactively.\nRecommendations include:\nEnabling CONFIG_BPF_UNPRIV_DEFAULT_OFF to prevent unprivileged users from using eBPF​ (sysdig.com). Restricting SYS_bpf syscall usage to root users only. Disabling unnecessary options like CONFIG_BPF_KPROBE_OVERRIDE and reducing the attack surface by removing kprobe features during kernel compilation​ (redcanary.com). These approaches are preventive, aiming to reduce the risk before an attack happens.\n3. Hypervisor-Based Auditing Host-based detection tools can be bypassed by rootkits with kernel-level privileges​ (blog.thalium.re).\nTo address this, 2023–2024 research explored auditing eBPF activities from the hypervisor layer.\nExamples:\nThe HyperBee framework proposed inspecting eBPF programs loaded in guest OSs before execution​ (conferences.sigcomm.org). Another 2024 study showed snapshotting guest memory with lightweight hypervisors and using Volatility plugins to extract and classify suspicious eBPF helper functions​ (scitepress.org). Hypervisor-based techniques offer a promising path to detect stealthy rootkits without relying on compromised guest OSs.\n4. Post-Incident Inspection and Hunting If real-time detection fails, manual threat hunting becomes necessary.\nRecommendations from recent reports include:\nChecking for unexpected kprobes:\nInspect /sys/kernel/debug/kprobes/list for unusual hooks on unfamiliar functions​ (redcanary.com).\nListing loaded eBPF programs:\nUse bpftool prog to enumerate in-memory eBPF programs. Pay special attention to suspicious types like kprobe​ (redcanary.com).\nChecking BPF-linked perf events:\nbpftool perf can reveal which PIDs have attached probes.\nInspecting XDP and TC hooks:\nVerify if unexpected XDP programs (ip link show) or TC filters (tc filter show) are attached.\nMonitoring the BPF filesystem (bpffs):\nLook into /sys/fs/bpf/ for pinned objects that attackers may use for persistence​ (redcanary.com).\nChecking system logs:\nReview dmesg for BPF-related warnings, such as unauthorized bpf() usage or dangerous helper functions like bpf_override_return.\nSummary:\nModern threat hunting involves multi-angle system inspection, collecting any suspicious BPF-related evidence for deep analysis.\nReal-World Case Studies: Detecting and Responding to eBPF Backdoors One representative case that highlights the importance of eBPF detection is the BPFDoor backdoor.\nBPFDoor is a Linux backdoor discovered in the late 2010s, which utilized classic BPF (cBPF) filters to detect specific magic packets and open reverse shells for attackers​ (trendmicro.com).\nBecause it bypassed firewall rules and hid network ports from scans, it was dubbed a “doorless backdoor.”\nIn 2022, BPFDoor was publicly exposed, and by 2023, APT attackers had enhanced it, making BPF filters even more complex​ (trendmicro.com).\nSecurity vendors used both network-level and host-level indicators to detect BPFDoor:\nTrend Micro updated their products to detect BPFDoor’s BPF filter patterns​ (trendmicro.com). They investigated setsockopt calls inserting BPF filters and tracked suspicious raw socket processes. Trend Micro also noted that newer variants increased BPF filter complexity sixfold, indicating ongoing evolution​ (trendmicro.com). Takeaway:\nBPFDoor proved that BPF-based backdoors are detectable, but attackers are constantly adapting.\nAnother notable case is the detection of the Pamspy malware:\nPamspy exploited an eBPF uretprobe to intercept results from authentication functions inside libpam.so. Aqua Security researchers detected it using their open-source tool Tracee. The Tracee logs captured detailed information such as the hooked function name (pam_get_authtok) and memory offsets,\nallowing the detection of credential theft attempts without needing hidden processes​ (aquasec.com). Summary:\nModern breaches increasingly involve eBPF-based tactics, and community sharing of tools and case studies is advancing defensive strategies.\nResponse Strategies and Practical Recommendations To counter eBPF-based backdoors, a multilayered detection and prevention strategy is essential.\nHere are actionable recommendations for practical environments:\n1. Privilege Management and Hardening Disable eBPF entirely via kernel compile options or sysctl settings if not needed​ (sysdig.com). Restrict CAP_BPF capabilities and enforce CONFIG_BPF_UNPRIV_DEFAULT_OFF. Set CONFIG_BPF_JIT_ALWAYS_ON to minimize eBPF JIT exploitation risks. Disable unused kprobe/tracepoint features to reduce attack surface​ (redcanary.com). 2. Deploy Real-Time Monitoring Tools Deploy open-source HIDS/EDR tools that can monitor eBPF-related events. Falco can track suspicious bpf() or perf_event_open system calls with rule-based alerts​ (sysdig.com). Tracee can log kernel hook events in real time​ (scitepress.org). Consider containerizing these tools for lightweight deployment and always-on detection. 3. Conduct Regular Integrity Checks Schedule regular scans using bpftool to dump the list of loaded eBPF programs. Compare (diff) with previous outputs to identify new or suspicious entries. Focus especially on newly appeared kprobe, tracepoint, or unknown eBPF programs​ (redcanary.com). Regularly inspect /sys/fs/bpf/ and /sys/kernel/debug/kprobes/list for unusual activity​ (redcanary.com). 4. Prepare Forensic Capabilities Establish memory forensic procedures for critical servers. Prepare hypervisor-based snapshots or remote memory dump capabilities. Use tools like Volatility plugins to extract eBPF-related structures post-incident​ (scitepress.org). Memory forensics acts as a last line of defense against stealthy eBPF backdoors. 5. Continuously Update and Share Intelligence Stay updated on the latest security blogs, conferences, and GitHub repositories. Actively incorporate new IOCs (Indicators of Compromise) and detection rules. Quickly analyze and reflect new backdoor variants or malware samples (e.g., updated BPFDoor variants) into internal security measures. Summary:\neBPF backdoor detection demands a proactive, multilayered defense combining real-time monitoring, post-incident validation, preventive hardening, and continuous intelligence updates.\nSecurity professionals must leverage eBPF itself to watch the kernel from within, turning attackers’ tools into defenders’ shields.\n📌 Additional Note: Kernel Integrity Validation Must Be Strengthened in National Security Requirements In the National Security Requirements (South Korea), kernel integrity validation is currently marked as “conditionally mandatory.”\nHowever, for critical infrastructure, public-facing servers, and sensitive information servers,\nit should be treated as an absolute mandatory requirement.\nWithout kernel integrity validation, it is impossible to prove the security of the system.\n📄 National security requirements reference (Korean): Official link from the National Intelligence Service (NIS) ※ As of the latest version (Server Common Security Requirements v3.0), integrity validation of the operating system kernel or kernel-level modules is required conditionally.\nRelated Materials Category Image National Security Requirements Framework Kernel Integrity Validation Requirements (Excerpt) ",
+  "wordCount" : "2960",
+  "inLanguage": "en",
+  "datePublished": "2025-04-28T00:00:00Z",
+  "dateModified": "2025-04-28T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://windshock.github.io/en/post/2025-04-29-ebpf-backdoor-detection-framework/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Code Before Breach",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://windshock.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">
@@ -79,8 +161,8 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/en/" accesskey="h" title="Code Before Breach (Alt + H)">
-                <img src="http://localhost:1313/images/logo-terminal-animated.svg" alt="" aria-label="logo" class="h-7 w-auto"
+            <a href="https://windshock.github.io/en/" accesskey="h" title="Code Before Breach (Alt + H)">
+                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo" class="h-7 w-auto"
                     height="28">Code Before Breach</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
@@ -105,7 +187,7 @@
                 </button>
                 <ul class="lang-switch"><li>|</li>
                     <li>
-                        <a href="http://localhost:1313/ko/" title="한국어"
+                        <a href="https://windshock.github.io/ko/" title="한국어"
                             aria-label="한국어">Ko</a>
                     </li>
                 </ul>
@@ -113,27 +195,27 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/en/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://windshock.github.io/en/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/en/tags/" title="Tags">
+                <a href="https://windshock.github.io/en/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/en/categories/" title="Categories">
+                <a href="https://windshock.github.io/en/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/en/archives/" title="Archive">
+                <a href="https://windshock.github.io/en/archives/" title="Archive">
                     <span>Archive</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/en/about/" title="About">
+                <a href="https://windshock.github.io/en/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
@@ -147,14 +229,14 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/en/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/en/post/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://windshock.github.io/en/">Home</a>&nbsp;»&nbsp;<a href="https://windshock.github.io/en/post/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors
     </h1>
     <div class="post-meta"><span title='2025-04-28 00:00:00 +0000 UTC'>April 28, 2025</span>&nbsp;·&nbsp;14 min&nbsp;·&nbsp;2960 words&nbsp;|&nbsp;Translations:
 <ul class="i18n_list">
     <li>
-        <a href="http://localhost:1313/ko/post/2025-04-29-ebpf-backdoor-detection-framework/">Ko</a>
+        <a href="https://windshock.github.io/ko/post/2025-04-29-ebpf-backdoor-detection-framework/">Ko</a>
     </li>
 </ul>
 
@@ -745,22 +827,22 @@ Without kernel integrity validation, it is impossible to prove the security of t
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/en/tags/ebpf/">EBPF</a></li>
-      <li><a href="http://localhost:1313/en/tags/rootkit-detection/">Rootkit Detection</a></li>
-      <li><a href="http://localhost:1313/en/tags/bpfdoor/">BPFDoor</a></li>
-      <li><a href="http://localhost:1313/en/tags/kernel-security/">Kernel Security</a></li>
-      <li><a href="http://localhost:1313/en/tags/tracee/">Tracee</a></li>
-      <li><a href="http://localhost:1313/en/tags/lkrg/">LKRG</a></li>
-      <li><a href="http://localhost:1313/en/tags/hypervisor-audit/">Hypervisor Audit</a></li>
-      <li><a href="http://localhost:1313/en/tags/forensics/">Forensics</a></li>
+      <li><a href="https://windshock.github.io/en/tags/ebpf/">EBPF</a></li>
+      <li><a href="https://windshock.github.io/en/tags/rootkit-detection/">Rootkit Detection</a></li>
+      <li><a href="https://windshock.github.io/en/tags/bpfdoor/">BPFDoor</a></li>
+      <li><a href="https://windshock.github.io/en/tags/kernel-security/">Kernel Security</a></li>
+      <li><a href="https://windshock.github.io/en/tags/tracee/">Tracee</a></li>
+      <li><a href="https://windshock.github.io/en/tags/lkrg/">LKRG</a></li>
+      <li><a href="https://windshock.github.io/en/tags/hypervisor-audit/">Hypervisor Audit</a></li>
+      <li><a href="https://windshock.github.io/en/tags/forensics/">Forensics</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/en/post/2025-05-07-ai-insight-vs-human/">
+  <a class="prev" href="https://windshock.github.io/en/post/2025-05-07-ai-insight-vs-human/">
     <span class="title">« Prev</span>
     <br>
     <span>Human Insight and Artificial Intelligence: Dialogue at an Impossible Crossroads</span>
   </a>
-  <a class="next" href="http://localhost:1313/en/post/2025-04-28-telecom-security-breach-analysis/">
+  <a class="next" href="https://windshock.github.io/en/post/2025-04-28-telecom-security-breach-analysis/">
     <span class="title">Next »</span>
     <br>
     <span>In-Depth Report on Telecommunication Security: SKT Breach and Global Case Studies</span>
@@ -771,7 +853,7 @@ Without kernel integrity validation, it is impossible to prove the security of t
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors on x"
-            href="https://x.com/intent/tweet/?text=Detection%20Frameworks%20and%20Latest%20Methodologies%20for%20eBPF-Based%20Backdoors&amp;url=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-04-29-ebpf-backdoor-detection-framework%2f&amp;hashtags=eBPF%2cRootkitDetection%2cBPFDoor%2cKernelSecurity%2cTracee%2cLKRG%2cHypervisorAudit%2cForensics">
+            href="https://x.com/intent/tweet/?text=Detection%20Frameworks%20and%20Latest%20Methodologies%20for%20eBPF-Based%20Backdoors&amp;url=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-04-29-ebpf-backdoor-detection-framework%2f&amp;hashtags=eBPF%2cRootkitDetection%2cBPFDoor%2cKernelSecurity%2cTracee%2cLKRG%2cHypervisorAudit%2cForensics">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -780,7 +862,7 @@ Without kernel integrity validation, it is impossible to prove the security of t
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-04-29-ebpf-backdoor-detection-framework%2f&amp;title=Detection%20Frameworks%20and%20Latest%20Methodologies%20for%20eBPF-Based%20Backdoors&amp;summary=Detection%20Frameworks%20and%20Latest%20Methodologies%20for%20eBPF-Based%20Backdoors&amp;source=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-04-29-ebpf-backdoor-detection-framework%2f">
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-04-29-ebpf-backdoor-detection-framework%2f&amp;title=Detection%20Frameworks%20and%20Latest%20Methodologies%20for%20eBPF-Based%20Backdoors&amp;summary=Detection%20Frameworks%20and%20Latest%20Methodologies%20for%20eBPF-Based%20Backdoors&amp;source=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-04-29-ebpf-backdoor-detection-framework%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -789,7 +871,7 @@ Without kernel integrity validation, it is impossible to prove the security of t
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-04-29-ebpf-backdoor-detection-framework%2f&title=Detection%20Frameworks%20and%20Latest%20Methodologies%20for%20eBPF-Based%20Backdoors">
+            href="https://reddit.com/submit?url=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-04-29-ebpf-backdoor-detection-framework%2f&title=Detection%20Frameworks%20and%20Latest%20Methodologies%20for%20eBPF-Based%20Backdoors">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -798,7 +880,7 @@ Without kernel integrity validation, it is impossible to prove the security of t
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-04-29-ebpf-backdoor-detection-framework%2f">
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-04-29-ebpf-backdoor-detection-framework%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -807,7 +889,7 @@ Without kernel integrity validation, it is impossible to prove the security of t
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors on whatsapp"
-            href="https://api.whatsapp.com/send?text=Detection%20Frameworks%20and%20Latest%20Methodologies%20for%20eBPF-Based%20Backdoors%20-%20http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-04-29-ebpf-backdoor-detection-framework%2f">
+            href="https://api.whatsapp.com/send?text=Detection%20Frameworks%20and%20Latest%20Methodologies%20for%20eBPF-Based%20Backdoors%20-%20https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-04-29-ebpf-backdoor-detection-framework%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -816,7 +898,7 @@ Without kernel integrity validation, it is impossible to prove the security of t
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors on telegram"
-            href="https://telegram.me/share/url?text=Detection%20Frameworks%20and%20Latest%20Methodologies%20for%20eBPF-Based%20Backdoors&amp;url=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-04-29-ebpf-backdoor-detection-framework%2f">
+            href="https://telegram.me/share/url?text=Detection%20Frameworks%20and%20Latest%20Methodologies%20for%20eBPF-Based%20Backdoors&amp;url=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-04-29-ebpf-backdoor-detection-framework%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -825,7 +907,7 @@ Without kernel integrity validation, it is impossible to prove the security of t
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=Detection%20Frameworks%20and%20Latest%20Methodologies%20for%20eBPF-Based%20Backdoors&u=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-04-29-ebpf-backdoor-detection-framework%2f">
+            href="https://news.ycombinator.com/submitlink?t=Detection%20Frameworks%20and%20Latest%20Methodologies%20for%20eBPF-Based%20Backdoors&u=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-04-29-ebpf-backdoor-detection-framework%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path
@@ -840,7 +922,7 @@ Without kernel integrity validation, it is impossible to prove the security of t
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/en/">Code Before Breach</a></span> · 
+        <span>&copy; 2025 <a href="https://windshock.github.io/en/">Code Before Breach</a></span> · 
 
     <span>
         Powered by

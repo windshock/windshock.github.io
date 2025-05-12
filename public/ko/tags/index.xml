@@ -6,8 +6,43 @@
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Wed, 07 May 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apps Script</title>
+      <link>https://windshock.github.io/ko/tags/apps-script/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/apps-script/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Automation</title>
+      <link>https://windshock.github.io/ko/tags/automation/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/automation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gmail</title>
+      <link>https://windshock.github.io/ko/tags/gmail/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/gmail/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>https://windshock.github.io/ko/tags/security/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Snyk</title>
+      <link>https://windshock.github.io/ko/tags/snyk/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/snyk/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AI</title>
       <link>https://windshock.github.io/ko/tags/ai/</link>
@@ -300,13 +335,6 @@
       <link>https://windshock.github.io/ko/tags/rust/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/ko/tags/rust/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Security</title>
-      <link>https://windshock.github.io/ko/tags/security/</link>
-      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/security/</guid>
       <description></description>
     </item>
     <item>

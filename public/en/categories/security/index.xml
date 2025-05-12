@@ -6,8 +6,15 @@
     <description>Recent content in Security on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 21 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/categories/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How I Managed Unmaintained Open Source with Gmail and Snyk Alerts</title>
+      <link>https://windshock.github.io/en/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</guid>
+      <description>When API access falls short, automation through Gmail and Apps Script becomes essential. Here&amp;rsquo;s how I used Google Apps Script to collect Snyk vulnerability alerts and patch data automatically.</description>
+    </item>
     <item>
       <title>Is Your Data in the Cat&#39;s Paws?</title>
       <link>https://windshock.github.io/en/post/2025-04-21-expert-personal-data-report/</link>
