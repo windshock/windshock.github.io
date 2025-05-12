@@ -2,28 +2,28 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>KPI on Code Before Breach</title>
-    <link>http://localhost:1313/en/tags/kpi/</link>
+    <link>https://windshock.github.io/en/tags/kpi/</link>
     <description>Recent content in KPI on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
     <lastBuildDate>Thu, 20 Jun 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/kpi/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://windshock.github.io/en/tags/kpi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>KPIs Can Cause Incidents!!!</title>
-      <link>http://localhost:1313/en/post/2024-06-20-kpi-causes-accidents/</link>
+      <link>https://windshock.github.io/en/post/2024-06-20-kpi-causes-accidents/</link>
       <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2024-06-20-kpi-causes-accidents/</guid>
+      <guid>https://windshock.github.io/en/post/2024-06-20-kpi-causes-accidents/</guid>
       <description>&lt;h2 id=&#34;kpis-can-cause-incidents---bad-metrics-produce-bad-outcomes&#34;&gt;KPIs Can Cause Incidents!!! - Bad metrics produce bad outcomes.&lt;/h2&gt;
-&lt;p&gt;&lt;img alt=&#34;KPIs Incidents Toon&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/post/kpis_incidents.webp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;KPIs Incidents Toon&#34; loading=&#34;lazy&#34; src=&#34;https://windshock.github.io/images/post/kpis_incidents.webp&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Recently, I was going through old emails and found a reply from a junior colleague to a very serious email I had sent. The colleague wrote that after reading my message, they realized they had been mindlessly following instructions without deeper consideration. They promised to carefully consider the ethical implications and correctness of every task, and to proceed based on their own judgment going forward.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Common Misconceptions of Security Assessors</title>
-      <link>http://localhost:1313/en/post/2024-06-16-common-misconceptions-of-security-assessors/</link>
+      <link>https://windshock.github.io/en/post/2024-06-16-common-misconceptions-of-security-assessors/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2024-06-16-common-misconceptions-of-security-assessors/</guid>
+      <guid>https://windshock.github.io/en/post/2024-06-16-common-misconceptions-of-security-assessors/</guid>
       <description>&lt;h1 id=&#34;common-misconceptions-of-security-assessors&#34;&gt;Common Misconceptions of Security Assessors&lt;/h1&gt;
-&lt;p&gt;&lt;img alt=&#34;Common Misconceptions Toon&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/post/misconceptions-of-security-assessors.webp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Common Misconceptions Toon&#34; loading=&#34;lazy&#34; src=&#34;https://windshock.github.io/images/post/misconceptions-of-security-assessors.webp&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;inefficient-vulnerability-evaluation-structure-and-response-methods&#34;&gt;Inefficient Vulnerability Evaluation Structure and Response Methods&lt;/h2&gt;
 &lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;As the cybersecurity landscape constantly evolves, vulnerability assessment has become a critical defense against potential security breaches. However, due to common misconceptions, the effectiveness of these evaluations often diminishes. In this article, we will explore the common misconceptions about security vulnerability assessments and suggest effective strategies to overcome these issues, ultimately supporting the improvement of organizational security levels.&lt;/p&gt;</description>

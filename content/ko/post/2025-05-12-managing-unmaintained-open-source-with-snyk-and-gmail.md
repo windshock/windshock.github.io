@@ -245,8 +245,8 @@ const pkgHtml = UrlFetchApp.fetch(snykPkgLink).getContentText();
 
 이 툴을 이용하여 **패치가 존재하지 않는 유지보수 중단 오픈소스 라이브러리**에 대한 조치 가이드를 작성해 공개했습니다:
 
-* [CVE-2022-24434: Dicer 패치 가이드](https://windshock.github.io/en/post/2025-05-12-cve-cve-2022-24434-dicer/)
-* [CVE-2019-17570: Apache XMLRPC 패치 가이드](https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/)
+* [CVE-2022-24434: Dicer 패치 가이드](https://windshock.github.io/ko/post/2025-05-12-cve-cve-2022-24434-dicer/)
+* [CVE-2019-17570: Apache XMLRPC 패치 가이드](https://windshock.github.io/ko/post/2025-04-24-cve-2019-17570-apache-xmlrpc/)
 
 ---
 

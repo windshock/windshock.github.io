@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Security Research on Code Before Breach</title>
-    <link>http://localhost:1313/en/categories/security-research/</link>
+    <link>https://windshock.github.io/en/categories/security-research/</link>
     <description>Recent content in Security Research on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
     <lastBuildDate>Mon, 28 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/categories/security-research/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://windshock.github.io/en/categories/security-research/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>In-Depth Report on Telecommunication Security: SKT Breach and Global Case Studies</title>
-      <link>http://localhost:1313/en/post/2025-04-28-telecom-security-breach-analysis/</link>
+      <link>https://windshock.github.io/en/post/2025-04-28-telecom-security-breach-analysis/</link>
       <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2025-04-28-telecom-security-breach-analysis/</guid>
+      <guid>https://windshock.github.io/en/post/2025-04-28-telecom-security-breach-analysis/</guid>
       <description>An in-depth analysis focusing on the 2025 SKT breach, the core security structures of telecom infrastructure, and historical global incidents (Gemalto, APT10, Circles). Also covers subscriber authentication (Ki, SUPI/SUCI) and security differences between 5G SA and NSA.</description>
     </item>
     <item>
       <title>CVE-2019-17570 Apache XML-RPC Vulnerability Analysis Report</title>
-      <link>http://localhost:1313/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</link>
+      <link>https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</link>
       <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</guid>
+      <guid>https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</guid>
       <description>A detailed analysis of the CVE-2019-17570 deserialization vulnerability in the Apache XML-RPC library, including patching methods and secure implementation practices.</description>
     </item>
   </channel>
