@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>보안 평가 on Code Before Breach</title>
-    <link>http://localhost:1313/ko/tags/%EB%B3%B4%EC%95%88-%ED%8F%89%EA%B0%80/</link>
+    <link>https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88-%ED%8F%89%EA%B0%80/</link>
     <description>Recent content in 보안 평가 on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
     <lastBuildDate>Wed, 22 May 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/ko/tags/%EB%B3%B4%EC%95%88-%ED%8F%89%EA%B0%80/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88-%ED%8F%89%EA%B0%80/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>개발문화가 보안수준에 영향을 미칠 수 있을까?</title>
-      <link>http://localhost:1313/ko/post/2024-05-22-can-development-culture-influence-security-levels/</link>
+      <link>https://windshock.github.io/ko/post/2024-05-22-can-development-culture-influence-security-levels/</link>
       <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/ko/post/2024-05-22-can-development-culture-influence-security-levels/</guid>
+      <guid>https://windshock.github.io/ko/post/2024-05-22-can-development-culture-influence-security-levels/</guid>
       <description>&lt;h1 id=&#34;개발문화가-보안수준에-영향을-미칠-수-있을까&#34;&gt;개발문화가 보안수준에 영향을 미칠 수 있을까?&lt;/h1&gt;
-&lt;p&gt;&lt;img alt=&#34;Development Culture&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/post/development-culture.webp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Development Culture&#34; loading=&#34;lazy&#34; src=&#34;https://windshock.github.io/images/post/development-culture.webp&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;정적-분석-도구joern를-이용한-코드-품질과-보안-수준의-평가&#34;&gt;정적 분석 도구(joern)를 이용한 코드 품질과 보안 수준의 평가&lt;/h2&gt;
 &lt;h1 id=&#34;배경&#34;&gt;배경&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;http://localhost:1313/ko/post/2024-05-22-can-development-culture-influence-security-levels/#%ea%b5%ac%ea%b8%80%ec%9d%98-%ea%b0%9c%eb%b0%9c%eb%ac%b8%ed%99%94&#34;&gt;개방적이고 협업 중심의 개발문화를 가진 구글&lt;/a&gt; 등 회사와 달리, &lt;a href=&#34;http://localhost:1313/ko/post/2024-05-22-can-development-culture-influence-security-levels/#%ea%b0%9c%eb%b0%9c%eb%ac%b8%ed%99%94%ea%b0%80-%ec%97%86%eb%8a%94-%ec%a1%b0%ec%a7%81&#34;&gt;그렇지 못한 일부 조직&lt;/a&gt;에서는 개인의 역량에 따라 코드의 품질 - 보안 수준을 포함하여 - 이 좌우될 수 있습니다. 특히, C 코드에서 &lt;a href=&#34;http://localhost:1313/ko/post/2024-05-22-can-development-culture-influence-security-levels/#strcpy-%ed%95%a8%ec%88%98%ec%9d%98-%ec%9c%84%ed%97%98%ec%84%b1&#34;&gt;strcpy 함수&lt;/a&gt;를 사용하는 등의 품질 낮은 코드를 작성하는 경향이 있는 개발자들에게 &lt;a href=&#34;http://localhost:1313/ko/post/2024-05-22-can-development-culture-influence-security-levels/#%ec%a0%95%ec%a0%81-%eb%b6%84%ec%84%9d-%eb%8f%84%ea%b5%ac&#34;&gt;정적 분석 도구&lt;/a&gt;(joern, codeQL 등)을 &lt;a href=&#34;http://localhost:1313/ko/post/2024-05-22-can-development-culture-influence-security-levels/#%ec%bb%a4%ec%8a%a4%ed%85%80-%eb%a3%b0-%ec%98%88%ec%8b%9c&#34;&gt;커스텀 룰&lt;/a&gt;을 활용하여 코드의 품질과 보안 수준을 평가하여 제공할 수 있습니다. 결과적으로 개발 문화가 부족한 제한된 상황에서도 코드 품질과 동시에 보안수준이 향상되는, Good한 수준의 코드를 기대할 수 있습니다.&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;https://windshock.github.io/ko/post/2024-05-22-can-development-culture-influence-security-levels/#%ea%b5%ac%ea%b8%80%ec%9d%98-%ea%b0%9c%eb%b0%9c%eb%ac%b8%ed%99%94&#34;&gt;개방적이고 협업 중심의 개발문화를 가진 구글&lt;/a&gt; 등 회사와 달리, &lt;a href=&#34;https://windshock.github.io/ko/post/2024-05-22-can-development-culture-influence-security-levels/#%ea%b0%9c%eb%b0%9c%eb%ac%b8%ed%99%94%ea%b0%80-%ec%97%86%eb%8a%94-%ec%a1%b0%ec%a7%81&#34;&gt;그렇지 못한 일부 조직&lt;/a&gt;에서는 개인의 역량에 따라 코드의 품질 - 보안 수준을 포함하여 - 이 좌우될 수 있습니다. 특히, C 코드에서 &lt;a href=&#34;https://windshock.github.io/ko/post/2024-05-22-can-development-culture-influence-security-levels/#strcpy-%ed%95%a8%ec%88%98%ec%9d%98-%ec%9c%84%ed%97%98%ec%84%b1&#34;&gt;strcpy 함수&lt;/a&gt;를 사용하는 등의 품질 낮은 코드를 작성하는 경향이 있는 개발자들에게 &lt;a href=&#34;https://windshock.github.io/ko/post/2024-05-22-can-development-culture-influence-security-levels/#%ec%a0%95%ec%a0%81-%eb%b6%84%ec%84%9d-%eb%8f%84%ea%b5%ac&#34;&gt;정적 분석 도구&lt;/a&gt;(joern, codeQL 등)을 &lt;a href=&#34;https://windshock.github.io/ko/post/2024-05-22-can-development-culture-influence-security-levels/#%ec%bb%a4%ec%8a%a4%ed%85%80-%eb%a3%b0-%ec%98%88%ec%8b%9c&#34;&gt;커스텀 룰&lt;/a&gt;을 활용하여 코드의 품질과 보안 수준을 평가하여 제공할 수 있습니다. 결과적으로 개발 문화가 부족한 제한된 상황에서도 코드 품질과 동시에 보안수준이 향상되는, Good한 수준의 코드를 기대할 수 있습니다.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
