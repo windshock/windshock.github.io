@@ -6,8 +6,15 @@
     <description>Recent content in Security on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 12 May 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/categories/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SPOF in Cybersecurity: From History to Strategy, a Graph-Based Analysis</title>
+      <link>https://windshock.github.io/en/post/2025-05-15-spof-analysis-in-cybersecurity/</link>
+      <pubDate>Thu, 15 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2025-05-15-spof-analysis-in-cybersecurity/</guid>
+      <description>Analyzing the threat of Single Points of Failure (SPOF) through historical examples and graph theory, this piece presents a strategic approach to identifying and mitigating structural weaknesses in cybersecurity infrastructures.</description>
+    </item>
     <item>
       <title>Dicer Module Vulnerability Mitigation Guide: CVE-2022-24434</title>
       <link>https://windshock.github.io/en/post/2025-05-12-cve-cve-2022-24434-dicer/</link>

@@ -6,8 +6,36 @@
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Mon, 12 May 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Attack Graphs</title>
+      <link>https://windshock.github.io/ko/tags/attack-graphs/</link>
+      <pubDate>Thu, 15 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/attack-graphs/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cybersecurity</title>
+      <link>https://windshock.github.io/ko/tags/cybersecurity/</link>
+      <pubDate>Thu, 15 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/cybersecurity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Graph Analysis</title>
+      <link>https://windshock.github.io/ko/tags/graph-analysis/</link>
+      <pubDate>Thu, 15 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/graph-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SPOF</title>
+      <link>https://windshock.github.io/ko/tags/spof/</link>
+      <pubDate>Thu, 15 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/spof/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Apps Script</title>
       <link>https://windshock.github.io/ko/tags/apps-script/</link>

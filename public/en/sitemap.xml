@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
         <url>
+          <loc>https://windshock.github.io/en/post/2025-05-15-spof-analysis-in-cybersecurity/</loc>
+          <lastmod>2025-05-15T00:00:00Z</lastmod>
+        </url>
+        <url>
           <loc>https://windshock.github.io/en/post/2025-05-12-cve-cve-2022-24434-dicer/</loc>
           <lastmod>2025-05-12T00:00:00Z</lastmod>
         </url>
@@ -83,6 +87,10 @@
         <url>
           <loc>https://windshock.github.io/en/post/2019-08-08-about-the-xssaudit/</loc>
           <lastmod>2019-08-08T00:00:00Z</lastmod>
+        </url>
+        <url>
+          <loc>https://windshock.github.io/ko/post/2025-05-15-spof-analysis-in-cybersecurity/</loc>
+          <lastmod>2025-05-15T00:00:00Z</lastmod>
         </url>
         <url>
           <loc>https://windshock.github.io/ko/post/2025-05-12-cve-cve-2022-24434-dicer/</loc>

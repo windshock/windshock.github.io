@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Attack Graphs on Code Before Breach</title>
+    <link>https://windshock.github.io/ko/tags/attack-graphs/</link>
+    <description>Recent content in Attack Graphs on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>ko-KR</language>
+    <lastBuildDate>Thu, 15 May 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/ko/tags/attack-graphs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>사이버보안의 SPOF: 역사에서 전략까지, 그래프 기반 분석</title>
+      <link>https://windshock.github.io/ko/post/2025-05-15-spof-analysis-in-cybersecurity/</link>
+      <pubDate>Thu, 15 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-05-15-spof-analysis-in-cybersecurity/</guid>
+      <description>단일 실패 지점(SPOF)의 위협을 역사적 사례와 그래프 이론에 기반해 분석하고, 사이버보안 인프라의 구조적 약점을 사전에 식별하는 전략적 접근 방식을 제시합니다.</description>
+    </item>
+  </channel>
+</rss>
