@@ -2,7 +2,9 @@
 title: "공짜 점심은 없지만, 보안에는 공짜가 있었다"
 date: 2025-04-17
 draft: false
-tags: ["CVE", "보안", "정책", "오픈소스", "공공재"]
+tags: ["TrustAndCulture", "CVE", "보안", "정책", "오픈소스", "공공재"]
+featured: true
+image: "/images/post/cve-free-lunch.webp"
 categories: ["Security", "Policy"]
 summary: "전 세계 보안 커뮤니티는 수십 년 동안 CVE 시스템에 의존해왔지만, 그 대가를 지불한 적은 거의 없습니다. 이제 이 공공 보안 인프라의 지속 가능성을 위해 누가 비용을 부담해야 할지 물어야 할 때입니다."
 ---

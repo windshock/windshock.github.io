@@ -2,7 +2,9 @@
 title: "In-Depth Report on Telecommunication Security: SKT Breach and Global Case Studies"
 date: 2025-04-28
 draft: false
-tags: ["Telecom Security", "SKT Breach", "SIM Security", "5G Security", "APT Attacks", "SS7 Vulnerability"]
+tags: ["Mind", "SKTelecom", "Telecom Security", "SKT Breach", "SIM Security", "5G Security", "APT Attacks", "SS7 Vulnerability"]
+image: "/images/post/sktelecom_usim.webp"
+featured: true
 categories: ["Security Research", "Telecom Security"]
 summary: "An in-depth analysis focusing on the 2025 SKT breach, the core security structures of telecom infrastructure, and historical global incidents (Gemalto, APT10, Circles). Also covers subscriber authentication (Ki, SUPI/SUCI) and security differences between 5G SA and NSA."
 ---

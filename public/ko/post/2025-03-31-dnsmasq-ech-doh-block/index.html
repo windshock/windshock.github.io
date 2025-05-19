@@ -6,11 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>기업 네트워크 보안을 위한 ECH 차단 및 DoH 대응 전략 | Code Before Breach</title>
-<meta name="keywords" content="DNS, DoH, ECH, ESNI, dnsmasq, 기업보안">
+<meta name="keywords" content="Code, DNS, DoH, ECH, ESNI, dnsmasq, 기업보안">
 <meta name="description" content="dnsmasq를 사용하여 SVCB와 HTTPS 레코드를 필터링함으로써 ECH를 비활성화하고 중앙 DNS 정책을 적용하는 실습 가이드. DoH 차단은 별도의 네트워크 정책이 필요함을 함께 안내합니다.">
 <meta name="author" content="">
 <link rel="canonical" href="https://windshock.github.io/ko/post/2025-03-31-dnsmasq-ech-doh-block/">
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://windshock.github.io/index.xml" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://windshock.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://windshock.github.io/favicon-16x16.png">
@@ -84,12 +85,12 @@
     <meta property="article:section" content="post">
     <meta property="article:published_time" content="2025-03-31T00:00:00+00:00">
     <meta property="article:modified_time" content="2025-03-31T00:00:00+00:00">
+    <meta property="article:tag" content="Code">
     <meta property="article:tag" content="DNS">
     <meta property="article:tag" content="DoH">
     <meta property="article:tag" content="ECH">
     <meta property="article:tag" content="ESNI">
     <meta property="article:tag" content="Dnsmasq">
-    <meta property="article:tag" content="기업보안">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="기업 네트워크 보안을 위한 ECH 차단 및 DoH 대응 전략">
 <meta name="twitter:description" content="dnsmasq를 사용하여 SVCB와 HTTPS 레코드를 필터링함으로써 ECH를 비활성화하고 중앙 DNS 정책을 적용하는 실습 가이드. DoH 차단은 별도의 네트워크 정책이 필요함을 함께 안내합니다.">
@@ -123,7 +124,7 @@
   "name": "기업 네트워크 보안을 위한 ECH 차단 및 DoH 대응 전략",
   "description": "dnsmasq를 사용하여 SVCB와 HTTPS 레코드를 필터링함으로써 ECH를 비활성화하고 중앙 DNS 정책을 적용하는 실습 가이드. DoH 차단은 별도의 네트워크 정책이 필요함을 함께 안내합니다.",
   "keywords": [
-    "DNS", "DoH", "ECH", "ESNI", "dnsmasq", "기업보안"
+    "Code", "DNS", "DoH", "ECH", "ESNI", "dnsmasq", "기업보안"
   ],
   "articleBody": "\n배경 최근 들어 Cloudflare(1.1.1.1), Google(8.8.8.8) 등 공개 DNS 서비스가 악성코드의 C2 통신 경로로 악용되는 사례가 늘고 있습니다.\n특히, DoH (DNS over HTTPS), ECH (Encrypted Client Hello)와 같은 프로토콜은 DNS 트래픽 및 SNI 필드를 암호화하여 보안 솔루션이 이를 식별하지 못하게 만듭니다.\n참고: ESNI(Encrypted SNI)는 더 이상 사용되지 않으며, 현재는 ECH가 공식적인 표준입니다. 이 글에서는 ESNI 대신 ECH에 초점을 맞춥니다.\n위협 요소 보안 정책 우회: 사용자가 Cloudflare, Google 등의 DoH 주소를 수동 설정하면 기업 DNS 정책이 무력화됩니다. C2 통신 은폐: ECH는 TLS 연결 시 SNI 필드를 암호화하여 도메인 기반 탐지를 어렵게 만듭니다. 데이터 유출: 암호화된 DNS 경로를 통해 기업 내부 정보가 외부로 전송될 수 있습니다. 핵심 요점: DoH와 ECH는 별개이며, 각각에 맞는 대응 필요 이 글에서 설명하는 dnsmasq 기반 설정은 ECH 차단에 해당합니다. DoH는 차단되지 않습니다. DoH는 DNS 쿼리를 HTTPS로 전송하므로, 네트워크 계층의 방화벽 규칙 또는 IP 차단 등의 별도 조치가 필요합니다. 예: Cloudflare DoH(1.1.1.1:443), Google DoH(8.8.8.8:443) 등 차단 참고: Cisco Umbrella의 DoH 우회 방지 가이드 해결책: 중앙 DNS 서버에서 ECH 제어 사용자 단에서 ECH 설정을 변경해도 다시 활성화될 수 있으므로, 기업 DNS 서버에서 직접 SVCB(65), HTTPS(64) 레코드를 필터링하는 방식이 효과적입니다.\n이를 통해 클라이언트가 ECH 기능을 활용할 수 없도록 제한할 수 있습니다.\n실습: macOS에서 dnsmasq를 이용한 ECH 필터링 구성 다른 운영체제(Windows, Linux 등) 사용자는 별도 설정이 필요하며, dnsmasq는 플랫폼에 따라 설치 방법이 다를 수 있습니다.\n1. dnsmasq 설치 brew install dnsmasq 2. 설정 파일 수정 sudo nano /opt/homebrew/etc/dnsmasq.conf 다음 내용을 추가합니다:\n# 외부 DNS 서버 설정 server=8.8.8.8 # SVCB(65), HTTPS(64) 레코드 필터링 filter-rr=SVCB,HTTPS 3. dnsmasq 실행 sudo dnsmasq --conf-file=/opt/homebrew/etc/dnsmasq.conf 4. 시스템 DNS 서버 변경 networksetup -setdnsservers Wi-Fi 127.0.0.1 Ethernet 인터페이스는 Wi-Fi 대신 Ethernet으로 설정해야 합니다.\nECH 차단 확인 방법 Cloudflare의 https://crypto.cloudflare.com/cdn-cgi/trace 페이지에 접속하면 현재 연결에서 ECH가 활성화되었는지 확인할 수 있습니다.\n예시 화면: sni=encrypted 또는 sni=plaintext으로 표시됩니다. 결론 dnsmasq를 통해 SVCB, HTTPS 레코드를 필터링함으로써 ECH 기능은 효과적으로 차단할 수 있습니다. DoH는 이 방법으로 차단되지 않으며, 별도의 네트워크 계층 보안 설정이 필요합니다. macOS 외 운영체제 사용자는 별도 설정 가이드를 참조하거나 방화벽 정책 기반 대응을 고려해야 합니다. ECH 차단은 보안을 강화하지만, 프라이버시 기능을 제한할 수 있는 트레이드오프도 있습니다. 참고: 마지막으로, 인터넷 검열과 관련된 기술에 더 깊은 관심이 있는 독자를 위해, 글로벌 커뮤니티에서 검열 우회 전략과 최신 연구를 논의하는 net4people/bbs GitHub 이슈 페이지를 참고할 수 있습니다. 이 포럼은 GFW, ECH, DNS 암호화 등 다양한 주제를 다루며, 기술적 통찰과 솔루션을 공유합니다.\"\n참고 자료 Cloudflare의 ECH 설명 dnsmasq 공식 문서 National Security Agency - Adopting Encrypted DNS in Enterprise Environments Cisco Umbrella의 DoH 우회 방지 가이드 Broadcom의 다양한 운영체제 기반 DoH 차단 방법 ",
   "wordCount" : "405",
@@ -217,6 +218,11 @@
             <li>
                 <a href="https://windshock.github.io/ko/about/" title="소개">
                     <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/index.xml" title="RSS 피드">
+                    <span>RSS 피드</span>
                 </a>
             </li>
         </ul>
@@ -368,6 +374,7 @@ filter-rr=SVCB,HTTPS
 
   <footer class="post-footer">
     <ul class="post-tags">
+      <li><a href="https://windshock.github.io/ko/tags/code/">Code</a></li>
       <li><a href="https://windshock.github.io/ko/tags/dns/">DNS</a></li>
       <li><a href="https://windshock.github.io/ko/tags/doh/">DoH</a></li>
       <li><a href="https://windshock.github.io/ko/tags/ech/">ECH</a></li>
@@ -392,7 +399,7 @@ filter-rr=SVCB,HTTPS
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 기업 네트워크 보안을 위한 ECH 차단 및 DoH 대응 전략 on x"
-            href="https://x.com/intent/tweet/?text=%ea%b8%b0%ec%97%85%20%eb%84%a4%ed%8a%b8%ec%9b%8c%ed%81%ac%20%eb%b3%b4%ec%95%88%ec%9d%84%20%ec%9c%84%ed%95%9c%20ECH%20%ec%b0%a8%eb%8b%a8%20%eb%b0%8f%20DoH%20%eb%8c%80%ec%9d%91%20%ec%a0%84%eb%9e%b5&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-03-31-dnsmasq-ech-doh-block%2f&amp;hashtags=DNS%2cDoH%2cECH%2cESNI%2cdnsmasq%2c%ea%b8%b0%ec%97%85%eb%b3%b4%ec%95%88">
+            href="https://x.com/intent/tweet/?text=%ea%b8%b0%ec%97%85%20%eb%84%a4%ed%8a%b8%ec%9b%8c%ed%81%ac%20%eb%b3%b4%ec%95%88%ec%9d%84%20%ec%9c%84%ed%95%9c%20ECH%20%ec%b0%a8%eb%8b%a8%20%eb%b0%8f%20DoH%20%eb%8c%80%ec%9d%91%20%ec%a0%84%eb%9e%b5&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-03-31-dnsmasq-ech-doh-block%2f&amp;hashtags=Code%2cDNS%2cDoH%2cECH%2cESNI%2cdnsmasq%2c%ea%b8%b0%ec%97%85%eb%b3%b4%ec%95%88">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />

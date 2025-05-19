@@ -2,8 +2,10 @@
 title: "Is Your Data in the Cat's Paws?"
 date: 2025-04-21
 draft: false
-tags: ["Privacy Protection", "Policy", "Civic Participation", "KakaoPay", "Data Democracy", "AI"]
-categories: ["Security", "Policy"]
+tags: ["TrustAndCulture", "Privacy Protection", "Policy", "Civic Participation", "KakaoPay", "Data Democracy", "AI"]
+categories: ["Privacy", "Security", "Policy"]
+featured: true
+image: "/images/post/kakaopay-privacy-structure.webp"
 summary: "The 2025 KakaoPay case exposed the limits of formal consent and self-regulation. Data democracy must be achieved through AI-based DPIA verification and civic oversight."
 ---
 

@@ -1,12 +1,11 @@
-
-
-
 ---
 
 title: "유지보수 중단 오픈소스를 Gmail과 Snyk 알림으로 관리한 방법"
 date: 2025-05-12
 draft: false
-tags: ["security", "automation", "snyk", "gmail", "apps script"]
+tags: ["Code", "security", "automation", "snyk", "gmail", "apps script"]
+featured: true
+image: "/images/post/apps-script-ui.webp"
 categories: ["Security", "Tools"]
 summary: "Snyk의 웹 UI에만 노출되는 정보를 자동으로 수집해야 했습니다. Gmail과 Apps Script를 활용한 취약점 알림 자동 수집기 구현 사례를 소개합니다."
 ---

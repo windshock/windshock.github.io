@@ -6,11 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>개발자들 말하는 보안에 대한 흔한 거짓말 | Code Before Breach</title>
-<meta name="keywords" content="security, devsecops, 개발 보안, supply chain, Rust">
+<meta name="keywords" content="TrustAndCulture, security, devsecops, 개발 보안, supply chain, Rust">
 <meta name="description" content="개발자들이 보안에 대해 자주 믿는 &lsquo;책임 전가형&rsquo;, &lsquo;기술 과신형&rsquo;, &lsquo;보안 과소평가형&rsquo; 거짓말을 분석하고, 현실적인 대응 방안을 제시합니다.">
 <meta name="author" content="">
 <link rel="canonical" href="https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/">
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://windshock.github.io/index.xml" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://windshock.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://windshock.github.io/favicon-16x16.png">
@@ -84,6 +85,7 @@
     <meta property="article:section" content="post">
     <meta property="article:published_time" content="2025-04-01T00:00:00+00:00">
     <meta property="article:modified_time" content="2025-04-01T00:00:00+00:00">
+    <meta property="article:tag" content="TrustAndCulture">
     <meta property="article:tag" content="Security">
     <meta property="article:tag" content="Devsecops">
     <meta property="article:tag" content="개발 보안">
@@ -122,7 +124,7 @@
   "name": "개발자들 말하는 보안에 대한 흔한 거짓말",
   "description": "개발자들이 보안에 대해 자주 믿는 \u0026lsquo;책임 전가형\u0026rsquo;, \u0026lsquo;기술 과신형\u0026rsquo;, \u0026lsquo;보안 과소평가형\u0026rsquo; 거짓말을 분석하고, 현실적인 대응 방안을 제시합니다.",
   "keywords": [
-    "security", "devsecops", "개발 보안", "supply chain", "Rust"
+    "TrustAndCulture", "security", "devsecops", "개발 보안", "supply chain", "Rust"
   ],
   "articleBody": "\n소프트웨어 개발 환경이 복잡해지고 보안 위협이 다양해지면서, 개발자들은 종종 보안과 관련하여 잘못된 믿음이나 오해를 가지게 됩니다. 이는 실제 보안 위협에 효과적으로 대응하는 데 큰 걸림돌이 될 수 있습니다. 본 보고서는 개발자들이 자주 믿는 흔한 보안 관련 거짓말들을 “책임 전가형”, “기술 과신형”, “보안의 과소평가형\"으로 구분하여 명확히 제시하고, 이를 바로잡기 위한 현실적인 접근 방안을 제시합니다.\n📌 1. 책임 전가형 거짓말: “보안은 보안 팀의 책임이지, 내 책임은 아닙니다.”\n현실: 개발자도 보안의 핵심 역할을 수행하며, DevSecOps 환경에서는 보안이 모든 팀 구성원의 공동 책임입니다. 개발 초기 단계부터 개발자가 보안을 고려하지 않으면 코드에 취약점이 남을 수 있습니다 (출처).\n거짓말: “우리는 GitHub, AWS 같은 SaaS를 쓰니까 안전합니다.”\n현실: SaaS 제공업체가 보안의 일부를 책임지지만, 사용자의 설정 오류나 취약한 타사 통합 등 공급망 공격의 위협은 여전히 존재합니다. 최근 GitHub Actions 공급망 공격 사례(tj-actions/changed-files)는 이러한 위험을 분명히 보여줍니다 (출처).\n📌 2. 기술 과신형 거짓말: “우리 코드는 Rust와 같은 안전한 언어로 작성되었으니 안전합니다.”\n현실: Rust는 메모리 안전성과 데이터 경쟁 방지 기능을 통해 버퍼 오버플로우나 메모리 누수 같은 문제는 예방할 수 있지만, SQL 주입이나 크로스 사이트 스크립팅(XSS) 같은 보안 위협까지 자동으로 해결하지 않습니다. 또한 unsafe 블록을 사용하면 메모리 안전성이 손상될 수 있습니다. Carnegie Mellon University(SEI)의 분석에 따르면, Rust가 모든 보안 문제를 해결하지 못하며, 특히 주입 공격이나 타사 라이브러리 오용 같은 문제는 별도의 보안 설계가 필요합니다 (출처).\n거짓말: “최신 프레임워크와 라이브러리를 사용하니 안전합니다.”\n현실: 최신 기술이라도 올바른 설정과 정기적인 업데이트가 이루어지지 않으면 보안 취약점이 발생할 수 있습니다. 오픈소스 라이브러리 중 86%가 취약점을 포함하고 있다는 연구 결과가 이를 입증합니다 (출처).\n거짓말: “HTTPS를 쓰니 데이터는 안전합니다.”\n현실: HTTPS는 데이터 전송 중 암호화를 보장하지만, 서버 측 취약점이나 내부 위협 등 다른 공격을 방어하지 않습니다.\n거짓말: “방화벽으로 보호되니 외부 공격에서 안전합니다.”\n현실: 방화벽은 잘못 설정될 수 있고, 내부 공격자나 신뢰된 연결을 통한 공격은 방어하지 못합니다.\n📌 3. 보안의 과소평가형 거짓말: “우리의 데이터는 민감하지 않으니 보안 걱정은 필요 없습니다.”\n현실: 민감하지 않은 데이터라도 공격자가 네트워크 침투의 진입점으로 악용할 수 있습니다.\n거짓말: “코드 리뷰만으로 모든 보안 문제를 잡을 수 있습니다.”\n현실: 코드 리뷰는 중요하지만, 전문적인 보안 지식 없이는 모든 보안 문제를 발견하기 어렵습니다. 추가적인 자동화된 보안 도구와 전문가의 정기적 검토가 필요합니다.\n거짓말: “우리는 이미 테스트를 거쳤으니 안전합니다.”\n현실: 일반적인 기능 테스트로는 모든 보안 취약점을 찾을 수 없습니다. 보안 테스트는 별도로 수행되어야 하며, 지속적인 점검과 설계 수준의 리뷰가 필요합니다.\n📌 대표적인 실제 사고 사례 GitHub Actions 공급망 공격 (2025년)\n→ 23,000개 이상의 저장소에서 CI/CD 비밀 정보가 유출될 위험이 발생했습니다 (출처). Log4Shell 취약점 (2021년)\n→ Apache Log4j의 원격 코드 실행 취약점으로 전 세계적으로 큰 보안 문제를 야기했습니다 (출처). 📌 보안을 위한 권장사항 정기적 보안 교육 제공\n최신 OWASP Top 10을 중심으로 한 개발자 보안 교육을 정기적으로 진행합니다 (출처).\n보안 자동화 도구 도입\nSAST(정적 분석), DAST(동적 분석), SBOM(소프트웨어 자재명세서) 같은 도구를 활용하여 지속적으로 보안 문제를 탐지합니다.\n오픈소스 라이브러리 관리 강화\nDependabot, Renovate 등의 도구로 지속적으로 오픈소스 취약점을 관리하고 업데이트합니다.\n태그 고정(pinning) 정책 적용\nGitHub Actions 사용 시 commit-hash 방식을 통해 버전을 고정하여 공급망 공격을 예방합니다.\n이러한 접근을 통해 보다 실질적이고 지속 가능한 보안 문화를 구축할 수 있습니다.\n",
   "wordCount" : "475",
@@ -216,6 +218,11 @@
             <li>
                 <a href="https://windshock.github.io/ko/about/" title="소개">
                     <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/index.xml" title="RSS 피드">
+                    <span>RSS 피드</span>
                 </a>
             </li>
         </ul>
@@ -323,6 +330,7 @@ GitHub Actions 사용 시 commit-hash 방식을 통해 버전을 고정하여 �
 
   <footer class="post-footer">
     <ul class="post-tags">
+      <li><a href="https://windshock.github.io/ko/tags/trustandculture/">TrustAndCulture</a></li>
       <li><a href="https://windshock.github.io/ko/tags/security/">Security</a></li>
       <li><a href="https://windshock.github.io/ko/tags/devsecops/">Devsecops</a></li>
       <li><a href="https://windshock.github.io/ko/tags/%EA%B0%9C%EB%B0%9C-%EB%B3%B4%EC%95%88/">개발 보안</a></li>
@@ -346,7 +354,7 @@ GitHub Actions 사용 시 commit-hash 방식을 통해 버전을 고정하여 �
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share 개발자들 말하는 보안에 대한 흔한 거짓말 on x"
-            href="https://x.com/intent/tweet/?text=%ea%b0%9c%eb%b0%9c%ec%9e%90%eb%93%a4%20%eb%a7%90%ed%95%98%eb%8a%94%20%eb%b3%b4%ec%95%88%ec%97%90%20%eb%8c%80%ed%95%9c%20%ed%9d%94%ed%95%9c%20%ea%b1%b0%ec%a7%93%eb%a7%90&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-04-01-common-security-myths-developers-tell-themselves%2f&amp;hashtags=security%2cdevsecops%2c%ea%b0%9c%eb%b0%9c%eb%b3%b4%ec%95%88%2csupplychain%2cRust">
+            href="https://x.com/intent/tweet/?text=%ea%b0%9c%eb%b0%9c%ec%9e%90%eb%93%a4%20%eb%a7%90%ed%95%98%eb%8a%94%20%eb%b3%b4%ec%95%88%ec%97%90%20%eb%8c%80%ed%95%9c%20%ed%9d%94%ed%95%9c%20%ea%b1%b0%ec%a7%93%eb%a7%90&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-04-01-common-security-myths-developers-tell-themselves%2f&amp;hashtags=TrustAndCulture%2csecurity%2cdevsecops%2c%ea%b0%9c%eb%b0%9c%eb%b3%b4%ec%95%88%2csupplychain%2cRust">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />

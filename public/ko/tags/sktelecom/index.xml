@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SKTelecom on Code Before Breach</title>
+    <link>https://windshock.github.io/ko/tags/sktelecom/</link>
+    <description>Recent content in SKTelecom on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>ko-KR</language>
+    <lastBuildDate>Mon, 28 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/ko/tags/sktelecom/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>eBPF 기반 백도어 탐지 프레임워크와 최신 방법론</title>
+      <link>https://windshock.github.io/ko/post/2025-04-29-ebpf-backdoor-detection-framework/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-04-29-ebpf-backdoor-detection-framework/</guid>
+      <description>eBPF를 악용한 백도어 및 루트킷의 부상과 탐지 난제를 분석하고, Tracee, LKRG, bpftool, Hypervisor 기반 감사 등 최신 대응 방법과 연구 동향(2023~2025)을 종합 정리합니다.</description>
+    </item>
+    <item>
+      <title>통신 보안 심층 분석 리포트: SKT 해킹 사건과 글로벌 사례 분석</title>
+      <link>https://windshock.github.io/ko/post/2025-04-28-telecom-security-breach-analysis/</link>
+      <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-04-28-telecom-security-breach-analysis/</guid>
+      <description>2025년 SKT 해킹 사건을 중심으로, 통신 인프라의 핵심 보안 구조와 과거 글로벌 해킹 사례(Gemalto, APT10, Circles)를 심층 분석한 보고서입니다. 가입자 인증 시스템(Ki, SUPI/SUCI)과 5G SA/NSA 차이점까지 다루었습니다.</description>
+    </item>
+  </channel>
+</rss>

@@ -2,7 +2,7 @@
 title: "기업 네트워크 보안을 위한 ECH 차단 및 DoH 대응 전략"
 date: 2025-03-31
 description: "dnsmasq를 사용하여 SVCB와 HTTPS 레코드를 필터링함으로써 ECH를 비활성화하고 중앙 DNS 정책을 적용하는 실습 가이드. DoH 차단은 별도의 네트워크 정책이 필요함을 함께 안내합니다."
-tags: ["DNS", "DoH", "ECH", "ESNI", "dnsmasq", "기업보안"]
+tags: ["Code", "DNS", "DoH", "ECH", "ESNI", "dnsmasq", "기업보안"]
 featured: true
 image: "/images/post/dnsmasq-ech-doh-block.webp"
 ---

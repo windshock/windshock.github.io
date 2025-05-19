@@ -2,8 +2,10 @@
 title: "내 정보, 고양이 손에 맡겼나요?"
 date: 2025-04-21
 draft: false
-tags: ["개인정보보호", "정책", "시민참여", "카카오페이", "데이터민주주의", "AI"]
-categories: ["Security", "Policy"]
+tags: ["TrustAndCulture", "개인정보보호", "정책", "시민참여", "카카오페이", "데이터민주주의", "AI"]
+categories: ["Privacy", "Security", "Policy"]
+featured: true
+image: "/images/post/kakaopay-privacy-structure.webp"
 summary: "2025년 카카오페이 사건은 형식적 동의와 자율 규제의 한계를 드러냈습니다. AI 기반 DPIA 검증과 시민 감시를 통해 데이터 민주주의를 실현해야 합니다."
 ---
 

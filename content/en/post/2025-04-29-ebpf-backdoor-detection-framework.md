@@ -2,8 +2,10 @@
 title: "Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors"
 date: 2025-04-28
 draft: false
-tags: ["eBPF", "Rootkit Detection", "BPFDoor", "Kernel Security", "Tracee", "LKRG", "Hypervisor Audit", "Forensics"]
+tags: ["Mind", "SKTelecom", "eBPF", "Rootkit Detection", "BPFDoor", "Kernel Security", "Tracee", "LKRG", "Hypervisor Audit", "Forensics"]
 categories: ["Linux Security", "Cloud Security", "Advanced Threat Detection"]
+image: "https://ebpf.io/static/99c69bbff092c35b9c83f00a80fed240/fb370/hook-overview.webp"
+featured: true
 summary: "This article analyzes the rise of backdoors and rootkits exploiting eBPF, the detection challenges they pose, and comprehensively summarizes the latest countermeasures and research trends (2023–2025), including Tracee, LKRG, bpftool, and hypervisor-based auditing."
 ---
 

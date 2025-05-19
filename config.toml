@@ -87,6 +87,13 @@ googleAnalytics = "G-6N6EEJ259T"
     url = "/about/"
     weight = 50
 
+  [[languages.en.menu.main]]
+    identifier = "rss"
+    name = "RSS"
+    url = "/index.xml"
+    weight = 60
+
+
 [languages.ko.menu]
   [[languages.ko.menu.main]]
     identifier = "search"
@@ -118,6 +125,12 @@ googleAnalytics = "G-6N6EEJ259T"
     url = "/about/"
     weight = 50
 
+  [[languages.ko.menu.main]]
+    identifier = "rss"
+    name = "RSS 피드"
+    url = "/ko/index.xml"
+    weight = 60
+
 [languages]
   [languages.en]
     contentDir = "content/en"
@@ -130,4 +143,13 @@ googleAnalytics = "G-6N6EEJ259T"
     languageName = "한국어"
     languageCode = "ko-KR"
     weight = 2
+
+[related]
+  threshold = 80
+  includeNewer = true
+  indices = [
+    { name = "tags", weight = 100 },
+    { name = "categories", weight = 80 },
+    { name = "date", weight = 10 }
+  ]
 

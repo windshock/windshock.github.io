@@ -2,7 +2,9 @@
 title: "There’s No Such Thing as a Free Lunch, But Security Was Free"
 date: 2025-04-17
 draft: false
-tags: ["CVE", "security", "policy", "open source", "public goods"]
+tags: ["TrustAndCulture", "CVE", "security", "policy", "open source", "public goods"]
+featured: true
+image: "/images/post/cve-free-lunch.webp"
 categories: ["Security", "Policy"]
 summary: "The global security community has depended on CVE for decades without ever paying a dime. As the system nears collapse, it's time to ask who should bear the cost of public cybersecurity infrastructure."
 ---

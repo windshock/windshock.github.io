@@ -2,8 +2,10 @@
 title: "개발자들 말하는 보안에 대한 흔한 거짓말"
 date: 2025-04-01
 draft: false
-tags: ["security", "devsecops", "개발 보안", "supply chain", "Rust"]
+tags: ["TrustAndCulture", "security", "devsecops", "개발 보안", "supply chain", "Rust"]
 categories: ["보안"]
+featured: true
+image: "/images/post/dev-security-myths-cover.webp"
 summary: "개발자들이 보안에 대해 자주 믿는 '책임 전가형', '기술 과신형', '보안 과소평가형' 거짓말을 분석하고, 현실적인 대응 방안을 제시합니다."
 ---
 

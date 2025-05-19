@@ -2,8 +2,10 @@
 title: "eBPF 기반 백도어 탐지 프레임워크와 최신 방법론"
 date: 2025-04-28
 draft: false
-tags: ["eBPF", "루트킷 탐지", "BPFDoor", "커널 보안", "Tracee", "LKRG", "Hypervisor Audit", "포렌식"]
+tags: ["Mind", "SKTelecom", "eBPF", "루트킷 탐지", "BPFDoor", "커널 보안", "Tracee", "LKRG", "Hypervisor Audit", "포렌식"]
 categories: ["Linux Security", "Cloud Security", "Advanced Threat Detection"]
+image: "https://ebpf.io/static/99c69bbff092c35b9c83f00a80fed240/fb370/hook-overview.webp"
+featured: true
 summary: "eBPF를 악용한 백도어 및 루트킷의 부상과 탐지 난제를 분석하고, Tracee, LKRG, bpftool, Hypervisor 기반 감사 등 최신 대응 방법과 연구 동향(2023~2025)을 종합 정리합니다."
 ---
 

@@ -2,7 +2,9 @@
 title: "How I Managed Unmaintained Open Source with Gmail and Snyk Alerts"
 date: 2025-05-12
 draft: false
-tags: ["security", "automation", "snyk", "gmail", "apps script"]
+tags: ["Code", "security", "automation", "snyk", "gmail", "apps script"]
+featured: true
+image: "/images/post/apps-script-ui.webp"
 categories: ["Security", "Tools"]
 summary: "When API access falls short, automation through Gmail and Apps Script becomes essential. Here's how I used Google Apps Script to collect Snyk vulnerability alerts and patch data automatically."
 ---

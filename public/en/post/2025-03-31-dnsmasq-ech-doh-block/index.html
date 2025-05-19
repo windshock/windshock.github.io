@@ -6,11 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>How to Block ECH and Mitigate DoH in Enterprise Networks | Code Before Breach</title>
-<meta name="keywords" content="DNS, DoH, ECH, ESNI, dnsmasq, Enterprise Security">
+<meta name="keywords" content="Code, DNS, DoH, ECH, ESNI, dnsmasq, Enterprise Security">
 <meta name="description" content="A hands-on guide using dnsmasq to filter SVCB and HTTPS records for disabling ECH and enforcing central DNS policies. Notes that DoH requires separate network-layer policies.">
 <meta name="author" content="">
 <link rel="canonical" href="https://windshock.github.io/en/post/2025-03-31-dnsmasq-ech-doh-block/">
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://windshock.github.io/index.xml" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://windshock.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://windshock.github.io/favicon-16x16.png">
@@ -84,12 +85,12 @@
     <meta property="article:section" content="post">
     <meta property="article:published_time" content="2025-03-31T00:00:00+00:00">
     <meta property="article:modified_time" content="2025-03-31T00:00:00+00:00">
+    <meta property="article:tag" content="Code">
     <meta property="article:tag" content="DNS">
     <meta property="article:tag" content="DoH">
     <meta property="article:tag" content="ECH">
     <meta property="article:tag" content="ESNI">
     <meta property="article:tag" content="Dnsmasq">
-    <meta property="article:tag" content="Enterprise Security">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Block ECH and Mitigate DoH in Enterprise Networks">
 <meta name="twitter:description" content="A hands-on guide using dnsmasq to filter SVCB and HTTPS records for disabling ECH and enforcing central DNS policies. Notes that DoH requires separate network-layer policies.">
@@ -123,7 +124,7 @@
   "name": "How to Block ECH and Mitigate DoH in Enterprise Networks",
   "description": "A hands-on guide using dnsmasq to filter SVCB and HTTPS records for disabling ECH and enforcing central DNS policies. Notes that DoH requires separate network-layer policies.",
   "keywords": [
-    "DNS", "DoH", "ECH", "ESNI", "dnsmasq", "Enterprise Security"
+    "Code", "DNS", "DoH", "ECH", "ESNI", "dnsmasq", "Enterprise Security"
   ],
   "articleBody": "\nBackground Public DNS services like Cloudflare (1.1.1.1) and Google (8.8.8.8) have increasingly been abused as C2 channels for malware.\nTechnologies such as DoH (DNS over HTTPS) and ECH (Encrypted Client Hello) encrypt DNS traffic and SNI fields, making it difficult for security solutions to detect and inspect network activity.\nNote: ESNI (Encrypted SNI) is deprecated and has been replaced by ECH as the current standard. This guide focuses on ECH only.\nThreat Factors Policy Bypass: Users can manually configure public DoH servers like Cloudflare or Google, bypassing enterprise DNS policies. C2 Evasion: ECH encrypts the SNI field during TLS handshakes, making domain-based filtering difficult. Data Exfiltration: Encrypted DNS channels may be exploited to send internal data outside the organization. Core Point: ECH and DoH Are Separate – Different Mitigations Required The method described in this post using dnsmasq targets only ECH. DoH is not blocked by this method. Since DoH sends DNS queries over HTTPS, separate network-layer actions such as firewall rules or IP blocking are required. Examples: Block Cloudflare DoH (1.1.1.1:443), Google DoH (8.8.8.8:443), etc. Reference: Cisco Umbrella Guide to Prevent DoH Circumvention Solution: DNS Server-Level Control over ECH Client-side settings can be easily reverted by users, so it is recommended to control ECH centrally at the DNS server.\nBy filtering SVCB (65) and HTTPS (64) records using dnsmasq, clients can be prevented from advertising or negotiating ECH.\nHands-on: Blocking ECH with dnsmasq on macOS For other operating systems (Windows, Linux, etc.), setup steps differ. dnsmasq works across platforms but has different installation procedures.\n1. Install dnsmasq brew install dnsmasq 2. Edit the Configuration File sudo nano /opt/homebrew/etc/dnsmasq.conf Add the following lines:\n# Upstream DNS server server=8.8.8.8 # Filter SVCB (65) and HTTPS (64) records filter-rr=SVCB,HTTPS 3. Start dnsmasq sudo dnsmasq --conf-file=/opt/homebrew/etc/dnsmasq.conf 4. Set System DNS to localhost networksetup -setdnsservers Wi-Fi 127.0.0.1 For Ethernet connections, replace Wi-Fi with Ethernet.\nConfirming ECH is Disabled Visit https://crypto.cloudflare.com/cdn-cgi/trace to check ECH status.\nExample Output: Look for sni=encrypted or sni=plaintext Conclusion Filtering SVCB and HTTPS records using dnsmasq can help block ECH negotiation. DoH is not blocked by this approach and requires firewall-based solutions. For non-macOS users, refer to OS-specific guides or implement firewall/DNS-layer defenses. While blocking ECH improves enterprise visibility, it may reduce user privacy—this trade-off should be acknowledged. Note: Finally, for readers who are more deeply interested in technologies related to internet censorship, the net4people/bbs GitHub issues page is a valuable resource where the global community discusses censorship circumvention strategies and the latest research. This forum covers a wide range of topics including the Great Firewall (GFW), Encrypted Client Hello (ECH), DNS encryption, and more, sharing technical insights and solutions.\nReferences Cloudflare on ECH dnsmasq official documentation National Security Agency - Adopting Encrypted DNS in Enterprise Environments Cisco Umbrella Guide on Preventing DoH Circumvention Broadcom’s OS-specific DoH blocking strategies ",
   "wordCount" : "468",
@@ -217,6 +218,11 @@
             <li>
                 <a href="https://windshock.github.io/en/about/" title="About">
                     <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/en/index.xml" title="RSS">
+                    <span>RSS</span>
                 </a>
             </li>
         </ul>
@@ -368,6 +374,7 @@ filter-rr=SVCB,HTTPS
 
   <footer class="post-footer">
     <ul class="post-tags">
+      <li><a href="https://windshock.github.io/en/tags/code/">Code</a></li>
       <li><a href="https://windshock.github.io/en/tags/dns/">DNS</a></li>
       <li><a href="https://windshock.github.io/en/tags/doh/">DoH</a></li>
       <li><a href="https://windshock.github.io/en/tags/ech/">ECH</a></li>
@@ -392,7 +399,7 @@ filter-rr=SVCB,HTTPS
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share How to Block ECH and Mitigate DoH in Enterprise Networks on x"
-            href="https://x.com/intent/tweet/?text=How%20to%20Block%20ECH%20and%20Mitigate%20DoH%20in%20Enterprise%20Networks&amp;url=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-03-31-dnsmasq-ech-doh-block%2f&amp;hashtags=DNS%2cDoH%2cECH%2cESNI%2cdnsmasq%2cEnterpriseSecurity">
+            href="https://x.com/intent/tweet/?text=How%20to%20Block%20ECH%20and%20Mitigate%20DoH%20in%20Enterprise%20Networks&amp;url=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-03-31-dnsmasq-ech-doh-block%2f&amp;hashtags=Code%2cDNS%2cDoH%2cECH%2cESNI%2cdnsmasq%2cEnterpriseSecurity">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />

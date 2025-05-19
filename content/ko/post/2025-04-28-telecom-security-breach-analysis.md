@@ -2,10 +2,14 @@
 title: "통신 보안 심층 분석 리포트: SKT 해킹 사건과 글로벌 사례 분석"
 date: 2025-04-28
 draft: false
-tags: ["통신 보안", "SKT 해킹", "SIM 보안", "5G 보안", "APT 공격", "SS7 취약점"]
+tags: ["Mind", "SKTelecom", "통신 보안", "SKT 해킹", "SIM 보안", "5G 보안", "APT 공격", "SS7 취약점"]
 categories: ["Security Research", "Telecom Security"]
+image: "/images/post/sktelecom_usim.webp"
+featured: true
 summary: "2025년 SKT 해킹 사건을 중심으로, 통신 인프라의 핵심 보안 구조와 과거 글로벌 해킹 사례(Gemalto, APT10, Circles)를 심층 분석한 보고서입니다. 가입자 인증 시스템(Ki, SUPI/SUCI)과 5G SA/NSA 차이점까지 다루었습니다."
 ---
+
+{{< youtube xFNdkr31PuY >}}
 
 # 통신 보안 심층 분석 리포트
 

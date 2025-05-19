@@ -9,6 +9,10 @@ tags:
   - 취약점
   - 보안운영
   - KPI
+  - TrustAndCulture
+featured: true
+image: "/images/post/misconceptions-of-security-assessors.webp"
+summary: "사이버 보안 환경이 끊임없이 변화하면서 보안 취약점 평가는 잠재적인 보안 침해에 대한 주요 방어수단으로 자리잡고 있습니다. 그러나 이에 대한 일반적인 오해로 인해 평가의 실효성이 저하되는 경우가 많습니다. 본 글에서는 보안 취약점 평가에 대한 잘못된 인식을 살펴보고, 이를 극복할 수 있는 효과적인 전략을 제시함으로써 조직의 보안 수준 향상을 지원하고자 합니다."
 draft: false
 ---
 

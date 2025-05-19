@@ -2,8 +2,10 @@
 title: "SPOF in Cybersecurity: From History to Strategy, a Graph-Based Analysis"
 date: 2025-05-15
 draft: false
-tags: ["Cybersecurity", "SPOF", "Graph Analysis", "Attack Graphs"]
+tags: ["Mind", "Cybersecurity", "SPOF", "Graph Analysis", "Attack Graphs"]
 categories: ["Security"]
+featured: true
+image: "/images/post/spof_animation.gif"
 summary: "Analyzing the threat of Single Points of Failure (SPOF) through historical examples and graph theory, this piece presents a strategic approach to identifying and mitigating structural weaknesses in cybersecurity infrastructures."
 ---
 
