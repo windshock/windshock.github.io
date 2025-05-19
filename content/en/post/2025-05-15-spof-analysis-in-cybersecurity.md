@@ -9,6 +9,8 @@ image: "/images/post/spof_animation.gif"
 summary: "Analyzing the threat of Single Points of Failure (SPOF) through historical examples and graph theory, this piece presents a strategic approach to identifying and mitigating structural weaknesses in cybersecurity infrastructures."
 ---
 
+{{< youtube e1CNQ0i3fSY >}}
+
 ## Introduction: The Challenger Disaster and the Origin of the SPOF Concept
 
 In 1986, the Challenger space shuttle exploded 73 seconds after liftoff. The cause was a failed rubber O-ring in the right solid rocket booster—rendered brittle by cold weather. This seemingly minor mechanical flaw resulted in the deaths of seven astronauts and halted NASA’s shuttle program. The tragedy was a stark example of a Single Point of Failure (SPOF): when one component's failure cascades into a systemic collapse.

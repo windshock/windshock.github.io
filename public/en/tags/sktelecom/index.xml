@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>SKTelecom on Code Before Breach</title>
-    <link>https://windshock.github.io/en/tags/sktelecom/</link>
+    <link>http://localhost:1313/en/tags/sktelecom/</link>
     <description>Recent content in SKTelecom on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
     <lastBuildDate>Mon, 28 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://windshock.github.io/en/tags/sktelecom/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/en/tags/sktelecom/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors</title>
-      <link>https://windshock.github.io/en/post/2025-04-29-ebpf-backdoor-detection-framework/</link>
+      <link>http://localhost:1313/en/post/2025-04-29-ebpf-backdoor-detection-framework/</link>
       <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-04-29-ebpf-backdoor-detection-framework/</guid>
+      <guid>http://localhost:1313/en/post/2025-04-29-ebpf-backdoor-detection-framework/</guid>
       <description>This article analyzes the rise of backdoors and rootkits exploiting eBPF, the detection challenges they pose, and comprehensively summarizes the latest countermeasures and research trends (2023–2025), including Tracee, LKRG, bpftool, and hypervisor-based auditing.</description>
     </item>
     <item>
       <title>In-Depth Report on Telecommunication Security: SKT Breach and Global Case Studies</title>
-      <link>https://windshock.github.io/en/post/2025-04-28-telecom-security-breach-analysis/</link>
+      <link>http://localhost:1313/en/post/2025-04-28-telecom-security-breach-analysis/</link>
       <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-04-28-telecom-security-breach-analysis/</guid>
+      <guid>http://localhost:1313/en/post/2025-04-28-telecom-security-breach-analysis/</guid>
       <description>An in-depth analysis focusing on the 2025 SKT breach, the core security structures of telecom infrastructure, and historical global incidents (Gemalto, APT10, Circles). Also covers subscriber authentication (Ki, SUPI/SUCI) and security differences between 5G SA and NSA.</description>
     </item>
   </channel>
