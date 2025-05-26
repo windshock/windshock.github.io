@@ -2,64 +2,64 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Security on Code Before Breach</title>
-    <link>http://localhost:1313/en/categories/security/</link>
+    <link>https://windshock.github.io/en/categories/security/</link>
     <description>Recent content in Security on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
     <lastBuildDate>Thu, 15 May 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/categories/security/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://windshock.github.io/en/categories/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SPOF in Cybersecurity: From History to Strategy, a Graph-Based Analysis</title>
-      <link>http://localhost:1313/en/post/2025-05-15-spof-analysis-in-cybersecurity/</link>
+      <link>https://windshock.github.io/en/post/2025-05-15-spof-analysis-in-cybersecurity/</link>
       <pubDate>Thu, 15 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2025-05-15-spof-analysis-in-cybersecurity/</guid>
+      <guid>https://windshock.github.io/en/post/2025-05-15-spof-analysis-in-cybersecurity/</guid>
       <description>Analyzing the threat of Single Points of Failure (SPOF) through historical examples and graph theory, this piece presents a strategic approach to identifying and mitigating structural weaknesses in cybersecurity infrastructures.</description>
     </item>
     <item>
       <title>Dicer Module Vulnerability Mitigation Guide: CVE-2022-24434</title>
-      <link>http://localhost:1313/en/post/2025-05-12-cve-cve-2022-24434-dicer/</link>
+      <link>https://windshock.github.io/en/post/2025-05-12-cve-cve-2022-24434-dicer/</link>
       <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2025-05-12-cve-cve-2022-24434-dicer/</guid>
+      <guid>https://windshock.github.io/en/post/2025-05-12-cve-cve-2022-24434-dicer/</guid>
       <description>This guide analyzes a vulnerability in the Dicer module indirectly affecting Multer, and provides a practical mitigation strategy. It serves as a real-world example of dealing with unmaintained open source dependencies.</description>
     </item>
     <item>
       <title>How I Managed Unmaintained Open Source with Gmail and Snyk Alerts</title>
-      <link>http://localhost:1313/en/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</link>
+      <link>https://windshock.github.io/en/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</link>
       <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</guid>
+      <guid>https://windshock.github.io/en/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</guid>
       <description>When API access falls short, automation through Gmail and Apps Script becomes essential. Here&amp;rsquo;s how I used Google Apps Script to collect Snyk vulnerability alerts and patch data automatically.</description>
     </item>
     <item>
       <title>Is Your Data in the Cat&#39;s Paws?</title>
-      <link>http://localhost:1313/en/post/2025-04-21-expert-personal-data-report/</link>
+      <link>https://windshock.github.io/en/post/2025-04-21-expert-personal-data-report/</link>
       <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2025-04-21-expert-personal-data-report/</guid>
+      <guid>https://windshock.github.io/en/post/2025-04-21-expert-personal-data-report/</guid>
       <description>The 2025 KakaoPay case exposed the limits of formal consent and self-regulation. Data democracy must be achieved through AI-based DPIA verification and civic oversight.</description>
     </item>
     <item>
       <title>There’s No Such Thing as a Free Lunch, But Security Was Free</title>
-      <link>http://localhost:1313/en/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</link>
+      <link>https://windshock.github.io/en/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</guid>
+      <guid>https://windshock.github.io/en/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</guid>
       <description>The global security community has depended on CVE for decades without ever paying a dime. As the system nears collapse, it&amp;rsquo;s time to ask who should bear the cost of public cybersecurity infrastructure.</description>
     </item>
     <item>
       <title>Common Security Myths Developers Tell Themselves</title>
-      <link>http://localhost:1313/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</link>
+      <link>https://windshock.github.io/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</guid>
+      <guid>https://windshock.github.io/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</guid>
       <description>This article breaks down common developer security myths—responsibility deflection, overconfidence in technology, and security underestimation—and offers realistic countermeasures.</description>
     </item>
     <item>
       <title>Can Development Culture Influence Security Levels?</title>
-      <link>http://localhost:1313/en/post/2024-05-22-can-development-culture-influence-security-levels/</link>
+      <link>https://windshock.github.io/en/post/2024-05-22-can-development-culture-influence-security-levels/</link>
       <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2024-05-22-can-development-culture-influence-security-levels/</guid>
+      <guid>https://windshock.github.io/en/post/2024-05-22-can-development-culture-influence-security-levels/</guid>
       <description>&lt;h1 id=&#34;can-development-culture-influence-security-levels&#34;&gt;Can Development Culture Influence Security Levels?&lt;/h1&gt;
-&lt;p&gt;&lt;img alt=&#34;Development Culture&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/post/development-culture.webp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Development Culture&#34; loading=&#34;lazy&#34; src=&#34;https://windshock.github.io/images/post/development-culture.webp&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;evaluating-code-quality-and-security-levels-using-static-analysis-tools-joern&#34;&gt;Evaluating Code Quality and Security Levels Using Static Analysis Tools (Joern)&lt;/h2&gt;
 &lt;h3 id=&#34;background&#34;&gt;Background&lt;/h3&gt;
-&lt;p&gt;Unlike companies like &lt;a href=&#34;http://localhost:1313/en/post/2024-05-22-can-development-culture-influence-security-levels/#google-development-culture&#34;&gt;Google&lt;/a&gt; with an open and collaborative development culture, in some organizations that lack such culture, the quality of the code, including security levels, can be heavily influenced by the individual’s capability. In particular, developers who tend to write poor quality code, such as using the &lt;a href=&#34;http://localhost:1313/en/post/2024-05-22-can-development-culture-influence-security-levels/#strcpy-function-risk&#34;&gt;strcpy function&lt;/a&gt;, can have their code quality and security levels assessed by utilizing &lt;a href=&#34;http://localhost:1313/en/post/2024-05-22-can-development-culture-influence-security-levels/#static-analysis-tools&#34;&gt;static analysis tools&lt;/a&gt; (Joern, CodeQL, etc.) with &lt;a href=&#34;http://localhost:1313/en/post/2024-05-22-can-development-culture-influence-security-levels/#custom-rule-examples&#34;&gt;custom rules&lt;/a&gt;. As a result, even in situations where the development culture is lacking, code quality and security levels can be improved, leading to the production of good-quality code.&lt;/p&gt;</description>
+&lt;p&gt;Unlike companies like &lt;a href=&#34;https://windshock.github.io/en/post/2024-05-22-can-development-culture-influence-security-levels/#google-development-culture&#34;&gt;Google&lt;/a&gt; with an open and collaborative development culture, in some organizations that lack such culture, the quality of the code, including security levels, can be heavily influenced by the individual’s capability. In particular, developers who tend to write poor quality code, such as using the &lt;a href=&#34;https://windshock.github.io/en/post/2024-05-22-can-development-culture-influence-security-levels/#strcpy-function-risk&#34;&gt;strcpy function&lt;/a&gt;, can have their code quality and security levels assessed by utilizing &lt;a href=&#34;https://windshock.github.io/en/post/2024-05-22-can-development-culture-influence-security-levels/#static-analysis-tools&#34;&gt;static analysis tools&lt;/a&gt; (Joern, CodeQL, etc.) with &lt;a href=&#34;https://windshock.github.io/en/post/2024-05-22-can-development-culture-influence-security-levels/#custom-rule-examples&#34;&gt;custom rules&lt;/a&gt;. As a result, even in situations where the development culture is lacking, code quality and security levels can be improved, leading to the production of good-quality code.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -108,7 +108,7 @@ AI 기반 DPIA 검증을 직접 다루는 연구는 아직 많지 않지만, AI 
 
 ### 4. 시민 감시의 실효성과 필요성
 
-시민 감시는 개인정보 보호의 실효성을 높이는 데 필수적이다. 2022년 Future of Privacy Forum(FPF) 보고서에서는 동의 중심 데이터 보호 체계의 한계를 지적하며, 위험 기반 접근법과 시민 참여의 필요성을 강조했다([FPF, 2022](https://fpf.org/blog/new-report-on-limits-of-consent-in-south-koreas-data-protection-law/)). 또한, ACM Digital Library에서는 시민 중심 데이터 거버넌스에 대한 연구가 진행되고 있으며, 특히 스마트 시티에서의 시민 중심 접근이 강조되고 있다([DGOV, 2023](https://dl.acm.org/journal/dgov/calls-for-papers)).
+시민 감시는 개인정보 보호의 실효성을 높이는 데 필수적이다. 2022년 Future of Privacy Forum(FPF) 보고서에서는 동의 중심 데이터 보호 체계의 한계를 지적하며, 위험 기반 접근법과 시민 참여의 필요성을 강조했다([FPF, 2022](https://fpf.org/blog/new-report-on-limits-of-consent-in-south-koreas-data-protection-law/)). 또한, ACM Digital Library에서는 시민 중심 데이터 거버넌스에 대한 연구가 진행되고 있으며, 특히 스마트 시티에서의 시민 중심 접근이 강조되고 있다([DGOV, 2023](https://dl.acm.org/doi/10.1145/3603255#:~:text=These%20shall%20be%20transparently%20communicated%20to%20the%20auditors)).
 
 실제 사례로, 카카오페이 사건은 시민 단체의 신고로 경찰 조사가 시작되었으며, 이는 시민 감시의 중요성을 보여준다([MLex, 2024](https://www.mlex.com/mlex/articles/2091442/kakaopay-faces-police-probe-in-south-korea-over-alleged-unauthorized-data-transfer-to-alipay)).
 
@@ -151,5 +151,5 @@ AI 기반 DPIA 검증을 직접 다루는 연구는 아직 많지 않지만, AI 
 - [Data Protection Laws of the World](https://www.dlapiperdataprotection.com/index.html?t=law&c=KR)
 - [Fieldfisher, 2023](https://www.fieldfisher.com/en/insights/ai-privacy-compliance-getting-data-protection-impact-assessments-right)
 - [FPF, 2022](https://fpf.org/blog/new-report-on-limits-of-consent-in-south-koreas-data-protection-law/)
-- [DGOV, 2023](https://dl.acm.org/journal/dgov/calls-for-papers)
+- [DGOV, 2023](https://dl.acm.org/doi/10.1145/3603255#:~:text=These%20shall%20be%20transparently%20communicated%20to%20the%20auditors)
 - [MLex, 2024](https://www.mlex.com/mlex/articles/2091442/kakaopay-faces-police-probe-in-south-korea-over-alleged-unauthorized-data-transfer-to-alipay)
