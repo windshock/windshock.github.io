@@ -9,8 +9,7 @@ image: "/images/post/kakaopay-privacy-structure.webp"
 summary: "The 2025 KakaoPay case exposed the limits of formal consent and self-regulation. Data democracy must be achieved through AI-based DPIA verification and civic oversight."
 ---
 
-![KakaoPay Case and Personal Data Protection](/images/post/kakaopay-privacy-structure.webp)
-
+{{< youtube G9a5LnVU0zA  >}}
 # Is Your Data in the Cat's Paws?
 ## The 2025 KakaoPay Case and the Structural Limitations of Korea’s Data Protection System
 
