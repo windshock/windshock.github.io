@@ -6,6 +6,13 @@ tags: ["XML-RPC", "Security", "RCE", "Exploit"]
 categories: ["Cybersecurity"]
 ---
 
+
+**XML-RPC Security Series:**
+
+- [Series 1 - XML-RPC Security Vulnerabilities Analysis and Mitigation Strategies](https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/)
+- [Series 2 - CVE-2019-17570: Apache XML-RPC Exploit](https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/)
+- [Series 3 - Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned](https://windshock.github.io/en/post/2025-05-30-rce-via-exception-serialization-in-openstack-nova/)
+
 ![XML-RPC background](/images/post/xmlrpc-security.webp)
 
 ## Summary

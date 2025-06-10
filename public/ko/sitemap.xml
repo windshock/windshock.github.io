@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
         <url>
+          <loc>http://localhost:1313/en/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/</loc>
+          <lastmod>2025-06-10T00:00:00Z</lastmod>
+        </url>
+        <url>
           <loc>http://localhost:1313/en/post/2025-05-28-endpoint-security-evasion-techniques-20202025/</loc>
           <lastmod>2025-05-28T00:00:00Z</lastmod>
         </url>

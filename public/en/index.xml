@@ -6,8 +6,15 @@
     <description>Recent content in Code Before Breach - Secure Coding, Automation &amp; Shift-Left on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 28 May 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned</title>
+      <link>http://localhost:1313/en/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/</link>
+      <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/</guid>
+      <description>Analysis of potential Remote Code Execution vulnerability in OpenStack Nova&amp;rsquo;s exception serialization mechanism, including multiple PoC scenarios and defense recommendations.</description>
+    </item>
     <item>
       <title>Endpoint Evasion Techniques (2020–2025): The Evolution of Attacks Bypassing EDR</title>
       <link>http://localhost:1313/en/post/2025-05-28-endpoint-security-evasion-techniques-20202025/</link>
@@ -145,7 +152,13 @@ It is a human act of context-building and&lt;br&gt;
       <link>http://localhost:1313/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</link>
       <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</guid>
-      <description>&lt;p&gt;&lt;img alt=&#34;XML-RPC background&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/post/xmlrpc-security.webp&#34;&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;strong&gt;XML-RPC Security Series:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/&#34;&gt;Series 1 - XML-RPC Security Vulnerabilities Analysis and Mitigation Strategies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/&#34;&gt;Series 2 - CVE-2019-17570: Apache XML-RPC Exploit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://windshock.github.io/en/post/2025-05-30-rce-via-exception-serialization-in-openstack-nova/&#34;&gt;Series 3 - Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt=&#34;XML-RPC background&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/post/xmlrpc-security.webp&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Overview of XML-RPC Vulnerabilities:&lt;/strong&gt; As a lightweight remote call protocol for inter-system communication, XML-RPC is exposed to various threats such as RCE, XXE, DDoS, and privilege escalation.&lt;/li&gt;

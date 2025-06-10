@@ -6,8 +6,50 @@
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 28 May 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exception Serialization</title>
+      <link>http://localhost:1313/en/tags/exception-serialization/</link>
+      <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/exception-serialization/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nova</title>
+      <link>http://localhost:1313/en/tags/nova/</link>
+      <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/nova/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>OpenStack</title>
+      <link>http://localhost:1313/en/tags/openstack/</link>
+      <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/openstack/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Oslo.messaging</title>
+      <link>http://localhost:1313/en/tags/oslo.messaging/</link>
+      <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/oslo.messaging/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>RCE</title>
+      <link>http://localhost:1313/en/tags/rce/</link>
+      <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/rce/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vulnerability Analysis</title>
+      <link>http://localhost:1313/en/tags/vulnerability-analysis/</link>
+      <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/vulnerability-analysis/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AV Evasion</title>
       <link>http://localhost:1313/en/tags/av-evasion/</link>
@@ -328,20 +370,6 @@
       <link>http://localhost:1313/en/tags/deserialization/</link>
       <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/en/tags/deserialization/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>RCE</title>
-      <link>http://localhost:1313/en/tags/rce/</link>
-      <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/tags/rce/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Vulnerability Analysis</title>
-      <link>http://localhost:1313/en/tags/vulnerability-analysis/</link>
-      <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/tags/vulnerability-analysis/</guid>
       <description></description>
     </item>
     <item>
