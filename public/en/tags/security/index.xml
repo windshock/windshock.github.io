@@ -2,52 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Security on Code Before Breach</title>
-    <link>http://localhost:1313/en/tags/security/</link>
+    <link>https://windshock.github.io/en/tags/security/</link>
     <description>Recent content in Security on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
     <lastBuildDate>Mon, 12 May 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://windshock.github.io/en/tags/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dicer Module Vulnerability Mitigation Guide: CVE-2022-24434</title>
-      <link>http://localhost:1313/en/post/2025-05-12-cve-cve-2022-24434-dicer/</link>
+      <link>https://windshock.github.io/en/post/2025-05-12-cve-cve-2022-24434-dicer/</link>
       <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2025-05-12-cve-cve-2022-24434-dicer/</guid>
+      <guid>https://windshock.github.io/en/post/2025-05-12-cve-cve-2022-24434-dicer/</guid>
       <description>This guide analyzes a vulnerability in the Dicer module indirectly affecting Multer, and provides a practical mitigation strategy. It serves as a real-world example of dealing with unmaintained open source dependencies.</description>
     </item>
     <item>
       <title>How I Managed Unmaintained Open Source with Gmail and Snyk Alerts</title>
-      <link>http://localhost:1313/en/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</link>
+      <link>https://windshock.github.io/en/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</link>
       <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</guid>
+      <guid>https://windshock.github.io/en/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</guid>
       <description>When API access falls short, automation through Gmail and Apps Script becomes essential. Here&amp;rsquo;s how I used Google Apps Script to collect Snyk vulnerability alerts and patch data automatically.</description>
     </item>
     <item>
       <title>There’s No Such Thing as a Free Lunch, But Security Was Free</title>
-      <link>http://localhost:1313/en/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</link>
+      <link>https://windshock.github.io/en/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</guid>
+      <guid>https://windshock.github.io/en/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</guid>
       <description>The global security community has depended on CVE for decades without ever paying a dime. As the system nears collapse, it&amp;rsquo;s time to ask who should bear the cost of public cybersecurity infrastructure.</description>
     </item>
     <item>
       <title>Common Security Myths Developers Tell Themselves</title>
-      <link>http://localhost:1313/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</link>
+      <link>https://windshock.github.io/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</guid>
+      <guid>https://windshock.github.io/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</guid>
       <description>This article breaks down common developer security myths—responsibility deflection, overconfidence in technology, and security underestimation—and offers realistic countermeasures.</description>
     </item>
     <item>
       <title>XML-RPC Security Vulnerabilities Analysis and Mitigation Strategies</title>
-      <link>http://localhost:1313/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</link>
+      <link>https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</link>
       <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</guid>
+      <guid>https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</guid>
       <description>&lt;p&gt;&lt;strong&gt;XML-RPC Security Series:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/&#34;&gt;Series 1 - XML-RPC Security Vulnerabilities Analysis and Mitigation Strategies&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/&#34;&gt;Series 2 - CVE-2019-17570: Apache XML-RPC Exploit&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://windshock.github.io/en/post/2025-05-30-rce-via-exception-serialization-in-openstack-nova/&#34;&gt;Series 3 - Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt=&#34;XML-RPC background&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/post/xmlrpc-security.webp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;XML-RPC background&#34; loading=&#34;lazy&#34; src=&#34;https://windshock.github.io/images/post/xmlrpc-security.webp&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Overview of XML-RPC Vulnerabilities:&lt;/strong&gt; As a lightweight remote call protocol for inter-system communication, XML-RPC is exposed to various threats such as RCE, XXE, DDoS, and privilege escalation.&lt;/li&gt;
@@ -60,9 +60,9 @@
     </item>
     <item>
       <title>Common Misconceptions of Security Assessors</title>
-      <link>http://localhost:1313/en/post/2024-06-16-common-misconceptions-of-security-assessors/</link>
+      <link>https://windshock.github.io/en/post/2024-06-16-common-misconceptions-of-security-assessors/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2024-06-16-common-misconceptions-of-security-assessors/</guid>
+      <guid>https://windshock.github.io/en/post/2024-06-16-common-misconceptions-of-security-assessors/</guid>
       <description>As the cybersecurity landscape constantly evolves, vulnerability assessment has become a critical defense against potential security breaches. However, due to common misconceptions, the effectiveness of these evaluations often diminishes. In this article, we will explore the common misconceptions about security vulnerability assessments and suggest effective strategies to overcome these issues, ultimately supporting the improvement of organizational security levels.</description>
     </item>
   </channel>

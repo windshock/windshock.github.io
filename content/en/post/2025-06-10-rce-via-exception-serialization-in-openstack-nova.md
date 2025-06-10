@@ -5,7 +5,7 @@ draft: false
 tags: ["OpenStack", "Nova", "RCE", "Vulnerability Analysis", "oslo.messaging", "Exception Serialization"]
 categories: ["Security Research", "Vulnerability Analysis"]
 summary: "Analysis of potential Remote Code Execution vulnerability in OpenStack Nova's exception serialization mechanism, including multiple PoC scenarios and defense recommendations."
-image: "https://docs.openstack.org/ironic/newton/_images/conceptual_architecture.webp"
+image: "/images/post/ironic-conceptual-architecture.webp"
 ---
 
 
