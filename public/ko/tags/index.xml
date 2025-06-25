@@ -6,8 +6,36 @@
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Tue, 10 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Defense</title>
+      <link>https://windshock.github.io/ko/tags/defense/</link>
+      <pubDate>Wed, 25 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/defense/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>https://windshock.github.io/ko/tags/security/</link>
+      <pubDate>Wed, 25 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ssrf</title>
+      <link>https://windshock.github.io/ko/tags/ssrf/</link>
+      <pubDate>Wed, 25 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/ssrf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Web</title>
+      <link>https://windshock.github.io/ko/tags/web/</link>
+      <pubDate>Wed, 25 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/web/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Nova</title>
       <link>https://windshock.github.io/ko/tags/nova/</link>
@@ -181,13 +209,6 @@
       <link>https://windshock.github.io/ko/tags/node.js/</link>
       <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/ko/tags/node.js/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Security</title>
-      <link>https://windshock.github.io/ko/tags/security/</link>
-      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/security/</guid>
       <description></description>
     </item>
     <item>

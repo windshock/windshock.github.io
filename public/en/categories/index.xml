@@ -6,8 +6,22 @@
     <description>Recent content in Categories on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 10 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SSRF</title>
+      <link>https://windshock.github.io/en/categories/ssrf/</link>
+      <pubDate>Wed, 25 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/categories/ssrf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Web Security</title>
+      <link>https://windshock.github.io/en/categories/web-security/</link>
+      <pubDate>Wed, 25 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/categories/web-security/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Security Research</title>
       <link>https://windshock.github.io/en/categories/security-research/</link>

@@ -6,8 +6,15 @@
     <description>Recent content in Security on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 12 May 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Limitations of &#39;Secure&#39; SSRF Patches: Advanced Bypasses and Defense-in-Depth</title>
+      <link>https://windshock.github.io/en/post/2025-06-25-ssrf-defense/</link>
+      <pubDate>Wed, 25 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2025-06-25-ssrf-defense/</guid>
+      <description>A deep dive into why common SSRF defense code is often incomplete, real-world bypasses, and practical, layered mitigation strategies for developers and security engineers.</description>
+    </item>
     <item>
       <title>Dicer Module Vulnerability Mitigation Guide: CVE-2022-24434</title>
       <link>https://windshock.github.io/en/post/2025-05-12-cve-cve-2022-24434-dicer/</link>
