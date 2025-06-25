@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Web Security on Code Before Breach</title>
-    <link>https://windshock.github.io/en/categories/web-security/</link>
+    <link>http://localhost:1313/en/categories/web-security/</link>
     <description>Recent content in Web Security on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
     <lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://windshock.github.io/en/categories/web-security/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/en/categories/web-security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Limitations of &#39;Secure&#39; SSRF Patches: Advanced Bypasses and Defense-in-Depth</title>
-      <link>https://windshock.github.io/en/post/2025-06-25-ssrf-defense/</link>
+      <link>http://localhost:1313/en/post/2025-06-25-ssrf-defense/</link>
       <pubDate>Wed, 25 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-06-25-ssrf-defense/</guid>
+      <guid>http://localhost:1313/en/post/2025-06-25-ssrf-defense/</guid>
       <description>A deep dive into why common SSRF defense code is often incomplete, real-world bypasses, and practical, layered mitigation strategies for developers and security engineers.</description>
     </item>
   </channel>

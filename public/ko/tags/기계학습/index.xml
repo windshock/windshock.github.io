@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>기계학습 on Code Before Breach</title>
-    <link>https://windshock.github.io/ko/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/</link>
+    <link>http://localhost:1313/ko/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/</link>
     <description>Recent content in 기계학습 on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
     <lastBuildDate>Wed, 07 May 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://windshock.github.io/ko/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/ko/tags/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>인간의 깨달음과 인공지능: 불가능한 교차점에서의 대화</title>
-      <link>https://windshock.github.io/ko/post/2025-05-07-ai-insight-vs-human/</link>
+      <link>http://localhost:1313/ko/post/2025-05-07-ai-insight-vs-human/</link>
       <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/post/2025-05-07-ai-insight-vs-human/</guid>
+      <guid>http://localhost:1313/ko/post/2025-05-07-ai-insight-vs-human/</guid>
       <description>AI가 인간의 깨달음을 가질 수 있을까? 본 글은 존재론적 비대칭에서 출발해, 인간의 내적 변화와 AI의 반복적 구조를 비교하며 깨달음을 향한 기술적 조건을 탐구한다.</description>
     </item>
   </channel>

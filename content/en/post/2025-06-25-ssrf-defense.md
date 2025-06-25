@@ -253,7 +253,7 @@ Preventing SSRF isn’t about a single fix—it’s about building resilient, la
 - [Bypassing SSRF Filters Using r3dir — Leviathan Security](https://www.leviathansecurity.com/blog/bypassing-ssrf-filters-using-r3dir)
 - [Server-side request forgery (Wikipedia)](https://en.wikipedia.org/wiki/Server-side_request_forgery)
 - [Silver Bullet – Archive.org](https://archive.org/details/silverbulletothe0000unse)
-- [Snyk Blog: Preventing SSRF in Node.js](https://snyk.io/blog/preventing-ssrf-node-js/)
+- [Snyk Blog: Preventing SSRF in Node.js](https://snyk.io/blog/preventing-server-side-request-forgery-node-js/)
 - [GitHub Patch (NextChat)](https://github.com/ChatGPTNextWeb/NextChat/commit/9fb8fbcc65c29c74473a13715c05725e2b49065d)
 - [NextChat SSRF Advisory (GitHub)](https://github.com/ChatGPTNextWeb/NextChat/security/advisories/GHSA-gph5-rx77-3pjg)
 - [SSRF Defense Lab (GitHub)](https://github.com/windshock/ssrf-defense-lab)
