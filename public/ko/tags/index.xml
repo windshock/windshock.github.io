@@ -6,8 +6,64 @@
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/ko/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CISO</title>
+      <link>http://localhost:1313/ko/tags/ciso/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/tags/ciso/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>WAF</title>
+      <link>http://localhost:1313/ko/tags/waf/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/tags/waf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>개선로드맵</title>
+      <link>http://localhost:1313/ko/tags/%EA%B0%9C%EC%84%A0%EB%A1%9C%EB%93%9C%EB%A7%B5/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/tags/%EA%B0%9C%EC%84%A0%EB%A1%9C%EB%93%9C%EB%A7%B5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>리더십</title>
+      <link>http://localhost:1313/ko/tags/%EB%A6%AC%EB%8D%94%EC%8B%AD/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/tags/%EB%A6%AC%EB%8D%94%EC%8B%AD/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>보안운영</title>
+      <link>http://localhost:1313/ko/tags/%EB%B3%B4%EC%95%88%EC%9A%B4%EC%98%81/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/tags/%EB%B3%B4%EC%95%88%EC%9A%B4%EC%98%81/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>실행력</title>
+      <link>http://localhost:1313/ko/tags/%EC%8B%A4%ED%96%89%EB%A0%A5/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/tags/%EC%8B%A4%ED%96%89%EB%A0%A5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>전략실패</title>
+      <link>http://localhost:1313/ko/tags/%EC%A0%84%EB%9E%B5%EC%8B%A4%ED%8C%A8/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/tags/%EC%A0%84%EB%9E%B5%EC%8B%A4%ED%8C%A8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>현장중심</title>
+      <link>http://localhost:1313/ko/tags/%ED%98%84%EC%9E%A5%EC%A4%91%EC%8B%AC/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/tags/%ED%98%84%EC%9E%A5%EC%A4%91%EC%8B%AC/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Defense</title>
       <link>http://localhost:1313/ko/tags/defense/</link>
@@ -601,13 +657,6 @@
       <link>http://localhost:1313/ko/tags/%ED%8F%89%EA%B0%80/</link>
       <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/ko/tags/%ED%8F%89%EA%B0%80/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>보안운영</title>
-      <link>http://localhost:1313/ko/tags/%EB%B3%B4%EC%95%88%EC%9A%B4%EC%98%81/</link>
-      <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/ko/tags/%EB%B3%B4%EC%95%88%EC%9A%B4%EC%98%81/</guid>
       <description></description>
     </item>
     <item>

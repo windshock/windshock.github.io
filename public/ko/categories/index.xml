@@ -6,8 +6,50 @@
     <description>Recent content in Categories on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/ko/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CISO</title>
+      <link>http://localhost:1313/ko/categories/ciso/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/categories/ciso/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>WAF</title>
+      <link>http://localhost:1313/ko/categories/waf/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/categories/waf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>리더십</title>
+      <link>http://localhost:1313/ko/categories/%EB%A6%AC%EB%8D%94%EC%8B%AD/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/categories/%EB%A6%AC%EB%8D%94%EC%8B%AD/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>보안전략</title>
+      <link>http://localhost:1313/ko/categories/%EB%B3%B4%EC%95%88%EC%A0%84%EB%9E%B5/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/categories/%EB%B3%B4%EC%95%88%EC%A0%84%EB%9E%B5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>실행력</title>
+      <link>http://localhost:1313/ko/categories/%EC%8B%A4%ED%96%89%EB%A0%A5/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/categories/%EC%8B%A4%ED%96%89%EB%A0%A5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>전략실행</title>
+      <link>http://localhost:1313/ko/categories/%EC%A0%84%EB%9E%B5%EC%8B%A4%ED%96%89/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/categories/%EC%A0%84%EB%9E%B5%EC%8B%A4%ED%96%89/</guid>
+      <description></description>
+    </item>
     <item>
       <title>SSRF</title>
       <link>http://localhost:1313/ko/categories/ssrf/</link>

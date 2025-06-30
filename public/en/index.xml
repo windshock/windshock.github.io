@@ -6,8 +6,15 @@
     <description>Recent content in Code Before Breach - Secure Coding, Automation &amp; Shift-Left on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Gap Between CISO Strategy and Execution: The WAF Debate and Field Leadership Report</title>
+      <link>http://localhost:1313/en/post/2025-06-30-ciso-strategy-execution/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/post/2025-06-30-ciso-strategy-execution/</guid>
+      <description>A comprehensive report presenting a roadmap for practical security improvement and field leadership, centered around the debate on WAF and the gap between philosophy and execution.</description>
+    </item>
     <item>
       <title>The Limitations of &#39;Secure&#39; SSRF Patches: Advanced Bypasses and Defense-in-Depth</title>
       <link>http://localhost:1313/en/post/2025-06-25-ssrf-defense/</link>

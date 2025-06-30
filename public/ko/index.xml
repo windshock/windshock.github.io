@@ -6,8 +6,15 @@
     <description>Recent content in Code Before Breach - 보안 코딩, 자동화, 시프트 레프트 on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/ko/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CISO 전략과 실행의 간극: WAF 논쟁과 현장 리더십 보고서</title>
+      <link>http://localhost:1313/ko/post/2025-06-30-ciso-strategy-execution/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/ko/post/2025-06-30-ciso-strategy-execution/</guid>
+      <description>철학에 머문 전략, 실행의 실패, 그리고 WAF 논쟁을 중심으로 현장 리더십과 실질적 보안 개선 로드맵을 제시하는 종합 보고서.</description>
+    </item>
     <item>
       <title>SSRF Defense: 최신 방어 전략과 실전 가이드</title>
       <link>http://localhost:1313/ko/post/2025-06-25-ssrf-defense/</link>

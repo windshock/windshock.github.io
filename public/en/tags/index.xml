@@ -6,8 +6,64 @@
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CISO</title>
+      <link>http://localhost:1313/en/tags/ciso/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/ciso/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Execution</title>
+      <link>http://localhost:1313/en/tags/execution/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/execution/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Field-Oriented</title>
+      <link>http://localhost:1313/en/tags/field-oriented/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/field-oriented/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Improvement Roadmap</title>
+      <link>http://localhost:1313/en/tags/improvement-roadmap/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/improvement-roadmap/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Leadership</title>
+      <link>http://localhost:1313/en/tags/leadership/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/leadership/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security Operations</title>
+      <link>http://localhost:1313/en/tags/security-operations/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/security-operations/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Strategy Failure</title>
+      <link>http://localhost:1313/en/tags/strategy-failure/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/strategy-failure/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>WAF</title>
+      <link>http://localhost:1313/en/tags/waf/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/tags/waf/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Defense</title>
       <link>http://localhost:1313/en/tags/defense/</link>
@@ -608,13 +664,6 @@
       <link>http://localhost:1313/en/tags/kpi/</link>
       <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/en/tags/kpi/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Security Operations</title>
-      <link>http://localhost:1313/en/tags/security-operations/</link>
-      <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/tags/security-operations/</guid>
       <description></description>
     </item>
     <item>

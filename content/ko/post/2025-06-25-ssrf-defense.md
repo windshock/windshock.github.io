@@ -1,6 +1,7 @@
 ---
 title: "SSRF Defense: 최신 방어 전략과 실전 가이드"
 date: 2025-06-25
+draft: false
 categories: [Web Security, SSRF]
 tags: [ssrf, security, defense, web]
 description: "서버사이드 요청 위조(SSRF) 공격의 원리와 이를 효과적으로 방어하는 최신 전략 및 실전 가이드."
