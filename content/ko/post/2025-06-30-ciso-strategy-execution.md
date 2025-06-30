@@ -8,6 +8,8 @@ description: "철학에 머문 전략, 실행의 실패, 그리고 WAF 논쟁을
 image: "/images/nosilverbullet.webp"
 ---
 
+{{< youtube WH7jwZNA84Y  >}}
+
 ## 서문: 철학과 실행 사이, 고립된 확신의 균열
 
 202x년 상반기.
@@ -213,12 +215,6 @@ CISO님의 리더십 아래 지금까지 추진된 보안 전략은 분명 의�
 ---
 
 ## 참고자료 및 추가 읽을거리
-
-🔗 **더 읽어보기 및 참고문헌**
-
-📘 **전체 글 원문**:  
-"실행 없는 보안은 신념에 불과하다"  
-→ [https://windshock.github.io/ko/post/2025-06-30-ciso-strategy-execution.md](https://windshock.github.io/ko/post/2025-06-30-ciso-strategy-execution.md)
 
 📷 **현장 리더십 사례**:  
 이재명 시장의 열린시장실 — 현장중심 리더십의 상징적 실천  

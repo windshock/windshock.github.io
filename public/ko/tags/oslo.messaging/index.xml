@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Oslo.messaging on Code Before Breach</title>
-    <link>http://localhost:1313/ko/tags/oslo.messaging/</link>
+    <link>https://windshock.github.io/ko/tags/oslo.messaging/</link>
     <description>Recent content in Oslo.messaging on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
     <lastBuildDate>Tue, 10 Jun 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/ko/tags/oslo.messaging/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://windshock.github.io/ko/tags/oslo.messaging/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OpenStack Nova 예외 직렬화 패턴: 이론적 RCE 위험과 보안 교훈</title>
-      <link>http://localhost:1313/ko/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/</link>
+      <link>https://windshock.github.io/ko/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/</link>
       <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/ko/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/</guid>
+      <guid>https://windshock.github.io/ko/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/</guid>
       <description>OpenStack Nova의 예외 직렬화 메커니즘에서 발생할 수 있는 이론적 원격 코드 실행(RCE) 위험 분석과 여러 PoC, 방어책 제안</description>
     </item>
   </channel>
