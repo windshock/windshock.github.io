@@ -3,12 +3,13 @@ title: "CISO 전략과 실행의 간극: WAF 논쟁과 현장 리더십 보고�
 date: 2025-06-30
 draft: false
 categories: [CISO, 보안전략, 실행력, WAF, 리더십, 전략실행]
-tags: [CISO, WAF, 실행력, 전략실패, 리더십, 현장중심, 보안운영, 개선로드맵]
+tags: ["Mind", CISO, WAF, 실행력, 전략실패, 리더십, 현장중심, 보안운영, 개선로드맵]
+featured: true
 description: "철학에 머문 전략, 실행의 실패, 그리고 WAF 논쟁을 중심으로 현장 리더십과 실질적 보안 개선 로드맵을 제시하는 종합 보고서."
-image: "/images/nosilverbullet.webp"
+image: "/images/post/strategyVSexecutionGapDiagram.webp"
 ---
 
-{{< youtube WH7jwZNA84Y  >}}
+{{< youtube WH7jwZNA84Y >}}
 
 ## 서문: 철학과 실행 사이, 고립된 확신의 균열
 

@@ -6,8 +6,15 @@
     <description>Recent content in Mind on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 28 May 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/tags/mind/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Gap Between CISO Strategy and Execution: The WAF Debate and Field Leadership Report</title>
+      <link>https://windshock.github.io/en/post/2025-06-30-ciso-strategy-execution/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2025-06-30-ciso-strategy-execution/</guid>
+      <description>A comprehensive report presenting a roadmap for practical security improvement and field leadership, centered around the debate on WAF and the gap between philosophy and execution.</description>
+    </item>
     <item>
       <title>Endpoint Evasion Techniques (2020–2025): The Evolution of Attacks Bypassing EDR</title>
       <link>https://windshock.github.io/en/post/2025-05-28-endpoint-security-evasion-techniques-20202025/</link>

@@ -6,8 +6,15 @@
     <description>Recent content in Mind on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Wed, 28 May 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/tags/mind/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CISO 전략과 실행의 간극: WAF 논쟁과 현장 리더십 보고서</title>
+      <link>https://windshock.github.io/ko/post/2025-06-30-ciso-strategy-execution/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-06-30-ciso-strategy-execution/</guid>
+      <description>철학에 머문 전략, 실행의 실패, 그리고 WAF 논쟁을 중심으로 현장 리더십과 실질적 보안 개선 로드맵을 제시하는 종합 보고서.</description>
+    </item>
     <item>
       <title>엔드포인트 보안 우회 기법(2020-2025년) - 기술 심층 분석</title>
       <link>https://windshock.github.io/ko/post/2025-05-28-endpoint-security-evasion-techniques-20202025/</link>

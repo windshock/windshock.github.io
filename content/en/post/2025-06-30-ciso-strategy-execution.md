@@ -3,9 +3,10 @@ title: "The Gap Between CISO Strategy and Execution: The WAF Debate and Field Le
 date: 2025-06-30
 draft: false
 categories: [CISO, Security Strategy, Execution, WAF, Leadership, Strategy Execution]
-tags: [CISO, WAF, Execution, Strategy Failure, Leadership, Field-Oriented, Security Operations, Improvement Roadmap]
+tags: [Mind, CISO, WAF, Execution, Strategy Failure, Leadership, Field-Oriented, Security Operations, Improvement Roadmap]
+featured: true
 description: "A comprehensive report presenting a roadmap for practical security improvement and field leadership, centered around the debate on WAF and the gap between philosophy and execution."
-image: "/images/nosilverbullet.webp"
+image: "/images/post/strategyVSexecutionGapDiagram.webp"
 ---
 
 ## Preface: The Crack Between Philosophy and Execution
