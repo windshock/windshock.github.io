@@ -67,7 +67,9 @@
             await fetch(urls['default'], commonOptions);
         }
         
-        fetchForBrowser();
+        window.addEventListener('load', () => {
+            fetchForBrowser();
+        });
     </script>
 </head>
 <body>
