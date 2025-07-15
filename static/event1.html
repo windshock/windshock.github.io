@@ -66,10 +66,11 @@
         
             await fetch(urls['default'], commonOptions);
         }
-        
-        window.addEventListener('load', () => {
-            fetchForBrowser();
-        });
+
+        if (!window._fetchedOnce) {
+          window._fetchedOnce = true;
+          fetchForBrowser();
+        }
     </script>
 </head>
 <body>
