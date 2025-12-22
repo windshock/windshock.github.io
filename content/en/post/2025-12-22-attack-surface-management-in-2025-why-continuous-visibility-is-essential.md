@@ -5,19 +5,12 @@ draft: false
 tags: ["Attack Surface Management", "ASM", "Continuous Monitoring", "EASM", "CAASM", "Attack Surface Visibility", "Asset Discovery", "Shadow IT", "Third-Party Risk", "Zero Trust"]
 categories: ["Security Research", "Security Operations"]
 summary: "Why continuous visibility and attack surface management (ASM) are essential in 2025, with key trends, survey insights, and practical takeaways."
+image: "/images/pdf-previews/ASM_Hype_vs_Reality_p1.webp"
 ---
 
 # PDF
 
 - **Open (new tab):** [`/files/ASM_Hype_vs_Reality.pdf`](/files/ASM_Hype_vs_Reality.pdf)
-
-<a href="/files/ASM_Hype_vs_Reality.pdf" target="_blank" rel="noopener">
-  <img
-    src="/images/pdf-previews/ASM_Hype_vs_Reality_p1.webp"
-    alt="ASM_Hype_vs_Reality.pdf - first page preview"
-    style="width: 100%; max-width: 1000px; border: 1px solid #e5e7eb; border-radius: 8px;"
-  />
-</a>
 
 <iframe
   src="/files/ASM_Hype_vs_Reality.pdf"

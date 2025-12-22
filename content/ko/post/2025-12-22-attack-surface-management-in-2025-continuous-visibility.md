@@ -5,15 +5,8 @@ draft: false
 tags: ["Attack Surface Management", "ASM", "지속적 모니터링", "EASM", "CAASM", "공격 표면 가시성", "자산 발견", "섀도우 IT", "서드파티 리스크", "제로 트러스트"]
 categories: ["보안", "보안 운영"]
 description: "2025년 공격 표면 관리(ASM)에서 ‘지속적 가시성’이 왜 필수인지, 주요 트렌드/설문 인사이트/실무 포인트를 정리합니다."
+image: "/images/pdf-previews/ASM_Promise_Reality_Behavior_p1.webp"
 ---
-
-<a href="/files/ASM_Promise_Reality_Behavior.pdf" target="_blank" rel="noopener">
-  <img
-    src="/images/pdf-previews/ASM_Promise_Reality_Behavior_p1.webp"
-    alt="ASM_Promise_Reality_Behavior.pdf - 첫 페이지 미리보기"
-    style="width: 100%; max-width: 1000px; border: 1px solid #e5e7eb; border-radius: 8px;"
-  />
-</a>
 
 <iframe
   src="/files/ASM_Promise_Reality_Behavior.pdf"
