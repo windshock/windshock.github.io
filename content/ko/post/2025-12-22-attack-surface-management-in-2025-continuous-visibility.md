@@ -7,6 +7,14 @@ categories: ["보안", "보안 운영"]
 description: "2025년 공격 표면 관리(ASM)에서 ‘지속적 가시성’이 왜 필수인지, 주요 트렌드/설문 인사이트/실무 포인트를 정리합니다."
 ---
 
+<a href="/files/ASM_Promise_Reality_Behavior.pdf" target="_blank" rel="noopener">
+  <img
+    src="/images/pdf-previews/ASM_Promise_Reality_Behavior_p1.webp"
+    alt="ASM_Promise_Reality_Behavior.pdf - 첫 페이지 미리보기"
+    style="width: 100%; max-width: 1000px; border: 1px solid #e5e7eb; border-radius: 8px;"
+  />
+</a>
+
 <iframe
   src="/files/ASM_Promise_Reality_Behavior.pdf"
   width="100%"
