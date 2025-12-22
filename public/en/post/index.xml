@@ -2,112 +2,119 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Code Before Breach</title>
-    <link>https://windshock.github.io/en/post/</link>
+    <link>http://localhost:1313/en/post/</link>
     <description>Recent content in Posts on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 30 Jun 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://windshock.github.io/en/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Attack Surface Management in 2025: Why Continuous Visibility is Essential</title>
+      <link>http://localhost:1313/en/post/2025-12-22-attack-surface-management-in-2025-why-continuous-visibility-is-essential/</link>
+      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/en/post/2025-12-22-attack-surface-management-in-2025-why-continuous-visibility-is-essential/</guid>
+      <description>Why continuous visibility and attack surface management (ASM) are essential in 2025, with key trends, survey insights, and practical takeaways.</description>
+    </item>
     <item>
       <title>The Gap Between CISO Strategy and Execution: The WAF Debate and Field Leadership Report</title>
-      <link>https://windshock.github.io/en/post/2025-06-30-ciso-strategy-execution/</link>
+      <link>http://localhost:1313/en/post/2025-06-30-ciso-strategy-execution/</link>
       <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-06-30-ciso-strategy-execution/</guid>
+      <guid>http://localhost:1313/en/post/2025-06-30-ciso-strategy-execution/</guid>
       <description>A comprehensive report presenting a roadmap for practical security improvement and field leadership, centered around the debate on WAF and the gap between philosophy and execution.</description>
     </item>
     <item>
       <title>The Limitations of &#39;Secure&#39; SSRF Patches: Advanced Bypasses and Defense-in-Depth</title>
-      <link>https://windshock.github.io/en/post/2025-06-25-ssrf-defense/</link>
+      <link>http://localhost:1313/en/post/2025-06-25-ssrf-defense/</link>
       <pubDate>Wed, 25 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-06-25-ssrf-defense/</guid>
+      <guid>http://localhost:1313/en/post/2025-06-25-ssrf-defense/</guid>
       <description>A deep dive into why common SSRF defense code is often incomplete, real-world bypasses, and practical, layered mitigation strategies for developers and security engineers.</description>
     </item>
     <item>
       <title>Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned</title>
-      <link>https://windshock.github.io/en/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/</link>
+      <link>http://localhost:1313/en/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/</link>
       <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/</guid>
+      <guid>http://localhost:1313/en/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/</guid>
       <description>Analysis of potential Remote Code Execution vulnerability in OpenStack Nova&amp;rsquo;s exception serialization mechanism, including multiple PoC scenarios and defense recommendations.</description>
     </item>
     <item>
       <title>Endpoint Evasion Techniques (2020–2025): The Evolution of Attacks Bypassing EDR</title>
-      <link>https://windshock.github.io/en/post/2025-05-28-endpoint-security-evasion-techniques-20202025/</link>
+      <link>http://localhost:1313/en/post/2025-05-28-endpoint-security-evasion-techniques-20202025/</link>
       <pubDate>Wed, 28 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-05-28-endpoint-security-evasion-techniques-20202025/</guid>
+      <guid>http://localhost:1313/en/post/2025-05-28-endpoint-security-evasion-techniques-20202025/</guid>
       <description>This post analyzes the evolution of endpoint evasion techniques from 2020 to 2025. It covers BYOI, BYOVD, DLL hijacking, service tampering, and other sophisticated methods attackers use to bypass EDR and AV. Real-world ransomware cases and vendor impact are discussed, along with defensive insights.</description>
     </item>
     <item>
       <title>SPOF in Cybersecurity: From History to Strategy, a Graph-Based Analysis</title>
-      <link>https://windshock.github.io/en/post/2025-05-15-spof-analysis-in-cybersecurity/</link>
+      <link>http://localhost:1313/en/post/2025-05-15-spof-analysis-in-cybersecurity/</link>
       <pubDate>Thu, 15 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-05-15-spof-analysis-in-cybersecurity/</guid>
+      <guid>http://localhost:1313/en/post/2025-05-15-spof-analysis-in-cybersecurity/</guid>
       <description>Analyzing the threat of Single Points of Failure (SPOF) through historical examples and graph theory, this piece presents a strategic approach to identifying and mitigating structural weaknesses in cybersecurity infrastructures.</description>
     </item>
     <item>
       <title>Dicer Module Vulnerability Mitigation Guide: CVE-2022-24434</title>
-      <link>https://windshock.github.io/en/post/2025-05-12-cve-cve-2022-24434-dicer/</link>
+      <link>http://localhost:1313/en/post/2025-05-12-cve-cve-2022-24434-dicer/</link>
       <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-05-12-cve-cve-2022-24434-dicer/</guid>
+      <guid>http://localhost:1313/en/post/2025-05-12-cve-cve-2022-24434-dicer/</guid>
       <description>This guide analyzes a vulnerability in the Dicer module indirectly affecting Multer, and provides a practical mitigation strategy. It serves as a real-world example of dealing with unmaintained open source dependencies.</description>
     </item>
     <item>
       <title>How I Managed Unmaintained Open Source with Gmail and Snyk Alerts</title>
-      <link>https://windshock.github.io/en/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</link>
+      <link>http://localhost:1313/en/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</link>
       <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</guid>
+      <guid>http://localhost:1313/en/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</guid>
       <description>When API access falls short, automation through Gmail and Apps Script becomes essential. Here&amp;rsquo;s how I used Google Apps Script to collect Snyk vulnerability alerts and patch data automatically.</description>
     </item>
     <item>
       <title>Human Insight and Artificial Intelligence: Dialogue at an Impossible Crossroads</title>
-      <link>https://windshock.github.io/en/post/2025-05-07-ai-insight-vs-human/</link>
+      <link>http://localhost:1313/en/post/2025-05-07-ai-insight-vs-human/</link>
       <pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-05-07-ai-insight-vs-human/</guid>
+      <guid>http://localhost:1313/en/post/2025-05-07-ai-insight-vs-human/</guid>
       <description>Can AI achieve enlightenment? This article explores the asymmetric nature of human insight and machine repetition, outlining technical conditions that might allow for a reflective AI—and the philosophical limits it must face.</description>
     </item>
     <item>
       <title>Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors</title>
-      <link>https://windshock.github.io/en/post/2025-04-29-ebpf-backdoor-detection-framework/</link>
+      <link>http://localhost:1313/en/post/2025-04-29-ebpf-backdoor-detection-framework/</link>
       <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-04-29-ebpf-backdoor-detection-framework/</guid>
+      <guid>http://localhost:1313/en/post/2025-04-29-ebpf-backdoor-detection-framework/</guid>
       <description>This article analyzes the rise of backdoors and rootkits exploiting eBPF, the detection challenges they pose, and comprehensively summarizes the latest countermeasures and research trends (2023–2025), including Tracee, LKRG, bpftool, and hypervisor-based auditing.</description>
     </item>
     <item>
       <title>In-Depth Report on Telecommunication Security: SKT Breach and Global Case Studies</title>
-      <link>https://windshock.github.io/en/post/2025-04-28-telecom-security-breach-analysis/</link>
+      <link>http://localhost:1313/en/post/2025-04-28-telecom-security-breach-analysis/</link>
       <pubDate>Mon, 28 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-04-28-telecom-security-breach-analysis/</guid>
+      <guid>http://localhost:1313/en/post/2025-04-28-telecom-security-breach-analysis/</guid>
       <description>An in-depth analysis focusing on the 2025 SKT breach, the core security structures of telecom infrastructure, and historical global incidents (Gemalto, APT10, Circles). Also covers subscriber authentication (Ki, SUPI/SUCI) and security differences between 5G SA and NSA.</description>
     </item>
     <item>
       <title>CVE-2019-17570 Apache XML-RPC Vulnerability Analysis Report</title>
-      <link>https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</link>
+      <link>http://localhost:1313/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</link>
       <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</guid>
+      <guid>http://localhost:1313/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</guid>
       <description>A detailed analysis of the CVE-2019-17570 deserialization vulnerability in the Apache XML-RPC library, including patching methods and secure implementation practices.</description>
     </item>
     <item>
       <title>Is Your Data in the Cat&#39;s Paws?</title>
-      <link>https://windshock.github.io/en/post/2025-04-21-expert-personal-data-report/</link>
+      <link>http://localhost:1313/en/post/2025-04-21-expert-personal-data-report/</link>
       <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-04-21-expert-personal-data-report/</guid>
+      <guid>http://localhost:1313/en/post/2025-04-21-expert-personal-data-report/</guid>
       <description>The 2025 KakaoPay case exposed the limits of formal consent and self-regulation. Data democracy must be achieved through AI-based DPIA verification and civic oversight.</description>
     </item>
     <item>
       <title>There’s No Such Thing as a Free Lunch, But Security Was Free</title>
-      <link>https://windshock.github.io/en/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</link>
+      <link>http://localhost:1313/en/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</guid>
+      <guid>http://localhost:1313/en/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</guid>
       <description>The global security community has depended on CVE for decades without ever paying a dime. As the system nears collapse, it&amp;rsquo;s time to ask who should bear the cost of public cybersecurity infrastructure.</description>
     </item>
     <item>
       <title>In the AI Era, Employees Are Isolated and Organizations Thrive</title>
-      <link>https://windshock.github.io/en/post/2025-04-07-evil-management-manual/</link>
+      <link>http://localhost:1313/en/post/2025-04-07-evil-management-manual/</link>
       <pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-04-07-evil-management-manual/</guid>
+      <guid>http://localhost:1313/en/post/2025-04-07-evil-management-manual/</guid>
       <description>&lt;p&gt;📂 &lt;strong&gt;[Confidential Document] Leaked Copy&lt;/strong&gt;&lt;/p&gt;
 &lt;h1 id=&#34;in-the-ai-era-employees-are-isolated-and-organizations-thrive&#34;&gt;In the AI Era, Employees Are Isolated and Organizations Thrive&lt;/h1&gt;
 &lt;h3 id=&#34;-evil-management-manual-v10&#34;&gt;— Evil Management Manual v1.0&lt;/h3&gt;
-&lt;h2 id=&#34;in-the-ai-era-the-isolated-human&#34;&gt;&lt;img alt=&#34;In the AI Era, the Isolated Human&#34; loading=&#34;lazy&#34; src=&#34;https://windshock.github.io/images/post/Employees-Are-Isolated-and-Organizations-Thrive.webp&#34;&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;in-the-ai-era-the-isolated-human&#34;&gt;&lt;img alt=&#34;In the AI Era, the Isolated Human&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/post/Employees-Are-Isolated-and-Organizations-Thrive.webp&#34;&gt;&lt;/h2&gt;
 &lt;h2 id=&#34;1-human-relationships-eliminate-them&#34;&gt;1. Human Relationships? Eliminate Them&lt;/h2&gt;
 &lt;p&gt;What happens when people get too close?&lt;/p&gt;
 &lt;ul&gt;
@@ -125,10 +132,10 @@
     </item>
     <item>
       <title>The Place of Humans: Declaring the Creator’s Rights in the Age of AI</title>
-      <link>https://windshock.github.io/en/post/2025-04-03-human-place-in-ai-age/</link>
+      <link>http://localhost:1313/en/post/2025-04-03-human-place-in-ai-age/</link>
       <pubDate>Thu, 03 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-04-03-human-place-in-ai-age/</guid>
-      <description>&lt;p&gt;&lt;img alt=&#34;Abstract illustration representing human presence in AI&#34; loading=&#34;lazy&#34; src=&#34;https://windshock.github.io/images/human-place-abstract.webp&#34;&gt;&lt;/p&gt;
+      <guid>http://localhost:1313/en/post/2025-04-03-human-place-in-ai-age/</guid>
+      <description>&lt;p&gt;&lt;img alt=&#34;Abstract illustration representing human presence in AI&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/human-place-abstract.webp&#34;&gt;&lt;/p&gt;
 &lt;p&gt;We live in an era overflowing with information and surging technology.&lt;br&gt;
 AI mimics human speech, summarizes thought, and even predicts intent.&lt;br&gt;
 But amidst all this, something vital is slowly being forgotten.&lt;/p&gt;
@@ -149,30 +156,30 @@ It is a human act of context-building and&lt;br&gt;
     </item>
     <item>
       <title>Common Security Myths Developers Tell Themselves</title>
-      <link>https://windshock.github.io/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</link>
+      <link>http://localhost:1313/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</guid>
+      <guid>http://localhost:1313/en/post/2025-04-01-common-security-myths-developers-tell-themselves/</guid>
       <description>This article breaks down common developer security myths—responsibility deflection, overconfidence in technology, and security underestimation—and offers realistic countermeasures.</description>
     </item>
     <item>
       <title>How to Block ECH and Mitigate DoH in Enterprise Networks</title>
-      <link>https://windshock.github.io/en/post/2025-03-31-dnsmasq-ech-doh-block/</link>
+      <link>http://localhost:1313/en/post/2025-03-31-dnsmasq-ech-doh-block/</link>
       <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-03-31-dnsmasq-ech-doh-block/</guid>
+      <guid>http://localhost:1313/en/post/2025-03-31-dnsmasq-ech-doh-block/</guid>
       <description>A hands-on guide using dnsmasq to filter SVCB and HTTPS records for disabling ECH and enforcing central DNS policies. Notes that DoH requires separate network-layer policies.</description>
     </item>
     <item>
       <title>XML-RPC Security Vulnerabilities Analysis and Mitigation Strategies</title>
-      <link>https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</link>
+      <link>http://localhost:1313/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</link>
       <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</guid>
+      <guid>http://localhost:1313/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</guid>
       <description>&lt;p&gt;&lt;strong&gt;XML-RPC Security Series:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/&#34;&gt;Series 1 - XML-RPC Security Vulnerabilities Analysis and Mitigation Strategies&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/&#34;&gt;Series 2 - CVE-2019-17570: Apache XML-RPC Exploit&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://windshock.github.io/en/post/2025-05-30-rce-via-exception-serialization-in-openstack-nova/&#34;&gt;Series 3 - Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;img alt=&#34;XML-RPC background&#34; loading=&#34;lazy&#34; src=&#34;https://windshock.github.io/images/post/xmlrpc-security.webp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;XML-RPC background&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/post/xmlrpc-security.webp&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Overview of XML-RPC Vulnerabilities:&lt;/strong&gt; As a lightweight remote call protocol for inter-system communication, XML-RPC is exposed to various threats such as RCE, XXE, DDoS, and privilege escalation.&lt;/li&gt;
@@ -185,71 +192,71 @@ It is a human act of context-building and&lt;br&gt;
     </item>
     <item>
       <title>Review of Citrix Security Policy Effectiveness</title>
-      <link>https://windshock.github.io/en/post/2024-11-05-review-of-citrix-security-policy-effectiveness/</link>
+      <link>http://localhost:1313/en/post/2024-11-05-review-of-citrix-security-policy-effectiveness/</link>
       <pubDate>Tue, 05 Nov 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2024-11-05-review-of-citrix-security-policy-effectiveness/</guid>
+      <guid>http://localhost:1313/en/post/2024-11-05-review-of-citrix-security-policy-effectiveness/</guid>
       <description>Citrix administrators apply security policies to each user’s VDI (Virtual Desktop Infrastructure) through Citrix Group Policy. However, certain structural vulnerabilities in Citrix CSE (Citrix Service Engine) and the Citrix VDI Agent allow for potential bypassing of these security policies.</description>
     </item>
     <item>
       <title>KPIs Can Cause Incidents!!!</title>
-      <link>https://windshock.github.io/en/post/2024-06-20-kpi-causes-accidents/</link>
+      <link>http://localhost:1313/en/post/2024-06-20-kpi-causes-accidents/</link>
       <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2024-06-20-kpi-causes-accidents/</guid>
+      <guid>http://localhost:1313/en/post/2024-06-20-kpi-causes-accidents/</guid>
       <description>&lt;h2 id=&#34;kpis-can-cause-incidents---bad-metrics-produce-bad-outcomes&#34;&gt;KPIs Can Cause Incidents!!! - Bad metrics produce bad outcomes.&lt;/h2&gt;
-&lt;p&gt;&lt;img alt=&#34;KPIs Incidents Toon&#34; loading=&#34;lazy&#34; src=&#34;https://windshock.github.io/images/post/kpis_incidents.webp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;KPIs Incidents Toon&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/post/kpis_incidents.webp&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Recently, I was going through old emails and found a reply from a junior colleague to a very serious email I had sent. The colleague wrote that after reading my message, they realized they had been mindlessly following instructions without deeper consideration. They promised to carefully consider the ethical implications and correctness of every task, and to proceed based on their own judgment going forward.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Common Misconceptions of Security Assessors</title>
-      <link>https://windshock.github.io/en/post/2024-06-16-common-misconceptions-of-security-assessors/</link>
+      <link>http://localhost:1313/en/post/2024-06-16-common-misconceptions-of-security-assessors/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2024-06-16-common-misconceptions-of-security-assessors/</guid>
+      <guid>http://localhost:1313/en/post/2024-06-16-common-misconceptions-of-security-assessors/</guid>
       <description>As the cybersecurity landscape constantly evolves, vulnerability assessment has become a critical defense against potential security breaches. However, due to common misconceptions, the effectiveness of these evaluations often diminishes. In this article, we will explore the common misconceptions about security vulnerability assessments and suggest effective strategies to overcome these issues, ultimately supporting the improvement of organizational security levels.</description>
     </item>
     <item>
       <title>Can Development Culture Influence Security Levels?</title>
-      <link>https://windshock.github.io/en/post/2024-05-22-can-development-culture-influence-security-levels/</link>
+      <link>http://localhost:1313/en/post/2024-05-22-can-development-culture-influence-security-levels/</link>
       <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2024-05-22-can-development-culture-influence-security-levels/</guid>
+      <guid>http://localhost:1313/en/post/2024-05-22-can-development-culture-influence-security-levels/</guid>
       <description>&lt;h1 id=&#34;can-development-culture-influence-security-levels&#34;&gt;Can Development Culture Influence Security Levels?&lt;/h1&gt;
-&lt;p&gt;&lt;img alt=&#34;Development Culture&#34; loading=&#34;lazy&#34; src=&#34;https://windshock.github.io/images/post/development-culture.webp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Development Culture&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/post/development-culture.webp&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;evaluating-code-quality-and-security-levels-using-static-analysis-tools-joern&#34;&gt;Evaluating Code Quality and Security Levels Using Static Analysis Tools (Joern)&lt;/h2&gt;
 &lt;h3 id=&#34;background&#34;&gt;Background&lt;/h3&gt;
-&lt;p&gt;Unlike companies like &lt;a href=&#34;https://windshock.github.io/en/post/2024-05-22-can-development-culture-influence-security-levels/#google-development-culture&#34;&gt;Google&lt;/a&gt; with an open and collaborative development culture, in some organizations that lack such culture, the quality of the code, including security levels, can be heavily influenced by the individual’s capability. In particular, developers who tend to write poor quality code, such as using the &lt;a href=&#34;https://windshock.github.io/en/post/2024-05-22-can-development-culture-influence-security-levels/#strcpy-function-risk&#34;&gt;strcpy function&lt;/a&gt;, can have their code quality and security levels assessed by utilizing &lt;a href=&#34;https://windshock.github.io/en/post/2024-05-22-can-development-culture-influence-security-levels/#static-analysis-tools&#34;&gt;static analysis tools&lt;/a&gt; (Joern, CodeQL, etc.) with &lt;a href=&#34;https://windshock.github.io/en/post/2024-05-22-can-development-culture-influence-security-levels/#custom-rule-examples&#34;&gt;custom rules&lt;/a&gt;. As a result, even in situations where the development culture is lacking, code quality and security levels can be improved, leading to the production of good-quality code.&lt;/p&gt;</description>
+&lt;p&gt;Unlike companies like &lt;a href=&#34;http://localhost:1313/en/post/2024-05-22-can-development-culture-influence-security-levels/#google-development-culture&#34;&gt;Google&lt;/a&gt; with an open and collaborative development culture, in some organizations that lack such culture, the quality of the code, including security levels, can be heavily influenced by the individual’s capability. In particular, developers who tend to write poor quality code, such as using the &lt;a href=&#34;http://localhost:1313/en/post/2024-05-22-can-development-culture-influence-security-levels/#strcpy-function-risk&#34;&gt;strcpy function&lt;/a&gt;, can have their code quality and security levels assessed by utilizing &lt;a href=&#34;http://localhost:1313/en/post/2024-05-22-can-development-culture-influence-security-levels/#static-analysis-tools&#34;&gt;static analysis tools&lt;/a&gt; (Joern, CodeQL, etc.) with &lt;a href=&#34;http://localhost:1313/en/post/2024-05-22-can-development-culture-influence-security-levels/#custom-rule-examples&#34;&gt;custom rules&lt;/a&gt;. As a result, even in situations where the development culture is lacking, code quality and security levels can be improved, leading to the production of good-quality code.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Bypassing citrix policy is not a vulnerability, but it can be a violation of the law</title>
-      <link>https://windshock.github.io/en/post/2023-04-27-bypassing-citrix-policy-is-not-a-vulnerability-but-it-can-be-a-violation-of-the-law/</link>
+      <link>http://localhost:1313/en/post/2023-04-27-bypassing-citrix-policy-is-not-a-vulnerability-but-it-can-be-a-violation-of-the-law/</link>
       <pubDate>Thu, 27 Apr 2023 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2023-04-27-bypassing-citrix-policy-is-not-a-vulnerability-but-it-can-be-a-violation-of-the-law/</guid>
+      <guid>http://localhost:1313/en/post/2023-04-27-bypassing-citrix-policy-is-not-a-vulnerability-but-it-can-be-a-violation-of-the-law/</guid>
       <description>&lt;h3 id=&#34;bypassing-citrix-policy-is-not-a-vulnerability-but-a-legal-violation&#34;&gt;Bypassing Citrix Policy is Not a Vulnerability but a Legal Violation&lt;/h3&gt;
 &lt;h4 id=&#34;note&#34;&gt;Note!!&lt;/h4&gt;
 &lt;p&gt;Based on discussions with Citrix through &lt;a href=&#34;https://kb.cert.org/vince/comm/case/1022/&#34;&gt;VINCE&lt;/a&gt; from cert.org, it was concluded that this is not classified as a vulnerability because it requires administrative privileges. Therefore, I can share this information without security concerns. However, for security reasons, I do not recommend using Xendesktop (VDI) in special environments such as logically isolated or closed networks. If VDI must be used in such environments, please ensure that administrator privileges are removed and security-specific software is installed.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Strengthening cybersecurity through government ngos and bug bounty programs</title>
-      <link>https://windshock.github.io/en/post/2023-04-18-strengthening-cybersecurity-through-government-ngos-and-bug-bounty-programs/</link>
+      <link>http://localhost:1313/en/post/2023-04-18-strengthening-cybersecurity-through-government-ngos-and-bug-bounty-programs/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2023-04-18-strengthening-cybersecurity-through-government-ngos-and-bug-bounty-programs/</guid>
+      <guid>http://localhost:1313/en/post/2023-04-18-strengthening-cybersecurity-through-government-ngos-and-bug-bounty-programs/</guid>
       <description>&lt;p&gt;﻿
 Strengthening Cybersecurity Through Government NGOs and Bug Bounty Programs: A Look at Security Taxes and Their Implementation in Various Countries&lt;/p&gt;
 &lt;p&gt;In today&amp;rsquo;s digital age, information security has become a critical concern for individuals, businesses, and governments alike. Cyber attacks and data breaches have become increasingly common and sophisticated, and the consequences can be devastating. This is why it is essential to have robust cybersecurity measures in place to protect against these threats.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Security threats and mitigation strategies for java reflection</title>
-      <link>https://windshock.github.io/en/post/2019-09-03-security-threats-and-mitigation-strategies-for-java-reflection/</link>
+      <link>http://localhost:1313/en/post/2019-09-03-security-threats-and-mitigation-strategies-for-java-reflection/</link>
       <pubDate>Tue, 03 Sep 2019 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2019-09-03-security-threats-and-mitigation-strategies-for-java-reflection/</guid>
+      <guid>http://localhost:1313/en/post/2019-09-03-security-threats-and-mitigation-strategies-for-java-reflection/</guid>
       <description>The **Java Reflection API** is a powerful tool that allows dynamic manipulation of classes, methods, and interfaces at runtime. However, due to its flexibility, it introduces significant security risks, as attackers can exploit it to gain unauthorized access to systems. In this article, we will explore the security threats posed by Java Reflection and outline strategies to mitigate these risks.</description>
     </item>
     <item>
       <title>About the XSSAudit</title>
-      <link>https://windshock.github.io/en/post/2019-08-08-about-the-xssaudit/</link>
+      <link>http://localhost:1313/en/post/2019-08-08-about-the-xssaudit/</link>
       <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2019-08-08-about-the-xssaudit/</guid>
+      <guid>http://localhost:1313/en/post/2019-08-08-about-the-xssaudit/</guid>
       <description>&lt;h2 id=&#34;why-was-the-xssaudit-feature-removed-in-chrome&#34;&gt;Why Was the XSSAudit Feature Removed in Chrome?&lt;/h2&gt;
 &lt;p&gt;The Google Security Team proposed to the Chrome development team to remove the &lt;a href=&#34;https://bugs.chromium.org/p/chromium/issues/detail?id=898081&#34;&gt;XSSAudit feature&lt;/a&gt;. Although the only rationale provided was that the feature could be bypassed (as argued in a paper by &lt;a href=&#34;mailto:evn@google.com&#34;&gt;evn@google.com&lt;/a&gt;), it initially seemed unlikely that removal would proceed. However, it was ultimately decided that the feature would be completely eliminated in Chrome.&lt;/p&gt;
-&lt;p&gt;The main point of the &lt;a href=&#34;https://windshock.github.io/pdf/p1709-lekiesA.pdf&#34;&gt;paper&lt;/a&gt; is that bypass methods using targets within new JavaScript frameworks are difficult to defend against. Therefore, it proposes a shift from the existing mitigation approach (the xssaudit filter) to an isolation/prevention method, namely Content Security Policy (CSP).&lt;/p&gt;</description>
+&lt;p&gt;The main point of the &lt;a href=&#34;http://localhost:1313/pdf/p1709-lekiesA.pdf&#34;&gt;paper&lt;/a&gt; is that bypass methods using targets within new JavaScript frameworks are difficult to defend against. Therefore, it proposes a shift from the existing mitigation approach (the xssaudit filter) to an isolation/prevention method, namely Content Security Policy (CSP).&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

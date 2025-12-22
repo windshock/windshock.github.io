@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>TrustAndCulture on Code Before Breach</title>
-    <link>https://windshock.github.io/ko/tags/trustandculture/</link>
+    <link>http://localhost:1313/ko/tags/trustandculture/</link>
     <description>Recent content in TrustAndCulture on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
     <lastBuildDate>Mon, 21 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://windshock.github.io/ko/tags/trustandculture/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/ko/tags/trustandculture/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>내 정보, 고양이 손에 맡겼나요?</title>
-      <link>https://windshock.github.io/ko/post/2025-04-21-expert-personal-data-report/</link>
+      <link>http://localhost:1313/ko/post/2025-04-21-expert-personal-data-report/</link>
       <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/post/2025-04-21-expert-personal-data-report/</guid>
+      <guid>http://localhost:1313/ko/post/2025-04-21-expert-personal-data-report/</guid>
       <description>2025년 카카오페이 사건은 형식적 동의와 자율 규제의 한계를 드러냈습니다. AI 기반 DPIA 검증과 시민 감시를 통해 데이터 민주주의를 실현해야 합니다.</description>
     </item>
     <item>
       <title>공짜 점심은 없지만, 보안에는 공짜가 있었다</title>
-      <link>https://windshock.github.io/ko/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</link>
+      <link>http://localhost:1313/ko/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</link>
       <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</guid>
+      <guid>http://localhost:1313/ko/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</guid>
       <description>전 세계 보안 커뮤니티는 수십 년 동안 CVE 시스템에 의존해왔지만, 그 대가를 지불한 적은 거의 없습니다. 이제 이 공공 보안 인프라의 지속 가능성을 위해 누가 비용을 부담해야 할지 물어야 할 때입니다.</description>
     </item>
     <item>
       <title>개발자들 말하는 보안에 대한 흔한 거짓말</title>
-      <link>https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/</link>
+      <link>http://localhost:1313/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/</link>
       <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/</guid>
+      <guid>http://localhost:1313/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/</guid>
       <description>개발자들이 보안에 대해 자주 믿는 &amp;lsquo;책임 전가형&amp;rsquo;, &amp;lsquo;기술 과신형&amp;rsquo;, &amp;lsquo;보안 과소평가형&amp;rsquo; 거짓말을 분석하고, 현실적인 대응 방안을 제시합니다.</description>
     </item>
     <item>
       <title>보안진단 담당자의 흔한 착각</title>
-      <link>https://windshock.github.io/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</link>
+      <link>http://localhost:1313/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</link>
       <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</guid>
+      <guid>http://localhost:1313/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</guid>
       <description>사이버 보안 환경이 끊임없이 변화하면서 보안 취약점 평가는 잠재적인 보안 침해에 대한 주요 방어수단으로 자리잡고 있습니다. 그러나 이에 대한 일반적인 오해로 인해 평가의 실효성이 저하되는 경우가 많습니다. 본 글에서는 보안 취약점 평가에 대한 잘못된 인식을 살펴보고, 이를 극복할 수 있는 효과적인 전략을 제시함으로써 조직의 보안 수준 향상을 지원하고자 합니다.</description>
     </item>
   </channel>

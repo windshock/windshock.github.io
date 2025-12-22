@@ -6,8 +6,15 @@
     <description>Recent content in 보안 on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Thu, 17 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 10 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>수천 대 PC에 FIDO2 지문 보안키 기반 로컬 관리자 계정 로그인 구현 가능성 분석</title>
+      <link>https://windshock.github.io/ko/post/2025-07-10-fido2-local-admin-login-feasibility/</link>
+      <pubDate>Thu, 10 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-07-10-fido2-local-admin-login-feasibility/</guid>
+      <description>수천 대의 PC에 동일한 로컬 관리자 계정(vdiadmin)을 사용하는 환경에서 FIDO2 지문 보안키 기반 로그인의 기술적 구현 가능성과 한계, 그리고 현실적인 대안(2FA 등)을 심층 분석합니다.</description>
+    </item>
     <item>
       <title>공짜 점심은 없지만, 보안에는 공짜가 있었다</title>
       <link>https://windshock.github.io/ko/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</link>

