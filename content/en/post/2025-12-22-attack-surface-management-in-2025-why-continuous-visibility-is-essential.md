@@ -11,16 +11,14 @@ summary: "Why continuous visibility and attack surface management (ASM) are esse
 
 - **Open (new tab):** [`/files/ASM_Hype_vs_Reality.pdf`](/files/ASM_Hype_vs_Reality.pdf)
 
-<details>
-  <summary><strong>View inline</strong> (browser PDF support required)</summary>
-  <br />
-  <iframe
-    src="/files/ASM_Hype_vs_Reality.pdf"
-    width="100%"
-    height="900"
-    style="border: 1px solid #e5e7eb; border-radius: 8px;"
-  ></iframe>
-</details>
+<iframe
+  src="/files/ASM_Hype_vs_Reality.pdf"
+  width="100%"
+  height="900"
+  style="border: 1px solid #e5e7eb; border-radius: 8px;"
+></iframe>
+
+> If the PDF does not render, open it here: [`/files/ASM_Hype_vs_Reality.pdf`](/files/ASM_Hype_vs_Reality.pdf)
 
 ## Video
 

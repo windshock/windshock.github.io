@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Yubico on Code Before Breach</title>
-    <link>http://localhost:1313/ko/tags/yubico/</link>
+    <link>https://windshock.github.io/ko/tags/yubico/</link>
     <description>Recent content in Yubico on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
     <lastBuildDate>Thu, 10 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/ko/tags/yubico/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://windshock.github.io/ko/tags/yubico/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>수천 대 PC에 FIDO2 지문 보안키 기반 로컬 관리자 계정 로그인 구현 가능성 분석</title>
-      <link>http://localhost:1313/ko/post/2025-07-10-fido2-local-admin-login-feasibility/</link>
+      <link>https://windshock.github.io/ko/post/2025-07-10-fido2-local-admin-login-feasibility/</link>
       <pubDate>Thu, 10 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/ko/post/2025-07-10-fido2-local-admin-login-feasibility/</guid>
+      <guid>https://windshock.github.io/ko/post/2025-07-10-fido2-local-admin-login-feasibility/</guid>
       <description>수천 대의 PC에 동일한 로컬 관리자 계정(vdiadmin)을 사용하는 환경에서 FIDO2 지문 보안키 기반 로그인의 기술적 구현 가능성과 한계, 그리고 현실적인 대안(2FA 등)을 심층 분석합니다.</description>
     </item>
   </channel>
