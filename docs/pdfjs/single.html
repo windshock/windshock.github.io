@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PDF Viewer (Single Page)</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji",
+          "Segoe UI Emoji";
+        background: #0b0f14;
+        color: #e5e7eb;
+      }
+      .bar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        padding: 10px 12px;
+        background: rgba(17, 24, 39, 0.92);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+        backdrop-filter: blur(8px);
+      }
+      .btn {
+        appearance: none;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        background: rgba(255, 255, 255, 0.06);
+        color: inherit;
+        padding: 6px 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .meta {
+        margin-left: auto;
+        font-variant-numeric: tabular-nums;
+        opacity: 0.9;
+      }
+      .wrap {
+        padding: 14px;
+      }
+      .stage {
+        max-width: 1100px;
+        margin: 0 auto;
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.03);
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+        width: 100%;
+        height: auto;
+        background: #111827;
+      }
+      .hint {
+        max-width: 1100px;
+        margin: 10px auto 0;
+        font-size: 12px;
+        opacity: 0.8;
+      }
+      a {
+        color: #93c5fd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bar">
+      <button class="btn" id="prev">Prev</button>
+      <button class="btn" id="next">Next</button>
+      <span class="meta"><span id="page">1</span> / <span id="pages">?</span></span>
+    </div>
+
+    <div class="wrap">
+      <div class="stage">
+        <canvas id="canvas"></canvas>
+      </div>
+      <div class="hint">
+        If rendering fails, open the PDF directly: <a id="direct" href="#" target="_blank" rel="noopener">PDF</a>
+      </div>
+    </div>
+
+    <script type="module">
+      import * as pdfjsLib from "./build/pdf.mjs";
+
+      // Use local worker
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "./build/pdf.worker.mjs";
+
+      const params = new URLSearchParams(location.search);
+      const file = params.get("file");
+      if (!file) {
+        document.body.innerHTML = "<div style='padding:16px'>Missing <code>?file=</code> parameter.</div>";
+        throw new Error("Missing file param");
+      }
+
+      const direct = document.getElementById("direct");
+      direct.href = file;
+
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+
+      const prevBtn = document.getElementById("prev");
+      const nextBtn = document.getElementById("next");
+      const pageEl = document.getElementById("page");
+      const pagesEl = document.getElementById("pages");
+
+      let pdfDoc = null;
+      let pageNum = 1;
+      let rendering = false;
+      let pendingPage = null;
+      let lastViewportHeight = null;
+
+      function getInitialPageFromHash() {
+        const hash = new URLSearchParams(location.hash.replace(/^#/, ""));
+        const p = Number(hash.get("page") || "1");
+        return Number.isFinite(p) && p >= 1 ? Math.floor(p) : 1;
+      }
+
+      function updateButtons() {
+        prevBtn.disabled = pageNum <= 1;
+        nextBtn.disabled = pdfDoc ? pageNum >= pdfDoc.numPages : true;
+      }
+
+      function computeScale(viewport) {
+        const stage = canvas.parentElement;
+        const stageWidth = stage.clientWidth;
+        return stageWidth / viewport.width;
+      }
+
+      function adjustIframeHeight(contentHeightPx) {
+        // Same-origin: allow the embedded viewer to resize its own iframe.
+        const frame = window.frameElement;
+        // NOTE: On some mobile browsers (notably iOS Safari), direct iframe resizing can be flaky.
+        // We'll try direct resize first, but also postMessage the desired height to the parent,
+        // so the parent document can set the iframe height reliably.
+
+        const bar = document.querySelector(".bar");
+        const hint = document.querySelector(".hint");
+
+        const barH = bar ? bar.offsetHeight : 0;
+        const hintH = hint ? hint.offsetHeight : 0;
+
+        // wrap padding(14*2) + stage border/margins (~8) + hint spacing (~10)
+        let desired = Math.ceil(barH + 14 + contentHeightPx + 14 + 8 + 10 + hintH);
+
+        // Clamp to something comfortable relative to viewport, but never too small.
+        let maxH = 980;
+        try {
+          if (window.parent && window.parent.innerHeight) {
+            maxH = Math.floor(window.parent.innerHeight * 0.88);
+          }
+        } catch {}
+
+        const minH = 420;
+        desired = Math.max(minH, Math.min(desired, maxH));
+
+        try {
+          if (frame) frame.style.height = `${desired}px`;
+        } catch {}
+
+        try {
+          window.parent?.postMessage(
+            {
+              type: "pdfjs-resize",
+              height: desired,
+              file,
+            },
+            "*",
+          );
+        } catch {}
+      }
+
+      async function renderPage(num) {
+        rendering = true;
+        const page = await pdfDoc.getPage(num);
+
+        // Render at a scale that matches container width.
+        const baseViewport = page.getViewport({ scale: 1.0 });
+        const scale = computeScale(baseViewport);
+        const viewport = page.getViewport({ scale });
+
+        // HiDPI support
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = Math.floor(viewport.width * dpr);
+        canvas.height = Math.floor(viewport.height * dpr);
+        canvas.style.width = `${viewport.width}px`;
+        canvas.style.height = `${viewport.height}px`;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        await page.render({ canvasContext: ctx, viewport }).promise;
+
+        pageEl.textContent = String(pageNum);
+        pagesEl.textContent = String(pdfDoc.numPages);
+        updateButtons();
+
+        lastViewportHeight = viewport.height;
+        adjustIframeHeight(viewport.height);
+
+        rendering = false;
+        if (pendingPage !== null) {
+          const n = pendingPage;
+          pendingPage = null;
+          await renderPage(n);
+        }
+      }
+
+      function queueRender(num) {
+        if (rendering) {
+          pendingPage = num;
+        } else {
+          renderPage(num);
+        }
+      }
+
+      prevBtn.addEventListener("click", () => {
+        if (pageNum <= 1) return;
+        pageNum -= 1;
+        queueRender(pageNum);
+      });
+
+      nextBtn.addEventListener("click", () => {
+        if (!pdfDoc || pageNum >= pdfDoc.numPages) return;
+        pageNum += 1;
+        queueRender(pageNum);
+      });
+
+      // Re-render on resize to keep width-fit
+      const ro = new ResizeObserver(() => queueRender(pageNum));
+      ro.observe(canvas.parentElement);
+
+      // As a fallback, adjust iframe height even before a re-render completes.
+      window.addEventListener("resize", () => {
+        if (lastViewportHeight) adjustIframeHeight(lastViewportHeight);
+      });
+
+      pageNum = getInitialPageFromHash();
+      pdfDoc = await pdfjsLib.getDocument(file).promise;
+      if (pageNum > pdfDoc.numPages) pageNum = pdfDoc.numPages;
+      updateButtons();
+      await renderPage(pageNum);
+    </script>
+  </body>
+</html>
+
+

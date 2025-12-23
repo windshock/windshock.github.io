@@ -280,11 +280,25 @@
 <li><strong>Open (new tab):</strong> <a href="/files/ASM_Hype_vs_Reality.pdf"><code>/files/ASM_Hype_vs_Reality.pdf</code></a></li>
 </ul>
 <iframe
-  src="/files/ASM_Hype_vs_Reality.pdf"
+  id="pdfjs-asm-en"
+  src="/pdfjs/single.html?file=/files/ASM_Hype_vs_Reality.pdf#page=1"
   width="100%"
-  height="900"
+  height="560"
   style="border: 1px solid #e5e7eb; border-radius: 8px;"
 ></iframe>
+<script>
+  (function () {
+    const iframe = document.getElementById("pdfjs-asm-en");
+    if (!iframe) return;
+    window.addEventListener("message", function (e) {
+      if (e.origin !== window.location.origin) return;
+      const data = e.data || {};
+      if (data.type !== "pdfjs-resize") return;
+      if (typeof data.height !== "number") return;
+      iframe.style.height = Math.max(420, Math.min(data.height, 980)) + "px";
+    });
+  })();
+</script>
 <blockquote>
 <p>If the PDF does not render, open it here: <a href="/files/ASM_Hype_vs_Reality.pdf"><code>/files/ASM_Hype_vs_Reality.pdf</code></a></p></blockquote>
 <h2 id="video">Video<a hidden class="anchor" aria-hidden="true" href="#video">#</a></h2>

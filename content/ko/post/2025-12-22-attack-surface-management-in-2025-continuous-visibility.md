@@ -10,11 +10,26 @@ image: "/images/pdf-previews/ASM_Promise_Reality_Behavior_p1.webp"
 ---
 
 <iframe
-  src="/files/ASM_Promise_Reality_Behavior.pdf"
+  id="pdfjs-asm-ko"
+  src="/pdfjs/single.html?file=/files/ASM_Promise_Reality_Behavior.pdf#page=1"
   width="100%"
-  height="900"
+  height="560"
   style="border: 1px solid #e5e7eb; border-radius: 8px;"
 ></iframe>
+
+<script>
+  (function () {
+    const iframe = document.getElementById("pdfjs-asm-ko");
+    if (!iframe) return;
+    window.addEventListener("message", function (e) {
+      if (e.origin !== window.location.origin) return;
+      const data = e.data || {};
+      if (data.type !== "pdfjs-resize") return;
+      if (typeof data.height !== "number") return;
+      iframe.style.height = Math.max(420, Math.min(data.height, 980)) + "px";
+    });
+  })();
+</script>
 
 > PDF가 보이지 않으면 여기로 열어보세요: [`/files/ASM_Promise_Reality_Behavior.pdf`](/files/ASM_Promise_Reality_Behavior.pdf)
 
