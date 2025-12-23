@@ -58,6 +58,28 @@
         overflow: hidden;
         position: relative;
       }
+      /* Tap zones for prev/next (mobile-friendly) */
+      .tapzones {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        z-index: 5;
+        pointer-events: none; /* enabled via media query */
+      }
+      .tapzone {
+        pointer-events: auto;
+        background: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .tapzone:focus-visible {
+        outline: 2px solid rgba(147, 197, 253, 0.9);
+        outline-offset: -2px;
+      }
       canvas {
         display: block;
         width: 100%;
@@ -104,6 +126,9 @@
         .wrap {
           padding-bottom: calc(14px + 56px + env(safe-area-inset-bottom));
         }
+        .tapzones {
+          pointer-events: auto;
+        }
       }
     </style>
   </head>
@@ -116,6 +141,10 @@
 
     <div class="wrap">
       <div class="stage">
+        <div class="tapzones" aria-hidden="true">
+          <button class="tapzone" id="tap-prev" aria-label="Previous page (tap left side)"></button>
+          <button class="tapzone" id="tap-next" aria-label="Next page (tap right side)"></button>
+        </div>
         <canvas id="canvas"></canvas>
       </div>
       <div class="hint">
@@ -144,6 +173,8 @@
 
       const prevBtn = document.getElementById("prev");
       const nextBtn = document.getElementById("next");
+      const tapPrevBtn = document.getElementById("tap-prev");
+      const tapNextBtn = document.getElementById("tap-next");
       const pageEl = document.getElementById("page");
       const pagesEl = document.getElementById("pages");
 
@@ -269,6 +300,47 @@
 
       prevBtn.addEventListener("click", goPrev);
       nextBtn.addEventListener("click", goNext);
+
+      // Tap-to-navigate zones (especially helpful on mobile):
+      // Only treat as navigation if it looks like a quick tap (not a swipe).
+      function attachTapNav(el, dir) {
+        if (!el) return;
+        let startX = null;
+        let startY = null;
+        let startT = 0;
+        el.addEventListener(
+          "touchstart",
+          (e) => {
+            const t = e.changedTouches && e.changedTouches[0];
+            if (!t) return;
+            startX = t.clientX;
+            startY = t.clientY;
+            startT = Date.now();
+          },
+          { passive: true },
+        );
+        el.addEventListener(
+          "touchend",
+          (e) => {
+            const t = e.changedTouches && e.changedTouches[0];
+            if (!t || startX === null || startY === null) return;
+            const dx = t.clientX - startX;
+            const dy = t.clientY - startY;
+            const dt = Date.now() - startT;
+            startX = null;
+            startY = null;
+            if (dt > 350) return;
+            if (Math.abs(dx) > 18 || Math.abs(dy) > 18) return;
+            if (dir === "prev") goPrev();
+            else goNext();
+          },
+          { passive: true },
+        );
+        // Desktop click
+        el.addEventListener("click", () => (dir === "prev" ? goPrev() : goNext()));
+      }
+      attachTapNav(tapPrevBtn, "prev");
+      attachTapNav(tapNextBtn, "next");
 
       // Touch gestures (mobile): swipe left/right to change pages.
       let touchStartX = null;
