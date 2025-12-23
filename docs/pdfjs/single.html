@@ -56,6 +56,7 @@
         border-radius: 10px;
         background: rgba(255, 255, 255, 0.03);
         overflow: hidden;
+        position: relative;
       }
       canvas {
         display: block;
@@ -71,6 +72,38 @@
       }
       a {
         color: #93c5fd;
+      }
+
+      /* Mobile ergonomics: put controls at the bottom and add safe-area padding */
+      @media (max-width: 640px) {
+        body {
+          padding-bottom: calc(56px + env(safe-area-inset-bottom));
+        }
+        .bar {
+          position: fixed;
+          top: auto;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          border-top: 1px solid rgba(148, 163, 184, 0.25);
+          border-bottom: none;
+          padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+        }
+        .btn {
+          flex: 1 1 auto;
+          padding: 10px 12px;
+          font-size: 16px;
+          border-radius: 10px;
+        }
+        .meta {
+          margin-left: 0;
+          min-width: 72px;
+          text-align: center;
+          opacity: 0.95;
+        }
+        .wrap {
+          padding-bottom: calc(14px + 56px + env(safe-area-inset-bottom));
+        }
       }
     </style>
   </head>
@@ -222,17 +255,58 @@
         }
       }
 
-      prevBtn.addEventListener("click", () => {
+      function goPrev() {
         if (pageNum <= 1) return;
         pageNum -= 1;
         queueRender(pageNum);
-      });
+      }
 
-      nextBtn.addEventListener("click", () => {
+      function goNext() {
         if (!pdfDoc || pageNum >= pdfDoc.numPages) return;
         pageNum += 1;
         queueRender(pageNum);
-      });
+      }
+
+      prevBtn.addEventListener("click", goPrev);
+      nextBtn.addEventListener("click", goNext);
+
+      // Touch gestures (mobile): swipe left/right to change pages.
+      let touchStartX = null;
+      let touchStartY = null;
+      let touchStartT = 0;
+
+      function onTouchStart(e) {
+        const t = e.changedTouches && e.changedTouches[0];
+        if (!t) return;
+        touchStartX = t.clientX;
+        touchStartY = t.clientY;
+        touchStartT = Date.now();
+      }
+
+      function onTouchEnd(e) {
+        const t = e.changedTouches && e.changedTouches[0];
+        if (!t || touchStartX === null || touchStartY === null) return;
+
+        const dx = t.clientX - touchStartX;
+        const dy = t.clientY - touchStartY;
+        const dt = Date.now() - touchStartT;
+
+        touchStartX = null;
+        touchStartY = null;
+
+        // Ignore slow drags; focus on quick horizontal swipes.
+        if (dt > 700) return;
+        if (Math.abs(dx) < 60) return;
+        if (Math.abs(dy) > 80) return;
+
+        if (dx < 0) goNext();
+        else goPrev();
+      }
+
+      // Attach swipe to stage (so user can swipe anywhere on the PDF area).
+      const stage = canvas.parentElement;
+      stage.addEventListener("touchstart", onTouchStart, { passive: true });
+      stage.addEventListener("touchend", onTouchEnd, { passive: true });
 
       // Re-render on resize to keep width-fit
       const ro = new ResizeObserver(() => queueRender(pageNum));
