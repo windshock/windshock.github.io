@@ -305,6 +305,10 @@
       // Only treat as navigation if it looks like a quick tap (not a swipe).
       function attachTapNav(el, dir) {
         if (!el) return;
+        // Mobile browsers often fire a synthetic `click` after `touchend`.
+        // If we handle both, navigation can trigger twice. We'll suppress
+        // the click if a recent touch navigation occurred.
+        let suppressClickUntil = 0;
         let startX = null;
         let startY = null;
         let startT = 0;
@@ -333,11 +337,15 @@
             if (Math.abs(dx) > 18 || Math.abs(dy) > 18) return;
             if (dir === "prev") goPrev();
             else goNext();
+            suppressClickUntil = Date.now() + 800;
           },
           { passive: true },
         );
         // Desktop click
-        el.addEventListener("click", () => (dir === "prev" ? goPrev() : goNext()));
+        el.addEventListener("click", () => {
+          if (Date.now() < suppressClickUntil) return;
+          return dir === "prev" ? goPrev() : goNext();
+        });
       }
       attachTapNav(tapPrevBtn, "prev");
       attachTapNav(tapNextBtn, "next");
