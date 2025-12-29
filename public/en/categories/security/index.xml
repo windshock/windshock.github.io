@@ -6,8 +6,15 @@
     <description>Recent content in Security on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Wed, 28 May 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/categories/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Visibility Principle: How Internal Vulnerability Visibility Shapes Remediation Behavior</title>
+      <link>https://windshock.github.io/en/post/2025-12-29-the-visibility-principle/</link>
+      <pubDate>Mon, 29 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2025-12-29-the-visibility-principle/</guid>
+      <description>A practical, research-informed look at why transparent internal vulnerability visibility can increase remediation participation and improve patch outcomes—through accountability, perceived surveillance, and deterrence mechanisms.</description>
+    </item>
     <item>
       <title>Endpoint Evasion Techniques (2020–2025): The Evolution of Attacks Bypassing EDR</title>
       <link>https://windshock.github.io/en/post/2025-05-28-endpoint-security-evasion-techniques-20202025/</link>

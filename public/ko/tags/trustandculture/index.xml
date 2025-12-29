@@ -6,8 +6,15 @@
     <description>Recent content in TrustAndCulture on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Mon, 22 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/tags/trustandculture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과</title>
+      <link>https://windshock.github.io/ko/post/2025-12-29-visibility-changes-behavior/</link>
+      <pubDate>Mon, 29 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-12-29-visibility-changes-behavior/</guid>
+      <description>취약점 현황을 조직 내부에 투명하게 공개할 때, 책임감/감시 인식/억지 효과가 조치율과 속도를 어떻게 끌어올리는지 이론과 사례로 정리합니다.</description>
+    </item>
     <item>
       <title>2025년 공격 표면 관리(ASM): 왜 지속적 가시성이 필수인가</title>
       <link>https://windshock.github.io/ko/post/2025-12-22-attack-surface-management-in-2025-continuous-visibility/</link>

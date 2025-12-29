@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과 | Code Before Breach</title>
+<meta name="keywords" content="TrustAndCulture, 취약점 관리, 패치, 보안 문화, 대시보드, Accountability, Surveillance, Deterrence">
+<meta name="description" content="취약점 현황을 조직 내부에 투명하게 공개할 때, 책임감/감시 인식/억지 효과가 조치율과 속도를 어떻게 끌어올리는지 이론과 사례로 정리합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://windshock.github.io/ko/post/2025-12-29-visibility-changes-behavior/">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://windshock.github.io/index.xml" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://windshock.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://windshock.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://windshock.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://windshock.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://windshock.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://windshock.github.io/ko/post/2025-12-29-visibility-changes-behavior/">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-6N6EEJ259T"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-6N6EEJ259T');
+        }
+      </script><meta property="og:url" content="https://windshock.github.io/ko/post/2025-12-29-visibility-changes-behavior/">
+  <meta property="og:site_name" content="Code Before Breach">
+  <meta property="og:title" content="내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과">
+  <meta property="og:description" content="취약점 현황을 조직 내부에 투명하게 공개할 때, 책임감/감시 인식/억지 효과가 조치율과 속도를 어떻게 끌어올리는지 이론과 사례로 정리합니다.">
+  <meta property="og:locale" content="ko-KR">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2025-12-29T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-12-29T00:00:00+00:00">
+    <meta property="article:tag" content="TrustAndCulture">
+    <meta property="article:tag" content="취약점 관리">
+    <meta property="article:tag" content="패치">
+    <meta property="article:tag" content="보안 문화">
+    <meta property="article:tag" content="대시보드">
+    <meta property="article:tag" content="Accountability">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과">
+<meta name="twitter:description" content="취약점 현황을 조직 내부에 투명하게 공개할 때, 책임감/감시 인식/억지 효과가 조치율과 속도를 어떻게 끌어올리는지 이론과 사례로 정리합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://windshock.github.io/ko/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과",
+      "item": "https://windshock.github.io/ko/post/2025-12-29-visibility-changes-behavior/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과",
+  "name": "내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과",
+  "description": "취약점 현황을 조직 내부에 투명하게 공개할 때, 책임감/감시 인식/억지 효과가 조치율과 속도를 어떻게 끌어올리는지 이론과 사례로 정리합니다.",
+  "keywords": [
+    "TrustAndCulture", "취약점 관리", "패치", "보안 문화", "대시보드", "Accountability", "Surveillance", "Deterrence"
+  ],
+  "articleBody": "내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과 PDF Open (new tab): /files/Visibility_Changes_Behavior.pdf PDF가 보이지 않으면 여기로 열어보세요: /files/Visibility_Changes_Behavior.pdf\n관련 영상 서론 조직 내부에서 보안 취약점 현황을 전사적으로 투명하게 공개하면 구성원들에게 심리적 압박과 동기를 부여하여 취약점 조치율(패치 적용율)과 속도 향상에 기여할 수 있다는 주장이 있다. 실제로 많은 보안 리더들은 **“무엇을 측정하면 그것이 개선된다”**는 원칙 아래 취약점 관리 지표를 공유하고 추적한다. 본 보고서에서는 이러한 내부 공개가 가져오는 심리적·행동적 메커니즘과 이를 뒷받침하는 이론, 그리고 실무 사례와 연구 결과를 살펴본다. 특히 Perceived Accountability (인지된 책임감), Perceived Surveillance (인지된 감시), Behavioral Deterrence (행동적 억제) 개념이 내부 정보공개와 어떻게 맞물려 있는지, 그리고 구글·마이크로소프트·메타와 같은 기업들의 내부 보안 대시보드 운영 사례와 실증 연구를 정리한다. 이를 통해 왜 투명성이 보안 행동을 개선하는지 그 원리를 밝히고자 한다.\n그림 1. 조치량(volume) 자체는 급증하지 않았지만, 조치에 참여하는 인원(Resolving Participants)은 시간이 지날수록 증가하는 패턴을 보여 “강제(enforcement)”보다 “가시성(visibility)”이 자발적 참여를 넓힐 수 있음을 시사한다.\n내부 공개와 책임성(Perceived Accountability)의 상관관계 내부 취약점 정보를 공개하면 구성원 각자가 느끼는 책임감이 크게 증대된다. Perceived Accountability란 자신이 한 행동에 대해 타인에게 설명하거나 평가받아야 할 것이라 인지하는 상태를 말한다. 심리학 연구에 따르면, 사람들이 자신의 행동이 식별 가능하고(identifiability) 성과에 대한 평가를 받을 것이라고 예상할 때(expectation of evaluation) 책임 의식이 높아진다1. 다시 말해 **“내가 무엇을 (안)했는지를 모두가 안다”**는 상황은 행동을 크게 바꾸어 놓는다. Vance 등(2015)은 시스템 UI 디자인에 사용자 활동을 **모니터링 받고 있음을 인지시키는 요소(예: 기록 표시, 접근 알림 등)**를 넣어 사용자의 책임감 지각을 높이면 보안 정책 위반 의도가 감소함을 보였다1. 이처럼, 조직 내에서 취약점 현황과 담당자를 전사적으로 공개하면 각 담당자는 “모두가 보고 있다”는 인식 하에 자신의 보안 조치 이행 여부를 더욱 엄중히 여기게 된다.\n실제로 보안 사고 사례는 명확한 책임 부여의 중요성을 보여준다. 2017년 에퀴팩스(Equifax) 대규모 정보유출 사건은 “패치를 누가/언제/어떻게 끝까지 책임질 것인가”가 흐려질 때 어떤 일이 벌어지는지 상징적으로 보여주는 사례로 자주 언급된다. 일부 사후 분석 글에서는 당시 취약점 관리 프로세스에서 책임 라인이 불명확했고, 여러 팀이 스캔·알림·패치를 분담하는 과정에서 최종 오너십이 흐려져 중요 패치가 누락될 수 있었다는 점을 문제로 지적한다2. 조직 내 책임성 부족이 가져올 수 있는 위험을 단적으로 보여준 사례다.\n반대로, 내부 대시보드 등을 통해 취약점별로 “누가 언제까지 조치해야 한다”는 책임이 공개적으로 규정되면 담당자는 느끼는 심리적 압박이 커지고, 이는 신속한 대응으로 이어질 수 있다2. 요약하면 내부 투명성이 높아질수록 개개인은 자신의 보안 태만이 드러날 수 있다는 부담감 때문에 더욱 책임감 있게 행동하게 된다12.\n감시와 억제 효과: 행동 심리 측면 **인지된 감시(Perceived Surveillance)**는 말 그대로 *“내 행동을 누군가 지켜보고 있다”*고 느끼는 상태로서, 이는 보안 행동을 개선하는 또 다른 메커니즘이다. 사람이 감시받고 있다고 믿으면 일반적으로 규범을 잘 지키려는 경향이 커지며, 이를 “Hawthorne 효과” 등으로 설명하기도 한다. 정보보안 관리에서도 사용자의 활동 로그 기록이나 모니터링 시스템을 알리는 것은 *“감시 인식 → 준수 향상”*의 경로를 노린 것이다. 앞서 언급한 책임성 연구에서도 **“모니터링에 대한 인식(awareness of monitoring)”**을 높이는 UI 설계가 사용자 책임감을 높였다는 점은 감시 인식과 책임감이 맞물려 있음을 보여준다1. 내부적으로 취약점 대시보드를 운영하여 모든 직원이나 관련 팀이 실시간으로 취약점 조치 현황을 볼 수 있게 한다면, 각 팀은 상시 감시받는 듯한 심리적 자극을 받는다. 예컨대 “보안팀과 경영진도 이 대시보드를 보고 있다”는 인식만으로도 해당 팀은 방치된 취약점이 눈에 띄지 않도록 신속히 대응하게 된다. 이는 마치 CCTV가 설치된 환경에서 직원의 규정 준수율이 올라가는 효과에 비유할 수 있다.\n이러한 행동적 억제(Deterrence) 효과는 보안 행동 이론 중 *일반 억지 이론(General Deterrence Theory)*으로 뒷받침된다. 억지 이론에 따르면 위반 행위에 대한 처벌의 확실성, 심각성, 신속성이 인지될 때 사람들이 규범을 따르게 된다3. 내부 취약점 공개는 공식적인 처벌은 아닐지라도, **“지키지 않으면 불이익이나 망신을 당할지 모른다”**는 두려움을 만들어내는 비공식적 억제 수단이라 볼 수 있다. 한 메타분석 연구에서는 형사처벌과 같은 공식 억지 요소도 보안 준수에 효과가 있었지만, 동료 평가나 수치심 등 비공식 억제 요소가 더 강한 영향을 미친다고 보고하였다3. 즉 사회적 압력이 법적 압력보다도 보안 행동에 큰 동기부여가 된다는 것이다. 조직 내 모든 사람이 볼 수 있는 취약점 현황판은 자연스럽게 팀 간 경쟁심과 동료 평가라는 사회적 압력을 유발한다. 누구도 자신의 팀이 내부 보고서에서 “취약점 방치 팀”으로 지목되길 원치 않으므로, 평판을 지키기 위한 억제력이 생기는 것이다. 다만 이러한 압력이 과도한 비난이나 벌주기식 문화로 흐르면 역효과가 날 수 있다. 실제 한 보안 전문가의 조언에 따르면 취약점 스캔/조치 지표를 단순히 “문제 부서 낙인찍기(name-and-shame)”에만 활용하는 것은 바람직하지 않다고 한다4. 따라서 억제 효과가 긍정적 방향으로 작동하려면, 투명성으로 인한 건강한 긴장감을 건설적인 경쟁과 협력 문화로 이어지게 하는 관리자의 역할도 중요하다.\n내부 보안 대시보드 운영과 조치율 개선 사례 기업들은 앞선 원리를 현장에서 활용하여 취약점 관리 프로세스에 투명성과 경쟁 요소를 도입해왔다. 내부 보안 대시보드는 그 대표적인 예로, 여러 시스템에서 탐지된 취약점들을 한눈에 보여주는 중앙 대시보드를 만들어 보안팀뿐 아니라 개발·운영 등 관련 부서 모두가 공유하도록 하는 방식이다. 업계에서는 이런 방식의 핵심을 **가시성(Visibility)**로 설명하며, “보이는 것이 행동을 바꾼다”는 맥락에서 자주 강조한다5.\n그림 2. 요청 템플릿, 결과 검토 방식, 진행 공유 방법을 ‘한 장’으로 정리해 전사에 배포하면 “절차를 몰라서 미루는 지연”을 줄이고, 진행 상황을 투명하게 공유하는 데 도움이 된다.\n이러한 전사적 투명성 전략은 실무상 “취약점 책임 분산”을 막고 각 팀이 자기 취약점을 끝까지 관리하도록 동기부여하는 효과가 있다. 한 실무자 기고문도 “보안, 개발, 운영팀 모두가 볼 수 있는 중앙 취약점 대시보드와 명확한 조치 책임자 지정만으로도 패치 대응 속도에 큰 차이를 만들 수 있다”는 취지로 조언한다2. 공동의 **‘취약점 현황판’**이 존재하면, 각 팀은 자신의 숙제가 남에게도 뻔히 보이는 만큼 평소보다 신속하고 확실하게 취약점을 해소하려는 경향을 보이게 된다는 것이다.\n그림 3. “가이드 배포 → 리마인더 → 참여 확대”는 단순하지만 강력한 패턴이다. 특히 조직이 커질수록 1회 공지보다 반복 리마인드와 가시성 신호가 참여를 안정적으로 늘리는 데 유리하다. (공개용으로 일부 민감정보는 블러 처리)\n실제로 내부 투명성 강화가 패치 속도를 높인 사례들이 업계에서 반복적으로 언급된다. 다만 특정 퍼센트처럼 정확한 수치를 인용하려면 1차 보고서(원문)를 직접 연결하는 것이 가장 안전하다. 현재 글에서는, DevSecOps 도입 배경을 요약한 실무자 정리 글에서 협업 개선과 패치 시간 단축이 반복적으로 언급되는 포인트라는 수준으로 정리해 두겠다2.\n또 다른 예로, 한 실무자 기고문은 (가명으로 제시된) 소프트웨어 기업 사례를 들어, 모든 부서가 참여하는 정기 취약점 공개 회의를 통해 “미해결 취약점/우선순위/책임”을 공개적으로 합의하는 프로세스를 만들었고, 그 결과 커뮤니케이션 갈등이 줄고 패치 속도가 개선되는 효과가 있었다고 설명한다2. 이 사례는 엄밀한 학술 연구라기보다는 현장 경험 기반의 서술이므로, ‘원리 설명을 돕는 참고 사례’로 보는 게 적절하다.\n요지는 간단하다. 정보가 원활히 흐르고 작업이 투명하게 추적되면, 역할/책임 혼선에서 비롯되는 지연과 갈등이 줄어들 수 있다2.\n또한 구글의 Project Zero 정책은 외부 공개를 통한 억제 효과를 잘 보여주는 사례인데, 내부 공개의 효과를 가늠하는 데도 시사점이 있다. 구글은 자사가 발견한 취약점을 90일 내 패치하지 않으면 상세 정보를 공개하는 엄격한 90일 정책을 운영 중인데, 이로 인해 전 산업의 평균 패치 기간이 크게 단축되었다. 구글 발표에 따르면 이 정책 시행 전에는 일부 취약점이 패치에 6개월 이상 걸렸지만, 최근에는 97% 이상의 취약점이 90일 기한 내 수정되고 있다고 한다6. 공개 압박에 따른 책임 부여와 평판 위험이 패치 개발을 가속화한 것이다. 이러한 외부 공개 사례는 **“투명성과 기한의식이 갖는 강력한 억지력”**을 보여주며, 조직 내부에서도 규모는 다르지만 비슷한 원리가 적용된다. 내부적으로 취약점 처리 상태가 모두에게 공개되고 마감 기한이 명시되면, 각 담당자는 마치 외부에 공개되는 심정으로 신속히 문제를 해결하려 노력하게 된다.\n실증 연구와 시사점 종합하면, 보안 취약점을 내부 공개함으로써 개선되는 조치율의 배경에는 심리학적 요인과 행동과학적 효과가 복합적으로 작용하고 있다. 공개로 인한 책임의식 증대, 감시받는 느낌, 사회적 억압(벌칙이나 망신에 대한 두려움) 등이 직원들의 행동 변화를 유도한다. 이러한 원리는 다양한 연구에서 실증되고 있다. 앞서 소개한 바와 같이 사용자에게 자기 행동이 드러난다는 인식만 주어져도 보안 규칙 위반이 줄어드는 효과가 확인되었고1, 억지 이론 메타분석에서도 처벌 위험뿐 아니라 동료 평가와 같은 비공식적 통제가 보안 준수에 상당한 영향을 미치는 것으로 나타났다3. 결국 **“보안도 문화”**라는 말처럼, 투명성과 상호감시가 내재된 조직 문화는 구성원의 보안행동 표준을 끌어올리는 촉매가 된다2.\n물론 내부 취약점 공개 제도가 만능은 아니며, 성공적인 적용을 위해서는 조직 문화적 뒷받침이 필요하다. 투명성은 협력적인 경쟁을 유도할 때 긍정적으로 작용하지만, 만약 성과 압박이나 문책 위주로 흐르면 구성원들이 숫자만 맞추려 하거나 보고를 숨기는 부작용이 있을 수 있다4. 따라서 글로벌 기업들도 취약점 대시보드를 도입할 때 **‘블레임 문화’가 아닌 ‘책임 문화’**를 강조한다. 예컨대 페이스북(메타)은 “보안은 모두의 책임”이라는 슬로건 아래 개발자들이 취약점을 발견하면 솔직히 드러내고 함께 해결하도록 장려하는 분위기를 조성해왔다고 알려져 있다. 마이크로소프트 또한 대형 보안 사고를 겪은 후 전사적 보안 개선 태스크포스를 꾸려 분기별 취약점 진척 상황을 경영진까지 투명하게 공유하고, 개발 팀 평가에 보안 지표를 포함시키는 등의 조치를 취해왔다고 한다. 이처럼 리더십의 지원과 올바른 동기 부여가 수반된다면, 취약점 현황 내부 공개 시스템은 조직 구성원의 보안 행동을 개선하고 대응 속도를 높이는 강력한 도구가 될 수 있다2. 궁극적으로 이는 기업의 전반적 보안 수준 향상으로 이어져 사이버 위협에 보다 신속하고 효과적으로 대응할 수 있게 해준다. 각종 연구와 사례가 보여주듯, 투명성, 책임, 협업의 문화가 보안 취약점 관리에 있어 가장 비용효과적인 방어 전략 중 하나임은 분명하다2.\n참고문헌 “Increasing Accountability through the User Interface Design Artifacts: A New Approach to Addressing the Problem of Access-Policy Violations,” SSRN, accessed 2025-12-29, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2549000. ↩︎ ↩︎ ↩︎ ↩︎ ↩︎\n“Patching the People Problem: Conflict Resolution in Vulnerability Management Programs | by Arturo Avila,” Medium, accessed 2025-12-29, https://medium.com/@arturoavila_da/patching-the-people-problem-conflict-resolution-in-vulnerability-management-programs-dc1a3e07401e. ↩︎ ↩︎ ↩︎ ↩︎ ↩︎ ↩︎ ↩︎ ↩︎ ↩︎ ↩︎\n“https://www.sciencedirect.com/science/article/abs/pii/S0167404820302042,” ScienceDirect, accessed 2025-12-29, https://www.sciencedirect.com/science/article/abs/pii/S0167404820302042. ↩︎ ↩︎ ↩︎\n“Top 20 Worst Practices for Enterprise Vulnerability Management,” LinkedIn, accessed 2025-12-29, https://www.linkedin.com/pulse/top-20-worst-practices-enterprise-vulnerability-carl-c-manion. ↩︎ ↩︎\nJason Chan, “From Gates to Guardians: Alternate Approaches to Product Security,” LASCON 2013 Liveblog – First Morning, The Agile Admin, October 24, 2013, https://theagileadmin.com/2013/10/24/lascon-2013-liveblog-first-morning/. ↩︎\n“https://www.darkreading.com/application-security/google-s-project-zero-policy-change-mandates-90-day-disclosure,” Dark Reading, accessed 2025-12-29, https://www.darkreading.com/application-security/google-s-project-zero-policy-change-mandates-90-day-disclosure. ↩︎\n",
+  "wordCount" : "1417",
+  "inLanguage": "ko",
+  "datePublished": "2025-12-29T00:00:00Z",
+  "dateModified": "2025-12-29T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://windshock.github.io/ko/post/2025-12-29-visibility-changes-behavior/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Code Before Breach",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://windshock.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://windshock.github.io/ko/" accesskey="h" title="Code Before Breach (Alt + H)">
+                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo" class="h-7 w-auto"
+                    height="28">Code Before Breach</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://windshock.github.io/en/" title="English"
+                            aria-label="English">En</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://windshock.github.io/ko/search/" title="검색 (Alt &#43; /)" accesskey=/>
+                    <span>검색</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/tags/" title="태그">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/categories/" title="카테고리">
+                    <span>카테고리</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/archives/" title="아카이브">
+                    <span>아카이브</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/about/" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/index.xml" title="RSS 피드">
+                    <span>RSS 피드</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://windshock.github.io/ko/">홈</a>&nbsp;»&nbsp;<a href="https://windshock.github.io/ko/post/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과
+    </h1>
+    <div class="post-description">
+      취약점 현황을 조직 내부에 투명하게 공개할 때, 책임감/감시 인식/억지 효과가 조치율과 속도를 어떻게 끌어올리는지 이론과 사례로 정리합니다.
+    </div>
+    <div class="post-meta"><span title='2025-12-29 00:00:00 +0000 UTC'>12월 29, 2025</span>&nbsp;·&nbsp;7 분&nbsp;·&nbsp;1417 단어
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">목차</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%eb%82%b4%eb%b6%80-%ec%b7%a8%ec%95%bd%ec%a0%90-%ed%98%84%ed%99%a9-%ea%b3%b5%ea%b0%9c%ea%b0%80-%eb%b3%b4%ec%95%88-%ec%a1%b0%ec%b9%98%ec%9c%a8%ec%97%90-%eb%af%b8%ec%b9%98%eb%8a%94-%ec%8b%ac%eb%a6%ac%ed%96%89%eb%8f%99%ec%a0%81-%ed%9a%a8%ea%b3%bc" aria-label="내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과">내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과</a><ul>
+                        
+                <li>
+                    <a href="#pdf" aria-label="PDF">PDF</a></li>
+                <li>
+                    <a href="#%ea%b4%80%eb%a0%a8-%ec%98%81%ec%83%81" aria-label="관련 영상">관련 영상</a></li>
+                <li>
+                    <a href="#%ec%84%9c%eb%a1%a0" aria-label="서론">서론</a></li>
+                <li>
+                    <a href="#%eb%82%b4%eb%b6%80-%ea%b3%b5%ea%b0%9c%ec%99%80-%ec%b1%85%ec%9e%84%ec%84%b1perceived-accountability%ec%9d%98-%ec%83%81%ea%b4%80%ea%b4%80%ea%b3%84" aria-label="내부 공개와 책임성(Perceived Accountability)의 상관관계">내부 공개와 책임성(Perceived Accountability)의 상관관계</a></li>
+                <li>
+                    <a href="#%ea%b0%90%ec%8b%9c%ec%99%80-%ec%96%b5%ec%a0%9c-%ed%9a%a8%ea%b3%bc-%ed%96%89%eb%8f%99-%ec%8b%ac%eb%a6%ac-%ec%b8%a1%eb%a9%b4" aria-label="감시와 억제 효과: 행동 심리 측면">감시와 억제 효과: 행동 심리 측면</a></li>
+                <li>
+                    <a href="#%eb%82%b4%eb%b6%80-%eb%b3%b4%ec%95%88-%eb%8c%80%ec%8b%9c%eb%b3%b4%eb%93%9c-%ec%9a%b4%ec%98%81%ea%b3%bc-%ec%a1%b0%ec%b9%98%ec%9c%a8-%ea%b0%9c%ec%84%a0-%ec%82%ac%eb%a1%80" aria-label="내부 보안 대시보드 운영과 조치율 개선 사례">내부 보안 대시보드 운영과 조치율 개선 사례</a></li>
+                <li>
+                    <a href="#%ec%8b%a4%ec%a6%9d-%ec%97%b0%ea%b5%ac%ec%99%80-%ec%8b%9c%ec%82%ac%ec%a0%90" aria-label="실증 연구와 시사점">실증 연구와 시사점</a></li>
+                <li>
+                    <a href="#%ec%b0%b8%ea%b3%a0%eb%ac%b8%ed%97%8c" aria-label="참고문헌">참고문헌</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="내부-취약점-현황-공개가-보안-조치율에-미치는-심리행동적-효과">내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과<a hidden class="anchor" aria-hidden="true" href="#내부-취약점-현황-공개가-보안-조치율에-미치는-심리행동적-효과">#</a></h1>
+<h2 id="pdf">PDF<a hidden class="anchor" aria-hidden="true" href="#pdf">#</a></h2>
+<ul>
+<li><strong>Open (new tab):</strong> <a href="/files/Visibility_Changes_Behavior.pdf"><code>/files/Visibility_Changes_Behavior.pdf</code></a></li>
+</ul>
+<iframe
+  id="pdfjs-visibility-changes-behavior-ko"
+  src="/pdfjs/single.html?file=/files/Visibility_Changes_Behavior.pdf#page=1"
+  width="100%"
+  height="560"
+  style="border: 1px solid #e5e7eb; border-radius: 8px;"
+></iframe>
+<script>
+  (function () {
+    const iframe = document.getElementById("pdfjs-visibility-changes-behavior-ko");
+    if (!iframe) return;
+    window.addEventListener("message", function (e) {
+      if (e.origin !== window.location.origin) return;
+      const data = e.data || {};
+      if (data.type !== "pdfjs-resize") return;
+      if (typeof data.height !== "number") return;
+      iframe.style.height = Math.max(420, Math.min(data.height, 980)) + "px";
+    });
+  })();
+</script>
+<blockquote>
+<p>PDF가 보이지 않으면 여기로 열어보세요: <a href="/files/Visibility_Changes_Behavior.pdf"><code>/files/Visibility_Changes_Behavior.pdf</code></a></p></blockquote>
+<h2 id="관련-영상">관련 영상<a hidden class="anchor" aria-hidden="true" href="#관련-영상">#</a></h2>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/XUOwz3883eM?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<h2 id="서론">서론<a hidden class="anchor" aria-hidden="true" href="#서론">#</a></h2>
+<p>조직 내부에서 <strong>보안 취약점 현황을 전사적으로 투명하게 공개</strong>하면 구성원들에게 심리적 압박과 동기를 부여하여 취약점 <strong>조치율(패치 적용율)과 속도 향상</strong>에 기여할 수 있다는 주장이 있다. 실제로 많은 보안 리더들은 **“무엇을 측정하면 그것이 개선된다”**는 원칙 아래 취약점 관리 지표를 공유하고 추적한다. 본 보고서에서는 이러한 내부 공개가 가져오는 <strong>심리적·행동적 메커니즘</strong>과 이를 뒷받침하는 이론, 그리고 <strong>실무 사례와 연구 결과</strong>를 살펴본다. 특히 <em>Perceived Accountability</em> (인지된 책임감), <em>Perceived Surveillance</em> (인지된 감시), <em>Behavioral Deterrence</em> (행동적 억제) 개념이 내부 정보공개와 어떻게 맞물려 있는지, 그리고 구글·마이크로소프트·메타와 같은 기업들의 <strong>내부 보안 대시보드 운영 사례</strong>와 <strong>실증 연구</strong>를 정리한다. 이를 통해 왜 투명성이 보안 행동을 개선하는지 그 원리를 밝히고자 한다.</p>
+<p><img alt="가시성 공개 이후 ‘조치 참여자’가 점진적으로 증가하는 예시" loading="lazy" src="/images/post/visibility-changes-behavior/voluntary-resolution-participants.webp"></p>
+<blockquote>
+<p><strong>그림 1.</strong> 조치량(volume) 자체는 급증하지 않았지만, 조치에 참여하는 인원(Resolving Participants)은 시간이 지날수록 증가하는 패턴을 보여 “강제(enforcement)”보다 “가시성(visibility)”이 자발적 참여를 넓힐 수 있음을 시사한다.</p></blockquote>
+<h2 id="내부-공개와-책임성perceived-accountability의-상관관계">내부 공개와 책임성(Perceived Accountability)의 상관관계<a hidden class="anchor" aria-hidden="true" href="#내부-공개와-책임성perceived-accountability의-상관관계">#</a></h2>
+<p>내부 취약점 정보를 공개하면 <strong>구성원 각자가 느끼는 책임감</strong>이 크게 증대된다. <em>Perceived Accountability</em>란 자신이 한 행동에 대해 타인에게 설명하거나 평가받아야 할 것이라 인지하는 상태를 말한다. 심리학 연구에 따르면, 사람들이 자신의 행동이 식별 가능하고(<em>identifiability</em>) 성과에 대한 평가를 받을 것이라고 예상할 때(<em>expectation of evaluation</em>) 책임 의식이 높아진다<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. 다시 말해 **“내가 무엇을 (안)했는지를 모두가 안다”**는 상황은 행동을 크게 바꾸어 놓는다. Vance 등(2015)은 시스템 UI 디자인에 사용자 활동을 **모니터링 받고 있음을 인지시키는 요소(예: 기록 표시, 접근 알림 등)**를 넣어 <strong>사용자의 책임감 지각을 높이면 보안 정책 위반 의도가 감소</strong>함을 보였다<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. 이처럼, 조직 내에서 취약점 현황과 담당자를 전사적으로 공개하면 각 담당자는 <strong>“모두가 보고 있다”는 인식 하에 자신의 보안 조치 이행 여부를 더욱 엄중히 여기게</strong> 된다.</p>
+<p>실제로 보안 사고 사례는 <strong>명확한 책임 부여의 중요성</strong>을 보여준다. 2017년 에퀴팩스(Equifax) 대규모 정보유출 사건은 “패치를 누가/언제/어떻게 끝까지 책임질 것인가”가 흐려질 때 어떤 일이 벌어지는지 상징적으로 보여주는 사례로 자주 언급된다. 일부 사후 분석 글에서는 당시 취약점 관리 프로세스에서 <strong>책임 라인이 불명확했고</strong>, 여러 팀이 스캔·알림·패치를 분담하는 과정에서 <strong>최종 오너십이 흐려져 중요 패치가 누락될 수 있었다</strong>는 점을 문제로 지적한다<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. <strong>조직 내 책임성 부족이 가져올 수 있는 위험</strong>을 단적으로 보여준 사례다.</p>
+<p>반대로, 내부 대시보드 등을 통해 <strong>취약점별로 “누가 언제까지 조치해야 한다”는 책임이 공개적으로 규정</strong>되면 담당자는 느끼는 심리적 압박이 커지고, 이는 신속한 대응으로 이어질 수 있다<sup id="fnref1:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. 요약하면 <strong>내부 투명성이 높아질수록 개개인은 자신의 보안 태만이 드러날 수 있다는 부담감 때문에 더욱 책임감 있게 행동</strong>하게 된다<sup id="fnref2:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><sup id="fnref2:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<h2 id="감시와-억제-효과-행동-심리-측면">감시와 억제 효과: 행동 심리 측면<a hidden class="anchor" aria-hidden="true" href="#감시와-억제-효과-행동-심리-측면">#</a></h2>
+<p>**인지된 감시(Perceived Surveillance)**는 말 그대로 *“내 행동을 누군가 지켜보고 있다”*고 느끼는 상태로서, 이는 보안 행동을 개선하는 또 다른 메커니즘이다. 사람이 감시받고 있다고 믿으면 일반적으로 규범을 잘 지키려는 경향이 커지며, 이를 <strong>“Hawthorne 효과”</strong> 등으로 설명하기도 한다. 정보보안 관리에서도 사용자의 활동 로그 기록이나 모니터링 시스템을 알리는 것은 *“감시 인식 → 준수 향상”*의 경로를 노린 것이다. 앞서 언급한 책임성 연구에서도 **“모니터링에 대한 인식(awareness of monitoring)”**을 높이는 UI 설계가 사용자 책임감을 높였다는 점은 감시 인식과 책임감이 맞물려 있음을 보여준다<sup id="fnref3:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. 내부적으로 취약점 대시보드를 운영하여 <strong>모든 직원이나 관련 팀이 실시간으로 취약점 조치 현황을 볼 수 있게 한다면</strong>, 각 팀은 <strong>상시 감시받는 듯한 심리적 자극</strong>을 받는다. 예컨대 “보안팀과 경영진도 이 대시보드를 보고 있다”는 인식만으로도 해당 팀은 <strong>방치된 취약점이 눈에 띄지 않도록 신속히 대응</strong>하게 된다. 이는 마치 CCTV가 설치된 환경에서 직원의 규정 준수율이 올라가는 효과에 비유할 수 있다.</p>
+<p>이러한 <strong>행동적 억제(Deterrence) 효과</strong>는 보안 행동 이론 중 *일반 억지 이론(General Deterrence Theory)*으로 뒷받침된다. 억지 이론에 따르면 <strong>위반 행위에 대한 처벌의 확실성, 심각성, 신속성이 인지될 때</strong> 사람들이 규범을 따르게 된다<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. 내부 취약점 공개는 공식적인 처벌은 아닐지라도, **“지키지 않으면 불이익이나 망신을 당할지 모른다”**는 두려움을 만들어내는 <strong>비공식적 억제 수단</strong>이라 볼 수 있다. 한 메타분석 연구에서는 형사처벌과 같은 공식 억지 요소도 보안 준수에 효과가 있었지만, <strong>동료 평가나 수치심 등 비공식 억제 요소가 더 강한 영향</strong>을 미친다고 보고하였다<sup id="fnref1:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. 즉 <strong>사회적 압력</strong>이 법적 압력보다도 보안 행동에 큰 동기부여가 된다는 것이다. 조직 내 모든 사람이 볼 수 있는 취약점 현황판은 <strong>자연스럽게 팀 간 경쟁심과 동료 평가라는 사회적 압력</strong>을 유발한다. 누구도 자신의 팀이 내부 보고서에서 “취약점 방치 팀”으로 지목되길 원치 않으므로, <strong>평판을 지키기 위한 억제력</strong>이 생기는 것이다. 다만 이러한 압력이 <strong>과도한 비난이나 벌주기식 문화로 흐르면 역효과</strong>가 날 수 있다. 실제 한 보안 전문가의 조언에 따르면 취약점 스캔/조치 지표를 단순히 “문제 부서 낙인찍기(name-and-shame)”에만 활용하는 것은 바람직하지 않다고 한다<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. <strong>따라서 억제 효과가 긍정적 방향으로 작동하려면</strong>, 투명성으로 인한 건강한 긴장감을 <strong>건설적인 경쟁과 협력 문화</strong>로 이어지게 하는 관리자의 역할도 중요하다.</p>
+<h2 id="내부-보안-대시보드-운영과-조치율-개선-사례">내부 보안 대시보드 운영과 조치율 개선 사례<a hidden class="anchor" aria-hidden="true" href="#내부-보안-대시보드-운영과-조치율-개선-사례">#</a></h2>
+<p>기업들은 앞선 원리를 현장에서 활용하여 <strong>취약점 관리 프로세스에 투명성과 경쟁 요소</strong>를 도입해왔다. <strong>내부 보안 대시보드</strong>는 그 대표적인 예로, 여러 시스템에서 탐지된 취약점들을 한눈에 보여주는 중앙 대시보드를 만들어 <strong>보안팀뿐 아니라 개발·운영 등 관련 부서 모두가 공유</strong>하도록 하는 방식이다. 업계에서는 이런 방식의 핵심을 **가시성(Visibility)**로 설명하며, “보이는 것이 행동을 바꾼다”는 맥락에서 자주 강조한다<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
+<p><img alt="정적 분석 도구 가이드(요약) 예시 — 요청/검토/공유 프로세스를 한 장으로 정리" loading="lazy" src="/images/post/visibility-changes-behavior/sast-guide-summary.webp"></p>
+<blockquote>
+<p><strong>그림 2.</strong> 요청 템플릿, 결과 검토 방식, 진행 공유 방법을 ‘한 장’으로 정리해 전사에 배포하면 “절차를 몰라서 미루는 지연”을 줄이고, 진행 상황을 투명하게 공유하는 데 도움이 된다.</p></blockquote>
+<p>이러한 <strong>전사적 투명성 전략</strong>은 실무상 “취약점 책임 분산”을 막고 각 팀이 <strong>자기 취약점을 끝까지 관리하도록 동기부여</strong>하는 효과가 있다. 한 실무자 기고문도 “보안, 개발, 운영팀 모두가 볼 수 있는 <strong>중앙 취약점 대시보드</strong>와 <strong>명확한 조치 책임자 지정</strong>만으로도 <strong>패치 대응 속도에 큰 차이</strong>를 만들 수 있다”는 취지로 조언한다<sup id="fnref3:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. 공동의 **‘취약점 현황판’**이 존재하면, 각 팀은 자신의 숙제가 남에게도 뻔히 보이는 만큼 <strong>평소보다 신속하고 확실하게 취약점을 해소</strong>하려는 경향을 보이게 된다는 것이다.</p>
+<p><img alt="정적 분석 도구 사용 가이드(리마인더) 예시 — 반복 공지/리마인드로 참여를 넓히는 방식" loading="lazy" src="/images/post/visibility-changes-behavior/static-analysis-guide-reminder-redacted.webp"></p>
+<blockquote>
+<p><strong>그림 3.</strong> “가이드 배포 → 리마인더 → 참여 확대”는 단순하지만 강력한 패턴이다. 특히 조직이 커질수록 1회 공지보다 반복 리마인드와 가시성 신호가 참여를 안정적으로 늘리는 데 유리하다. (공개용으로 일부 민감정보는 블러 처리)</p></blockquote>
+<p>실제로 <strong>내부 투명성 강화가 패치 속도를 높인 사례</strong>들이 업계에서 반복적으로 언급된다. 다만 특정 퍼센트처럼 <strong>정확한 수치</strong>를 인용하려면 1차 보고서(원문)를 직접 연결하는 것이 가장 안전하다. 현재 글에서는, DevSecOps 도입 배경을 요약한 실무자 정리 글에서 <strong>협업 개선과 패치 시간 단축이 반복적으로 언급되는 포인트</strong>라는 수준으로 정리해 두겠다<sup id="fnref4:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<p>또 다른 예로, 한 실무자 기고문은 (가명으로 제시된) 소프트웨어 기업 사례를 들어, <strong>모든 부서가 참여하는 정기 취약점 공개 회의</strong>를 통해 “미해결 취약점/우선순위/책임”을 공개적으로 합의하는 프로세스를 만들었고, 그 결과 커뮤니케이션 갈등이 줄고 패치 속도가 개선되는 효과가 있었다고 설명한다<sup id="fnref5:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. 이 사례는 엄밀한 학술 연구라기보다는 <strong>현장 경험 기반의 서술</strong>이므로, ‘원리 설명을 돕는 참고 사례’로 보는 게 적절하다.</p>
+<p>요지는 간단하다. 정보가 원활히 흐르고 작업이 투명하게 추적되면, 역할/책임 혼선에서 비롯되는 지연과 갈등이 줄어들 수 있다<sup id="fnref6:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<p>또한 <strong>구글의 Project Zero 정책</strong>은 <em>외부</em> 공개를 통한 억제 효과를 잘 보여주는 사례인데, <strong>내부 공개의 효과를 가늠하는 데도 시사점</strong>이 있다. 구글은 자사가 발견한 취약점을 90일 내 패치하지 않으면 상세 정보를 공개하는 <strong>엄격한 90일 정책</strong>을 운영 중인데, 이로 인해 전 산업의 평균 패치 기간이 크게 단축되었다. 구글 발표에 따르면 이 정책 시행 전에는 일부 취약점이 <strong>패치에 6개월 이상 걸렸지만</strong>, 최근에는 <strong>97% 이상의 취약점이 90일 기한 내 수정</strong>되고 있다고 한다<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>. 공개 압박에 따른 <strong>책임 부여와 평판 위험</strong>이 패치 개발을 가속화한 것이다. 이러한 외부 공개 사례는 **“투명성과 기한의식이 갖는 강력한 억지력”**을 보여주며, <strong>조직 내부</strong>에서도 규모는 다르지만 비슷한 원리가 적용된다. 내부적으로 <strong>취약점 처리 상태가 모두에게 공개되고 마감 기한이 명시</strong>되면, 각 담당자는 마치 외부에 공개되는 심정으로 <strong>신속히 문제를 해결</strong>하려 노력하게 된다.</p>
+<h2 id="실증-연구와-시사점">실증 연구와 시사점<a hidden class="anchor" aria-hidden="true" href="#실증-연구와-시사점">#</a></h2>
+<p>종합하면, <strong>보안 취약점을 내부 공개</strong>함으로써 개선되는 조치율의 배경에는 <strong>심리학적 요인</strong>과 <strong>행동과학적 효과</strong>가 복합적으로 작용하고 있다. 공개로 인한 <strong>책임의식 증대</strong>, <strong>감시받는 느낌</strong>, <strong>사회적 억압(벌칙이나 망신에 대한 두려움)</strong> 등이 직원들의 행동 변화를 유도한다. 이러한 원리는 다양한 연구에서 실증되고 있다. 앞서 소개한 바와 같이 <strong>사용자에게 자기 행동이 드러난다는 인식만 주어져도 보안 규칙 위반이 줄어드는 효과</strong>가 확인되었고<sup id="fnref4:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, <strong>억지 이론 메타분석</strong>에서도 처벌 위험뿐 아니라 <strong>동료 평가와 같은 비공식적 통제가 보안 준수에 상당한 영향</strong>을 미치는 것으로 나타났다<sup id="fnref2:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>. 결국 **“보안도 문화”**라는 말처럼, 투명성과 상호감시가 내재된 조직 문화는 <strong>구성원의 보안행동 표준을 끌어올리는 촉매</strong>가 된다<sup id="fnref7:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<p>물론 <strong>내부 취약점 공개 제도가 만능은 아니며, 성공적인 적용을 위해서는 조직 문화적 뒷받침</strong>이 필요하다. 투명성은 <strong>협력적인 경쟁</strong>을 유도할 때 긍정적으로 작용하지만, 만약 <strong>성과 압박이나 문책 위주로 흐르면 구성원들이 숫자만 맞추려 하거나 보고를 숨기는 부작용</strong>이 있을 수 있다<sup id="fnref1:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. 따라서 글로벌 기업들도 취약점 대시보드를 도입할 때 **‘블레임 문화’가 아닌 ‘책임 문화’**를 강조한다. 예컨대 페이스북(메타)은 “보안은 모두의 책임”이라는 슬로건 아래 개발자들이 취약점을 발견하면 <strong>솔직히 드러내고 함께 해결하도록 장려하는 분위기</strong>를 조성해왔다고 알려져 있다. 마이크로소프트 또한 대형 보안 사고를 겪은 후 <strong>전사적 보안 개선 태스크포스</strong>를 꾸려 분기별 취약점 진척 상황을 경영진까지 투명하게 공유하고, <strong>개발 팀 평가에 보안 지표를 포함</strong>시키는 등의 조치를 취해왔다고 한다. 이처럼 <strong>리더십의 지원과 올바른 동기 부여</strong>가 수반된다면, 취약점 현황 내부 공개 시스템은 <strong>조직 구성원의 보안 행동을 개선하고 대응 속도를 높이는 강력한 도구</strong>가 될 수 있다<sup id="fnref8:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. 궁극적으로 이는 기업의 전반적 보안 수준 향상으로 이어져 <strong>사이버 위협에 보다 신속하고 효과적으로 대응</strong>할 수 있게 해준다. 각종 연구와 사례가 보여주듯, <strong>투명성, 책임, 협업</strong>의 문화가 보안 취약점 관리에 있어 <strong>가장 비용효과적인 방어 전략 중 하나</strong>임은 분명하다<sup id="fnref9:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
+<h2 id="참고문헌">참고문헌<a hidden class="anchor" aria-hidden="true" href="#참고문헌">#</a></h2>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>“Increasing Accountability through the User Interface Design Artifacts: A New Approach to Addressing the Problem of Access-Policy Violations,” SSRN, accessed 2025-12-29, <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2549000">https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2549000</a>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref4:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>“Patching the People Problem: Conflict Resolution in Vulnerability Management Programs | by Arturo Avila,” Medium, accessed 2025-12-29, <a href="https://medium.com/@arturoavila_da/patching-the-people-problem-conflict-resolution-in-vulnerability-management-programs-dc1a3e07401e">https://medium.com/@arturoavila_da/patching-the-people-problem-conflict-resolution-in-vulnerability-management-programs-dc1a3e07401e</a>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref3:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref4:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref5:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref6:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref7:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref8:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref9:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>“https://www.sciencedirect.com/science/article/abs/pii/S0167404820302042,” ScienceDirect, accessed 2025-12-29, <a href="https://www.sciencedirect.com/science/article/abs/pii/S0167404820302042">https://www.sciencedirect.com/science/article/abs/pii/S0167404820302042</a>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref2:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>“Top 20 Worst Practices for Enterprise Vulnerability Management,” LinkedIn, accessed 2025-12-29, <a href="https://www.linkedin.com/pulse/top-20-worst-practices-enterprise-vulnerability-carl-c-manion">https://www.linkedin.com/pulse/top-20-worst-practices-enterprise-vulnerability-carl-c-manion</a>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a>&#160;<a href="#fnref1:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Jason Chan, “From Gates to Guardians: Alternate Approaches to Product Security,” LASCON 2013 Liveblog – First Morning, The Agile Admin, October 24, 2013, <a href="https://theagileadmin.com/2013/10/24/lascon-2013-liveblog-first-morning/">https://theagileadmin.com/2013/10/24/lascon-2013-liveblog-first-morning/</a>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>“https://www.darkreading.com/application-security/google-s-project-zero-policy-change-mandates-90-day-disclosure,” Dark Reading, accessed 2025-12-29, <a href="https://www.darkreading.com/application-security/google-s-project-zero-policy-change-mandates-90-day-disclosure">https://www.darkreading.com/application-security/google-s-project-zero-policy-change-mandates-90-day-disclosure</a>.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://windshock.github.io/ko/tags/trustandculture/">TrustAndCulture</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/%EC%B7%A8%EC%95%BD%EC%A0%90-%EA%B4%80%EB%A6%AC/">취약점 관리</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/%ED%8C%A8%EC%B9%98/">패치</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88-%EB%AC%B8%ED%99%94/">보안 문화</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C/">대시보드</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/accountability/">Accountability</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/surveillance/">Surveillance</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/deterrence/">Deterrence</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://windshock.github.io/ko/post/2025-12-22-attack-surface-management-in-2025-continuous-visibility/">
+    <span class="title">다음 페이지 »</span>
+    <br>
+    <span>2025년 공격 표면 관리(ASM): 왜 지속적 가시성이 필수인가</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과 on x"
+            href="https://x.com/intent/tweet/?text=%eb%82%b4%eb%b6%80%20%ec%b7%a8%ec%95%bd%ec%a0%90%20%ed%98%84%ed%99%a9%20%ea%b3%b5%ea%b0%9c%ea%b0%80%20%eb%b3%b4%ec%95%88%20%ec%a1%b0%ec%b9%98%ec%9c%a8%ec%97%90%20%eb%af%b8%ec%b9%98%eb%8a%94%20%ec%8b%ac%eb%a6%ac%c2%b7%ed%96%89%eb%8f%99%ec%a0%81%20%ed%9a%a8%ea%b3%bc&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-12-29-visibility-changes-behavior%2f&amp;hashtags=TrustAndCulture%2c%ec%b7%a8%ec%95%bd%ec%a0%90%ea%b4%80%eb%a6%ac%2c%ed%8c%a8%ec%b9%98%2c%eb%b3%b4%ec%95%88%eb%ac%b8%ed%99%94%2c%eb%8c%80%ec%8b%9c%eb%b3%b4%eb%93%9c%2cAccountability%2cSurveillance%2cDeterrence">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과 on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-12-29-visibility-changes-behavior%2f&amp;title=%eb%82%b4%eb%b6%80%20%ec%b7%a8%ec%95%bd%ec%a0%90%20%ed%98%84%ed%99%a9%20%ea%b3%b5%ea%b0%9c%ea%b0%80%20%eb%b3%b4%ec%95%88%20%ec%a1%b0%ec%b9%98%ec%9c%a8%ec%97%90%20%eb%af%b8%ec%b9%98%eb%8a%94%20%ec%8b%ac%eb%a6%ac%c2%b7%ed%96%89%eb%8f%99%ec%a0%81%20%ed%9a%a8%ea%b3%bc&amp;summary=%eb%82%b4%eb%b6%80%20%ec%b7%a8%ec%95%bd%ec%a0%90%20%ed%98%84%ed%99%a9%20%ea%b3%b5%ea%b0%9c%ea%b0%80%20%eb%b3%b4%ec%95%88%20%ec%a1%b0%ec%b9%98%ec%9c%a8%ec%97%90%20%eb%af%b8%ec%b9%98%eb%8a%94%20%ec%8b%ac%eb%a6%ac%c2%b7%ed%96%89%eb%8f%99%ec%a0%81%20%ed%9a%a8%ea%b3%bc&amp;source=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-12-29-visibility-changes-behavior%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과 on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-12-29-visibility-changes-behavior%2f&title=%eb%82%b4%eb%b6%80%20%ec%b7%a8%ec%95%bd%ec%a0%90%20%ed%98%84%ed%99%a9%20%ea%b3%b5%ea%b0%9c%ea%b0%80%20%eb%b3%b4%ec%95%88%20%ec%a1%b0%ec%b9%98%ec%9c%a8%ec%97%90%20%eb%af%b8%ec%b9%98%eb%8a%94%20%ec%8b%ac%eb%a6%ac%c2%b7%ed%96%89%eb%8f%99%ec%a0%81%20%ed%9a%a8%ea%b3%bc">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과 on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-12-29-visibility-changes-behavior%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과 on whatsapp"
+            href="https://api.whatsapp.com/send?text=%eb%82%b4%eb%b6%80%20%ec%b7%a8%ec%95%bd%ec%a0%90%20%ed%98%84%ed%99%a9%20%ea%b3%b5%ea%b0%9c%ea%b0%80%20%eb%b3%b4%ec%95%88%20%ec%a1%b0%ec%b9%98%ec%9c%a8%ec%97%90%20%eb%af%b8%ec%b9%98%eb%8a%94%20%ec%8b%ac%eb%a6%ac%c2%b7%ed%96%89%eb%8f%99%ec%a0%81%20%ed%9a%a8%ea%b3%bc%20-%20https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-12-29-visibility-changes-behavior%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과 on telegram"
+            href="https://telegram.me/share/url?text=%eb%82%b4%eb%b6%80%20%ec%b7%a8%ec%95%bd%ec%a0%90%20%ed%98%84%ed%99%a9%20%ea%b3%b5%ea%b0%9c%ea%b0%80%20%eb%b3%b4%ec%95%88%20%ec%a1%b0%ec%b9%98%ec%9c%a8%ec%97%90%20%eb%af%b8%ec%b9%98%eb%8a%94%20%ec%8b%ac%eb%a6%ac%c2%b7%ed%96%89%eb%8f%99%ec%a0%81%20%ed%9a%a8%ea%b3%bc&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-12-29-visibility-changes-behavior%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과 on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=%eb%82%b4%eb%b6%80%20%ec%b7%a8%ec%95%bd%ec%a0%90%20%ed%98%84%ed%99%a9%20%ea%b3%b5%ea%b0%9c%ea%b0%80%20%eb%b3%b4%ec%95%88%20%ec%a1%b0%ec%b9%98%ec%9c%a8%ec%97%90%20%eb%af%b8%ec%b9%98%eb%8a%94%20%ec%8b%ac%eb%a6%ac%c2%b7%ed%96%89%eb%8f%99%ec%a0%81%20%ed%9a%a8%ea%b3%bc&u=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2025-12-29-visibility-changes-behavior%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://windshock.github.io/ko/">Code Before Breach</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+  function loadGiscus(theme) {
+    
+    document.querySelectorAll('.giscus-frame, script[src*="giscus.app"]').forEach(el => el.remove());
+
+    
+    const giscusScript = document.createElement("script");
+    giscusScript.src = "https://giscus.app/client.js";
+    giscusScript.setAttribute("data-repo", "windshock\/windshock.github.io");
+    giscusScript.setAttribute("data-repo-id", "MDEwOlJlcG9zaXRvcnkxODQ2MDMyMTk=");
+    giscusScript.setAttribute("data-category", "General");
+    giscusScript.setAttribute("data-category-id", "DIC_kwDOCwDSU84CoqLg");
+    giscusScript.setAttribute("data-mapping", "pathname");
+    giscusScript.setAttribute("data-reactions-enabled", "1");
+    giscusScript.setAttribute("data-theme", theme); 
+    giscusScript.setAttribute("data-lang", "en");
+    giscusScript.setAttribute("data-input-position", "bottom");
+    giscusScript.setAttribute("data-loading", "lazy");
+    giscusScript.crossOrigin = "anonymous";
+    giscusScript.async = true;
+
+    document.body.appendChild(giscusScript);
+  }
+
+  
+  const currentTheme = document.body.classList.contains("dark") ? "dark" : "light";
+  loadGiscus(currentTheme);
+
+  
+  const observer = new MutationObserver(() => {
+    const newTheme = document.body.classList.contains("dark") ? "dark" : "light";
+    loadGiscus(newTheme);
+  });
+
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+</script>
+
+
+
+<script>
+  function initSwiperIfNeeded() {
+    if (typeof Swiper === 'undefined') {
+      
+      return setTimeout(initSwiperIfNeeded, 50);
+    }
+
+    if (document.querySelector('.swiper')) {
+      new Swiper('.swiper', {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        loop: true,
+        preloadImages: false,
+        lazy: {
+          loadOnTransitionStart: true,
+          loadPrevNext: true,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        breakpoints: {
+          768: { slidesPerView: 2.5 },
+          1024: { slidesPerView: 3.2 }
+        }
+      });
+
+      
+      document.querySelectorAll('img.swiper-lazy').forEach(img => {
+        img.src = img.dataset.src;
+      });
+    } else {
+      setTimeout(initSwiperIfNeeded, 100);
+    }
+  }
+
+  
+  initSwiperIfNeeded();
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '복사';
+
+        function copyingDone() {
+            copybutton.innerHTML = '복사 완료!';
+            setTimeout(() => {
+                copybutton.innerHTML = '복사';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

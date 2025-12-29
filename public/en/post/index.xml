@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 22 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Visibility Principle: How Internal Vulnerability Visibility Shapes Remediation Behavior</title>
+      <link>https://windshock.github.io/en/post/2025-12-29-the-visibility-principle/</link>
+      <pubDate>Mon, 29 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2025-12-29-the-visibility-principle/</guid>
+      <description>A practical, research-informed look at why transparent internal vulnerability visibility can increase remediation participation and improve patch outcomes—through accountability, perceived surveillance, and deterrence mechanisms.</description>
+    </item>
     <item>
       <title>Attack Surface Management in 2025: Why Continuous Visibility is Essential</title>
       <link>https://windshock.github.io/en/post/2025-12-22-attack-surface-management-in-2025-why-continuous-visibility-is-essential/</link>

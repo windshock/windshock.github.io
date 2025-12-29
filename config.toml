@@ -55,6 +55,8 @@ googleAnalytics = "G-6N6EEJ259T"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+    [markup.goldmark.extensions]
+      footnote = true
 
 [languages.en.menu]
   [[languages.en.menu.main]]
