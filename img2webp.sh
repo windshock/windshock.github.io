@@ -1,3 +1,12 @@
+if command -v cwebp >/dev/null 2>&1; then
+  CWEBP_BIN="cwebp"
+elif [ -x "/opt/homebrew/bin/cwebp" ]; then
+  CWEBP_BIN="/opt/homebrew/bin/cwebp"
+else
+  echo "cwebp not found. Install with: brew install webp"
+  exit 1
+fi
+
 find static -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | while read img; do
   out="${img%.*}.webp"
 
@@ -6,7 +15,7 @@ find static -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | 
   # - source is newer than output
   if [ ! -f "$out" ] || [ "$img" -nt "$out" ]; then
     echo "Converting $img -> $out"
-    cwebp -q 75 "$img" -o "$out"
+    "$CWEBP_BIN" -q 75 "$img" -o "$out"
   else
     echo "Skipping (up-to-date) $img"
   fi
