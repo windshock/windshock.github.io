@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>악성코드 on Code Before Breach</title>
+    <link>https://windshock.github.io/ko/tags/%EC%95%85%EC%84%B1%EC%BD%94%EB%93%9C/</link>
+    <description>Recent content in 악성코드 on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>ko-KR</language>
+    <lastBuildDate>Wed, 07 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/ko/tags/%EC%95%85%EC%84%B1%EC%BD%94%EB%93%9C/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Amadey 악성코드: 정적 탐지 vs 메모리 기반 탐지 비교 연구</title>
+      <link>https://windshock.github.io/ko/post/2026-01-07-amadey-static-vs-memory-detection/</link>
+      <pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2026-01-07-amadey-static-vs-memory-detection/</guid>
+      <description>Amadey를 사례로 정적 서명 탐지와 메모리 기반 탐지를 구조·회피 난이도·YARA 응용 관점에서 비교 정리합니다.</description>
+    </item>
+  </channel>
+</rss>

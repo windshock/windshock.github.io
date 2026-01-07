@@ -6,8 +6,15 @@
     <description>Recent content in 보안 on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Mon, 29 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/categories/%EB%B3%B4%EC%95%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Amadey 악성코드: 정적 탐지 vs 메모리 기반 탐지 비교 연구</title>
+      <link>https://windshock.github.io/ko/post/2026-01-07-amadey-static-vs-memory-detection/</link>
+      <pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2026-01-07-amadey-static-vs-memory-detection/</guid>
+      <description>Amadey를 사례로 정적 서명 탐지와 메모리 기반 탐지를 구조·회피 난이도·YARA 응용 관점에서 비교 정리합니다.</description>
+    </item>
     <item>
       <title>내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과</title>
       <link>https://windshock.github.io/ko/post/2025-12-29-visibility-changes-behavior/</link>
