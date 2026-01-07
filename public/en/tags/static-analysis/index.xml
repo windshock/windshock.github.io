@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Static Analysis on Code Before Breach</title>
+    <link>https://windshock.github.io/en/tags/static-analysis/</link>
+    <description>Recent content in Static Analysis on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 07 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/en/tags/static-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Amadey Malware: A Comparative Study of Static Detection vs Memory-Based Detection</title>
+      <link>https://windshock.github.io/en/post/2026-01-07-amadey-static-vs-memory-detection/</link>
+      <pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2026-01-07-amadey-static-vs-memory-detection/</guid>
+      <description>Using Amadey as a case study, this post compares static signature detection and memory-based detection through structure, evasion difficulty, and YARA usage.</description>
+    </item>
+  </channel>
+</rss>

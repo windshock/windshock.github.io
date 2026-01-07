@@ -6,8 +6,57 @@
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 29 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Amadey</title>
+      <link>https://windshock.github.io/en/tags/amadey/</link>
+      <pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/amadey/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>EDR</title>
+      <link>https://windshock.github.io/en/tags/edr/</link>
+      <pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/edr/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Malware</title>
+      <link>https://windshock.github.io/en/tags/malware/</link>
+      <pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/malware/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Memory Forensics</title>
+      <link>https://windshock.github.io/en/tags/memory-forensics/</link>
+      <pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/memory-forensics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Memory-Based Detection</title>
+      <link>https://windshock.github.io/en/tags/memory-based-detection/</link>
+      <pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/memory-based-detection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Static Analysis</title>
+      <link>https://windshock.github.io/en/tags/static-analysis/</link>
+      <pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/static-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>YARA</title>
+      <link>https://windshock.github.io/en/tags/yara/</link>
+      <pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/yara/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Accountability</title>
       <link>https://windshock.github.io/en/tags/accountability/</link>
@@ -286,20 +335,6 @@
       <link>https://windshock.github.io/en/tags/dll-hijacking/</link>
       <pubDate>Wed, 28 May 2025 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/en/tags/dll-hijacking/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>EDR</title>
-      <link>https://windshock.github.io/en/tags/edr/</link>
-      <pubDate>Wed, 28 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/edr/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Malware</title>
-      <link>https://windshock.github.io/en/tags/malware/</link>
-      <pubDate>Wed, 28 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/malware/</guid>
       <description></description>
     </item>
     <item>
