@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>eIDAS 2.0 vs. 대한민국 디지털 신원체계 비교 분석 | Code Before Breach</title>
+<meta name="keywords" content="디지털 신원, eIDAS 2.0, EU Digital Identity Wallet, 모바일 신분증, CI/DI, 프라이버시, TrustAndCulture">
+<meta name="description" content="EU eIDAS 2.0(EU Digital Identity Wallet)과 한국의 모바일 신분증/민간 본인확인(CI/DI) 체계를 거버넌스·프라이버시·운영 관점에서 비교합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://windshock.github.io/ko/post/2026-01-19-digital-identity-eidas2-korea/">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://windshock.github.io/index.xml" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://windshock.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://windshock.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://windshock.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://windshock.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://windshock.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://windshock.github.io/en/post/2026-01-19-digital-identity-eidas2-korea/">
+<link rel="alternate" hreflang="ko" href="https://windshock.github.io/ko/post/2026-01-19-digital-identity-eidas2-korea/">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-6N6EEJ259T"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-6N6EEJ259T');
+        }
+      </script><meta property="og:url" content="https://windshock.github.io/ko/post/2026-01-19-digital-identity-eidas2-korea/">
+  <meta property="og:site_name" content="Code Before Breach">
+  <meta property="og:title" content="eIDAS 2.0 vs. 대한민국 디지털 신원체계 비교 분석">
+  <meta property="og:description" content="EU eIDAS 2.0(EU Digital Identity Wallet)과 한국의 모바일 신분증/민간 본인확인(CI/DI) 체계를 거버넌스·프라이버시·운영 관점에서 비교합니다.">
+  <meta property="og:locale" content="ko-KR">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2026-01-19T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-19T00:00:00+00:00">
+    <meta property="article:tag" content="디지털 신원">
+    <meta property="article:tag" content="EIDAS 2.0">
+    <meta property="article:tag" content="EU Digital Identity Wallet">
+    <meta property="article:tag" content="모바일 신분증">
+    <meta property="article:tag" content="CI/DI">
+    <meta property="article:tag" content="프라이버시">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="eIDAS 2.0 vs. 대한민국 디지털 신원체계 비교 분석">
+<meta name="twitter:description" content="EU eIDAS 2.0(EU Digital Identity Wallet)과 한국의 모바일 신분증/민간 본인확인(CI/DI) 체계를 거버넌스·프라이버시·운영 관점에서 비교합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://windshock.github.io/ko/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "eIDAS 2.0 vs. 대한민국 디지털 신원체계 비교 분석",
+      "item": "https://windshock.github.io/ko/post/2026-01-19-digital-identity-eidas2-korea/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "eIDAS 2.0 vs. 대한민국 디지털 신원체계 비교 분석",
+  "name": "eIDAS 2.0 vs. 대한민국 디지털 신원체계 비교 분석",
+  "description": "EU eIDAS 2.0(EU Digital Identity Wallet)과 한국의 모바일 신분증/민간 본인확인(CI/DI) 체계를 거버넌스·프라이버시·운영 관점에서 비교합니다.",
+  "keywords": [
+    "디지털 신원", "eIDAS 2.0", "EU Digital Identity Wallet", "모바일 신분증", "CI/DI", "프라이버시", "TrustAndCulture"
+  ],
+  "articleBody": "PDF Open (new tab): /files/Digital_Identity_Redesigning_Control.pdf PDF가 보이지 않으면 여기로 열어보세요: /files/Digital_Identity_Redesigning_Control.pdf\n관련 영상 eIDAS 2.0: 유럽의 디지털 신원 프레임워크 유럽연합의 eIDAS 2.0(Electronic Identification, Authentication and Trust Services 2.0)은 차세대 디지털 신원 전략으로, 유럽 디지털 신원 지갑(EU Digital Identity Wallet) 도입을 핵심으로 한다. 이 지갑은 모든 EU 시민·거주자에게 발급되며, 개인이 자신의 디지털 신원을 안전하게 저장・관리하고 필요한 정보만 선택적으로 공유할 수 있는 월렛 기반 신원증명 수단이다[1][2]. eIDAS 2.0 규정은 2024년 5월 발효되었고, 각 회원국이 2026년까지 최소 하나 이상의 공인 디지털 신원 지갑을 국민에게 제공하도록 의무화하였다[3]. 이를 통해 EU 전역에서 통용되는 조화로운 신원체계를 구축하고, 국경 간 전자거래와 서비스 이용 시 상호 인증을 가능하게 한다.\n이 신뢰 프레임워크(Trust Framework) 하에서 디지털 신원 지갑과 전자서명·전자봉인 등 신뢰 서비스의 표준이 정해져 회원국 간 호환성이 보장된다[4]. eIDAS 2.0은 **보증 수준(LoA)**을 높여 높은 수준의 보안을 제공하며, 개인정보 보호 원칙과 데이터 최소화를 법적으로 명시한 것이 특징이다[5]. 사용자 자기주권 신원(SSI) 개념을 도입하여, 개인이 신원 데이터에 대한 통제권을 갖고 선택적 정보공개(Selective Disclosure) 기능으로 필요한 최소한의 데이터만 공유한다[5][3]. 예컨대, 나이 인증이 필요할 때 지갑이 사용자의 생년월일 전체 대신 “성인 여부” 정보만 제출하도록 설계되어 있다. 이러한 프라이버시 강화 설계를 통해 사용자의 개인정보 자기결정권을 보장하며, 지갑에 저장된 데이터는 사용자 동의 없이 다른 용도로 활용되지 않는다.\n또한 eIDAS 2.0은 민간 부문의 역할을 재정립하였다. 기존 eIDAS(2014) 체계가 공공서비스 위주였다면, 개정된 규정은 은행·의료·통신 등 민간 서비스에도 공통 디지털 신원 사용을 확대하여 디지털 신원의 활용 범위를 넓혔다[5]. 예를 들어 은행 계좌 개설이나 원격 의료, 통신 서비스 가입 시에도 회원국 디지털 ID 지갑을 통한 본인확인을 의무화하는 방향이다. 동시에 대형 온라인 플랫폼들도 공공 디지털 신원을 받아들이도록 규정하여, 구글·페이스북 등 민간 로그인에 의존하던 환경을 개선하고 중립적 공공 인증수단을 마련하고 있다[6]. 나아가 각국 정부뿐 아니라 **인증서 발급기관 등 신뢰 서비스 제공자(TSP)**들도 참여하되, EU 공통 표준과 인증을 충족해야 하므로 무분별한 민간 독점이나 남용은 제한된다. 즉, 민간이 디지털 신원 인프라에 참여하더라도 엄격한 자격 요건 하에서 공익적 원칙을 따라야 한다.\n요약하면, eIDAS 2.0은 **“지갑 기반 디지털 신원”**이라는 새로운 패러다임으로 사용자 중심·프라이버시 보호를 강화하고, 공공이 주도하되 민간도 참여하는 신뢰 네트워크를 구축한 것이다. 모든 EU 국민에게 공통 디지털 ID를 보급함으로써 디지털 행정과 상거래를 편리하면서도 안전하게 만들고[7], 데이터 주권을 개인에게 돌려준다는 평가를 받고 있다[2]. 이는 유럽 단일시장 내 전자 신원확인에 법적 확실성을 부여하고 디지털 혁신을 촉진하는 기반이 될 것으로 기대된다.\n대한민국의 모바일 신분증 제도 대한민국의 모바일 신분증은 정부가 발급하는 공식 스마트폰 기반 디지털 신분증으로, 주민등록증·운전면허증 등 실물과 동일한 법적 효력을 갖는다[8]. 행정안전부는 2020년부터 디지털 정부혁신 계획에 따라 단계적으로 모바일 신분증을 도입해왔으며, 2021년 공무원증을 시작으로 2022년 모바일 운전면허증을 일반 국민에게 시범 발급하고 2023년 국가보훈등록증, 2024년 재외국민용 신원확인증 등으로 범위를 넓혔다[9]. 2024년 12월에는 모바일 주민등록증 시범발급을 거쳐 2025년부터 전 국민 대상 정식 발급을 추진하고 있다[10][11]. 이를 통해 플라스틱 신분증을 대체하여 온·오프라인 어디서나 사용 가능한 디지털 신분증 인프라를 구축하는 것이 목표이다.\n기술적으로, 모바일 신분증은 스마트폰 내 보안영역(예: TEE 또는 eSE)에 신분증 정보를 암호화 저장하고, 블록체인 기반 분산ID(DID) 기술을 통해 진위를 검증하는 방식이다[12]. 중앙 서버에 주민등록번호 등 개인정보를 저장하지 않고, 사용자 단말에만 증표를 보관하므로 보안성을 높였다[13]. 사용자는 자신의 스마트폰에 있는 신분증을 제시하여 신원확인을 요청받을 때, 필요한 정보만 선별 제공할 수 있다. 예를 들어 술·담배 구매 시 모바일 신분증 앱으로 QR코드를 보여주면, 이름이나 상세주소 등은 가린 채 “성인 여부 확인” 정보만 상대방에게 전달되도록 선택적 공개가 가능하다[12]. 정부는 이러한 **비대칭 암호화(PKI)**와 블록체인 기술 활용으로 위·변조 검증이 용이하고 개인정보 노출을 최소화한 안전한 신분증을 구현했다고 설명한다[14][15].\n법적 측면에서 「주민등록법」 개정 등을 통해 모바일 신분증의 법적 지위를 정립하였다. 모바일 주민등록증이나 운전면허증은 관련 법령상 실물과 동일한 효력을 인정받아 관공서, 금융기관 등에서 공식 신분증으로 쓸 수 있다[8]. 실제로 정부24, 주민센터 민원, 금융거래, 공항 탑승 등 다양한 분야에서 모바일 신분증이 실물 대용으로 받아들여지고 있다[16][17]. 정부는 이용 편의를 높이기 위해 민간 앱들과 제휴하여 발급 경로를 확대하고 있는데, 2025년 7월부터 네이버, 카카오, 토스, 주요 시중은행 앱 등 5개 민간 플랫폼을 통해서도 모바일 신분증 발급이 가능하도록 개방하였다[18]. 행안부 심사와 보안성 평가를 통과한 민간사업자를 “모바일 신분증 운영기관”으로 선정하여, 이용자가 해당 앱에서 본인 명의 스마트폰과 IC칩 내장 실물신분증으로 본인확인을 거친 후 디지털 신분증을 스마트폰에 발급받도록 한 것이다[19][20]. 예컨대 네이버앱에 운전면허증이나 주민등록증을 탑재하면, 네이버 신분증 하나로 온라인 주류 구매나 주민센터 업무, 선거 투표 시 본인확인이 가능해지는 식이다[21][17]. 이처럼 정부 주도의 신원증명 인프라에 빅테크·금융 등 민간을 참여시켜 초기 보급률을 높이고 일상생활에서 활용처를 확대하려는 전략을 취하고 있다[18].\n모바일 신분증 도입으로 기대되는 효과는 편의성과 보안 모두 크게 향상된다는 점이다. 분실 위험이 있는 실물카드를 대신하여 휴대폰 하나로 신분 확인이 가능하고, 분산ID 구조로 과도한 정보 제공을 줄여 프라이버시도 강화된다[13]. 정부는 **“신원증명의 패러다임을 180도 바꾸는 혁신”**이라고 평가하며, 온·오프라인 통합 신원증명 수단으로 비대면 경제 활성화 기반이 될 것으로 보고 있다[22]. 다만 초기 단계에서 구형 스마트폰이나 일부 외국인 사용자에 대한 지원 미흡, 이용자 불안감 등이 과제로 지적된다[23][24]. 예를 들어 NFC 기능이 없는 저가형 폰의 경우 블루투스 또는 QR 방식으로 대안을 마련했지만 일부 제약이 있고, 고령 외국인이나 IC칩 미탑재 외국인등록증 소지자는 앱 설치와 인증 절차에 어려움을 겪는 사례도 있다[25]. 이에 대해 정부는 점차 기술적 보완과 함께 디지털 포용 정책을 강화하고 있으며, 모바일 신분증의 보안성과 신뢰성에 대한 대국민 홍보도 병행하고 있다[24][13].\n민간 본인확인(CI/DI) 서비스와 정책적 논란 대한민국에서는 모바일 신분증 도입 이전에 민간 본인확인 서비스가 오랫동안 온라인 신원확인의 핵심 역할을 해왔다. 이는 주민등록번호의 무분별한 수집을 막기 위해 마련된 “주민번호 대체 인증” 체계로, 이동통신사 등의 본인확인기관이 휴대폰 인증, 아이핀(i-PIN) 등을 통해 사용자 신원을 확인하고 고유 식별정보를 부여하는 방식이다[26][27]. 이 때 활용되는 핵심 개념이 CI와 DI다. **CI(Connection Information, 연계정보)**는 본인확인기관이 개인에게 부여하는 88바이트 암호문 형태의 고유 식별값으로, 어느 기관에서 발급하든 한 사람에게는 일생 불변의 동일한 CI가 할당된다[28]. 온라인 서비스들은 이용자의 이름·생년월일 등을 입력받아 본인확인 절차를 거친 뒤 이 CI 값을 넘겨받아 주민번호 대신 식별자로 활용한다[26][27]. **DI(Duplication Information, 중복가입확인정보)**는 사이트별로 발급되는 64바이트 식별자로, 동일인이 하나의 사이트에 중복 가입하는 것을 막기 위한 용도이다[29]. 즉, CI가 동일하면 같은 사람, DI가 동일하면 같은 사이트 내 동일 사용자임을 나타낸다[30]. 현재 포털, 전자상거래, 성인인증 등 대부분의 인터넷 서비스에서 **휴대폰 본인인증(PASS 앱 등)**을 통해 이러한 CI를 받아 가입자 식별에 사용하고 있다.\n이 CI/DI 기반 본인확인제도는 한때 편리한 주민번호 대체수단으로 각광받았으나, 정책적 비판과 한계도 적지 않았다. 먼저 **CI는 “온라인 주민등록번호”**라는 지적이 있다[31]. 애초에 주민번호 수집 금지 취지로 도입했지만, CI 값이 주민번호와 1:1 매핑되어 개인을 식별할 수 있으므로 주민번호가 가진 프라이버시 문제를 그대로 계승했다는 것이다[31]. 실제로 기업들이 원래는 각 사이트별 DI만 활용해야 함에도 편의를 위해 CI를 키값으로 사용하는 사례가 많아, 결과적으로 온라인상에서 개인을 추적할 수 있는 준식별자가 되어버렸다[32]. 둘째, 이용자가 자신의 CI/DI를 통제하거나 변경할 권한이 없다는 문제가 있다[33]. 주민번호는 유출 시 변경 제도가 있으나, CI는 한 번 생성되면 유출돼도 개인이 재발급을 요청할 수 없고 계속 쓰일 수밖에 없다. DI도 법적 보호대상이 아니라서, 본인확인기관이 보유한 DI 정보를 통해 누가 어느 웹사이트에 가입했는지 제3자가 조회할 수 있는 여지가 있다[34]. 실제 수사기관이 영장 없이 민간 경로로 DI를 확보하여 특정인의 온라인 활동 내역을 파악할 수 있다는 우려도 제기되었다[34]. 셋째, 현행 CI/DI 체계의 폐쇄성이다. 이 제도는 주민등록번호 체계에 종속되어 있기 때문에 외국인에게는 적용이 어렵고 국제 호환성도 없다[35]. 외국인은 국내에서 휴대폰 본인인증이나 아이핀 발급이 제한적이어서, 한국만의 기형적 구조라는 비판이 있다[35]. 마지막으로 DI 값의 일관성 문제가 있었다. 인증 방법이나 기관에 따라 동일인에게 서로 다른 DI가 발급되는 경우가 있어 중복가입 확인이라는 본래 목적을 달성하지 못하는 사례가 발생했고, 이 때문에 사이트들이 CI를 공유 키로 삼는 악순환을 낳았다[36]. 요컨대 민간 본인확인 산업은 통신3사 등 일부 사업자가 시장을 과점하면서 편리한 인증 수단을 제공해왔지만, 개인정보보호 측면의 구조적 한계와 보편적 서비스로서의 미흡함이 지속해서 지적되어 왔다.\n정부도 이러한 문제를 인식하여 2020년대 들어 공공 주도의 모바일 신분증 도입과 함께, 본인확인제도 개선을 병행하고 있다. 개인정보보호위원회 등은 CI 사용의 과도한 확대에 우려를 표했고, DI 등의 법적 보호조치 마련을 논의하기도 했다[34]. 한편 본인확인기관들도 PASS 앱의 고도화나 민간인증서 사업 등 새로운 방향을 모색하고 있다. 그러나 궁극적으로 모바일 신분증이 널리 보급되면, 현재의 CI 기반 인증수단 수요는 감소할 가능성이 높다. 웹사이트들이 굳이 유료의 휴대폰 본인확인 API를 쓰지 않고도 사용자가 가진 모바일 신분증으로 본인확인을 받는 방식이 현실화되면, 기존 민간 본인확인 산업의 축소 또는 역할 변환이 불가피하다.\n모바일 신분증 vs 민간 본인확인: 충돌과 정책 방향 정부 모바일 신분증의 등장은 앞서 설명한 민간 본인확인(CI/DI) 산업과 이해 충돌 측면이 있다. 모바일 신분증은 법정 신분증의 디지털화로서 기존의 민간 인증에 비해 신뢰성과 활용범위가 월등히 크다[8]. 예를 들어, PASS 앱을 통한 휴대폰 본인인증은 단지 해당 순간에 통신사 데이터베이스로 신원을 확인해주는 사설 인증에 불과하지만, 모바일 주민등록증은 공적으로 인정되는 신분증명서이므로 실명 확인은 물론 행정·법률행위에 직접 제시할 수 있다[8]. 이는 민간 본인확인 서비스들이 담당하던 온라인 회원가입, 성인인증 등의 영역을 넘어, 오프라인 신원확인과 금융 실명확인(KYC) 등까지 포함하는 포괄적인 수요를 흡수할 수 있다. 다시 말해 민간 인증 → 공공 신분증으로 기능적 대체가 진행될 수 있는 것이다.\n이런 변화에 대해 기존 본인확인 업계는 긴장과 우려를 보여왔다. 통신3사의 공동 앱 PASS는 현재 수천만 건의 본인확인 거래를 처리하며 수수료 수익을 올리고 있는데, 장기적으로 모바일 신분증에 밀려 활용도가 떨어질 가능성이 있다. 또한 인터넷 기업들은 그동안 본인확인기관을 통해 얻은 CI로 사용자 데이터를 관리해왔는데, 모바일 신분증으로 사용자가 익명성에 가까운 선택공개 인증을 하게 되면 기업 측 데이터 수집이 제한된다[5][2]. 이러한 이유로 초반에는 민간에서 **“정부가 시장을 빼앗는다”**는 견해도 있었으나, 정부는 민·관 협력 쪽으로 정책 방향을 정했다. 앞서 언급한 대로 네이버, 카카오 등의 플랫폼을 모바일 신분증 지갑으로 참여시킴으로써 민간 사업자들이 새로운 생태계의 일부가 되도록 유도한 것이다[18]. 실제 네이버는 자체 네이버 신분증 서비스를 정부 기준에 맞춰 개발하여, 행안부의 모바일 신분증 사업자로 선정됨으로써 공인 신원지갑 운영사로 전환했다[19]. 이처럼 기존 산업 플레이어들이 정부 디지털 신원체계에 합류하도록 함으로써 충돌을 완화하고 산업구조의 연착륙을 도모하고 있다.\n향후 정책 변화의 흐름을 보면, 각국 모두 디지털 신원에 대한 공적 개입을 강화하는 추세다. 유럽은 eIDAS 2.0을 통해 국가가 보증하는 디지털ID를 전 국민에게 보급하면서, 민간 Big Tech 주도의 신원확인에서 탈피하려는 흐름을 보인다[1][3]. 한국도 모바일 신분증으로 국가 주도의 신원 인프라를 구축함으로써, 과거 민간에 맡겨졌던 본인확인 기능을 공공이 책임지는 방향으로 선회하고 있다. 이는 디지털 시대 신원정보를 주권 차원에서 관리하고, 국민의 신뢰를 확보하려는 정책적 의도로 해석된다. 동시에 두 사례 모두 사용자 중심을 강조하고 있다는 공통점이 있다. EU 지갑과 한국 모바일신분증 모두 개인이 정보 제공을 통제하고 필요 최소한의 인증만 수행하도록 해 프라이버시 보호를 핵심 가치로 삼는다[5][12]. 기술적으로도 DID, 블록체인, ZKP(영지식증명) 등 차세대 신원증명 기술을 도입하여 중앙집중식 신원확인의 한계를 극복하려는 노력이 나타난다[37][2].\n한편, 미국 등 일부 국가는 연방 차원의 통일된 디지털 ID 프레임워크가 부재하여 주별로 모바일 운전면허증을 발급하거나, 민간의 소셜 로그인·신용평가사 데이터를 활용하는 등 분산된 접근을 보이고 있다[38][39]. 그러나 글로벌 추세는 결국 공공주도형 신원증명 인프라로 수렴하는 모습이다. 여러 나라들이 유럽 eIDAS 2.0을 참고하여 국가 디지털 ID 전략을 내놓고 있으며, 호주, 영국 등도 디지털 신원 Trust Framework를 마련해 정부가 신원 인증의 신뢰성을 감독하고 있다[40][41]. 요컨대 디지털 신원은 21세기 사회 기본 인프라로 인정받으며, 각국 정부와 국제기구가 표준과 규범을 이끌어가는 방향으로 가고 있다.\nEU vs 한국 신원체계 비교표 구분 유럽연합: eIDAS 2.0 (EU Digital Identity Wallet) 대한민국: 모바일 신분증 제도 대한민국: 민간 본인확인(CI/DI) 체계 주체 및 체계 EU 규정에 따른 공공 주도 디지털 신원 프레임워크. 회원국 정부가 최소 하나의 공인 신원지갑을 제공 (필요시 민간 개발사 참여 가능)[3]. 신원 제공자(IdP)와 신뢰 서비스 제공자가 엄격한 자격을 갖추고 참여. 행정안전부 등 정부 주도 스마트폰 신분증. 국가가 신분증 발행 주체이며, 공무원증·주민증·면허증 등 실물 ID를 디지털화. 네이버·카카오 등 민간 플랫폼은 지갑 운영 역할로 제한된 범위 내 참여[42]. 통신사·금융사 등의 본인확인기관이 운영하는 민간 인증 시스템. 정부는 관련 법으로 기관을 지정·감독할 뿐, 신원확인 절차는 민간에 의해 수행. 시장은 사실상 **통신3사(PASS)**와 몇몇 기관이 과점. 신원 증명 방식 **디지털 신원 지갑(Wallet)**에 사용자의 인증서·속성 정보를 저장. 모바일 앱 형태로 동작하며, 생체인증+암호키로 소유자 확인. 지갑에 담긴 **검증가능 자격증명(VC)**을 제시하고 검증기관이 블록체인 등으로 진위 확인[37]. ZKP 기반 선택적 공개로 필요한 속성만 증명. 스마트폰 Secure Element(예: NFC IC칩 내장 신분증 스캔 or TEE 저장)에 공식 신분증 데이터를 저장[14]. 사용 시 QR/바코드 또는 BLE 통신으로 상대에게 증명서 전달 -\u003e 블록체인 DID를 통해 진본 확인[15]. 생체인증+PIN 등 기기 보안으로 본인만 사용 가능. 필요한 정보만 선택적으로 표시 가능[8]. 휴대폰 인증(SMS 또는 앱) 또는 아이핀 등을 통해 중앙 DB 대조 방식으로 신원확인. 사용자가 이름, 주민번호 등 입력 -\u003e 통신사/신용평가사 DB에서 일치 여부 확인. 확인되면 해당 사용자에 부여된 **CI (고유연계번호)**를 서비스 제공자에게 전달[26]. 서비스 제공자는 CI로 동일인 여부 식별, DI로 한 서비스 내 중복가입 판별. 법적 지위 및 효력 **EU 규정(규칙)**으로 직접 효력. 2024년 개정안 발효로 법적 근거 확보[3]. 회원국 내 법률도 지갑을 공인 전자신분증으로 인정토록 정비 예정. 지갑을 통한 인증은 회원국 간 상호 인정되어 국경을 넘어 동일한 법효력을 가짐. 대형 온라인플랫폼은 이 신원수단 수용 의무화 (Digital Markets Act 연계). 주민등록법, 여권법, 도로교통법 등 개별 법령 개정으로 모바일 형태 신분증의 실물 동등 효력을 규정[8]. 예컨대 주민등록법 제24조에 모바일 주민등록증을 규정. 법적으로 국가신분증으로서 효력을 갖기에 공공·민간 모두 수용 의무. 다만 제시 거부 시 과태료 등 세부 기준 마련중[43]. 정보통신망법 제23조의3 등에 따라 본인확인기관 제도로 운영. 주민번호 대체수단으로서 합법적 지위. CI는 개인정보보호법상 개인정보로 보호되나, DI는 명시적 보호 규정 미비[34]. 민간 서비스 이용약관 등에 따라 사용자 동의 하에 정보 활용. 법적 효력은 사실행위 수준(공식 신분증은 아니며 실명확인 용도). 개인정보 보호 설계 Privacy by Design 원칙 구현. 사용자 주권 하에 데이터 최소 공개・미사용 데이터 비저장[5]. 지갑에 저장된 모든 데이터는 사용자 승인 하에만 제3자 제공 가능. 지갑 제공자도 사용자 데이터 오남용 금지. 인증 시 필요한 항목만 선택해 제출 (예: 연령검증 시 나이정보만). 익명성 보장 수단(ZKP) 도입으로 검증자는 내용 몰라도 참/거짓 확인. 정보 자기결정권 강화가 핵심 목표. 중앙 서버 미저장 구조로 해킹시 대량유출 위험 감소[13]. 이용자가 제시 정보 선택 가능하여 불필요한 과다정보 제공 방지[12]. 예컨대 모바일 운전면허 제시 시 주소 등 민감정보 숨기고 얼굴·생년월일만 표시 가능. 주민번호 전체를 저장·전송하지 않고 해시처리 또는 부분출력으로 과도한 노출 억제. 프라이버시 우려 높음. CI는 사실상 온라인 주민번호로 개인 식별과 연계가 가능[31]. 서비스 간 공유식별자로 쓰여 이용자 동의 없이도 제3자가 CI만 있으면 여러 서비스 활동을 유추 가능[34]. 사용자는 자신의 CI/DI 발급·폐기에 관여하지 못함[33]. 민간 기관에 신원 정보(이름, 휴대폰번호 등) 제공을 매번 요구하고, 이 과정에서 과도한 정보 수집과 로그 관리가 이뤄짐. 민간 부문의 역할 신원지갑 소프트웨어 개발이나 신뢰 서비스 제공에 민간 참여 가능. 다만 국가 승인/인증된 사업자만이 지갑 앱을 배포하거나 자격증명 발행 가능. 예컨대 각국 정부가 직접 지갑 앱을 내놓거나, 마이크로소프트 등 기업이 EU 기준에 맞춰 지갑 제공 가능. 대규모 온라인 서비스는 이 체계 연동 의무[6]. 민간은 공공체계 내 서비스 제공자 또는 검증자로서 기능. 민간은 플랫폼 파트너로서 모바일 신분증을 호스팅/연계할 뿐, 신분증 발급 주체는 정부. 초기 참여한 네이버·카카오 등이 대표적 사례[42]. 금융권(은행 앱)도 지갑 역할 수행. 또한 편의 증진을 위해 민간 QR스캐너/단말기 인프라 활용 등 연계. 그러나 신원 정보의 생성·인증은 공공기관(예: 경찰청, 행안부)이 담당, 민간은 이를 전달·표시하는 역할에 국한. 민간이 주도. 이동통신3사, KISA위탁 아이핀, 나이스평가정보 등 여러 민간기관이 신원확인 공급자로 활동. 정부는 이들을 관리·허가하지만, 경쟁 및 서비스 운영은 시장 논리에 따름. 사용자 입장에선 통신3사 등 사실상 민간 독점 서비스를 이용. 민간 기업들은 본인인증 수수료, 데이터로 수익 창출, CI 정보를 기반으로 부가 서비스를 제공하기도 함. 以上의 비교를 통해 알 수 있듯, 유럽의 eIDAS 2.0과 한국의 모바일 신분증 모두 디지털 시대의 새로운 신원 증명 패러다임을 추구하고 있다. 유럽은 초국가적 차원에서 공통의 신뢰 프레임워크를 수립하여 *“한 개의 디지털 지갑으로 EU 전체에서 통용”*되는 청사진을 그리고 있고[3], 한국은 국내에서 국민 누구나 스마트폰만으로 행정·민간 서비스를 이용할 수 있는 환경을 만들며 오래된 민간 인증 관행을 혁신하고 있다[22]. 양측 모두 공공주도로 추진되지만 민간과의 조화로운 역할 분담을 모색한다는 공통점이 있다. 앞으로도 사용자 프라이버시를 보호하면서도 편의성을 높이는 방향으로 정책이 발전할 것이며, 국제적으로도 이러한 디지털 신원 혁신 흐름에 따라 산업 구조가 재편될 것으로 전망된다[2][49].\n",
+  "wordCount" : "2345",
+  "inLanguage": "ko",
+  "datePublished": "2026-01-19T00:00:00Z",
+  "dateModified": "2026-01-19T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://windshock.github.io/ko/post/2026-01-19-digital-identity-eidas2-korea/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Code Before Breach",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://windshock.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://windshock.github.io/ko/" accesskey="h" title="Code Before Breach (Alt + H)">
+                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo" class="h-7 w-auto"
+                    height="28">Code Before Breach</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://windshock.github.io/en/" title="English"
+                            aria-label="English">En</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://windshock.github.io/ko/search/" title="검색 (Alt &#43; /)" accesskey=/>
+                    <span>검색</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/tags/" title="태그">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/categories/" title="카테고리">
+                    <span>카테고리</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/archives/" title="아카이브">
+                    <span>아카이브</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/about/" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/index.xml" title="RSS 피드">
+                    <span>RSS 피드</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://windshock.github.io/ko/">홈</a>&nbsp;»&nbsp;<a href="https://windshock.github.io/ko/post/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      eIDAS 2.0 vs. 대한민국 디지털 신원체계 비교 분석
+    </h1>
+    <div class="post-description">
+      EU eIDAS 2.0(EU Digital Identity Wallet)과 한국의 모바일 신분증/민간 본인확인(CI/DI) 체계를 거버넌스·프라이버시·운영 관점에서 비교합니다.
+    </div>
+    <div class="post-meta"><span title='2026-01-19 00:00:00 +0000 UTC'>1월 19, 2026</span>&nbsp;·&nbsp;12 분&nbsp;·&nbsp;2345 단어&nbsp;|&nbsp;번역:
+<ul class="i18n_list">
+    <li>
+        <a href="https://windshock.github.io/en/post/2026-01-19-digital-identity-eidas2-korea/">En</a>
+    </li>
+</ul>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">목차</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#pdf" aria-label="PDF">PDF</a></li>
+                <li>
+                    <a href="#%ea%b4%80%eb%a0%a8-%ec%98%81%ec%83%81" aria-label="관련 영상">관련 영상</a></li>
+                <li>
+                    <a href="#eidas-20-%ec%9c%a0%eb%9f%bd%ec%9d%98-%eb%94%94%ec%a7%80%ed%84%b8-%ec%8b%a0%ec%9b%90-%ed%94%84%eb%a0%88%ec%9e%84%ec%9b%8c%ed%81%ac" aria-label="eIDAS 2.0: 유럽의 디지털 신원 프레임워크">eIDAS 2.0: 유럽의 디지털 신원 프레임워크</a></li>
+                <li>
+                    <a href="#%eb%8c%80%ed%95%9c%eb%af%bc%ea%b5%ad%ec%9d%98-%eb%aa%a8%eb%b0%94%ec%9d%bc-%ec%8b%a0%eb%b6%84%ec%a6%9d-%ec%a0%9c%eb%8f%84" aria-label="대한민국의 모바일 신분증 제도">대한민국의 모바일 신분증 제도</a></li>
+                <li>
+                    <a href="#%eb%af%bc%ea%b0%84-%eb%b3%b8%ec%9d%b8%ed%99%95%ec%9d%b8cidi-%ec%84%9c%eb%b9%84%ec%8a%a4%ec%99%80-%ec%a0%95%ec%b1%85%ec%a0%81-%eb%85%bc%eb%9e%80" aria-label="민간 본인확인(CI/DI) 서비스와 정책적 논란">민간 본인확인(CI/DI) 서비스와 정책적 논란</a></li>
+                <li>
+                    <a href="#%eb%aa%a8%eb%b0%94%ec%9d%bc-%ec%8b%a0%eb%b6%84%ec%a6%9d-vs-%eb%af%bc%ea%b0%84-%eb%b3%b8%ec%9d%b8%ed%99%95%ec%9d%b8-%ec%b6%a9%eb%8f%8c%ea%b3%bc-%ec%a0%95%ec%b1%85-%eb%b0%a9%ed%96%a5" aria-label="모바일 신분증 vs 민간 본인확인: 충돌과 정책 방향">모바일 신분증 vs 민간 본인확인: 충돌과 정책 방향</a></li>
+                <li>
+                    <a href="#eu-vs-%ed%95%9c%ea%b5%ad-%ec%8b%a0%ec%9b%90%ec%b2%b4%ea%b3%84-%eb%b9%84%ea%b5%90%ed%91%9c" aria-label="EU vs 한국 신원체계 비교표">EU vs 한국 신원체계 비교표</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="pdf">PDF<a hidden class="anchor" aria-hidden="true" href="#pdf">#</a></h2>
+<ul>
+<li><strong>Open (new tab):</strong> <a href="/files/Digital_Identity_Redesigning_Control.pdf"><code>/files/Digital_Identity_Redesigning_Control.pdf</code></a></li>
+</ul>
+<iframe
+  id="pdfjs-digital-identity-redesigning-control-ko"
+  src="/pdfjs/single.html?file=/files/Digital_Identity_Redesigning_Control.pdf#page=1"
+  width="100%"
+  height="560"
+  style="border: 1px solid #e5e7eb; border-radius: 8px;"
+></iframe>
+<script>
+  (function () {
+    const iframe = document.getElementById(
+      "pdfjs-digital-identity-redesigning-control-ko"
+    );
+    if (!iframe) return;
+    window.addEventListener("message", function (e) {
+      if (e.origin !== window.location.origin) return;
+      const data = e.data || {};
+      if (data.type !== "pdfjs-resize") return;
+      if (typeof data.height !== "number") return;
+      iframe.style.height = Math.max(420, Math.min(data.height, 980)) + "px";
+    });
+  })();
+</script>
+<blockquote>
+<p>PDF가 보이지 않으면 여기로 열어보세요: <a href="/files/Digital_Identity_Redesigning_Control.pdf"><code>/files/Digital_Identity_Redesigning_Control.pdf</code></a></p></blockquote>
+<h2 id="관련-영상">관련 영상<a hidden class="anchor" aria-hidden="true" href="#관련-영상">#</a></h2>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/1L1FQnnfnyo?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<h2 id="eidas-20-유럽의-디지털-신원-프레임워크">eIDAS 2.0: 유럽의 디지털 신원 프레임워크<a hidden class="anchor" aria-hidden="true" href="#eidas-20-유럽의-디지털-신원-프레임워크">#</a></h2>
+<p><strong>유럽연합의 eIDAS 2.0</strong>(Electronic Identification, Authentication and Trust Services 2.0)은 차세대 <strong>디지털 신원 전략</strong>으로, <em>유럽 디지털 신원 지갑(EU Digital Identity Wallet)</em> 도입을 핵심으로 한다. 이 지갑은 모든 EU 시민·거주자에게 발급되며, 개인이 자신의 디지털 신원을 안전하게 저장・관리하고 필요한 정보만 선택적으로 공유할 수 있는 <strong>월렛 기반 신원증명 수단</strong>이다<a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=EU%20Digital%20Identity%20Wallet%20%EB%8F%84%EC%9E%85,%EA%B0%95%EC%A1%B0%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%94%84%EB%9D%BC%EC%9D%B4%EB%B2%84%EC%8B%9C%20%EB%B3%B4%ED%98%B8%20%EA%B0%95%ED%99%94">[1]</a><a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=%EC%9E%A5%EC%A0%90%20%EC%84%A4%EB%AA%85%20%ED%9A%A8%EA%B3%BC%20%EB%94%94%EC%A7%80%ED%84%B8%20%EC%8B%A0%EC%9B%90,%EA%B8%88%EC%9C%B5%2C%20%EA%B5%90%EC%9C%A1%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%ED%99%95%EC%9E%A5%20%EC%B4%89%EC%A7%84">[2]</a>. eIDAS 2.0 규정은 2024년 5월 발효되었고, 각 회원국이 <strong>2026년까지 최소 하나 이상의 공인 디지털 신원 지갑을 국민에게 제공</strong>하도록 의무화하였다<a href="https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/694487738/EU&#43;Digital&#43;Identity&#43;Wallet&#43;Home#:~:text=Obtaining%20a%20new%20bank%20account%2C,who%20gets%20to%20use%20it">[3]</a>. 이를 통해 EU 전역에서 통용되는 조화로운 신원체계를 구축하고, 국경 간 전자거래와 서비스 이용 시 <strong>상호 인증</strong>을 가능하게 한다.</p>
+<p>이 <strong>신뢰 프레임워크(Trust Framework)</strong> 하에서 디지털 신원 지갑과 전자서명·전자봉인 등 <strong>신뢰 서비스</strong>의 표준이 정해져 회원국 간 호환성이 보장된다<a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=%EA%B5%AC%EC%84%B1%20%EC%9A%94%EC%86%8C%20%EC%84%A4%EB%AA%85%20%EC%98%88%EC%8B%9C%20EU,%EC%B2%B4%EA%B3%84%20eDelivery%2C%20eIdentification%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%ED%86%B5%ED%95%A9">[4]</a>. eIDAS 2.0은 **보증 수준(LoA)**을 높여 높은 수준의 보안을 제공하며, <strong>개인정보 보호 원칙과 데이터 최소화</strong>를 법적으로 명시한 것이 특징이다<a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=%ED%99%95%EC%9E%A5%EB%90%9C%20%EC%8B%A0%EC%9B%90%20%EC%9D%B8%EC%A6%9D%20%EB%A0%88%EB%B2%A8%20%EA%B3%A0%EA%B8%89,%EA%B0%95%EC%A1%B0%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%94%84%EB%9D%BC%EC%9D%B4%EB%B2%84%EC%8B%9C%20%EB%B3%B4%ED%98%B8%20%EA%B0%95%ED%99%94">[5]</a>. 사용자 <strong>자기주권 신원(SSI)</strong> 개념을 도입하여, 개인이 신원 데이터에 대한 통제권을 갖고 <strong>선택적 정보공개(Selective Disclosure)</strong> 기능으로 필요한 최소한의 데이터만 공유한다<a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=%ED%99%95%EC%9E%A5%EB%90%9C%20%EC%8B%A0%EC%9B%90%20%EC%9D%B8%EC%A6%9D%20%EB%A0%88%EB%B2%A8%20%EA%B3%A0%EA%B8%89,%EA%B0%95%EC%A1%B0%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%94%84%EB%9D%BC%EC%9D%B4%EB%B2%84%EC%8B%9C%20%EB%B3%B4%ED%98%B8%20%EA%B0%95%ED%99%94">[5]</a><a href="https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/694487738/EU&#43;Digital&#43;Identity&#43;Wallet&#43;Home#:~:text=Obtaining%20a%20new%20bank%20account%2C,who%20gets%20to%20use%20it">[3]</a>. 예컨대, 나이 인증이 필요할 때 지갑이 <em>사용자의 생년월일 전체 대신 “성인 여부” 정보만 제출</em>하도록 설계되어 있다. 이러한 <strong>프라이버시 강화</strong> 설계를 통해 사용자의 개인정보 자기결정권을 보장하며, 지갑에 저장된 데이터는 사용자 동의 없이 다른 용도로 활용되지 않는다.</p>
+<p>또한 eIDAS 2.0은 <strong>민간 부문의 역할을 재정립</strong>하였다. 기존 eIDAS(2014) 체계가 공공서비스 위주였다면, 개정된 규정은 <strong>은행·의료·통신 등 민간 서비스에도 공통 디지털 신원 사용을 확대</strong>하여 디지털 신원의 활용 범위를 넓혔다<a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=%ED%99%95%EC%9E%A5%EB%90%9C%20%EC%8B%A0%EC%9B%90%20%EC%9D%B8%EC%A6%9D%20%EB%A0%88%EB%B2%A8%20%EA%B3%A0%EA%B8%89,%EA%B0%95%EC%A1%B0%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%94%84%EB%9D%BC%EC%9D%B4%EB%B2%84%EC%8B%9C%20%EB%B3%B4%ED%98%B8%20%EA%B0%95%ED%99%94">[5]</a>. 예를 들어 <strong>은행 계좌 개설이나 원격 의료, 통신 서비스 가입</strong> 시에도 회원국 디지털 ID 지갑을 통한 본인확인을 의무화하는 방향이다. 동시에 <strong>대형 온라인 플랫폼들도 공공 디지털 신원을 받아들이도록</strong> 규정하여, 구글·페이스북 등 민간 로그인에 의존하던 환경을 개선하고 <strong>중립적 공공 인증수단</strong>을 마련하고 있다<a href="https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/694487738/EU&#43;Digital&#43;Identity&#43;Wallet&#43;Home#:~:text=For%20private%20companies">[6]</a>. 나아가 각국 정부뿐 아니라 **인증서 발급기관 등 신뢰 서비스 제공자(TSP)**들도 참여하되, <strong>EU 공통 표준과 인증</strong>을 충족해야 하므로 무분별한 민간 독점이나 남용은 제한된다. 즉, 민간이 디지털 신원 인프라에 참여하더라도 엄격한 <em>자격 요건</em> 하에서 공익적 원칙을 따라야 한다.</p>
+<p>요약하면, eIDAS 2.0은 **“지갑 기반 디지털 신원”**이라는 새로운 패러다임으로 <strong>사용자 중심·프라이버시 보호</strong>를 강화하고, <strong>공공이 주도하되 민간도 참여</strong>하는 신뢰 네트워크를 구축한 것이다. 모든 EU 국민에게 공통 디지털 ID를 보급함으로써 디지털 행정과 상거래를 <strong>편리하면서도 안전</strong>하게 만들고<a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=%EB%94%94%EC%A7%80%ED%84%B8%20%EC%8B%A0%EC%9B%90%20%EC%A0%91%EA%B7%BC%EC%84%B1%20%ED%96%A5%EC%83%81%20%EB%AA%A8%EB%93%A0,%EA%B8%88%EC%9C%B5%2C%20%EA%B5%90%EC%9C%A1%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%ED%99%95%EC%9E%A5%20%EC%B4%89%EC%A7%84">[7]</a>, 데이터 주권을 개인에게 돌려준다는 평가를 받고 있다<a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=%EC%9E%A5%EC%A0%90%20%EC%84%A4%EB%AA%85%20%ED%9A%A8%EA%B3%BC%20%EB%94%94%EC%A7%80%ED%84%B8%20%EC%8B%A0%EC%9B%90,%EA%B8%88%EC%9C%B5%2C%20%EA%B5%90%EC%9C%A1%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%ED%99%95%EC%9E%A5%20%EC%B4%89%EC%A7%84">[2]</a>. 이는 유럽 단일시장 내 <strong>전자 신원확인에 법적 확실성</strong>을 부여하고 디지털 혁신을 촉진하는 기반이 될 것으로 기대된다.</p>
+<h2 id="대한민국의-모바일-신분증-제도">대한민국의 모바일 신분증 제도<a hidden class="anchor" aria-hidden="true" href="#대한민국의-모바일-신분증-제도">#</a></h2>
+<p><strong>대한민국의 모바일 신분증</strong>은 정부가 발급하는 공식 <strong>스마트폰 기반 디지털 신분증</strong>으로, 주민등록증·운전면허증 등 <strong>실물과 동일한 법적 효력</strong>을 갖는다<a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%A0%95%EB%B6%80%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%80%20%EA%B8%B0%EC%A1%B4%20%ED%86%B5%EC%8B%A0,%EB%B3%B4%EC%97%AC%EC%A3%BC%EB%8A%94%20%EC%84%A0%ED%83%9D%EC%A0%81%20%ED%91%9C%EC%B6%9C%20%EA%B8%B0%EB%8A%A5%EB%8F%84%20%EC%A0%9C%EA%B3%B5%EB%90%9C%EB%8B%A4">[8]</a>. 행정안전부는 2020년부터 디지털 정부혁신 계획에 따라 단계적으로 모바일 신분증을 도입해왔으며, 2021년 공무원증을 시작으로 2022년 <strong>모바일 운전면허증</strong>을 일반 국민에게 시범 발급하고 2023년 국가보훈등록증, 2024년 재외국민용 신원확인증 등으로 범위를 넓혔다<a href="https://www.mois.go.kr/frt/sub/a06/b04/mobileId/screen.do#:~:text=%2A%20,%EC%A0%95%EC%8B%9D%EB%B0%9C%EA%B8%89">[9]</a>. <strong>2024년 12월에는 모바일 주민등록증 시범발급</strong>을 거쳐 2025년부터 전 국민 대상 정식 발급을 추진하고 있다<a href="https://www.mois.go.kr/frt/sub/a06/b04/mobileId/screen.do#:~:text=,%EC%A0%95%EC%8B%9D%EB%B0%9C%EA%B8%89">[10][11]</a>. 이를 통해 <strong>플라스틱 신분증을 대체</strong>하여 온·오프라인 어디서나 사용 가능한 디지털 신분증 인프라를 구축하는 것이 목표이다.</p>
+<p>기술적으로, 모바일 신분증은 <strong>스마트폰 내 보안영역(예: TEE 또는 eSE)에 신분증 정보를 암호화 저장</strong>하고, <strong>블록체인 기반 분산ID(DID)</strong> 기술을 통해 진위를 검증하는 방식이다<a href="https://www.mois.go.kr/frt/sub/a06/b04/mobileId/screen.do#:~:text=%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%B4%EB%9E%80%3F%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%80%20%EA%B0%9C%EC%9D%B8,%EA%B0%84%ED%8E%B8%ED%95%98%EA%B3%A0%20%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C%20%EC%82%AC%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4">[12]</a>. 중앙 서버에 주민등록번호 등 개인정보를 저장하지 않고, <strong>사용자 단말에만 증표를 보관</strong>하므로 보안성을 높였다<a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%9D%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EB%94%94%EC%A7%80%ED%84%B8%EC%A0%95%EB%B6%80%ED%98%81%EC%8B%A0%EC%8B%A4%EC%9D%80%20,%EA%B3%A0%20%EB%B0%9D%ED%98%94%EB%8B%A4">[13]</a>. 사용자는 자신의 스마트폰에 있는 신분증을 제시하여 신원확인을 요청받을 때, <strong>필요한 정보만 선별 제공</strong>할 수 있다. 예를 들어 술·담배 구매 시 모바일 신분증 앱으로 QR코드를 보여주면, <strong>이름이나 상세주소 등은 가린 채 “성인 여부 확인” 정보만</strong> 상대방에게 전달되도록 선택적 공개가 가능하다<a href="https://www.mois.go.kr/frt/sub/a06/b04/mobileId/screen.do#:~:text=%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%B4%EB%9E%80%3F%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%80%20%EA%B0%9C%EC%9D%B8,%EA%B0%84%ED%8E%B8%ED%95%98%EA%B3%A0%20%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C%20%EC%82%AC%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4">[12]</a>. 정부는 이러한 **비대칭 암호화(PKI)**와 <strong>블록체인 기술</strong> 활용으로 <strong>위·변조 검증이 용이하고 개인정보 노출을 최소화</strong>한 안전한 신분증을 구현했다고 설명한다<a href="https://www.mois.go.kr/frt/sub/a06/b04/mobileId/screen.do#:~:text=,Image%3A%20%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%B4%EB%9E%80">[14]</a><a href="https://www.mois.go.kr/frt/sub/a06/b04/mobileId/screen.do#:~:text=1,%EA%B0%84%ED%8E%B8%ED%95%98%EA%B3%A0%20%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C%20%EC%82%AC%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4">[15]</a>.</p>
+<p>법적 측면에서 <strong>「주민등록법」 개정</strong> 등을 통해 모바일 신분증의 법적 지위를 정립하였다. 모바일 주민등록증이나 운전면허증은 <strong>관련 법령상 실물과 동일한 효력</strong>을 인정받아 관공서, 금융기관 등에서 공식 신분증으로 쓸 수 있다<a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%A0%95%EB%B6%80%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%80%20%EA%B8%B0%EC%A1%B4%20%ED%86%B5%EC%8B%A0,%EB%B3%B4%EC%97%AC%EC%A3%BC%EB%8A%94%20%EC%84%A0%ED%83%9D%EC%A0%81%20%ED%91%9C%EC%B6%9C%20%EA%B8%B0%EB%8A%A5%EB%8F%84%20%EC%A0%9C%EA%B3%B5%EB%90%9C%EB%8B%A4">[8]</a>. 실제로 정부24, 주민센터 민원, 금융거래, 공항 탑승 등 다양한 분야에서 모바일 신분증이 실물 대용으로 받아들여지고 있다<a href="https://biz.newdaily.co.kr/site/data/html/2025/07/23/2025072300372.html#:~:text=%EB%84%A4%EC%9D%B4%EB%B2%84%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%80%20%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%EC%A6%9D%EA%B3%BC%20%EC%A3%BC%EB%AF%BC%EB%93%B1%EB%A1%9D%EC%A6%9D%2C%20%EA%B5%AD%EA%B0%80%EB%B3%B4%ED%9B%88%EB%93%B1%EB%A1%9D%EC%A6%9D%EA%B3%BC,%ED%8E%B8%EB%A6%AC%ED%95%98%EA%B2%8C%20%EC%8B%A0%EB%B6%84%EC%9D%84%20%EC%A6%9D%EB%AA%85%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8B%A4">[16]</a><a href="https://biz.newdaily.co.kr/site/data/html/2025/07/23/2025072300372.html#:~:text=%EB%84%A4%EC%9D%B4%EB%B2%84%ED%94%8C%EB%9F%AC%EC%8A%A4%20%EC%8A%A4%ED%86%A0%EC%96%B4%EC%97%90%EC%84%9C%20%EC%98%A8%EB%9D%BC%EC%9D%B8%20%EC%A3%BC%EB%A5%98%EB%A5%BC%20%EA%B5%AC%EB%A7%A4%ED%95%98%EA%B1%B0%EB%82%98,%ED%9A%A8%EB%A0%A5%EC%9C%BC%EB%A1%9C%20%EB%B3%B8%EC%9D%B8%EC%9D%84%20%EC%A6%9D%EB%AA%85%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8B%A4">[17]</a>. 정부는 <strong>이용 편의를 높이기 위해 민간 앱들과 제휴</strong>하여 발급 경로를 확대하고 있는데, 2025년 7월부터 네이버, 카카오, 토스, 주요 시중은행 앱 등 <strong>5개 민간 플랫폼을 통해서도 모바일 신분증 발급</strong>이 가능하도록 개방하였다<a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%A0%95%EB%B6%80%EB%8A%94%20%EC%9D%B4%EB%8B%AC%20%EB%A7%90%EB%B6%80%ED%84%B0%20%EB%84%A4%EC%9D%B4%EB%B2%84%C2%B7%EC%B9%B4%EC%B9%B4%EC%98%A4%C2%B7%ED%86%A0%EC%8A%A4%C2%B7%EB%86%8D%ED%98%91%C2%B7%EA%B5%AD%EB%AF%BC%EC%9D%80%ED%96%89%20%EB%93%B1,%EC%97%B0%EA%B3%84%ED%95%B4%20%EC%A0%91%EA%B7%BC%EC%84%B1%EA%B3%BC%20%ED%8E%B8%EC%9D%98%EC%84%B1%EC%9D%84%20%EB%86%92%EC%9D%B4%EA%B2%A0%EB%8B%A4%EB%8A%94%20%EC%B7%A8%EC%A7%80%EB%8B%A4">[18]</a>. 행안부 심사와 보안성 평가를 통과한 민간사업자를 “모바일 신분증 운영기관”으로 선정하여, 이용자가 해당 앱에서 본인 명의 스마트폰과 IC칩 내장 실물신분증으로 본인확인을 거친 후 디지털 신분증을 스마트폰에 발급받도록 한 것이다<a href="https://biz.newdaily.co.kr/site/data/html/2025/07/23/2025072300372.html#:~:text=%EB%AF%BC%EC%9B%90%20%EC%97%85%EB%AC%B4%20%E2%96%B2%EC%A0%95%EB%B6%8024%20%EC%A6%9D%EB%AA%85%EC%84%9C%20%EB%B0%9C%EA%B8%89,%ED%9A%A8%EB%A0%A5%EC%9C%BC%EB%A1%9C%20%EB%B3%B8%EC%9D%B8%EC%9D%84%20%EC%A6%9D%EB%AA%85%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8B%A4">[19]</a><a href="https://biz.newdaily.co.kr/site/data/html/2025/07/23/2025072300372.html#:~:text=%EB%84%A4%EC%9D%B4%EB%B2%84%EB%8A%94%202024%EB%85%84%20%ED%96%89%EC%A0%95%EC%95%88%EC%A0%84%EB%B6%80%EA%B0%80%20%EC%A7%84%ED%96%89%ED%95%9C%20%EC%97%84%EA%B2%A9%ED%95%9C,%ED%96%89%EC%A0%95%EC%95%88%EC%A0%84%EB%B6%80%EA%B0%80%20%EC%A7%80%EC%A0%95%ED%95%9C%20%EC%A0%81%ED%95%A9%EC%84%B1%20%ED%8F%89%EA%B0%80%EB%A5%BC%20%ED%86%B5%EA%B3%BC%ED%96%88%EB%8B%A4">[20]</a>. 예컨대 <strong>네이버앱에 운전면허증이나 주민등록증을 탑재</strong>하면, 네이버 신분증 하나로 온라인 주류 구매나 주민센터 업무, 선거 투표 시 본인확인이 가능해지는 식이다<a href="https://biz.newdaily.co.kr/site/data/html/2025/07/23/2025072300372.html#:~:text=%EB%84%A4%EC%9D%B4%EB%B2%84%EA%B0%80%20%EC%8B%A4%EB%AC%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EA%B3%BC%20%EB%B2%95%EC%A0%81%EC%9C%BC%EB%A1%9C%20%EB%8F%99%EC%9D%BC%ED%95%98%EA%B2%8C,%EB%84%A4%EC%9D%B4%EB%B2%84%EC%95%B1%EC%9D%84%20%ED%86%B5%ED%95%B4%20%EC%B6%9C%EC%8B%9C%ED%96%88%EB%8B%A4%EA%B3%A0%2023%EC%9D%BC%20%EB%B0%9D%ED%98%94%EB%8B%A4">[21]</a><a href="https://biz.newdaily.co.kr/site/data/html/2025/07/23/2025072300372.html#:~:text=%EB%84%A4%EC%9D%B4%EB%B2%84%ED%94%8C%EB%9F%AC%EC%8A%A4%20%EC%8A%A4%ED%86%A0%EC%96%B4%EC%97%90%EC%84%9C%20%EC%98%A8%EB%9D%BC%EC%9D%B8%20%EC%A3%BC%EB%A5%98%EB%A5%BC%20%EA%B5%AC%EB%A7%A4%ED%95%98%EA%B1%B0%EB%82%98,%ED%9A%A8%EB%A0%A5%EC%9C%BC%EB%A1%9C%20%EB%B3%B8%EC%9D%B8%EC%9D%84%20%EC%A6%9D%EB%AA%85%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8B%A4">[17]</a>. 이처럼 <strong>정부 주도의 신원증명 인프라에 빅테크·금융 등 민간을 참여</strong>시켜 초기 보급률을 높이고 일상생활에서 활용처를 확대하려는 전략을 취하고 있다<a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%A0%95%EB%B6%80%EB%8A%94%20%EC%9D%B4%EB%8B%AC%20%EB%A7%90%EB%B6%80%ED%84%B0%20%EB%84%A4%EC%9D%B4%EB%B2%84%C2%B7%EC%B9%B4%EC%B9%B4%EC%98%A4%C2%B7%ED%86%A0%EC%8A%A4%C2%B7%EB%86%8D%ED%98%91%C2%B7%EA%B5%AD%EB%AF%BC%EC%9D%80%ED%96%89%20%EB%93%B1,%EC%97%B0%EA%B3%84%ED%95%B4%20%EC%A0%91%EA%B7%BC%EC%84%B1%EA%B3%BC%20%ED%8E%B8%EC%9D%98%EC%84%B1%EC%9D%84%20%EB%86%92%EC%9D%B4%EA%B2%A0%EB%8B%A4%EB%8A%94%20%EC%B7%A8%EC%A7%80%EB%8B%A4">[18]</a>.</p>
+<p>모바일 신분증 도입으로 기대되는 효과는 <strong>편의성과 보안</strong> 모두 크게 향상된다는 점이다. 분실 위험이 있는 실물카드를 대신하여 휴대폰 하나로 신분 확인이 가능하고, <strong>분산ID 구조로 과도한 정보 제공을 줄여 프라이버시도 강화</strong>된다<a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%9D%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EB%94%94%EC%A7%80%ED%84%B8%EC%A0%95%EB%B6%80%ED%98%81%EC%8B%A0%EC%8B%A4%EC%9D%80%20,%EA%B3%A0%20%EB%B0%9D%ED%98%94%EB%8B%A4">[13]</a>. 정부는 **“신원증명의 패러다임을 180도 바꾸는 혁신”**이라고 평가하며, 온·오프라인 통합 신원증명 수단으로 <strong>비대면 경제 활성화 기반</strong>이 될 것으로 보고 있다<a href="https://www.mois.go.kr/frt/sub/a06/b04/mobileId/screen.do#:~:text=%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%B4%EB%9E%80%3F%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%80%20%EA%B0%9C%EC%9D%B8,%EC%A0%95%EB%B3%B4%EB%A7%8C%20%EA%B3%A8%EB%9D%BC%EC%84%9C%20%EC%A0%9C%EA%B3%B5%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4">[22]</a>. 다만 초기 단계에서 <strong>구형 스마트폰이나 일부 외국인 사용자에 대한 지원 미흡, 이용자 불안감</strong> 등이 과제로 지적된다<a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%A0%84%EB%AC%B8%EA%B0%80%EB%93%A4%EC%9D%80%20%EA%B8%B0%EC%88%A0%EC%A0%81%20%ED%99%95%EC%9E%A5%EB%A7%8C%EC%9C%BC%EB%A1%9C%EB%8A%94%20%EC%A0%95%EC%B1%85%20%EC%A0%95%EC%B0%A9%EC%9D%B4,%EA%B3%A0%20%ED%8F%89%EA%B0%80%ED%96%88%EB%8B%A4">[23]</a><a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%A0%84%EC%B2%B4%EB%A5%BC%20%EC%A0%80%EC%9E%A5%ED%95%98%EC%A7%80%20%EC%95%8A%EA%B3%A0%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%A0%95%EB%B3%B4%EB%A7%8C,%EA%B3%A0%20%ED%8F%89%EA%B0%80%ED%96%88%EB%8B%A4">[24]</a>. 예를 들어 NFC 기능이 없는 저가형 폰의 경우 블루투스 또는 QR 방식으로 대안을 마련했지만 일부 제약이 있고, 고령 외국인이나 IC칩 미탑재 외국인등록증 소지자는 앱 설치와 인증 절차에 어려움을 겪는 사례도 있다<a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%84%9C%EC%9A%B8%20%EC%99%B8%EA%B5%AD%EC%9D%B8%20%EC%9D%B4%EC%A3%BC%EB%AF%BC%EC%84%BC%ED%84%B0%20%EA%B4%80%EA%B3%84%EC%9E%90%EB%8A%94%20,%EA%B3%A0%20%EB%A7%90%ED%96%88%EB%8B%A4">[25]</a>. 이에 대해 정부는 점차 기술적 보완과 함께 <strong>디지털 포용</strong> 정책을 강화하고 있으며, 모바일 신분증의 <strong>보안성과 신뢰성에 대한 대국민 홍보</strong>도 병행하고 있다<a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%A0%84%EC%B2%B4%EB%A5%BC%20%EC%A0%80%EC%9E%A5%ED%95%98%EC%A7%80%20%EC%95%8A%EA%B3%A0%20%ED%95%84%EC%9A%94%ED%95%9C%20%EC%A0%95%EB%B3%B4%EB%A7%8C,%EA%B3%A0%20%ED%8F%89%EA%B0%80%ED%96%88%EB%8B%A4">[24]</a><a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%9D%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EB%94%94%EC%A7%80%ED%84%B8%EC%A0%95%EB%B6%80%ED%98%81%EC%8B%A0%EC%8B%A4%EC%9D%80%20,%EA%B3%A0%20%EB%B0%9D%ED%98%94%EB%8B%A4">[13]</a>.</p>
+<h2 id="민간-본인확인cidi-서비스와-정책적-논란">민간 본인확인(CI/DI) 서비스와 정책적 논란<a hidden class="anchor" aria-hidden="true" href="#민간-본인확인cidi-서비스와-정책적-논란">#</a></h2>
+<p>대한민국에서는 모바일 신분증 도입 이전에 <strong>민간 본인확인 서비스</strong>가 오랫동안 온라인 신원확인의 핵심 역할을 해왔다. 이는 주민등록번호의 무분별한 수집을 막기 위해 마련된 <strong>“주민번호 대체 인증”</strong> 체계로, 이동통신사 등의 <strong>본인확인기관</strong>이 <strong>휴대폰 인증, 아이핀(i-PIN)</strong> 등을 통해 사용자 신원을 확인하고 고유 식별정보를 부여하는 방식이다<a href="https://www.ihee.com/614#:~:text=CI%EB%8A%94%20Connecting%20Information%EC%9D%98%20%EC%95%BD%EC%9E%90%EB%A1%9C%20%EC%9A%B0%EB%A6%AC%EB%A7%90%EB%A1%9C,%EC%97%B0%EA%B3%84%EC%A0%95%EB%B3%B4%27%EB%9D%BC%20%EB%B6%80%EB%A5%B8%EB%8B%A4">[26]</a><a href="https://www.ihee.com/614#:~:text=%EB%B3%B8%EC%9D%B8%20%ED%99%95%EC%9D%B8%EA%B8%B0%EA%B4%80%20%EB%93%B1%EC%97%90%EC%84%9C%20%EA%B0%9C%EC%9D%B8%EB%B3%84%EB%A1%9C%20%EA%B3%A0%EC%9C%A0%ED%95%98%EA%B2%8C,%EA%B3%A0%EA%B0%9D%EC%9D%84%20%EA%B5%AC%EB%B3%84%ED%95%98%EB%8A%94%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B3%A0%20%EC%9E%88%EB%8B%A4">[27]</a>. 이 때 활용되는 핵심 개념이 <strong>CI와 DI</strong>다. **CI(Connection Information, 연계정보)**는 본인확인기관이 개인에게 부여하는 <strong>88바이트 암호문 형태의 고유 식별값</strong>으로, 어느 기관에서 발급하든 한 사람에게는 <strong>일생 불변의 동일한 CI</strong>가 할당된다<a href="https://www.ihee.com/614#:~:text=%E2%97%8B%20CI%20%EB%9E%80%3F">[28]</a>. 온라인 서비스들은 이용자의 이름·생년월일 등을 입력받아 본인확인 절차를 거친 뒤 이 CI 값을 넘겨받아 <strong>주민번호 대신 식별자</strong>로 활용한다<a href="https://www.ihee.com/614#:~:text=CI%EB%8A%94%20Connecting%20Information%EC%9D%98%20%EC%95%BD%EC%9E%90%EB%A1%9C%20%EC%9A%B0%EB%A6%AC%EB%A7%90%EB%A1%9C,%EC%97%B0%EA%B3%84%EC%A0%95%EB%B3%B4%27%EB%9D%BC%20%EB%B6%80%EB%A5%B8%EB%8B%A4">[26]</a><a href="https://www.ihee.com/614#:~:text=%EB%B3%B8%EC%9D%B8%20%ED%99%95%EC%9D%B8%EA%B8%B0%EA%B4%80%20%EB%93%B1%EC%97%90%EC%84%9C%20%EA%B0%9C%EC%9D%B8%EB%B3%84%EB%A1%9C%20%EA%B3%A0%EC%9C%A0%ED%95%98%EA%B2%8C,%EA%B3%A0%EA%B0%9D%EC%9D%84%20%EA%B5%AC%EB%B3%84%ED%95%98%EB%8A%94%20%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A1%9C%20%EC%82%AC%EC%9A%A9%ED%95%98%EA%B3%A0%20%EC%9E%88%EB%8B%A4">[27]</a>. **DI(Duplication Information, 중복가입확인정보)**는 사이트별로 발급되는 64바이트 식별자로, 동일인이 하나의 사이트에 중복 가입하는 것을 막기 위한 용도이다<a href="https://www.ihee.com/614#:~:text=DI%EB%8A%94%20Duplication%20Information%EC%9D%98%20%EC%95%BD%EC%9E%90%EB%A1%9C%20%27%EC%A4%91%EB%B3%B5%EC%A0%95%EB%B3%B4%27,%EB%98%90%EB%8A%94%20%27%EC%A4%91%EB%B3%B5%EA%B0%80%EC%9E%85%ED%99%95%EC%9D%B8%EC%A0%95%EB%B3%B4%27%EB%A1%9C%20%EB%B6%80%EB%A5%B8%EB%8B%A4">[29]</a>. 즉, <strong>CI가 동일하면 같은 사람</strong>, <strong>DI가 동일하면 같은 사이트 내 동일 사용자</strong>임을 나타낸다<a href="https://www.ihee.com/614#:~:text=Image%3A%20CI%20DI%20%EB%B0%9C%EA%B8%89%20%EA%B4%80%EA%B3%84%EB%8F%84">[30]</a>. 현재 포털, 전자상거래, 성인인증 등 대부분의 인터넷 서비스에서 **휴대폰 본인인증(PASS 앱 등)**을 통해 이러한 CI를 받아 가입자 식별에 사용하고 있다.</p>
+<p>이 <strong>CI/DI 기반 본인확인제도</strong>는 한때 편리한 주민번호 대체수단으로 각광받았으나, <strong>정책적 비판과 한계</strong>도 적지 않았다. 먼저 **CI는 “온라인 주민등록번호”**라는 지적이 있다<a href="https://www.ihee.com/614#:~:text=%E2%97%8B%20CI%EB%8A%94%20%EC%98%A8%EB%9D%BC%EC%9D%B8%20%EC%A3%BC%EB%AF%BC%EB%93%B1%EB%A1%9D%EB%B2%88%ED%98%B8%EB%8B%A4">[31]</a>. 애초에 주민번호 수집 금지 취지로 도입했지만, <strong>CI 값이 주민번호와 1:1 매핑</strong>되어 <strong>개인을 식별</strong>할 수 있으므로 주민번호가 가진 프라이버시 문제를 그대로 계승했다는 것이다<a href="https://www.ihee.com/614#:~:text=%E2%97%8B%20CI%EB%8A%94%20%EC%98%A8%EB%9D%BC%EC%9D%B8%20%EC%A3%BC%EB%AF%BC%EB%93%B1%EB%A1%9D%EB%B2%88%ED%98%B8%EB%8B%A4">[31]</a>. 실제로 기업들이 원래는 각 사이트별 DI만 활용해야 함에도 <strong>편의를 위해 CI를 키값으로 사용</strong>하는 사례가 많아, 결과적으로 <strong>온라인상에서 개인을 추적</strong>할 수 있는 준식별자가 되어버렸다<a href="https://www.ihee.com/614#:~:text=%E2%80%BB%20CI%EB%8A%94%20%EA%B0%9C%EC%9D%B8%EC%A0%95%EB%B3%B4%ED%98%B8%20%EA%B7%9C%EC%A0%95%EC%97%90%20%EC%9D%98%ED%95%B4,%EB%AC%B8%EC%A0%9C%EB%A1%9C%20%EA%B7%9C%EC%A0%9C%20%EA%B0%95%ED%99%94%EA%B0%80%20%EB%85%BC%EC%9D%98%EB%90%98%EA%B3%A0%20%EC%9E%88%EB%8B%A4">[32]</a>. 둘째, <strong>이용자가 자신의 CI/DI를 통제하거나 변경할 권한이 없다는 문제</strong>가 있다<a href="https://www.ihee.com/614#:~:text=%EA%B7%B8%EB%8C%80%EB%A1%9C%20%EB%AC%BC%EB%A0%A4%EB%B0%9B%EA%B2%8C%20%EB%90%9C%20%EA%B2%83%EC%9D%B4%EB%8B%A4,%EB%8F%84%EC%9E%85%20%EC%B7%A8%EC%A7%80%EA%B0%80%20%ED%87%B4%EC%83%89%EB%90%98%EC%97%88%EB%8B%A4">[33]</a>. 주민번호는 유출 시 변경 제도가 있으나, CI는 한 번 생성되면 유출돼도 <strong>개인이 재발급을 요청할 수 없고</strong> 계속 쓰일 수밖에 없다. DI도 법적 보호대상이 아니라서, 본인확인기관이 보유한 DI 정보를 통해 <strong>누가 어느 웹사이트에 가입했는지 제3자가 조회</strong>할 수 있는 여지가 있다<a href="https://www.ihee.com/614#:~:text=%E2%97%8B%20DI%EB%8A%94%20%EB%B2%95%EC%A0%81%20%EB%B3%B4%ED%98%B8%EB%A5%BC%20%EB%B0%9B%EC%A7%80,%EB%AA%BB%ED%95%9C%EB%8B%A4">[34]</a>. 실제 <strong>수사기관이 영장 없이 민간 경로로 DI를 확보하여 특정인의 온라인 활동 내역을 파악</strong>할 수 있다는 우려도 제기되었다<a href="https://www.ihee.com/614#:~:text=%E2%97%8B%20DI%EB%8A%94%20%EB%B2%95%EC%A0%81%20%EB%B3%B4%ED%98%B8%EB%A5%BC%20%EB%B0%9B%EC%A7%80,%EB%AA%BB%ED%95%9C%EB%8B%A4">[34]</a>. 셋째, <strong>현행 CI/DI 체계의 폐쇄성</strong>이다. 이 제도는 주민등록번호 체계에 종속되어 있기 때문에 <strong>외국인에게는 적용이 어렵고</strong> 국제 호환성도 없다<a href="https://www.ihee.com/614#:~:text=%E2%97%8B%20CI%2C%20DI%EB%8A%94%20%ED%8F%90%EC%87%84%EC%A0%81%EC%9D%B4%EB%8B%A4">[35]</a>. 외국인은 국내에서 휴대폰 본인인증이나 아이핀 발급이 제한적이어서, 한국만의 <strong>기형적 구조</strong>라는 비판이 있다<a href="https://www.ihee.com/614#:~:text=%E2%97%8B%20CI%2C%20DI%EB%8A%94%20%ED%8F%90%EC%87%84%EC%A0%81%EC%9D%B4%EB%8B%A4">[35]</a>. 마지막으로 <strong>DI 값의 일관성 문제</strong>가 있었다. 인증 방법이나 기관에 따라 동일인에게 서로 다른 DI가 발급되는 경우가 있어 <strong>중복가입 확인이라는 본래 목적을 달성하지 못하는</strong> 사례가 발생했고, 이 때문에 사이트들이 CI를 공유 키로 삼는 악순환을 낳았다<a href="https://www.ihee.com/614#:~:text=%E2%97%8B%20DI%20%EA%B0%92%EC%9D%98%20%EB%B9%84%20%EB%8F%99%EC%9D%BC%EC%84%B1">[36]</a>. 요컨대 <strong>민간 본인확인 산업</strong>은 통신3사 등 일부 사업자가 시장을 과점하면서 편리한 인증 수단을 제공해왔지만, <strong>개인정보보호 측면의 구조적 한계</strong>와 <strong>보편적 서비스로서의 미흡함</strong>이 지속해서 지적되어 왔다.</p>
+<p>정부도 이러한 문제를 인식하여 2020년대 들어 <strong>공공 주도의 모바일 신분증 도입</strong>과 함께, <strong>본인확인제도 개선</strong>을 병행하고 있다. 개인정보보호위원회 등은 CI 사용의 과도한 확대에 우려를 표했고, <strong>DI 등의 법적 보호조치 마련</strong>을 논의하기도 했다<a href="https://www.ihee.com/614#:~:text=%E2%97%8B%20DI%EB%8A%94%20%EB%B2%95%EC%A0%81%20%EB%B3%B4%ED%98%B8%EB%A5%BC%20%EB%B0%9B%EC%A7%80,%EB%AA%BB%ED%95%9C%EB%8B%A4">[34]</a>. 한편 본인확인기관들도 <strong>PASS 앱의 고도화</strong>나 <strong>민간인증서 사업</strong> 등 새로운 방향을 모색하고 있다. 그러나 궁극적으로 <strong>모바일 신분증이 널리 보급되면, 현재의 CI 기반 인증수단 수요는 감소</strong>할 가능성이 높다. 웹사이트들이 굳이 유료의 휴대폰 본인확인 API를 쓰지 않고도 <strong>사용자가 가진 모바일 신분증으로 본인확인</strong>을 받는 방식이 현실화되면, 기존 <strong>민간 본인확인 산업의 축소 또는 역할 변환</strong>이 불가피하다.</p>
+<h2 id="모바일-신분증-vs-민간-본인확인-충돌과-정책-방향">모바일 신분증 vs 민간 본인확인: 충돌과 정책 방향<a hidden class="anchor" aria-hidden="true" href="#모바일-신분증-vs-민간-본인확인-충돌과-정책-방향">#</a></h2>
+<p><strong>정부 모바일 신분증의 등장</strong>은 앞서 설명한 <strong>민간 본인확인(CI/DI) 산업과 이해 충돌</strong> 측면이 있다. 모바일 신분증은 <strong>법정 신분증의 디지털화</strong>로서 기존의 민간 인증에 비해 <strong>신뢰성과 활용범위가 월등히 크다</strong><a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%A0%95%EB%B6%80%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%80%20%EA%B8%B0%EC%A1%B4%20%ED%86%B5%EC%8B%A0,%EB%B3%B4%EC%97%AC%EC%A3%BC%EB%8A%94%20%EC%84%A0%ED%83%9D%EC%A0%81%20%ED%91%9C%EC%B6%9C%20%EA%B8%B0%EB%8A%A5%EB%8F%84%20%EC%A0%9C%EA%B3%B5%EB%90%9C%EB%8B%A4">[8]</a>. 예를 들어, PASS 앱을 통한 휴대폰 본인인증은 단지 해당 순간에 통신사 데이터베이스로 신원을 확인해주는 <strong>사설 인증</strong>에 불과하지만, 모바일 주민등록증은 <strong>공적으로 인정되는 신분증명서</strong>이므로 <strong>실명 확인은 물론 행정·법률행위에 직접 제시</strong>할 수 있다<a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%A0%95%EB%B6%80%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%80%20%EA%B8%B0%EC%A1%B4%20%ED%86%B5%EC%8B%A0,%EB%B3%B4%EC%97%AC%EC%A3%BC%EB%8A%94%20%EC%84%A0%ED%83%9D%EC%A0%81%20%ED%91%9C%EC%B6%9C%20%EA%B8%B0%EB%8A%A5%EB%8F%84%20%EC%A0%9C%EA%B3%B5%EB%90%9C%EB%8B%A4">[8]</a>. 이는 민간 본인확인 서비스들이 담당하던 온라인 회원가입, 성인인증 등의 영역을 넘어, <strong>오프라인 신원확인과 금융 실명확인(KYC)</strong> 등까지 포함하는 포괄적인 수요를 흡수할 수 있다. 다시 말해 <strong>민간 인증 → 공공 신분증</strong>으로 <strong>기능적 대체</strong>가 진행될 수 있는 것이다.</p>
+<p>이런 변화에 대해 <strong>기존 본인확인 업계는 긴장과 우려</strong>를 보여왔다. 통신3사의 공동 앱 PASS는 현재 수천만 건의 본인확인 거래를 처리하며 수수료 수익을 올리고 있는데, 장기적으로 모바일 신분증에 밀려 활용도가 떨어질 가능성이 있다. 또한 인터넷 기업들은 그동안 본인확인기관을 통해 얻은 CI로 사용자 데이터를 관리해왔는데, 모바일 신분증으로 사용자가 익명성에 가까운 <strong>선택공개 인증</strong>을 하게 되면 <strong>기업 측 데이터 수집이 제한</strong>된다<a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=%ED%99%95%EC%9E%A5%EB%90%9C%20%EC%8B%A0%EC%9B%90%20%EC%9D%B8%EC%A6%9D%20%EB%A0%88%EB%B2%A8%20%EA%B3%A0%EA%B8%89,%EA%B0%95%EC%A1%B0%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%94%84%EB%9D%BC%EC%9D%B4%EB%B2%84%EC%8B%9C%20%EB%B3%B4%ED%98%B8%20%EA%B0%95%ED%99%94">[5]</a><a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=%EC%9E%A5%EC%A0%90%20%EC%84%A4%EB%AA%85%20%ED%9A%A8%EA%B3%BC%20%EB%94%94%EC%A7%80%ED%84%B8%20%EC%8B%A0%EC%9B%90,%EA%B8%88%EC%9C%B5%2C%20%EA%B5%90%EC%9C%A1%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%ED%99%95%EC%9E%A5%20%EC%B4%89%EC%A7%84">[2]</a>. 이러한 이유로 초반에는 민간에서 **“정부가 시장을 빼앗는다”**는 견해도 있었으나, 정부는 <strong>민·관 협력</strong> 쪽으로 정책 방향을 정했다. 앞서 언급한 대로 <strong>네이버, 카카오 등의 플랫폼을 모바일 신분증 지갑으로 참여</strong>시킴으로써 <strong>민간 사업자들이 새로운 생태계의 일부가 되도록 유도</strong>한 것이다<a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%A0%95%EB%B6%80%EB%8A%94%20%EC%9D%B4%EB%8B%AC%20%EB%A7%90%EB%B6%80%ED%84%B0%20%EB%84%A4%EC%9D%B4%EB%B2%84%C2%B7%EC%B9%B4%EC%B9%B4%EC%98%A4%C2%B7%ED%86%A0%EC%8A%A4%C2%B7%EB%86%8D%ED%98%91%C2%B7%EA%B5%AD%EB%AF%BC%EC%9D%80%ED%96%89%20%EB%93%B1,%EC%97%B0%EA%B3%84%ED%95%B4%20%EC%A0%91%EA%B7%BC%EC%84%B1%EA%B3%BC%20%ED%8E%B8%EC%9D%98%EC%84%B1%EC%9D%84%20%EB%86%92%EC%9D%B4%EA%B2%A0%EB%8B%A4%EB%8A%94%20%EC%B7%A8%EC%A7%80%EB%8B%A4">[18]</a>. 실제 네이버는 자체 네이버 신분증 서비스를 정부 기준에 맞춰 개발하여, 행안부의 <strong>모바일 신분증 사업자</strong>로 선정됨으로써 <em>공인 신원지갑 운영사</em>로 전환했다<a href="https://biz.newdaily.co.kr/site/data/html/2025/07/23/2025072300372.html#:~:text=%EB%AF%BC%EC%9B%90%20%EC%97%85%EB%AC%B4%20%E2%96%B2%EC%A0%95%EB%B6%8024%20%EC%A6%9D%EB%AA%85%EC%84%9C%20%EB%B0%9C%EA%B8%89,%ED%9A%A8%EB%A0%A5%EC%9C%BC%EB%A1%9C%20%EB%B3%B8%EC%9D%B8%EC%9D%84%20%EC%A6%9D%EB%AA%85%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8B%A4">[19]</a>. 이처럼 <strong>기존 산업 플레이어들이 정부 디지털 신원체계에 합류</strong>하도록 함으로써 충돌을 완화하고 <strong>산업구조의 연착륙</strong>을 도모하고 있다.</p>
+<p>향후 <strong>정책 변화의 흐름</strong>을 보면, <strong>각국 모두 디지털 신원에 대한 공적 개입을 강화하는 추세</strong>다. 유럽은 eIDAS 2.0을 통해 <strong>국가가 보증하는 디지털ID를 전 국민에게 보급</strong>하면서, <strong>민간 Big Tech 주도의 신원확인에서 탈피</strong>하려는 흐름을 보인다<a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=EU%20Digital%20Identity%20Wallet%20%EB%8F%84%EC%9E%85,%EA%B0%95%EC%A1%B0%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%94%84%EB%9D%BC%EC%9D%B4%EB%B2%84%EC%8B%9C%20%EB%B3%B4%ED%98%B8%20%EA%B0%95%ED%99%94">[1]</a><a href="https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/694487738/EU&#43;Digital&#43;Identity&#43;Wallet&#43;Home#:~:text=Obtaining%20a%20new%20bank%20account%2C,who%20gets%20to%20use%20it">[3]</a>. 한국도 모바일 신분증으로 <strong>국가 주도의 신원 인프라</strong>를 구축함으로써, 과거 민간에 맡겨졌던 본인확인 기능을 공공이 책임지는 방향으로 선회하고 있다. 이는 <strong>디지털 시대 신원정보를 주권 차원에서 관리</strong>하고, <strong>국민의 신뢰를 확보</strong>하려는 정책적 의도로 해석된다. 동시에 두 사례 모두 <strong>사용자 중심</strong>을 강조하고 있다는 공통점이 있다. EU 지갑과 한국 모바일신분증 모두 <strong>개인이 정보 제공을 통제</strong>하고 <strong>필요 최소한의 인증</strong>만 수행하도록 해 <strong>프라이버시 보호</strong>를 핵심 가치로 삼는다<a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=%ED%99%95%EC%9E%A5%EB%90%9C%20%EC%8B%A0%EC%9B%90%20%EC%9D%B8%EC%A6%9D%20%EB%A0%88%EB%B2%A8%20%EA%B3%A0%EA%B8%89,%EA%B0%95%EC%A1%B0%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%94%84%EB%9D%BC%EC%9D%B4%EB%B2%84%EC%8B%9C%20%EB%B3%B4%ED%98%B8%20%EA%B0%95%ED%99%94">[5]</a><a href="https://www.mois.go.kr/frt/sub/a06/b04/mobileId/screen.do#:~:text=%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%B4%EB%9E%80%3F%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%80%20%EA%B0%9C%EC%9D%B8,%EA%B0%84%ED%8E%B8%ED%95%98%EA%B3%A0%20%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C%20%EC%82%AC%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4">[12]</a>. 기술적으로도 <strong>DID, 블록체인, ZKP(영지식증명)</strong> 등 <strong>차세대 신원증명 기술</strong>을 도입하여 중앙집중식 신원확인의 한계를 극복하려는 노력이 나타난다<a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=%EA%B8%B0%EC%88%A0%20%EC%84%A4%EB%AA%85%20%EC%A0%81%EC%9A%A9%20%EC%82%AC%EB%A1%80%20SSI%28Self,%ED%83%88%EC%A4%91%EC%95%99%20%EC%8B%A0%EC%9B%90%20%EC%9D%B8%ED%94%84%EB%9D%BC%20%EA%B5%AC%EC%B6%95%20%EC%A7%80%EC%9B%90">[37]</a><a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=%EC%9E%A5%EC%A0%90%20%EC%84%A4%EB%AA%85%20%ED%9A%A8%EA%B3%BC%20%EB%94%94%EC%A7%80%ED%84%B8%20%EC%8B%A0%EC%9B%90,%EA%B8%88%EC%9C%B5%2C%20%EA%B5%90%EC%9C%A1%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%ED%99%95%EC%9E%A5%20%EC%B4%89%EC%A7%84">[2]</a>.</p>
+<p>한편, <strong>미국 등 일부 국가는 연방 차원의 통일된 디지털 ID 프레임워크가 부재</strong>하여 주별로 <strong>모바일 운전면허증</strong>을 발급하거나, 민간의 소셜 로그인·신용평가사 데이터를 활용하는 등 <strong>분산된 접근</strong>을 보이고 있다<a href="https://nsp.nanet.go.kr/plan/subject/detail.do?nationalPlanControlNo=PLAN0000055342&amp;newReportChk=list&amp;highNationalPlanSubjectSn=#:~:text=%EA%B7%B8%EB%A6%BC%202,%EC%9A%B4%EC%A0%84%EB%A9%B4%ED%97%88%EC%A6%9D%20%EC%83%98%ED%94%8C%2015">[38]</a><a href="https://nsp.nanet.go.kr/plan/subject/detail.do?nationalPlanControlNo=PLAN0000055342&amp;newReportChk=list&amp;highNationalPlanSubjectSn=#:~:text=%EA%B7%B8%EB%A6%BC%201,%EC%9D%B8%EC%A6%9D%20%EC%88%98%EC%A4%80%208">[39]</a>. 그러나 글로벌 추세는 결국 <strong>공공주도형 신원증명 인프라로 수렴</strong>하는 모습이다. 여러 나라들이 유럽 eIDAS 2.0을 참고하여 <strong>국가 디지털 ID 전략</strong>을 내놓고 있으며, <strong>호주, 영국</strong> 등도 <strong>디지털 신원 Trust Framework</strong>를 마련해 정부가 신원 인증의 신뢰성을 감독하고 있다<a href="https://nsp.nanet.go.kr/plan/subject/detail.do?nationalPlanControlNo=PLAN0000055342&amp;newReportChk=list&amp;highNationalPlanSubjectSn=#:~:text=2,6">[40]</a><a href="https://nsp.nanet.go.kr/plan/subject/detail.do?nationalPlanControlNo=PLAN0000055342&amp;newReportChk=list&amp;highNationalPlanSubjectSn=#:~:text=%E2%91%A1%20%ED%98%B8%EC%A3%BC%208">[41]</a>. 요컨대 <strong>디지털 신원은 21세기 사회 기본 인프라</strong>로 인정받으며, <strong>각국 정부와 국제기구가 표준과 규범을 이끌어가는 방향</strong>으로 가고 있다.</p>
+<h2 id="eu-vs-한국-신원체계-비교표">EU vs 한국 신원체계 비교표<a hidden class="anchor" aria-hidden="true" href="#eu-vs-한국-신원체계-비교표">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">구분</th>
+          <th style="text-align: left">유럽연합: eIDAS 2.0 (EU Digital Identity Wallet)</th>
+          <th style="text-align: left">대한민국: 모바일 신분증 제도</th>
+          <th style="text-align: left">대한민국: 민간 본인확인(CI/DI) 체계</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>주체 및 체계</strong></td>
+          <td style="text-align: left">EU 규정에 따른 <strong>공공 주도 디지털 신원 프레임워크</strong>. 회원국 정부가 최소 하나의 <strong>공인 신원지갑</strong>을 제공 (필요시 민간 개발사 참여 가능)<a href="https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/694487738/EU&#43;Digital&#43;Identity&#43;Wallet&#43;Home#:~:text=Obtaining%20a%20new%20bank%20account%2C,who%20gets%20to%20use%20it">[3]</a>. 신원 제공자(IdP)와 신뢰 서비스 제공자가 <strong>엄격한 자격</strong>을 갖추고 참여.</td>
+          <td style="text-align: left">행정안전부 등 <strong>정부 주도 스마트폰 신분증</strong>. 국가가 신분증 발행 주체이며, <strong>공무원증·주민증·면허증 등 실물 ID를 디지털화</strong>. 네이버·카카오 등 <strong>민간 플랫폼은 지갑 운영 역할</strong>로 제한된 범위 내 참여<a href="https://biz.newdaily.co.kr/site/data/html/2025/07/23/2025072300372.html#:~:text=%EB%AF%BC%EC%9B%90%20%EC%97%85%EB%AC%B4%20%E2%96%B2%EC%A0%95%EB%B6%8024%20%EC%A6%9D%EB%AA%85%EC%84%9C%20%EB%B0%9C%EA%B8%89,%ED%9A%A8%EB%A0%A5%EC%9C%BC%EB%A1%9C%20%EB%B3%B8%EC%9D%B8%EC%9D%84%20%EC%A6%9D%EB%AA%85%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8B%A4">[42]</a>.</td>
+          <td style="text-align: left"><strong>통신사·금융사 등의 본인확인기관</strong>이 운영하는 <strong>민간 인증 시스템</strong>. 정부는 관련 법으로 기관을 지정·감독할 뿐, 신원확인 절차는 민간에 의해 수행. 시장은 사실상 **통신3사(PASS)**와 몇몇 기관이 과점.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>신원 증명 방식</strong></td>
+          <td style="text-align: left">**디지털 신원 지갑(Wallet)**에 사용자의 인증서·속성 정보를 저장. <strong>모바일 앱 형태</strong>로 동작하며, <strong>생체인증+암호키</strong>로 소유자 확인. 지갑에 담긴 **검증가능 자격증명(VC)**을 제시하고 <strong>검증기관이 블록체인 등으로 진위 확인</strong><a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=%EA%B8%B0%EC%88%A0%20%EC%84%A4%EB%AA%85%20%EC%A0%81%EC%9A%A9%20%EC%82%AC%EB%A1%80%20SSI%28Self,%ED%83%88%EC%A4%91%EC%95%99%20%EC%8B%A0%EC%9B%90%20%EC%9D%B8%ED%94%84%EB%9D%BC%20%EA%B5%AC%EC%B6%95%20%EC%A7%80%EC%9B%90">[37]</a>. <strong>ZKP 기반 선택적 공개</strong>로 필요한 속성만 증명.</td>
+          <td style="text-align: left"><strong>스마트폰 Secure Element</strong>(예: NFC IC칩 내장 신분증 스캔 or TEE 저장)에 <strong>공식 신분증 데이터</strong>를 저장<a href="https://www.mois.go.kr/frt/sub/a06/b04/mobileId/screen.do#:~:text=,Image%3A%20%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%B4%EB%9E%80">[14]</a>. 사용 시 <strong>QR/바코드 또는 BLE 통신</strong>으로 상대에게 증명서 전달 -&gt; <strong>블록체인 DID</strong>를 통해 진본 확인<a href="https://www.mois.go.kr/frt/sub/a06/b04/mobileId/screen.do#:~:text=1,%EA%B0%84%ED%8E%B8%ED%95%98%EA%B3%A0%20%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C%20%EC%82%AC%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4">[15]</a>. <strong>생체인증+PIN</strong> 등 기기 보안으로 본인만 사용 가능. 필요한 정보만 <strong>선택적으로 표시</strong> 가능<a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%A0%95%EB%B6%80%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%80%20%EA%B8%B0%EC%A1%B4%20%ED%86%B5%EC%8B%A0,%EB%B3%B4%EC%97%AC%EC%A3%BC%EB%8A%94%20%EC%84%A0%ED%83%9D%EC%A0%81%20%ED%91%9C%EC%B6%9C%20%EA%B8%B0%EB%8A%A5%EB%8F%84%20%EC%A0%9C%EA%B3%B5%EB%90%9C%EB%8B%A4">[8]</a>.</td>
+          <td style="text-align: left"><strong>휴대폰 인증</strong>(SMS 또는 앱) 또는 아이핀 등을 통해 <strong>중앙 DB 대조 방식</strong>으로 신원확인. 사용자가 이름, 주민번호 등 입력 -&gt; <strong>통신사/신용평가사 DB에서 일치 여부 확인</strong>. 확인되면 해당 사용자에 부여된 **CI (고유연계번호)**를 서비스 제공자에게 전달<a href="https://www.ihee.com/614#:~:text=CI%EB%8A%94%20Connecting%20Information%EC%9D%98%20%EC%95%BD%EC%9E%90%EB%A1%9C%20%EC%9A%B0%EB%A6%AC%EB%A7%90%EB%A1%9C,%EC%97%B0%EA%B3%84%EC%A0%95%EB%B3%B4%27%EB%9D%BC%20%EB%B6%80%EB%A5%B8%EB%8B%A4">[26]</a>. 서비스 제공자는 CI로 동일인 여부 식별, <strong>DI</strong>로 한 서비스 내 중복가입 판별.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>법적 지위 및 효력</strong></td>
+          <td style="text-align: left">**EU 규정(규칙)**으로 직접 효력. 2024년 개정안 발효로 법적 근거 확보<a href="https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/694487738/EU&#43;Digital&#43;Identity&#43;Wallet&#43;Home#:~:text=Obtaining%20a%20new%20bank%20account%2C,who%20gets%20to%20use%20it">[3]</a>. 회원국 내 법률도 지갑을 <strong>공인 전자신분증</strong>으로 인정토록 정비 예정. 지갑을 통한 인증은 <strong>회원국 간 상호 인정</strong>되어 국경을 넘어 동일한 법효력을 가짐. 대형 온라인플랫폼은 이 신원수단 수용 의무화 (Digital Markets Act 연계).</td>
+          <td style="text-align: left"><strong>주민등록법, 여권법, 도로교통법 등 개별 법령 개정</strong>으로 <strong>모바일 형태 신분증의 실물 동등 효력</strong>을 규정<a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%A0%95%EB%B6%80%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%80%20%EA%B8%B0%EC%A1%B4%20%ED%86%B5%EC%8B%A0,%EB%B3%B4%EC%97%AC%EC%A3%BC%EB%8A%94%20%EC%84%A0%ED%83%9D%EC%A0%81%20%ED%91%9C%EC%B6%9C%20%EA%B8%B0%EB%8A%A5%EB%8F%84%20%EC%A0%9C%EA%B3%B5%EB%90%9C%EB%8B%A4">[8]</a>. 예컨대 주민등록법 제24조에 모바일 주민등록증을 규정. 법적으로 국가신분증으로서 효력을 갖기에 공공·민간 모두 수용 의무. 다만 제시 거부 시 과태료 등 세부 기준 마련중<a href="https://www.sisain.co.kr/news/articleView.html?idxno=56411#:~:text=%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%20%EB%8F%84%EC%9E%85%20%EC%A0%84%EC%97%90%20%ED%95%9C%EA%B5%AD,%EC%8B%A0%EB%B6%84%20%ED%99%95%EC%9D%B8%20%ED%9B%84%20%EB%B0%9C%EA%B8%89">[43]</a>.</td>
+          <td style="text-align: left"><strong>정보통신망법 제23조의3</strong> 등에 따라 <strong>본인확인기관 제도</strong>로 운영. 주민번호 대체수단으로서 합법적 지위. CI는 <strong>개인정보보호법상 개인정보</strong>로 보호되나, DI는 명시적 보호 규정 미비<a href="https://www.ihee.com/614#:~:text=%E2%97%8B%20DI%EB%8A%94%20%EB%B2%95%EC%A0%81%20%EB%B3%B4%ED%98%B8%EB%A5%BC%20%EB%B0%9B%EC%A7%80,%EB%AA%BB%ED%95%9C%EB%8B%A4">[34]</a>. 민간 서비스 이용약관 등에 따라 사용자 동의 하에 정보 활용. 법적 효력은 <strong>사실행위 수준</strong>(공식 신분증은 아니며 실명확인 용도).</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>개인정보 보호 설계</strong></td>
+          <td style="text-align: left"><strong>Privacy by Design</strong> 원칙 구현. <strong>사용자 주권</strong> 하에 데이터 최소 공개・미사용 데이터 비저장<a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=%ED%99%95%EC%9E%A5%EB%90%9C%20%EC%8B%A0%EC%9B%90%20%EC%9D%B8%EC%A6%9D%20%EB%A0%88%EB%B2%A8%20%EA%B3%A0%EA%B8%89,%EA%B0%95%EC%A1%B0%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%ED%94%84%EB%9D%BC%EC%9D%B4%EB%B2%84%EC%8B%9C%20%EB%B3%B4%ED%98%B8%20%EA%B0%95%ED%99%94">[5]</a>. 지갑에 저장된 모든 데이터는 <strong>사용자 승인 하에만 제3자 제공</strong> 가능. 지갑 제공자도 <strong>사용자 데이터 오남용 금지</strong>. 인증 시 필요한 항목만 선택해 제출 (예: 연령검증 시 나이정보만). <strong>익명성 보장 수단(ZKP)</strong> 도입으로 검증자는 내용 몰라도 참/거짓 확인.</td>
+          <td style="text-align: left"><strong>정보 자기결정권 강화</strong>가 핵심 목표. <strong>중앙 서버 미저장</strong> 구조로 해킹시 대량유출 위험 감소<a href="https://www.fnnews.com/news/202507151813483633#:~:text=%EC%9D%B4%EC%97%90%20%EB%8C%80%ED%95%B4%20%EB%94%94%EC%A7%80%ED%84%B8%EC%A0%95%EB%B6%80%ED%98%81%EC%8B%A0%EC%8B%A4%EC%9D%80%20,%EA%B3%A0%20%EB%B0%9D%ED%98%94%EB%8B%A4">[13]</a>. 이용자가 <strong>제시 정보 선택</strong> 가능하여 <strong>불필요한 과다정보 제공 방지</strong><a href="https://www.mois.go.kr/frt/sub/a06/b04/mobileId/screen.do#:~:text=%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%B4%EB%9E%80%3F%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%80%20%EA%B0%9C%EC%9D%B8,%EA%B0%84%ED%8E%B8%ED%95%98%EA%B3%A0%20%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C%20%EC%82%AC%EC%9A%A9%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%A4">[12]</a>. 예컨대 모바일 운전면허 제시 시 주소 등 민감정보 숨기고 얼굴·생년월일만 표시 가능. 주민번호 전체를 저장·전송하지 않고 해시처리 또는 부분출력으로 <strong>과도한 노출 억제</strong>.</td>
+          <td style="text-align: left"><strong>프라이버시 우려 높음</strong>. CI는 <strong>사실상 온라인 주민번호</strong>로 <strong>개인 식별과 연계</strong>가 가능<a href="https://www.ihee.com/614#:~:text=%E2%97%8B%20CI%EB%8A%94%20%EC%98%A8%EB%9D%BC%EC%9D%B8%20%EC%A3%BC%EB%AF%BC%EB%93%B1%EB%A1%9D%EB%B2%88%ED%98%B8%EB%8B%A4">[31]</a>. 서비스 간 <strong>공유식별자</strong>로 쓰여 <strong>이용자 동의 없이도</strong> 제3자가 CI만 있으면 여러 서비스 활동을 유추 가능<a href="https://www.ihee.com/614#:~:text=%E2%97%8B%20DI%EB%8A%94%20%EB%B2%95%EC%A0%81%20%EB%B3%B4%ED%98%B8%EB%A5%BC%20%EB%B0%9B%EC%A7%80,%EB%AA%BB%ED%95%9C%EB%8B%A4">[34]</a>. 사용자는 자신의 CI/DI 발급·폐기에 관여하지 못함<a href="https://www.ihee.com/614#:~:text=%EA%B7%B8%EB%8C%80%EB%A1%9C%20%EB%AC%BC%EB%A0%A4%EB%B0%9B%EA%B2%8C%20%EB%90%9C%20%EA%B2%83%EC%9D%B4%EB%8B%A4,%EB%8F%84%EC%9E%85%20%EC%B7%A8%EC%A7%80%EA%B0%80%20%ED%87%B4%EC%83%89%EB%90%98%EC%97%88%EB%8B%A4">[33]</a>. 민간 기관에 <strong>신원 정보(이름, 휴대폰번호 등) 제공을 매번 요구</strong>하고, 이 과정에서 과도한 정보 수집과 로그 관리가 이뤄짐.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>민간 부문의 역할</strong></td>
+          <td style="text-align: left"><strong>신원지갑 소프트웨어 개발</strong>이나 <strong>신뢰 서비스 제공</strong>에 민간 참여 가능. 다만 <strong>국가 승인/인증된 사업자</strong>만이 지갑 앱을 배포하거나 자격증명 발행 가능. 예컨대 각국 정부가 직접 지갑 앱을 내놓거나, 마이크로소프트 등 기업이 EU 기준에 맞춰 지갑 제공 가능. <strong>대규모 온라인 서비스는 이 체계 연동 의무</strong><a href="https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/694487738/EU&#43;Digital&#43;Identity&#43;Wallet&#43;Home#:~:text=For%20private%20companies">[6]</a>. 민간은 공공체계 내 <strong>서비스 제공자 또는 검증자</strong>로서 기능.</td>
+          <td style="text-align: left"><strong>민간은 플랫폼 파트너</strong>로서 모바일 신분증을 <strong>호스팅/연계</strong>할 뿐, <strong>신분증 발급 주체는 정부</strong>. 초기 참여한 네이버·카카오 등이 대표적 사례<a href="https://biz.newdaily.co.kr/site/data/html/2025/07/23/2025072300372.html#:~:text=%EB%AF%BC%EC%9B%90%20%EC%97%85%EB%AC%B4%20%E2%96%B2%EC%A0%95%EB%B6%8024%20%EC%A6%9D%EB%AA%85%EC%84%9C%20%EB%B0%9C%EA%B8%89,%ED%9A%A8%EB%A0%A5%EC%9C%BC%EB%A1%9C%20%EB%B3%B8%EC%9D%B8%EC%9D%84%20%EC%A6%9D%EB%AA%85%ED%95%A0%20%EC%88%98%20%EC%9E%88%EB%8B%A4">[42]</a>. 금융권(은행 앱)도 지갑 역할 수행. 또한 편의 증진을 위해 <strong>민간 QR스캐너/단말기 인프라 활용</strong> 등 연계. 그러나 <strong>신원 정보의 생성·인증은 공공기관(예: 경찰청, 행안부)이 담당</strong>, 민간은 이를 전달·표시하는 역할에 국한.</td>
+          <td style="text-align: left"><strong>민간이 주도</strong>. 이동통신3사, KISA위탁 아이핀, 나이스평가정보 등 <strong>여러 민간기관이 신원확인 공급자</strong>로 활동. 정부는 이들을 관리·허가하지만, <strong>경쟁 및 서비스 운영은 시장 논리에 따름</strong>. 사용자 입장에선 통신3사 등 <strong>사실상 민간 독점 서비스</strong>를 이용. 민간 기업들은 본인인증 수수료, 데이터로 <strong>수익 창출</strong>, CI 정보를 기반으로 부가 서비스를 제공하기도 함.</td>
+      </tr>
+  </tbody>
+</table>
+<p>以上의 비교를 통해 알 수 있듯, <strong>유럽의 eIDAS 2.0과 한국의 모바일 신분증 모두 디지털 시대의 새로운 신원 증명 패러다임을 추구</strong>하고 있다. <strong>유럽</strong>은 초국가적 차원에서 <strong>공통의 신뢰 프레임워크</strong>를 수립하여 *“한 개의 디지털 지갑으로 EU 전체에서 통용”*되는 청사진을 그리고 있고<a href="https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/694487738/EU&#43;Digital&#43;Identity&#43;Wallet&#43;Home#:~:text=Obtaining%20a%20new%20bank%20account%2C,who%20gets%20to%20use%20it">[3]</a>, <strong>한국</strong>은 국내에서 <strong>국민 누구나 스마트폰만으로 행정·민간 서비스를 이용</strong>할 수 있는 환경을 만들며 <strong>오래된 민간 인증 관행을 혁신</strong>하고 있다<a href="https://www.mois.go.kr/frt/sub/a06/b04/mobileId/screen.do#:~:text=%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%B4%EB%9E%80%3F%20%EB%AA%A8%EB%B0%94%EC%9D%BC%20%EC%8B%A0%EB%B6%84%EC%A6%9D%EC%9D%80%20%EA%B0%9C%EC%9D%B8,%EC%A0%95%EB%B3%B4%EB%A7%8C%20%EA%B3%A8%EB%9D%BC%EC%84%9C%20%EC%A0%9C%EA%B3%B5%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4">[22]</a>. 양측 모두 <strong>공공주도</strong>로 추진되지만 <strong>민간과의 조화로운 역할 분담</strong>을 모색한다는 공통점이 있다. 앞으로도 <strong>사용자 프라이버시를 보호하면서도 편의성을 높이는 방향</strong>으로 정책이 발전할 것이며, 국제적으로도 이러한 <strong>디지털 신원 혁신 흐름</strong>에 따라 산업 구조가 재편될 것으로 전망된다<a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=%EC%9E%A5%EC%A0%90%20%EC%84%A4%EB%AA%85%20%ED%9A%A8%EA%B3%BC%20%EB%94%94%EC%A7%80%ED%84%B8%20%EC%8B%A0%EC%9B%90,%EA%B8%88%EC%9C%B5%2C%20%EA%B5%90%EC%9C%A1%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%ED%99%95%EC%9E%A5%20%EC%B4%89%EC%A7%84">[2]</a><a href="https://itpe.jackerlab.com/entry/eIDAS-20Electronic-Identification-Authentication-and-Trust-Services-Regulation-20#:~:text=eIDAS%202,%EA%B2%BD%EC%9F%81%EC%97%90%EC%84%9C%EB%8F%84%20%EC%84%A0%EB%8F%84%EC%A0%81%20%EC%9C%84%EC%B9%98%EB%A5%BC%20%EC%A0%90%ED%95%A0%20%EA%B2%83%EC%9E%85%EB%8B%88%EB%8B%A4">[49]</a>.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://windshock.github.io/ko/tags/%EB%94%94%EC%A7%80%ED%84%B8-%EC%8B%A0%EC%9B%90/">디지털 신원</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/eidas-2.0/">EIDAS 2.0</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/eu-digital-identity-wallet/">EU Digital Identity Wallet</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/%EB%AA%A8%EB%B0%94%EC%9D%BC-%EC%8B%A0%EB%B6%84%EC%A6%9D/">모바일 신분증</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/ci/di/">CI/DI</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/%ED%94%84%EB%9D%BC%EC%9D%B4%EB%B2%84%EC%8B%9C/">프라이버시</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/trustandculture/">TrustAndCulture</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://windshock.github.io/ko/post/2026-01-07-amadey-static-vs-memory-detection/">
+    <span class="title">다음 페이지 »</span>
+    <br>
+    <span>Amadey 악성코드: 정적 탐지 vs 메모리 기반 탐지 비교 연구</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share eIDAS 2.0 vs. 대한민국 디지털 신원체계 비교 분석 on x"
+            href="https://x.com/intent/tweet/?text=eIDAS%202.0%20vs.%20%eb%8c%80%ed%95%9c%eb%af%bc%ea%b5%ad%20%eb%94%94%ec%a7%80%ed%84%b8%20%ec%8b%a0%ec%9b%90%ec%b2%b4%ea%b3%84%20%eb%b9%84%ea%b5%90%20%eb%b6%84%ec%84%9d&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-01-19-digital-identity-eidas2-korea%2f&amp;hashtags=%eb%94%94%ec%a7%80%ed%84%b8%ec%8b%a0%ec%9b%90%2ceIDAS2.0%2cEUDigitalIdentityWallet%2c%eb%aa%a8%eb%b0%94%ec%9d%bc%ec%8b%a0%eb%b6%84%ec%a6%9d%2cCI%2fDI%2c%ed%94%84%eb%9d%bc%ec%9d%b4%eb%b2%84%ec%8b%9c%2cTrustAndCulture">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share eIDAS 2.0 vs. 대한민국 디지털 신원체계 비교 분석 on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-01-19-digital-identity-eidas2-korea%2f&amp;title=eIDAS%202.0%20vs.%20%eb%8c%80%ed%95%9c%eb%af%bc%ea%b5%ad%20%eb%94%94%ec%a7%80%ed%84%b8%20%ec%8b%a0%ec%9b%90%ec%b2%b4%ea%b3%84%20%eb%b9%84%ea%b5%90%20%eb%b6%84%ec%84%9d&amp;summary=eIDAS%202.0%20vs.%20%eb%8c%80%ed%95%9c%eb%af%bc%ea%b5%ad%20%eb%94%94%ec%a7%80%ed%84%b8%20%ec%8b%a0%ec%9b%90%ec%b2%b4%ea%b3%84%20%eb%b9%84%ea%b5%90%20%eb%b6%84%ec%84%9d&amp;source=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-01-19-digital-identity-eidas2-korea%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share eIDAS 2.0 vs. 대한민국 디지털 신원체계 비교 분석 on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-01-19-digital-identity-eidas2-korea%2f&title=eIDAS%202.0%20vs.%20%eb%8c%80%ed%95%9c%eb%af%bc%ea%b5%ad%20%eb%94%94%ec%a7%80%ed%84%b8%20%ec%8b%a0%ec%9b%90%ec%b2%b4%ea%b3%84%20%eb%b9%84%ea%b5%90%20%eb%b6%84%ec%84%9d">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share eIDAS 2.0 vs. 대한민국 디지털 신원체계 비교 분석 on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-01-19-digital-identity-eidas2-korea%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share eIDAS 2.0 vs. 대한민국 디지털 신원체계 비교 분석 on whatsapp"
+            href="https://api.whatsapp.com/send?text=eIDAS%202.0%20vs.%20%eb%8c%80%ed%95%9c%eb%af%bc%ea%b5%ad%20%eb%94%94%ec%a7%80%ed%84%b8%20%ec%8b%a0%ec%9b%90%ec%b2%b4%ea%b3%84%20%eb%b9%84%ea%b5%90%20%eb%b6%84%ec%84%9d%20-%20https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-01-19-digital-identity-eidas2-korea%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share eIDAS 2.0 vs. 대한민국 디지털 신원체계 비교 분석 on telegram"
+            href="https://telegram.me/share/url?text=eIDAS%202.0%20vs.%20%eb%8c%80%ed%95%9c%eb%af%bc%ea%b5%ad%20%eb%94%94%ec%a7%80%ed%84%b8%20%ec%8b%a0%ec%9b%90%ec%b2%b4%ea%b3%84%20%eb%b9%84%ea%b5%90%20%eb%b6%84%ec%84%9d&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-01-19-digital-identity-eidas2-korea%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share eIDAS 2.0 vs. 대한민국 디지털 신원체계 비교 분석 on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=eIDAS%202.0%20vs.%20%eb%8c%80%ed%95%9c%eb%af%bc%ea%b5%ad%20%eb%94%94%ec%a7%80%ed%84%b8%20%ec%8b%a0%ec%9b%90%ec%b2%b4%ea%b3%84%20%eb%b9%84%ea%b5%90%20%eb%b6%84%ec%84%9d&u=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-01-19-digital-identity-eidas2-korea%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://windshock.github.io/ko/">Code Before Breach</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+  function loadGiscus(theme) {
+    
+    document.querySelectorAll('.giscus-frame, script[src*="giscus.app"]').forEach(el => el.remove());
+
+    
+    const giscusScript = document.createElement("script");
+    giscusScript.src = "https://giscus.app/client.js";
+    giscusScript.setAttribute("data-repo", "windshock\/windshock.github.io");
+    giscusScript.setAttribute("data-repo-id", "MDEwOlJlcG9zaXRvcnkxODQ2MDMyMTk=");
+    giscusScript.setAttribute("data-category", "General");
+    giscusScript.setAttribute("data-category-id", "DIC_kwDOCwDSU84CoqLg");
+    giscusScript.setAttribute("data-mapping", "pathname");
+    giscusScript.setAttribute("data-reactions-enabled", "1");
+    giscusScript.setAttribute("data-theme", theme); 
+    giscusScript.setAttribute("data-lang", "en");
+    giscusScript.setAttribute("data-input-position", "bottom");
+    giscusScript.setAttribute("data-loading", "lazy");
+    giscusScript.crossOrigin = "anonymous";
+    giscusScript.async = true;
+
+    document.body.appendChild(giscusScript);
+  }
+
+  
+  const currentTheme = document.body.classList.contains("dark") ? "dark" : "light";
+  loadGiscus(currentTheme);
+
+  
+  const observer = new MutationObserver(() => {
+    const newTheme = document.body.classList.contains("dark") ? "dark" : "light";
+    loadGiscus(newTheme);
+  });
+
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+</script>
+
+
+
+<script>
+  function initSwiperIfNeeded() {
+    if (typeof Swiper === 'undefined') {
+      
+      return setTimeout(initSwiperIfNeeded, 50);
+    }
+
+    if (document.querySelector('.swiper')) {
+      new Swiper('.swiper', {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        loop: true,
+        preloadImages: false,
+        lazy: {
+          loadOnTransitionStart: true,
+          loadPrevNext: true,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        breakpoints: {
+          768: { slidesPerView: 2.5 },
+          1024: { slidesPerView: 3.2 }
+        }
+      });
+
+      
+      document.querySelectorAll('img.swiper-lazy').forEach(img => {
+        img.src = img.dataset.src;
+      });
+    } else {
+      setTimeout(initSwiperIfNeeded, 100);
+    }
+  }
+
+  
+  initSwiperIfNeeded();
+</script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '복사';
+
+        function copyingDone() {
+            copybutton.innerHTML = '복사 완료!';
+            setTimeout(() => {
+                copybutton.innerHTML = '복사';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

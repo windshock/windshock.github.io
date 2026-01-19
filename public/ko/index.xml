@@ -6,8 +6,15 @@
     <description>Recent content in Code Before Breach - 보안 코딩, 자동화, 시프트 레프트 on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Wed, 07 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>eIDAS 2.0 vs. 대한민국 디지털 신원체계 비교 분석</title>
+      <link>https://windshock.github.io/ko/post/2026-01-19-digital-identity-eidas2-korea/</link>
+      <pubDate>Mon, 19 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2026-01-19-digital-identity-eidas2-korea/</guid>
+      <description>EU eIDAS 2.0(EU Digital Identity Wallet)과 한국의 모바일 신분증/민간 본인확인(CI/DI) 체계를 거버넌스·프라이버시·운영 관점에서 비교합니다.</description>
+    </item>
     <item>
       <title>Amadey 악성코드: 정적 탐지 vs 메모리 기반 탐지 비교 연구</title>
       <link>https://windshock.github.io/ko/post/2026-01-07-amadey-static-vs-memory-detection/</link>

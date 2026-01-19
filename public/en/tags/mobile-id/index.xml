@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Mobile ID on Code Before Breach</title>
+    <link>https://windshock.github.io/en/tags/mobile-id/</link>
+    <description>Recent content in Mobile ID on Code Before Breach</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 19 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/en/tags/mobile-id/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>eIDAS 2.0 vs. Korea’s Digital Identity System: A Comparative Analysis</title>
+      <link>https://windshock.github.io/en/post/2026-01-19-digital-identity-eidas2-korea/</link>
+      <pubDate>Mon, 19 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2026-01-19-digital-identity-eidas2-korea/</guid>
+      <description>A governance, privacy, and operations comparison between the EU’s eIDAS 2.0 (EUDI Wallet) and Korea’s mobile ID plus private identity verification (CI/DI) ecosystem.</description>
+    </item>
+  </channel>
+</rss>
