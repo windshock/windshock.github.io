@@ -6,8 +6,15 @@
     <description>Recent content in 정책 on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Mon, 21 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/tags/%EC%A0%95%EC%B1%85/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>계약과 정보보호 거버넌스의 차이, 그리고 “계약을 잘 안다 = 거버넌스를 안다”라는 착각을 막는 방법</title>
+      <link>https://windshock.github.io/ko/post/2026-02-13-contract-vs-security-governance/</link>
+      <pubDate>Fri, 13 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2026-02-13-contract-vs-security-governance/</guid>
+      <description>계약은 집행 수단이고, 정보보호 거버넌스는 리스크·정책·책임·감사를 설계·운영하는 경영 시스템이라는 관점에서, SW 공급망 보안과 예외승인 체계까지 연결해 정리합니다.</description>
+    </item>
     <item>
       <title>내 정보, 고양이 손에 맡겼나요?</title>
       <link>https://windshock.github.io/ko/post/2025-04-21-expert-personal-data-report/</link>

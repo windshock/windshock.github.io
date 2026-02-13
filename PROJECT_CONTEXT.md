@@ -83,10 +83,19 @@
 
 ### 배포
 
-- `deploy.sh "<commit message>"`는 다음을 수행합니다:
-  - Hugo 빌드(`docs/`로 production 빌드 포함)
-  - `img2webp.sh` 실행(이미지 변환 + 마크다운 링크 치환)
-  - `git add . && git commit && git push origin master`
+이 레포의 기본 배포 방식은 **수동 루틴**을 표준으로 합니다. (전역 Git 설정 변경을 피하고, 커밋 내용을 통제하기 위함)
+
+- **수동 배포 루틴(표준)**:
+  - `hugo --gc --cleanDestinationDir`
+  - `hugo --gc --minify --cleanDestinationDir -d docs --environment production`
+  - (필요 시) `./img2webp.sh`
+  - `git add -A`
+  - `git commit -m "<message>"`
+  - `git push origin master`
+
+#### `deploy.sh` (옵션)
+
+`deploy.sh "<commit message>"`는 배포를 자동화하지만 아래 이유로 기본값으로는 사용하지 않습니다.
 
 **주의**:
 - `deploy.sh` 내부에 `git config --global ...` 변경이 포함되어 있습니다. (개인 환경 전역 설정이 바뀜)
