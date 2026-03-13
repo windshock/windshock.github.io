@@ -8,6 +8,38 @@ categories: ["Security Research", "Security Operations"]
 summary: "A structural analysis of WAF, IPS, and IDS detection gaps, focused on parsing discrepancies, visibility failures, and practical remediation priorities."
 ---
 
+## Video
+
+{{< youtube BolChS38ESI >}}
+
+## PDF
+
+- **Open (new tab):** [`/files/Structural_Parsing_Gaps.pdf`](/files/Structural_Parsing_Gaps.pdf)
+
+<iframe
+  id="pdfjs-waf-ips-ids-en"
+  src="/pdfjs/single.html?file=/files/Structural_Parsing_Gaps.pdf#page=1"
+  width="100%"
+  height="560"
+  style="border: 1px solid #e5e7eb; border-radius: 8px;"
+></iframe>
+
+<script>
+  (function () {
+    const iframe = document.getElementById("pdfjs-waf-ips-ids-en");
+    if (!iframe) return;
+    window.addEventListener("message", function (e) {
+      if (e.origin !== window.location.origin) return;
+      const data = e.data || {};
+      if (data.type !== "pdfjs-resize") return;
+      if (typeof data.height !== "number") return;
+      iframe.style.height = Math.max(420, Math.min(data.height, 980)) + "px";
+    });
+  })();
+</script>
+
+> If the PDF does not render, open it here: [`/files/Structural_Parsing_Gaps.pdf`](/files/Structural_Parsing_Gaps.pdf)
+
 ## **WAF/IPS/IDS Detection Gap Analysis and Remediation Direction**
 
 This report analyzes the structural detection limitations that perimeter security solutions (WAF, IPS, IDS) face in real-world operational environments and proposes practical remediation directions. Recent attack trends have evolved beyond simple signature evasion to exploit **parsing discrepancies** between security appliances and backend servers. In particular, PortSwigger's 2025 research reported that request boundary ambiguity in HTTP/1.1 remains widespread, and WAFFLED confirmed **1,207 unique bypasses** through structural parsing discrepancies across major WAF and framework combinations. Furthermore, public incident reports demonstrate that detection failures stem more from **normalization inconsistencies, TLS visibility loss, and sensor failures/overload** than from bypass payloads themselves.

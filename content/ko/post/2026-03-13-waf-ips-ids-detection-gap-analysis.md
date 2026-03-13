@@ -8,6 +8,38 @@ categories: ["보안 연구", "보안 운영"]
 description: "WAF, IPS, IDS의 구조적 탐지 공백을 해석 불일치, TLS 가시성, 검사 범위 한계 관점에서 정리하고 실무 보완 방향을 제시합니다."
 ---
 
+## 관련 영상
+
+{{< youtube kqTopBJcDv0 >}}
+
+## PDF
+
+- **Open (new tab):** [`/files/Parsing_Discrepancy_Defense.pdf`](/files/Parsing_Discrepancy_Defense.pdf)
+
+<iframe
+  id="pdfjs-waf-ips-ids-ko"
+  src="/pdfjs/single.html?file=/files/Parsing_Discrepancy_Defense.pdf#page=1"
+  width="100%"
+  height="560"
+  style="border: 1px solid #e5e7eb; border-radius: 8px;"
+></iframe>
+
+<script>
+  (function () {
+    const iframe = document.getElementById("pdfjs-waf-ips-ids-ko");
+    if (!iframe) return;
+    window.addEventListener("message", function (e) {
+      if (e.origin !== window.location.origin) return;
+      const data = e.data || {};
+      if (data.type !== "pdfjs-resize") return;
+      if (typeof data.height !== "number") return;
+      iframe.style.height = Math.max(420, Math.min(data.height, 980)) + "px";
+    });
+  })();
+</script>
+
+> PDF가 보이지 않으면 여기로 열어보세요: [`/files/Parsing_Discrepancy_Defense.pdf`](/files/Parsing_Discrepancy_Defense.pdf)
+
 ## **보안 장비(WAF/IPS/IDS) 탐지 공백 분석 및 보완 방향**
 
 본 보고서는 WAF, IPS, IDS 등 경계 보안 솔루션이 실제 운영 환경에서 직면하는 구조적 탐지 한계를 분석하고, 실무적인 개선 방향을 제시한다. 최근 공격 트렌드는 단순 시그니처 우회를 넘어 보안 장비와 백엔드 서버 간의 **'해석 불일치(Parsing Discrepancy)'**를 악용하는 방향으로 고도화되고 있다. 특히 2025년 PortSwigger 연구는 HTTP/1.1 상의 요청 경계 모호성이 여전히 광범위하게 남아 있다고 보고했고, WAFFLED는 주요 WAF와 프레임워크 조합에서 구조적 파싱 차이로 **1,207개의 고유 우회**를 확인했다. 또한 공개 사고 사례는 탐지 실패가 우회 페이로드 자체보다 **정규화 불일치, TLS 가시성 상실, 센서 장애/과부하** 같은 운영 의존성에서 더 크게 발생함을 보여준다.
