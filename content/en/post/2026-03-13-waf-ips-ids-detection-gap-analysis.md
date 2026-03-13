@@ -41,6 +41,11 @@ image: "/images/pdf-previews/Structural_Parsing_Gaps_p1.webp"
 
 > If the PDF does not render, open it here: [`/files/Structural_Parsing_Gaps.pdf`](/files/Structural_Parsing_Gaps.pdf)
 
+## Reproduction Skill
+
+- **GitHub:** [`windshock/waf-ips-ids-retest`](https://github.com/windshock/waf-ips-ids-retest)
+- This repository automates the retest scenarios referenced in this report, including TC-based replay, visibility checks, response origin classification, and evidence generation.
+
 ## **WAF/IPS/IDS Detection Gap Analysis and Remediation Direction**
 
 This report analyzes the structural detection limitations that perimeter security solutions (WAF, IPS, IDS) face in real-world operational environments and proposes practical remediation directions. Recent attack trends have evolved beyond simple signature evasion to exploit **parsing discrepancies** between security appliances and backend servers. In particular, PortSwigger's 2025 research reported that request boundary ambiguity in HTTP/1.1 remains widespread, and WAFFLED confirmed **1,207 unique bypasses** through structural parsing discrepancies across major WAF and framework combinations. Furthermore, public incident reports demonstrate that detection failures stem more from **normalization inconsistencies, TLS visibility loss, and sensor failures/overload** than from bypass payloads themselves.

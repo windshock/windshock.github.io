@@ -41,6 +41,11 @@ image: "/images/pdf-previews/Parsing_Discrepancy_Defense_p1.webp"
 
 > PDF가 보이지 않으면 여기로 열어보세요: [`/files/Parsing_Discrepancy_Defense.pdf`](/files/Parsing_Discrepancy_Defense.pdf)
 
+## 재현 스킬
+
+- **GitHub:** [`windshock/waf-ips-ids-retest`](https://github.com/windshock/waf-ips-ids-retest)
+- 이 저장소는 본 보고서의 TC 기반 재테스트 시나리오, 가시성 점검, 응답 출처 분류, 증적 생성 절차를 자동화합니다.
+
 ## **보안 장비(WAF/IPS/IDS) 탐지 공백 분석 및 보완 방향**
 
 본 보고서는 WAF, IPS, IDS 등 경계 보안 솔루션이 실제 운영 환경에서 직면하는 구조적 탐지 한계를 분석하고, 실무적인 개선 방향을 제시한다. 최근 공격 트렌드는 단순 시그니처 우회를 넘어 보안 장비와 백엔드 서버 간의 **'해석 불일치(Parsing Discrepancy)'**를 악용하는 방향으로 고도화되고 있다. 특히 2025년 PortSwigger 연구는 HTTP/1.1 상의 요청 경계 모호성이 여전히 광범위하게 남아 있다고 보고했고, WAFFLED는 주요 WAF와 프레임워크 조합에서 구조적 파싱 차이로 **1,207개의 고유 우회**를 확인했다. 또한 공개 사고 사례는 탐지 실패가 우회 페이로드 자체보다 **정규화 불일치, TLS 가시성 상실, 센서 장애/과부하** 같은 운영 의존성에서 더 크게 발생함을 보여준다.
