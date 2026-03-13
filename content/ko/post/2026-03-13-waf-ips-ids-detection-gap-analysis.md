@@ -6,6 +6,8 @@ featured: true
 tags: ["Mind", "WAF", "IPS", "IDS", "보안 운영", "탐지 공학", "HTTP 요청 밀수", "보안 우회"]
 categories: ["보안 연구", "보안 운영"]
 description: "WAF, IPS, IDS의 구조적 탐지 공백을 해석 불일치, TLS 가시성, 검사 범위 한계 관점에서 정리하고 실무 보완 방향을 제시합니다."
+image: "/images/pdf-previews/Parsing_Discrepancy_Defense_p1.webp"
+images: ["/images/pdf-previews/Parsing_Discrepancy_Defense_p1.webp"]
 ---
 
 ## 관련 영상

@@ -6,6 +6,8 @@ featured: true
 tags: ["Mind", "WAF", "IPS", "IDS", "HTTP Request Smuggling", "Detection Engineering", "WAF Bypass", "Security Operations"]
 categories: ["Security Research", "Security Operations"]
 summary: "A structural analysis of WAF, IPS, and IDS detection gaps, focused on parsing discrepancies, visibility failures, and practical remediation priorities."
+image: "/images/pdf-previews/Structural_Parsing_Gaps_p1.webp"
+images: ["/images/pdf-previews/Structural_Parsing_Gaps_p1.webp"]
 ---
 
 ## Video
