@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Fri, 13 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>보안 장비(WAF/IPS/IDS) 탐지 공백 분석 및 보완 방향</title>
+      <link>https://windshock.github.io/ko/post/2026-03-13-waf-ips-ids-detection-gap-analysis/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2026-03-13-waf-ips-ids-detection-gap-analysis/</guid>
+      <description>WAF, IPS, IDS의 구조적 탐지 공백을 해석 불일치, TLS 가시성, 검사 범위 한계 관점에서 정리하고 실무 보완 방향을 제시합니다.</description>
+    </item>
     <item>
       <title>계약과 정보보호 거버넌스의 차이, 그리고 “계약을 잘 안다 = 거버넌스를 안다”라는 착각을 막는 방법</title>
       <link>https://windshock.github.io/ko/post/2026-02-13-contract-vs-security-governance/</link>

@@ -6,8 +6,15 @@
     <description>Recent content in 보안 운영 on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Mon, 29 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/categories/%EB%B3%B4%EC%95%88-%EC%9A%B4%EC%98%81/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>보안 장비(WAF/IPS/IDS) 탐지 공백 분석 및 보완 방향</title>
+      <link>https://windshock.github.io/ko/post/2026-03-13-waf-ips-ids-detection-gap-analysis/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2026-03-13-waf-ips-ids-detection-gap-analysis/</guid>
+      <description>WAF, IPS, IDS의 구조적 탐지 공백을 해석 불일치, TLS 가시성, 검사 범위 한계 관점에서 정리하고 실무 보완 방향을 제시합니다.</description>
+    </item>
     <item>
       <title>내부 취약점 현황 공개가 보안 조치율에 미치는 심리·행동적 효과</title>
       <link>https://windshock.github.io/ko/post/2025-12-29-visibility-changes-behavior/</link>

@@ -6,8 +6,15 @@
     <description>Recent content in WAF on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 30 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/tags/waf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WAF/IPS/IDS Detection Gap Analysis and Remediation Direction</title>
+      <link>https://windshock.github.io/en/post/2026-03-13-waf-ips-ids-detection-gap-analysis/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2026-03-13-waf-ips-ids-detection-gap-analysis/</guid>
+      <description>A structural analysis of WAF, IPS, and IDS detection gaps, focused on parsing discrepancies, visibility failures, and practical remediation priorities.</description>
+    </item>
     <item>
       <title>The Gap Between CISO Strategy and Execution: The WAF Debate and Field Leadership Report</title>
       <link>https://windshock.github.io/en/post/2025-06-30-ciso-strategy-execution/</link>

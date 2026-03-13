@@ -6,8 +6,64 @@
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Fri, 13 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Detection Engineering</title>
+      <link>https://windshock.github.io/en/tags/detection-engineering/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/detection-engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>HTTP Request Smuggling</title>
+      <link>https://windshock.github.io/en/tags/http-request-smuggling/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/http-request-smuggling/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>IDS</title>
+      <link>https://windshock.github.io/en/tags/ids/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/ids/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>IPS</title>
+      <link>https://windshock.github.io/en/tags/ips/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/ips/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mind</title>
+      <link>https://windshock.github.io/en/tags/mind/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/mind/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security Operations</title>
+      <link>https://windshock.github.io/en/tags/security-operations/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/security-operations/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>WAF</title>
+      <link>https://windshock.github.io/en/tags/waf/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/waf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>WAF Bypass</title>
+      <link>https://windshock.github.io/en/tags/waf-bypass/</link>
+      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/waf-bypass/</guid>
+      <description></description>
+    </item>
     <item>
       <title>C-SCRM</title>
       <link>https://windshock.github.io/en/tags/c-scrm/</link>
@@ -289,31 +345,10 @@
       <description></description>
     </item>
     <item>
-      <title>Mind</title>
-      <link>https://windshock.github.io/en/tags/mind/</link>
-      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/mind/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Security Operations</title>
-      <link>https://windshock.github.io/en/tags/security-operations/</link>
-      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/security-operations/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Strategy Failure</title>
       <link>https://windshock.github.io/en/tags/strategy-failure/</link>
       <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/en/tags/strategy-failure/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>WAF</title>
-      <link>https://windshock.github.io/en/tags/waf/</link>
-      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/waf/</guid>
       <description></description>
     </item>
     <item>
