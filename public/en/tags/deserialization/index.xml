@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Deserialization on Code Before Breach</title>
-    <link>http://localhost:1313/en/tags/deserialization/</link>
+    <link>https://windshock.github.io/en/tags/deserialization/</link>
     <description>Recent content in Deserialization on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
     <lastBuildDate>Thu, 24 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/deserialization/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://windshock.github.io/en/tags/deserialization/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CVE-2019-17570 Apache XML-RPC Vulnerability Analysis Report</title>
-      <link>http://localhost:1313/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</link>
+      <link>https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</link>
       <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</guid>
+      <guid>https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</guid>
       <description>A detailed analysis of the CVE-2019-17570 deserialization vulnerability in the Apache XML-RPC library, including patching methods and secure implementation practices.</description>
     </item>
   </channel>

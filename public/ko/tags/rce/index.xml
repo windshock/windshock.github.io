@@ -2,33 +2,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>RCE on Code Before Breach</title>
-    <link>http://localhost:1313/ko/tags/rce/</link>
+    <link>https://windshock.github.io/ko/tags/rce/</link>
     <description>Recent content in RCE on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
     <lastBuildDate>Tue, 10 Jun 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/ko/tags/rce/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://windshock.github.io/ko/tags/rce/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OpenStack Nova 예외 직렬화 패턴: 이론적 RCE 위험과 보안 교훈</title>
-      <link>http://localhost:1313/ko/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/</link>
+      <link>https://windshock.github.io/ko/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/</link>
       <pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/ko/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/</guid>
+      <guid>https://windshock.github.io/ko/post/2025-06-10-rce-via-exception-serialization-in-openstack-nova/</guid>
       <description>OpenStack Nova의 예외 직렬화 메커니즘에서 발생할 수 있는 이론적 원격 코드 실행(RCE) 위험 분석과 여러 PoC, 방어책 제안</description>
     </item>
     <item>
       <title>CVE-2019-17570 Apache XML-RPC 취약점 분석 보고서</title>
-      <link>http://localhost:1313/ko/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</link>
+      <link>https://windshock.github.io/ko/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</link>
       <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/ko/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</guid>
+      <guid>https://windshock.github.io/ko/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</guid>
       <description>Apache XML-RPC 라이브러리의 역직렬화 취약점 CVE-2019-17570에 대한 상세 분석과 패치 방법 및 안전한 구현 방법을 제시합니다.</description>
     </item>
     <item>
       <title>XML-RPC 보안 취약점 분석 및 완화 전략</title>
-      <link>http://localhost:1313/ko/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</link>
+      <link>https://windshock.github.io/ko/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</link>
       <pubDate>Fri, 28 Mar 2025 08:39:00 +0900</pubDate>
-      <guid>http://localhost:1313/ko/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</guid>
+      <guid>https://windshock.github.io/ko/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</guid>
       <description>&lt;hr&gt;
-&lt;p&gt;&lt;img alt=&#34;xmlrpc 배경화면&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/post/xmlrpc-security.webp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;xmlrpc 배경화면&#34; loading=&#34;lazy&#34; src=&#34;https://windshock.github.io/images/post/xmlrpc-security.webp&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;주요-요약&#34;&gt;주요 요약&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;XML-RPC 취약점 개요:&lt;/strong&gt; 시스템 간 통신을 위한 경량 원격 호출 프로토콜인 XML-RPC는 명령 주입(RCE), XXE, DDoS, 권한 상승 등 다양한 위협에 노출됩니다.&lt;/li&gt;

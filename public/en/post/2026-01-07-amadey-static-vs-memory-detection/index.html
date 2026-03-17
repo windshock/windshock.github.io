@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -9,19 +9,19 @@
 <meta name="keywords" content="Malware, Amadey, Static Analysis, Memory Forensics, Memory-Based Detection, YARA, EDR">
 <meta name="description" content="Using Amadey as a case study, this post compares static signature detection and memory-based detection through structure, evasion difficulty, and YARA usage.">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/en/post/2026-01-07-amadey-static-vs-memory-detection/">
+<link rel="canonical" href="https://windshock.github.io/en/post/2026-01-07-amadey-static-vs-memory-detection/">
 <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="http://localhost:1313/index.xml" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://windshock.github.io/index.xml" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://windshock.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://windshock.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://windshock.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://windshock.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://windshock.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/en/post/2026-01-07-amadey-static-vs-memory-detection/">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/ko/post/2026-01-07-amadey-static-vs-memory-detection/">
+<link rel="alternate" hreflang="en" href="https://windshock.github.io/en/post/2026-01-07-amadey-static-vs-memory-detection/">
+<link rel="alternate" hreflang="ko" href="https://windshock.github.io/ko/post/2026-01-07-amadey-static-vs-memory-detection/">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -63,6 +63,88 @@
 
     </style>
 </noscript>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-6N6EEJ259T"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-6N6EEJ259T');
+        }
+      </script><meta property="og:url" content="https://windshock.github.io/en/post/2026-01-07-amadey-static-vs-memory-detection/">
+  <meta property="og:site_name" content="Code Before Breach">
+  <meta property="og:title" content="Amadey Malware: A Comparative Study of Static Detection vs Memory-Based Detection">
+  <meta property="og:description" content="Using Amadey as a case study, this post compares static signature detection and memory-based detection through structure, evasion difficulty, and YARA usage.">
+  <meta property="og:locale" content="en-US">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2026-01-07T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-07T00:00:00+00:00">
+    <meta property="article:tag" content="Malware">
+    <meta property="article:tag" content="Amadey">
+    <meta property="article:tag" content="Static Analysis">
+    <meta property="article:tag" content="Memory Forensics">
+    <meta property="article:tag" content="Memory-Based Detection">
+    <meta property="article:tag" content="YARA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Amadey Malware: A Comparative Study of Static Detection vs Memory-Based Detection">
+<meta name="twitter:description" content="Using Amadey as a case study, this post compares static signature detection and memory-based detection through structure, evasion difficulty, and YARA usage.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://windshock.github.io/en/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Amadey Malware: A Comparative Study of Static Detection vs Memory-Based Detection",
+      "item": "https://windshock.github.io/en/post/2026-01-07-amadey-static-vs-memory-detection/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Amadey Malware: A Comparative Study of Static Detection vs Memory-Based Detection",
+  "name": "Amadey Malware: A Comparative Study of Static Detection vs Memory-Based Detection",
+  "description": "Using Amadey as a case study, this post compares static signature detection and memory-based detection through structure, evasion difficulty, and YARA usage.",
+  "keywords": [
+    "Malware", "Amadey", "Static Analysis", "Memory Forensics", "Memory-Based Detection", "YARA", "EDR"
+  ],
+  "articleBody": "Amadey Malware: A Comparative Study of Static Detection vs Memory-Based Detection PDF Open (new tab): /files/Memory_Doesn_t_Lie.pdf If the PDF does not render, open it here: /files/Memory_Doesn_t_Lie.pdf\nRelated Video Structural Differences Between Static Detection and Memory-Based Detection Static detection analyzes the malware file on disk and identifies it using known patterns or signatures. For example, antivirus engines compare unique byte signatures or strings in a malicious binary against a database. However, modern malware such as Amadey evades static signature detection by encrypting or obfuscating files. In Amadey, strings inside the payload are double-encoded (custom encoding + Base64), making static analysis and detection difficult.[1] Static detection is weak against malware wrapped by packers or encryption, and reliance on file hashes or fixed signatures makes it difficult to catch polymorphic variants.[2][3] In practice, Amadey is distributed in many obfuscated variants as MaaS, and surface-level hashes or string signatures can miss variants.\nBy contrast, memory-based detection directly scans process memory at runtime to identify malicious behavior. It captures the real payload revealed when malware decrypts itself or is loaded into another process. For example, polymorphic malware eventually appears in memory as decrypted code at execution time, so memory forensics can bypass obfuscation and expose the true payload.[4] Memory detection can also catch code injection or process hollowing. If malware spawns a legitimate process and replaces its memory image (process hollowing), the disk contains only a benign file, making static detection ineffective. Memory-based detection, however, can compare the in-memory image with the on-disk image to find inconsistencies and spot code replacement artifacts.[5] In short, static detection focuses on what the file looks like, while memory detection focuses on what the process actually does at runtime.[4][6]\nTo summarize, static detection is fast and efficient but weak against packing and obfuscation, while memory detection is more resource intensive but captures the real malware revealed at runtime, making evasion harder. This is especially effective against loader or dropper families that unpack in memory (e.g., Amadey, SmokeLoader).[4]\nRuntime Invariants in Memory and Why Evasion Is Hard A malware runtime invariant is a core code or data pattern that must exist to perform malicious actions, even across variants or obfuscation. It reflects a shared algorithmic signature that attackers can change at the file level but cannot avoid at execution time. In Amadey, command strings are decrypted for C2 communication, and multiple fixed 32-byte hex strings used as decryption keys appear in memory.[7] The binary also contains a likely developer path string, \"\\Amadey\\Release\\Amadey.pdb\", which can still surface in memory after repacking.[8] These artifacts are encrypted at rest, but must be decrypted at runtime, so memory analysis can capture them.\nSuch runtime invariants reflect fundamental behavior that is hard to replace.[9] For example, in ransomware, no matter how the code changes, file encryption routines and key output remain invariant.[9] Similarly, infostealers must access browser cookies and account data, so strings like “cookies.sqlite” or “installedBrowsers” inevitably appear in memory.[10] Memory analysis of a RedLine variant found common strings such as DownloadAndExecuteUpdate, StringDecrypt, ChromeGetRoamingName, and SystemInfoHelper, indicating persistent behavior across variants.[10] Unless attackers rewrite the core logic every time, these strings and API patterns remain detectable in memory.\nWhy these invariants are hard to evade boils down to two factors. First, functional constraints: the malware’s objectives (e.g., Amadey’s system info collection and C2 communication) are fixed, so the core logic and data structures remain partly unchanged.[9] Second, cost: removing invariants would require metamorphic engines that fully transform code on each execution, or JIT compiler or interpreter approaches that generate code in real time.[11][12] These techniques are extremely complex and introduce significant runtime overhead. Even simple operations would need random re-implementation each time, increasing resource use and the risk of errors.[13] Most malware, especially MaaS families like Amadey or RedLine, reuses core logic for development efficiency. Emotet, for example, generated thousands of variants daily but kept similar behavior, relying mainly on polymorphic packing rather than deep payload redesign.[3][14] In short, removing invariants costs more than it yields, so stable memory patterns remain and can be used as long-lived detection anchors.\nTechnical example: A memory dump analysis of an Amadey variant revealed distinct function call sequences. The following x86 instruction flow is a consistent routine in Amadey:\n// Example code sequence extracted from an Amadey memory dump\n$sequence_0 = { 89 45 F4 83 7D F4 08 74 4F 8D 85 E8 FD FF FF 89 04 24 E8 ?? ?? ?? ?? C7 04 24 ?? ?? ?? ?? }\nDisassembling the sequence reveals logic that compares a local variable, branches, allocates a buffer, and calls a function (e.g., mov [ebp-0xC], eax; cmp [ebp-0xC], 8; je …; lea eax, [ebp-0x218]; …).[15] Even complex byte sequences represent specific functional logic, and Amadey variants show similar control flow patterns that can be used for detection.[16][17] Evading this would require a core algorithm rewrite, which hurts reliability and raises development cost. Thus runtime invariants in memory are an unavoidable weakness for attackers.\nYARA Rules: Efficiency and Generalization of Memory-Based Detection Manual memory detection is difficult, which is why YARA is widely used for pattern matching. YARA defines text or binary patterns to identify malware families, and it can be applied to memory dumps or process memory as well as static files.[4][18] Because YARA uses generalized patterns rather than hashes, it is well suited for invariant-based detection against polymorphic variants.[9]\nEfficiency of memory-based YARA detection is often demonstrated as high detection rate and low false positives. A well-designed YARA rule can identify many samples within a malware family.[9] For example, CloudSEK published an Amadey detection rule that checks the “MZ” header and then looks for Amadey-specific PDB path strings or decryption key patterns, enabling detection across variants once unpacked.[7][19] This is a static rule in form but effectively targets core identity elements (module name and key patterns), which act as invariants. Tools like YARA-Signator can also auto-extract unique byte sequences from memory dumps or unpacked files to generate YARA rules.[20] These rules can include API calls, control flow patterns, and constant references, making them hard to evade with simple byte substitutions.[[15]][21] YARA-Signator based Amadey rules include multiple 5-7 instruction sequences as strings, reused across variants as unique signatures.[16][22]\nIn terms of generalization, memory-based detection depends on how universal the extracted invariant is. If a rule is tied too closely to one sample, minor changes can break detection. YARA-Signator’s author notes that rules generated from a single Malpedia sample may have limited generality.[23] implying ongoing updates and validation are necessary. In practice, memory YARA design often compares multiple variant memory dumps to extract shared patterns or selects combined string and code signatures tied to behavior to maximize coverage. Fortunately, commercial malware like Amadey and RedLine usually retains stable core logic, so one or two rules can cover many variants.[9] For example, a RedLine YARA rule classifies malware when 6 of 8 strings match, combining path strings, function names, protocols, and database filenames to reduce false positives while detecting most variants.[10][24]\nOvergeneralization can increase false positives, so memory YARA often includes process context conditions or size constraints. For example, Mandiant’s memory-only downloader PEAKLIGHT rule triggers only if 4 of 7 PowerShell-like patterns are present and script size is under 10 KB.[25][26] These added conditions make generalized patterns fire only in malicious scenarios, improving precision.\nThe table below summarizes the comparison:\nDetection Method Pros Cons Evasion Difficulty Static detection (file-based) Fast scanning, accurate on known signatures Weak against packing/encryption, misses new hashes/signatures Low (easy to evade with packers) Memory-based detection Can bypass obfuscation (detects decrypted real code), detects runtime behaviors (fileless attacks) Real-time scanning overhead, requires specialized tools High (requires changes to core logic) As the table shows, static detection is easy to evade even with simple string encoding,[1] while memory detection requires fundamental algorithm changes, raising evasion difficulty. As a result, memory-based detection using YARA is effective and generalizable for modern malware defense, and many security vendors use sandbox execution plus memory scanning to classify malware families.[4][27]\nMemory Convergence Across Malware Families (Amadey vs RedLine vs FormBook vs SmokeLoader) Now let’s examine whether other malware families also show memory convergence (shared runtime patterns) beyond Amadey. Memory convergence refers to different variants ending up with similar shapes or behaviors in memory. This usually reflects shared malicious objectives within a family.\nAmadey (trojan/loader) - As discussed, string decryption routines, key patterns, mutex creation, and C2 thread creation code appear consistently in memory.[7][28] As a MaaS botnet, Amadey collects system info and downloads additional payloads, so HTTP POST routines that send OS version and usernames are consistently present across variants.[29][30] The network communication structure and string decoding show strong memory convergence.\nRedLine (infostealer) - A widely sold infostealer that steals browser passwords, autofill data, and crypto wallets.[31] RedLine is often written in .NET and obfuscated, but memory reveals browser profile paths, SQLite cookie DB paths (“cookies.sqlite”), and target application lists in plaintext.[32] It also contains hardcoded FTP/IM client names and wallet keywords, which remain invariant in memory. Because targets and methods are similar across versions, memory convergence is high and a single YARA rule can detect many variants.[33]\nFormBook (infostealer/loader) - Known for process injection and its unique RunPE crypter called “Babushka Crypter.”[34] It encrypts payloads in multiple layers and then executes them inside another process’s memory, leaving consistent injection patterns. The flow of CreateProcess, writing PE headers and sections, then jumping to OEP is invariant. This can be detected through API call patterns (e.g., VirtualAllocEx, WriteProcessMemory, SetThreadContext, ResumeThread) and is often reflected in FormBook detection YARA rules.[34] In short, despite multilayer encryption, memory-level injection behavior converges.\nSmokeLoader (loader) - Active since 2011, SmokeLoader uses minimal on-disk footprint and in-memory loading. Recent variants use a “stager” module that obfuscates itself and then injects the main payload into explorer.exe.[35] In memory, you consistently find modules loaded in explorer that do not exist on disk. Memory forensics can detect abnormal loaded code regions. SmokeLoader also performs persistence (registry Run keys), beaconing to C2, and loading extra modules.[36] These behaviors show convergent API call sequences (e.g., startup copy, periodic remote contact). After a 2024 takedown, SmokeLoader returned in 2025 with protocol tweaks but core logic intact,[37] which means memory-based detection rules can still be effective.\nTaken together, Amadey, RedLine, FormBook, and SmokeLoader show that even with different distribution methods or implementations, core malicious behavior converges in memory. This means that once a memory-based detection strategy is built for a family, it can be extended across variants and sometimes across similar families. For example, generalized YARA rules for loader behavior (process hollowing, code injection patterns) can catch new loader malware with reasonable coverage. Invariant-focused memory detection can enable cross-family detection and supports more generalized defense.[9]\nAttacker Evasion Attempts and Their Costs (Performance and Development Complexity) Because memory-based detection is effective, attackers may try to neutralize it, but such attempts carry significant cost. Key evasion approaches and their limits include:\nMetamorphic code transformation - Attackers can add metamorphic engines to reconstruct code on each execution. For example, they can implement the same behavior using different instructions and orderings,[12] randomize register usage, and insert junk code. This changes memory-level byte patterns, making fixed YARA signatures less reliable. However, this is the most complex approach. Generating functionally equivalent code paths requires compiler-grade logic, and bugs or crashes are common.[11][38] Ensuring correctness is difficult and can trigger new AV detections. Maintaining such a system is expensive, and historically only high-end malware or APTs have used it.[3][39]\nContinuous code encrypt/decrypt (in-memory encryption) - Another method is to keep code encrypted in memory and decrypt only briefly when needed, then erase or re-encrypt. This can reduce detection windows but introduces significant performance costs. Frequent encryption/decryption increases CPU usage and slows execution, while constant memory changes increase instability. EDRs also track memory allocation and protection changes, so frequent RWX region flips can raise alerts. This approach makes malware slower and more fragile without guaranteeing evasion.\nExecution inside a VM or interpreter - Advanced attackers may convert payloads into custom VM bytecode and run them via an in-memory interpreter. In that case, only the interpreter is visible, and the payload logic is hidden. However, the interpreter itself becomes a new signature. A large VM engine in memory is unusual and can be detected. If reverse engineered, defenders can produce stronger signatures. This approach also adds execution overhead, and building and maintaining a custom VM is costly.\nOther evasion tactics - Some anti-memory-scan techniques include pretending to be a debugger to block OpenProcess, or manipulating page permissions to crash scanners. These can interfere with normal operation and can be bypassed by API hooking or kernel-level EDR. Attackers generally settle for stronger packing and frequent variant churn to shorten static IOC lifetimes.[40][41] Few attackers invest in full memory evasion, and when they do, the tradeoff is steep.\nIn conclusion, fully evading memory-based detection requires massive development complexity and operational instability. This favors defenders: invariant-based memory detection is hard to neutralize quickly, and any attacker response shifts cost and risk onto the attacker. If Amadey developers were to rewrite core code to avoid detection, their service continuity would suffer and the changes would likely be noticed by the security community. Therefore, memory-based detection is a durable defensive approach. In practice, layered security combines static, dynamic, behavioral, and memory forensics to improve coverage against new threats.[42][43] As the Amadey case shows, memory does not lie, and that truth is a powerful key for defenders.\nReferences 【1】 Splunk Threat Research Team - “Amadey Threat Analysis and Detections” (2023)[1][29]\n【6】 CloudSEK Research - “Amadey with AV Disabler drops RedLine - YARA rules” (2023)[7][20]\n【11】 InventiveHQ - “Why Hash Lookup Fails Against Polymorphic Malware (Memory-Based Detection)” (2026)[4][5]\n【13】 InventiveHQ - Same source as above[4][44]\n【29】 Amr Ashraf - “RedLine Stealer Analysis - YARA rule” (2023)[32][33]\n【14】 Malpedia - “Formbook - unique RunPE crypter behavior”[34]\n【34】 TheHackerNews - “SmokeLoader Returns with New Changes” (2025)[35][37]\n",
+  "wordCount" : "2310",
+  "inLanguage": "en",
+  "datePublished": "2026-01-07T00:00:00Z",
+  "dateModified": "2026-01-07T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://windshock.github.io/en/post/2026-01-07-amadey-static-vs-memory-detection/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Code Before Breach",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://windshock.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">
@@ -80,8 +162,8 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/en/" accesskey="h" title="Code Before Breach (Alt + H)">
-                <img src="http://localhost:1313/images/logo-terminal-animated.svg" alt="" aria-label="logo" class="h-7 w-auto"
+            <a href="https://windshock.github.io/en/" accesskey="h" title="Code Before Breach (Alt + H)">
+                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo" class="h-7 w-auto"
                     height="28">Code Before Breach</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
@@ -106,7 +188,7 @@
                 </button>
                 <ul class="lang-switch"><li>|</li>
                     <li>
-                        <a href="http://localhost:1313/ko/" title="한국어"
+                        <a href="https://windshock.github.io/ko/" title="한국어"
                             aria-label="한국어">Ko</a>
                     </li>
                 </ul>
@@ -114,32 +196,32 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/en/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://windshock.github.io/en/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/en/tags/" title="Tags">
+                <a href="https://windshock.github.io/en/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/en/categories/" title="Categories">
+                <a href="https://windshock.github.io/en/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/en/archives/" title="Archive">
+                <a href="https://windshock.github.io/en/archives/" title="Archive">
                     <span>Archive</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/en/about/" title="About">
+                <a href="https://windshock.github.io/en/about/" title="About">
                     <span>About</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/en/index.xml" title="RSS">
+                <a href="https://windshock.github.io/en/index.xml" title="RSS">
                     <span>RSS</span>
                 </a>
             </li>
@@ -153,14 +235,14 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://localhost:1313/en/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/en/post/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://windshock.github.io/en/">Home</a>&nbsp;»&nbsp;<a href="https://windshock.github.io/en/post/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       Amadey Malware: A Comparative Study of Static Detection vs Memory-Based Detection
     </h1>
     <div class="post-meta"><span title='2026-01-07 00:00:00 +0000 UTC'>January 7, 2026</span>&nbsp;·&nbsp;11 min&nbsp;·&nbsp;2310 words&nbsp;|&nbsp;Translations:
 <ul class="i18n_list">
     <li>
-        <a href="http://localhost:1313/ko/post/2026-01-07-amadey-static-vs-memory-detection/">Ko</a>
+        <a href="https://windshock.github.io/ko/post/2026-01-07-amadey-static-vs-memory-detection/">Ko</a>
     </li>
 </ul>
 
@@ -338,21 +420,21 @@ $sequence_0 = { 89 45 F4 83 7D F4 08 74 4F 8D 85 E8 FD FF FF 89 04 24 E8 ?? ?? ?
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/en/tags/malware/">Malware</a></li>
-      <li><a href="http://localhost:1313/en/tags/amadey/">Amadey</a></li>
-      <li><a href="http://localhost:1313/en/tags/static-analysis/">Static Analysis</a></li>
-      <li><a href="http://localhost:1313/en/tags/memory-forensics/">Memory Forensics</a></li>
-      <li><a href="http://localhost:1313/en/tags/memory-based-detection/">Memory-Based Detection</a></li>
-      <li><a href="http://localhost:1313/en/tags/yara/">YARA</a></li>
-      <li><a href="http://localhost:1313/en/tags/edr/">EDR</a></li>
+      <li><a href="https://windshock.github.io/en/tags/malware/">Malware</a></li>
+      <li><a href="https://windshock.github.io/en/tags/amadey/">Amadey</a></li>
+      <li><a href="https://windshock.github.io/en/tags/static-analysis/">Static Analysis</a></li>
+      <li><a href="https://windshock.github.io/en/tags/memory-forensics/">Memory Forensics</a></li>
+      <li><a href="https://windshock.github.io/en/tags/memory-based-detection/">Memory-Based Detection</a></li>
+      <li><a href="https://windshock.github.io/en/tags/yara/">YARA</a></li>
+      <li><a href="https://windshock.github.io/en/tags/edr/">EDR</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://localhost:1313/en/post/2026-01-19-digital-identity-eidas2-korea/">
+  <a class="prev" href="https://windshock.github.io/en/post/2026-01-19-digital-identity-eidas2-korea/">
     <span class="title">« Prev</span>
     <br>
     <span>eIDAS 2.0 vs. Korea’s Digital Identity System: A Comparative Analysis</span>
   </a>
-  <a class="next" href="http://localhost:1313/en/post/2025-12-29-the-visibility-principle/">
+  <a class="next" href="https://windshock.github.io/en/post/2025-12-29-the-visibility-principle/">
     <span class="title">Next »</span>
     <br>
     <span>The Visibility Principle: How Internal Vulnerability Visibility Shapes Remediation Behavior</span>
@@ -363,7 +445,7 @@ $sequence_0 = { 89 45 F4 83 7D F4 08 74 4F 8D 85 E8 FD FF FF 89 04 24 E8 ?? ?? ?
 <ul class="share-buttons">
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Amadey Malware: A Comparative Study of Static Detection vs Memory-Based Detection on x"
-            href="https://x.com/intent/tweet/?text=Amadey%20Malware%3a%20A%20Comparative%20Study%20of%20Static%20Detection%20vs%20Memory-Based%20Detection&amp;url=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2026-01-07-amadey-static-vs-memory-detection%2f&amp;hashtags=Malware%2cAmadey%2cStaticAnalysis%2cMemoryForensics%2cMemory-BasedDetection%2cYARA%2cEDR">
+            href="https://x.com/intent/tweet/?text=Amadey%20Malware%3a%20A%20Comparative%20Study%20of%20Static%20Detection%20vs%20Memory-Based%20Detection&amp;url=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2026-01-07-amadey-static-vs-memory-detection%2f&amp;hashtags=Malware%2cAmadey%2cStaticAnalysis%2cMemoryForensics%2cMemory-BasedDetection%2cYARA%2cEDR">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
@@ -372,7 +454,7 @@ $sequence_0 = { 89 45 F4 83 7D F4 08 74 4F 8D 85 E8 FD FF FF 89 04 24 E8 ?? ?? ?
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Amadey Malware: A Comparative Study of Static Detection vs Memory-Based Detection on linkedin"
-            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2026-01-07-amadey-static-vs-memory-detection%2f&amp;title=Amadey%20Malware%3a%20A%20Comparative%20Study%20of%20Static%20Detection%20vs%20Memory-Based%20Detection&amp;summary=Amadey%20Malware%3a%20A%20Comparative%20Study%20of%20Static%20Detection%20vs%20Memory-Based%20Detection&amp;source=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2026-01-07-amadey-static-vs-memory-detection%2f">
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2026-01-07-amadey-static-vs-memory-detection%2f&amp;title=Amadey%20Malware%3a%20A%20Comparative%20Study%20of%20Static%20Detection%20vs%20Memory-Based%20Detection&amp;summary=Amadey%20Malware%3a%20A%20Comparative%20Study%20of%20Static%20Detection%20vs%20Memory-Based%20Detection&amp;source=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2026-01-07-amadey-static-vs-memory-detection%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
@@ -381,7 +463,7 @@ $sequence_0 = { 89 45 F4 83 7D F4 08 74 4F 8D 85 E8 FD FF FF 89 04 24 E8 ?? ?? ?
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Amadey Malware: A Comparative Study of Static Detection vs Memory-Based Detection on reddit"
-            href="https://reddit.com/submit?url=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2026-01-07-amadey-static-vs-memory-detection%2f&title=Amadey%20Malware%3a%20A%20Comparative%20Study%20of%20Static%20Detection%20vs%20Memory-Based%20Detection">
+            href="https://reddit.com/submit?url=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2026-01-07-amadey-static-vs-memory-detection%2f&title=Amadey%20Malware%3a%20A%20Comparative%20Study%20of%20Static%20Detection%20vs%20Memory-Based%20Detection">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
@@ -390,7 +472,7 @@ $sequence_0 = { 89 45 F4 83 7D F4 08 74 4F 8D 85 E8 FD FF FF 89 04 24 E8 ?? ?? ?
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Amadey Malware: A Comparative Study of Static Detection vs Memory-Based Detection on facebook"
-            href="https://facebook.com/sharer/sharer.php?u=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2026-01-07-amadey-static-vs-memory-detection%2f">
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2026-01-07-amadey-static-vs-memory-detection%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
@@ -399,7 +481,7 @@ $sequence_0 = { 89 45 F4 83 7D F4 08 74 4F 8D 85 E8 FD FF FF 89 04 24 E8 ?? ?? ?
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Amadey Malware: A Comparative Study of Static Detection vs Memory-Based Detection on whatsapp"
-            href="https://api.whatsapp.com/send?text=Amadey%20Malware%3a%20A%20Comparative%20Study%20of%20Static%20Detection%20vs%20Memory-Based%20Detection%20-%20http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2026-01-07-amadey-static-vs-memory-detection%2f">
+            href="https://api.whatsapp.com/send?text=Amadey%20Malware%3a%20A%20Comparative%20Study%20of%20Static%20Detection%20vs%20Memory-Based%20Detection%20-%20https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2026-01-07-amadey-static-vs-memory-detection%2f">
             <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
@@ -408,7 +490,7 @@ $sequence_0 = { 89 45 F4 83 7D F4 08 74 4F 8D 85 E8 FD FF FF 89 04 24 E8 ?? ?? ?
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Amadey Malware: A Comparative Study of Static Detection vs Memory-Based Detection on telegram"
-            href="https://telegram.me/share/url?text=Amadey%20Malware%3a%20A%20Comparative%20Study%20of%20Static%20Detection%20vs%20Memory-Based%20Detection&amp;url=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2026-01-07-amadey-static-vs-memory-detection%2f">
+            href="https://telegram.me/share/url?text=Amadey%20Malware%3a%20A%20Comparative%20Study%20of%20Static%20Detection%20vs%20Memory-Based%20Detection&amp;url=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2026-01-07-amadey-static-vs-memory-detection%2f">
             <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
                 <path
                     d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
@@ -417,7 +499,7 @@ $sequence_0 = { 89 45 F4 83 7D F4 08 74 4F 8D 85 E8 FD FF FF 89 04 24 E8 ?? ?? ?
     </li>
     <li>
         <a target="_blank" rel="noopener noreferrer" aria-label="share Amadey Malware: A Comparative Study of Static Detection vs Memory-Based Detection on ycombinator"
-            href="https://news.ycombinator.com/submitlink?t=Amadey%20Malware%3a%20A%20Comparative%20Study%20of%20Static%20Detection%20vs%20Memory-Based%20Detection&u=http%3a%2f%2flocalhost%3a1313%2fen%2fpost%2f2026-01-07-amadey-static-vs-memory-detection%2f">
+            href="https://news.ycombinator.com/submitlink?t=Amadey%20Malware%3a%20A%20Comparative%20Study%20of%20Static%20Detection%20vs%20Memory-Based%20Detection&u=https%3a%2f%2fwindshock.github.io%2fen%2fpost%2f2026-01-07-amadey-static-vs-memory-detection%2f">
             <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
                 xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
                 <path
@@ -432,7 +514,7 @@ $sequence_0 = { 89 45 F4 83 7D F4 08 74 4F 8D 85 E8 FD FF FF 89 04 24 E8 ?? ?? ?
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/en/">Code Before Breach</a></span> · 
+        <span>&copy; 2026 <a href="https://windshock.github.io/en/">Code Before Breach</a></span> · 
 
     <span>
         Powered by

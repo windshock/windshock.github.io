@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>PoC on Code Before Breach</title>
-    <link>http://localhost:1313/en/tags/poc/</link>
+    <link>https://windshock.github.io/en/tags/poc/</link>
     <description>Recent content in PoC on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
     <lastBuildDate>Tue, 17 Mar 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/poc/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://windshock.github.io/en/tags/poc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Security Diagnostics Reports Die Upon Publication</title>
-      <link>http://localhost:1313/en/post/2026-03-17-security-testing-as-code/</link>
+      <link>https://windshock.github.io/en/post/2026-03-17-security-testing-as-code/</link>
       <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/en/post/2026-03-17-security-testing-as-code/</guid>
+      <guid>https://windshock.github.io/en/post/2026-03-17-security-testing-as-code/</guid>
       <description>We point out the limitations of traditional security diagnostic reports and share the necessity and practical application cases of &amp;#39;Security Testing as Code&amp;#39;, managing diagnostic results not as &amp;#39;documents&amp;#39; but as &amp;#39;executable code (PoC)&amp;#39;.</description>
     </item>
   </channel>
