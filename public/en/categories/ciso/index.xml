@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>CISO on Code Before Breach</title>
-    <link>https://windshock.github.io/en/categories/ciso/</link>
+    <link>http://localhost:1313/en/categories/ciso/</link>
     <description>Recent content in CISO on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
     <lastBuildDate>Mon, 30 Jun 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://windshock.github.io/en/categories/ciso/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/en/categories/ciso/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Gap Between CISO Strategy and Execution: The WAF Debate and Field Leadership Report</title>
-      <link>https://windshock.github.io/en/post/2025-06-30-ciso-strategy-execution/</link>
+      <link>http://localhost:1313/en/post/2025-06-30-ciso-strategy-execution/</link>
       <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-06-30-ciso-strategy-execution/</guid>
+      <guid>http://localhost:1313/en/post/2025-06-30-ciso-strategy-execution/</guid>
       <description>A comprehensive report presenting a roadmap for practical security improvement and field leadership, centered around the debate on WAF and the gap between philosophy and execution.</description>
     </item>
   </channel>

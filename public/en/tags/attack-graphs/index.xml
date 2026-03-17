@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Attack Graphs on Code Before Breach</title>
-    <link>https://windshock.github.io/en/tags/attack-graphs/</link>
+    <link>http://localhost:1313/en/tags/attack-graphs/</link>
     <description>Recent content in Attack Graphs on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
     <lastBuildDate>Thu, 15 May 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://windshock.github.io/en/tags/attack-graphs/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/en/tags/attack-graphs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SPOF in Cybersecurity: From History to Strategy, a Graph-Based Analysis</title>
-      <link>https://windshock.github.io/en/post/2025-05-15-spof-analysis-in-cybersecurity/</link>
+      <link>http://localhost:1313/en/post/2025-05-15-spof-analysis-in-cybersecurity/</link>
       <pubDate>Thu, 15 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/post/2025-05-15-spof-analysis-in-cybersecurity/</guid>
+      <guid>http://localhost:1313/en/post/2025-05-15-spof-analysis-in-cybersecurity/</guid>
       <description>Analyzing the threat of Single Points of Failure (SPOF) through historical examples and graph theory, this piece presents a strategic approach to identifying and mitigating structural weaknesses in cybersecurity infrastructures.</description>
     </item>
   </channel>
