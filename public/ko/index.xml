@@ -6,8 +6,15 @@
     <description>Recent content in Code Before Breach - 보안 코딩, 자동화, 시프트 레프트 on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Tue, 17 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>한국 보안 산업에 대한 단상</title>
+      <link>https://windshock.github.io/ko/post/2026-03-26-korean-security-escape-velocity/</link>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2026-03-26-korean-security-escape-velocity/</guid>
+      <description>한국 보안 산업에서 반복되는 규제·납품 중심 구조와 글로벌 제품 중심 성장 경로의 차이를 정리하고, AI 시대에 다시 나타나는 분기점을 돌아봅니다.</description>
+    </item>
     <item>
       <title>보안 진단 보고서는 발행되면 죽는다</title>
       <link>https://windshock.github.io/ko/post/2026-03-17-security-testing-as-code/</link>
