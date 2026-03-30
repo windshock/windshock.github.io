@@ -6,8 +6,57 @@
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Thu, 26 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CAPTCHA</title>
+      <link>https://windshock.github.io/ko/tags/captcha/</link>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/captcha/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Credential Stuffing</title>
+      <link>https://windshock.github.io/ko/tags/credential-stuffing/</link>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/credential-stuffing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LLM 에이전트</title>
+      <link>https://windshock.github.io/ko/tags/llm-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/</link>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/llm-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mind</title>
+      <link>https://windshock.github.io/ko/tags/mind/</link>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/mind/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Playwright</title>
+      <link>https://windshock.github.io/ko/tags/playwright/</link>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/playwright/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Whisper</title>
+      <link>https://windshock.github.io/ko/tags/whisper/</link>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/whisper/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>봇 방어</title>
+      <link>https://windshock.github.io/ko/tags/%EB%B4%87-%EB%B0%A9%EC%96%B4/</link>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/tags/%EB%B4%87-%EB%B0%A9%EC%96%B4/</guid>
+      <description></description>
+    </item>
     <item>
       <title>AI Security</title>
       <link>https://windshock.github.io/ko/tags/ai-security/</link>
@@ -125,13 +174,6 @@
       <link>https://windshock.github.io/ko/tags/ips/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/ko/tags/ips/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Mind</title>
-      <link>https://windshock.github.io/ko/tags/mind/</link>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/ko/tags/mind/</guid>
       <description></description>
     </item>
     <item>

@@ -6,8 +6,57 @@
     <description>Recent content in Tags on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 17 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bot Defense</title>
+      <link>https://windshock.github.io/en/tags/bot-defense/</link>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/bot-defense/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CAPTCHA</title>
+      <link>https://windshock.github.io/en/tags/captcha/</link>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/captcha/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Credential Stuffing</title>
+      <link>https://windshock.github.io/en/tags/credential-stuffing/</link>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/credential-stuffing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LLM Agent</title>
+      <link>https://windshock.github.io/en/tags/llm-agent/</link>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/llm-agent/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mind</title>
+      <link>https://windshock.github.io/en/tags/mind/</link>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/mind/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Playwright</title>
+      <link>https://windshock.github.io/en/tags/playwright/</link>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/playwright/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Whisper</title>
+      <link>https://windshock.github.io/en/tags/whisper/</link>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/tags/whisper/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Automation</title>
       <link>https://windshock.github.io/en/tags/automation/</link>
@@ -83,13 +132,6 @@
       <link>https://windshock.github.io/en/tags/ips/</link>
       <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/en/tags/ips/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Mind</title>
-      <link>https://windshock.github.io/en/tags/mind/</link>
-      <pubDate>Fri, 13 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://windshock.github.io/en/tags/mind/</guid>
       <description></description>
     </item>
     <item>

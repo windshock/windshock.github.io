@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Tue, 17 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 30 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The CAPTCHA That Became a Free Automatic Door for Hackers — A Bypass PoC and Defense Strategy</title>
+      <link>https://windshock.github.io/en/post/2026-03-30-captcha-bypass-poc-defense-strategy/</link>
+      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2026-03-30-captcha-bypass-poc-defense-strategy/</guid>
+      <description>A practical look at an audio CAPTCHA bypass PoC built with Playwright, Whisper, and Page-Agent, plus the login defenses that still matter after CAPTCHA falls.</description>
+    </item>
     <item>
       <title>Security Diagnostics Reports Die Upon Publication</title>
       <link>https://windshock.github.io/en/post/2026-03-17-security-testing-as-code/</link>
