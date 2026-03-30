@@ -2,6 +2,8 @@
 
 이 파일은 **새 채팅/새 세션에서 AI에게 프로젝트 구조를 한 번에 설명**하기 위한 “컨텍스트 시드”입니다.
 
+- 루트의 `AGENTS.md`가 있으면, 해당 파일의 간단한 작업 규칙을 먼저 따르고 이 문서를 상세 참조로 사용합니다.
+
 - 시작할 때 이렇게만 말하면 됩니다: `@PROJECT_CONTEXT.md 이 기준으로 작업하자. 오늘 할 일: ...`
 
 ---
@@ -12,6 +14,7 @@
 - **테마**: PaperMod (서브모듈)
 - **배포**: GitHub Pages 스타일로 `docs/` 디렉토리에 빌드 산출물을 생성해 푸시
 - **멀티 언어**: `en` / `ko` (각각 `content/en`, `content/ko`)
+- **블로그 소스 글 구조**: `content/en/post/`와 `content/ko/post/`를 기본 작업 대상으로 사용
 - **HTML 삽입 허용**: `config.toml`에서 Goldmark `unsafe=true` (iframe 등 가능)
 
 ---
@@ -40,8 +43,9 @@
 - **Frontmatter**: YAML `---` 블록 사용
   - 자주 쓰는 필드(예시):
     - `title`, `date`, `draft`
-    - `tags`, `categories`, `description`
+    - `featured`, `tags`, `categories`, `description`
     - `image`: 대표 이미지(썸네일/OG 등) 경로 (예: `/images/...`)
+- **새 글 기본 뼈대**: `archetypes/post.md`
 
 ---
 
@@ -51,12 +55,29 @@
 일반 `categories`가 아니라 **frontmatter의 `featured` + `tags` 토큰**으로 분류됩니다.
 
 - **전제 조건**: `featured: true` 인 글만 후보가 됩니다.
+- **중요**: `featured: true`를 켠 글은 내용을 읽고 아래 3개 중 맞는 **대표 분류 태그를 반드시 넣어야** 합니다.
+- `featured`만 켜고 분류 태그를 넣지 않으면 첫 페이지 상단 3개 섹션에 정상적으로 잡히지 않습니다.
 - **분류 토큰(정확히 이 문자열이어야 함)**:
   - **A Mind That Dissects Systems**: `tags`에 `"Mind"`
   - **Trust and Culture Beyond Technology**: `tags`에 `"TrustAndCulture"`
   - **Code That Fixes, Not Just Runs**: `tags`에 `"Code"`
+- **실무 분류 기준**:
+  - **`Mind`**: 구조 분석, 기술 해부, 공격/방어 메커니즘 해석, 시스템 동작 원리
+  - **`TrustAndCulture`**: 정책, 신뢰, 조직 문화, 거버넌스, 사회적/제도적 관점
+  - **`Code`**: 구현, 자동화, 도구, PoC, 엔지니어링 실행과 개선
+- 기본적으로 위 3개 중 **대표 분류 1개를 우선 선택**합니다.
 
 참고: 구현은 `layouts/_default/list.html`에 있습니다.
+
+---
+
+## YouTube 삽입 규칙 (이 프로젝트 관례)
+
+- **기본 방식**: Hugo shortcode 사용
+  - 예) `{{< youtube VIDEO_ID >}}`
+- **입력값**: 전체 URL보다 **YouTube video ID**만 넣는 것을 기본 규칙으로 사용
+  - 예) `https://www.youtube.com/watch?v=kqTopBJcDv0` 전체를 넣는 대신 `kqTopBJcDv0`
+- **기본 정책**: 새 글에서는 raw iframe보다 shortcode를 우선 사용
 
 ---
 
@@ -68,7 +89,17 @@
   - 글에서 iframe으로 사용: `/pdfjs/single.html?file=/files/<name>.pdf#page=1`
 - **PDF 대표 이미지(1p 프리뷰)**:
   - 저장 위치: `static/images/pdf-previews/<name>_p1.png`
-  - 글 frontmatter의 `image`에 지정: `/images/pdf-previews/<name>_p1.png`
+  - 또는 `static/images/pdf-previews/<name>_p1.webp`
+  - 글 frontmatter의 `image`에 지정: `/images/pdf-previews/<name>_p1.png` 또는 `.webp`
+  - **새 PDF 기반 글은 첫 페이지 프리뷰 이미지를 frontmatter `image`로 연결하는 것을 기본 규칙으로 사용**
+- **글 본문 기본 패턴**:
+  - 새 글에서는 raw iframe 대신 `pdfembed` shortcode를 우선 사용
+  - 예) `{{< pdfembed file="/files/example.pdf" lang="ko" id="pdfjs-example-ko" >}}`
+  - shortcode를 쓰지 않을 때는 `Open (new tab)` 링크, iframe, `pdfjs-resize` script 순서를 유지
+  - iframe id는 보통 `pdfjs-<slug>-<lang>` 형태 사용
+- **레거시 경로**:
+  - 기존 글에는 `/pdf/...` 경로가 일부 남아 있음
+  - **새 글/새 작업은 `/files/...` 경로를 기본값**으로 사용
 
 ---
 
@@ -80,6 +111,10 @@
   - `hugo --gc --cleanDestinationDir`
   - `hugo -D -d docs`
   - `hugo server -D --environment development`
+- 레이아웃, shortcode, 임베드, 포스트 구조를 수정했다면 로컬 Hugo로 확인하는 것을 기본 규칙으로 사용합니다.
+- 빠른 빌드 검증은 임시 디렉터리 대상으로 수행할 수 있습니다:
+  - `tmpdir="$(mktemp -d)"`
+  - `hugo --gc --cleanDestinationDir --destination "$tmpdir"`
 
 ### 배포
 
@@ -92,6 +127,9 @@
   - `git add -A`
   - `git commit -m "<message>"`
   - `git push origin master`
+- **스크립트 배포(권장 자동화)**:
+  - clean working tree 상태에서 `./deploy.sh "commit message"` 실행
+  - 이 스크립트는 Hugo 빌드, 선택적 WebP 변환, `docs/`/`public/` 스테이징, 커밋, 푸시를 처리합니다.
 
 #### `deploy.sh` (옵션)
 
@@ -137,4 +175,3 @@
 - 배포/커밋은 하지 말 것(또는 해도 됨)
 - 파일 경로는 반드시 이 관례를 따를 것
 ```
-

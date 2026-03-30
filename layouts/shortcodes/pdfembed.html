@@ -1,0 +1,41 @@
+{{- $file := .Get "file" -}}
+{{- if not $file -}}
+  {{- errorf "The %q shortcode requires a 'file' parameter: %s" .Name .Position -}}
+{{- end -}}
+{{- $lang := or (.Get "lang") "en" -}}
+{{- $height := or (.Get "height") "560" -}}
+{{- $base := lower (replace (path.Base $file) ".pdf" "") -}}
+{{- $id := or (.Get "id") (printf "pdfjs-%s-%s" (replaceRE "[^a-z0-9]+" "-" $base) $lang) -}}
+{{- $viewer := printf "/pdfjs/single.html?file=%s#page=1" $file -}}
+{{- $openLabel := "Open (new tab):" -}}
+{{- $fallbackLabel := "If you can't view the PDF, open it here:" -}}
+{{- if eq $lang "ko" -}}
+  {{- $openLabel = "새 탭으로 열기:" -}}
+  {{- $fallbackLabel = "PDF가 보이지 않으면 여기로 열어보세요:" -}}
+{{- end -}}
+
+- **{{ $openLabel }}** [{{ $file }}]({{ $file }})
+
+<iframe
+  id="{{ $id }}"
+  src="{{ $viewer }}"
+  width="100%"
+  height="{{ $height }}"
+  style="border: 1px solid #e5e7eb; border-radius: 8px;"
+></iframe>
+
+<script>
+  (function () {
+    const iframe = document.getElementById({{ $id | jsonify }});
+    if (!iframe) return;
+    window.addEventListener("message", function (e) {
+      if (e.origin !== window.location.origin) return;
+      const data = e.data || {};
+      if (data.type !== "pdfjs-resize") return;
+      if (typeof data.height !== "number") return;
+      iframe.style.height = Math.max(420, Math.min(data.height, 980)) + "px";
+    });
+  })();
+</script>
+
+> {{ $fallbackLabel }} [{{ $file }}]({{ $file }})
