@@ -98,18 +98,18 @@ if [[ "$RUN_ROBOTS_FIX" -eq 1 ]]; then
   # run with --no-robots-fix.
   echo "✅ Fixing meta robots in generated HTML..."
   find docs/ -type f -name "*.html" -exec sed -i '' 's/content="noindex"/content="index"/g' {} +
-  find public/ -type f -name "*.html" -exec sed -i '' 's/content="noindex"/content="index"/g' {} +
 fi
 
 echo "✅ Staging known project paths..."
 git add -A \
+  .gitignore \
   config.toml \
   layouts \
   content \
   static \
   docs \
-  public \
   PROJECT_CONTEXT.md \
+  AGENTS.md \
   .cursor \
   2>/dev/null || true
 

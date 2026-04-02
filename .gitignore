@@ -1,0 +1,13 @@
+# Hugo build output — only docs/ is used for GitHub Pages
+public/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Node / Tailwind
+node_modules/
+
+# Hugo cache
+resources/_gen/
+.hugo_build.lock

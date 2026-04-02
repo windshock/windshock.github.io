@@ -23,5 +23,7 @@ done
 
 find content -type f -name "*.md" | while read file; do
   echo "Updating $file"
-  sed -i '' -E 's/\.(jpg|jpeg|png)/.webp/g' "$file"
+  # Only replace local image paths — skip any line that contains an http/https URL
+  # to avoid corrupting external links or CDN references.
+  sed -i '' -E '/https?:\/\//!s/\.(jpg|jpeg|png)/.webp/g' "$file"
 done
