@@ -271,6 +271,6 @@ AI를 통해 진단을 돌리면 결과는 계속 쌓인다.
 
 이 글은 아래 글들과 이어진다.
 
-- [보안 진단 보고서는 왜 발행되는 순간 죽어버리는가](https://brunch.co.kr/@windshock/8)
+- [정보보호는 앞으로 5년 안에 절반이 사라진다](https://brunch.co.kr/@windshock/8)
 - [Security Testing as Code — 진단을 코드로 구조화하는 실험](/ko/post/2026-03-17-security-testing-as-code/)
 - [한국 보안의 탈출 속도 — 왜 자꾸 같은 자리를 맴도는가](/ko/post/2026-03-26-korean-security-escape-velocity/)

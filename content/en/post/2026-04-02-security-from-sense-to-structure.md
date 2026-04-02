@@ -272,6 +272,6 @@ That's the problem that matters now.
 
 This post continues from:
 
-- [Why Security Assessment Reports Die the Moment They're Published](https://brunch.co.kr/@windshock/8)
+- [Half of All Security Jobs Will Be Gone in Five Years](https://brunch.co.kr/@windshock/8)
 - [Security Testing as Code — Structuring Assessment as Code](/en/post/2026-03-17-security-testing-as-code/)
 - [Korean Security's Escape Velocity — Why It Keeps Running in Place](/en/post/2026-03-26-korean-security-escape-velocity/)
