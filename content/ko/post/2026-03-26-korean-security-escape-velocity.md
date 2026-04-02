@@ -6,7 +6,7 @@ featured: true
 tags: ["TrustAndCulture", "한국 보안 산업", "보안 시장", "보안 스타트업", "Product-Led Growth", "AI Security", "보안 전략"]
 categories: ["산업 분석", "보안문화"]
 description: "한국 보안 산업에서 반복되는 규제·납품 중심 구조와 글로벌 제품 중심 성장 경로의 차이를 정리하고, AI 시대에 다시 나타나는 분기점을 돌아봅니다."
-image: "/images/pdf-previews/Korean_Security_Escape_Velocity_p1.png"
+image: "/images/pdf-previews/Korean_Security_Escape_Velocity_p1.webp"
 ---
 
 ## 관련 영상

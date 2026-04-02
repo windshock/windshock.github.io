@@ -6,7 +6,7 @@ featured: true
 tags: ["Mind", "CAPTCHA", "Credential Stuffing", "Playwright", "Whisper", "LLM Agent", "Bot Defense"]
 categories: ["Security Research", "Web Security"]
 description: "A practical look at an audio CAPTCHA bypass PoC built with Playwright, Whisper, and Page-Agent, plus the login defenses that still matter after CAPTCHA falls."
-image: "/images/pdf-previews/Post-CAPTCHA_Account_Defense_p1.png"
+image: "/images/pdf-previews/Post-CAPTCHA_Account_Defense_p1.webp"
 ---
 
 ## Introduction

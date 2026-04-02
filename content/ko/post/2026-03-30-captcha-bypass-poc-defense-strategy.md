@@ -6,7 +6,7 @@ featured: true
 tags: ["Mind", "CAPTCHA", "Credential Stuffing", "Playwright", "Whisper", "LLM 에이전트", "봇 방어"]
 categories: ["보안 연구", "웹 보안"]
 description: "Playwright, Whisper, Page-Agent로 오디오 CAPTCHA 우회 PoC를 재현하고, CAPTCHA 이후를 전제로 한 로그인 방어 전략을 정리합니다."
-image: "/images/pdf-previews/Shattering_the_CAPTCHA_Illusion_p1.png"
+image: "/images/pdf-previews/Shattering_the_CAPTCHA_Illusion_p1.webp"
 ---
 
 ## 들어가며

@@ -6,8 +6,15 @@
     <description>Recent content in 보안 연구 on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>ko-KR</language>
-    <lastBuildDate>Mon, 30 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/ko/categories/%EB%B3%B4%EC%95%88-%EC%97%B0%EA%B5%AC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>취약점을 잘 찾는 사람보다, 구조를 만드는 사람이 남는다</title>
+      <link>https://windshock.github.io/ko/post/2026-04-02-security-from-sense-to-structure/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2026-04-02-security-from-sense-to-structure/</guid>
+      <description>18년의 취약점 탐지 경험에서 얻은 통찰 — 감각에서 가이드라인으로, 가이드라인에서 구조로, 그리고 AI가 그 구조 안에서 작동하는 시대까지.</description>
+    </item>
     <item>
       <title>해커에게 0원짜리 자동문이 된 캡차 — CAPTCHA 우회 PoC와 방어 전략</title>
       <link>https://windshock.github.io/ko/post/2026-03-30-captcha-bypass-poc-defense-strategy/</link>

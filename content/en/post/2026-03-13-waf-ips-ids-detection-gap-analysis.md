@@ -262,7 +262,7 @@ The following open-source tools can perform automated testing corresponding to e
 | **Smuggler** | [defparam/smuggler](https://github.com/defparam/smuggler) | Protocol boundary | Auto-tests 60~300+ variations of Transfer-Encoding headers (whitespace, control characters, case variations, line breaks, duplicate headers, etc.). Timeout-based CL.TE/TE.CL detection. Automatically saves discovered payloads to `payloads/` directory |
 | **Cortisol** | [toxy4ny/cortisol](https://github.com/toxy4ny/cortisol) | Encoding/normalization discrepancy, path normalization | Double/Triple URL Encoding, UTF-8 Overlong Sequence(`%C0%BC`, `%E0%80%BC`, `%F0%80%80%BC`), space2comment, apostrephemask etc. tamper chain application. Auto-detects Cloudflare/AWS/Sucuri/Imperva/ModSecurity/Akamai/F5/Wordfence |
 | **WAF-Bypass** | [nemesida-waf/waf-bypass](https://github.com/nemesida-waf/waf-bypass) | Comprehensive (full assessment) | SQLi, XSS, RCE, LFI, SSRF, SSTI, Log4j etc. 18 categories across 7 zones (URL, ARGS, BODY, COOKIE, USER-AGENT, REFERER, HEADER). Supports Base64/HTML-Entity/UTF-16 encoding variations. `--curl-replay`for reproduction command output |
-| **WCD Testing Tool** | [Ap6pack/web-cache-deception-testing-tool](https://github.com/Ap6pack/web-cache-deception-testing-tool) | Middle-layer to backend normalization | 6 static extensions(.css, .jpg, .png, .txt, .html, .ico) and 8 delimiters(`;@,!~%#?`)to automatically verify cache hits. Detects cross-user exposure by comparing authenticated/unauthenticated requests |
+| **WCD Testing Tool** | [Ap6pack/web-cache-deception-testing-tool](https://github.com/Ap6pack/web-cache-deception-testing-tool) | Middle-layer to backend normalization | 6 static extensions(.css, .webp, .webp, .txt, .html, .ico) and 8 delimiters(`;@,!~%#?`)to automatically verify cache hits. Detects cross-user exposure by comparing authenticated/unauthenticated requests |
 | **HTTP Request Smuggler** (Burp) | [PortSwigger/http-request-smuggler](https://github.com/PortSwigger/http-request-smuggler) | Protocol boundary (HTTP/2 included) | Burp Suite extension. Supports HTTP/2 downgrade (H2.CL, H2.TE, H2.0), pause-based desync, and client-side desync in addition to HTTP/1.1 CL.TE/TE.CL. Auto-detects parser discrepancy (v3.0, 2025) |
 
 ### **Tool Installation and Basic Usage**
@@ -523,7 +523,7 @@ curl https://target.example.com/public/../admin/dashboard
 curl https://target.example.com/public/..%2Fadmin%2Fdashboard
 
 # Null byte insertion (for legacy servers)
-curl https://target.example.com/admin%00.jpg
+curl https://target.example.com/admin%00.webp
 ```
 
 **Judgment Criteria**: If normal path is blocked but variant path passes and backend routes to the same resource → Path normalization gap confirmed
@@ -1036,7 +1036,7 @@ curl https://target.example.com/my-account/profile.css
 **Automation Tool (WCD Testing Tool)**:
 
 ```bash
-# 6 extensions(.css, .jpg, .png, .txt, .html, .ico) × 8 delimiters(; @ , ! ~ % # ?) auto-test
+# 6 extensions(.css, .webp, .webp, .txt, .html, .ico) × 8 delimiters(; @ , ! ~ % # ?) auto-test
 python3 cache_deception_test.py \
   --url "https://target.example.com/my-account" \
   --cookie "session=VALID_SESSION"
@@ -1053,7 +1053,7 @@ python3 cache_deception_test.py \
 ```
 # Extension test
 https://target.example.com/my-account.css
-https://target.example.com/my-account.jpg
+https://target.example.com/my-account.webp
 https://target.example.com/my-account.ico
 
 # Delimiter test

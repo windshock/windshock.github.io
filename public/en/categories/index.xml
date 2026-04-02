@@ -6,12 +6,19 @@
     <description>Recent content in Categories on Code Before Breach</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-US</language>
-    <lastBuildDate>Mon, 30 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://windshock.github.io/en/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>https://windshock.github.io/en/categories/ai/</link>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/categories/ai/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Security Research</title>
       <link>https://windshock.github.io/en/categories/security-research/</link>
-      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
       <guid>https://windshock.github.io/en/categories/security-research/</guid>
       <description></description>
     </item>

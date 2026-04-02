@@ -6,7 +6,7 @@ featured: true
 tags: ["Mind", "취약점 연구", "AI", "보안 자동화", "구조 설계"]
 categories: ["보안 연구", "AI"]
 description: "18년의 취약점 탐지 경험에서 얻은 통찰 — 감각에서 가이드라인으로, 가이드라인에서 구조로, 그리고 AI가 그 구조 안에서 작동하는 시대까지."
-image: "/images/pdf-previews/Security_From_Sense_to_Structure_p1.png"
+image: "/images/pdf-previews/Security_From_Sense_to_Structure_p1.webp"
 ---
 
 {{< youtube TtqdvvWxevM >}}
