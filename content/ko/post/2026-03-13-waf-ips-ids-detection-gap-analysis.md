@@ -523,7 +523,7 @@ curl https://target.example.com/public/../admin/dashboard
 curl https://target.example.com/public/..%2Fadmin%2Fdashboard
 
 # Null byte 삽입 (레거시 서버 대상)
-curl https://target.example.com/admin%00.webp
+curl https://target.example.com/admin%00.jpg
 ```
 
 **판정 기준**: 정상 경로는 차단되나 변형 경로가 통과하고, 백엔드에서 동일 리소스로 라우팅되면 → Path 정규화 공백 확인
@@ -1053,7 +1053,7 @@ python3 cache_deception_test.py \
 ```
 # 확장자 테스트
 https://target.example.com/my-account.css
-https://target.example.com/my-account.webp
+https://target.example.com/my-account.jpg
 https://target.example.com/my-account.ico
 
 # Delimiter 테스트

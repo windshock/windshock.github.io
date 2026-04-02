@@ -523,7 +523,7 @@ curl https://target.example.com/public/../admin/dashboard
 curl https://target.example.com/public/..%2Fadmin%2Fdashboard
 
 # Null byte insertion (for legacy servers)
-curl https://target.example.com/admin%00.webp
+curl https://target.example.com/admin%00.jpg
 ```
 
 **Judgment Criteria**: If normal path is blocked but variant path passes and backend routes to the same resource → Path normalization gap confirmed
@@ -1053,7 +1053,7 @@ python3 cache_deception_test.py \
 ```
 # Extension test
 https://target.example.com/my-account.css
-https://target.example.com/my-account.webp
+https://target.example.com/my-account.jpg
 https://target.example.com/my-account.ico
 
 # Delimiter test
