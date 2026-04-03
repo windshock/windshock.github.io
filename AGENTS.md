@@ -16,6 +16,7 @@
 ## 포스트 작성 관례
 
 - 자주 쓰는 frontmatter 필드는 `title`, `date`, `draft`, `featured`, `tags`, `categories`, `description`, `image`입니다.
+- **`description`은 모든 포스트에 필수입니다.** 없으면 홈페이지 목록에서 PDF shortcode 텍스트 등 본문 내용이 발췌로 노출됩니다.
 - 홈 상단 3분류 큐레이션은 일반 `categories`가 아니라 `featured: true`와 `tags`의 `Mind`, `TrustAndCulture`, `Code` 토큰으로 결정됩니다.
 - **`featured: true`를 켰다면 글 내용을 직접 분석해서 위 3개 중 가장 맞는 분류 태그를 반드시 넣습니다.** `featured`만 켜고 분류 태그를 넣지 않으면 첫 페이지 3개 섹션에 정상 노출되지 않습니다.
 - 분류 기준 기본값:
@@ -25,6 +26,19 @@
 - 기본적으로 한 글에는 위 3개 중 **대표 분류 1개를 우선 선택**합니다.
 - base64 인라인 이미지는 지양하고 `static/images/...`에 파일로 둔 뒤 경로로 참조합니다.
 - 새 글의 기본 골격은 `archetypes/post.md`를 참고합니다.
+
+## 이중 언어 자산 체크리스트 (필수)
+
+EN/KO 포스트는 **완전히 다른 자산**을 사용합니다. 한 언어 버전을 수정할 때 반드시 아래 4개 항목을 모두 확인합니다:
+
+1. **YouTube shortcode** — 해당 언어 전용 영상 ID인지 확인 (en/ko 영상이 다를 수 있음)
+2. **pdfembed / PDF 링크** — 해당 언어 전용 PDF 파일인지 확인
+3. **frontmatter `image`** — 해당 언어 PDF의 첫 페이지 프리뷰 이미지인지 확인
+4. **frontmatter `description`** — 해당 언어에 맞는 설명인지 확인
+
+- 한쪽 언어 글을 복사해서 다른 언어 글을 만들 때, 위 4개를 반드시 전부 교체합니다.
+- 다른 언어 글의 YouTube ID, PDF 경로, 이미지가 남아 있으면 **잘못된 것**입니다.
+- PDF 프리뷰 이미지 생성: `pdftoppm -png -r 300 -f 1 -l 1 <pdf> <prefix>` → `magick <png> -resize 1200x -quality 80 <webp>`
 
 ## YouTube / PDF 삽입 관례
 
@@ -43,11 +57,24 @@
 - 빠른 확인은 `hugo --gc --cleanDestinationDir --destination <tmpdir>`로 하고, 시각 확인이 필요하면 `./start.sh` 또는 `hugo server -D --environment development`를 사용합니다.
 - layout/shortcode/embed 변경은 가능하면 로컬 Hugo로 직접 확인합니다.
 
+## 배포 규칙
+
+- 기본 배포 절차는 clean working tree에서 `./deploy.sh "commit message"`를 사용하는 것입니다.
+- working tree가 이미 dirty하면 수동 배포: Hugo 빌드 → robots fix → `git add -A` → `git commit -m` → `git push origin master`.
+- `deploy.sh`는 `docs/index.html`(루트 리다이렉트)의 `noindex`를 유지합니다. 이 파일은 빈 리다이렉트 페이지이므로 검색엔진 색인 대상이 아닙니다.
+- 사용자가 명시적으로 요청하지 않으면 임의로 커밋/푸시하지 않습니다.
+
+## SEO 규칙
+
+- **사이트맵**: `/sitemap.xml`(sitemapindex) → `/en/sitemap.xml` + `/ko/sitemap.xml` 구조. Search Console에는 **`/sitemap.xml` 하나만** 제출.
+- **robots.txt**: `Allow: /`로 전체 허용. 사이트맵 3개를 선언하지만 Search Console 제출은 루트 1개로 충분.
+- **루트 `/` 페이지**: Hugo가 생성하는 언어 리다이렉트 페이지. `noindex` 유지 (콘텐츠 없음).
+- **`/en/index.xml`, `/ko/index.xml`**: RSS 피드임. 사이트맵이 아니므로 Search Console에 제출하지 않음.
+- `layouts/_default/sitemap.xml`에서 `.RegularPages`를 사용해 현재 언어 페이지만 포함. `range .Sites`는 사용 금지 (언어 혼합됨).
+
 ## GitHub 반영 규칙
 
 - 사용자가 GitHub 반영을 요청하면 변경 범위를 먼저 확인하고, unrelated change를 섞지 않습니다.
-- 기본 배포 절차는 clean working tree에서 `./deploy.sh "commit message"`를 사용하는 것입니다.
-- 수동 반영 시에는 Hugo 빌드, `git status` 확인, `git add -A`, `git commit -m`, `git push origin master` 순서를 기본으로 합니다.
 - 사용자가 명시적으로 요청하지 않으면 임의로 커밋/푸시하지 않습니다.
 
 ## 새 채팅/새 세션

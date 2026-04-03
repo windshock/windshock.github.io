@@ -1,6 +1,7 @@
 ---
 title: "Common Misconceptions of Security Assessors"
 date: "2024-06-16"
+description: "Three common misconceptions that weaken security assessments and strategies to build repeatable, effective vulnerability evaluation."
 categories:
   - Security Assessment
   - Vulnerability Evaluation

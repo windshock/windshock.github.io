@@ -1,6 +1,7 @@
 ---
 title: About the XSSAudit
 date: '2019-08-08'
+description: "Chrome XSSAudit 필터 제거 배경과 CSP 전환의 한계를 분석하고, 브라우저 보안 정책 변화가 실무에 미치는 영향을 정리합니다."
 categories: &id001
 - XSS
 - XSSAudit

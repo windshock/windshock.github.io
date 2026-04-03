@@ -1,6 +1,7 @@
 ---
 title: "How I Managed Unmaintained Open Source with Gmail and Snyk Alerts"
 date: 2025-05-12
+description: "Automating Snyk vulnerability alert management with Google Apps Script and Gmail when official API access falls short."
 draft: false
 tags: ["Code", "security", "automation", "snyk", "gmail", "apps script"]
 featured: true

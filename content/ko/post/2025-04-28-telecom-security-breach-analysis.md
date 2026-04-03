@@ -2,6 +2,7 @@
 title: "통신 보안 심층 분석 리포트: SKT 해킹 사건과 글로벌 사례 분석"
 date: 2025-04-28
 draft: false
+description: "2025년 SKT 해킹 사건을 중심으로 Ki 유출, USIM 복제, 5G SA/NSA 보안 구조와 글로벌 통신 해킹 사례를 심층 분석합니다."
 tags: ["Mind", "SKTelecom", "통신 보안", "SKT 해킹", "SIM 보안", "5G 보안", "APT 공격", "SS7 취약점"]
 categories: ["Security Research", "Telecom Security"]
 image: "/images/post/sktelecom_usim.webp"

@@ -1,6 +1,7 @@
 ---
 title: "SPOF in Cybersecurity: From History to Strategy, a Graph-Based Analysis"
 date: 2025-05-15
+description: "Graph-based analysis of Single Points of Failure in cybersecurity, using weighted path enumeration to identify critical infrastructure nodes."
 draft: false
 tags: ["Mind", "Cybersecurity", "SPOF", "Graph Analysis", "Attack Graphs"]
 categories: ["Security"]

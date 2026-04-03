@@ -1,6 +1,7 @@
 ---
 title: "In-Depth Report on Telecommunication Security: SKT Breach and Global Case Studies"
 date: 2025-04-28
+description: "In-depth analysis of the 2025 SKT breach, telecom authentication mechanisms, and 5G SA vs NSA security architecture differences."
 draft: false
 tags: ["Mind", "SKTelecom", "Telecom Security", "SKT Breach", "SIM Security", "5G Security", "APT Attacks", "SS7 Vulnerability"]
 image: "/images/post/sktelecom_usim.webp"

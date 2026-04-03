@@ -1,6 +1,7 @@
 ---
 title: "eIDAS 2.0 vs. Korea’s Digital Identity System: A Comparative Analysis"
 date: 2026-01-19
+description: "Comparative analysis of EU eIDAS 2.0 wallet-based identity and Korea's mobile ID system across governance, privacy, and operations."
 draft: false
 featured: true
 tags: ["Digital Identity", "eIDAS 2.0", "EU Digital Identity Wallet", "Mobile ID", "CI/DI", "Privacy", "TrustAndCulture"]

@@ -1,6 +1,7 @@
 ---
 title: "XML-RPC Security Vulnerabilities Analysis and Mitigation Strategies"
 date: 2025-03-28
+description: "Comprehensive analysis of XML-RPC security flaws including RCE, XXE, and DDoS, with mitigation strategies and a Python PoC exploit."
 draft: false
 tags: ["XML-RPC", "Security", "RCE", "Exploit"]
 categories: ["Cybersecurity"]

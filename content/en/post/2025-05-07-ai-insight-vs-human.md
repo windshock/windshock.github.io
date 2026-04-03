@@ -1,6 +1,7 @@
 ---
 title: "Human Insight and Artificial Intelligence: Dialogue at an Impossible Crossroads"
 date: 2025-05-07
+description: "Can AI achieve enlightenment? Exploring the asymmetry between human insight and machine repetition, with technical and philosophical limits."
 draft: false
 tags: ["AI", "philosophy", "meta-learning", "neuromorphic", "enlightenment", "machine learning"]
 categories: ["Philosophy", "Artificial Intelligence", "Tech Analysis"]

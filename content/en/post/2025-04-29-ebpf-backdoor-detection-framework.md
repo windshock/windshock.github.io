@@ -1,6 +1,7 @@
 ---
 title: "Detection Frameworks and Latest Methodologies for eBPF-Based Backdoors"
 date: 2025-04-28
+description: "How eBPF-based backdoors evade traditional detection, and modern frameworks like Tracee and LKRG that counter kernel-level threats."
 draft: false
 tags: ["Mind", "SKTelecom", "eBPF", "Rootkit Detection", "BPFDoor", "Kernel Security", "Tracee", "LKRG", "Hypervisor Audit", "Forensics"]
 categories: ["Linux Security", "Cloud Security", "Advanced Threat Detection"]

@@ -1,6 +1,7 @@
 ---
 title: "Is Your Data in the Cat's Paws?"
 date: 2025-04-21
+description: "Analysis of the 2025 KakaoPay breach exposing 40M users' data, and why formal consent fails without AI-based DPIA and civic oversight."
 draft: false
 tags: ["TrustAndCulture", "Privacy Protection", "Policy", "Civic Participation", "KakaoPay", "Data Democracy", "AI"]
 categories: ["Privacy", "Security", "Policy"]

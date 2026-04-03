@@ -2,6 +2,7 @@
 title: "엔드포인트 보안 우회 기법(2020-2025년) - 기술 심층 분석"
 date: 2025-05-28
 draft: false
+description: "BYOI, BYOVD, DLL 하이재킹, 서비스 변조 등 2020~2025년 EDR 우회 기법의 메커니즘, 실제 사례, 방어 전략을 분석합니다."
 tags: ["Mind", "EDR", "BYOVD", "BYOI", "보안 우회", "랜섬웨어", "엔드포인트 보안"]
 categories: ["Security", "Endpoint", "Threat Analysis"]
 featured: true

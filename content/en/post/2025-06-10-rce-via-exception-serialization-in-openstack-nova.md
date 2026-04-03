@@ -1,6 +1,7 @@
 ---
 title: "Exception Serialization Patterns in OpenStack Nova: Theoretical RCE Risks and Lessons Learned"
 date: 2025-06-10
+description: "Theoretical RCE risks in OpenStack Nova's exception serialization via oslo.messaging, with PoC scenarios and defense patterns."
 draft: false
 tags: ["OpenStack", "Nova", "RCE", "Vulnerability Analysis", "oslo.messaging", "Exception Serialization"]
 categories: ["Security Research", "Vulnerability Analysis"]

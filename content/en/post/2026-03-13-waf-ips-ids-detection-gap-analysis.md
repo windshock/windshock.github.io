@@ -1,6 +1,7 @@
 ---
 title: "WAF/IPS/IDS Detection Gap Analysis and Remediation Direction"
 date: 2026-03-13
+description: "Structural analysis of WAF, IPS, and IDS detection gaps from parsing discrepancies, with a practical remediation taxonomy."
 draft: false
 featured: true
 tags: ["Mind", "WAF", "IPS", "IDS", "HTTP Request Smuggling", "Detection Engineering", "WAF Bypass", "Security Operations"]

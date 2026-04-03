@@ -1,6 +1,7 @@
 ---
 title: "Amadey Malware: A Comparative Study of Static Detection vs Memory-Based Detection"
 date: 2026-01-07
+description: "Comparing static vs memory-based malware detection using Amadey, showing why runtime YARA rules outperform file-hash approaches."
 draft: false
 featured: false
 tags: ["Malware", "Amadey", "Static Analysis", "Memory Forensics", "Memory-Based Detection", "YARA", "EDR"]

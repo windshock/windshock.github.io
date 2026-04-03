@@ -1,6 +1,7 @@
 ---
 title: About the XSSAudit
 date: '2019-08-08'
+description: "Why Google removed XSSAudit from Chrome and what it means for web security—analyzing the shift from XSS filters to CSP."
 categories: &id001
 - XSS
 - XSSAudit

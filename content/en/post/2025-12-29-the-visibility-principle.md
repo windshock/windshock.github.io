@@ -1,6 +1,7 @@
 ---
 title: "The Visibility Principle: How Internal Vulnerability Visibility Shapes Remediation Behavior"
 date: 2025-12-29
+description: "How transparent internal vulnerability visibility drives remediation through accountability and deterrence without formal punishment."
 draft: false
 featured: true
 tags: ["TrustAndCulture", "Vulnerability Management", "Patch Management", "Security Culture", "Accountability", "Surveillance", "Deterrence"]

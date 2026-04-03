@@ -1,6 +1,7 @@
 ---
 title: "Can Development Culture Influence Security Levels?"
 date: "2024-05-22"
+description: "Exploring how development culture shapes code security, with practical examples using static analysis tools like Joern."
 categories:
   - Development Culture
   - Security

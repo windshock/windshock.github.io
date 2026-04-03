@@ -1,6 +1,7 @@
 ---
 title: Strengthening cybersecurity through government ngos and bug bounty programs
 date: '2023-04-18'
+description: "How government NGOs and bug bounty programs strengthen cybersecurity, with insights on security taxes and public-private collaboration."
 categories: &id001 []
 tags: *id001
 aliases:

@@ -33,7 +33,7 @@
 - **`docs/`**: 배포용 빌드 산출물 (GitHub Pages)
 - **`public/`**: 로컬 빌드 산출물 (기본 hugo output)
 
-레포에 `_posts/` 같은 과거 구조도 있지만, 현재 Hugo 기준의 소스는 **`content/`**를 사용합니다.
+레포의 `static/legacy/`에는 과거 GitHub Pages에서 직접 호스팅하던 보안 PoC/exploit 파일이 보관되어 있습니다. 현재 Hugo 기준의 소스는 **`content/`**를 사용합니다.
 
 ---
 
@@ -45,6 +45,7 @@
     - `title`, `date`, `draft`
     - `featured`, `tags`, `categories`, `description`
     - `image`: 대표 이미지(썸네일/OG 등) 경로 (예: `/images/...`)
+  - **`description`은 모든 포스트에 필수.** 없으면 홈페이지 목록에서 본문 내용(PDF shortcode 텍스트 등)이 발췌로 노출됨.
 - **새 글 기본 뼈대**: `archetypes/post.md`
 
 ---
@@ -68,6 +69,34 @@
 - 기본적으로 위 3개 중 **대표 분류 1개를 우선 선택**합니다.
 
 참고: 구현은 `layouts/_default/list.html`에 있습니다.
+
+---
+
+## 이중 언어 자산 관리 규칙
+
+EN/KO 포스트는 **완전히 다른 자산**을 사용합니다.
+
+한 언어 버전을 수정할 때 반드시 아래 4개를 모두 확인합니다:
+
+| # | 항목 | 확인 내용 |
+|---|---|---|
+| 1 | YouTube shortcode | 해당 언어 전용 영상 ID |
+| 2 | pdfembed / PDF 링크 | 해당 언어 전용 PDF 파일 경로 |
+| 3 | frontmatter `image` | 해당 언어 PDF의 첫 페이지 프리뷰 이미지 |
+| 4 | frontmatter `description` | 해당 언어에 맞는 설명 |
+
+- 한쪽 언어 글을 복사해서 다른 언어 글을 만들 때, 위 4개를 **전부 교체**합니다.
+- 다른 언어의 YouTube ID, PDF 경로, 이미지가 남아 있으면 잘못된 것입니다.
+
+---
+
+## SEO 구조
+
+- **사이트맵**: `/sitemap.xml`(sitemapindex) → `/en/sitemap.xml` + `/ko/sitemap.xml`
+- **Search Console**: `/sitemap.xml` 하나만 제출. `/en/index.xml` 등 RSS는 제출하지 않음.
+- **루트 `/`**: 언어 리다이렉트 페이지. `noindex` 유지 (콘텐츠 없음).
+- **robots.txt**: `Allow: /`, 사이트맵 3개 선언.
+- `layouts/_default/sitemap.xml`은 `.RegularPages`만 순회 (`range .Sites` 사용 금지).
 
 ---
 
@@ -124,6 +153,7 @@
   - `hugo --gc --cleanDestinationDir`
   - `hugo --gc --minify --cleanDestinationDir -d docs --environment production`
   - (필요 시) `./img2webp.sh`
+  - `find docs -type f -name "*.html" -not -path "docs/index.html" -exec sed -i '' 's/content="noindex"/content="index"/g' {} +`
   - `git add -A`
   - `git commit -m "<message>"`
   - `git push origin master`
@@ -131,14 +161,14 @@
   - clean working tree 상태에서 `./deploy.sh "commit message"` 실행
   - 이 스크립트는 Hugo 빌드, 선택적 WebP 변환, `docs/`/`public/` 스테이징, 커밋, 푸시를 처리합니다.
 
-#### `deploy.sh` (옵션)
+#### `deploy.sh`
 
-`deploy.sh "<commit message>"`는 배포를 자동화하지만 아래 이유로 기본값으로는 사용하지 않습니다.
+`deploy.sh "<commit message>"`는 표준 배포 방법입니다.
 
-**주의**:
-- `deploy.sh` 내부에 `git config --global ...` 변경이 포함되어 있습니다. (개인 환경 전역 설정이 바뀜)
-- `deploy.sh`는 `find ... -exec sed ...`로 대량 파일을 수정합니다.
-- 따라서 “배포” 목적이 명확할 때만 사용합니다.
+- clean working tree를 요구합니다.
+- Hugo 빌드 → WebP 변환 → robots fix → 스테이징 → 커밋 → 푸시 순서로 실행.
+- `docs/index.html`(루트 리다이렉트)은 `noindex` 유지 (robots fix에서 제외).
+- working tree가 이미 dirty하면 수동 배포를 사용합니다.
 
 ---
 

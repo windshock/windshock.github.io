@@ -1,6 +1,7 @@
 ---
 title: "인간의 자리: AI 시대에 창작자의 권리를 선언하며"
 date: 2025-04-03
+description: "AI 시대에 인간 창작자의 통찰과 저작권을 지키기 위한 선언과, 기술·윤리적 경계에 대한 철학적 성찰을 담은 에세이입니다."
 author: "windshock"
 license: "CC BY-NC-ND 4.0"
 ai_usage: "Prohibited for AI training or dataset creation"

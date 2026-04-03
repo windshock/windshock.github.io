@@ -2,6 +2,7 @@
 title: "공짜 점심은 없지만, 보안에는 공짜가 있었다"
 date: 2025-04-17
 draft: false
+description: "CVE 시스템의 지속 가능성 위기와 글로벌 보안 공공 인프라에 대한 공동 자금 모델의 필요성을 분석합니다."
 tags: ["TrustAndCulture", "CVE", "보안", "정책", "오픈소스", "공공재"]
 featured: true
 image: "/images/post/cve-free-lunch.webp"

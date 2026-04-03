@@ -1,6 +1,7 @@
 ---
 title: "KPIs Can Cause Incidents!!!"
 date: "2024-06-20"
+description: "Real cases where manipulated KPI metrics led to cybersecurity incidents, exposing the dangers of metric-driven security management."
 categories:
   - Management
   - KPI

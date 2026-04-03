@@ -1,6 +1,7 @@
 ---
 title: "There’s No Such Thing as a Free Lunch, But Security Was Free"
 date: 2025-04-17
+description: "The CVE system nearly collapsed in 2025. Who should fund public cybersecurity infrastructure when free-riding is no longer sustainable?"
 draft: false
 tags: ["TrustAndCulture", "CVE", "security", "policy", "open source", "public goods"]
 featured: true

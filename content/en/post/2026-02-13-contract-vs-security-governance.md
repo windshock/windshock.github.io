@@ -1,6 +1,7 @@
 ---
 title: "Contracts vs Security Governance — Contracts Enforce. Governance Decides."
 date: 2026-02-13
+description: "Why security governance must drive decisions before contracts enforce them—a structural reframing for security leadership."
 draft: false
 featured: true
 tags: ["Governance", "Security Governance", "Supply Chain Security", "C-SCRM", "Risk Management", "TrustAndCulture"]

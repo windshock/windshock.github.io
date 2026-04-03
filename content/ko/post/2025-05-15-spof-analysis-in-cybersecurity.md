@@ -2,6 +2,7 @@
 title: "사이버보안의 SPOF: 역사에서 전략까지, 그래프 기반 분석"
 date: 2025-05-15
 draft: false
+description: "단일 실패 지점(SPOF)의 역사적 사례와 그래프 이론을 활용해 사이버보안 인프라의 구조적 약점을 식별하는 전략을 제시합니다."
 tags: ["Mind", "Cybersecurity", "SPOF", "Graph Analysis", "Attack Graphs"]
 featured: true
 image: "/images/post/spof_animation.gif"

@@ -1,0 +1,29 @@
+Generate a slides.txt file that matches subtitle timing to slide images for FFmpeg.
+
+Context:
+- You are given:
+  - A presentation exported to sequential slide images (1.png, 2.png, ..., n.png)
+  - An audio narration file (e.g., audio.mp3)
+  - A subtitle file (e.g., subtitles.srt) aligned to the audio
+- There are n slide images (e.g., 12 total)
+
+Your task:
+1. Divide the full subtitle transcript evenly across all n slides **in order**.
+2. Use the subtitle timestamps to determine the **duration for each slide**, based on which subtitles belong to that slide.
+3. Sum the subtitle durations for each slide and assign it as duration in slides.txt.
+4. Ensure that the **sum of all durations equals the total audio duration**.
+5. **Repeat the final slide once more** at the end to allow for smooth outro.
+
+Expected output format:
+file '1.png'
+duration 83
+file '2.png'
+duration 77
+...
+file '12.png'
+duration 40
+file '12.png'
+
+Do not summarize. Output only the slides.txt content in plain text.
+
+

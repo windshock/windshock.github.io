@@ -2,6 +2,7 @@
 title: "내 정보, 고양이 손에 맡겼나요?"
 date: 2025-04-21
 draft: false
+description: "2025년 카카오페이 개인정보 유출 사건을 통해 PIPA의 구조적 한계와 AI 기반 DPIA 검증, 시민 감시의 필요성을 제안합니다."
 tags: ["TrustAndCulture", "개인정보보호", "정책", "시민참여", "카카오페이", "데이터민주주의", "AI"]
 categories: ["Privacy", "Security", "Policy"]
 featured: true

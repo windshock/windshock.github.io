@@ -1,6 +1,7 @@
 ---
 title: "Common Security Myths Developers Tell Themselves"
 date: 2025-04-01
+description: "Debunking developer security myths around responsibility deflection, tech overconfidence, and risk underestimation with real-world examples."
 draft: false
 tags: ["TrustAndCulture", "security", "devsecops", "developer security", "supply chain", "Rust"]
 categories: ["Security"]

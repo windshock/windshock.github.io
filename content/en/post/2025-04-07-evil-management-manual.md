@@ -1,6 +1,7 @@
 ---
 title: "In the AI Era, Employees Are Isolated and Organizations Thrive"
 date: 2025-04-07
+description: "A satirical critique of how AI-era organizations isolate employees through async workflows and data-driven control to suppress solidarity."
 draft: false
 tags: ["AI", "organization", "dystopia", "satire"]
 categories: ["Essay", "Management"]

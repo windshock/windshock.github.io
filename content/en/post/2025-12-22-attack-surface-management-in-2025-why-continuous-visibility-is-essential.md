@@ -1,6 +1,7 @@
 ---
 title: "Attack Surface Management in 2025: Why Continuous Visibility is Essential"
 date: 2025-12-22
+description: "Why continuous attack surface management is critical in 2025, covering AI-driven discovery, shadow IT, and zero trust integration."
 draft: false
 featured: true
 tags: ["TrustAndCulture", "Attack Surface Management", "ASM", "Continuous Monitoring", "EASM", "CAASM", "Attack Surface Visibility", "Asset Discovery", "Shadow IT", "Third-Party Risk", "Zero Trust"]

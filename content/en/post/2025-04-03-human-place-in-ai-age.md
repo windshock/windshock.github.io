@@ -1,6 +1,7 @@
 ---
 title: "The Place of Humans: Declaring the Creator’s Rights in the Age of AI"
 date: 2025-04-03
+description: "A philosophical essay on human authorship and creativity in the AI era, declaring the creator's rights over machine-generated output."
 author: "windshock"
 license: "CC BY-NC-ND 4.0"
 ai_usage: "Prohibited for AI training or dataset creation"

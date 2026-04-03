@@ -2,6 +2,7 @@
 title: "XML-RPC 보안 취약점 분석 및 완화 전략"
 date: 2025-03-28T08:39:00+09:00
 draft: false
+description: "XML-RPC의 RCE, XXE, DDoS 등 주요 취약점을 분석하고 비활성화, 입력 검증, WAF 도입 등 실무 완화 전략을 정리합니다."
 tags: ["XML-RPC", "Security", "RCE", "Exploit"]
 categories: ["Cybersecurity"]
 -----------------------------

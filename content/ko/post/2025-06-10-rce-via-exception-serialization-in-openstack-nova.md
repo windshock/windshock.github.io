@@ -2,6 +2,7 @@
 title: "OpenStack Nova 예외 직렬화 패턴: 이론적 RCE 위험과 보안 교훈"
 date: 2025-06-10
 draft: false
+description: "OpenStack Nova의 예외 직렬화 메커니즘에서 발생 가능한 이론적 RCE 위험을 PoC와 함께 분석하고 방어 패턴을 제시합니다."
 tags: ["OpenStack", "Nova", "RCE", "취약점 분석", "oslo.messaging", "예외 직렬화"]
 categories: ["보안 연구", "취약점 분석"]
 summary: "OpenStack Nova의 예외 직렬화 메커니즘에서 발생할 수 있는 이론적 원격 코드 실행(RCE) 위험 분석과 여러 PoC, 방어책 제안"

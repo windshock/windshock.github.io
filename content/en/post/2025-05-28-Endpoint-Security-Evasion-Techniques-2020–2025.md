@@ -1,6 +1,7 @@
 ---
 title: "Endpoint Evasion Techniques (2020–2025): The Evolution of Attacks Bypassing EDR"
 date: 2025-05-28
+description: "Five years of EDR evasion techniques—BYOI, BYOVD, DLL hijacking, and service tampering—with real ransomware case studies."
 draft: false
 tags: ["Mind", "EDR", "BYOVD", "BYOI", "DLL Hijacking", "Service Tampering", "AV Evasion", "Malware", "Ransomware"]
 categories: ["Security", "Threat Analysis", "Endpoint"]
