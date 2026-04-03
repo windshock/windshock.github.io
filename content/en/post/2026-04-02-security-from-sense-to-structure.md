@@ -6,12 +6,12 @@ featured: true
 tags: ["Mind", "Vulnerability Research", "AI", "Security Automation", "Process Design"]
 categories: ["Security Research", "AI"]
 description: "18 years of vulnerability hunting distilled into one insight: the shift from individual instinct to scalable structure — and what AI means for those left standing."
-image: "/images/pdf-previews/Security_From_Sense_to_Structure_p1.webp"
+image: "/images/pdf-previews/Architecture_of_Intelligence_p1.webp"
 ---
 
-{{< youtube TtqdvvWxevM >}}
+{{< youtube 4_-k1VCVxIs >}}
 
-{{< pdfembed file="/files/Security_From_Sense_to_Structure.pdf" lang="en" id="pdfjs-sense-to-structure-en" >}}
+{{< pdfembed file="/files/Architecture_of_Intelligence.pdf" lang="en" id="pdfjs-architecture-of-intelligence-en" >}}
 
 ---
 

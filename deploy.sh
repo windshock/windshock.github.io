@@ -96,8 +96,8 @@ fi
 if [[ "$RUN_ROBOTS_FIX" -eq 1 ]]; then
   # Only touches generated outputs. If you intentionally keep noindex somewhere,
   # run with --no-robots-fix.
-  echo "✅ Fixing meta robots in generated HTML..."
-  find docs/ -type f -name "*.html" -exec sed -i '' 's/content="noindex"/content="index"/g' {} +
+  echo "✅ Fixing meta robots in generated HTML (skip root redirect)..."
+  find docs -type f -name "*.html" -not -path "docs/index.html" -exec sed -i '' 's/content="noindex"/content="index"/g' {} +
 fi
 
 echo "✅ Staging known project paths..."
