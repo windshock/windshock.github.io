@@ -46,6 +46,11 @@
     - `featured`, `tags`, `categories`, `description`
     - `image`: 대표 이미지(썸네일/OG 등) 경로 (예: `/images/...`)
   - **`description`은 모든 포스트에 필수.** 없으면 홈페이지 목록에서 본문 내용(PDF shortcode 텍스트 등)이 발췌로 노출됨.
+- **리드 문장 규칙**:
+  - 본문 **첫 1~2문장**을 검색/공유 맥락에서 보이는 핵심 요약으로 취급합니다.
+  - Google은 `description` 대신 본문 첫 문단의 visible text를 스니펫으로 사용할 수 있으므로, 첫 문장에 핵심 주장과 검색 의도를 직접 넣습니다.
+  - LinkedIn/X 등에 링크를 붙이거나 글을 인용할 때도 첫 문장 요약이 그대로 재사용되기 쉬우므로, 글의 punch line을 서두에 둡니다.
+  - 운영 원칙: **`description`만 다듬고 첫 문장을 약하게 두지 말 것.**
 - **새 글 기본 뼈대**: `archetypes/post.md`
 
 ---

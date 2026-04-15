@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<!DOCTYPE root [
- <!ENTITY file SYSTEM "file:///sdcard/Download/test.txt" >
-]>
-<root>&file;</root>

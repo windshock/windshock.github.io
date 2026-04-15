@@ -17,6 +17,8 @@
 
 - 자주 쓰는 frontmatter 필드는 `title`, `date`, `draft`, `featured`, `tags`, `categories`, `description`, `image`입니다.
 - **`description`은 모든 포스트에 필수입니다.** 없으면 홈페이지 목록에서 PDF shortcode 텍스트 등 본문 내용이 발췌로 노출됩니다.
+- **첫 1~2문장(lead sentence)은 매우 중요합니다.** Google 스니펫은 `description`만이 아니라 본문 첫 문단의 visible text를 가져가는 경우가 많고, 사용자가 LinkedIn/X 등에 공유할 때도 첫 문장 요약이 그대로 재사용되기 쉽습니다.
+- 따라서 글 서두 첫 문장에는 **이 글의 핵심 주장/문제정의/차별점**을 바로 넣습니다. `description`만 고치고 본문 첫 문장을 약하게 두는 방식은 지양합니다.
 - 홈 상단 3분류 큐레이션은 일반 `categories`가 아니라 `featured: true`와 `tags`의 `Mind`, `TrustAndCulture`, `Code` 토큰으로 결정됩니다.
 - **`featured: true`를 켰다면 글 내용을 직접 분석해서 위 3개 중 가장 맞는 분류 태그를 반드시 넣습니다.** `featured`만 켜고 분류 태그를 넣지 않으면 첫 페이지 3개 섹션에 정상 노출되지 않습니다.
 - 분류 기준 기본값:
