@@ -4,10 +4,10 @@ sed -n 's:.*<loc>\(.*\)</loc>.*:\1:p' public/ko/sitemap.xml | sed 's|http://loca
 cat <<EOF > indexnow-payload.json
 {
   "host": "windshock.github.io",
-  "key": "dfe21f7dfa274411bbcb32eea70322e5",
-  "keyLocation": "https://windshock.github.io/dfe21f7dfa274411bbcb32eea70322e5.txt",
+  "key": "2b79d8694cd64ffba5178232d983681f",
+  "keyLocation": "https://windshock.github.io/2b79d8694cd64ffba5178232d983681f.txt",
   "urlList": [
-$(sed 's/^/    "/; s/$/",/' url-list.txt)
+$(sed 's/^/    "/; s/$/"/' url-list.txt | sed '$!s/$/,/')
   ]
 }
 EOF
