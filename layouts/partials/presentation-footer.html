@@ -1,0 +1,4 @@
+{{- $reveal := "reveal/reveal.js" | relURL -}}
+{{- $boot := "js/presentation/boot.mjs" | relURL -}}
+<script defer src="{{ $reveal }}"></script>
+<script type="module" src="{{ $boot }}"></script>

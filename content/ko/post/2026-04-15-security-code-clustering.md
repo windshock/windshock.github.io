@@ -3,9 +3,12 @@ title: "228개 엔드포인트를 5개 클러스터로 줄인 이야기"
 date: 2026-04-15
 draft: false
 featured: true
+presentation: true
 tags: ["Code", "보안 자동화", "정적 분석", "Semgrep", "구조 설계"]
 categories: ["보안 연구"]
 description: "실제 코드베이스에 dataflow 기반 클러스터링을 적용한 기록 — 228개 엔드포인트를 5개 리뷰 가능한 클러스터로 축약하고, 교차점에서 RCE 체인을 발견하기까지."
+image: "/images/pdf-previews/Precision_Security_Clustering_p1.webp"
+presentationInfographic: "/images/post/Precision_Security_Clustering_infographic.webp"
 ---
 
 이 글은 [oh-my-secuaudit](https://github.com/windshock/oh-my-secuaudit)을 만들어가는 과정을 기록한 시리즈의 세 번째 글이다.

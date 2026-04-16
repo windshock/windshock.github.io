@@ -1,0 +1,106 @@
+{{- define "main" }}
+
+<article
+  class="post-single"
+  {{- if .Param "presentation" }}
+  id="presentation-article"
+  data-presentation="true"
+  {{- with .Params.image }}
+  {{- $u := strings.TrimSpace . -}}
+  {{- if or (strings.HasPrefix $u "http://") (strings.HasPrefix $u "https://") }} data-presentation-cover="{{ $u }}"
+  {{- else if strings.HasPrefix $u "/" }} data-presentation-cover="{{ $u }}"
+  {{- else }} data-presentation-cover="{{ $u | relURL }}"
+  {{- end }}
+  {{- end }}
+  {{- with .Param "presentationInfographic" }}
+  {{- $u := strings.TrimSpace . -}}
+  {{- if or (strings.HasPrefix $u "http://") (strings.HasPrefix $u "https://") }} data-presentation-infographic="{{ $u }}"
+  {{- else if strings.HasPrefix $u "/" }} data-presentation-infographic="{{ $u }}"
+  {{- else }} data-presentation-infographic="{{ $u | relURL }}"
+  {{- end }}
+  {{- end }}
+  {{- end }}
+>
+  <header class="post-header">
+    {{ partial "breadcrumbs.html" . }}
+    <h1 class="post-title entry-hint-parent">
+      {{ .Title }}
+      {{- if .Draft }}
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+      {{- end }}
+    </h1>
+    {{- if .Description }}
+    <div class="post-description">
+      {{ .Description }}
+    </div>
+    {{- end }}
+    {{- if not (.Param "hideMeta") }}
+    <div class="post-meta">
+      {{- partial "post_meta.html" . -}}
+      {{- partial "translation_list.html" . -}}
+      {{- partial "edit_post.html" . -}}
+      {{- partial "post_canonical.html" . -}}
+    </div>
+    {{- end }}
+  </header>
+  {{- if .Param "presentation" }}
+  <div class="presentation-toolbar" role="group" aria-label="View mode">
+    <button type="button" class="presentation-mode-btn presentation-mode-btn--active" id="presentation-btn-read" aria-pressed="true">
+      Read
+    </button>
+    <button type="button" class="presentation-mode-btn" id="presentation-btn-present" aria-pressed="false">
+      Present
+    </button>
+  </div>
+  <p class="presentation-toolbar-hint" id="presentation-toolbar-hint">
+    {{- if eq .Site.Language.Lang "ko" -}}
+    Present는 본문을 <strong>슬라이드 높이에 맞춰 자동으로 잘라</strong> 여러 장으로 만듭니다. 장 번호와 관계없이 길면 계속 나뉩니다. 경계를 직접 잡으려면 본문에 <code>slidebreak</code>·<code>vertical</code>·<code>aside</code> shortcode와 <code>##</code> 제목을 활용하세요. 자세한 규칙은 AGENTS.md 「Present 모드」를 참고하세요.
+    {{- else -}}
+    In Present mode, body text is <strong>split automatically</strong> to fit slide height and keeps splitting on every slide when content is long. Use <code>##</code> headings and the <code>slidebreak</code>, <code>vertical</code>, and <code>aside</code> shortcodes for hard boundaries. See AGENTS.md (Present mode).
+    {{- end -}}
+  </p>
+  {{- end }}
+  {{- $isHidden := (.Param "cover.hiddenInSingle") | default (.Param "cover.hidden") | default false }}
+  {{- partial "cover.html" (dict "cxt" . "IsSingle" true "isHidden" $isHidden) }}
+  {{- if (.Param "ShowToc") }}
+  {{- partial "toc.html" . }}
+  {{- end }}
+
+  {{- if .Content }}
+  <div class="post-content" id="presentation-post-content">
+    {{- if not (.Param "disableAnchoredHeadings") }}
+    {{- partial "anchored_headings.html" .Content -}}
+    {{- else }}{{ .Content }}{{ end }}
+  </div>
+  {{- end }}
+
+  <footer class="post-footer">
+    {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
+    <ul class="post-tags">
+      {{- range ($.GetTerms $tags) }}
+      <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+      {{- end }}
+    </ul>
+    {{- if (.Param "ShowPostNavLinks") }}
+    {{- partial "post_nav_links.html" . }}
+    {{- end }}
+    {{- if (and site.Params.ShowShareButtons (ne .Params.disableShare true)) }}
+    {{- partial "share_icons.html" . -}}
+    {{- end }}
+  </footer>
+
+  {{- if (.Param "comments") }}
+  {{- partial "comments.html" . }}
+  {{- end }}
+</article>
+
+{{- if .Param "presentation" }}
+{{- partial "presentation-footer.html" . }}
+{{- end }}
+
+{{- end }}{{/* end main */}}

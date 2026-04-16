@@ -11,3 +11,9 @@ node_modules/
 # Hugo cache
 resources/_gen/
 .hugo_build.lock
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

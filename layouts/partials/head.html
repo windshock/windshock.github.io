@@ -153,6 +153,9 @@
     {{- end }}
 </noscript>
 
+{{- if and .IsPage (.Param "presentation") }}
+{{- partial "presentation-head.html" . }}
+{{- end }}
 {{- partial "extend_head.html" . -}}
 
 {{- /* Misc */}}

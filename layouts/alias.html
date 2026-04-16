@@ -1,0 +1,16 @@
+{{/*
+  Hugo 내장 alias 대체 — meta refresh는 relURL로 경로만 두어
+  로컬(hugo server)·임의 baseURL에서 production 도메인으로 튀지 않게 한다.
+  canonical은 절대 URL 유지(자동 이동 없음, 검색용).
+*/}}
+<!DOCTYPE html>
+<html lang="{{ site.Language.Lang | default "en" }}">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ .Permalink }}</title>
+    <link rel="canonical" href="{{ .Permalink }}" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content="0; url={{ .Permalink | relURL }}" />
+  </head>
+  <body></body>
+</html>

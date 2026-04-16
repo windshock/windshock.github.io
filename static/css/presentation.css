@@ -1,0 +1,356 @@
+.presentation-toolbar {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.75rem 0 0.35rem;
+  align-items: center;
+}
+
+.presentation-toolbar-hint {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--secondary, #666);
+  max-width: 52rem;
+}
+
+.presentation-toolbar-hint code {
+  font-size: 0.9em;
+}
+
+.presentation-mode-btn {
+  font: inherit;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border, #ccc);
+  background: var(--entry, #fff);
+  color: var(--primary, #111);
+  cursor: pointer;
+}
+
+.presentation-mode-btn--active {
+  border-color: var(--tertiary, #888);
+  font-weight: 600;
+}
+
+#presentation-deck-host {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: #111;
+}
+
+#presentation-deck-host .presentation-deck-loading {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: fit-content;
+  height: fit-content;
+  max-width: 90vw;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #eee;
+  font-size: 1rem;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#presentation-deck-host .reveal {
+  width: 100%;
+  height: 100%;
+}
+
+/* slide-splitter 측정 클론: 실제 .reveal과 동일 타이포(이름은 다르게 — Reveal.initialize가 잡지 않도록) */
+#presentation-deck-host .presentation-measure-shell {
+  position: absolute;
+  left: -20000px;
+  top: 0;
+  width: 100%;
+  max-width: 1280px;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: -1;
+  font-size: 34px;
+  font-family: 'Source Sans Pro', Helvetica, sans-serif;
+  color: #222;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+#presentation-deck-host .presentation-measure-shell h1,
+#presentation-deck-host .presentation-measure-shell h2 {
+  margin-top: 0.15em;
+  margin-bottom: 0.35em;
+}
+
+#presentation-deck-host .presentation-measure-shell h3,
+#presentation-deck-host .presentation-measure-shell h4 {
+  margin-top: 0.35em;
+  margin-bottom: 0.25em;
+}
+
+#presentation-deck-host .slides section {
+  text-align: left;
+}
+
+/* 측정용 슬라이드(measurer)도 동일 규칙이 적용되도록 호스트에 묶지 않음 — 패딩 누락으로 하단이 잘리는 문제 방지 */
+section.presentation-slide {
+  padding: 0.5rem 1.75rem 0.85rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* 한글·CJK: 단어(어절) 단위 줄바꿈 — pretext keep-all과 맞춤 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/*
+ * 본문 슬라이드(표지·전면 인포 제외): 배경·글자색은 Reveal 테마(--r-*)에 맡김.
+ * 예전 고정 연회색은 다크 테마에서 카드처럼 떠 보이거나 글자색과 충돌했다.
+ */
+#presentation-deck-host .reveal section.presentation-slide:not(.presentation-slide--cover):not(
+    .presentation-slide--infographic
+  ) {
+  background: transparent;
+  color: var(--r-main-color, inherit);
+}
+
+#presentation-deck-host .reveal section.presentation-slide:not(.presentation-slide--cover):not(
+    .presentation-slide--infographic
+  )
+  p,
+#presentation-deck-host
+  .reveal
+  section.presentation-slide:not(.presentation-slide--cover):not(.presentation-slide--infographic)
+  li {
+  line-height: 1.48;
+}
+
+#presentation-deck-host .reveal section.presentation-slide:not(.presentation-slide--cover):not(
+    .presentation-slide--infographic
+  )
+  strong {
+  font-weight: 700;
+  color: var(--r-heading-color, var(--r-main-color, inherit));
+}
+
+#presentation-deck-host .reveal section.presentation-slide:not(.presentation-slide--cover):not(
+    .presentation-slide--infographic
+  )
+  blockquote {
+  margin: 0.5em 0;
+  padding: 0.35em 0 0.35em 0.85em;
+  border-left: 0.12em solid color-mix(in srgb, var(--r-link-color, #42affa) 55%, transparent);
+  color: var(--r-main-color, inherit);
+  opacity: 0.92;
+}
+
+#presentation-deck-host .reveal section.presentation-slide:not(.presentation-slide--cover):not(
+    .presentation-slide--infographic
+  )
+  :not(pre)
+  code {
+  padding: 0.08em 0.22em;
+  border-radius: 0.2em;
+  font-size: 0.88em;
+  background: color-mix(in srgb, var(--r-main-color, #ccc) 14%, transparent);
+}
+
+#presentation-deck-host .reveal section.presentation-slide:not(.presentation-slide--cover):not(
+    .presentation-slide--infographic
+  )
+  pre {
+  border-radius: 0.25em;
+  border: 1px solid color-mix(in srgb, var(--r-main-color, #888) 22%, transparent);
+  background: color-mix(in srgb, var(--r-main-color, #fff) 7%, var(--r-background-color, #111));
+}
+
+#presentation-deck-host .reveal section.presentation-slide:not(.presentation-slide--cover):not(
+    .presentation-slide--infographic
+  )
+  table {
+  border-collapse: collapse;
+  font-size: 0.82em;
+}
+
+#presentation-deck-host .reveal section.presentation-slide:not(.presentation-slide--cover):not(
+    .presentation-slide--infographic
+  )
+  th,
+#presentation-deck-host
+  .reveal
+  section.presentation-slide:not(.presentation-slide--cover):not(.presentation-slide--infographic)
+  td {
+  border: 1px solid color-mix(in srgb, var(--r-main-color, #888) 20%, transparent);
+  padding: 0.28em 0.45em;
+}
+
+#presentation-deck-host .reveal section.presentation-slide:not(.presentation-slide--cover):not(
+    .presentation-slide--infographic
+  )
+  th {
+  background: color-mix(in srgb, var(--r-main-color, #888) 8%, transparent);
+}
+
+section.presentation-slide--cover {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  /* 본문 슬라이드와 동일 패딩 — 가로·세로 여백만 유지하고 안쪽은 이미지에 넘김 */
+  padding-top: 0.4rem;
+  padding-bottom: 0.5rem;
+}
+
+section.presentation-slide--cover .presentation-slide-cover-inner {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 0;
+  width: 100%;
+}
+
+section.presentation-slide--cover .presentation-slide-cover-frame {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  max-width: min(100%, 58rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section.presentation-slide--cover .presentation-slide-cover-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+section.presentation-slide--cover .presentation-slide-cover-title {
+  flex: 0 0 auto;
+  margin: 0;
+  text-align: center;
+  font-size: 0.5em;
+  font-weight: 600;
+  line-height: 1.2;
+  max-width: min(100%, 48rem);
+  color: var(--r-main-color, var(--primary, #111));
+}
+
+/* 둘째 장 등: 전면 인포그래픽(표지와 동일 레이아웃 패턴) */
+section.presentation-slide--infographic {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  padding-top: 0.4rem;
+  padding-bottom: 0.5rem;
+}
+
+section.presentation-slide--infographic .presentation-slide-infographic-inner {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  width: 100%;
+}
+
+section.presentation-slide--infographic .presentation-slide-infographic-frame {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  max-width: min(100%, 58rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section.presentation-slide--infographic .presentation-slide-infographic-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+section.presentation-slide--oversized {
+  overflow: auto;
+}
+
+section.presentation-slide pre {
+  max-height: min(62vh, 28rem);
+  overflow-y: auto;
+}
+
+/* 한 화면에 더 많은 본문이 들어가도록 Reveal 기본(42px·큰 제목)을 약간만 줄임 */
+#presentation-deck-host .reveal {
+  font-size: 34px;
+}
+
+#presentation-deck-host .reveal h1,
+#presentation-deck-host .reveal h2 {
+  margin-top: 0.15em;
+  margin-bottom: 0.35em;
+}
+
+#presentation-deck-host .reveal h3,
+#presentation-deck-host .reveal h4 {
+  margin-top: 0.35em;
+  margin-bottom: 0.25em;
+}
+
+#presentation-deck-host .presentation-continued {
+  margin-top: 0.75rem;
+  font-size: 0.85em;
+  opacity: 0.75;
+}
+
+#presentation-deck-host .presentation-deck-chrome {
+  position: fixed;
+  top: 0.35rem;
+  right: 0.35rem;
+  z-index: 2500;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  pointer-events: auto;
+}
+
+#presentation-deck-host .presentation-deck-chrome-label {
+  color: rgba(255, 255, 255, 0.88);
+  user-select: none;
+}
+
+#presentation-deck-host .presentation-deck-theme-select {
+  font: inherit;
+  font-size: 12px;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #eee;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  cursor: pointer;
+}
+
+article.presentation-present-active .post-entry-cover,
+article.presentation-present-active .toc,
+article.presentation-present-active .post-content,
+article.presentation-present-active .post-footer,
+article.presentation-present-active .comments,
+article.presentation-present-active .giscus {
+  display: none !important;
+}
+
+body.presentation-present-active .giscus,
+body.presentation-present-active iframe.giscus-frame {
+  display: none !important;
+  visibility: hidden;
+  pointer-events: none;
+}

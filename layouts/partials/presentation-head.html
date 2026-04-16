@@ -1,0 +1,6 @@
+{{- $base := "reveal" | relURL -}}
+<link rel="stylesheet" href="{{ $base }}/reset.css" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ $base }}/reveal.css" crossorigin="anonymous">
+<link id="presentation-reveal-theme-css" rel="stylesheet" href="{{ printf "%s/theme/black.css" $base }}" crossorigin="anonymous">
+{{- $pcss := "css/presentation.css" | relURL -}}
+<link rel="stylesheet" href="{{ $pcss }}" crossorigin="anonymous">
