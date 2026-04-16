@@ -55,7 +55,7 @@ image: "/images/pdf-previews/Dismantling_the_ATO_Supply_Chain_p1.webp"
 
 이 과정을 도식화하면, 유출 계정 조달부터 ATO, 포인트·기프티콘 현금화, 가상자산 전환, 그리고 재투자까지가 하나의 순환 고리처럼 이어진다. 아래 Figure A는 그 흐름을 단순화한 것이다. 문제는 개별 공격이 아니라, 이 환류 구조 자체가 공격을 계속 가능하게 만든다는 점이다.
 
-![Figure A. Domestic Korean CaaS supply chain infographic](/images/domestic-korean-caas-infographic.png)
+![Figure A. Domestic Korean CaaS supply chain infographic](/images/domestic-korean-caas-infographic.webp)
 
 *Figure A. A simplified model of the domestic Korean CaaS supply chain: leaked credentials, ATO, stored-value monetization, crypto conversion, and reinvestment.*
 
