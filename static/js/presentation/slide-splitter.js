@@ -5,8 +5,8 @@
 const PRETEXT_MODULE = 'https://cdn.jsdelivr.net/npm/@chenglou/pretext@0.0.5/+esm';
 
 const SLIDE_INNER_WIDTH = 1040;
-/** 논리 슬라이드 높이에서 남기는 상·하 여유(진행바·컨트롤·안전선) */
-const VIEWPORT_HEIGHT_RESERVE = 80;
+/** 논리 슬라이드 높이에서 남기는 상·하 여유(진행바·컨트롤·안전선) — Present 모드에서 좁은 화면용으로 오버라이드 가능 */
+export const VIEWPORT_HEIGHT_RESERVE = 80;
 /**
  * `startNewSlide(true)` 슬라이드 끝에 붙는 `.presentation-continued`(→ continued)가
  * pagination 이후에 추가되므로, 측정 시 이 높이를 빼지 않으면 하단 글자가 잘린다.
@@ -516,7 +516,7 @@ export function buildPresentationInfographicSlide(imageUrl, altPlain) {
 
 /**
  * @param {HTMLElement} postContent
- * @param {{ viewportWidth?: number; viewportHeight?: number; revealMargin?: number; deckHost?: HTMLElement }} [layout] — Reveal과 동일한 논리 크기; `deckHost`가 있으면 그 안에서 타이포 일치 측정
+ * @param {{ viewportWidth?: number; viewportHeight?: number; viewportHeightReserve?: number; revealMargin?: number; deckHost?: HTMLElement }} [layout] — Reveal과 동일한 논리 크기; `deckHost`가 있으면 그 안에서 타이포 일치 측정. `viewportHeightReserve`는 모바일 세로 등에서 진행바·노치 여유를 더 줄 때 사용
  * @returns {Promise<HTMLElement[]>} horizontal section nodes (some may be vertical stacks)
  */
 export async function buildRevealSections(postContent, layout = {}) {
@@ -552,7 +552,11 @@ export async function buildRevealSections(postContent, layout = {}) {
   measurer.style.width = `${slideInnerWidth}px`;
 
   const margin = typeof layout.revealMargin === 'number' ? layout.revealMargin : 0.02;
-  const slideMaxHeight = Math.max(240, Math.floor(vh * (1 - 2 * margin)) - VIEWPORT_HEIGHT_RESERVE);
+  const heightReserve =
+    typeof layout.viewportHeightReserve === 'number'
+      ? layout.viewportHeightReserve
+      : VIEWPORT_HEIGHT_RESERVE;
+  const slideMaxHeight = Math.max(240, Math.floor(vh * (1 - 2 * margin)) - heightReserve);
 
   const options = { slideInnerWidth, slideMaxHeight, measurer };
 

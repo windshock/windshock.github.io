@@ -1,4 +1,5 @@
 import {
+  VIEWPORT_HEIGHT_RESERVE,
   buildRevealSections,
   buildPresentationCoverSlide,
   buildPresentationInfographicSlide,
@@ -17,6 +18,160 @@ function storageKey() {
   return `${STORAGE_PREFIX}${window.location.pathname}`;
 }
 
+/** Prefer visual viewport so mobile browser chrome / dynamic toolbars are reflected. */
+function readPresentationViewport() {
+  const vv = window.visualViewport;
+  if (vv && vv.width >= 80 && vv.height >= 80) {
+    return { width: Math.round(vv.width), height: Math.round(vv.height) };
+  }
+  return { width: window.innerWidth, height: window.innerHeight };
+}
+
+/**
+ * Logical width/height for Reveal + slide pagination. Narrow / portrait gets a taller
+ * logical canvas (up to 1200) and extra vertical reserve for controls & safe areas.
+ */
+function getPresentationConfiguredSize() {
+  const { width: vwRaw, height: vhRaw } = readPresentationViewport();
+  const configuredW = Math.min(vwRaw, 1280);
+  const narrow = configuredW < 540;
+  // In-flow chrome row (~48px) + padding: Reveal logical size must match the flex area
+  // below it or scaling letterboxes and looks like “half the screen”.
+  const chromeReservePx = narrow ? 56 : 0;
+  const vhNet = Math.max(vhRaw - chromeReservePx, 320);
+  const configuredH = narrow ? Math.min(vhNet, 1200) : Math.min(vhRaw, 720);
+  const portrait = configuredH > configuredW * 1.04;
+  let viewportHeightReserve = VIEWPORT_HEIGHT_RESERVE;
+  if (narrow && portrait) {
+    viewportHeightReserve = VIEWPORT_HEIGHT_RESERVE + 88;
+  } else if (narrow) {
+    viewportHeightReserve = VIEWPORT_HEIGHT_RESERVE + 44;
+  }
+  return { configuredW, configuredH, viewportHeightReserve, narrow, portrait };
+}
+
+function debouncePresentationLayout(fn, ms) {
+  /** @type {ReturnType<typeof setTimeout> | undefined} */
+  let t;
+  return () => {
+    window.clearTimeout(t);
+    t = window.setTimeout(fn, ms);
+  };
+}
+
+/** Shareable deep link: `?present`, `?present=1`, `?present=true` open Present on load. */
+function wantsPresentQuery(url = new URL(window.location.href)) {
+  if (!url.searchParams.has('present')) return false;
+  const raw = (url.searchParams.get('present') || '').trim().toLowerCase();
+  if (raw === '' || raw === '1' || raw === 'true' || raw === 'yes') return true;
+  if (raw === '0' || raw === 'false' || raw === 'no') return false;
+  return false;
+}
+
+/** Opt out when localStorage would otherwise restore Present. */
+function explicitlyRefusesPresentQuery(url = new URL(window.location.href)) {
+  if (!url.searchParams.has('present')) return false;
+  const raw = (url.searchParams.get('present') || '').trim().toLowerCase();
+  return raw === '0' || raw === 'false' || raw === 'no';
+}
+
+function stripPresentQueryParam() {
+  const url = new URL(window.location.href);
+  if (!url.searchParams.has('present')) return;
+  url.searchParams.delete('present');
+  const qs = url.searchParams.toString();
+  const next = `${url.pathname}${qs ? `?${qs}` : ''}${url.hash}`;
+  window.history.replaceState({}, '', next);
+}
+
+/** Keep `?present=…` when switching language via `<link rel="alternate" hreflang>`. */
+function carryPresentSearchParam(href) {
+  const u = new URL(href, window.location.origin);
+  const cur = new URL(window.location.href);
+  if (cur.searchParams.has('present')) {
+    u.searchParams.set('present', cur.searchParams.get('present') || '1');
+  }
+  return u.toString();
+}
+
+/**
+ * KO/EN toggles from `head` alternates (Hugo `.AllTranslations`). Current language is a span;
+ * the other is a link. Omits missing translations.
+ * @param {HTMLElement} container
+ * @param {boolean} isKoUi — aria copy for the group (page UI language)
+ */
+function appendPresentationLangSwitch(container, isKoUi) {
+  /** @type {Record<string, string>} */
+  const byLang = {};
+  document.querySelectorAll('link[rel="alternate"][hreflang]').forEach((link) => {
+    if (link.getAttribute('type')) return;
+    const hl = (link.getAttribute('hreflang') || '').trim().toLowerCase().split('-')[0];
+    const href = link.getAttribute('href');
+    if ((hl === 'ko' || hl === 'en') && href) byLang[hl] = href;
+  });
+  const path = window.location.pathname;
+  const curLang = path.startsWith('/ko/') ? 'ko' : path.startsWith('/en/') ? 'en' : null;
+  if (curLang !== 'ko' && curLang !== 'en') return;
+
+  const rows = [
+    { code: 'ko', label: '한글', ariaEn: 'Korean version', ariaKo: '한글 버전으로 이동' },
+    { code: 'en', label: 'English', ariaEn: 'English version', ariaKo: '영문 버전으로 이동' },
+  ];
+  for (const { code, label, ariaEn, ariaKo } of rows) {
+    const active = code === curLang;
+    const target = byLang[code];
+    if (active) {
+      const span = document.createElement('span');
+      span.className = 'presentation-deck-lang-btn presentation-deck-lang-btn--active';
+      span.textContent = label;
+      span.setAttribute('aria-current', 'true');
+      span.title = isKoUi ? '현재 글' : 'Current article';
+      container.appendChild(span);
+      continue;
+    }
+    if (!target) continue;
+    const a = document.createElement('a');
+    a.className = 'presentation-deck-lang-btn';
+    a.href = carryPresentSearchParam(target);
+    a.textContent = label;
+    a.setAttribute('aria-label', isKoUi ? ariaKo : ariaEn);
+    container.appendChild(a);
+  }
+}
+
+/** Reveal UMD replaces `initialize` after the first run; `destroy()` does not re-bind a new root, so we reload the script after exiting Present. */
+function findRevealScriptUrl() {
+  const scripts = Array.from(document.getElementsByTagName('script'));
+  const match = scripts.find((s) => s.src && /\/reveal\/reveal\.js(\?|$)/i.test(s.src));
+  return match?.src ? match.src.split('?')[0] : null;
+}
+
+async function reloadRevealRuntime() {
+  const base = findRevealScriptUrl();
+  if (!base) {
+    console.warn('Presentation: reveal.js script URL not found; reload skipped');
+    return;
+  }
+  for (const s of Array.from(document.querySelectorAll('script[src]'))) {
+    if (s.src && /\/reveal\/reveal\.js(\?|$)/i.test(s.src)) {
+      s.remove();
+    }
+  }
+  try {
+    delete window.Reveal;
+  } catch (_) {
+    window.Reveal = undefined;
+  }
+  await new Promise((resolve, reject) => {
+    const s = document.createElement('script');
+    s.src = `${base}?presentation_reload=${Date.now()}`;
+    s.async = false;
+    s.onload = () => resolve(undefined);
+    s.onerror = () => reject(new Error('Failed to reload reveal.js'));
+    document.head.appendChild(s);
+  });
+}
+
 /**
  * Wire Read / Present controls for posts with `data-presentation`.
  */
@@ -30,6 +185,7 @@ export function initPresentationMode() {
 
   let deckHost = null;
   let savedScrollY = 0;
+  let needsRevealReload = false;
 
   function setToolbar(mode) {
     const isRead = mode === 'read';
@@ -40,6 +196,7 @@ export function initPresentationMode() {
   }
 
   function enterRead() {
+    const hadDeck = !!deckHost;
     const RevealApi = window.Reveal;
     if (RevealApi && typeof RevealApi.destroy === 'function') {
       try {
@@ -49,7 +206,19 @@ export function initPresentationMode() {
       }
     }
     if (deckHost) {
-      deckHost.remove();
+      if (typeof deckHost._presentationDetachViewport === 'function') {
+        try {
+          deckHost._presentationDetachViewport();
+        } catch (_) {
+          /* ignore */
+        }
+        delete deckHost._presentationDetachViewport;
+      }
+      try {
+        deckHost.remove();
+      } catch (_) {
+        /* ignore */
+      }
       deckHost = null;
     }
     article.classList.remove('presentation-present-active');
@@ -61,12 +230,28 @@ export function initPresentationMode() {
     } catch (_) {
       /* ignore */
     }
+    stripPresentQueryParam();
+    if (hadDeck) {
+      needsRevealReload = true;
+    }
   }
 
   async function enterPresent() {
+    if (deckHost && !deckHost.isConnected) {
+      deckHost = null;
+    }
     if (deckHost) return;
     savedScrollY = window.scrollY;
     await document.fonts.ready;
+
+    if (needsRevealReload) {
+      try {
+        await reloadRevealRuntime();
+        needsRevealReload = false;
+      } catch (err) {
+        console.error(err);
+      }
+    }
 
     deckHost = document.createElement('div');
     deckHost.id = 'presentation-deck-host';
@@ -94,8 +279,7 @@ export function initPresentationMode() {
     document.body.classList.add('presentation-present-active');
     setToolbar('present');
 
-    const configuredW = Math.min(window.innerWidth, 1280);
-    const configuredH = Math.min(window.innerHeight, 720);
+    const { configuredW, configuredH, viewportHeightReserve } = getPresentationConfiguredSize();
     const revealMargin = 0.02;
 
     let sections;
@@ -103,6 +287,7 @@ export function initPresentationMode() {
       sections = await buildRevealSections(postContent, {
         viewportWidth: configuredW,
         viewportHeight: configuredH,
+        viewportHeightReserve,
         revealMargin,
         deckHost,
       });
@@ -138,6 +323,37 @@ export function initPresentationMode() {
 
     const chrome = document.createElement('div');
     chrome.className = 'presentation-deck-chrome';
+
+    const chromeStart = document.createElement('div');
+    chromeStart.className = 'presentation-deck-chrome-start';
+
+    const backBtn = document.createElement('button');
+    backBtn.type = 'button';
+    backBtn.className = 'presentation-deck-back-btn';
+    const backLabel = isKo ? '글로 돌아가기' : 'Back to article';
+    const backHint = isKo
+      ? '블로그 읽기 화면으로 전환합니다. Esc 키로도 나갈 수 있습니다.'
+      : 'Return to the article. You can also press Esc.';
+    backBtn.textContent = backLabel;
+    backBtn.title = backHint;
+    backBtn.setAttribute('aria-label', backLabel);
+    backBtn.addEventListener('click', () => {
+      enterRead();
+    });
+    chromeStart.appendChild(backBtn);
+
+    const langWrap = document.createElement('div');
+    langWrap.className = 'presentation-deck-lang';
+    langWrap.setAttribute('role', 'group');
+    langWrap.setAttribute('aria-label', isKo ? '언어' : 'Language');
+    appendPresentationLangSwitch(langWrap, isKo);
+    if (langWrap.childElementCount > 0) {
+      chromeStart.appendChild(langWrap);
+    }
+
+    const chromeEnd = document.createElement('div');
+    chromeEnd.className = 'presentation-deck-chrome-end';
+
     const themeLabel = document.createElement('span');
     themeLabel.className = 'presentation-deck-chrome-label';
     themeLabel.textContent = isKo ? '테마' : 'Theme';
@@ -165,9 +381,13 @@ export function initPresentationMode() {
       if (R && typeof R.layout === 'function') R.layout();
     });
 
-    chrome.appendChild(themeLabel);
-    chrome.appendChild(themeSelect);
-    deckHost.appendChild(chrome);
+    chromeEnd.appendChild(themeLabel);
+    chromeEnd.appendChild(themeSelect);
+
+    chrome.appendChild(chromeStart);
+    chrome.appendChild(chromeEnd);
+    /* Above slides in the tree so flex column lays chrome out first — avoids fixed overlap on content */
+    deckHost.insertBefore(chrome, revealRoot);
 
     const RevealApi = window.Reveal;
     if (typeof RevealApi === 'undefined' || typeof RevealApi.initialize !== 'function') {
@@ -186,6 +406,9 @@ export function initPresentationMode() {
       height: configuredH,
       margin: revealMargin,
       slideNumber: 'c/t',
+      // Reveal 5 default scrollActivationWidth is 435 — below that it switches to scroll
+      // view on phones, which looks like the deck only “uses half the screen”.
+      scrollActivationWidth: false,
     };
 
     if (sections.length === 0) {
@@ -196,11 +419,35 @@ export function initPresentationMode() {
     if (typeof RevealApi.layout === 'function') {
       RevealApi.layout();
     }
+    if (typeof RevealApi.slide === 'function') {
+      RevealApi.slide(0, 0);
+    }
     try {
       localStorage.setItem(storageKey(), 'present');
     } catch (_) {
       /* ignore */
     }
+
+    const onViewportChange = debouncePresentationLayout(() => {
+      if (!deckHost || !deckHost.isConnected) return;
+      const next = getPresentationConfiguredSize();
+      const R = window.Reveal;
+      if (R && typeof R.configure === 'function' && typeof R.layout === 'function') {
+        try {
+          R.configure({ width: next.configuredW, height: next.configuredH });
+          R.layout();
+        } catch (_) {
+          /* ignore */
+        }
+      }
+    }, 160);
+
+    window.visualViewport?.addEventListener('resize', onViewportChange);
+    window.addEventListener('orientationchange', onViewportChange);
+    deckHost._presentationDetachViewport = () => {
+      window.visualViewport?.removeEventListener('resize', onViewportChange);
+      window.removeEventListener('orientationchange', onViewportChange);
+    };
   }
 
   readBtn.addEventListener('click', () => {
@@ -214,11 +461,18 @@ export function initPresentationMode() {
     });
   });
 
-  document.addEventListener('keydown', (ev) => {
-    if (ev.key === 'Escape' && deckHost) {
+  // Capture phase: Reveal.js may stop Escape from bubbling, which would leave
+  // `deckHost` set and make the next `enterPresent()` hit `if (deckHost) return`.
+  document.addEventListener(
+    'keydown',
+    (ev) => {
+      if (ev.key !== 'Escape' || !deckHost) return;
+      ev.preventDefault();
+      ev.stopPropagation();
       enterRead();
-    }
-  });
+    },
+    true
+  );
 
   let initial;
   try {
@@ -226,7 +480,9 @@ export function initPresentationMode() {
   } catch (_) {
     initial = null;
   }
-  if (initial === 'present') {
+  const openPresentOnLoad =
+    wantsPresentQuery() || (!explicitlyRefusesPresentQuery() && initial === 'present');
+  if (openPresentOnLoad) {
     enterPresent().catch(() => {});
   }
 }

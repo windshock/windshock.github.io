@@ -59,9 +59,9 @@
   </div>
   <p class="presentation-toolbar-hint" id="presentation-toolbar-hint">
     {{- if eq .Site.Language.Lang "ko" -}}
-    Present는 본문을 <strong>슬라이드 높이에 맞춰 자동으로 잘라</strong> 여러 장으로 만듭니다. 장 번호와 관계없이 길면 계속 나뉩니다. 경계를 직접 잡으려면 본문에 <code>slidebreak</code>·<code>vertical</code>·<code>aside</code> shortcode와 <code>##</code> 제목을 활용하세요. 자세한 규칙은 AGENTS.md 「Present 모드」를 참고하세요.
+    링크로 바로 슬라이드를 열려면 글 주소 끝에 <code>?present=1</code> 또는 <code>?present</code>를 붙이면 됩니다. Present는 본문을 <strong>슬라이드 높이에 맞춰 자동으로 잘라</strong> 여러 장으로 만듭니다. 장 번호와 관계없이 길면 계속 나뉩니다. 경계를 직접 잡으려면 본문에 <code>slidebreak</code>·<code>vertical</code>·<code>aside</code> shortcode와 <code>##</code> 제목을 활용하세요. 자세한 규칙은 AGENTS.md 「Present 모드」를 참고하세요.
     {{- else -}}
-    In Present mode, body text is <strong>split automatically</strong> to fit slide height and keeps splitting on every slide when content is long. Use <code>##</code> headings and the <code>slidebreak</code>, <code>vertical</code>, and <code>aside</code> shortcodes for hard boundaries. See AGENTS.md (Present mode).
+    Append <code>?present=1</code> or <code>?present</code> to the post URL to open slides directly when sharing. In Present mode, body text is <strong>split automatically</strong> to fit slide height and keeps splitting on every slide when content is long. Use <code>##</code> headings and the <code>slidebreak</code>, <code>vertical</code>, and <code>aside</code> shortcodes for hard boundaries. See AGENTS.md (Present mode).
     {{- end -}}
   </p>
   {{- end }}

@@ -37,6 +37,18 @@
   inset: 0;
   z-index: 2000;
   background: #111;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding-top: env(safe-area-inset-top, 0);
+  padding-right: env(safe-area-inset-right, 0);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  padding-left: env(safe-area-inset-left, 0);
+}
+
+body.presentation-present-active {
+  overflow: hidden;
+  overscroll-behavior: none;
 }
 
 #presentation-deck-host .presentation-deck-loading {
@@ -56,8 +68,11 @@
 }
 
 #presentation-deck-host .reveal {
+  flex: 1 1 0;
+  align-self: stretch;
+  min-height: 0;
+  min-width: 0;
   width: 100%;
-  height: 100%;
 }
 
 /* slide-splitter 측정 클론: 실제 .reveal과 동일 타이포(이름은 다르게 — Reveal.initialize가 잡지 않도록) */
@@ -312,15 +327,88 @@ section.presentation-slide pre {
 }
 
 #presentation-deck-host .presentation-deck-chrome {
-  position: fixed;
-  top: 0.35rem;
-  right: 0.35rem;
-  z-index: 2500;
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.45rem 0.35rem;
+  pointer-events: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.42);
+}
+
+#presentation-deck-host .presentation-deck-chrome-start,
+#presentation-deck-host .presentation-deck-chrome-end {
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.75rem;
   pointer-events: auto;
+  flex-wrap: wrap;
+}
+
+#presentation-deck-host .presentation-deck-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.12rem;
+  margin-left: 0.2rem;
+  padding: 0.1rem 0.28rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(0, 0, 0, 0.28);
+}
+
+#presentation-deck-host .presentation-deck-lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.48rem;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
+
+a.presentation-deck-lang-btn {
+  text-decoration: none;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+a.presentation-deck-lang-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+#presentation-deck-host .presentation-deck-lang-btn--active {
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.28);
+  cursor: default;
+}
+
+#presentation-deck-host .presentation-deck-back-btn {
+  font: inherit;
+  font-size: 12px;
+  padding: 0.25rem 0.55rem;
+  border-radius: 4px;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.55);
+  color: #eee;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+#presentation-deck-host .presentation-deck-back-btn:hover {
+  background: rgba(40, 40, 40, 0.75);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 #presentation-deck-host .presentation-deck-chrome-label {
@@ -353,4 +441,34 @@ body.presentation-present-active iframe.giscus-frame {
   display: none !important;
   visibility: hidden;
   pointer-events: none;
+}
+
+/* Narrow / phone portrait: smaller type, tighter slide padding, larger tap targets */
+@media (max-width: 36rem) {
+  #presentation-deck-host .reveal {
+    font-size: clamp(16px, 4.2vw, 26px);
+  }
+
+  section.presentation-slide {
+    padding: 0.35rem 0.65rem 0.55rem;
+  }
+
+  #presentation-deck-host .presentation-deck-back-btn,
+  #presentation-deck-host .presentation-deck-theme-select,
+  #presentation-deck-host .presentation-deck-lang-btn {
+    min-height: 44px;
+    padding: 0.35rem 0.65rem;
+    font-size: 14px;
+  }
+
+  #presentation-deck-host .presentation-deck-lang {
+    margin-left: 0;
+    margin-top: 0.15rem;
+  }
+}
+
+@media (max-width: 36rem) and (orientation: portrait) {
+  section.presentation-slide pre {
+    max-height: min(48vh, 18rem);
+  }
 }

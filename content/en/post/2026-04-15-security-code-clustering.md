@@ -7,8 +7,8 @@ presentation: true
 tags: ["Code", "Security Automation", "Static Analysis", "Semgrep", "Process Design"]
 categories: ["Security Research"]
 description: "A practical account of applying dataflow-based clustering to a real codebase — reducing 228 endpoints to 5 reviewable clusters, and finding an RCE chain in the cross-section."
-image: "/images/pdf-previews/Precision_Security_Clustering_p1.webp"
-presentationInfographic: "/images/post/Precision_Security_Clustering_infographic.webp"
+image: "/images/pdf-previews/Security_Semantic_Clustering_p1.webp"
+presentationInfographic: "/images/post/Precision_Security_Clustering_en.webp"
 ---
 
 This is the third post in a series documenting the process of building [oh-my-secuaudit](https://github.com/windshock/oh-my-secuaudit).
