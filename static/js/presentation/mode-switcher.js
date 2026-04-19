@@ -374,12 +374,10 @@ export function initPresentationMode() {
     const chromeEnd = document.createElement('div');
     chromeEnd.className = 'presentation-deck-chrome-end';
 
-    const themeLabel = document.createElement('span');
-    themeLabel.className = 'presentation-deck-chrome-label';
-    themeLabel.textContent = isKo ? '테마' : 'Theme';
     const themeSelect = document.createElement('select');
     themeSelect.className = 'presentation-deck-theme-select';
     themeSelect.setAttribute('aria-label', isKo ? '슬라이드 테마' : 'Slide theme');
+    themeSelect.title = isKo ? '슬라이드 테마 선택' : 'Select slide theme';
 
     const optRandom = document.createElement('option');
     optRandom.value = 'random';
@@ -401,12 +399,15 @@ export function initPresentationMode() {
       if (R && typeof R.layout === 'function') R.layout();
     });
 
-    chromeEnd.appendChild(themeLabel);
     chromeEnd.appendChild(themeSelect);
 
-    /* pretext 크레딧 — 슬라이드 문단 줄바꿈이 이 라이브러리로 계산됨을 은근히 남긴다. */
+    chrome.appendChild(chromeStart);
+    chrome.appendChild(chromeEnd);
+
+    /* pretext 크레딧 — 상단 툴바에 두면 좁은 화면에서 줄이 길어져 혼잡해진다.
+     * 대신 deck-host 좌하단에 작은 워터마크로 띄워 상단을 깨끗하게 유지한다. */
     const pretextCredit = document.createElement('a');
-    pretextCredit.className = 'presentation-deck-chrome-credit';
+    pretextCredit.className = 'presentation-deck-credit-watermark';
     pretextCredit.href = 'https://github.com/chenglou/pretext';
     pretextCredit.target = '_blank';
     pretextCredit.rel = 'noopener noreferrer';
@@ -414,10 +415,7 @@ export function initPresentationMode() {
     pretextCredit.title = isKo
       ? '이 슬라이드의 줄바꿈은 pretext로 계산되었습니다'
       : 'Line breaks computed with pretext';
-    chromeEnd.appendChild(pretextCredit);
-
-    chrome.appendChild(chromeStart);
-    chrome.appendChild(chromeEnd);
+    deckHost.appendChild(pretextCredit);
     /* Above slides in the tree so flex column lays chrome out first — avoids fixed overlap on content */
     deckHost.insertBefore(chrome, revealRoot);
 

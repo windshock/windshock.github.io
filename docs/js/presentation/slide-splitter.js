@@ -150,7 +150,10 @@ function getFontSpecFromElement(el) {
 }
 
 function measureBlockHeight(blockEl, measurer, slideInnerWidth) {
-  const slot = document.createElement('div');
+  /** 실제 렌더와 동일한 태그(section)를 써야 `section.presentation-slide …` 선택자의 CSS가
+   * 측정에도 적용된다. div로 만들면 text-wrap: balance/pretty, white-space: pre-line 등이
+   * 측정에만 빠져 렌더 높이가 측정보다 커지고 슬라이드 하단이 잘린다. */
+  const slot = document.createElement('section');
   slot.className = 'presentation-slide presentation-slide--measure';
   slot.style.width = `${slideInnerWidth}px`;
   slot.style.boxSizing = 'border-box';
@@ -403,6 +406,90 @@ function paginateBlocks(blocks, pretext, options) {
     while (pendingHeadings.length) {
       const h = pendingHeadings.shift();
       sec.appendChild(h.cloneNode(true));
+    }
+  }
+
+  /*
+   * Greedy max-fit은 마지막 연속 슬라이드에 한 문장만 남기곤 한다("continued"만 보이는
+   * 페이지, 한 문장만 있는 페이지). 두 단계로 개선:
+   *   1) cur가 빈약하고 prev가 여유 있으면 cur을 prev로 흡수(merge)
+   *   2) 흡수 안 되면 prev의 마지막 문단을 cur 앞으로 이동(redistribute) — 양쪽 균형
+   */
+  const SPARSE_CONTENT_RATIO = 0.35; // 버젯의 35% 미만이면 '빈약'
+  const MERGE_OVERFLOW_TOLERANCE = 0.12; // 병합 후 112% 이하면 허용
+  const REDISTRIBUTE_MIN_RATIO = 0.35; // redistribute 후 prev가 이 비율 이상이어야 함
+
+  function measureSec(sec) {
+    measurer.appendChild(sec);
+    const h = sec.getBoundingClientRect().height;
+    measurer.removeChild(sec);
+    return h;
+  }
+
+  for (let i = slides.length - 1; i >= 1; i--) {
+    const cur = slides[i];
+    if (!cur.dataset || cur.dataset.continued !== 'true') continue;
+    if (measureSec(cur) >= slideMaxHeight * SPARSE_CONTENT_RATIO) continue;
+
+    const prev = slides[i - 1];
+
+    // 1) 병합 시도: cur의 내용을 모두 prev 끝에 붙여본다 (중복 헤딩 제외).
+    const toMove = [];
+    for (const child of Array.from(cur.children)) {
+      if (/^H[1-6]$/.test(child.tagName)) {
+        const dup = Array.from(prev.children).find(
+          (e) => e.tagName === child.tagName && e.textContent === child.textContent,
+        );
+        if (dup) continue;
+      }
+      toMove.push(child);
+    }
+    if (toMove.length) {
+      const clones = toMove.map((c) => c.cloneNode(true));
+      for (const c of clones) prev.appendChild(c);
+      const mergedH = measureSec(prev);
+      if (mergedH <= slideMaxHeight * (1 + MERGE_OVERFLOW_TOLERANCE)) {
+        slides.splice(i, 1);
+        continue;
+      }
+      for (const c of clones) prev.removeChild(c);
+    }
+
+    // 2) Redistribute: prev의 마지막 '이동 가능' 요소(p/blockquote/list)를 cur 앞으로 옮긴다.
+    //    table/code/image/heading은 이동 대상에서 제외 (지워도 깨지지 않는 본문 블록만).
+    const movableTags = new Set(['P', 'BLOCKQUOTE', 'UL', 'OL']);
+    let candidate = null;
+    for (let k = prev.children.length - 1; k >= 0; k--) {
+      const el = prev.children[k];
+      if (movableTags.has(el.tagName)) {
+        candidate = el;
+        break;
+      }
+    }
+    if (!candidate) continue;
+    if (prev.children.length <= 1) continue; // prev가 텅 비게 되는 건 금지
+
+    const idxInPrev = Array.from(prev.children).indexOf(candidate);
+    prev.removeChild(candidate);
+    cur.insertBefore(candidate, cur.firstChild);
+
+    const prevH = measureSec(prev);
+    const curHNew = measureSec(cur);
+    const upper = slideMaxHeight * (1 + MERGE_OVERFLOW_TOLERANCE);
+    if (
+      prevH <= upper &&
+      curHNew <= upper &&
+      prevH >= slideMaxHeight * REDISTRIBUTE_MIN_RATIO
+    ) {
+      // 이동 유지 — orphan 해소, 양쪽 균형
+    } else {
+      // 원복
+      cur.removeChild(candidate);
+      if (idxInPrev >= prev.children.length) {
+        prev.appendChild(candidate);
+      } else {
+        prev.insertBefore(candidate, prev.children[idxInPrev]);
+      }
     }
   }
 

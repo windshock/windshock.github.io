@@ -486,22 +486,34 @@ a.presentation-deck-lang-btn:hover {
   user-select: none;
 }
 
-/* pretext 크레딧 — 은근한 존재감: 기본은 희미, hover에서만 뚜렷해진다. */
-#presentation-deck-host .presentation-deck-chrome-credit {
-  color: rgba(255, 255, 255, 0.45);
-  font-size: 11px;
+/* pretext 크레딧 워터마크 — 좌하단 고정, 매우 희미. Reveal 우하단 컨트롤과 충돌 없음. */
+#presentation-deck-host .presentation-deck-credit-watermark {
+  position: absolute;
+  left: calc(0.5rem + env(safe-area-inset-left, 0px));
+  bottom: calc(0.35rem + env(safe-area-inset-bottom, 0px));
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.28);
+  font-size: 9px;
   font-variant: small-caps;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-decoration: none;
-  margin-left: 0.25rem;
-  transition: color 120ms ease;
+  pointer-events: auto;
+  user-select: none;
+  transition: color 140ms ease;
 }
 
-#presentation-deck-host .presentation-deck-chrome-credit:hover,
-#presentation-deck-host .presentation-deck-chrome-credit:focus-visible {
-  color: rgba(255, 255, 255, 0.85);
+#presentation-deck-host .presentation-deck-credit-watermark:hover,
+#presentation-deck-host .presentation-deck-credit-watermark:focus-visible {
+  color: rgba(255, 255, 255, 0.75);
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+
+/* 아주 좁은 화면(370px 미만)에서는 워터마크도 감춘다. */
+@media (max-width: 370px) {
+  #presentation-deck-host .presentation-deck-credit-watermark {
+    display: none;
+  }
 }
 
 #presentation-deck-host .presentation-deck-theme-select {
