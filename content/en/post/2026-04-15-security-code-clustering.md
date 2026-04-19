@@ -380,24 +380,7 @@ Process encoded as artifacts, so the next person — or the next AI agent — do
 
 ---
 
-## 8. What Semgrep found vs. what I expected
-
-The gap between estimate and measurement was the biggest lesson.
-
-| Cluster | Initial estimate | Semgrep result | Ratio |
-|---|---|---|---|
-| C2 | 5 endpoints / 2 modules | 10 / 2 modules | 2x |
-| C3 | 10+ sites / 3 modules | 56 / 4 modules | **5x** |
-| C4 | 4+ modules | 90 / 9 modules | **10x** |
-| C5 | 7+ sites / 7 modules | 2 (API only, backend not scanned) | Partial |
-
-C3 and C4 expanded dramatically once Semgrep ran across the full codebase. The AOP-based logging (C4) was particularly surprising — global interceptors meant that every endpoint in those modules was affected, not just the handful I'd manually identified.
-
-The lesson: **instinct provides the cluster hypothesis. Tooling validates the boundary.** Without automated detection, I would have underestimated C3 and C4 by an order of magnitude.
-
----
-
-## 9. Where this fits in the bigger picture
+## 8. Conclusion
 
 This post is a direct continuation of the argument I made before:
 
@@ -409,4 +392,6 @@ This post is a direct continuation of the argument I made before:
 The security industry has largely solved the "find more" problem. What remains is the "understand and act" problem. Clustering is one concrete answer to that — not the only one, but a proven one.
 
 The `sec-cluster` skill, the strategy document, and the Semgrep templates are all open source. If you're doing code-level security assessment at scale, I hope they save you the months of iteration they cost me.
+
+Detection is no longer the bottleneck. **Interpretation and prioritization are.** Stop looking for risk inside individual cells — look at the intersections.
 
