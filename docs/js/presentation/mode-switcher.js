@@ -27,19 +27,39 @@ function readPresentationViewport() {
   return { width: window.innerWidth, height: window.innerHeight };
 }
 
+/** Read env(safe-area-inset-*) values exposed as CSS variables (see presentation.css). */
+function readPresentationSafeAreaInsets() {
+  const cs = window.getComputedStyle(document.documentElement);
+  const px = (name) => {
+    const v = parseFloat(cs.getPropertyValue(name));
+    return Number.isFinite(v) && v > 0 ? v : 0;
+  };
+  return {
+    top: px('--presentation-safe-top'),
+    right: px('--presentation-safe-right'),
+    bottom: px('--presentation-safe-bottom'),
+    left: px('--presentation-safe-left'),
+  };
+}
+
 /**
  * Logical width/height for Reveal + slide pagination. Narrow / portrait gets a taller
  * logical canvas (up to 1200) and extra vertical reserve for controls & safe areas.
  */
 function getPresentationConfiguredSize() {
   const { width: vwRaw, height: vhRaw } = readPresentationViewport();
-  const configuredW = Math.min(vwRaw, 1280);
+  const safe = readPresentationSafeAreaInsets();
+  // Subtract horizontal/vertical safe-area insets — the deck-host pads them out, so the
+  // usable Reveal area is smaller than the raw visual viewport on notched phones.
+  const vwUsable = Math.max(vwRaw - safe.left - safe.right, 280);
+  const vhUsable = Math.max(vhRaw - safe.top - safe.bottom, 280);
+  const configuredW = Math.min(vwUsable, 1280);
   const narrow = configuredW < 540;
   // In-flow chrome row (~48px) + padding: Reveal logical size must match the flex area
   // below it or scaling letterboxes and looks like “half the screen”.
   const chromeReservePx = narrow ? 56 : 0;
-  const vhNet = Math.max(vhRaw - chromeReservePx, 320);
-  const configuredH = narrow ? Math.min(vhNet, 1200) : Math.min(vhRaw, 720);
+  const vhNet = Math.max(vhUsable - chromeReservePx, 320);
+  const configuredH = narrow ? Math.min(vhNet, 1200) : Math.min(vhUsable, 720);
   const portrait = configuredH > configuredW * 1.04;
   let viewportHeightReserve = VIEWPORT_HEIGHT_RESERVE;
   if (narrow && portrait) {

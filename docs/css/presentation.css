@@ -1,3 +1,12 @@
+/* Expose env() safe-area insets as CSS variables so JS layout code can subtract them
+ * from the viewport height (otherwise notches/home-indicator clip slide bottoms). */
+:root {
+  --presentation-safe-top: env(safe-area-inset-top, 0px);
+  --presentation-safe-right: env(safe-area-inset-right, 0px);
+  --presentation-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --presentation-safe-left: env(safe-area-inset-left, 0px);
+}
+
 .presentation-toolbar {
   display: flex;
   gap: 0.5rem;
@@ -118,6 +127,13 @@ section.presentation-slide {
   overflow-wrap: break-word;
 }
 
+/* pretext로 계산된 줄바꿈(\n)을 렌더에 반영한다.
+ * 이 규칙이 없으면 브라우저 자연 줄바꿈이 pretext와 달라져 측정 높이보다 실제 높이가 커지고,
+ * 데스크톱에서도 슬라이드 하단이 잘리는 원인이 된다. (측정 셸·실제 렌더 양쪽 모두 적용) */
+section.presentation-slide p {
+  white-space: pre-line;
+}
+
 /*
  * 본문 슬라이드(표지·전면 인포 제외): 배경·글자색은 Reveal 테마(--r-*)에 맡김.
  * 예전 고정 연회색은 다크 테마에서 카드처럼 떠 보이거나 글자색과 충돌했다.
@@ -154,6 +170,7 @@ section.presentation-slide {
   blockquote {
   margin: 0.5em 0;
   padding: 0.35em 0 0.35em 0.85em;
+  border-left: 0.12em solid rgba(66, 175, 250, 0.55);
   border-left: 0.12em solid color-mix(in srgb, var(--r-link-color, #42affa) 55%, transparent);
   color: var(--r-main-color, inherit);
   opacity: 0.92;
@@ -167,6 +184,7 @@ section.presentation-slide {
   padding: 0.08em 0.22em;
   border-radius: 0.2em;
   font-size: 0.88em;
+  background: rgba(204, 204, 204, 0.14);
   background: color-mix(in srgb, var(--r-main-color, #ccc) 14%, transparent);
 }
 
@@ -175,7 +193,9 @@ section.presentation-slide {
   )
   pre {
   border-radius: 0.25em;
+  border: 1px solid rgba(136, 136, 136, 0.22);
   border: 1px solid color-mix(in srgb, var(--r-main-color, #888) 22%, transparent);
+  background: rgba(255, 255, 255, 0.07);
   background: color-mix(in srgb, var(--r-main-color, #fff) 7%, var(--r-background-color, #111));
 }
 
@@ -195,6 +215,7 @@ section.presentation-slide {
   .reveal
   section.presentation-slide:not(.presentation-slide--cover):not(.presentation-slide--infographic)
   td {
+  border: 1px solid rgba(136, 136, 136, 0.2);
   border: 1px solid color-mix(in srgb, var(--r-main-color, #888) 20%, transparent);
   padding: 0.28em 0.45em;
 }
@@ -203,6 +224,7 @@ section.presentation-slide {
     .presentation-slide--infographic
   )
   th {
+  background: rgba(136, 136, 136, 0.08);
   background: color-mix(in srgb, var(--r-main-color, #888) 8%, transparent);
 }
 
@@ -301,6 +323,43 @@ section.presentation-slide--oversized {
 section.presentation-slide pre {
   max-height: min(62vh, 28rem);
   overflow-y: auto;
+  /* Visible scrollbar so a presenter notices content extends below the fold. */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.45) rgba(255, 255, 255, 0.06);
+}
+
+section.presentation-slide pre::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+section.presentation-slide pre::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 4px;
+}
+
+section.presentation-slide pre::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Subtle bottom-edge gradient on scrollable code blocks: tells presenter
+ * "more content below" even when the scrollbar is hidden (touch devices). */
+.presentation-slide-content-block:has(> pre[style*="overflow"]),
+.presentation-slide-content-block:has(> pre):has([style*="max-height"]) {
+  position: relative;
+}
+
+.presentation-slide-content-block:has(> pre[style*="overflow"])::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.6em;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.55));
+  border-bottom-left-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
 }
 
 /* 한 화면에 더 많은 본문이 들어가도록 Reveal 기본(42px·큰 제목)을 약간만 줄임 */
