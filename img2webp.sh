@@ -23,7 +23,13 @@ done
 
 find content -type f -name "*.md" | while read file; do
   echo "Updating $file"
-  # Only replace local image paths — skip any line that contains an http/https URL
-  # to avoid corrupting external links or CDN references.
-  sed -i '' -E '/https?:\/\//!s/\.(jpg|jpeg|png)/.webp/g' "$file"
+  # Replace ONLY image references that point into local /images/ paths, inside
+  # markdown image syntax `](...)` or frontmatter quoted strings `"..."`/`'...'`.
+  # This avoids corrupting body text that merely mentions .jpg/.png as extensions
+  # (e.g. enumerations like ".css, .jpg, .png, .txt"). It also ignores remote URLs.
+  sed -i '' -E \
+    -e 's#(\]\()(/images/[^)[:space:]]+)\.(jpg|jpeg|png)(\))#\1\2.webp\4#g' \
+    -e 's#(image:[[:space:]]*"[^"]*)\.(jpg|jpeg|png)"#\1.webp"#g' \
+    -e "s#(image:[[:space:]]*'[^']*)\.(jpg|jpeg|png)'#\\1.webp'#g" \
+    "$file"
 done
