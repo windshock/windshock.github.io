@@ -132,6 +132,17 @@ section.presentation-slide {
  * 데스크톱에서도 슬라이드 하단이 잘리는 원인이 된다. (측정 셸·실제 렌더 양쪽 모두 적용) */
 section.presentation-slide p {
   white-space: pre-line;
+  /* pretext 계열 타이포 미학 — 문단 마지막 줄에 한 단어만 남는 widow 방지 (Chromium 117+) */
+  text-wrap: pretty;
+}
+
+/* 슬라이드 제목은 줄 길이를 균형 있게 — 긴 제목 끝에 한 단어만 덩그러니 남지 않는다.
+ * pretext가 본문 단락에 하는 일을 제목에는 네이티브 CSS로 맡긴다. */
+section.presentation-slide h1,
+section.presentation-slide h2,
+section.presentation-slide h3,
+section.presentation-slide h4 {
+  text-wrap: balance;
 }
 
 /*
@@ -473,6 +484,24 @@ a.presentation-deck-lang-btn:hover {
 #presentation-deck-host .presentation-deck-chrome-label {
   color: rgba(255, 255, 255, 0.88);
   user-select: none;
+}
+
+/* pretext 크레딧 — 은근한 존재감: 기본은 희미, hover에서만 뚜렷해진다. */
+#presentation-deck-host .presentation-deck-chrome-credit {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  margin-left: 0.25rem;
+  transition: color 120ms ease;
+}
+
+#presentation-deck-host .presentation-deck-chrome-credit:hover,
+#presentation-deck-host .presentation-deck-chrome-credit:focus-visible {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 #presentation-deck-host .presentation-deck-theme-select {

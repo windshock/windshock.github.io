@@ -404,6 +404,18 @@ export function initPresentationMode() {
     chromeEnd.appendChild(themeLabel);
     chromeEnd.appendChild(themeSelect);
 
+    /* pretext 크레딧 — 슬라이드 문단 줄바꿈이 이 라이브러리로 계산됨을 은근히 남긴다. */
+    const pretextCredit = document.createElement('a');
+    pretextCredit.className = 'presentation-deck-chrome-credit';
+    pretextCredit.href = 'https://github.com/chenglou/pretext';
+    pretextCredit.target = '_blank';
+    pretextCredit.rel = 'noopener noreferrer';
+    pretextCredit.textContent = 'typeset with pretext';
+    pretextCredit.title = isKo
+      ? '이 슬라이드의 줄바꿈은 pretext로 계산되었습니다'
+      : 'Line breaks computed with pretext';
+    chromeEnd.appendChild(pretextCredit);
+
     chrome.appendChild(chromeStart);
     chrome.appendChild(chromeEnd);
     /* Above slides in the tree so flex column lays chrome out first — avoids fixed overlap on content */
