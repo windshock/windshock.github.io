@@ -113,6 +113,14 @@ body.presentation-present-active {
   margin-bottom: 0.25em;
 }
 
+/* 측정 셸의 본문 line-height를 실제 렌더(section.presentation-slide p/li 1.48)와 일치시킨다.
+ * 기본 브라우저 line-height(~1.2)와 1.48의 차이가 모바일 다문단 슬라이드에서 ~23% 과소
+ * 측정을 만들어 140px 단위 오버플로를 유발한다. */
+#presentation-deck-host .presentation-measure-shell p,
+#presentation-deck-host .presentation-measure-shell li {
+  line-height: 1.48;
+}
+
 #presentation-deck-host .slides section {
   text-align: left;
 }
@@ -545,7 +553,10 @@ body.presentation-present-active iframe.giscus-frame {
 
 /* Narrow / phone portrait: smaller type, tighter slide padding, larger tap targets */
 @media (max-width: 36rem) {
-  #presentation-deck-host .reveal {
+  #presentation-deck-host .reveal,
+  /* 측정 셸도 동일한 font-size를 써야 측정↔렌더 일치. 기본 34px로 측정되면 모바일에선
+   * 실제 렌더(16px 전후)보다 배 이상 크게 나와서 fits()가 조기 false → 희박한 슬라이드 폭증. */
+  #presentation-deck-host .presentation-measure-shell {
     font-size: clamp(16px, 4.2vw, 26px);
   }
 

@@ -62,11 +62,13 @@ function getPresentationConfiguredSize() {
   const configuredH = narrow ? Math.min(vhNet, 1200) : Math.min(vhUsable, 720);
   const portrait = configuredH > configuredW * 1.04;
   let viewportHeightReserve = VIEWPORT_HEIGHT_RESERVE;
-  /* 좁은 세로: slideMaxHeight 여유. 과하면 슬라이드 본문이 세로로 짧게만 보인다. */
+  /* 좁은 세로: slideMaxHeight 여유.
+   * 측정/렌더 미세 차이(margin collapse, bullet 크기, 서브픽셀 반올림)로 모바일에서 소량
+   * 누적 오버플로가 관찰된다. 넉넉한 reserve로 보수적 예산을 쓴다. */
   if (narrow && portrait) {
-    viewportHeightReserve = VIEWPORT_HEIGHT_RESERVE + 28;
+    viewportHeightReserve = VIEWPORT_HEIGHT_RESERVE + 140;
   } else if (narrow) {
-    viewportHeightReserve = VIEWPORT_HEIGHT_RESERVE + 20;
+    viewportHeightReserve = VIEWPORT_HEIGHT_RESERVE + 60;
   }
   return { configuredW, configuredH, viewportHeightReserve, narrow, portrait };
 }

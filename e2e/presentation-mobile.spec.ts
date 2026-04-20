@@ -119,6 +119,7 @@ test.describe('Presentation mobile portrait quality', () => {
     let step = 0;
     const offenders: { step: number; reason: string }[] = [];
     while (true) {
+      await page.waitForTimeout(350); // Reveal 전환이 끝난 뒤 측정
       const m = await page.evaluate(() => {
         const R = window.Reveal;
         const el = R.getCurrentSlide();
@@ -151,6 +152,7 @@ test.describe('Presentation mobile portrait quality', () => {
       }
 
       if (capture) {
+        await page.waitForTimeout(800); // Reveal 전환 완전 종료 및 이전 슬라이드 페이드아웃 대기
         const deck = page.locator('#presentation-deck-host');
         await deck.screenshot({
           path: `test-results/mobile-slide-${String(step).padStart(2, '0')}.png`,
