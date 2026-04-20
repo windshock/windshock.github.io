@@ -62,10 +62,11 @@ function getPresentationConfiguredSize() {
   const configuredH = narrow ? Math.min(vhNet, 1200) : Math.min(vhUsable, 720);
   const portrait = configuredH > configuredW * 1.04;
   let viewportHeightReserve = VIEWPORT_HEIGHT_RESERVE;
+  /* 좁은 세로: slideMaxHeight 여유. 과하면 슬라이드 본문이 세로로 짧게만 보인다. */
   if (narrow && portrait) {
-    viewportHeightReserve = VIEWPORT_HEIGHT_RESERVE + 88;
+    viewportHeightReserve = VIEWPORT_HEIGHT_RESERVE + 28;
   } else if (narrow) {
-    viewportHeightReserve = VIEWPORT_HEIGHT_RESERVE + 44;
+    viewportHeightReserve = VIEWPORT_HEIGHT_RESERVE + 20;
   }
   return { configuredW, configuredH, viewportHeightReserve, narrow, portrait };
 }
@@ -333,6 +334,14 @@ export function initPresentationMode() {
     if (prefixSlides.length) sections.unshift(...prefixSlides);
 
     for (const sec of sections) slidesEl.appendChild(sec);
+
+    /* dodge 모듈에 슬라이드 wrap 요청 — 단어 span으로 쪼개야 고양이가 지나갈 때 비킨다.
+     * dodge가 미로드여도 무해(이벤트 무시). */
+    try {
+      window.dispatchEvent(new CustomEvent('oneko:rewrap', { detail: { root: slidesEl } }));
+    } catch (_) {
+      /* IE 호환 — 무시 */
+    }
 
     const isKo =
       document.documentElement.lang && document.documentElement.lang.toLowerCase().startsWith('ko');

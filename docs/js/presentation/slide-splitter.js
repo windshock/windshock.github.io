@@ -494,6 +494,31 @@ function paginateBlocks(blocks, pretext, options) {
   }
 
   /*
+   * 본문이 사실상 비어 있는 shell 슬라이드를 제거한다.
+   *   - 모바일 portrait처럼 슬라이드 budget이 작아질수록, paragraph/indivisible 분할 분기에서
+   *     `startNewSlide(true)`로 만들어진 새 섹션에 후속 콘텐츠가 들어가지 못한 채 남아
+   *     `→ continued` 힌트만 보이는 빈 슬라이드가 생길 수 있다.
+   *   - 본문 구분선(`---` → `<hr>`)만 들어간 슬라이드도 텍스트 0자라 같은 부류로 본다.
+   * heading만 있는 슬라이드는 다음 본문 슬라이드의 도입 역할을 하므로 보존한다.
+   */
+  for (let i = slides.length - 1; i >= 0; i--) {
+    const s = slides[i];
+    const text = (s.textContent || '').replace(/\s+/g, '');
+    const hasMedia = !!s.querySelector('img,svg,video,iframe,canvas');
+    const hasHeading = !!s.querySelector('h1,h2,h3,h4,h5,h6');
+    if (!text && !hasMedia && !hasHeading) {
+      slides.splice(i, 1);
+      continue;
+    }
+    const onlyHr =
+      s.children.length > 0 &&
+      Array.from(s.children).every((c) => c.tagName === 'HR');
+    if (onlyHr) {
+      slides.splice(i, 1);
+    }
+  }
+
+  /*
    * `data-continued`는 "이전 슬라이드와 같은 소절"을 뜻하지만, 푸터 문구(→ continued)는
    * 마지막 조각에도 붙어 다음 가로 슬라이드가 이미 새 `###`인데도 오해를 부른다.
    * 같은 블록 묶음의 꼬리 슬라이드에서는 힌트를 붙이지 않는다.
