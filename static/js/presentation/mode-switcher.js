@@ -11,6 +11,8 @@ import {
   resolveThemeIdForSession,
   setStoredThemePreference,
 } from './reveal-theme.js';
+import { PresentationTTS } from './tts-engine.js';
+import { extractSlideText } from './tts-text.js';
 
 const STORAGE_PREFIX = 'presentation-mode:';
 
@@ -410,6 +412,67 @@ export function initPresentationMode() {
       if (R && typeof R.layout === 'function') R.layout();
     });
 
+    /* TTS 토글 — 첫 클릭 시 Kokoro-82M q8f16(~86MB)를 lazy-load.
+     * 상태별 라벨: 🔊 idle / … loading / ■ speaking / ⚠ error
+     * 버튼 하나가 play/stop 토글 역할. Replay는 stop 후 다시 누르면 됨. */
+    const ttsBtn = document.createElement('button');
+    ttsBtn.type = 'button';
+    ttsBtn.className = 'presentation-deck-tts-btn';
+    ttsBtn.textContent = '🔊';
+    const ttsIdleTitle = isKo ? '현재 슬라이드 읽기' : 'Read this slide';
+    ttsBtn.title = ttsIdleTitle;
+    ttsBtn.setAttribute('aria-label', ttsIdleTitle);
+
+    const tts = new PresentationTTS();
+    const updateTtsBtn = (state, err) => {
+      ttsBtn.dataset.ttsState = state;
+      switch (state) {
+        case 'loading':
+          ttsBtn.textContent = '…';
+          ttsBtn.title = isKo ? '엔진 로딩 중…' : 'Loading engine…';
+          break;
+        case 'speaking':
+          ttsBtn.textContent = '■';
+          ttsBtn.title = isKo ? '중단' : 'Stop';
+          break;
+        case 'error': {
+          const code = /** @type {any} */ (err)?.code;
+          if (code === 'no-korean-voice') {
+            ttsBtn.textContent = '⚠';
+            ttsBtn.title = isKo
+              ? '이 모델에 한국어 보이스가 없음'
+              : 'No Korean voice in this model';
+          } else {
+            ttsBtn.textContent = '⚠';
+            ttsBtn.title = isKo ? 'TTS 실패 — 다시 클릭' : 'TTS failed — click to retry';
+          }
+          break;
+        }
+        default:
+          ttsBtn.textContent = '🔊';
+          ttsBtn.title = ttsIdleTitle;
+      }
+      ttsBtn.setAttribute('aria-label', ttsBtn.title);
+    };
+    tts.onStateChange(updateTtsBtn);
+
+    ttsBtn.addEventListener('click', () => {
+      const s = tts.getState();
+      if (s === 'speaking' || s === 'loading') {
+        tts.stop();
+        return;
+      }
+      const R = window.Reveal;
+      const cur = R && typeof R.getCurrentSlide === 'function' ? R.getCurrentSlide() : null;
+      const lang = isKo ? 'ko' : 'en';
+      const text = extractSlideText(cur, lang);
+      if (!text) return;
+      tts.speak(text, { lang }).catch(() => {
+        /* 내부에서 error 상태 전환 — 여기선 무시 */
+      });
+    });
+
+    chromeEnd.appendChild(ttsBtn);
     chromeEnd.appendChild(themeSelect);
 
     chrome.appendChild(chromeStart);
@@ -485,9 +548,26 @@ export function initPresentationMode() {
 
     window.visualViewport?.addEventListener('resize', onViewportChange);
     window.addEventListener('orientationchange', onViewportChange);
+
+    /* 슬라이드가 바뀌면 현재 TTS 재생을 즉시 중단 (자동 넘김 TTS는 v1 범위 밖) */
+    const onSlideChanged = () => {
+      tts.stop();
+    };
+    if (typeof RevealApi.on === 'function') {
+      RevealApi.on('slidechanged', onSlideChanged);
+    }
+
     deckHost._presentationDetachViewport = () => {
       window.visualViewport?.removeEventListener('resize', onViewportChange);
       window.removeEventListener('orientationchange', onViewportChange);
+      if (typeof RevealApi.off === 'function') {
+        try {
+          RevealApi.off('slidechanged', onSlideChanged);
+        } catch (_) {
+          /* ignore */
+        }
+      }
+      tts.destroy();
     };
   }
 
