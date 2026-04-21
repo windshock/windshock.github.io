@@ -7,7 +7,7 @@ presentation: true
 tags: ["TrustAndCulture", "DevOps", "플랫폼 엔지니어링", "Policy as Code", "Secure Default", "조직 설계"]
 categories: ["보안문화", "조직 설계"]
 description: "보안–DevOps 문제를 지식 전달 실패가 아니라 기본값 설계, 인터페이스, 예외 처리, 정렬의 구조 문제로 다시 보는 조직 설계 보고서."
-image: "/images/pdf-previews/Security_Knowledge_to_System_Design_p1.png"
+image: "/images/pdf-previews/Security_Knowledge_to_System_Design_p1.webp"
 presentationInfographic: "/images/post/Architecting_Safe_Velocity_infographic.png"
 ---
 

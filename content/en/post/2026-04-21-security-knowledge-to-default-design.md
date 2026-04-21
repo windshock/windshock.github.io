@@ -7,7 +7,7 @@ presentation: true
 tags: ["TrustAndCulture", "DevOps", "Platform Engineering", "Policy as Code", "Secure Default", "Organizational Design"]
 categories: ["Security Culture", "Organizational Design"]
 description: "An organizational design report that reframes the security–DevOps problem from failed knowledge transfer to default design, interfaces, exception handling, and alignment."
-image: "/images/pdf-previews/Architecting_Safe_Velocity_p1.png"
+image: "/images/pdf-previews/Architecting_Safe_Velocity_p1.webp"
 presentationInfographic: "/images/post/Architecting_Safe_Velocity_infographic.png"
 ---
 
