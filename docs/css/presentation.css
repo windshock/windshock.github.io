@@ -535,6 +535,52 @@ a.presentation-deck-lang-btn:hover {
   cursor: pointer;
 }
 
+/* TTS 토글 — 아이콘 1개로 play/stop/loading/error 전부 표현. chrome 공간 보호. */
+#presentation-deck-host .presentation-deck-tts-btn {
+  font: inherit;
+  font-size: 14px;
+  line-height: 1;
+  width: 1.9rem;
+  height: 1.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #eee;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  cursor: pointer;
+  pointer-events: auto;
+  padding: 0;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+#presentation-deck-host .presentation-deck-tts-btn:hover {
+  background: rgba(40, 40, 40, 0.75);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* 로딩 중: 점 세 개 애니메이션으로 "작업 중" 신호 */
+#presentation-deck-host .presentation-deck-tts-btn[data-tts-state='loading'] {
+  animation: presentation-tts-pulse 1.2s ease-in-out infinite;
+}
+
+/* 재생 중: 미세한 글로우로 활성 상태 암시 */
+#presentation-deck-host .presentation-deck-tts-btn[data-tts-state='speaking'] {
+  color: #7ec6ff;
+  border-color: rgba(126, 198, 255, 0.6);
+}
+
+#presentation-deck-host .presentation-deck-tts-btn[data-tts-state='error'] {
+  color: #ffb38a;
+  border-color: rgba(255, 179, 138, 0.6);
+}
+
+@keyframes presentation-tts-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
 article.presentation-present-active .post-entry-cover,
 article.presentation-present-active .toc,
 article.presentation-present-active .post-content,
@@ -566,10 +612,17 @@ body.presentation-present-active iframe.giscus-frame {
 
   #presentation-deck-host .presentation-deck-back-btn,
   #presentation-deck-host .presentation-deck-theme-select,
+  #presentation-deck-host .presentation-deck-tts-btn,
   #presentation-deck-host .presentation-deck-lang-btn {
     min-height: 44px;
     padding: 0.35rem 0.65rem;
     font-size: 14px;
+  }
+
+  #presentation-deck-host .presentation-deck-tts-btn {
+    min-width: 44px;
+    width: auto;
+    height: 44px;
   }
 
   #presentation-deck-host .presentation-deck-lang {
@@ -581,5 +634,20 @@ body.presentation-present-active iframe.giscus-frame {
 @media (max-width: 36rem) and (orientation: portrait) {
   section.presentation-slide pre {
     max-height: min(48vh, 18rem);
+  }
+}
+
+/* 아주 좁은 폭(<420px): Back 버튼 텍스트를 "←"로 축약해서 chrome 한 줄 유지. */
+@media (max-width: 26rem) {
+  #presentation-deck-host .presentation-deck-back-btn {
+    font-size: 0;
+    min-width: 44px;
+    padding: 0.35rem 0.6rem;
+  }
+
+  #presentation-deck-host .presentation-deck-back-btn::before {
+    content: '←';
+    font-size: 16px;
+    line-height: 1;
   }
 }
