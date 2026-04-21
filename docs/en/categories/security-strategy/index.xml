@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Security Strategy on After the Code</title><link>https://windshock.github.io/en/categories/security-strategy/</link><description>Recent content in Security Strategy on After the Code</description><generator>Hugo -- 0.145.0</generator><language>en-US</language><lastBuildDate>Tue, 21 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://windshock.github.io/en/categories/security-strategy/index.xml" rel="self" type="application/rss+xml"/><item><title>After the Code, the Structure Remains</title><link>https://windshock.github.io/en/post/2026-04-21-after-the-code-the-structure-remains/</link><pubDate>Tue, 21 Apr 2026 00:00:00 +0000</pubDate><guid>https://windshock.github.io/en/post/2026-04-21-after-the-code-the-structure-remains/</guid><description>The representative foreword of this blog: security now fails less at finding issues than at absorbing, sustaining, and acting on what has already been found.</description></item><item><title>The Gap Between CISO Strategy and Execution: The WAF Debate and Field Leadership Report</title><link>https://windshock.github.io/en/post/2025-06-30-ciso-strategy-execution/</link><pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate><guid>https://windshock.github.io/en/post/2025-06-30-ciso-strategy-execution/</guid><description>A comprehensive report presenting a roadmap for practical security improvement and field leadership, centered around the debate on WAF and the gap between philosophy and execution.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Security Strategy on After the Code</title>
+    <link>https://windshock.github.io/en/categories/security-strategy/</link>
+    <description>Recent content in Security Strategy on After the Code</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Tue, 21 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/en/categories/security-strategy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>After the Code, the Structure Remains</title>
+      <link>https://windshock.github.io/en/post/2026-04-21-after-the-code-the-structure-remains/</link>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2026-04-21-after-the-code-the-structure-remains/</guid>
+      <description>The representative foreword of this blog: security now fails less at finding issues than at absorbing, sustaining, and acting on what has already been found.</description>
+    </item>
+    <item>
+      <title>The Gap Between CISO Strategy and Execution: The WAF Debate and Field Leadership Report</title>
+      <link>https://windshock.github.io/en/post/2025-06-30-ciso-strategy-execution/</link>
+      <pubDate>Mon, 30 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2025-06-30-ciso-strategy-execution/</guid>
+      <description>A comprehensive report presenting a roadmap for practical security improvement and field leadership, centered around the debate on WAF and the gap between philosophy and execution.</description>
+    </item>
+  </channel>
+</rss>

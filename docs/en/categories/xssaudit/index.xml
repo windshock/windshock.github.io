@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>XSSAudit on After the Code</title><link>https://windshock.github.io/en/categories/xssaudit/</link><description>Recent content in XSSAudit on After the Code</description><generator>Hugo -- 0.145.0</generator><language>en-US</language><lastBuildDate>Thu, 08 Aug 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://windshock.github.io/en/categories/xssaudit/index.xml" rel="self" type="application/rss+xml"/><item><title>About the XSSAudit</title><link>https://windshock.github.io/en/post/2019-08-08-about-the-xssaudit/</link><pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate><guid>https://windshock.github.io/en/post/2019-08-08-about-the-xssaudit/</guid><description>Why Google removed XSSAudit from Chrome and what it means for web security—analyzing the shift from XSS filters to CSP.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>XSSAudit on After the Code</title>
+    <link>https://windshock.github.io/en/categories/xssaudit/</link>
+    <description>Recent content in XSSAudit on After the Code</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 08 Aug 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/en/categories/xssaudit/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About the XSSAudit</title>
+      <link>https://windshock.github.io/en/post/2019-08-08-about-the-xssaudit/</link>
+      <pubDate>Thu, 08 Aug 2019 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2019-08-08-about-the-xssaudit/</guid>
+      <description>Why Google removed XSSAudit from Chrome and what it means for web security—analyzing the shift from XSS filters to CSP.</description>
+    </item>
+  </channel>
+</rss>

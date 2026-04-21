@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>XML-RPC on After the Code</title><link>https://windshock.github.io/en/tags/xml-rpc/</link><description>Recent content in XML-RPC on After the Code</description><generator>Hugo -- 0.145.0</generator><language>en-US</language><lastBuildDate>Thu, 24 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://windshock.github.io/en/tags/xml-rpc/index.xml" rel="self" type="application/rss+xml"/><item><title>CVE-2019-17570 Apache XML-RPC Vulnerability Analysis Report</title><link>https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</link><pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate><guid>https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</guid><description>Technical analysis of CVE-2019-17570 deserialization RCE in Apache XML-RPC, with patch comparison and secure implementation guidance.</description></item><item><title>XML-RPC Security Vulnerabilities Analysis and Mitigation Strategies</title><link>https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</link><pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate><guid>https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</guid><description>Comprehensive analysis of XML-RPC security flaws including RCE, XXE, and DDoS, with mitigation strategies and a Python PoC exploit.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>XML-RPC on After the Code</title>
+    <link>https://windshock.github.io/en/tags/xml-rpc/</link>
+    <description>Recent content in XML-RPC on After the Code</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 24 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/en/tags/xml-rpc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CVE-2019-17570 Apache XML-RPC Vulnerability Analysis Report</title>
+      <link>https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</link>
+      <pubDate>Thu, 24 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2025-04-24-cve-2019-17570-apache-xmlrpc/</guid>
+      <description>Technical analysis of CVE-2019-17570 deserialization RCE in Apache XML-RPC, with patch comparison and secure implementation guidance.</description>
+    </item>
+    <item>
+      <title>XML-RPC Security Vulnerabilities Analysis and Mitigation Strategies</title>
+      <link>https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</link>
+      <pubDate>Fri, 28 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</guid>
+      <description>Comprehensive analysis of XML-RPC security flaws including RCE, XXE, and DDoS, with mitigation strategies and a Python PoC exploit.</description>
+    </item>
+  </channel>
+</rss>

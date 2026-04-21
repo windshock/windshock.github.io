@@ -1,9 +1,669 @@
-<!doctype html><html lang=ko dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부 | After the Code</title>
-<meta name=keywords content="Mind,ATO,크리덴셜 스터핑,CaaS,계정 탈취,포인트,기프티콘,가상자산"><meta name=description content="포인트·기프티콘·코인의 환류 구조를 통해 한국형 CaaS 공급망이 어떻게 스스로를 재생산하는지 분석합니다. 단순한 로그인 방어를 넘어 행위망 전체를 읽어야 하는 이유."><meta name=author content><link rel=canonical href=https://windshock.github.io/ko/post/2026-04-07-dismantling-ato-supply-chain/><link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel=stylesheet><link rel=alternate type=application/rss+xml title=RSS href=https://windshock.github.io/index.xml><link crossorigin=anonymous href=/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF+13Dyqob6ASlTrTye8=" rel="preload stylesheet" as=style><link rel=icon href=https://windshock.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://windshock.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://windshock.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://windshock.github.io/apple-touch-icon.png><link rel=mask-icon href=https://windshock.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://windshock.github.io/en/post/2026-04-07-dismantling-ato-supply-chain/><link rel=alternate hreflang=ko href=https://windshock.github.io/ko/post/2026-04-07-dismantling-ato-supply-chain/><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css><script defer src=https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js></script><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3862213856942912" crossorigin=anonymous></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-6N6EEJ259T"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-6N6EEJ259T")}</script><meta property="og:url" content="https://windshock.github.io/ko/post/2026-04-07-dismantling-ato-supply-chain/"><meta property="og:site_name" content="After the Code"><meta property="og:title" content="계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부"><meta property="og:description" content="포인트·기프티콘·코인의 환류 구조를 통해 한국형 CaaS 공급망이 어떻게 스스로를 재생산하는지 분석합니다. 단순한 로그인 방어를 넘어 행위망 전체를 읽어야 하는 이유."><meta property="og:locale" content="ko-KR"><meta property="og:type" content="article"><meta property="article:section" content="post"><meta property="article:published_time" content="2026-04-07T00:00:00+00:00"><meta property="article:modified_time" content="2026-04-07T00:00:00+00:00"><meta property="article:tag" content="Mind"><meta property="article:tag" content="ATO"><meta property="article:tag" content="크리덴셜 스터핑"><meta property="article:tag" content="CaaS"><meta property="article:tag" content="계정 탈취"><meta property="article:tag" content="포인트"><meta property="og:image" content="https://windshock.github.io/images/pdf-previews/Dismantling_the_ATO_Supply_Chain_p1.webp"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://windshock.github.io/images/pdf-previews/Dismantling_the_ATO_Supply_Chain_p1.webp"><meta name=twitter:title content="계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부"><meta name=twitter:description content="포인트·기프티콘·코인의 환류 구조를 통해 한국형 CaaS 공급망이 어떻게 스스로를 재생산하는지 분석합니다. 단순한 로그인 방어를 넘어 행위망 전체를 읽어야 하는 이유."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://windshock.github.io/ko/post/"},{"@type":"ListItem","position":2,"name":"계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부","item":"https://windshock.github.io/ko/post/2026-04-07-dismantling-ato-supply-chain/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부","name":"계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부","description":"포인트·기프티콘·코인의 환류 구조를 통해 한국형 CaaS 공급망이 어떻게 스스로를 재생산하는지 분석합니다. 단순한 로그인 방어를 넘어 행위망 전체를 읽어야 하는 이유.","keywords":["Mind","ATO","크리덴셜 스터핑","CaaS","계정 탈취","포인트","기프티콘","가상자산"],"articleBody":"관련 영상 PDF - **새 탭으로 열기:** [/files/Dismantling_the_ATO_Supply_Chain.pdf](/files/Dismantling_the_ATO_Supply_Chain.pdf) \u003e PDF가 보이지 않으면 여기로 열어보세요: [/files/Dismantling_the_ATO_Supply_Chain.pdf](/files/Dismantling_the_ATO_Supply_Chain.pdf) 포인트, 기프티콘, 코인의 환류 구조 10년 전에도 한국에서는 대형 포털을 중심으로 대규모 ID·비밀번호 유출 사고가 있었고, 그 여파로 다양한 2차 피해가 발생했다. 특히 포인트, 기프티콘, 간편 구매처럼 계정만 탈취해도 바로 금전화할 수 있는 서비스들은 실제로 큰 타격을 받았다.\n당시에도 피해는 컸다. 하지만 지금 돌아보면, 그 시기의 공격은 오늘날처럼 하나의 수익형 운영 구조로까지 보이지는 않았다.\n지금은 다르다. 유출된 계정정보는 더 이상 로그인 시도용 목록이 아니다. 그것은 ATO(Account Takeover)의 출발점이 되고, 포인트·기프티콘·상품권 같은 stored-value 자산의 탈취로 이어지며, 그 수익은 다시 다른 공격을 가능하게 하는 자금으로 순환될 수 있다.\n내가 이 문제를 다시 보게 된 이유도 여기에 있다. 단순히 로그인 브루트포스가 늘었다는 차원의 이야기가 아니었다. 국내 서비스를 대상으로 한 차단 요청, 로그인 시도 로그, 게시판 스팸 흔적, 텔레그램 유도 계정, 그리고 선불유심 모집 정황을 함께 보다 보니, 개별 사건들이 따로 존재하는 것이 아니라 서로 연결된 운영 흔적처럼 보이기 시작했다.\n이 글에서 정리하는 관찰과 피벗 결과는 공개 리포지토리인 PointPivot에 계속 축적하고 있다. 글보다 더 구체적인 조사 메모, IOC, 클러스터 정리는 그 저장소에서 확인할 수 있다.\n이 문제의식은 최근 한국의 현실 맥락과도 맞닿아 있다. 서울경제 보도에 따르면 대규모 개인정보 유출 이후 명의도용방지서비스 엠세이퍼(Msafer)의 가입제한서비스 이용은 2023년 123만여 건에서 2025년 11월 2009만여 건으로 16배 이상 늘었다. 일요시사 보도는 2025년 통신분쟁조정 신청이 2123건으로 역대 최대였고, 이 가운데 명의도용 관련 분쟁이 217건이었다고 전했다. BJC저널이 소개한 SBS 보도상 기사는 ‘가전 구독’ 내구제 대출 사기가 2030 사회초년생을 겨냥해 반복되고 있다고 지적한다. 이 자료들이 곧바로 동일한 단일 조직을 입증하는 것은 아니지만, 적어도 유출 정보의 재사용과 명의도용 기반 수익화가 한국 사회에서 충분히 큰 문제로 번지고 있음을 시사한다.\n개별 사건이 아니라 연결된 운영 흔적 예를 들어 어떤 IP는 계정 탈취 시도 맥락에서 처음 보인다. 그런데 그 IP나 인접 대역, 혹은 같은 운영 흔적을 가진 다른 회선을 따라가 보면, 국내 웹사이트 게시판에 반복적으로 선불유심, 급전, 소액대출류의 스팸을 남기고, 텔레그램 핸들로 사람을 유도하고, 특정 닉네임과 홍보 패턴을 공유하는 경우가 나타난다.\n글로벌 평판 서비스에는 거의 기록이 없는데도, 국내 검색과 반복 피벗을 통해 보면 동일하거나 유사한 운영 주체의 흔적이 드러난다.\n이 지점에서 나는 이 구조를 단순한 스팸이나 일회성 계정 탈취로 보기 어렵다고 생각하게 됐다. 오히려 각 단계가 느슨하게 분업된, 일종의 한국형 범죄 서비스 공급망에 더 가까워 보인다. 유출 계정은 조달되고, 공격 인프라는 확보되며, 탈취한 자산은 현금화되고, 그 수익은 다시 다음 공격을 준비하는 데 재투입된다.\n한 사람이 모든 것을 직접 수행한다기보다, 필요한 자원과 역할이 분리된 채 연결되어 움직이는 구조에 가깝다.\n코인은 왜 중요한가 여기서 코인은 단순한 배경이 아니다. 내가 보기에는 코인이 이 구조를 단발 범행에서 반복 가능한 운영 모델로 바꿔주는 핵심 축이다.\n탈취한 포인트와 상품권은 현금화될 수 있고, 그 자금은 다시 가상자산으로 전환되어 이동·보관·분배되기 쉬워진다. 그리고 그렇게 모인 자금은 다시 유출 계정 구매, 프록시와 VPS 확보, 자동화 도구 운영, 통신수단 조달 같은 공격 인프라에 재투입될 수 있다.\n즉, 코인은 단순한 출금 수단이 아니다.\n탈취 자산을 다음 공격의 운영비로 바꿔주는 환류 장치에 가깝다.\n이 과정을 도식화하면, 유출 계정 조달부터 ATO, 포인트·기프티콘 현금화, 가상자산 전환, 그리고 재투자까지가 하나의 순환 고리처럼 이어진다. 아래 Figure A는 그 흐름을 단순화한 것이다. 문제는 개별 공격이 아니라, 이 환류 구조 자체가 공격을 계속 가능하게 만든다는 점이다.\nFigure A. A simplified model of the domestic Korean CaaS supply chain: leaked credentials, ATO, stored-value monetization, crypto conversion, and reinvestment.\n10년 전과 지금의 차이 이 점이 10년 전과 지금의 가장 큰 차이일지도 모른다. 예전에도 계정은 털렸고 2차 피해도 있었다. 하지만 지금은 그 피해가 끝나는 것이 아니라, 다음 공격을 위한 자본으로 다시 돌아간다.\n그 순간 계정 탈취는 일회성 절도가 아니라 스스로를 재생산하는 운영 구조가 된다.\n왜 한국에서는 더 잘 작동하는가 또 하나 중요한 점은, 이 구조가 한국적 특수성 위에서 작동한다는 사실이다. 한국은 포인트, 기프티콘, 모바일 상품권, stored-value 서비스가 매우 발달해 있고, 계정 하나만 탈취해도 금전적 가치로 연결되는 경우가 많다.\n동시에 선불유심, 명의도용, 커뮤니티 게시판 스팸, 텔레그램 유도 같은 로컬한 맥락은 글로벌 평판 서비스가 잘 포착하지 못한다. AbuseIPDB에 보이지 않는다고 해서 깨끗한 인프라라고 단정할 수 없는 이유가 여기에 있다.\n그래서 오늘날의 크리덴셜 스터핑은 예전처럼 유출 계정 목록을 한번 돌려보는 공격으로 보기 어렵다. 그것은 계정 탈취를 통해 stored-value 자산을 빼내고, 그 수익을 다시 인프라에 재투입하며, 필요하면 명의도용이나 부정 개통 정황과도 맞물릴 수 있는 수익형 운영 모델의 입구일 수 있다.\n왜 CAPTCHA만으로는 부족한가 이 관점에서 보면 CAPTCHA 강화만으로는 부족하다. CAPTCHA는 로그인 페이지 한곳의 마찰을 높일 수는 있다. 하지만 공격자가 이미 유출 계정 목록을 확보하고, 자동화 인프라와 수익화 경로, 자금 순환 구조까지 분리해 운영한다면, CAPTCHA는 그 구조 전체를 멈추지 못한다.\n이 문제는 이전에 정리한 CAPTCHA 우회 PoC와 방어 전략에서도 비슷하게 다뤘다. 그 글에서는 Playwright, Whisper, LLM 에이전트를 조합해 유료 API 없이 100% 로컬 환경에서 오디오 CAPTCHA를 자동 처리하는 흐름을 재현했고, DOM 난독화가 더 이상 충분한 방어가 아니라는 점을 정리했다. 같은 글에서 인용한 연구에 따르면 reCAPTCHA 오디오 챌린지는 오래전에도 평균 5.42초, 85.15% 정확도로 풀린 사례가 보고됐다. CAPTCHA는 필요한 마찰일 수는 있어도, 그것만으로는 계정 탈취 이후의 수익화와 재투자 구조까지 끊어내지 못한다.\n결국 필요한 것은 로그인 방어 하나가 아니라 행위망 전체를 보는 시선이다. 유출 계정의 재사용 여부, 비정상 로그인 탐지, 포인트·상품권 전환 패턴, 명의도용 및 부정 개통 정황, 텔레그램 유도형 모집 흔적, 주거용 회선과 VPS의 역할 분담, 그리고 그 뒤에 있는 자금 순환 구조까지 함께 봐야 한다.\n중요한 것은 개별 IP를 하나씩 신고하는 것이 아니라, 그 뒤에 있는 운영 모델을 읽어내는 일이다.\n특히 VPS 대역은 글로벌 서비스에서도 자주 등장하는 익명 인프라다. 국내 공격에서 반복적으로 나타나는 VPS 공급자·ASN 대역을 정리한 anonymous-vps 레포지토리에서 관련 데이터를 확인할 수 있다.\n결론 예전의 계정 탈취가 ‘훔치는 문제’였다면, 지금의 계정 탈취는 코인을 매개로 스스로를 재생산하는 범죄 운영 구조에 더 가깝다.\n참고 자료 PointPivot 프로젝트 anonymous-vps: 익명 공격 인프라 VPS 대역 정리 해커에게 0원짜리 자동문이 된 캡차 — CAPTCHA 우회 PoC와 방어 전략 [보도상_2025 2분기] ‘가전 구독’ 내구제 대출 사기 실태 모르는 휴대폰 개통 후 ‘200만원 할부금’ 날벼락 [단독] 명의도용방지 2000만건 돌파···통관부호 재발급 급증 ","wordCount":"916","inLanguage":"ko","image":"https://windshock.github.io/images/pdf-previews/Dismantling_the_ATO_Supply_Chain_p1.webp","datePublished":"2026-04-07T00:00:00Z","dateModified":"2026-04-07T00:00:00Z","mainEntityOfPage":{"@type":"WebPage","@id":"https://windshock.github.io/ko/post/2026-04-07-dismantling-ato-supply-chain/"},"publisher":{"@type":"Organization","name":"After the Code","logo":{"@type":"ImageObject","url":"https://windshock.github.io/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://windshock.github.io/ko/ accesskey=h title="After the Code (Alt + H)"><img src=https://windshock.github.io/images/logo-terminal-animated.svg alt aria-label=logo class="h-7 w-auto" height=28>After the Code</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><ul class=lang-switch><li>|</li><li><a href=https://windshock.github.io/en/ title=English aria-label=English>En</a></li></ul></div></div><ul id=menu><li><a href=https://windshock.github.io/ko/search/ title="검색 (Alt + /)" accesskey=/><span>검색</span></a></li><li><a href=https://windshock.github.io/ko/tags/ title=태그><span>태그</span></a></li><li><a href=https://windshock.github.io/ko/categories/ title=카테고리><span>카테고리</span></a></li><li><a href=https://windshock.github.io/ko/archives/ title=아카이브><span>아카이브</span></a></li><li><a href=https://windshock.github.io/ko/about/ title=소개><span>소개</span></a></li><li><a href=https://windshock.github.io/ko/index.xml title="RSS 피드"><span>RSS 피드</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://windshock.github.io/ko/>홈</a>&nbsp;»&nbsp;<a href=https://windshock.github.io/ko/post/>Posts</a></div><h1 class="post-title entry-hint-parent">계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부</h1><div class=post-description>포인트·기프티콘·코인의 환류 구조를 통해 한국형 CaaS 공급망이 어떻게 스스로를 재생산하는지 분석합니다. 단순한 로그인 방어를 넘어 행위망 전체를 읽어야 하는 이유.</div><div class=post-meta><span title='2026-04-07 00:00:00 +0000 UTC'>4월 7, 2026</span>&nbsp;·&nbsp;5 분&nbsp;·&nbsp;916 단어&nbsp;|&nbsp;번역:<ul class=i18n_list><li><a href=https://windshock.github.io/en/post/2026-04-07-dismantling-ato-supply-chain/>En</a></li></ul></div></header><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>목차</span></summary><div class=inner><ul><li><a href=#%ea%b4%80%eb%a0%a8-%ec%98%81%ec%83%81 aria-label="관련 영상">관련 영상</a></li><li><a href=#pdf aria-label=PDF>PDF</a></li><li><a href=#%ed%8f%ac%ec%9d%b8%ed%8a%b8-%ea%b8%b0%ed%94%84%ed%8b%b0%ec%bd%98-%ec%bd%94%ec%9d%b8%ec%9d%98-%ed%99%98%eb%a5%98-%ea%b5%ac%ec%a1%b0 aria-label="포인트, 기프티콘, 코인의 환류 구조">포인트, 기프티콘, 코인의 환류 구조</a></li><li><a href=#%ea%b0%9c%eb%b3%84-%ec%82%ac%ea%b1%b4%ec%9d%b4-%ec%95%84%eb%8b%88%eb%9d%bc-%ec%97%b0%ea%b2%b0%eb%90%9c-%ec%9a%b4%ec%98%81-%ed%9d%94%ec%a0%81 aria-label="개별 사건이 아니라 연결된 운영 흔적">개별 사건이 아니라 연결된 운영 흔적</a></li><li><a href=#%ec%bd%94%ec%9d%b8%ec%9d%80-%ec%99%9c-%ec%a4%91%ec%9a%94%ed%95%9c%ea%b0%80 aria-label="코인은 왜 중요한가">코인은 왜 중요한가</a></li><li><a href=#10%eb%85%84-%ec%a0%84%ea%b3%bc-%ec%a7%80%ea%b8%88%ec%9d%98-%ec%b0%a8%ec%9d%b4 aria-label="10년 전과 지금의 차이">10년 전과 지금의 차이</a></li><li><a href=#%ec%99%9c-%ed%95%9c%ea%b5%ad%ec%97%90%ec%84%9c%eb%8a%94-%eb%8d%94-%ec%9e%98-%ec%9e%91%eb%8f%99%ed%95%98%eb%8a%94%ea%b0%80 aria-label="왜 한국에서는 더 잘 작동하는가">왜 한국에서는 더 잘 작동하는가</a></li><li><a href=#%ec%99%9c-captcha%eb%a7%8c%ec%9c%bc%eb%a1%9c%eb%8a%94-%eb%b6%80%ec%a1%b1%ed%95%9c%ea%b0%80 aria-label="왜 CAPTCHA만으로는 부족한가">왜 CAPTCHA만으로는 부족한가</a></li><li><a href=#%ea%b2%b0%eb%a1%a0 aria-label=결론>결론</a></li><li><a href=#%ec%b0%b8%ea%b3%a0-%ec%9e%90%eb%a3%8c aria-label="참고 자료">참고 자료</a></li></ul></div></details></div><div class=post-content id=presentation-post-content><h2 id=관련-영상>관련 영상<a hidden class=anchor aria-hidden=true href=#관련-영상>#</a></h2><div style=position:relative;padding-bottom:56.25%;height:0;overflow:hidden><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading=eager referrerpolicy=strict-origin-when-cross-origin src="https://www.youtube.com/embed/EyRPDV0QFZs?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style=position:absolute;top:0;left:0;width:100%;height:100%;border:0 title="YouTube video"></iframe></div><h2 id=pdf>PDF<a hidden class=anchor aria-hidden=true href=#pdf>#</a></h2>- **새 탭으로 열기:** [/files/Dismantling_the_ATO_Supply_Chain.pdf](/files/Dismantling_the_ATO_Supply_Chain.pdf)
-<iframe id=pdfjs-ato-supply-chain-ko src="/pdfjs/single.html?file=/files/Dismantling_the_ATO_Supply_Chain.pdf#page=1" width=100% height=560 style="border:1px solid #e5e7eb;border-radius:8px"></iframe>
-<script>(function(){const e=document.getElementById('"pdfjs-ato-supply-chain-ko"');if(!e)return;window.addEventListener("message",function(t){if(t.origin!==window.location.origin)return;const n=t.data||{};if(n.type!=="pdfjs-resize")return;if(typeof n.height!="number")return;e.style.height=Math.max(420,Math.min(n.height,980))+"px"})})()</script>> PDF가 보이지 않으면 여기로 열어보세요: [/files/Dismantling_the_ATO_Supply_Chain.pdf](/files/Dismantling_the_ATO_Supply_Chain.pdf)<hr><h2 id=포인트-기프티콘-코인의-환류-구조>포인트, 기프티콘, 코인의 환류 구조<a hidden class=anchor aria-hidden=true href=#포인트-기프티콘-코인의-환류-구조>#</a></h2><p>10년 전에도 한국에서는 대형 포털을 중심으로 대규모 ID·비밀번호 유출 사고가 있었고, 그 여파로 다양한 2차 피해가 발생했다. 특히 포인트, 기프티콘, 간편 구매처럼 계정만 탈취해도 바로 금전화할 수 있는 서비스들은 실제로 큰 타격을 받았다.</p><p>당시에도 피해는 컸다. 하지만 지금 돌아보면, 그 시기의 공격은 오늘날처럼 하나의 수익형 운영 구조로까지 보이지는 않았다.</p><p>지금은 다르다. 유출된 계정정보는 더 이상 로그인 시도용 목록이 아니다. 그것은 ATO(Account Takeover)의 출발점이 되고, 포인트·기프티콘·상품권 같은 stored-value 자산의 탈취로 이어지며, 그 수익은 다시 다른 공격을 가능하게 하는 자금으로 순환될 수 있다.</p><p>내가 이 문제를 다시 보게 된 이유도 여기에 있다. 단순히 로그인 브루트포스가 늘었다는 차원의 이야기가 아니었다. 국내 서비스를 대상으로 한 차단 요청, 로그인 시도 로그, 게시판 스팸 흔적, 텔레그램 유도 계정, 그리고 선불유심 모집 정황을 함께 보다 보니, 개별 사건들이 따로 존재하는 것이 아니라 서로 연결된 운영 흔적처럼 보이기 시작했다.</p><p>이 글에서 정리하는 관찰과 피벗 결과는 공개 리포지토리인 <a href=https://github.com/windshock/pointpivot>PointPivot</a>에 계속 축적하고 있다. 글보다 더 구체적인 조사 메모, IOC, 클러스터 정리는 그 저장소에서 확인할 수 있다.</p><p>이 문제의식은 최근 한국의 현실 맥락과도 맞닿아 있다. <a href=https://v.daum.net/v/20251202154625602>서울경제 보도</a>에 따르면 대규모 개인정보 유출 이후 명의도용방지서비스 엠세이퍼(Msafer)의 가입제한서비스 이용은 2023년 123만여 건에서 2025년 11월 2009만여 건으로 16배 이상 늘었다. <a href="https://www.ilyosisa.co.kr/news/article.html?no=254600">일요시사 보도</a>는 2025년 통신분쟁조정 신청이 2123건으로 역대 최대였고, 이 가운데 명의도용 관련 분쟁이 217건이었다고 전했다. <a href="https://journal.kbjc.net/news/articleView.html?idxno=20638">BJC저널이 소개한 SBS 보도상 기사</a>는 &lsquo;가전 구독&rsquo; 내구제 대출 사기가 2030 사회초년생을 겨냥해 반복되고 있다고 지적한다. 이 자료들이 곧바로 동일한 단일 조직을 입증하는 것은 아니지만, 적어도 유출 정보의 재사용과 명의도용 기반 수익화가 한국 사회에서 충분히 큰 문제로 번지고 있음을 시사한다.</p><h2 id=개별-사건이-아니라-연결된-운영-흔적>개별 사건이 아니라 연결된 운영 흔적<a hidden class=anchor aria-hidden=true href=#개별-사건이-아니라-연결된-운영-흔적>#</a></h2><p>예를 들어 어떤 IP는 계정 탈취 시도 맥락에서 처음 보인다. 그런데 그 IP나 인접 대역, 혹은 같은 운영 흔적을 가진 다른 회선을 따라가 보면, 국내 웹사이트 게시판에 반복적으로 선불유심, 급전, 소액대출류의 스팸을 남기고, 텔레그램 핸들로 사람을 유도하고, 특정 닉네임과 홍보 패턴을 공유하는 경우가 나타난다.</p><p>글로벌 평판 서비스에는 거의 기록이 없는데도, 국내 검색과 반복 피벗을 통해 보면 동일하거나 유사한 운영 주체의 흔적이 드러난다.</p><p>이 지점에서 나는 이 구조를 단순한 스팸이나 일회성 계정 탈취로 보기 어렵다고 생각하게 됐다. 오히려 각 단계가 느슨하게 분업된, 일종의 <strong>한국형 범죄 서비스 공급망</strong>에 더 가까워 보인다. 유출 계정은 조달되고, 공격 인프라는 확보되며, 탈취한 자산은 현금화되고, 그 수익은 다시 다음 공격을 준비하는 데 재투입된다.</p><p>한 사람이 모든 것을 직접 수행한다기보다, 필요한 자원과 역할이 분리된 채 연결되어 움직이는 구조에 가깝다.</p><h2 id=코인은-왜-중요한가>코인은 왜 중요한가<a hidden class=anchor aria-hidden=true href=#코인은-왜-중요한가>#</a></h2><p>여기서 코인은 단순한 배경이 아니다. 내가 보기에는 코인이 이 구조를 단발 범행에서 반복 가능한 운영 모델로 바꿔주는 핵심 축이다.</p><p>탈취한 포인트와 상품권은 현금화될 수 있고, 그 자금은 다시 가상자산으로 전환되어 이동·보관·분배되기 쉬워진다. 그리고 그렇게 모인 자금은 다시 유출 계정 구매, 프록시와 VPS 확보, 자동화 도구 운영, 통신수단 조달 같은 공격 인프라에 재투입될 수 있다.</p><p>즉, 코인은 단순한 출금 수단이 아니다.</p><blockquote><p><strong>탈취 자산을 다음 공격의 운영비로 바꿔주는 환류 장치</strong>에 가깝다.</p></blockquote><p>이 과정을 도식화하면, 유출 계정 조달부터 ATO, 포인트·기프티콘 현금화, 가상자산 전환, 그리고 재투자까지가 하나의 순환 고리처럼 이어진다. 아래 Figure A는 그 흐름을 단순화한 것이다. 문제는 개별 공격이 아니라, 이 환류 구조 자체가 공격을 계속 가능하게 만든다는 점이다.</p><p><img alt="Figure A. Domestic Korean CaaS supply chain infographic" loading=lazy src=/images/domestic-korean-caas-infographic.webp></p><p><em>Figure A. A simplified model of the domestic Korean CaaS supply chain: leaked credentials, ATO, stored-value monetization, crypto conversion, and reinvestment.</em></p><h2 id=10년-전과-지금의-차이>10년 전과 지금의 차이<a hidden class=anchor aria-hidden=true href=#10년-전과-지금의-차이>#</a></h2><p>이 점이 10년 전과 지금의 가장 큰 차이일지도 모른다. 예전에도 계정은 털렸고 2차 피해도 있었다. 하지만 지금은 그 피해가 끝나는 것이 아니라, 다음 공격을 위한 자본으로 다시 돌아간다.</p><p>그 순간 계정 탈취는 일회성 절도가 아니라 스스로를 재생산하는 운영 구조가 된다.</p><h2 id=왜-한국에서는-더-잘-작동하는가>왜 한국에서는 더 잘 작동하는가<a hidden class=anchor aria-hidden=true href=#왜-한국에서는-더-잘-작동하는가>#</a></h2><p>또 하나 중요한 점은, 이 구조가 한국적 특수성 위에서 작동한다는 사실이다. 한국은 포인트, 기프티콘, 모바일 상품권, stored-value 서비스가 매우 발달해 있고, 계정 하나만 탈취해도 금전적 가치로 연결되는 경우가 많다.</p><p>동시에 선불유심, 명의도용, 커뮤니티 게시판 스팸, 텔레그램 유도 같은 로컬한 맥락은 글로벌 평판 서비스가 잘 포착하지 못한다. AbuseIPDB에 보이지 않는다고 해서 깨끗한 인프라라고 단정할 수 없는 이유가 여기에 있다.</p><p>그래서 오늘날의 크리덴셜 스터핑은 예전처럼 유출 계정 목록을 한번 돌려보는 공격으로 보기 어렵다. 그것은 계정 탈취를 통해 stored-value 자산을 빼내고, 그 수익을 다시 인프라에 재투입하며, 필요하면 명의도용이나 부정 개통 정황과도 맞물릴 수 있는 수익형 운영 모델의 입구일 수 있다.</p><h2 id=왜-captcha만으로는-부족한가>왜 CAPTCHA만으로는 부족한가<a hidden class=anchor aria-hidden=true href=#왜-captcha만으로는-부족한가>#</a></h2><p>이 관점에서 보면 CAPTCHA 강화만으로는 부족하다. CAPTCHA는 로그인 페이지 한곳의 마찰을 높일 수는 있다. 하지만 공격자가 이미 유출 계정 목록을 확보하고, 자동화 인프라와 수익화 경로, 자금 순환 구조까지 분리해 운영한다면, CAPTCHA는 그 구조 전체를 멈추지 못한다.</p><p>이 문제는 이전에 정리한 <a href=https://windshock.github.io/ko/post/2026-03-30-captcha-bypass-poc-defense-strategy/>CAPTCHA 우회 PoC와 방어 전략</a>에서도 비슷하게 다뤘다. 그 글에서는 Playwright, Whisper, LLM 에이전트를 조합해 유료 API 없이 100% 로컬 환경에서 오디오 CAPTCHA를 자동 처리하는 흐름을 재현했고, DOM 난독화가 더 이상 충분한 방어가 아니라는 점을 정리했다. 같은 글에서 인용한 연구에 따르면 reCAPTCHA 오디오 챌린지는 오래전에도 평균 5.42초, 85.15% 정확도로 풀린 사례가 보고됐다. CAPTCHA는 필요한 마찰일 수는 있어도, 그것만으로는 계정 탈취 이후의 수익화와 재투자 구조까지 끊어내지 못한다.</p><p>결국 필요한 것은 로그인 방어 하나가 아니라 <strong>행위망 전체를 보는 시선</strong>이다. 유출 계정의 재사용 여부, 비정상 로그인 탐지, 포인트·상품권 전환 패턴, 명의도용 및 부정 개통 정황, 텔레그램 유도형 모집 흔적, 주거용 회선과 VPS의 역할 분담, 그리고 그 뒤에 있는 자금 순환 구조까지 함께 봐야 한다.</p><p>중요한 것은 개별 IP를 하나씩 신고하는 것이 아니라, 그 뒤에 있는 운영 모델을 읽어내는 일이다.</p><p>특히 VPS 대역은 글로벌 서비스에서도 자주 등장하는 익명 인프라다. 국내 공격에서 반복적으로 나타나는 VPS 공급자·ASN 대역을 정리한 <a href=https://github.com/windshock/anonymous-vps/>anonymous-vps</a> 레포지토리에서 관련 데이터를 확인할 수 있다.</p><h2 id=결론>결론<a hidden class=anchor aria-hidden=true href=#결론>#</a></h2><p>예전의 계정 탈취가 &lsquo;훔치는 문제&rsquo;였다면, 지금의 계정 탈취는 코인을 매개로 스스로를 재생산하는 범죄 운영 구조에 더 가깝다.</p><h2 id=참고-자료>참고 자료<a hidden class=anchor aria-hidden=true href=#참고-자료>#</a></h2><ul><li><a href=https://github.com/windshock/pointpivot>PointPivot 프로젝트</a></li><li><a href=https://github.com/windshock/anonymous-vps/>anonymous-vps: 익명 공격 인프라 VPS 대역 정리</a></li><li><a href=https://windshock.github.io/ko/post/2026-03-30-captcha-bypass-poc-defense-strategy/>해커에게 0원짜리 자동문이 된 캡차 — CAPTCHA 우회 PoC와 방어 전략</a></li><li><a href="https://journal.kbjc.net/news/articleView.html?idxno=20638">[보도상_2025 2분기] &lsquo;가전 구독&rsquo; 내구제 대출 사기 실태</a></li><li><a href="https://www.ilyosisa.co.kr/news/article.html?no=254600">모르는 휴대폰 개통 후 &lsquo;200만원 할부금&rsquo; 날벼락</a></li><li><a href=https://v.daum.net/v/20251202154625602>[단독] 명의도용방지 2000만건 돌파···통관부호 재발급 급증</a></li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://windshock.github.io/ko/tags/mind/>Mind</a></li><li><a href=https://windshock.github.io/ko/tags/ato/>ATO</a></li><li><a href=https://windshock.github.io/ko/tags/%ED%81%AC%EB%A6%AC%EB%8D%B4%EC%85%9C-%EC%8A%A4%ED%84%B0%ED%95%91/>크리덴셜 스터핑</a></li><li><a href=https://windshock.github.io/ko/tags/caas/>CaaS</a></li><li><a href=https://windshock.github.io/ko/tags/%EA%B3%84%EC%A0%95-%ED%83%88%EC%B7%A8/>계정 탈취</a></li><li><a href=https://windshock.github.io/ko/tags/%ED%8F%AC%EC%9D%B8%ED%8A%B8/>포인트</a></li><li><a href=https://windshock.github.io/ko/tags/%EA%B8%B0%ED%94%84%ED%8B%B0%EC%BD%98/>기프티콘</a></li><li><a href=https://windshock.github.io/ko/tags/%EA%B0%80%EC%83%81%EC%9E%90%EC%82%B0/>가상자산</a></li></ul><nav class=paginav><a class=prev href=https://windshock.github.io/ko/post/2026-04-15-security-code-clustering/><span class=title>« 이전 페이지</span><br><span>228개 엔드포인트를 5개 클러스터로 줄인 이야기</span>
-</a><a class=next href=https://windshock.github.io/ko/post/2026-04-02-security-from-sense-to-structure/><span class=title>다음 페이지 »</span><br><span>취약점을 잘 찾는 사람보다, 구조를 만드는 사람이 남는다</span></a></nav><ul class=share-buttons><li><a target=_blank rel="noopener noreferrer" aria-label="share 계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부 on x" href="https://x.com/intent/tweet/?text=%ea%b3%84%ec%a0%95%20%ed%83%88%ec%b7%a8%eb%8a%94%20%ec%99%9c%20%eb%81%9d%eb%82%98%ec%a7%80%20%ec%95%8a%eb%8a%94%ea%b0%80%20%e2%80%94%20ATO%20%ea%b3%b5%ea%b8%89%eb%a7%9d%ec%9d%98%20%ed%95%b4%eb%b6%80&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-04-07-dismantling-ato-supply-chain%2f&amp;hashtags=Mind%2cATO%2c%ed%81%ac%eb%a6%ac%eb%8d%b4%ec%85%9c%ec%8a%a4%ed%84%b0%ed%95%91%2cCaaS%2c%ea%b3%84%ec%a0%95%ed%83%88%ec%b7%a8%2c%ed%8f%ac%ec%9d%b8%ed%8a%b8%2c%ea%b8%b0%ed%94%84%ed%8b%b0%ec%bd%98%2c%ea%b0%80%ec%83%81%ec%9e%90%ec%82%b0"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M512 62.554V449.446C512 483.97 483.97 512 449.446 512H62.554C28.03 512 0 483.97.0 449.446V62.554C0 28.03 28.029.0 62.554.0H449.446C483.971.0 512 28.03 512 62.554zM269.951 190.75 182.567 75.216H56L207.216 272.95 63.9 436.783h61.366L235.9 310.383l96.667 126.4H456L298.367 228.367l134-153.151H371.033zM127.633 110h36.468l219.38 290.065H349.5z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부 on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-04-07-dismantling-ato-supply-chain%2f&amp;title=%ea%b3%84%ec%a0%95%20%ed%83%88%ec%b7%a8%eb%8a%94%20%ec%99%9c%20%eb%81%9d%eb%82%98%ec%a7%80%20%ec%95%8a%eb%8a%94%ea%b0%80%20%e2%80%94%20ATO%20%ea%b3%b5%ea%b8%89%eb%a7%9d%ec%9d%98%20%ed%95%b4%eb%b6%80&amp;summary=%ea%b3%84%ec%a0%95%20%ed%83%88%ec%b7%a8%eb%8a%94%20%ec%99%9c%20%eb%81%9d%eb%82%98%ec%a7%80%20%ec%95%8a%eb%8a%94%ea%b0%80%20%e2%80%94%20ATO%20%ea%b3%b5%ea%b8%89%eb%a7%9d%ec%9d%98%20%ed%95%b4%eb%b6%80&amp;source=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-04-07-dismantling-ato-supply-chain%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부 on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-04-07-dismantling-ato-supply-chain%2f&title=%ea%b3%84%ec%a0%95%20%ed%83%88%ec%b7%a8%eb%8a%94%20%ec%99%9c%20%eb%81%9d%eb%82%98%ec%a7%80%20%ec%95%8a%eb%8a%94%ea%b0%80%20%e2%80%94%20ATO%20%ea%b3%b5%ea%b8%89%eb%a7%9d%ec%9d%98%20%ed%95%b4%eb%b6%80"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부 on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-04-07-dismantling-ato-supply-chain%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부 on whatsapp" href="https://api.whatsapp.com/send?text=%ea%b3%84%ec%a0%95%20%ed%83%88%ec%b7%a8%eb%8a%94%20%ec%99%9c%20%eb%81%9d%eb%82%98%ec%a7%80%20%ec%95%8a%eb%8a%94%ea%b0%80%20%e2%80%94%20ATO%20%ea%b3%b5%ea%b8%89%eb%a7%9d%ec%9d%98%20%ed%95%b4%eb%b6%80%20-%20https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-04-07-dismantling-ato-supply-chain%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부 on telegram" href="https://telegram.me/share/url?text=%ea%b3%84%ec%a0%95%20%ed%83%88%ec%b7%a8%eb%8a%94%20%ec%99%9c%20%eb%81%9d%eb%82%98%ec%a7%80%20%ec%95%8a%eb%8a%94%ea%b0%80%20%e2%80%94%20ATO%20%ea%b3%b5%ea%b8%89%eb%a7%9d%ec%9d%98%20%ed%95%b4%eb%b6%80&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-04-07-dismantling-ato-supply-chain%2f"><svg viewBox="2 2 28 28" height="30" width="30" fill="currentcolor"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg></a></li><li><a target=_blank rel="noopener noreferrer" aria-label="share 계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부 on ycombinator" href="https://news.ycombinator.com/submitlink?t=%ea%b3%84%ec%a0%95%20%ed%83%88%ec%b7%a8%eb%8a%94%20%ec%99%9c%20%eb%81%9d%eb%82%98%ec%a7%80%20%ec%95%8a%eb%8a%94%ea%b0%80%20%e2%80%94%20ATO%20%ea%b3%b5%ea%b8%89%eb%a7%9d%ec%9d%98%20%ed%95%b4%eb%b6%80&u=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-04-07-dismantling-ato-supply-chain%2f"><svg width="30" height="30" viewBox="0 0 512 512" fill="currentcolor" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"><path d="M449.446.0C483.971.0 512 28.03 512 62.554V449.446C512 483.97 483.97 512 449.446 512H62.554C28.03 512 0 483.97.0 449.446V62.554C0 28.03 28.029.0 62.554.0H449.446zM183.8767 87.9921h-62.034L230.6673 292.4508V424.0079h50.6655V292.4508L390.1575 87.9921H328.1233L256 238.2489z"/></svg></a></li></ul></footer></article></main><footer class=footer><span>&copy; 2026 <a href=https://windshock.github.io/ko/>After the Code</a></span> ·
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
-</a><script>function loadGiscus(e){document.querySelectorAll('.giscus-frame, script[src*="giscus.app"]').forEach(e=>e.remove());const t=document.createElement("script");t.src="https://giscus.app/client.js",t.setAttribute("data-repo","windshock/windshock.github.io"),t.setAttribute("data-repo-id","MDEwOlJlcG9zaXRvcnkxODQ2MDMyMTk="),t.setAttribute("data-category","General"),t.setAttribute("data-category-id","DIC_kwDOCwDSU84CoqLg"),t.setAttribute("data-mapping","pathname"),t.setAttribute("data-reactions-enabled","1"),t.setAttribute("data-theme",e),t.setAttribute("data-lang","en"),t.setAttribute("data-input-position","bottom"),t.setAttribute("data-loading","lazy"),t.crossOrigin="anonymous",t.async=!0,document.body.appendChild(t)}const currentTheme=document.body.classList.contains("dark")?"dark":"light";loadGiscus(currentTheme);const observer=new MutationObserver(()=>{const e=document.body.classList.contains("dark")?"dark":"light";loadGiscus(e)});observer.observe(document.body,{attributes:!0,attributeFilter:["class"]})</script><script>function initSwiperIfNeeded(){if(typeof Swiper=="undefined")return setTimeout(initSwiperIfNeeded,50);document.querySelector(".swiper")?(new Swiper(".swiper",{slidesPerView:1.2,spaceBetween:16,loop:!0,preloadImages:!1,lazy:{loadOnTransitionStart:!0,loadPrevNext:!0},pagination:{el:".swiper-pagination",clickable:!0},breakpoints:{768:{slidesPerView:2.5},1024:{slidesPerView:3.2}}}),document.querySelectorAll("img.swiper-lazy").forEach(e=>{e.src=e.dataset.src})):setTimeout(initSwiperIfNeeded,100)}initSwiperIfNeeded()</script><script src=/js/oneko/dodge.js defer></script><script src=/js/oneko/oneko.js data-cat=/images/oneko/oneko.gif defer></script><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="복사";function s(){t.innerHTML="복사 완료!",setTimeout(()=>{t.innerHTML="복사"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+<!DOCTYPE html>
+<html lang="ko" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부 | After the Code</title>
+<meta name="keywords" content="Mind, ATO, 크리덴셜 스터핑, CaaS, 계정 탈취, 포인트, 기프티콘, 가상자산">
+<meta name="description" content="포인트·기프티콘·코인의 환류 구조를 통해 한국형 CaaS 공급망이 어떻게 스스로를 재생산하는지 분석합니다. 단순한 로그인 방어를 넘어 행위망 전체를 읽어야 하는 이유.">
+<meta name="author" content="">
+<link rel="canonical" href="https://windshock.github.io/ko/post/2026-04-07-dismantling-ato-supply-chain/">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&display=swap" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="https://windshock.github.io/index.xml" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f49d66caae9ea0fd43f21f29e71a8d3e284517ed770f2aa86fa012953ad3c9ef.css" integrity="sha256-9J1myq6eoP1D8h8p5xqNPihFF&#43;13Dyqob6ASlTrTye8=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://windshock.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://windshock.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://windshock.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://windshock.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://windshock.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="https://windshock.github.io/en/post/2026-04-07-dismantling-ato-supply-chain/">
+<link rel="alternate" hreflang="ko" href="https://windshock.github.io/ko/post/2026-04-07-dismantling-ato-supply-chain/">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3862213856942912"
+     crossorigin="anonymous"></script>
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-6N6EEJ259T"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-6N6EEJ259T');
+        }
+      </script><meta property="og:url" content="https://windshock.github.io/ko/post/2026-04-07-dismantling-ato-supply-chain/">
+  <meta property="og:site_name" content="After the Code">
+  <meta property="og:title" content="계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부">
+  <meta property="og:description" content="포인트·기프티콘·코인의 환류 구조를 통해 한국형 CaaS 공급망이 어떻게 스스로를 재생산하는지 분석합니다. 단순한 로그인 방어를 넘어 행위망 전체를 읽어야 하는 이유.">
+  <meta property="og:locale" content="ko-KR">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2026-04-07T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-04-07T00:00:00+00:00">
+    <meta property="article:tag" content="Mind">
+    <meta property="article:tag" content="ATO">
+    <meta property="article:tag" content="크리덴셜 스터핑">
+    <meta property="article:tag" content="CaaS">
+    <meta property="article:tag" content="계정 탈취">
+    <meta property="article:tag" content="포인트">
+      <meta property="og:image" content="https://windshock.github.io/images/pdf-previews/Dismantling_the_ATO_Supply_Chain_p1.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://windshock.github.io/images/pdf-previews/Dismantling_the_ATO_Supply_Chain_p1.webp">
+<meta name="twitter:title" content="계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부">
+<meta name="twitter:description" content="포인트·기프티콘·코인의 환류 구조를 통해 한국형 CaaS 공급망이 어떻게 스스로를 재생산하는지 분석합니다. 단순한 로그인 방어를 넘어 행위망 전체를 읽어야 하는 이유.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://windshock.github.io/ko/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부",
+      "item": "https://windshock.github.io/ko/post/2026-04-07-dismantling-ato-supply-chain/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부",
+  "name": "계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부",
+  "description": "포인트·기프티콘·코인의 환류 구조를 통해 한국형 CaaS 공급망이 어떻게 스스로를 재생산하는지 분석합니다. 단순한 로그인 방어를 넘어 행위망 전체를 읽어야 하는 이유.",
+  "keywords": [
+    "Mind", "ATO", "크리덴셜 스터핑", "CaaS", "계정 탈취", "포인트", "기프티콘", "가상자산"
+  ],
+  "articleBody": "관련 영상 PDF - **새 탭으로 열기:** [/files/Dismantling_the_ATO_Supply_Chain.pdf](/files/Dismantling_the_ATO_Supply_Chain.pdf) \u003e PDF가 보이지 않으면 여기로 열어보세요: [/files/Dismantling_the_ATO_Supply_Chain.pdf](/files/Dismantling_the_ATO_Supply_Chain.pdf) 포인트, 기프티콘, 코인의 환류 구조 10년 전에도 한국에서는 대형 포털을 중심으로 대규모 ID·비밀번호 유출 사고가 있었고, 그 여파로 다양한 2차 피해가 발생했다. 특히 포인트, 기프티콘, 간편 구매처럼 계정만 탈취해도 바로 금전화할 수 있는 서비스들은 실제로 큰 타격을 받았다.\n당시에도 피해는 컸다. 하지만 지금 돌아보면, 그 시기의 공격은 오늘날처럼 하나의 수익형 운영 구조로까지 보이지는 않았다.\n지금은 다르다. 유출된 계정정보는 더 이상 로그인 시도용 목록이 아니다. 그것은 ATO(Account Takeover)의 출발점이 되고, 포인트·기프티콘·상품권 같은 stored-value 자산의 탈취로 이어지며, 그 수익은 다시 다른 공격을 가능하게 하는 자금으로 순환될 수 있다.\n내가 이 문제를 다시 보게 된 이유도 여기에 있다. 단순히 로그인 브루트포스가 늘었다는 차원의 이야기가 아니었다. 국내 서비스를 대상으로 한 차단 요청, 로그인 시도 로그, 게시판 스팸 흔적, 텔레그램 유도 계정, 그리고 선불유심 모집 정황을 함께 보다 보니, 개별 사건들이 따로 존재하는 것이 아니라 서로 연결된 운영 흔적처럼 보이기 시작했다.\n이 글에서 정리하는 관찰과 피벗 결과는 공개 리포지토리인 PointPivot에 계속 축적하고 있다. 글보다 더 구체적인 조사 메모, IOC, 클러스터 정리는 그 저장소에서 확인할 수 있다.\n이 문제의식은 최근 한국의 현실 맥락과도 맞닿아 있다. 서울경제 보도에 따르면 대규모 개인정보 유출 이후 명의도용방지서비스 엠세이퍼(Msafer)의 가입제한서비스 이용은 2023년 123만여 건에서 2025년 11월 2009만여 건으로 16배 이상 늘었다. 일요시사 보도는 2025년 통신분쟁조정 신청이 2123건으로 역대 최대였고, 이 가운데 명의도용 관련 분쟁이 217건이었다고 전했다. BJC저널이 소개한 SBS 보도상 기사는 ‘가전 구독’ 내구제 대출 사기가 2030 사회초년생을 겨냥해 반복되고 있다고 지적한다. 이 자료들이 곧바로 동일한 단일 조직을 입증하는 것은 아니지만, 적어도 유출 정보의 재사용과 명의도용 기반 수익화가 한국 사회에서 충분히 큰 문제로 번지고 있음을 시사한다.\n개별 사건이 아니라 연결된 운영 흔적 예를 들어 어떤 IP는 계정 탈취 시도 맥락에서 처음 보인다. 그런데 그 IP나 인접 대역, 혹은 같은 운영 흔적을 가진 다른 회선을 따라가 보면, 국내 웹사이트 게시판에 반복적으로 선불유심, 급전, 소액대출류의 스팸을 남기고, 텔레그램 핸들로 사람을 유도하고, 특정 닉네임과 홍보 패턴을 공유하는 경우가 나타난다.\n글로벌 평판 서비스에는 거의 기록이 없는데도, 국내 검색과 반복 피벗을 통해 보면 동일하거나 유사한 운영 주체의 흔적이 드러난다.\n이 지점에서 나는 이 구조를 단순한 스팸이나 일회성 계정 탈취로 보기 어렵다고 생각하게 됐다. 오히려 각 단계가 느슨하게 분업된, 일종의 한국형 범죄 서비스 공급망에 더 가까워 보인다. 유출 계정은 조달되고, 공격 인프라는 확보되며, 탈취한 자산은 현금화되고, 그 수익은 다시 다음 공격을 준비하는 데 재투입된다.\n한 사람이 모든 것을 직접 수행한다기보다, 필요한 자원과 역할이 분리된 채 연결되어 움직이는 구조에 가깝다.\n코인은 왜 중요한가 여기서 코인은 단순한 배경이 아니다. 내가 보기에는 코인이 이 구조를 단발 범행에서 반복 가능한 운영 모델로 바꿔주는 핵심 축이다.\n탈취한 포인트와 상품권은 현금화될 수 있고, 그 자금은 다시 가상자산으로 전환되어 이동·보관·분배되기 쉬워진다. 그리고 그렇게 모인 자금은 다시 유출 계정 구매, 프록시와 VPS 확보, 자동화 도구 운영, 통신수단 조달 같은 공격 인프라에 재투입될 수 있다.\n즉, 코인은 단순한 출금 수단이 아니다.\n탈취 자산을 다음 공격의 운영비로 바꿔주는 환류 장치에 가깝다.\n이 과정을 도식화하면, 유출 계정 조달부터 ATO, 포인트·기프티콘 현금화, 가상자산 전환, 그리고 재투자까지가 하나의 순환 고리처럼 이어진다. 아래 Figure A는 그 흐름을 단순화한 것이다. 문제는 개별 공격이 아니라, 이 환류 구조 자체가 공격을 계속 가능하게 만든다는 점이다.\nFigure A. A simplified model of the domestic Korean CaaS supply chain: leaked credentials, ATO, stored-value monetization, crypto conversion, and reinvestment.\n10년 전과 지금의 차이 이 점이 10년 전과 지금의 가장 큰 차이일지도 모른다. 예전에도 계정은 털렸고 2차 피해도 있었다. 하지만 지금은 그 피해가 끝나는 것이 아니라, 다음 공격을 위한 자본으로 다시 돌아간다.\n그 순간 계정 탈취는 일회성 절도가 아니라 스스로를 재생산하는 운영 구조가 된다.\n왜 한국에서는 더 잘 작동하는가 또 하나 중요한 점은, 이 구조가 한국적 특수성 위에서 작동한다는 사실이다. 한국은 포인트, 기프티콘, 모바일 상품권, stored-value 서비스가 매우 발달해 있고, 계정 하나만 탈취해도 금전적 가치로 연결되는 경우가 많다.\n동시에 선불유심, 명의도용, 커뮤니티 게시판 스팸, 텔레그램 유도 같은 로컬한 맥락은 글로벌 평판 서비스가 잘 포착하지 못한다. AbuseIPDB에 보이지 않는다고 해서 깨끗한 인프라라고 단정할 수 없는 이유가 여기에 있다.\n그래서 오늘날의 크리덴셜 스터핑은 예전처럼 유출 계정 목록을 한번 돌려보는 공격으로 보기 어렵다. 그것은 계정 탈취를 통해 stored-value 자산을 빼내고, 그 수익을 다시 인프라에 재투입하며, 필요하면 명의도용이나 부정 개통 정황과도 맞물릴 수 있는 수익형 운영 모델의 입구일 수 있다.\n왜 CAPTCHA만으로는 부족한가 이 관점에서 보면 CAPTCHA 강화만으로는 부족하다. CAPTCHA는 로그인 페이지 한곳의 마찰을 높일 수는 있다. 하지만 공격자가 이미 유출 계정 목록을 확보하고, 자동화 인프라와 수익화 경로, 자금 순환 구조까지 분리해 운영한다면, CAPTCHA는 그 구조 전체를 멈추지 못한다.\n이 문제는 이전에 정리한 CAPTCHA 우회 PoC와 방어 전략에서도 비슷하게 다뤘다. 그 글에서는 Playwright, Whisper, LLM 에이전트를 조합해 유료 API 없이 100% 로컬 환경에서 오디오 CAPTCHA를 자동 처리하는 흐름을 재현했고, DOM 난독화가 더 이상 충분한 방어가 아니라는 점을 정리했다. 같은 글에서 인용한 연구에 따르면 reCAPTCHA 오디오 챌린지는 오래전에도 평균 5.42초, 85.15% 정확도로 풀린 사례가 보고됐다. CAPTCHA는 필요한 마찰일 수는 있어도, 그것만으로는 계정 탈취 이후의 수익화와 재투자 구조까지 끊어내지 못한다.\n결국 필요한 것은 로그인 방어 하나가 아니라 행위망 전체를 보는 시선이다. 유출 계정의 재사용 여부, 비정상 로그인 탐지, 포인트·상품권 전환 패턴, 명의도용 및 부정 개통 정황, 텔레그램 유도형 모집 흔적, 주거용 회선과 VPS의 역할 분담, 그리고 그 뒤에 있는 자금 순환 구조까지 함께 봐야 한다.\n중요한 것은 개별 IP를 하나씩 신고하는 것이 아니라, 그 뒤에 있는 운영 모델을 읽어내는 일이다.\n특히 VPS 대역은 글로벌 서비스에서도 자주 등장하는 익명 인프라다. 국내 공격에서 반복적으로 나타나는 VPS 공급자·ASN 대역을 정리한 anonymous-vps 레포지토리에서 관련 데이터를 확인할 수 있다.\n결론 예전의 계정 탈취가 ‘훔치는 문제’였다면, 지금의 계정 탈취는 코인을 매개로 스스로를 재생산하는 범죄 운영 구조에 더 가깝다.\n참고 자료 PointPivot 프로젝트 anonymous-vps: 익명 공격 인프라 VPS 대역 정리 해커에게 0원짜리 자동문이 된 캡차 — CAPTCHA 우회 PoC와 방어 전략 [보도상_2025 2분기] ‘가전 구독’ 내구제 대출 사기 실태 모르는 휴대폰 개통 후 ‘200만원 할부금’ 날벼락 [단독] 명의도용방지 2000만건 돌파···통관부호 재발급 급증 ",
+  "wordCount" : "916",
+  "inLanguage": "ko",
+  "image": "https://windshock.github.io/images/pdf-previews/Dismantling_the_ATO_Supply_Chain_p1.webp","datePublished": "2026-04-07T00:00:00Z",
+  "dateModified": "2026-04-07T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://windshock.github.io/ko/post/2026-04-07-dismantling-ato-supply-chain/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "After the Code",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://windshock.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://windshock.github.io/ko/" accesskey="h" title="After the Code (Alt + H)">
+                <img src="https://windshock.github.io/images/logo-terminal-animated.svg" alt="" aria-label="logo" class="h-7 w-auto"
+                    height="28">After the Code</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="https://windshock.github.io/en/" title="English"
+                            aria-label="English">En</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://windshock.github.io/ko/search/" title="검색 (Alt &#43; /)" accesskey=/>
+                    <span>검색</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/tags/" title="태그">
+                    <span>태그</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/categories/" title="카테고리">
+                    <span>카테고리</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/archives/" title="아카이브">
+                    <span>아카이브</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/about/" title="소개">
+                    <span>소개</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://windshock.github.io/ko/index.xml" title="RSS 피드">
+                    <span>RSS 피드</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+
+<main class="main">
+
+<article
+  class="post-single"
+>
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://windshock.github.io/ko/">홈</a>&nbsp;»&nbsp;<a href="https://windshock.github.io/ko/post/">Posts</a></div>
+    <h1 class="post-title entry-hint-parent">
+      계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부
+    </h1>
+    <div class="post-description">
+      포인트·기프티콘·코인의 환류 구조를 통해 한국형 CaaS 공급망이 어떻게 스스로를 재생산하는지 분석합니다. 단순한 로그인 방어를 넘어 행위망 전체를 읽어야 하는 이유.
+    </div>
+    <div class="post-meta"><span title='2026-04-07 00:00:00 +0000 UTC'>4월 7, 2026</span>&nbsp;·&nbsp;5 분&nbsp;·&nbsp;916 단어&nbsp;|&nbsp;번역:
+<ul class="i18n_list">
+    <li>
+        <a href="https://windshock.github.io/en/post/2026-04-07-dismantling-ato-supply-chain/">En</a>
+    </li>
+</ul>
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">목차</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#%ea%b4%80%eb%a0%a8-%ec%98%81%ec%83%81" aria-label="관련 영상">관련 영상</a></li>
+                <li>
+                    <a href="#pdf" aria-label="PDF">PDF</a></li>
+                <li>
+                    <a href="#%ed%8f%ac%ec%9d%b8%ed%8a%b8-%ea%b8%b0%ed%94%84%ed%8b%b0%ec%bd%98-%ec%bd%94%ec%9d%b8%ec%9d%98-%ed%99%98%eb%a5%98-%ea%b5%ac%ec%a1%b0" aria-label="포인트, 기프티콘, 코인의 환류 구조">포인트, 기프티콘, 코인의 환류 구조</a></li>
+                <li>
+                    <a href="#%ea%b0%9c%eb%b3%84-%ec%82%ac%ea%b1%b4%ec%9d%b4-%ec%95%84%eb%8b%88%eb%9d%bc-%ec%97%b0%ea%b2%b0%eb%90%9c-%ec%9a%b4%ec%98%81-%ed%9d%94%ec%a0%81" aria-label="개별 사건이 아니라 연결된 운영 흔적">개별 사건이 아니라 연결된 운영 흔적</a></li>
+                <li>
+                    <a href="#%ec%bd%94%ec%9d%b8%ec%9d%80-%ec%99%9c-%ec%a4%91%ec%9a%94%ed%95%9c%ea%b0%80" aria-label="코인은 왜 중요한가">코인은 왜 중요한가</a></li>
+                <li>
+                    <a href="#10%eb%85%84-%ec%a0%84%ea%b3%bc-%ec%a7%80%ea%b8%88%ec%9d%98-%ec%b0%a8%ec%9d%b4" aria-label="10년 전과 지금의 차이">10년 전과 지금의 차이</a></li>
+                <li>
+                    <a href="#%ec%99%9c-%ed%95%9c%ea%b5%ad%ec%97%90%ec%84%9c%eb%8a%94-%eb%8d%94-%ec%9e%98-%ec%9e%91%eb%8f%99%ed%95%98%eb%8a%94%ea%b0%80" aria-label="왜 한국에서는 더 잘 작동하는가">왜 한국에서는 더 잘 작동하는가</a></li>
+                <li>
+                    <a href="#%ec%99%9c-captcha%eb%a7%8c%ec%9c%bc%eb%a1%9c%eb%8a%94-%eb%b6%80%ec%a1%b1%ed%95%9c%ea%b0%80" aria-label="왜 CAPTCHA만으로는 부족한가">왜 CAPTCHA만으로는 부족한가</a></li>
+                <li>
+                    <a href="#%ea%b2%b0%eb%a1%a0" aria-label="결론">결론</a></li>
+                <li>
+                    <a href="#%ec%b0%b8%ea%b3%a0-%ec%9e%90%eb%a3%8c" aria-label="참고 자료">참고 자료</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content" id="presentation-post-content"><h2 id="관련-영상">관련 영상<a hidden class="anchor" aria-hidden="true" href="#관련-영상">#</a></h2>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/EyRPDV0QFZs?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<h2 id="pdf">PDF<a hidden class="anchor" aria-hidden="true" href="#pdf">#</a></h2>
+- **새 탭으로 열기:** [/files/Dismantling_the_ATO_Supply_Chain.pdf](/files/Dismantling_the_ATO_Supply_Chain.pdf)
+
+<iframe
+  id="pdfjs-ato-supply-chain-ko"
+  src="/pdfjs/single.html?file=/files/Dismantling_the_ATO_Supply_Chain.pdf#page=1"
+  width="100%"
+  height="560"
+  style="border: 1px solid #e5e7eb; border-radius: 8px;"
+></iframe>
+
+<script>
+  (function () {
+    const iframe = document.getElementById("\"pdfjs-ato-supply-chain-ko\"");
+    if (!iframe) return;
+    window.addEventListener("message", function (e) {
+      if (e.origin !== window.location.origin) return;
+      const data = e.data || {};
+      if (data.type !== "pdfjs-resize") return;
+      if (typeof data.height !== "number") return;
+      iframe.style.height = Math.max(420, Math.min(data.height, 980)) + "px";
+    });
+  })();
+</script>
+
+> PDF가 보이지 않으면 여기로 열어보세요: [/files/Dismantling_the_ATO_Supply_Chain.pdf](/files/Dismantling_the_ATO_Supply_Chain.pdf)
+
+<hr>
+<h2 id="포인트-기프티콘-코인의-환류-구조">포인트, 기프티콘, 코인의 환류 구조<a hidden class="anchor" aria-hidden="true" href="#포인트-기프티콘-코인의-환류-구조">#</a></h2>
+<p>10년 전에도 한국에서는 대형 포털을 중심으로 대규모 ID·비밀번호 유출 사고가 있었고, 그 여파로 다양한 2차 피해가 발생했다. 특히 포인트, 기프티콘, 간편 구매처럼 계정만 탈취해도 바로 금전화할 수 있는 서비스들은 실제로 큰 타격을 받았다.</p>
+<p>당시에도 피해는 컸다. 하지만 지금 돌아보면, 그 시기의 공격은 오늘날처럼 하나의 수익형 운영 구조로까지 보이지는 않았다.</p>
+<p>지금은 다르다. 유출된 계정정보는 더 이상 로그인 시도용 목록이 아니다. 그것은 ATO(Account Takeover)의 출발점이 되고, 포인트·기프티콘·상품권 같은 stored-value 자산의 탈취로 이어지며, 그 수익은 다시 다른 공격을 가능하게 하는 자금으로 순환될 수 있다.</p>
+<p>내가 이 문제를 다시 보게 된 이유도 여기에 있다. 단순히 로그인 브루트포스가 늘었다는 차원의 이야기가 아니었다. 국내 서비스를 대상으로 한 차단 요청, 로그인 시도 로그, 게시판 스팸 흔적, 텔레그램 유도 계정, 그리고 선불유심 모집 정황을 함께 보다 보니, 개별 사건들이 따로 존재하는 것이 아니라 서로 연결된 운영 흔적처럼 보이기 시작했다.</p>
+<p>이 글에서 정리하는 관찰과 피벗 결과는 공개 리포지토리인 <a href="https://github.com/windshock/pointpivot">PointPivot</a>에 계속 축적하고 있다. 글보다 더 구체적인 조사 메모, IOC, 클러스터 정리는 그 저장소에서 확인할 수 있다.</p>
+<p>이 문제의식은 최근 한국의 현실 맥락과도 맞닿아 있다. <a href="https://v.daum.net/v/20251202154625602">서울경제 보도</a>에 따르면 대규모 개인정보 유출 이후 명의도용방지서비스 엠세이퍼(Msafer)의 가입제한서비스 이용은 2023년 123만여 건에서 2025년 11월 2009만여 건으로 16배 이상 늘었다. <a href="https://www.ilyosisa.co.kr/news/article.html?no=254600">일요시사 보도</a>는 2025년 통신분쟁조정 신청이 2123건으로 역대 최대였고, 이 가운데 명의도용 관련 분쟁이 217건이었다고 전했다. <a href="https://journal.kbjc.net/news/articleView.html?idxno=20638">BJC저널이 소개한 SBS 보도상 기사</a>는 &lsquo;가전 구독&rsquo; 내구제 대출 사기가 2030 사회초년생을 겨냥해 반복되고 있다고 지적한다. 이 자료들이 곧바로 동일한 단일 조직을 입증하는 것은 아니지만, 적어도 유출 정보의 재사용과 명의도용 기반 수익화가 한국 사회에서 충분히 큰 문제로 번지고 있음을 시사한다.</p>
+<h2 id="개별-사건이-아니라-연결된-운영-흔적">개별 사건이 아니라 연결된 운영 흔적<a hidden class="anchor" aria-hidden="true" href="#개별-사건이-아니라-연결된-운영-흔적">#</a></h2>
+<p>예를 들어 어떤 IP는 계정 탈취 시도 맥락에서 처음 보인다. 그런데 그 IP나 인접 대역, 혹은 같은 운영 흔적을 가진 다른 회선을 따라가 보면, 국내 웹사이트 게시판에 반복적으로 선불유심, 급전, 소액대출류의 스팸을 남기고, 텔레그램 핸들로 사람을 유도하고, 특정 닉네임과 홍보 패턴을 공유하는 경우가 나타난다.</p>
+<p>글로벌 평판 서비스에는 거의 기록이 없는데도, 국내 검색과 반복 피벗을 통해 보면 동일하거나 유사한 운영 주체의 흔적이 드러난다.</p>
+<p>이 지점에서 나는 이 구조를 단순한 스팸이나 일회성 계정 탈취로 보기 어렵다고 생각하게 됐다. 오히려 각 단계가 느슨하게 분업된, 일종의 <strong>한국형 범죄 서비스 공급망</strong>에 더 가까워 보인다. 유출 계정은 조달되고, 공격 인프라는 확보되며, 탈취한 자산은 현금화되고, 그 수익은 다시 다음 공격을 준비하는 데 재투입된다.</p>
+<p>한 사람이 모든 것을 직접 수행한다기보다, 필요한 자원과 역할이 분리된 채 연결되어 움직이는 구조에 가깝다.</p>
+<h2 id="코인은-왜-중요한가">코인은 왜 중요한가<a hidden class="anchor" aria-hidden="true" href="#코인은-왜-중요한가">#</a></h2>
+<p>여기서 코인은 단순한 배경이 아니다. 내가 보기에는 코인이 이 구조를 단발 범행에서 반복 가능한 운영 모델로 바꿔주는 핵심 축이다.</p>
+<p>탈취한 포인트와 상품권은 현금화될 수 있고, 그 자금은 다시 가상자산으로 전환되어 이동·보관·분배되기 쉬워진다. 그리고 그렇게 모인 자금은 다시 유출 계정 구매, 프록시와 VPS 확보, 자동화 도구 운영, 통신수단 조달 같은 공격 인프라에 재투입될 수 있다.</p>
+<p>즉, 코인은 단순한 출금 수단이 아니다.</p>
+<blockquote>
+<p><strong>탈취 자산을 다음 공격의 운영비로 바꿔주는 환류 장치</strong>에 가깝다.</p></blockquote>
+<p>이 과정을 도식화하면, 유출 계정 조달부터 ATO, 포인트·기프티콘 현금화, 가상자산 전환, 그리고 재투자까지가 하나의 순환 고리처럼 이어진다. 아래 Figure A는 그 흐름을 단순화한 것이다. 문제는 개별 공격이 아니라, 이 환류 구조 자체가 공격을 계속 가능하게 만든다는 점이다.</p>
+<p><img alt="Figure A. Domestic Korean CaaS supply chain infographic" loading="lazy" src="/images/domestic-korean-caas-infographic.webp"></p>
+<p><em>Figure A. A simplified model of the domestic Korean CaaS supply chain: leaked credentials, ATO, stored-value monetization, crypto conversion, and reinvestment.</em></p>
+<h2 id="10년-전과-지금의-차이">10년 전과 지금의 차이<a hidden class="anchor" aria-hidden="true" href="#10년-전과-지금의-차이">#</a></h2>
+<p>이 점이 10년 전과 지금의 가장 큰 차이일지도 모른다. 예전에도 계정은 털렸고 2차 피해도 있었다. 하지만 지금은 그 피해가 끝나는 것이 아니라, 다음 공격을 위한 자본으로 다시 돌아간다.</p>
+<p>그 순간 계정 탈취는 일회성 절도가 아니라 스스로를 재생산하는 운영 구조가 된다.</p>
+<h2 id="왜-한국에서는-더-잘-작동하는가">왜 한국에서는 더 잘 작동하는가<a hidden class="anchor" aria-hidden="true" href="#왜-한국에서는-더-잘-작동하는가">#</a></h2>
+<p>또 하나 중요한 점은, 이 구조가 한국적 특수성 위에서 작동한다는 사실이다. 한국은 포인트, 기프티콘, 모바일 상품권, stored-value 서비스가 매우 발달해 있고, 계정 하나만 탈취해도 금전적 가치로 연결되는 경우가 많다.</p>
+<p>동시에 선불유심, 명의도용, 커뮤니티 게시판 스팸, 텔레그램 유도 같은 로컬한 맥락은 글로벌 평판 서비스가 잘 포착하지 못한다. AbuseIPDB에 보이지 않는다고 해서 깨끗한 인프라라고 단정할 수 없는 이유가 여기에 있다.</p>
+<p>그래서 오늘날의 크리덴셜 스터핑은 예전처럼 유출 계정 목록을 한번 돌려보는 공격으로 보기 어렵다. 그것은 계정 탈취를 통해 stored-value 자산을 빼내고, 그 수익을 다시 인프라에 재투입하며, 필요하면 명의도용이나 부정 개통 정황과도 맞물릴 수 있는 수익형 운영 모델의 입구일 수 있다.</p>
+<h2 id="왜-captcha만으로는-부족한가">왜 CAPTCHA만으로는 부족한가<a hidden class="anchor" aria-hidden="true" href="#왜-captcha만으로는-부족한가">#</a></h2>
+<p>이 관점에서 보면 CAPTCHA 강화만으로는 부족하다. CAPTCHA는 로그인 페이지 한곳의 마찰을 높일 수는 있다. 하지만 공격자가 이미 유출 계정 목록을 확보하고, 자동화 인프라와 수익화 경로, 자금 순환 구조까지 분리해 운영한다면, CAPTCHA는 그 구조 전체를 멈추지 못한다.</p>
+<p>이 문제는 이전에 정리한 <a href="https://windshock.github.io/ko/post/2026-03-30-captcha-bypass-poc-defense-strategy/">CAPTCHA 우회 PoC와 방어 전략</a>에서도 비슷하게 다뤘다. 그 글에서는 Playwright, Whisper, LLM 에이전트를 조합해 유료 API 없이 100% 로컬 환경에서 오디오 CAPTCHA를 자동 처리하는 흐름을 재현했고, DOM 난독화가 더 이상 충분한 방어가 아니라는 점을 정리했다. 같은 글에서 인용한 연구에 따르면 reCAPTCHA 오디오 챌린지는 오래전에도 평균 5.42초, 85.15% 정확도로 풀린 사례가 보고됐다. CAPTCHA는 필요한 마찰일 수는 있어도, 그것만으로는 계정 탈취 이후의 수익화와 재투자 구조까지 끊어내지 못한다.</p>
+<p>결국 필요한 것은 로그인 방어 하나가 아니라 <strong>행위망 전체를 보는 시선</strong>이다. 유출 계정의 재사용 여부, 비정상 로그인 탐지, 포인트·상품권 전환 패턴, 명의도용 및 부정 개통 정황, 텔레그램 유도형 모집 흔적, 주거용 회선과 VPS의 역할 분담, 그리고 그 뒤에 있는 자금 순환 구조까지 함께 봐야 한다.</p>
+<p>중요한 것은 개별 IP를 하나씩 신고하는 것이 아니라, 그 뒤에 있는 운영 모델을 읽어내는 일이다.</p>
+<p>특히 VPS 대역은 글로벌 서비스에서도 자주 등장하는 익명 인프라다. 국내 공격에서 반복적으로 나타나는 VPS 공급자·ASN 대역을 정리한 <a href="https://github.com/windshock/anonymous-vps/">anonymous-vps</a> 레포지토리에서 관련 데이터를 확인할 수 있다.</p>
+<h2 id="결론">결론<a hidden class="anchor" aria-hidden="true" href="#결론">#</a></h2>
+<p>예전의 계정 탈취가 &lsquo;훔치는 문제&rsquo;였다면, 지금의 계정 탈취는 코인을 매개로 스스로를 재생산하는 범죄 운영 구조에 더 가깝다.</p>
+<h2 id="참고-자료">참고 자료<a hidden class="anchor" aria-hidden="true" href="#참고-자료">#</a></h2>
+<ul>
+<li><a href="https://github.com/windshock/pointpivot">PointPivot 프로젝트</a></li>
+<li><a href="https://github.com/windshock/anonymous-vps/">anonymous-vps: 익명 공격 인프라 VPS 대역 정리</a></li>
+<li><a href="https://windshock.github.io/ko/post/2026-03-30-captcha-bypass-poc-defense-strategy/">해커에게 0원짜리 자동문이 된 캡차 — CAPTCHA 우회 PoC와 방어 전략</a></li>
+<li><a href="https://journal.kbjc.net/news/articleView.html?idxno=20638">[보도상_2025 2분기] &lsquo;가전 구독&rsquo; 내구제 대출 사기 실태</a></li>
+<li><a href="https://www.ilyosisa.co.kr/news/article.html?no=254600">모르는 휴대폰 개통 후 &lsquo;200만원 할부금&rsquo; 날벼락</a></li>
+<li><a href="https://v.daum.net/v/20251202154625602">[단독] 명의도용방지 2000만건 돌파···통관부호 재발급 급증</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://windshock.github.io/ko/tags/mind/">Mind</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/ato/">ATO</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/%ED%81%AC%EB%A6%AC%EB%8D%B4%EC%85%9C-%EC%8A%A4%ED%84%B0%ED%95%91/">크리덴셜 스터핑</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/caas/">CaaS</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/%EA%B3%84%EC%A0%95-%ED%83%88%EC%B7%A8/">계정 탈취</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/%ED%8F%AC%EC%9D%B8%ED%8A%B8/">포인트</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/%EA%B8%B0%ED%94%84%ED%8B%B0%EC%BD%98/">기프티콘</a></li>
+      <li><a href="https://windshock.github.io/ko/tags/%EA%B0%80%EC%83%81%EC%9E%90%EC%82%B0/">가상자산</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://windshock.github.io/ko/post/2026-04-15-security-code-clustering/">
+    <span class="title">« 이전 페이지</span>
+    <br>
+    <span>228개 엔드포인트를 5개 클러스터로 줄인 이야기</span>
+  </a>
+  <a class="next" href="https://windshock.github.io/ko/post/2026-04-02-security-from-sense-to-structure/">
+    <span class="title">다음 페이지 »</span>
+    <br>
+    <span>취약점을 잘 찾는 사람보다, 구조를 만드는 사람이 남는다</span>
+  </a>
+</nav>
+
+
+<ul class="share-buttons">
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부 on x"
+            href="https://x.com/intent/tweet/?text=%ea%b3%84%ec%a0%95%20%ed%83%88%ec%b7%a8%eb%8a%94%20%ec%99%9c%20%eb%81%9d%eb%82%98%ec%a7%80%20%ec%95%8a%eb%8a%94%ea%b0%80%20%e2%80%94%20ATO%20%ea%b3%b5%ea%b8%89%eb%a7%9d%ec%9d%98%20%ed%95%b4%eb%b6%80&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-04-07-dismantling-ato-supply-chain%2f&amp;hashtags=Mind%2cATO%2c%ed%81%ac%eb%a6%ac%eb%8d%b4%ec%85%9c%ec%8a%a4%ed%84%b0%ed%95%91%2cCaaS%2c%ea%b3%84%ec%a0%95%ed%83%88%ec%b7%a8%2c%ed%8f%ac%ec%9d%b8%ed%8a%b8%2c%ea%b8%b0%ed%94%84%ed%8b%b0%ec%bd%98%2c%ea%b0%80%ec%83%81%ec%9e%90%ec%82%b0">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M512 62.554 L 512 449.446 C 512 483.97 483.97 512 449.446 512 L 62.554 512 C 28.03 512 0 483.97 0 449.446 L 0 62.554 C 0 28.03 28.029 0 62.554 0 L 449.446 0 C 483.971 0 512 28.03 512 62.554 Z M 269.951 190.75 L 182.567 75.216 L 56 75.216 L 207.216 272.95 L 63.9 436.783 L 125.266 436.783 L 235.9 310.383 L 332.567 436.783 L 456 436.783 L 298.367 228.367 L 432.367 75.216 L 371.033 75.216 Z M 127.633 110 L 164.101 110 L 383.481 400.065 L 349.5 400.065 Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부 on linkedin"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-04-07-dismantling-ato-supply-chain%2f&amp;title=%ea%b3%84%ec%a0%95%20%ed%83%88%ec%b7%a8%eb%8a%94%20%ec%99%9c%20%eb%81%9d%eb%82%98%ec%a7%80%20%ec%95%8a%eb%8a%94%ea%b0%80%20%e2%80%94%20ATO%20%ea%b3%b5%ea%b8%89%eb%a7%9d%ec%9d%98%20%ed%95%b4%eb%b6%80&amp;summary=%ea%b3%84%ec%a0%95%20%ed%83%88%ec%b7%a8%eb%8a%94%20%ec%99%9c%20%eb%81%9d%eb%82%98%ec%a7%80%20%ec%95%8a%eb%8a%94%ea%b0%80%20%e2%80%94%20ATO%20%ea%b3%b5%ea%b8%89%eb%a7%9d%ec%9d%98%20%ed%95%b4%eb%b6%80&amp;source=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-04-07-dismantling-ato-supply-chain%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부 on reddit"
+            href="https://reddit.com/submit?url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-04-07-dismantling-ato-supply-chain%2f&title=%ea%b3%84%ec%a0%95%20%ed%83%88%ec%b7%a8%eb%8a%94%20%ec%99%9c%20%eb%81%9d%eb%82%98%ec%a7%80%20%ec%95%8a%eb%8a%94%ea%b0%80%20%e2%80%94%20ATO%20%ea%b3%b5%ea%b8%89%eb%a7%9d%ec%9d%98%20%ed%95%b4%eb%b6%80">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부 on facebook"
+            href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-04-07-dismantling-ato-supply-chain%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부 on whatsapp"
+            href="https://api.whatsapp.com/send?text=%ea%b3%84%ec%a0%95%20%ed%83%88%ec%b7%a8%eb%8a%94%20%ec%99%9c%20%eb%81%9d%eb%82%98%ec%a7%80%20%ec%95%8a%eb%8a%94%ea%b0%80%20%e2%80%94%20ATO%20%ea%b3%b5%ea%b8%89%eb%a7%9d%ec%9d%98%20%ed%95%b4%eb%b6%80%20-%20https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-04-07-dismantling-ato-supply-chain%2f">
+            <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부 on telegram"
+            href="https://telegram.me/share/url?text=%ea%b3%84%ec%a0%95%20%ed%83%88%ec%b7%a8%eb%8a%94%20%ec%99%9c%20%eb%81%9d%eb%82%98%ec%a7%80%20%ec%95%8a%eb%8a%94%ea%b0%80%20%e2%80%94%20ATO%20%ea%b3%b5%ea%b8%89%eb%a7%9d%ec%9d%98%20%ed%95%b4%eb%b6%80&amp;url=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-04-07-dismantling-ato-supply-chain%2f">
+            <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28" height="30px" width="30px" fill="currentColor">
+                <path
+                    d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a target="_blank" rel="noopener noreferrer" aria-label="share 계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부 on ycombinator"
+            href="https://news.ycombinator.com/submitlink?t=%ea%b3%84%ec%a0%95%20%ed%83%88%ec%b7%a8%eb%8a%94%20%ec%99%9c%20%eb%81%9d%eb%82%98%ec%a7%80%20%ec%95%8a%eb%8a%94%ea%b0%80%20%e2%80%94%20ATO%20%ea%b3%b5%ea%b8%89%eb%a7%9d%ec%9d%98%20%ed%95%b4%eb%b6%80&u=https%3a%2f%2fwindshock.github.io%2fko%2fpost%2f2026-04-07-dismantling-ato-supply-chain%2f">
+            <svg version="1.1" xml:space="preserve" width="30px" height="30px" viewBox="0 0 512 512" fill="currentColor"
+                xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape">
+                <path
+                    d="M449.446 0C483.971 0 512 28.03 512 62.554L512 449.446C512 483.97 483.97 512 449.446 512L62.554 512C28.03 512 0 483.97 0 449.446L0 62.554C0 28.03 28.029 0 62.554 0L449.446 0ZM183.8767 87.9921H121.8427L230.6673 292.4508V424.0079H281.3328V292.4508L390.1575 87.9921H328.1233L256 238.2489z" />
+            </svg>
+        </a>
+    </li>
+</ul>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://windshock.github.io/ko/">After the Code</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+  function loadGiscus(theme) {
+    
+    document.querySelectorAll('.giscus-frame, script[src*="giscus.app"]').forEach(el => el.remove());
+
+    
+    const giscusScript = document.createElement("script");
+    giscusScript.src = "https://giscus.app/client.js";
+    giscusScript.setAttribute("data-repo", "windshock\/windshock.github.io");
+    giscusScript.setAttribute("data-repo-id", "MDEwOlJlcG9zaXRvcnkxODQ2MDMyMTk=");
+    giscusScript.setAttribute("data-category", "General");
+    giscusScript.setAttribute("data-category-id", "DIC_kwDOCwDSU84CoqLg");
+    giscusScript.setAttribute("data-mapping", "pathname");
+    giscusScript.setAttribute("data-reactions-enabled", "1");
+    giscusScript.setAttribute("data-theme", theme); 
+    giscusScript.setAttribute("data-lang", "en");
+    giscusScript.setAttribute("data-input-position", "bottom");
+    giscusScript.setAttribute("data-loading", "lazy");
+    giscusScript.crossOrigin = "anonymous";
+    giscusScript.async = true;
+
+    document.body.appendChild(giscusScript);
+  }
+
+  
+  const currentTheme = document.body.classList.contains("dark") ? "dark" : "light";
+  loadGiscus(currentTheme);
+
+  
+  const observer = new MutationObserver(() => {
+    const newTheme = document.body.classList.contains("dark") ? "dark" : "light";
+    loadGiscus(newTheme);
+  });
+
+  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+</script>
+
+
+
+<script>
+  function initSwiperIfNeeded() {
+    if (typeof Swiper === 'undefined') {
+      
+      return setTimeout(initSwiperIfNeeded, 50);
+    }
+
+    if (document.querySelector('.swiper')) {
+      new Swiper('.swiper', {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        loop: true,
+        preloadImages: false,
+        lazy: {
+          loadOnTransitionStart: true,
+          loadPrevNext: true,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        },
+        breakpoints: {
+          768: { slidesPerView: 2.5 },
+          1024: { slidesPerView: 3.2 }
+        }
+      });
+
+      
+      document.querySelectorAll('img.swiper-lazy').forEach(img => {
+        img.src = img.dataset.src;
+      });
+    } else {
+      setTimeout(initSwiperIfNeeded, 100);
+    }
+  }
+
+  
+  initSwiperIfNeeded();
+</script><script src="/js/oneko/dodge.js" defer></script>
+<script src="/js/oneko/oneko.js" data-cat="/images/oneko/oneko.gif" defer></script>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '복사';
+
+        function copyingDone() {
+            copybutton.innerHTML = '복사 완료!';
+            setTimeout(() => {
+                copybutton.innerHTML = '복사';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

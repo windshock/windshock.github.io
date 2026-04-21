@@ -1,1 +1,40 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Code on After the Code</title><link>https://windshock.github.io/ko/tags/code/</link><description>Recent content in Code on After the Code</description><generator>Hugo -- 0.145.0</generator><language>ko-KR</language><lastBuildDate>Wed, 15 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://windshock.github.io/ko/tags/code/index.xml" rel="self" type="application/rss+xml"/><item><title>228개 엔드포인트를 5개 클러스터로 줄인 이야기</title><link>https://windshock.github.io/ko/post/2026-04-15-security-code-clustering/</link><pubDate>Wed, 15 Apr 2026 00:00:00 +0000</pubDate><guid>https://windshock.github.io/ko/post/2026-04-15-security-code-clustering/</guid><description>실제 코드베이스에 dataflow 기반 클러스터링을 적용한 기록 — 228개 엔드포인트를 5개 리뷰 가능한 클러스터로 축약하고, 교차점에서 RCE 체인을 발견하기까지.</description></item><item><title>보안 진단 보고서는 발행되면 죽는다</title><link>https://windshock.github.io/ko/post/2026-03-17-security-testing-as-code/</link><pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate><guid>https://windshock.github.io/ko/post/2026-03-17-security-testing-as-code/</guid><description>기존 보안 진단 보고서의 한계를 짚어보고, 진단 결과를 &amp;#39;문서&amp;#39;가 아닌 &amp;#39;실행 가능한 코드(PoC)&amp;#39;로 관리하는 Security Testing as Code의 필요성과 실무 적용 사례를 공유합니다.</description></item><item><title>유지보수 중단 오픈소스를 Gmail과 Snyk 알림으로 관리한 방법</title><link>https://windshock.github.io/ko/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</link><pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate><guid>https://windshock.github.io/ko/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</guid><description>Snyk 웹 UI에만 노출되는 취약점 정보를 Gmail과 Apps Script로 자동 수집하여 Google Sheets에 정리하는 구현 사례입니다.</description></item><item><title>기업 네트워크 보안을 위한 ECH 차단 및 DoH 대응 전략</title><link>https://windshock.github.io/ko/post/2025-03-31-dnsmasq-ech-doh-block/</link><pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate><guid>https://windshock.github.io/ko/post/2025-03-31-dnsmasq-ech-doh-block/</guid><description>dnsmasq를 사용하여 SVCB와 HTTPS 레코드를 필터링함으로써 ECH를 비활성화하고 중앙 DNS 정책을 적용하는 실습 가이드. DoH 차단은 별도의 네트워크 정책이 필요함을 함께 안내합니다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Code on After the Code</title>
+    <link>https://windshock.github.io/ko/tags/code/</link>
+    <description>Recent content in Code on After the Code</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>ko-KR</language>
+    <lastBuildDate>Wed, 15 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/ko/tags/code/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>228개 엔드포인트를 5개 클러스터로 줄인 이야기</title>
+      <link>https://windshock.github.io/ko/post/2026-04-15-security-code-clustering/</link>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2026-04-15-security-code-clustering/</guid>
+      <description>실제 코드베이스에 dataflow 기반 클러스터링을 적용한 기록 — 228개 엔드포인트를 5개 리뷰 가능한 클러스터로 축약하고, 교차점에서 RCE 체인을 발견하기까지.</description>
+    </item>
+    <item>
+      <title>보안 진단 보고서는 발행되면 죽는다</title>
+      <link>https://windshock.github.io/ko/post/2026-03-17-security-testing-as-code/</link>
+      <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2026-03-17-security-testing-as-code/</guid>
+      <description>기존 보안 진단 보고서의 한계를 짚어보고, 진단 결과를 &amp;#39;문서&amp;#39;가 아닌 &amp;#39;실행 가능한 코드(PoC)&amp;#39;로 관리하는 Security Testing as Code의 필요성과 실무 적용 사례를 공유합니다.</description>
+    </item>
+    <item>
+      <title>유지보수 중단 오픈소스를 Gmail과 Snyk 알림으로 관리한 방법</title>
+      <link>https://windshock.github.io/ko/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</guid>
+      <description>Snyk 웹 UI에만 노출되는 취약점 정보를 Gmail과 Apps Script로 자동 수집하여 Google Sheets에 정리하는 구현 사례입니다.</description>
+    </item>
+    <item>
+      <title>기업 네트워크 보안을 위한 ECH 차단 및 DoH 대응 전략</title>
+      <link>https://windshock.github.io/ko/post/2025-03-31-dnsmasq-ech-doh-block/</link>
+      <pubDate>Mon, 31 Mar 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-03-31-dnsmasq-ech-doh-block/</guid>
+      <description>dnsmasq를 사용하여 SVCB와 HTTPS 레코드를 필터링함으로써 ECH를 비활성화하고 중앙 DNS 정책을 적용하는 실습 가이드. DoH 차단은 별도의 네트워크 정책이 필요함을 함께 안내합니다.</description>
+    </item>
+  </channel>
+</rss>

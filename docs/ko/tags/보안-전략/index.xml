@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>보안 전략 on After the Code</title><link>https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88-%EC%A0%84%EB%9E%B5/</link><description>Recent content in 보안 전략 on After the Code</description><generator>Hugo -- 0.145.0</generator><language>ko-KR</language><lastBuildDate>Tue, 21 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88-%EC%A0%84%EB%9E%B5/index.xml" rel="self" type="application/rss+xml"/><item><title>코드 이후에도, 구조는 남는다</title><link>https://windshock.github.io/ko/post/2026-04-21-after-the-code-the-structure-remains/</link><pubDate>Tue, 21 Apr 2026 00:00:00 +0000</pubDate><guid>https://windshock.github.io/ko/post/2026-04-21-after-the-code-the-structure-remains/</guid><description>취약점을 더 많이 찾는 문제보다, 발견 이후를 조직이 어떻게 흡수하고 지속시키는지가 이제 더 중요하다는 이 블로그의 대표 서문.</description></item><item><title>한국 보안 산업에 대한 단상</title><link>https://windshock.github.io/ko/post/2026-03-26-korean-security-escape-velocity/</link><pubDate>Thu, 26 Mar 2026 00:00:00 +0000</pubDate><guid>https://windshock.github.io/ko/post/2026-03-26-korean-security-escape-velocity/</guid><description>한국 보안 산업에서 반복되는 규제·납품 중심 구조와 글로벌 제품 중심 성장 경로의 차이를 정리하고, AI 시대에 다시 나타나는 분기점을 돌아봅니다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>보안 전략 on After the Code</title>
+    <link>https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88-%EC%A0%84%EB%9E%B5/</link>
+    <description>Recent content in 보안 전략 on After the Code</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>ko-KR</language>
+    <lastBuildDate>Tue, 21 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88-%EC%A0%84%EB%9E%B5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>코드 이후에도, 구조는 남는다</title>
+      <link>https://windshock.github.io/ko/post/2026-04-21-after-the-code-the-structure-remains/</link>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2026-04-21-after-the-code-the-structure-remains/</guid>
+      <description>취약점을 더 많이 찾는 문제보다, 발견 이후를 조직이 어떻게 흡수하고 지속시키는지가 이제 더 중요하다는 이 블로그의 대표 서문.</description>
+    </item>
+    <item>
+      <title>한국 보안 산업에 대한 단상</title>
+      <link>https://windshock.github.io/ko/post/2026-03-26-korean-security-escape-velocity/</link>
+      <pubDate>Thu, 26 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2026-03-26-korean-security-escape-velocity/</guid>
+      <description>한국 보안 산업에서 반복되는 규제·납품 중심 구조와 글로벌 제품 중심 성장 경로의 차이를 정리하고, AI 시대에 다시 나타나는 분기점을 돌아봅니다.</description>
+    </item>
+  </channel>
+</rss>

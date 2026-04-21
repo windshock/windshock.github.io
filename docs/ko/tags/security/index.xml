@@ -1,1 +1,47 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Security on After the Code</title><link>https://windshock.github.io/ko/tags/security/</link><description>Recent content in Security on After the Code</description><generator>Hugo -- 0.145.0</generator><language>ko-KR</language><lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://windshock.github.io/ko/tags/security/index.xml" rel="self" type="application/rss+xml"/><item><title>SSRF Defense: 최신 방어 전략과 실전 가이드</title><link>https://windshock.github.io/ko/post/2025-06-25-ssrf-defense/</link><pubDate>Wed, 25 Jun 2025 00:00:00 +0000</pubDate><guid>https://windshock.github.io/ko/post/2025-06-25-ssrf-defense/</guid><description>서버사이드 요청 위조(SSRF) 공격의 원리와 이를 효과적으로 방어하는 최신 전략 및 실전 가이드.</description></item><item><title>Dicer 모듈 취약점 대응 가이드: CVE-2022-24434</title><link>https://windshock.github.io/ko/post/2025-05-12-cve-cve-2022-24434-dicer/</link><pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate><guid>https://windshock.github.io/ko/post/2025-05-12-cve-cve-2022-24434-dicer/</guid><description>Node.js Dicer 모듈의 CVE-2022-24434 DoS 취약점을 분석하고, Multer 업그레이드 및 패치 적용 등 실무 대응 방안을 정리합니다.</description></item><item><title>유지보수 중단 오픈소스를 Gmail과 Snyk 알림으로 관리한 방법</title><link>https://windshock.github.io/ko/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</link><pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate><guid>https://windshock.github.io/ko/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</guid><description>Snyk 웹 UI에만 노출되는 취약점 정보를 Gmail과 Apps Script로 자동 수집하여 Google Sheets에 정리하는 구현 사례입니다.</description></item><item><title>개발자들 말하는 보안에 대한 흔한 거짓말</title><link>https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/</link><pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate><guid>https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/</guid><description>개발자들이 보안에 대해 흔히 믿는 책임 전가형·기술 과신형·과소평가형 거짓말을 분석하고 현실적 대응 방안을 제시합니다.</description></item><item><title>XML-RPC 보안 취약점 분석 및 완화 전략</title><link>https://windshock.github.io/ko/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</link><pubDate>Fri, 28 Mar 2025 08:39:00 +0900</pubDate><guid>https://windshock.github.io/ko/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</guid><description>XML-RPC의 RCE, XXE, DDoS 등 주요 취약점을 분석하고 비활성화, 입력 검증, WAF 도입 등 실무 완화 전략을 정리합니다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Security on After the Code</title>
+    <link>https://windshock.github.io/ko/tags/security/</link>
+    <description>Recent content in Security on After the Code</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>ko-KR</language>
+    <lastBuildDate>Wed, 25 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/ko/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SSRF Defense: 최신 방어 전략과 실전 가이드</title>
+      <link>https://windshock.github.io/ko/post/2025-06-25-ssrf-defense/</link>
+      <pubDate>Wed, 25 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-06-25-ssrf-defense/</guid>
+      <description>서버사이드 요청 위조(SSRF) 공격의 원리와 이를 효과적으로 방어하는 최신 전략 및 실전 가이드.</description>
+    </item>
+    <item>
+      <title>Dicer 모듈 취약점 대응 가이드: CVE-2022-24434</title>
+      <link>https://windshock.github.io/ko/post/2025-05-12-cve-cve-2022-24434-dicer/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-05-12-cve-cve-2022-24434-dicer/</guid>
+      <description>Node.js Dicer 모듈의 CVE-2022-24434 DoS 취약점을 분석하고, Multer 업그레이드 및 패치 적용 등 실무 대응 방안을 정리합니다.</description>
+    </item>
+    <item>
+      <title>유지보수 중단 오픈소스를 Gmail과 Snyk 알림으로 관리한 방법</title>
+      <link>https://windshock.github.io/ko/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</link>
+      <pubDate>Mon, 12 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-05-12-managing-unmaintained-open-source-with-snyk-and-gmail/</guid>
+      <description>Snyk 웹 UI에만 노출되는 취약점 정보를 Gmail과 Apps Script로 자동 수집하여 Google Sheets에 정리하는 구현 사례입니다.</description>
+    </item>
+    <item>
+      <title>개발자들 말하는 보안에 대한 흔한 거짓말</title>
+      <link>https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/</link>
+      <pubDate>Tue, 01 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-04-01-common-security-myths-developers-tell-themselves/</guid>
+      <description>개발자들이 보안에 대해 흔히 믿는 책임 전가형·기술 과신형·과소평가형 거짓말을 분석하고 현실적 대응 방안을 제시합니다.</description>
+    </item>
+    <item>
+      <title>XML-RPC 보안 취약점 분석 및 완화 전략</title>
+      <link>https://windshock.github.io/ko/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</link>
+      <pubDate>Fri, 28 Mar 2025 08:39:00 +0900</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-03-28-xml-rpc-security-vulnerabilities-analysis-and-mitigation-strategies/</guid>
+      <description>XML-RPC의 RCE, XXE, DDoS 등 주요 취약점을 분석하고 비활성화, 입력 검증, WAF 도입 등 실무 완화 전략을 정리합니다.</description>
+    </item>
+  </channel>
+</rss>

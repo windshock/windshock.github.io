@@ -1,5 +1,5 @@
 ---
-title: "Architecting Safe Velocity"
+title: "Why Security Knowledge Transfer Fails — and What to Design Instead"
 date: 2026-04-21
 draft: false
 featured: true
@@ -7,7 +7,7 @@ presentation: true
 tags: ["TrustAndCulture", "DevOps", "Platform Engineering", "Policy as Code", "Secure Default", "Organizational Design"]
 categories: ["Security Culture", "Organizational Design"]
 description: "An organizational design report that reframes the security–DevOps problem from failed knowledge transfer to default design, interfaces, exception handling, and alignment."
-image: "/images/pdf-previews/Architecting_Safe_Velocity_p1.webp"
+image: "/images/pdf-previews/Engineering_the_Default_p1.webp"
 presentationInfographic: "/images/post/Architecting_Safe_Velocity_infographic.png"
 ---
 
@@ -15,11 +15,11 @@ presentationInfographic: "/images/post/Architecting_Safe_Velocity_infographic.pn
 
 ## PDF
 
-- **Open (new tab):** [`/files/Architecting_Safe_Velocity.pdf`](/files/Architecting_Safe_Velocity.pdf)
+- **Open (new tab):** [`/files/Engineering_the_Default.pdf`](/files/Engineering_the_Default.pdf)
 
 <iframe
-  id="pdfjs-architecting-safe-velocity-en"
-  src="/pdfjs/single.html?file=/files/Architecting_Safe_Velocity.pdf#page=1"
+  id="pdfjs-security-knowledge-to-default-design-en"
+  src="/pdfjs/single.html?file=/files/Engineering_the_Default.pdf#page=1"
   width="100%"
   height="560"
   style="border: 1px solid #e5e7eb; border-radius: 8px;"
@@ -27,7 +27,7 @@ presentationInfographic: "/images/post/Architecting_Safe_Velocity_infographic.pn
 
 <script>
   (function () {
-    const iframe = document.getElementById("pdfjs-architecting-safe-velocity-en");
+    const iframe = document.getElementById("pdfjs-security-knowledge-to-default-design-en");
     if (!iframe) return;
     window.addEventListener("message", function (e) {
       if (e.origin !== window.location.origin) return;
@@ -39,7 +39,7 @@ presentationInfographic: "/images/post/Architecting_Safe_Velocity_infographic.pn
   })();
 </script>
 
-> If the PDF does not render, open it here: [`/files/Architecting_Safe_Velocity.pdf`](/files/Architecting_Safe_Velocity.pdf)
+> If the PDF does not render, open it here: [`/files/Engineering_the_Default.pdf`](/files/Engineering_the_Default.pdf)
 
 ## Abstract
 
@@ -488,3 +488,39 @@ The organizational task is not to expand the total amount of knowledge, but to p
 ## Appendix B. One-sentence summary
 
 This report reframes the security–DevOps problem from failed knowledge transfer to the design of boundaries between structure and judgment. Repetitive risk should be eliminated through defaults and guardrails; the remaining human zone should be handled through interfaces and exception structures; and alignment should be understood only as an amplifier operating on top of that stack.
+
+---
+
+## References
+
+Adkins, H., Beyer, B., Blankinship, P., Lewandowski, P., Oprea, A., & Stubblefield, A. (2020). *Building secure and reliable systems: Best practices for designing, implementing, and maintaining systems*. O'Reilly Media. https://google.github.io/building-secure-and-reliable-systems/
+
+Argote, L. (2013). *Organizational learning: Creating, retaining and transferring knowledge* (2nd ed.). Springer. https://doi.org/10.1007/978-1-4614-5251-5
+
+Argote, L., Ingram, P., Levine, J. M., & Moreland, R. L. (2000). Knowledge transfer in organizations: Learning from the experience of others. *Organizational Behavior and Human Decision Processes, 82*(1), 1-8. https://doi.org/10.1006/obhd.2000.2883
+
+Baxter, G., & Sommerville, I. (2011). Socio-technical systems: From design methods to systems engineering. *Interacting with Computers, 23*(1), 4-17. https://doi.org/10.1016/j.intcom.2010.07.003
+
+Beyer, B., Jones, C., Petoff, J., & Murphy, N. R. (Eds.). (2016). *Site reliability engineering: How Google runs production systems*. O'Reilly Media. https://sre.google/sre-book/table-of-contents/
+
+Carlile, P. R. (2004). Transferring, translating, and transforming: An integrative framework for managing knowledge across boundaries. *Organization Science, 15*(5), 555-568. https://doi.org/10.1287/orsc.1040.0094
+
+Cybersecurity and Infrastructure Security Agency. (2023, October). *Shifting the balance of cybersecurity risk: Principles and approaches for secure by design software*. https://www.cisa.gov/securebydesign
+
+DORA. (2024). *Accelerate State of DevOps report 2024*. https://dora.dev/research/2024/dora-report/
+
+Edmondson, A. C. (1999). Psychological safety and learning behavior in work teams. *Administrative Science Quarterly, 44*(2), 350-383.
+
+Edmondson, A. C. (2018). *The fearless organization: Creating psychological safety in the workplace for learning, innovation, and growth*. Wiley.
+
+Forsgren, N., Humble, J., & Kim, G. (2018). *Accelerate: The science of lean software and DevOps: Building and scaling high performing technology organizations*. IT Revolution.
+
+Leveson, N. G. (2004). A new accident model for engineering safer systems. *Safety Science, 42*(4), 237-270. https://doi.org/10.1016/S0925-7535(03)00047-X
+
+Leveson, N. G. (2012). *Engineering a safer world: Systems thinking applied to safety*. MIT Press.
+
+Nonaka, I. (1994). A dynamic theory of organizational knowledge creation. *Organization Science, 5*(1), 14-37. https://doi.org/10.1287/orsc.5.1.14
+
+Skelton, M., & Pais, M. (2019). *Team topologies: Organizing business and technology teams for fast flow*. IT Revolution.
+
+Souppaya, M., Scarfone, K., & Dodson, D. (2022). *Secure software development framework (SSDF) version 1.1: Recommendations for mitigating the risk of software vulnerabilities* (NIST Special Publication 800-218). National Institute of Standards and Technology. https://doi.org/10.6028/NIST.SP.800-218

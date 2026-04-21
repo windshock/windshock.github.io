@@ -1,1 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>보안 on After the Code</title><link>https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88/</link><description>Recent content in 보안 on After the Code</description><generator>Hugo -- 0.145.0</generator><language>ko-KR</language><lastBuildDate>Thu, 10 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88/index.xml" rel="self" type="application/rss+xml"/><item><title>수천 대 PC에 FIDO2 지문 보안키 기반 로컬 관리자 계정 로그인 구현 가능성 분석</title><link>https://windshock.github.io/ko/post/2025-07-10-fido2-local-admin-login-feasibility/</link><pubDate>Thu, 10 Jul 2025 00:00:00 +0000</pubDate><guid>https://windshock.github.io/ko/post/2025-07-10-fido2-local-admin-login-feasibility/</guid><description>수천 대의 PC에 동일한 로컬 관리자 계정(vdiadmin)을 사용하는 환경에서 FIDO2 지문 보안키 기반 로그인의 기술적 구현 가능성과 한계, 그리고 현실적인 대안(2FA 등)을 심층 분석합니다.</description></item><item><title>공짜 점심은 없지만, 보안에는 공짜가 있었다</title><link>https://windshock.github.io/ko/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</link><pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate><guid>https://windshock.github.io/ko/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</guid><description>CVE 시스템의 지속 가능성 위기와 글로벌 보안 공공 인프라에 대한 공동 자금 모델의 필요성을 분석합니다.</description></item><item><title>보안진단 담당자의 흔한 착각</title><link>https://windshock.github.io/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</link><pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate><guid>https://windshock.github.io/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</guid><description>보안 취약점 평가 담당자들이 흔히 가지는 오해를 분석하고, 통합적 보안 설계와 체계적 취약점 관리 전략을 제시합니다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>보안 on After the Code</title>
+    <link>https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88/</link>
+    <description>Recent content in 보안 on After the Code</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>ko-KR</language>
+    <lastBuildDate>Thu, 10 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/ko/tags/%EB%B3%B4%EC%95%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>수천 대 PC에 FIDO2 지문 보안키 기반 로컬 관리자 계정 로그인 구현 가능성 분석</title>
+      <link>https://windshock.github.io/ko/post/2025-07-10-fido2-local-admin-login-feasibility/</link>
+      <pubDate>Thu, 10 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-07-10-fido2-local-admin-login-feasibility/</guid>
+      <description>수천 대의 PC에 동일한 로컬 관리자 계정(vdiadmin)을 사용하는 환경에서 FIDO2 지문 보안키 기반 로그인의 기술적 구현 가능성과 한계, 그리고 현실적인 대안(2FA 등)을 심층 분석합니다.</description>
+    </item>
+    <item>
+      <title>공짜 점심은 없지만, 보안에는 공짜가 있었다</title>
+      <link>https://windshock.github.io/ko/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</link>
+      <pubDate>Thu, 17 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2025-04-17-theres-no-such-thing-as-a-free-lunch-but-security-was-free/</guid>
+      <description>CVE 시스템의 지속 가능성 위기와 글로벌 보안 공공 인프라에 대한 공동 자금 모델의 필요성을 분석합니다.</description>
+    </item>
+    <item>
+      <title>보안진단 담당자의 흔한 착각</title>
+      <link>https://windshock.github.io/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</link>
+      <pubDate>Sun, 16 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2024-06-16-common-misconceptions-of-security-assessors/</guid>
+      <description>보안 취약점 평가 담당자들이 흔히 가지는 오해를 분석하고, 통합적 보안 설계와 체계적 취약점 관리 전략을 제시합니다.</description>
+    </item>
+  </channel>
+</rss>

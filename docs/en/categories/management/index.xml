@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Management on After the Code</title><link>https://windshock.github.io/en/categories/management/</link><description>Recent content in Management on After the Code</description><generator>Hugo -- 0.145.0</generator><language>en-US</language><lastBuildDate>Mon, 07 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://windshock.github.io/en/categories/management/index.xml" rel="self" type="application/rss+xml"/><item><title>In the AI Era, Employees Are Isolated and Organizations Thrive</title><link>https://windshock.github.io/en/post/2025-04-07-evil-management-manual/</link><pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate><guid>https://windshock.github.io/en/post/2025-04-07-evil-management-manual/</guid><description>A satirical critique of how AI-era organizations isolate employees through async workflows and data-driven control to suppress solidarity.</description></item><item><title>KPIs Can Cause Incidents!!!</title><link>https://windshock.github.io/en/post/2024-06-20-kpi-causes-accidents/</link><pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate><guid>https://windshock.github.io/en/post/2024-06-20-kpi-causes-accidents/</guid><description>Real cases where manipulated KPI metrics led to cybersecurity incidents, exposing the dangers of metric-driven security management.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Management on After the Code</title>
+    <link>https://windshock.github.io/en/categories/management/</link>
+    <description>Recent content in Management on After the Code</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en-US</language>
+    <lastBuildDate>Mon, 07 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/en/categories/management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>In the AI Era, Employees Are Isolated and Organizations Thrive</title>
+      <link>https://windshock.github.io/en/post/2025-04-07-evil-management-manual/</link>
+      <pubDate>Mon, 07 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2025-04-07-evil-management-manual/</guid>
+      <description>A satirical critique of how AI-era organizations isolate employees through async workflows and data-driven control to suppress solidarity.</description>
+    </item>
+    <item>
+      <title>KPIs Can Cause Incidents!!!</title>
+      <link>https://windshock.github.io/en/post/2024-06-20-kpi-causes-accidents/</link>
+      <pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/en/post/2024-06-20-kpi-causes-accidents/</guid>
+      <description>Real cases where manipulated KPI metrics led to cybersecurity incidents, exposing the dangers of metric-driven security management.</description>
+    </item>
+  </channel>
+</rss>

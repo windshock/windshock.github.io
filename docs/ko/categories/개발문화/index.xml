@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>개발문화 on After the Code</title><link>https://windshock.github.io/ko/categories/%EA%B0%9C%EB%B0%9C%EB%AC%B8%ED%99%94/</link><description>Recent content in 개발문화 on After the Code</description><generator>Hugo -- 0.145.0</generator><language>ko-KR</language><lastBuildDate>Wed, 22 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://windshock.github.io/ko/categories/%EA%B0%9C%EB%B0%9C%EB%AC%B8%ED%99%94/index.xml" rel="self" type="application/rss+xml"/><item><title>개발문화가 보안수준에 영향을 미칠 수 있을까?</title><link>https://windshock.github.io/ko/post/2024-05-22-can-development-culture-influence-security-levels/</link><pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate><guid>https://windshock.github.io/ko/post/2024-05-22-can-development-culture-influence-security-levels/</guid><description>개발문화가 코드 보안 수준에 미치는 영향을 Joern 등 정적 분석 도구의 커스텀 룰로 평가하는 방법을 제시합니다.</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>개발문화 on After the Code</title>
+    <link>https://windshock.github.io/ko/categories/%EA%B0%9C%EB%B0%9C%EB%AC%B8%ED%99%94/</link>
+    <description>Recent content in 개발문화 on After the Code</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>ko-KR</language>
+    <lastBuildDate>Wed, 22 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://windshock.github.io/ko/categories/%EA%B0%9C%EB%B0%9C%EB%AC%B8%ED%99%94/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>개발문화가 보안수준에 영향을 미칠 수 있을까?</title>
+      <link>https://windshock.github.io/ko/post/2024-05-22-can-development-culture-influence-security-levels/</link>
+      <pubDate>Wed, 22 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://windshock.github.io/ko/post/2024-05-22-can-development-culture-influence-security-levels/</guid>
+      <description>개발문화가 코드 보안 수준에 미치는 영향을 Joern 등 정적 분석 도구의 커스텀 룰로 평가하는 방법을 제시합니다.</description>
+    </item>
+  </channel>
+</rss>
