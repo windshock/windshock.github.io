@@ -30,14 +30,61 @@
 </header>
 {{- end }}
 
-{{/* 필터링: featured = true 인 포스트만 추출 */}}
-{{ $featured := where (where .Site.RegularPages "Params.featured" true) ".Lang" .Site.Language.Lang }}
 {{ $lang := .Site.Language.Lang }}
+{{ $langPages := where .Site.RegularPages ".Lang" $lang }}
+{{ $manifestoPages := first 1 (sort (where $langPages "Params.is_manifesto" true) "Date" "desc") }}
+{{ $featured := where (where $langPages "Params.featured" true) "Params.is_manifesto" "!=" true }}
 
-{{ if gt (len $featured) 0 }}
+{{ if or (gt (len $manifestoPages) 0) (gt (len $featured) 0) }}
 
 {{ $style := resources.Get "css/tailwind.css" | postCSS (dict "config" "./postcss.config.js") | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+
+{{ end }}
+
+{{ range $manifestoPages }}
+<section class="py-8 max-w-6xl mx-auto animate-fade-in-up">
+  <div class="px-4 md:px-0">
+    <div class="grid overflow-hidden rounded-3xl border border-neutral-700 bg-gradient-to-br from-neutral-950 via-zinc-900 to-stone-900 shadow-2xl lg:grid-cols-[1.15fr_0.85fr]">
+      <div class="flex flex-col justify-between p-8 md:p-10">
+        <div class="space-y-5">
+          <p class="text-xs font-semibold uppercase tracking-[0.32em] text-orange-200">
+            {{ if eq $lang "ko" }}대표 서문{{ else }}Representative Foreword{{ end }}
+          </p>
+          <h2 class="font-spectral text-3xl font-bold leading-tight text-white md:text-5xl">
+            {{ .Title }}
+          </h2>
+          <p class="max-w-2xl text-base leading-8 text-neutral-200 md:text-lg">
+            {{ .Description | default .Summary | plainify | htmlUnescape }}
+          </p>
+          <p class="max-w-2xl text-sm leading-7 text-neutral-400 md:text-base">
+            {{ if eq $lang "ko" }}이 글은 이 블로그 전체를 관통하는 문제의식을 먼저 묶어두는 프레임이다. 기술 분석, 방법론, 거버넌스에 관한 글들은 모두 여기서 시작된다.{{ else }}This essay frames the entire site first. The posts on technical analysis, method, and governance all start from this same problem statement.{{ end }}
+          </p>
+        </div>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="{{ .RelPermalink }}" class="inline-flex items-center justify-center rounded-full bg-orange-300 px-5 py-3 text-sm font-semibold text-neutral-950 transition hover:bg-orange-200">
+            {{ if eq $lang "ko" }}서문 읽기{{ else }}Read the Foreword{{ end }}
+          </a>
+          <a href="{{ "about/" | relLangURL }}" class="inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5">
+            {{ if eq $lang "ko" }}이 블로그 소개{{ else }}About This Blog{{ end }}
+          </a>
+        </div>
+      </div>
+      <div class="relative min-h-[280px] border-t border-white/10 lg:min-h-full lg:border-l lg:border-t-0">
+        <img src="{{ .Params.image | default "/images/default-thumbnail.webp" }}" alt="{{ .Title }}" class="h-full w-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/35 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.28em] text-neutral-300">
+            {{ if eq $lang "ko" }}Detection, Method, Governance{{ else }}Detection, Method, Governance{{ end }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ if gt (len $featured) 0 }}
 
 <!-- Featured Posts 섹션 -->
 {{ $borderColors := slice "border-red-400" "border-orange-400" "border-yellow-400" "border-lime-400" "border-emerald-400" "border-sky-400" "border-indigo-400" "border-pink-400" }}
@@ -212,6 +259,7 @@
 {{- if .IsHome }}
 {{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{- $pages = where $pages "Params.hiddenInHomeList" "!=" "true"  }}
+{{- $pages = where $pages "Params.is_manifesto" "!=" true }}
 {{- end }}
 
 {{- $paginator := .Paginate $pages }}

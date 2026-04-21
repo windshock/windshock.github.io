@@ -1,6 +1,6 @@
 baseURL = "https://windshock.github.io/"
 languageCode = "en-us"
-title = "Code Before Breach"
+title = "After the Code"
 theme = "PaperMod"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = true
@@ -154,4 +154,3 @@ googleAnalytics = "G-6N6EEJ259T"
     { name = "categories", weight = 80 },
     { name = "date", weight = 10 }
   ]
-

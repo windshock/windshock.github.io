@@ -1,4 +1,4 @@
 ---
-title: "Code Before Breach - Secure Coding, Automation & Shift-Left"
-description: "A blog focused on shift-left security, coding defensively, and using automation to stay ahead of vulnerabilities."
+title: "After the Code, the Structure Remains"
+description: "A security blog about what happens after detection: how code, automation, and governance absorb findings and turn them into durable change."
 ---
