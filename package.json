@@ -23,7 +23,7 @@
   "homepage": "https://github.com/windshock/windshock.github.io#readme",
   "description": "",
   "devDependencies": {
-    "@playwright/test": "^1.49.1",
+    "@playwright/test": "^1.59.1",
     "@tailwindcss/line-clamp": "^0.4.4",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
