@@ -14,6 +14,10 @@ import {
 import { PresentationTTS } from './tts-engine.js';
 import { extractSlideText } from './tts-text.js';
 
+/** TTS v1을 임시 비활성화. 한국어 발음 품질(g2pkk 미포팅)과 속도(WASM single-thread)
+ * 개선이 v2 작업으로 미뤄짐. 코드와 워커는 그대로 보존하고 UI 진입만 차단. */
+const TTS_ENABLED = false;
+
 const STORAGE_PREFIX = 'presentation-mode:';
 
 function storageKey() {
@@ -414,8 +418,12 @@ export function initPresentationMode() {
 
     /* TTS 토글 — 첫 클릭 시 Kokoro-82M q8f16(~86MB)를 lazy-load.
      * 상태별 라벨: 🔊 idle / … loading / ■ speaking / ⚠ error
-     * 버튼 하나가 play/stop 토글 역할. Replay는 stop 후 다시 누르면 됨. */
-    const ttsBtn = document.createElement('button');
+     * 버튼 하나가 play/stop 토글 역할. Replay는 stop 후 다시 누르면 됨.
+     * v2까지 비활성화 (TTS_ENABLED=false 시 워커도 띄우지 않음). */
+    let ttsBtn = null;
+    let tts = null;
+    if (TTS_ENABLED) {
+    ttsBtn = document.createElement('button');
     ttsBtn.type = 'button';
     ttsBtn.className = 'presentation-deck-tts-btn';
     ttsBtn.textContent = '🔊';
@@ -423,7 +431,7 @@ export function initPresentationMode() {
     ttsBtn.title = ttsIdleTitle;
     ttsBtn.setAttribute('aria-label', ttsIdleTitle);
 
-    const tts = new PresentationTTS();
+    tts = new PresentationTTS();
     const updateTtsBtn = (state, err) => {
       ttsBtn.dataset.ttsState = state;
       switch (state) {
@@ -473,6 +481,7 @@ export function initPresentationMode() {
     });
 
     chromeEnd.appendChild(ttsBtn);
+    } /* end if (TTS_ENABLED) */
     chromeEnd.appendChild(themeSelect);
 
     chrome.appendChild(chromeStart);
@@ -550,24 +559,22 @@ export function initPresentationMode() {
     window.addEventListener('orientationchange', onViewportChange);
 
     /* 슬라이드가 바뀌면 현재 TTS 재생을 즉시 중단 (자동 넘김 TTS는 v1 범위 밖) */
-    const onSlideChanged = () => {
-      tts.stop();
-    };
-    if (typeof RevealApi.on === 'function') {
+    const onSlideChanged = tts ? () => tts && tts.stop() : null;
+    if (onSlideChanged && typeof RevealApi.on === 'function') {
       RevealApi.on('slidechanged', onSlideChanged);
     }
 
     deckHost._presentationDetachViewport = () => {
       window.visualViewport?.removeEventListener('resize', onViewportChange);
       window.removeEventListener('orientationchange', onViewportChange);
-      if (typeof RevealApi.off === 'function') {
+      if (onSlideChanged && typeof RevealApi.off === 'function') {
         try {
           RevealApi.off('slidechanged', onSlideChanged);
         } catch (_) {
           /* ignore */
         }
       }
-      tts.destroy();
+      if (tts) tts.destroy();
     };
   }
 
