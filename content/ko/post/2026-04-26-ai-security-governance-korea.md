@@ -8,7 +8,16 @@ categories: ["Security", "Policy"]
 summary: "AI 시대에 한국 보안 거버넌스가 바꿔야 할 것은 한 기관의 역할 명칭이 아니라 평가가 보상하는 행동이다. 표준 준수만 보상하고 자율 판단을 손해로 만드는 체계가 계속된다면, 공격은 AI로 빨라지고 방어는 증빙과 비용 절감 속에 더 느려질 것이다."
 ---
 
+![한국 보안 거버넌스의 다행위자 균형과 변화 경로](/images/post/governance-series-01-overview.svg)
+
 *— 평가가 잘못된 행동을 보상하고 있다*
+
+> 이 글은 AI 시대 한국 보안 거버넌스 시리즈의 1편입니다.
+>
+> - 1편: **한국 보안 거버넌스는 AI 시대에 잘못된 방향으로 가속되고 있다**
+> - 2편: [한국 보안 거버넌스는 왜 바뀌지 않는가](/ko/post/2026-04-28-why-korean-security-governance-does-not-change/)
+> - 3편: [적응 능력은 어떻게 측정할 것인가](/ko/post/2026-04-29-adaptive-security-metrics-and-ciso-template/)
+> - 4편: [시장이 거버넌스를 끌고 갈 수 있는가](/ko/post/2026-04-30-market-can-move-security-governance/)
 
 ## 출발점
 
