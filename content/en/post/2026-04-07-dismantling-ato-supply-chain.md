@@ -9,6 +9,12 @@ description: "How Korea's CaaS supply chain reproduces itself through the recycl
 image: "/images/pdf-previews/Dismantling_the_ATO_Supply_Chain_p1.webp"
 ---
 
+> This is part 2 of the Account Defense series.
+>
+> - Part 1: [The CAPTCHA That Became a Free Automatic Door for Hackers — A Bypass PoC and Defense Strategy](/en/post/2026-03-30-captcha-bypass-poc-defense-strategy/)
+> - Part 2: **Why Account Takeover Never Ends — Dismantling the ATO Supply Chain**
+> - Part 3: [Security Controls Aren't Lacking — They're Inconvenient](/en/post/2026-05-11-adaptive-security-customer-context/)
+
 ## Introduction
 
 Ten years ago, Korea saw large-scale credential leaks centered around major portals, and the secondary damage was real. Services like points, gift vouchers, and easy-pay systems — where a stolen account could be immediately monetized — took significant hits.

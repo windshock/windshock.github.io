@@ -9,6 +9,12 @@ description: "Playwright, Whisper, Page-Agent로 오디오 CAPTCHA 우회 PoC를
 image: "/images/pdf-previews/Shattering_the_CAPTCHA_Illusion_p1.webp"
 ---
 
+> 이 글은 계정 방어 시리즈의 1편입니다.
+>
+> - 1편: **해커에게 0원짜리 자동문이 된 캡차 — CAPTCHA 우회 PoC와 방어 전략**
+> - 2편: [계정 탈취는 왜 끝나지 않는가 — ATO 공급망의 해부](/ko/post/2026-04-07-dismantling-ato-supply-chain/)
+> - 3편: [보안 통제는 부족한 것이 아니라 불편하다 — 그래서 보안은 고객 맥락을 알아야 한다](/ko/post/2026-05-11-adaptive-security-customer-context/)
+
 ## 들어가며
 
 웹사이트에 로그인할 때마다 횡단보도 사진을 고르거나, 찌그러진 숫자를 읽어야 하는 경험. 귀찮지만 "이게 내 계정을 지켜주겠지"라는 믿음으로 참아왔습니다.

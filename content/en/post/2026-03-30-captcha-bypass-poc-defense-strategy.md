@@ -9,6 +9,12 @@ description: "A practical look at an audio CAPTCHA bypass PoC built with Playwri
 image: "/images/pdf-previews/Post-CAPTCHA_Account_Defense_p1.webp"
 ---
 
+> This is part 1 of the Account Defense series.
+>
+> - Part 1: **The CAPTCHA That Became a Free Automatic Door for Hackers — A Bypass PoC and Defense Strategy**
+> - Part 2: [Why Account Takeover Never Ends — Dismantling the ATO Supply Chain](/en/post/2026-04-07-dismantling-ato-supply-chain/)
+> - Part 3: [Security Controls Aren't Lacking — They're Inconvenient](/en/post/2026-05-11-adaptive-security-customer-context/)
+
 ## Introduction
 
 Every time you log into a website, you pick out crosswalk photos or squint at distorted numbers. It's annoying, but you endure it believing "this keeps my account safe."
