@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <style>
+    .title{font:700 46px sans-serif;fill:#102033}.sub{font:600 24px sans-serif;fill:#4b5563}.h{font:700 30px sans-serif;fill:#fff}.txt{font:600 20px sans-serif;fill:#102033}.small{font:500 16px sans-serif;fill:#334155}.white{fill:#fff}.navy{fill:#102033}.muted{fill:#1f3145}.green{fill:#0f7a4f}.orange{fill:#e84d2a}.line{stroke:#cbd5e1;stroke-width:2}.arrow{stroke:#0f7a4f;stroke-width:5;marker-end:url(#arrow)}.redarrow{stroke:#e84d2a;stroke-width:5;marker-end:url(#arrowRed)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 Z" fill="#0f7a4f"/></marker>
+    <marker id="arrowRed" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 Z" fill="#e84d2a"/></marker>
+  </defs>
+  <rect width="1600" height="900" fill="#f8fafc"/>
+  <text x="800" y="58" text-anchor="middle" class="title">한국 보안 거버넌스의 다행위자 균형과 변화 경로</text>
+  <text x="800" y="95" text-anchor="middle" class="sub">정체된 균형에서, 사회적 선점과 시장 압력이 어떻게 변화를 만드는가</text>
+
+  <rect x="40" y="125" width="650" height="560" rx="18" fill="#102033"/>
+  <text x="365" y="165" text-anchor="middle" class="h">현재 균형 (정체)</text>
+  <rect x="255" y="315" width="220" height="110" rx="16" fill="#27384d" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="365" y="358" text-anchor="middle" class="h">표준 준수형 평가</text>
+  <text x="365" y="392" text-anchor="middle" font="600 18px sans-serif" fill="#cbd5e1">증빙 중심 · 자율 판단 비보상</text>
+  <g fill="#334155" stroke="#94a3b8" stroke-width="2">
+    <circle cx="365" cy="235" r="70"/><circle cx="580" cy="300" r="70"/><circle cx="555" cy="510" r="70"/><circle cx="365" cy="585" r="70"/><circle cx="150" cy="510" r="70"/><circle cx="150" cy="300" r="70"/>
+  </g>
+  <g font="700 18px sans-serif" fill="#fff" text-anchor="middle">
+    <text x="365" y="225">국정원</text><text x="365" y="252" font-size="15">위협 정보 통제</text>
+    <text x="580" y="290">KISA·정책기관</text><text x="580" y="317" font-size="15">인증 운영</text>
+    <text x="555" y="500">감사기관</text><text x="555" y="527" font-size="15">사후 평가</text>
+    <text x="365" y="575">보안 산업</text><text x="365" y="602" font-size="15">평가 복잡성 매출</text>
+    <text x="150" y="500">CISO</text><text x="150" y="527" font-size="15">준수 = 면책</text>
+    <text x="150" y="290">대통령실·국회</text><text x="150" y="317" font-size="15">정보 의존</text>
+  </g>
+  <g stroke="#cbd5e1" stroke-width="3" marker-end="url(#arrow)"><line x1="365" y1="305" x2="365" y2="315"/><line x1="520" y1="320" x2="475" y2="350"/><line x1="510" y1="500" x2="455" y2="420"/><line x1="365" y1="515" x2="365" y2="425"/><line x1="205" y1="500" x2="275" y2="420"/><line x1="205" y1="320" x2="255" y2="350"/></g>
+  <path d="M260 215 C420 150 520 200 570 245" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 6"/><text x="470" y="215" class="small" fill="#e2e8f0">영역 다툼</text>
+  <path d="M520 560 C480 640 430 650 365 655" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 6"/><text x="455" y="635" class="small" fill="#e2e8f0">공생</text>
+  <path d="M585 375 L565 450" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 6"/><text x="590" y="420" class="small" fill="#e2e8f0">책임 떠넘김</text>
+  <rect x="145" y="640" width="440" height="36" rx="18" fill="none" stroke="#facc15" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="365" y="665" text-anchor="middle" font="700 21px sans-serif" fill="#fde047">누구도 먼저 움직이지 않는 균형</text>
+
+  <polygon points="720,350 825,350 825,315 930,395 825,475 825,440 720,440" fill="#0f7a4f" opacity="0.95"/>
+  <text x="815" y="388" text-anchor="middle" font="700 26px sans-serif" fill="#fff">사회적 선점</text>
+  <text x="815" y="420" text-anchor="middle" font="600 18px sans-serif" fill="#dcfce7">능동 경로</text>
+  <rect x="730" y="505" width="170" height="70" rx="12" fill="#fff" stroke="#94a3b8" stroke-dasharray="7 6"/>
+  <text x="815" y="535" text-anchor="middle" class="txt">외부 충격</text><text x="815" y="560" text-anchor="middle" class="small">위기 시 점프</text>
+
+  <rect x="930" y="125" width="630" height="560" rx="18" fill="#ecfdf5" stroke="#0f7a4f" stroke-width="3"/>
+  <rect x="930" y="125" width="630" height="58" rx="18" fill="#0f7a4f"/><text x="1245" y="165" text-anchor="middle" class="h">새 균형으로의 경로</text>
+  <g>
+    <rect x="1000" y="560" width="430" height="64" rx="12" fill="#fff" stroke="#0f7a4f" stroke-width="2"/><text x="1030" y="600" class="txt">1 언어</text><text x="1170" y="600" class="small">블로그 · 기고문 · 학회 발표</text>
+    <rect x="1045" y="460" width="430" height="64" rx="12" fill="#fff" stroke="#0f7a4f" stroke-width="2"/><text x="1075" y="500" class="txt">2 지표</text><text x="1210" y="500" class="small">MTTA · MTTP · MTRS 정의</text>
+    <rect x="1090" y="360" width="430" height="64" rx="12" fill="#fff" stroke="#0f7a4f" stroke-width="2"/><text x="1120" y="400" class="txt">3 템플릿</text><text x="1270" y="400" class="small">CISO 실행 양식</text>
+    <rect x="1135" y="260" width="430" height="64" rx="12" fill="#fff" stroke="#e84d2a" stroke-width="3"/><text x="1165" y="300" class="txt" fill="#e84d2a">4 시장 압력</text><text x="1330" y="300" class="small">보험 · 고객사 · 공급망</text>
+    <rect x="1180" y="160" width="350" height="64" rx="12" fill="#fff" stroke="#0f7a4f" stroke-width="2"/><text x="1210" y="200" class="txt">5 정책 추격</text><text x="1370" y="200" class="small">평가·인증 체계 반영</text>
+  </g>
+  <path d="M1210 555 L1255 525 M1255 455 L1300 425 M1300 355 L1345 325 M1345 255 L1390 225" class="arrow" fill="none"/>
+  <text x="1260" y="660" text-anchor="middle" font="700 21px sans-serif" fill="#0f7a4f">변화는 위에서 내려오기보다, 밖에서 안으로 들어온다</text>
+  <path d="M1135 292 C990 290 790 300 620 330" class="redarrow" fill="none"/><text x="940" y="277" font="700 20px sans-serif" fill="#e84d2a">시장이 거버넌스를 끌고 감</text>
+  <path d="M1135 292 C950 420 700 520 430 585" class="redarrow" fill="none"/>
+  <path d="M1135 292 C950 390 760 475 555 510" class="redarrow" fill="none"/>
+
+  <rect x="40" y="715" width="1520" height="110" rx="16" fill="#fff" stroke="#94a3b8"/>
+  <text x="80" y="760" class="txt">시간의 비대칭</text>
+  <line x1="250" y1="750" x2="1180" y2="750" stroke="#e84d2a" stroke-width="6" marker-end="url(#arrowRed)"/>
+  <text x="260" y="735" font="700 20px sans-serif" fill="#e84d2a">공격자·해외 연구: 분·시간 단위</text>
+  <line x1="250" y1="795" x2="1180" y2="795" stroke="#2563eb" stroke-width="5" marker-end="url(#arrow)"/>
+  <text x="260" y="815" font="700 20px sans-serif" fill="#2563eb">현 거버넌스: 분기·연 단위</text>
+  <text x="1280" y="775" text-anchor="middle" font="700 22px sans-serif" fill="#102033">문제는 격차의 절대값보다</text>
+  <text x="1280" y="805" text-anchor="middle" font="700 22px sans-serif" fill="#102033">격차의 가속도다</text>
+  <rect x="40" y="840" width="1520" height="46" rx="12" fill="#fff7ed" stroke="#fdba74"/>
+  <text x="800" y="871" text-anchor="middle" font="700 25px sans-serif" fill="#102033">결론: 변화의 출발점은 정책기관만이 아니라 언어·지표·시장에 있다.</text>
+</svg>
