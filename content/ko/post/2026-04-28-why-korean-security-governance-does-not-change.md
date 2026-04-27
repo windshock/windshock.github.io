@@ -1,7 +1,7 @@
 ---
 title: "한국 보안 거버넌스는 왜 바뀌지 않는가"
 date: 2026-04-28
-draft: true
+draft: false
 description: "국정원, KISA, 감사원, 보안 산업, CISO, 정책기관이 각자 합리적으로 행동할 때 왜 전체 보안 거버넌스는 정체되는가를 게임이론 관점에서 분석합니다."
 tags: ["AI", "Security", "Governance", "Game Theory", "Policy", "Cybersecurity"]
 categories: ["Security", "Policy"]

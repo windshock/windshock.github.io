@@ -1,7 +1,7 @@
 ---
 title: "시장이 거버넌스를 끌고 갈 수 있는가"
 date: 2026-04-30
-draft: true
+draft: false
 description: "정책만이 변화를 만드는 것은 아니다. 보험, 고객사, 공급망, 평가 서비스, 보안 SaaS 같은 외부 행위자가 비용을 매기기 시작하면 거버넌스도 결국 따라온다."
 tags: ["AI", "Security", "Market", "Governance", "Cyber Insurance", "Supply Chain", "Policy"]
 categories: ["Security", "Policy"]

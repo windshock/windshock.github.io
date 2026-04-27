@@ -1,7 +1,7 @@
 ---
 title: "적응 능력은 어떻게 측정할 것인가"
 date: 2026-04-29
-draft: true
+draft: false
 description: "준수 능력에서 적응 능력으로 이동하려면 무엇을 측정해야 하는가. MTTA, MTTP, MTRS와 현장용 실행 템플릿을 제안합니다."
 tags: ["AI", "Security", "Metrics", "CISO", "MTTA", "MTTP", "MTRS", "Policy"]
 categories: ["Security", "Policy"]

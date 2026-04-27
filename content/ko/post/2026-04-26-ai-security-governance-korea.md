@@ -1,7 +1,7 @@
 ---
 title: "한국 보안 거버넌스는 AI 시대에 잘못된 방향으로 가속되고 있다"
 date: 2026-04-26
-draft: true
+draft: false
 description: "AI 시대의 보안 거버넌스는 한 기관의 역할 명칭보다 평가가 보상하는 행동을 바꿔야 한다는 문제의식을 다룹니다."
 tags: ["AI", "Security", "Governance", "ISMS-P", "KISA", "NIS", "Policy", "Cybersecurity"]
 categories: ["Security", "Policy"]
