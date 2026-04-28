@@ -14,7 +14,10 @@ googleAnalytics = "G-6N6EEJ259T"
   category = "categories"
 
 [params]
-#  env = "production"
+  env = "production"
+  description = "After the Code by windshock — security research on vulnerability analysis, secure coding, automation, and governance after detection."
+  author = "Hyeongkwan Lee (windshock)"
+  keywords = ["cybersecurity", "vulnerability research", "secure coding", "security automation", "DevSecOps", "security governance", "risk-based authentication"]
   mainSections = ["post"]
   ShowReadingTime = true
   ShowShareButtons = true
