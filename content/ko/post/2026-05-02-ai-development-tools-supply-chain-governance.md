@@ -10,8 +10,14 @@ summary: "AI 개발 도구와 자동화 연결은 단순한 생산성 도구가 
 
 AI IDE, MCP, 자동화 연결은 단순한 편의 도구가 아니라 개발 프로세스의 신뢰 경로를 바꾸는 공급망 자산이다. 이제 공급망 보안은 오픈소스 목록을 넘어, 어떤 도구와 연결에 개발 흐름의 일부를 위임하고 있는지까지 봐야 한다.
 
-> 이 글은 **CVE 이후의 보안** 시리즈의 네 번째 글이다.  
-> 앞선 글에서는 [CVE/NVD 중심 대응의 한계](/ko/post/2026-04-29-after-cve-response-ai-vulnerability/), [AI slop과 triage 비용](/ko/post/2026-04-30-ai-slop-vulnerability-triage/), [보안진단 운영모델 전환](/ko/post/2026-05-01-security-assessment-as-development-process/)을 다뤘다. 이번 글에서는 공급망 보안의 범위를 AI 개발 도구, MCP, 자동화 연결, 개발 환경 거버넌스까지 확장해 본다.
+> 이 글은 **CVE 이후의 보안** 시리즈의 네 번째 글이다.
+>
+> - 1편: [CVE 이후 대응만으로는 늦다: AI 시대 취약점은 번호가 붙기 전에 움직인다](/ko/post/2026-04-29-after-cve-response-ai-vulnerability/)
+> - 2편: [AI Slop의 역설: 취약점을 더 잘 찾는 시대에 triage가 더 어려워지는 이유](/ko/post/2026-04-30-ai-slop-vulnerability-triage/)
+> - 3편: [보안진단은 외주 업무가 아니라 개발 공정이 된다](/ko/post/2026-05-01-security-assessment-as-development-process/)
+> - 4편: **공급망 보안은 SBOM만으로 끝나지 않는다: AI 개발 도구와 자동화 연결 관리**
+>
+> 앞선 글에서는 CVE/NVD 중심 대응의 한계, AI slop과 triage 비용, 보안진단 운영모델 전환을 다뤘다. 이번 글에서는 공급망 보안의 범위를 AI 개발 도구, MCP, 자동화 연결, 개발 환경 거버넌스까지 확장해 본다.
 
 ---
 
