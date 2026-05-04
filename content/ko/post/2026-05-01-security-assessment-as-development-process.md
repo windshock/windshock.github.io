@@ -1,7 +1,7 @@
 ---
 title: "보안진단은 외주 업무가 아니라 개발 공정이 된다"
 date: 2026-05-01
-draft: true
+draft: false
 tags: ["AI Security", "Security Testing as Code", "DevSecOps", "보안진단", "보안운영", "공급망보안"]
 categories: ["Security", "Operations"]
 description: "AI 시대의 보안진단은 외주비 절감 문제가 아니라 개발 프로세스 안에 반복 검증을 내재화하는 문제다. 공정별 자동화 가능성과 사람 판단이 남는 영역을 나눠 봅니다."

@@ -1,7 +1,7 @@
 ---
 title: "공급망 보안은 SBOM만으로 끝나지 않는다: AI 개발 도구와 자동화 연결 관리"
 date: 2026-05-02
-draft: true
+draft: false
 tags: ["Supply Chain", "AI IDE", "MCP", "DevSecOps", "보안운영", "공급망보안"]
 categories: ["Security", "Supply Chain"]
 description: "AI IDE, MCP, 자동화 연결은 단순한 개발 편의 도구가 아니라 공급망 자산이다. 개발 프로세스의 신뢰 경로를 어떻게 관리해야 하는지 정리합니다."
