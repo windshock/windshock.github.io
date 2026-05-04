@@ -2,7 +2,8 @@
 title: "Security Assessment Becomes a Development Process, Not an Outsourced Event"
 date: 2026-05-01
 draft: false
-tags: ["AI Security", "Security Testing as Code", "DevSecOps", "Security Assessment", "Security Operations", "Supply Chain Security"]
+featured: true
+tags: ["Code", "AI Security", "Security Testing as Code", "DevSecOps", "Security Assessment", "Security Operations", "Supply Chain Security"]
 categories: ["Security", "Operations"]
 description: "AI-era security assessment is not primarily about reducing outsourcing cost. It is about embedding repeatable verification into the development process while separating automation candidates from human judgment."
 summary: "As both development and attack workflows accelerate, security assessment has to move from one-time outsourced testing to repeatable controls inside development. The practical question is which parts can be automated, which parts require human judgment, and how the cost should be measured."

@@ -2,7 +2,8 @@
 title: "Supply Chain Security Does Not End with SBOM: Governing AI Development Tools and Automation Connections"
 date: 2026-05-02
 draft: false
-tags: ["Supply Chain", "AI IDE", "MCP", "DevSecOps", "Security Operations", "Supply Chain Security"]
+featured: true
+tags: ["TrustAndCulture", "Supply Chain", "AI IDE", "MCP", "DevSecOps", "Security Operations", "Supply Chain Security"]
 categories: ["Security", "Supply Chain"]
 description: "AI IDEs, MCP, and automation connectors are not merely developer convenience tools. They are supply-chain assets that affect the trust path of how code is written, reviewed, and shipped."
 summary: "AI development tools and automation connections are becoming part of the development process itself. AI-era supply-chain security must go beyond open source inventories and SBOMs to include tool connections, approval paths, change history, and developer-environment governance."
