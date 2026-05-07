@@ -113,6 +113,27 @@ MCP도 같은 질문을 던진다.
 
 ---
 
+## 학술 연구가 보여준 같은 구조
+
+이 문제는 개별 사례에만 머물지 않는다. Yun et al.의 논문 *Too Much of a Good Thing: (In-)Security of Mandatory Security Software for Financial Services in South Korea*는 한국 금융권의 필수 보안 소프트웨어가 브라우저 샌드박스 밖의 로컬 서비스로 동작하면서 웹페이지가 시스템 리소스 접근을 요청하는 구조를 체계적으로 분석했다.
+
+논문은 네 가지 설계 문제를 지적한다.
+
+- 브라우저 threat model과의 불일치
+- TLS 보안 모델 오용
+- 브라우저 샌드박스 위반
+- 사용자 추적 가능성
+
+특히 중요한 부분은 local service 구조다. 논문은 웹페이지 JavaScript가 사용자의 PC에 설치된 로컬 보안 프로그램과 HTTPS 또는 WebSocket 같은 웹 프로토콜로 통신하고, 그 프로그램이 파일 읽기/쓰기나 시스템 권한 접근이 필요한 작업을 수행한다고 설명한다. 또한 설치 후 백그라운드에서 포트를 열고 요청을 기다리기 때문에 정상 웹페이지뿐 아니라 악성 주체에도 노출될 수 있다고 지적한다.
+
+이 논문이 MCP 논의에 중요한 이유는 특정 국가나 특정 제품 때문이 아니다. 보안을 위해 도입한 로컬 보조 프로그램이 웹페이지와 IPC 경로를 만들고, 그 경로가 브라우저가 원래 막으려던 시스템 리소스 접근을 다시 열어버린다는 구조 때문이다.
+
+MCP도 비슷한 질문을 만든다.
+
+> 누가 로컬 서비스를 호출할 수 있고, 그 호출은 어떤 시스템 권한으로 이어지는가?
+
+---
+
 ## 왜 기존 보안 도구가 놓치는가
 
 MCP 문제는 코드 한 줄의 취약점만으로 설명되지 않는다.
@@ -184,7 +205,7 @@ MCP와 완전히 같은 취약점은 아니지만 구조는 닮았다.
 
 > 외부 입력이 로컬 실행 경계에 닿기 시작했다.
 
-보안 소프트웨어 업데이트 취약점도 같은 계열의 경고다. 브라우저, 로컬 API, updater, AI IDE, MCP client는 서로 다른 기술처럼 보이지만 공통적으로 외부 입력을 로컬 신뢰 경계 안으로 가져오는 매개 계층이 될 수 있다.
+보안 소프트웨어 업데이트 취약점과 KSA 연구도 같은 계열의 경고다. 브라우저, 로컬 API, updater, AI IDE, MCP client는 서로 다른 기술처럼 보이지만 공통적으로 외부 입력을 로컬 신뢰 경계 안으로 가져오는 매개 계층이 될 수 있다.
 
 ---
 
@@ -204,6 +225,7 @@ MCP 보안 점검의 핵심 질문은 단순하다.
 - runtime endpoint와 hidden route를 확인했는가?
 - 설정 변경과 tool invocation 로그가 남는가?
 - 설정, 다운로드, 실행 사이에 무결성 검증과 승인 단계가 있는가?
+- 로컬 서비스가 브라우저 또는 AI client의 보안 모델 밖에서 더 높은 권한을 행사하는가?
 
 MCP 보안은 단순한 코드 취약점 분석이 아니다.
 
@@ -234,6 +256,8 @@ RPC 보안의 역사는 늘 같은 질문으로 돌아왔다.
 
 > 신뢰받는 자동화 경로가 외부 입력과 연결되면, 방어 도구도 실행 경계가 된다.
 
+Yun et al.의 KSA 연구는 이 교훈을 더 넓은 웹 보안 모델의 문제로 확장한다. 표준 브라우저가 막아둔 시스템 리소스 접근을 로컬 보조 프로그램이 다시 열어주는 순간, 보안을 위해 설치한 소프트웨어도 새로운 공격면이 될 수 있다.
+
 MCP는 그 질문을 AI 시대의 개발 환경으로 다시 가져왔다.
 
 한 문장으로 정리하면 이렇다.
@@ -243,6 +267,7 @@ MCP는 그 질문을 AI 시대의 개발 환경으로 다시 가져왔다.
 ## Related Research
 
 - [mcp-guard / MCP Security Lab](https://github.com/windshock/mcpscan)
+- Taisic Yun et al., “Too Much of a Good Thing: (In-)Security of Mandatory Security Software for Financial Services in South Korea”
 - [공급망 보안은 SBOM만으로 끝나지 않는다](/ko/post/2026-05-02-ai-development-tools-supply-chain-governance/)
 - [보안진단은 외주 업무가 아니라 개발 공정이 된다](/ko/post/2026-05-01-security-assessment-as-development-process/)
 - [사이버보안의 SPOF: 역사에서 전략까지, 그래프 기반 분석](/ko/post/2025-05-15-spof-analysis-in-cybersecurity/)
