@@ -81,8 +81,8 @@ if [[ "$branch" != "master" ]]; then
 fi
 
 echo "✅ Building site..."
-hugo --gc --cleanDestinationDir
-hugo --gc --minify --cleanDestinationDir -d docs --environment production
+hugo --gc --cleanDestinationDir --buildFuture
+hugo --gc --minify --cleanDestinationDir -d docs --environment production --buildFuture
 
 if [[ "$RUN_WEBP" -eq 1 ]]; then
   if [[ -x "./img2webp.sh" ]]; then
