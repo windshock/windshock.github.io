@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img">
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#e6e2d8" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#334155"/>
+    </marker>
+    <style>
+      .title{font:700 40px 'Noto Sans KR',sans-serif;fill:#1f2937}
+      .label{font:700 22px 'Noto Sans KR',sans-serif;fill:#111827;text-anchor:middle}
+      .small{font:500 18px 'Noto Sans KR',sans-serif;fill:#334155;text-anchor:middle}
+    </style>
+  </defs>
+  <rect width="1200" height="675" fill="#f7f4eb"/>
+  <rect width="1200" height="675" fill="url(#grid)" opacity="0.5"/>
+
+  <text x="600" y="80" class="title" text-anchor="middle">localhost trust 붕괴: 0.0.0.0 Day vs MCP</text>
+
+  <rect x="120" y="180" width="280" height="220" rx="14" fill="#fff" stroke="#334155"/>
+  <text x="260" y="220" class="label">외부 웹페이지</text>
+  <text x="260" y="260" class="small">브라우저 매개</text>
+
+  <rect x="460" y="180" width="280" height="220" rx="14" fill="#fff" stroke="#334155"/>
+  <text x="600" y="220" class="label">매개 계층</text>
+  <text x="600" y="260" class="small">AI IDE / MCP client</text>
+
+  <rect x="800" y="180" width="280" height="220" rx="14" fill="#ffe4e6" stroke="#b91c1c"/>
+  <text x="940" y="220" class="label">로컬 서비스</text>
+  <text x="940" y="260" class="small">MCP server / API</text>
+
+  <line x1="400" y1="290" x2="460" y2="290" stroke="#334155" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="740" y1="290" x2="800" y2="290" stroke="#334155" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <text x="600" y="500" class="label">localhost는 더 이상 안전한 경계가 아니다</text>
+</svg>

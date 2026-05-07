@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <style>
+    .title{font:700 40px 'Noto Sans KR',sans-serif;fill:#1f2937}
+    .box{fill:#fff;stroke:#334155;stroke-width:2}
+    .label{font:700 22px 'Noto Sans KR',sans-serif;fill:#111827}
+  </style>
+  <rect width="1200" height="675" fill="#f7f4eb"/>
+  <text x="600" y="80" class="title" text-anchor="middle">MCP 위험 판단 기준</text>
+
+  <rect x="350" y="200" width="500" height="220" rx="16" class="box"/>
+  <text x="600" y="300" class="label" text-anchor="middle">외부 입력이 내부 실행으로 이어지는가?</text>
+
+  <rect x="400" y="460" width="180" height="80" rx="10" fill="#b64234"/>
+  <text x="490" y="505" fill="#fff" class="label" text-anchor="middle">YES</text>
+
+  <rect x="620" y="460" width="180" height="80" rx="10" fill="#94a3b8"/>
+  <text x="710" y="505" fill="#fff" class="label" text-anchor="middle">NO</text>
+</svg>

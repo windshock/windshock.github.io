@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <style>
+    .title{font:700 40px 'Noto Sans KR',sans-serif;fill:#1f2937}
+    .box{fill:#fff;stroke:#334155;stroke-width:2}
+    .label{font:700 22px 'Noto Sans KR',sans-serif;fill:#111827;text-anchor:middle}
+    .small{font:500 18px 'Noto Sans KR',sans-serif;fill:#334155;text-anchor:middle}
+  </style>
+  <rect width="1200" height="675" fill="#f7f4eb"/>
+  <text x="600" y="80" class="title" text-anchor="middle">MCP 주요 공격 벡터</text>
+
+  <rect x="120" y="180" width="260" height="200" rx="14" class="box"/>
+  <text x="250" y="230" class="label">Vector 1</text>
+  <text x="250" y="270" class="small">사용자 Copy-Paste</text>
+
+  <rect x="470" y="180" width="260" height="200" rx="14" class="box"/>
+  <text x="600" y="230" class="label">Vector 2</text>
+  <text x="600" y="270" class="small">Direct Config Injection</text>
+
+  <rect x="820" y="180" width="260" height="200" rx="14" class="box"/>
+  <text x="950" y="230" class="label">Vector 3</text>
+  <text x="950" y="270" class="small">AI-mediated</text>
+
+  <rect x="300" y="420" width="600" height="120" rx="14" fill="#b64234"/>
+  <text x="600" y="490" fill="#fff" class="label">System Takeover / RCE</text>
+</svg>
