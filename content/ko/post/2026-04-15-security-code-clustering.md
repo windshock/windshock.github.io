@@ -17,6 +17,7 @@ presentationInfographic: "/images/post/Precision_Security_Clustering_infographic
 > 1. [Security Testing as Code — 진단을 코드로 구조화하는 실험](/ko/post/2026-03-17-security-testing-as-code/)
 > 2. [취약점을 잘 찾는 사람보다, 구조를 만드는 사람이 남는다](/ko/post/2026-04-02-security-from-sense-to-structure/)
 > 3. **228개 엔드포인트를 5개 클러스터로 줄인 이야기** ← 현재 글
+> 4. [진단 워크플로우는 미스 케이스를 흡수할 때만 살아남는다](/ko/post/2026-05-19-sec-audit-static-feedback-loop/)
 
 [이전 글](/ko/post/2026-04-02-security-from-sense-to-structure/)에서 감각이 구조로 바뀌는 과정, 그리고 AI가 그 구조 안에서 가장 잘 동작한다는 이야기를 했다.
 

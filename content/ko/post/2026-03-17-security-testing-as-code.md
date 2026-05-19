@@ -41,6 +41,12 @@ image: "/images/pdf-previews/Security_Testing_as_Code_p1.webp"
 
 > PDF가 보이지 않으면 여기로 열어보세요: [`/pdf/Security_Testing_as_Code.pdf`](/pdf/Security_Testing_as_Code.pdf)
 
+> **oh-my-secuaudit 시리즈**
+> 1. **Security Testing as Code — 진단을 코드로 구조화하는 실험** ← 현재 글
+> 2. [취약점을 잘 찾는 사람보다, 구조를 만드는 사람이 남는다](/ko/post/2026-04-02-security-from-sense-to-structure/)
+> 3. [228개 엔드포인트를 5개 클러스터로 줄인 이야기](/ko/post/2026-04-15-security-code-clustering/)
+> 4. [진단 워크플로우는 미스 케이스를 흡수할 때만 살아남는다](/ko/post/2026-05-19-sec-audit-static-feedback-loop/)
+
 
 보안 진단을 오래 하다 보면 이상한 딜레마에 빠진다.
 

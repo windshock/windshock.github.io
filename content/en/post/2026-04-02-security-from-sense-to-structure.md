@@ -15,6 +15,12 @@ image: "/images/pdf-previews/Architecture_of_Intelligence_p1.webp"
 
 ---
 
+> **oh-my-secuaudit series**
+> 1. [Security Testing as Code — Structuring Assessment as Code](/en/post/2026-03-17-security-testing-as-code/)
+> 2. **Structure Builders Will Outlast Vulnerability Finders** ← current post
+> 3. [How I Turned 228 Endpoints into 5 Clusters](/en/post/2026-04-15-security-code-clustering/)
+> 4. [An Audit Workflow Survives Only When It Absorbs Misses](/en/post/2026-05-19-sec-audit-static-feedback-loop/)
+
 This is a personal record drawn from 18 years of throwing myself at vulnerability finding — head-first, body-first.
 Your experience may differ.
 

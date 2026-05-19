@@ -41,6 +41,12 @@ image: "/images/pdf-previews/Security_Testing_as_Code_en_p1.webp"
 
 > If you can't view the PDF, open it here: [`/pdf/Security_Testing_as_Code_en.pdf`](/pdf/Security_Testing_as_Code_en.pdf)
 
+> **oh-my-secuaudit series**
+> 1. **Security Testing as Code — Structuring Assessment as Code** ← current post
+> 2. [Structure Builders Will Outlast Vulnerability Finders](/en/post/2026-04-02-security-from-sense-to-structure/)
+> 3. [How I Turned 228 Endpoints into 5 Clusters](/en/post/2026-04-15-security-code-clustering/)
+> 4. [An Audit Workflow Survives Only When It Absorbs Misses](/en/post/2026-05-19-sec-audit-static-feedback-loop/)
+
 
 When you do security diagnostics for a long time, you fall into a strange dilemma.
 
