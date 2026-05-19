@@ -8,13 +8,11 @@ Usage:
 
 What this script does (safe defaults):
   - Requires a clean git working tree before running (prevents accidental mixed commits)
-  - Builds Hugo outputs:
-      - default output to ./public
-      - production output to ./docs (GitHub Pages publish dir)
+  - Builds Hugo production output directly to ./docs (GitHub Pages publish dir)
   - Optionally runs ./img2webp.sh
   - Optionally replaces meta robots "noindex" -> "index" in generated HTML
   - Stages ONLY known project paths (avoids adding random/unrelated files)
-  - Commits with the provided message
+  - Commits with the provided message (skips commit if nothing changed)
   - Pushes to origin/master unless --no-push is provided
 
 Notes:
@@ -80,8 +78,7 @@ if [[ "$branch" != "master" ]]; then
   exit 1
 fi
 
-echo "✅ Building site..."
-hugo --gc --cleanDestinationDir --buildFuture
+echo "✅ Building production site to ./docs..."
 hugo --gc --minify --cleanDestinationDir -d docs --environment production --buildFuture
 
 if [[ "$RUN_WEBP" -eq 1 ]]; then
@@ -97,7 +94,13 @@ if [[ "$RUN_ROBOTS_FIX" -eq 1 ]]; then
   # Only touches generated outputs. If you intentionally keep noindex somewhere,
   # run with --no-robots-fix.
   echo "✅ Fixing meta robots in generated HTML (skip root redirect)..."
-  find docs -type f -name "*.html" -not -path "docs/index.html" -exec sed -i '' 's/content="noindex"/content="index"/g' {} +
+  # Portable sed -i: BSD (macOS) needs `sed -i ''`, GNU (Linux/CI) needs `sed -i`.
+  if sed --version >/dev/null 2>&1; then
+    SED_INPLACE=(sed -i)
+  else
+    SED_INPLACE=(sed -i '')
+  fi
+  find docs -type f -name "*.html" -not -path "docs/index.html" -exec "${SED_INPLACE[@]}" 's/content="noindex"/content="index"/g' {} +
 fi
 
 echo "✅ Staging known project paths..."
@@ -112,6 +115,14 @@ git add -A \
   AGENTS.md \
   .cursor \
   2>/dev/null || true
+
+if git diff --cached --quiet; then
+  echo "ℹ️  No changes staged after build; skipping commit and push."
+  exit 0
+fi
+
+echo "✅ Staged for commit:"
+git diff --cached --stat | tail -n 20
 
 echo "✅ Creating commit..."
 git commit -m "$COMMIT_MSG"
