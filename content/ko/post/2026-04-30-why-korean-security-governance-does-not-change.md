@@ -11,6 +11,12 @@ summary: "한국 보안 거버넌스가 바뀌지 않는 이유는 단순한 무
 ![다행위자 균형과 변화 경로](/images/post/governance-series-01-overview.svg)
 
 > 이 글은 AI 시대 한국 보안 거버넌스 시리즈의 2편입니다. 1편에서는 평가가 잘못된 행동을 보상하고 있다는 문제를 다뤘고, 이 글에서는 왜 그 평가 체계가 쉽게 바뀌지 않는지를 게임이론 관점에서 살펴봅니다.
+>
+> - 1편: [한국 보안 거버넌스는 AI 시대에 잘못된 방향으로 가속되고 있다](/ko/post/2026-04-26-ai-security-governance-korea/)
+> - 2편: **한국 보안 거버넌스는 왜 바뀌지 않는가**
+> - 3편: [적응 능력은 어떻게 측정할 것인가](/ko/post/2026-05-04-adaptive-security-metrics-and-ciso-template/)
+> - 4편: [시장이 거버넌스를 끌고 갈 수 있는가](/ko/post/2026-05-07-market-can-move-security-governance/)
+> - 5편: [AI 국가 전략의 진짜 승부처는 GPU 수량만이 아닙니다](/ko/post/2026-05-24-ai-national-strategy-control-plane/)
 
 ## 문제는 무능이 아니라 균형이다
 
