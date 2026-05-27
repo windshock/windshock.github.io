@@ -481,6 +481,18 @@ AI가 진짜 새로워지는 순간은 여기다.
 
 ---
 
+## 함께 읽을 글
+
+이 글은 단일 시리즈의 한 편이 아니라, AI 보안 평가와 사회적 서사라는 두 결을 동시에 다룹니다. 다음 글들과 함께 읽으면 cross-domain reframing의 양면이 더 또렷해집니다.
+
+- [AI 국가 전략의 진짜 승부처는 GPU 수량만이 아닙니다](/ko/post/2026-05-24-ai-national-strategy-control-plane/) — 같은 날 발행. control plane·하니스·검증 체계 관점에서 본 AI 평가 인프라.
+- [AI Slop의 역설: 취약점을 더 잘 찾는 시대에 triage가 더 어려워지는 이유](/ko/post/2026-04-30-ai-slop-vulnerability-triage/) — AI가 만든 후보를 어떻게 재정의·검증하느냐는 질문에서 이 글의 평가 기준과 직접 연결된다.
+- [oh-my-secuaudit 4편: sec-audit-static 피드백 루프](/ko/post/2026-05-19-sec-audit-static-feedback-loop/) — "검증 근거(validation evidence)"가 실제 보안 진단 도구의 v2.0 → v2.7/v2.8 진화에서 어떻게 작동하는지에 대한 실전 사례.
+- [CVE 이후 대응만으로는 늦다: AI 시대 취약점은 번호가 붙기 전에 움직인다](/ko/post/2026-04-29-after-cve-response-ai-vulnerability/) — AI-assisted exploit research가 운영 흐름과 만나는 지점.
+- [사이버보안 정책의 구조적 윤리에 대한 비판적 평가](/ko/post/2026-05-24-structural-ethics-cybersecurity-policy-korea/) — 나이팅게일-화이트해커 서사가 정책 윤리 차원에서 어떻게 작동하는지 더 깊이 파고든 동반 글.
+
+---
+
 ## 참고 자료
 
 - [Security Field Notes: LLM cross-domain exploit reasoning and Sterbenz bridge](https://github.com/windshock/security-field-notes/blob/main/knowledge/ai-security/2026-05-24-llm-cross-domain-exploit-reasoning-sterbenz.md)
@@ -494,4 +506,3 @@ AI가 진짜 새로워지는 순간은 여기다.
 - Jean-Michel Muller et al., *Handbook of Floating-Point Arithmetic*, 2018.
 - [Smithsonian Magazine: The Defiance of Florence Nightingale](https://www.smithsonianmag.com/history/the-worlds-most-famous-nurse-florence-nightingale-180974155/)
 - [Coordinated vulnerability disclosure](https://en.wikipedia.org/wiki/Coordinated_vulnerability_disclosure)
-- [사이버보안 정책의 구조적 윤리에 대한 비판적 평가](/ko/post/2026-05-24-structural-ethics-cybersecurity-policy-korea/)
