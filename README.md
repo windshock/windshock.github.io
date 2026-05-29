@@ -47,6 +47,43 @@ hugo --gc --cleanDestinationDir --destination "$tmpdir"
 
 레이아웃, shortcode, 글 삽입 형식을 바꿨다면 로컬 Hugo로 확인하는 것을 기본으로 합니다.
 
+## SEO / 사이트맵 제출
+
+- 사이트맵은 Hugo가 생성하는 기본 구조를 사용합니다.
+  - `/sitemap.xml`: sitemapindex
+  - `/en/sitemap.xml`, `/ko/sitemap.xml`: 언어별 URL 목록
+- Search Console에는 `/sitemap.xml` 하나만 제출합니다.
+- `sitemap.sh`와 `indexnow.sh`는 과거 방식이라 실행하지 않습니다.
+- 검색엔진 제출이 필요하면 배포 후 별도로 실행합니다:
+
+```bash
+GSC_SITE_URL="https://windshock.github.io/" \
+GSC_SERVICE_ACCOUNT_FILE="/path/to/service-account.json" \
+node scripts/submit-sitemaps.mjs
+```
+
+- Search Console이 Domain property라면 `GSC_SITE_URL="sc-domain:windshock.github.io"`를 사용합니다.
+- 서비스계정 이메일은 Search Console 속성 사용자로 추가해야 합니다.
+- 서비스계정 추가가 막히면 기존 Search Console 소유자 계정의 OAuth access token을 `GSC_ACCESS_TOKEN`으로 넣어 제출할 수 있습니다.
+- CI에서는 `GSC_SERVICE_ACCOUNT_JSON`에 서비스계정 JSON 문자열을 넣을 수 있습니다.
+- dry-run 확인:
+
+```bash
+node scripts/submit-sitemaps.mjs --dry-run
+```
+
+- OAuth token 우회 제출 예:
+
+```bash
+GSC_SITE_URL="https://windshock.github.io/" \
+GSC_ACCESS_TOKEN="<oauth-access-token-with-webmasters-scope>" \
+node scripts/submit-sitemaps.mjs --days 1
+```
+
+- 참고:
+  - Google Sitemaps API: https://developers.google.com/webmaster-tools/v1/sitemaps/submit
+  - Google sitemap ping deprecation: https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping
+
 ## GitHub 반영
 
 - 표준 배포 스크립트:

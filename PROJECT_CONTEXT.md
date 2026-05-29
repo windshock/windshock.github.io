@@ -102,6 +102,13 @@ EN/KO 포스트는 **완전히 다른 자산**을 사용합니다.
 - **루트 `/`**: 언어 리다이렉트 페이지. `noindex` 유지 (콘텐츠 없음).
 - **robots.txt**: `Allow: /`, 사이트맵 3개 선언.
 - `layouts/_default/sitemap.xml`은 `.RegularPages`만 순회 (`range .Sites` 사용 금지).
+- `sitemap.sh`와 `indexnow.sh`는 과거 방식이라 실행 금지. 현재는 실행 즉시 실패하도록 무력화되어 있습니다.
+- 검색엔진 제출은 배포와 분리해서 `node scripts/submit-sitemaps.mjs`를 사용합니다.
+  - GSC: `GSC_SITE_URL`에 Search Console property 형식을 넣습니다. URL-prefix는 `https://windshock.github.io/`, Domain property는 `sc-domain:windshock.github.io`.
+  - GSC 인증: `GSC_ACCESS_TOKEN`, `GSC_SERVICE_ACCOUNT_JSON`, `GSC_SERVICE_ACCOUNT_FILE` 순으로 사용합니다. 서비스계정 이메일은 Search Console 속성 사용자로 추가해야 하며, service account 추가가 막히면 기존 Search Console 소유자 계정의 OAuth access token을 `GSC_ACCESS_TOKEN`으로 넣습니다.
+  - IndexNow: 기본 key는 기존 `fa6713893a1940afbc8de8beed71690f`이며, `INDEXNOW_KEY`로 override 가능합니다.
+  - IndexNow 제출 대상은 sitemap의 `lastmod`가 최근 7일 이내인 post URL만입니다. `INDEXNOW_DAYS` 또는 `--days <N>`으로 조정합니다.
+- 참고: Google Sitemaps API `https://developers.google.com/webmaster-tools/v1/sitemaps/submit`, sitemap ping deprecation `https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping`.
 
 ---
 
@@ -174,6 +181,9 @@ EN/KO 포스트는 **완전히 다른 자산**을 사용합니다.
 - Hugo 빌드 → WebP 변환 → robots fix → 스테이징 → 커밋 → 푸시 순서로 실행.
 - `docs/index.html`(루트 리다이렉트)은 `noindex` 유지 (robots fix에서 제외).
 - working tree가 이미 dirty하면 수동 배포를 사용합니다.
+- 배포 후 Search Console / IndexNow 제출이 필요하면 별도 실행:
+  - dry-run: `node scripts/submit-sitemaps.mjs --dry-run`
+  - 실제 제출: `GSC_SITE_URL="https://windshock.github.io/" GSC_SERVICE_ACCOUNT_FILE="/path/to/service-account.json" node scripts/submit-sitemaps.mjs`
 
 ---
 

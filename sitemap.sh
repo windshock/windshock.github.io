@@ -1,5 +1,17 @@
 #!/bin/bash
 
+cat >&2 <<'EOF'
+ERROR: sitemap.sh is disabled.
+
+This Hugo site already generates the correct sitemap structure:
+  /sitemap.xml -> /en/sitemap.xml + /ko/sitemap.xml
+
+Do not flatten or copy sitemap files manually. To notify search engines,
+use:
+  node scripts/submit-sitemaps.mjs
+EOF
+exit 1
+
 OUT="public/sitemap.xml"
 echo '<?xml version="1.0" encoding="UTF-8"?>' > "$OUT"
 echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -18,4 +30,3 @@ echo '</urlset>' >> "$OUT"
 cp public/sitemap.xml docs/sitemap.xml
 cp public/sitemap.xml docs/ko/sitemap.xml
 cp public/sitemap.xml docs/en/sitemap.xml
-

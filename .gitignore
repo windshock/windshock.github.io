@@ -17,3 +17,11 @@ resources/_gen/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Local secrets (GSC tokens, service account JSON, etc.)
+.env
+.env.*
+*.env
+service-account*.json
+gsc-*.json
+/secrets/

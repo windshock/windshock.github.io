@@ -1,3 +1,15 @@
+#!/bin/bash
+
+cat >&2 <<'EOF'
+ERROR: indexnow.sh is disabled.
+
+This script reads stale public/ sitemap files. The supported submission
+path now reads the deployed docs/ sitemap output and limits IndexNow
+submissions to recently changed URLs:
+  node scripts/submit-sitemaps.mjs
+EOF
+exit 1
+
 sed -n 's:.*<loc>\(.*\)</loc>.*:\1:p' public/en/sitemap.xml | sed 's|http://localhost:1313|https://windshock.github.io|' > url-list.txt
 sed -n 's:.*<loc>\(.*\)</loc>.*:\1:p' public/ko/sitemap.xml | sed 's|http://localhost:1313|https://windshock.github.io|' >> url-list.txt
 
