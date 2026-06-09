@@ -2,9 +2,10 @@
 title: "From a Security Development Spec for Small LLMs to Regression Tests and Fuzzing Validation"
 date: 2026-06-08
 draft: false
-tags: ["AI", "LLM", "CyberSecurity", "DevSecOps", "Fuzzing", "Jazzer", "Jest", "JUnit", "SoftwareTesting", "SecurityResearch", "ProblemFraming"]
-categories: ["Security", "AI"]
-summary: "This article explains how I split an XSS security development specification for small local models into core/verify/dev/test overlays, and what I learned while connecting LLM-based judgment to regression-test generation and Jazzer/Jazzer.js fuzzing seeds."
+featured: true
+tags: ["AI", "LLM", "DevSecOps", "Security Automation", "Process Design", "Fuzzing", "Jazzer", "Jest", "JUnit", "Software Testing", "Code"]
+categories: ["Security Research", "AI"]
+description: "This article explains how I split an XSS security development specification for small local models into core/verify/dev/test overlays, and what I learned while connecting LLM-based judgment to regression-test generation and Jazzer/Jazzer.js fuzzing seeds."
 ---
 
 <!--

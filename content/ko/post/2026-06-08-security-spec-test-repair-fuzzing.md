@@ -2,9 +2,10 @@
 title: "소형 LLM용 보안 개발 스펙에서 회귀 테스트와 퍼징 검증까지"
 date: 2026-06-08
 draft: false
-tags: ["AI", "LLM", "CyberSecurity", "DevSecOps", "Fuzzing", "Jazzer", "Jest", "JUnit", "SoftwareTesting", "SecurityResearch", "ProblemFraming"]
-categories: ["Security", "AI"]
-summary: "소형 로컬 모델에서도 동작하는 XSS 보안 개발 스펙을 core/verify/dev/test 오버레이로 나누고, LLM 판정을 회귀 테스트 생성과 Jazzer/Jazzer.js 퍼징 서버의 seed로 연결하는 과정에서 얻은 설계 교훈과 한계를 정리한다."
+featured: true
+tags: ["AI", "LLM", "DevSecOps", "보안 자동화", "구조 설계", "Fuzzing", "Jazzer", "Jest", "JUnit", "Software Testing", "Code"]
+categories: ["보안 연구", "AI"]
+description: "소형 로컬 모델에서도 동작하는 XSS 보안 개발 스펙을 core/verify/dev/test 오버레이로 나누고, LLM 판정을 회귀 테스트 생성과 Jazzer/Jazzer.js 퍼징 서버의 seed로 연결하는 과정에서 얻은 설계 교훈과 한계를 정리한다."
 ---
 
 <!--
