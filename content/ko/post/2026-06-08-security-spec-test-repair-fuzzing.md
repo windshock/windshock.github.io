@@ -40,17 +40,17 @@ spec/
   test/junit5-xss.md        ← JUnit5/MockMvc 테스트 작성 규칙
 ```
 
-이 구조에서 가장 중요한 원칙은 **규칙의 본문은 core에만 존재한다**는 것이다. 개발 오버레이, 검증 오버레이, 테스트 생성 오버레이는 core의 규칙 ID를 인용한다. 이렇게 하면 개발 문서와 판정 문서가 따로 진화하면서 서로 어긋나는 drift를 줄일 수 있다.
+이 구조에서 가장 중요한 원칙은 **규칙의 본문은 core에만 존재한다**는 것이다. 개발 오버레이, 검증 오버레이, 테스트 생성 오버레이(core 규칙을 용도별로 덧씌우는 얇은 문서 층)는 core의 규칙 ID를 인용한다. 이렇게 하면 개발 문서와 판정 문서가 따로 진화하면서 서로 어긋나는 drift를 줄일 수 있다.
 
 이것은 단순히 문서를 줄이는 작업이 아니었다. 같은 보안 표준을 사람이 읽을 때, 모델이 판정할 때, 개발자가 코드를 작성할 때, 그리고 테스트 생성기가 실행 가능한 검증으로 바꿀 때 서로 다른 형태로 사용할 수 있게 나누는 작업이었다.
 
 ## 2. Core, Verify, Dev, Test의 역할
 
-`core/xss-core.md`는 XSS 방어의 단일 진실 원천이다. 예를 들어 query string, path variable, request body, form field, header, cookie, 외부 API, webhook, message queue, file upload, batch import 데이터는 모두 신뢰할 수 없는 값으로 본다. 이 값들은 출력 시점에 컨텍스트별 방어를 거쳐야 한다.
+`core/xss-core.md`는 XSS 방어의 단일 진실 원천(SSOT)이다. 예를 들어 query string, path variable, request body, form field, header, cookie, 외부 API, webhook, message queue, file upload, batch import 데이터는 모두 신뢰할 수 없는 값으로 본다. 이 값들은 출력 시점에 컨텍스트별 방어를 거쳐야 한다.
 
 또한 core는 입력 검증과 XSS 방어를 명확히 구분한다. 입력 검증은 형태 제한일 뿐이며, XSS 방어는 출력 시점의 컨텍스트별 인코딩 또는 검증된 sanitizer로 완료되어야 한다. HTML 본문, HTML 속성, URL 속성, JavaScript 문자열, CSS 값, HTML 조각, JSON 응답, redirect는 서로 다른 출력 컨텍스트이며, 각각 필요한 방어가 다르다.
 
-예를 들어 URL과 redirect는 단순히 React나 템플릿 엔진이 escape해 준다고 안전해지지 않는다. URL은 렌더링 또는 이동 전에 파싱하고 canonicalize한 뒤, 허용 scheme과 host/path를 검증해야 한다. `javascript:`, `data:`, `vbscript:`는 기본 차단하고, protocol-relative URL인 `//evil.example/path` 같은 값도 차단해야 한다.
+예를 들어 URL과 redirect는 단순히 React나 템플릿 엔진이 escape해 준다고 안전해지지 않는다. URL은 렌더링 또는 이동 전에 파싱하고 정규화(canonicalize)한 뒤, 허용 scheme과 host/path를 검증해야 한다. `javascript:`, `data:`, `vbscript:`는 기본 차단하고, protocol-relative URL인 `//evil.example/path` 같은 값도 차단해야 한다.
 
 `verify/xss-judge.md`는 이런 core 규칙을 코드 리뷰 판정 절차로 바꾼다. 이 문서는 모델에게 다음 절차를 요구한다.
 
@@ -73,7 +73,7 @@ NOT_ENOUGH_EVIDENCE
 
 여기서 `NOT_ENOUGH_EVIDENCE`는 실패가 아니다. 오히려 보이지 않는 코드를 추정하지 않는 모델인지 확인하는 중요한 정답이다. 예를 들어 `safeHtml`이라는 변수명이 있어도 sanitizer 구현과 정책이 보이지 않으면 안전하다고 결론내리면 안 된다.
 
-`dev/nextjs-vercel.md`와 `dev/spring.md`는 판정 기준이 아니라 개발자가 처음부터 안전하게 작성하도록 돕는 authoring guide다. 예를 들어 Next.js/Vercel 오버레이는 신뢰할 수 없는 `searchParams`, `params`, request body, formData, headers, cookies, 외부 API/CMS 콘텐츠, webhook, Edge Config 값을 기본적으로 JSX text interpolation으로 렌더링하라고 안내한다.
+`dev/nextjs-vercel.md`와 `dev/spring.md`는 판정 기준이 아니라 개발자가 처음부터 안전하게 작성하도록 돕는 작성 가이드다. 예를 들어 Next.js/Vercel 오버레이는 신뢰할 수 없는 `searchParams`, `params`, request body, formData, headers, cookies, 외부 API/CMS 콘텐츠, webhook, Edge Config 값을 기본적으로 JSX text interpolation으로 렌더링하라고 안내한다.
 
 ```tsx
 // Good
@@ -129,7 +129,7 @@ Jazzer를 고려한 이유는 명확하다. Jazzer는 JVM용 coverage-guided in-
 
 ## 5. 회귀 테스트 생성 eval: 차등 실행
 
-회귀 테스트 생성 eval은 라벨 일치만 보는 verify eval과 다르다. 생성된 테스트를 실제로 실행해 채점한다. 채점 기준은 차등 실행이다.
+회귀 테스트 생성 eval은 라벨 일치만 보는 verify eval과 다르다. 생성된 테스트를 실제로 실행해 채점한다. 채점 기준은 차등 실행(differential execution)이다.
 
 ```text
 취약 구현 → FAIL
@@ -194,7 +194,7 @@ mockMvc.perform(get("/search").param("q", "<script>alert(1)</script>"))
 - Jest matcher 문법 오류
 ```
 
-이번 케이스는 두 번째였다. 모델이 보안을 이해하지 못한 것이 아니라, 모델에게 맡기지 않아도 되는 syntax-heavy artifact 생성을 맡기고 있었던 것이다.
+이번 케이스는 두 번째였다. 모델이 보안을 이해하지 못한 것이 아니라, 모델에게 맡기지 않아도 되는, 문법이 까다로운 산출물 생성을 맡기고 있었던 것이다.
 
 ## 7. 관련 연구: LLM test generation과 repair
 
@@ -202,13 +202,13 @@ mockMvc.perform(get("/search").param("q", "<script>alert(1)</script>"))
 
 ### 7.1 MultiFileTest: multi-file 테스트 생성에서 executability 오류는 핵심 병목이다
 
-MultiFileTest는 기존 LLM unit test generation benchmark가 주로 function, class, single-file 수준에 머문다는 한계를 지적하고, Python, Java, JavaScript의 multi-file 프로젝트를 대상으로 평가하는 benchmark를 제안한다. 이 논문은 여러 frontier LLM을 평가했고, 대부분의 모델이 multi-file setting에서 제한적인 성능을 보였으며, Java가 세 언어 중 가장 어렵다고 설명한다. 특히 advanced model도 executability error와 cascade error를 낸다고 보고하고, 이를 manual fixing과 LLM self-fixing 시나리오로 다시 평가한다. (이 출처는 익명 ACL 제출 초고로, 프로젝트 수·평가 모델 수 같은 세부 수치는 확정본에서 달라질 수 있다.) [2]
+MultiFileTest는 기존 LLM unit test generation benchmark가 주로 function, class, single-file 수준에 머문다는 한계를 지적하고, Python, Java, JavaScript의 multi-file 프로젝트를 대상으로 평가하는 benchmark를 제안한다. 이 논문은 여러 최신 대형 모델(frontier LLM)을 평가했고, 대부분의 모델이 multi-file setting에서 제한적인 성능을 보였으며, Java가 세 언어 중 가장 어렵다고 설명한다. 특히 advanced model도 executability error와 연쇄 오류(cascade error)를 낸다고 보고하고, 이를 manual fixing과 LLM self-fixing 시나리오로 다시 평가한다. (세부 수치는 출처 판본에 따라 달라질 수 있어 본문에서는 구체적 수치를 인용하지 않는다.) [2]
 
 이 연구는 내 문제와 가깝다. 내 실험에서도 모델은 보안 의도는 맞췄지만, 실제 Java 테스트 산출물은 컴파일되지 않았다. 즉 "모델이 XSS 판단을 못했다"가 아니라 "프로젝트에서 실행 가능한 테스트 artifact를 안정적으로 만들지 못했다"는 설명이 더 정확했다. MultiFileTest의 error analysis가 보여주는 Java의 syntax-heavy executability error, JavaScript의 mismatched parentheses, missing imports, Jest framework compliance 문제는 내가 JUnit/Jest test-gen에서 만난 실패와 같은 계열의 문제다.
 
 ### 7.2 YATE: 잘못된 테스트를 버리지 말고 repair하라
 
-YATE는 LLM이 생성한 unit test가 syntax와 semantics 양쪽에서 잘못되는 경우가 많다고 지적한다. 하지만 그런 테스트를 바로 버리면 missed opportunity가 된다. 잘못된 테스트라도 underlying program logic을 겨냥하고 있는 경우가 많고, 고치면 실제 테스트 가치가 있기 때문이다. YATE는 rule-based static analysis와 re-prompting을 결합해 일부 잘못된 테스트를 repair하는 방식을 제안한다. [3]
+YATE는 LLM이 생성한 unit test가 syntax와 semantics 양쪽에서 잘못되는 경우가 많다고 지적한다. 하지만 그런 테스트를 바로 버리면 좋은 기회를 놓치는 셈이 된다. 잘못된 테스트라도 underlying program logic을 겨냥하고 있는 경우가 많고, 고치면 실제 테스트 가치가 있기 때문이다. YATE는 rule-based static analysis와 re-prompting을 결합해 일부 잘못된 테스트를 repair하는 방식을 제안한다. [3]
 
 내 케이스에서도 실패한 테스트는 버릴 대상이 아니었다. assertion 의도와 payload가 맞았기 때문에, 괄호 하나만 고치면 discriminating test로 사용할 수 있었다. 따라서 이 실패는 모델 성능 실패로 집계하기보다 repair 가능한 artifact 오류로 분리하는 것이 맞았다.
 
@@ -236,7 +236,7 @@ Java library fuzzing harness generation 연구도 연결된다. coverage-guided 
 
 ## 8. 적용한 설계: LLM은 intent만 만들고, 코드는 renderer가 만든다
 
-이 문제를 해결하기 위해 적용한 구조는 단순하다. LLM에게 JUnit이나 Jest 테스트 전체를 직접 쓰게 하지 않는다. LLM은 테스트 의도만 JSON으로 출력한다. JUnit/MockMvc나 Jest 코드의 문법은 deterministic renderer가 생성한다.
+이 문제를 해결하기 위해 적용한 구조는 단순하다. LLM에게 JUnit이나 Jest 테스트 전체를 직접 쓰게 하지 않는다. LLM은 테스트 의도만 JSON으로 출력한다. JUnit/MockMvc나 Jest 코드의 문법은 deterministic renderer(같은 입력이면 늘 같은 코드를 만드는 고정 템플릿)가 생성한다.
 
 현재 레포의 intent schema는 일부러 작게 유지한다. 모델이 요청 경로, HTTP method, controller class, component 이름, import, annotation, matcher chain까지 모두 출력하지 않는다. 이 값들은 시나리오에 고정되어 있고, renderer가 알고 있다. 모델의 역할은 구분력 있는 payload와 올바른 check type을 고르는 것이다.
 
@@ -254,7 +254,7 @@ Java library fuzzing harness generation 연구도 연결된다. coverage-guided 
 
 ### 8.1 HTML 본문/조각: html_escaped
 
-HTML 본문이나 HTML 조각에 입력이 반영되는 케이스에서는 `html_escaped`를 사용한다. 현재 renderer는 원본 payload가 응답에 그대로 없어야 하고, fixture가 기대하는 HTML escape 형태가 있어야 한다는 assertion을 만든다. 이 assertion은 현재 fixture pair를 구분하기 위한 regression oracle이지, 모든 안전한 HTML 인코딩 표현을 허용하는 범용 conformance oracle은 아니다.
+HTML 본문이나 HTML 조각에 입력이 반영되는 케이스에서는 `html_escaped`를 사용한다. 현재 renderer는 원본 payload가 응답에 그대로 없어야 하고, fixture가 기대하는 HTML escape 형태가 있어야 한다는 assertion을 만든다. 이 assertion은 현재 fixture pair를 구분하기 위한 회귀 검증 기준(regression oracle)이지, 모든 안전한 HTML 인코딩 표현을 허용하는 범용 정합성 기준(conformance oracle)은 아니다. 여기서 oracle은 테스트의 합격/불합격을 판정하는 기준을 뜻한다.
 
 ```json
 {
@@ -453,7 +453,7 @@ test('domhref blocks unsafe href scheme', () => {
 
 Intent/renderer 구조가 잘 작동하는 이유는 renderer가 많은 것을 이미 알고 있기 때문이다. 요청 경로, HTTP method, parameter name, controller class, React component prop, fixture binding, vulnerable/safe variant는 모델이 출력하지 않는다. 이 정보는 scenario metadata로 주어진다.
 
-이것은 중요한 load-bearing constraint다. 모델이 raw 코드를 직접 쓰지 않아도 되는 대신, 시스템은 미리 작성된 scenario contract에 의존한다. 현재 실험에서는 이 조건이 명시적으로 제공된다. 그래서 결과의 의미는 "임의의 실제 코드베이스에서 자동으로 모든 테스트를 만들었다"가 아니라, "사전 정의된 scenario 안에서 소형 모델이 test intent를 안정적으로 고를 수 있었다"에 가깝다.
+이것은 구조 전체를 떠받치는 핵심 전제다. 모델이 raw 코드를 직접 쓰지 않아도 되는 대신, 시스템은 미리 작성된 scenario contract에 의존한다. 현재 실험에서는 이 조건이 명시적으로 제공된다. 그래서 결과의 의미는 "임의의 실제 코드베이스에서 자동으로 모든 테스트를 만들었다"가 아니라, "사전 정의된 scenario 안에서 소형 모델이 test intent를 안정적으로 고를 수 있었다"에 가깝다.
 
 임의의 실제 코드베이스로 확장하려면 다음 문제가 남는다.
 
@@ -591,7 +591,7 @@ discriminate_ok_after_patch: true
 failure_type: artifact_fail
 ```
 
-이 분류가 있어야 모델을 잘못 평가하지 않는다. 14B 모델이 보안 판단을 못한 것이 아니라, Java artifact 생성에서 문법 오류를 낸 것이다. 반대로 intent+renderer 구조에서는 syntax-heavy artifact 생성을 모델에서 제거했기 때문에, 3B 모델로도 더 안정적인 결과를 얻을 수 있었다.
+이 분류가 있어야 모델을 잘못 평가하지 않는다. 14B 모델이 보안 판단을 못한 것이 아니라, Java artifact 생성에서 문법 오류를 낸 것이다. 반대로 intent+renderer 구조에서는 문법이 까다로운 산출물 생성을 모델에서 제거했기 때문에, 3B 모델로도 더 안정적인 결과를 얻을 수 있었다.
 
 ## 15. Cross-domain problem reframing으로 본 의미
 
@@ -621,7 +621,7 @@ failure_type: artifact_fail
 
 [1] Code Intelligence, "Jazzer: Coverage-guided, in-process fuzzing for the JVM." GitHub. https://github.com/CodeIntelligenceTesting/jazzer
 
-[2] Anonymous ACL submission, "MultiFileTest: A Multi-File-Level LLM Unit Test Generation Benchmark and Impact of Error Fixing Mechanisms." PDF draft, 2026. (익명 제출 초고이며 세부 수치는 확정본 기준으로 검증 필요.)
+[2] Yibo Wang et al., "MultiFileTest: A Multi-File-Level LLM Unit Test Generation Benchmark and Impact of Error Fixing Mechanisms." arXiv, 2025. https://arxiv.org/abs/2502.06556
 
 [3] Michael Konstantinou et al., "YATE: The Role of Test Repair in LLM-Based Unit Test Generation." arXiv, 2025. https://arxiv.org/abs/2507.18316
 

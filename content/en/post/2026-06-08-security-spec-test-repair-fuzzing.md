@@ -40,13 +40,13 @@ spec/
   test/junit5-xss.md        ← JUnit5/MockMvc test authoring rules
 ```
 
-The most important principle in this structure is that **the body of each rule exists only in `core`**. The development overlay, verification overlay, and test-generation overlay cite rule IDs from `core`. This reduces drift between documents that are likely to evolve independently.
+The most important principle in this structure is that **the body of each rule exists only in `core`**. The development overlay, verification overlay, and test-generation overlay — thin layers that re-skin the core rules for a specific use — cite rule IDs from `core`. This reduces drift between documents that are likely to evolve independently.
 
 This was not merely an exercise in shortening documentation. It was an attempt to make the same security standard usable in different forms: when humans read it, when a model judges code, when developers write code, and when a test generator turns the judgment into executable validation.
 
 ## 2. The Roles of Core, Verify, Dev, and Test
 
-`core/xss-core.md` is the single source of truth for XSS defense. For example, query strings, path variables, request bodies, form fields, headers, cookies, external APIs, webhooks, message queues, file uploads, and batch-imported data are all treated as untrusted values. These values must go through context-specific defense at the point of output.
+`core/xss-core.md` is the single source of truth (SSOT) for XSS defense. For example, query strings, path variables, request bodies, form fields, headers, cookies, external APIs, webhooks, message queues, file uploads, and batch-imported data are all treated as untrusted values. These values must go through context-specific defense at the point of output.
 
 The core specification also clearly separates input validation from XSS defense. Input validation only constrains the shape of input. XSS defense is completed at output time through context-specific encoding or a verified sanitizer. HTML body, HTML attribute, URL attribute, JavaScript string, CSS value, HTML fragment, JSON response, and redirect are different output contexts, and each requires a different defense.
 
@@ -202,7 +202,7 @@ To solve this problem, looking only at security vulnerability analysis papers wa
 
 ### 7.1 MultiFileTest: Executability Errors Are a Core Bottleneck in Multi-File Test Generation
 
-MultiFileTest points out that existing LLM unit-test generation benchmarks often stay at the function, class, or single-file level, and proposes a benchmark for multi-file projects in Python, Java, and JavaScript. It evaluates multiple frontier LLMs and reports that most models show limited performance in a multi-file setting, with Java being the hardest among the three languages. It also reports that even advanced models produce executability errors and cascade errors, then reevaluates them under manual fixing and LLM self-fixing scenarios. Because this source is an anonymous ACL submission draft, details such as project counts and evaluated models may change in the final version. [2]
+MultiFileTest points out that existing LLM unit-test generation benchmarks often stay at the function, class, or single-file level, and proposes a benchmark for multi-file projects in Python, Java, and JavaScript. It evaluates multiple frontier LLMs and reports that most models show limited performance in a multi-file setting, with Java being the hardest among the three languages. It also reports that even advanced models produce executability errors and cascade errors, then reevaluates them under manual fixing and LLM self-fixing scenarios. Because details such as project counts and evaluated models may vary across versions of this source, I do not cite specific numbers in the main text. [2]
 
 This is close to my problem. In my experiment, the model got the security intent right, but the actual Java test artifact did not compile. So the more accurate explanation was not "the model failed to judge XSS," but "the model failed to reliably produce an executable test artifact in a project setting." The error analysis in MultiFileTest, such as Java's syntax-heavy executability errors, JavaScript's mismatched parentheses, missing imports, and Jest framework compliance problems, is in the same family of failures I saw in JUnit/Jest test generation.
 
@@ -236,7 +236,7 @@ These studies connect directly to the central fuzzing server + LLM architecture 
 
 ## 8. Applied Design: The LLM Emits Intent; the Renderer Writes Code
 
-The structure I applied to solve this problem is simple. Do not ask the LLM to write the entire JUnit or Jest test. The LLM outputs only the test intent as JSON. The deterministic renderer generates the syntax of JUnit/MockMvc or Jest code.
+The structure I applied to solve this problem is simple. Do not ask the LLM to write the entire JUnit or Jest test. The LLM outputs only the test intent as JSON. The deterministic renderer — a fixed template that always emits the same code for the same input — generates the syntax of JUnit/MockMvc or Jest code.
 
 The current repository keeps the intent schema deliberately small. The model does not output request paths, HTTP methods, controller class names, component names, imports, annotations, or matcher chains. Those values are fixed in the scenario and known by the renderer. The model's role is to choose a discriminating payload and the correct check type.
 
@@ -254,7 +254,7 @@ This choice has a clear cost. Since the model does not create the structure, som
 
 ### 8.1 HTML Body/Fragment: `html_escaped`
 
-For cases where input is reflected into an HTML body or HTML fragment, `html_escaped` is used. The current renderer asserts that the raw payload must not appear in the response and that the fixture-expected HTML-escaped form must appear. This assertion is a regression oracle for distinguishing the current fixture pair; it is not a general conformance oracle that accepts all safe HTML-encoding representations.
+For cases where input is reflected into an HTML body or HTML fragment, `html_escaped` is used. The current renderer asserts that the raw payload must not appear in the response and that the fixture-expected HTML-escaped form must appear. This assertion is a regression oracle (an oracle being the criterion that decides a test's pass/fail) for distinguishing the current fixture pair; it is not a general conformance oracle that accepts all safe HTML-encoding representations.
 
 ```json
 {
@@ -620,7 +620,7 @@ In summary, the LLM handles test intent, the renderer handles JUnit/Jest code, t
 
 [1] Code Intelligence, "Jazzer: Coverage-guided, in-process fuzzing for the JVM." GitHub. https://github.com/CodeIntelligenceTesting/jazzer
 
-[2] Anonymous ACL submission, "MultiFileTest: A Multi-File-Level LLM Unit Test Generation Benchmark and Impact of Error Fixing Mechanisms." PDF draft, 2026. (Anonymous submission draft; details should be verified against the final version.)
+[2] Yibo Wang et al., "MultiFileTest: A Multi-File-Level LLM Unit Test Generation Benchmark and Impact of Error Fixing Mechanisms." arXiv, 2025. https://arxiv.org/abs/2502.06556
 
 [3] Michael Konstantinou et al., "YATE: The Role of Test Repair in LLM-Based Unit Test Generation." arXiv, 2025. https://arxiv.org/abs/2507.18316
 
