@@ -18,6 +18,7 @@ This is the third post in a series documenting the process of building [oh-my-se
 > 2. [Structure Builders Will Outlast Vulnerability Finders](/en/post/2026-04-02-security-from-sense-to-structure/)
 > 3. **How I Turned 228 Endpoints into 5 Clusters** ← current post
 > 4. [An Audit Workflow Survives Only When It Absorbs Misses](/en/post/2026-05-19-sec-audit-static-feedback-loop/)
+> 5. [From a Security Development Spec for Small LLMs to Regression Tests and Fuzzing Validation](/en/post/2026-06-08-security-spec-test-repair-fuzzing/)
 
 In the [previous post](/en/post/2026-04-02-security-from-sense-to-structure/), I wrote about the shift from instinct to structure — and why AI works best inside that structure.
 

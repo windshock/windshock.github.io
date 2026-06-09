@@ -20,6 +20,7 @@ image: "/images/pdf-previews/Architecture_of_Intelligence_p1.webp"
 > 2. **Structure Builders Will Outlast Vulnerability Finders** ← current post
 > 3. [How I Turned 228 Endpoints into 5 Clusters](/en/post/2026-04-15-security-code-clustering/)
 > 4. [An Audit Workflow Survives Only When It Absorbs Misses](/en/post/2026-05-19-sec-audit-static-feedback-loop/)
+> 5. [From a Security Development Spec for Small LLMs to Regression Tests and Fuzzing Validation](/en/post/2026-06-08-security-spec-test-repair-fuzzing/)
 
 This is a personal record drawn from 18 years of throwing myself at vulnerability finding — head-first, body-first.
 Your experience may differ.

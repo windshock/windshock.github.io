@@ -20,6 +20,7 @@ image: "/images/pdf-previews/Security_From_Sense_to_Structure_p1.webp"
 > 2. **취약점을 잘 찾는 사람보다, 구조를 만드는 사람이 남는다** ← 현재 글
 > 3. [228개 엔드포인트를 5개 클러스터로 줄인 이야기](/ko/post/2026-04-15-security-code-clustering/)
 > 4. [진단 워크플로우는 미스 케이스를 흡수할 때만 살아남는다](/ko/post/2026-05-19-sec-audit-static-feedback-loop/)
+> 5. [소형 LLM용 보안 개발 스펙에서 회귀 테스트와 퍼징 검증까지](/ko/post/2026-06-08-security-spec-test-repair-fuzzing/)
 
 이 글은 지난 18년 동안 취약점을 찾으려고 몸으로 부딪히며 배운 경험을 바탕으로 쓴 개인적인 기록이다.  
 그래서 다른 사람의 경험과는 다를 수 있다.

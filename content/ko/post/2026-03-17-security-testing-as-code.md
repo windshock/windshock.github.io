@@ -46,6 +46,7 @@ image: "/images/pdf-previews/Security_Testing_as_Code_p1.webp"
 > 2. [취약점을 잘 찾는 사람보다, 구조를 만드는 사람이 남는다](/ko/post/2026-04-02-security-from-sense-to-structure/)
 > 3. [228개 엔드포인트를 5개 클러스터로 줄인 이야기](/ko/post/2026-04-15-security-code-clustering/)
 > 4. [진단 워크플로우는 미스 케이스를 흡수할 때만 살아남는다](/ko/post/2026-05-19-sec-audit-static-feedback-loop/)
+> 5. [소형 LLM용 보안 개발 스펙에서 회귀 테스트와 퍼징 검증까지](/ko/post/2026-06-08-security-spec-test-repair-fuzzing/)
 
 
 보안 진단을 오래 하다 보면 이상한 딜레마에 빠진다.
