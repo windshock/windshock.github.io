@@ -15,6 +15,10 @@ In practical cryptography, failures often occur in the design—combining random
 > Perspective: Implementation errors and design failures  
 > Version: Restored/Expanded Merged Version 2026
 
+## Related Video
+
+{{< youtube 36wm0933xSk >}}
+
 ## Document Flow
 
 - 0. Cryptography is Design, Not Just Mathematics
