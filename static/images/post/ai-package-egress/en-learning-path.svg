@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 430" role="img" aria-label="AI learns target product structure through an allowed package proxy">
+        <rect width="100%" height="100%" fill="#ffffff"/><defs>
+          <filter id="enshadow0" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-opacity="0.16"/></filter>
+          <marker id="enarrow0" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2157d6"/></marker>
+          <marker id="enarrowRed0" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#c2410c"/></marker>
+        </defs>
+        <rect x="32" y="48" width="190" height="90" rx="16" fill="#eaf1ff" stroke="#9bb8ff" filter="url(#enshadow0)"/>
+        <text x="127" y="84" text-anchor="middle" font-size="18" font-weight="700" fill="#0f2449">AI Sandbox</text>
+        <text x="127" y="112" text-anchor="middle" font-size="13" fill="#334155">No direct Internet</text>
+        <path d="M222 93 H335" stroke="#2157d6" stroke-width="4" marker-end="url(#enarrow0)"/>
+        <rect x="335" y="48" width="240" height="90" rx="16" fill="#fff7db" stroke="#f0c24d" filter="url(#enshadow0)"/>
+        <text x="455" y="82" text-anchor="middle" font-size="18" font-weight="700" fill="#7c4a03">Allowed Package / Registry Proxy</text>
+        <text x="455" y="111" text-anchor="middle" font-size="13" fill="#665200">Nexus / Artifactory / OCI cache</text>
+        <path d="M575 93 H690" stroke="#2157d6" stroke-width="4" marker-end="url(#enarrow0)"/>
+        <rect x="690" y="48" width="250" height="90" rx="16" fill="#ecfdf5" stroke="#86efac" filter="url(#enshadow0)"/>
+        <text x="815" y="82" text-anchor="middle" font-size="18" font-weight="700" fill="#14532d">Public Package &amp; Container Ecosystem</text>
+        <text x="815" y="111" text-anchor="middle" font-size="13" fill="#166534">Maven Central / Docker Hub / GHCR</text>
+        <path d="M815 138 V218" stroke="#c2410c" stroke-width="4" marker-end="url(#enarrowRed0)"/>
+        <rect x="655" y="218" width="320" height="118" rx="16" fill="#fee2e2" stroke="#ef8d8d" filter="url(#enshadow0)"/>
+        <text x="815" y="256" text-anchor="middle" font-size="18" font-weight="700" fill="#991b1b">Learn Target Structure</text>
+        <text x="815" y="284" text-anchor="middle" font-size="13" fill="#7f1d1d">POM/JAR → image layer → code index</text>
+        <text x="815" y="307" text-anchor="middle" font-size="13" fill="#7f1d1d">proxy / redirect / cache / URL parsing</text>
+        <path d="M655 277 H510" stroke="#c2410c" stroke-width="4" marker-end="url(#enarrowRed0)"/>
+        <rect x="255" y="218" width="255" height="118" rx="16" fill="#f8fafc" stroke="#d9dee8" filter="url(#enshadow0)"/>
+        <text x="382" y="256" text-anchor="middle" font-size="18" font-weight="700" fill="#14213d">Validate on Live Proxy</text>
+        <text x="382" y="284" text-anchor="middle" font-size="13" fill="#334155">Compare responses and versions</text>
+        <text x="382" y="307" text-anchor="middle" font-size="13" fill="#334155">Reduce candidate paths</text>
+      </svg>
