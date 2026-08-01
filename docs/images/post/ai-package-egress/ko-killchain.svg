@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1480 300" role="img" aria-label="패키지 프록시를 탈출구로 삼는 8-CVE 킬체인">
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <defs>
+    <filter id="kcsh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="5" stdDeviation="7" flood-opacity="0.15"/></filter>
+    <marker id="kcar" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2157d6"/></marker>
+  </defs>
+
+  <!-- origin -->
+  <rect x="20" y="70" width="210" height="150" rx="16" fill="#eaf1ff" stroke="#9bb8ff" filter="url(#kcsh)"/>
+  <text x="125" y="120" text-anchor="middle" font-size="16" font-weight="700" fill="#0f2449">격리 AI / CI 샌드박스</text>
+  <text x="125" y="148" text-anchor="middle" font-size="12" fill="#334155">유일한 egress =</text>
+  <text x="125" y="167" text-anchor="middle" font-size="12" fill="#334155">내부 Artifactory 프록시</text>
+
+  <!-- stage 1 -->
+  <path d="M230 145 H263" stroke="#2157d6" stroke-width="4" marker-end="url(#kcar)"/>
+  <rect x="265" y="70" width="210" height="150" rx="16" fill="#fff7db" stroke="#f0c24d" filter="url(#kcsh)"/>
+  <circle cx="295" cy="100" r="14" fill="#f0c24d"/><text x="295" y="105" text-anchor="middle" font-size="14" font-weight="700" fill="#4d3400">1</text>
+  <text x="380" y="105" text-anchor="middle" font-size="15" font-weight="700" fill="#7c4a03">Egress 붕괴 (SSRF)</text>
+  <text x="370" y="150" text-anchor="middle" font-size="12" fill="#665200">프록시 → 임의 호스트</text>
+  <text x="370" y="169" text-anchor="middle" font-size="11" fill="#8a6d1f">65924 · 65925 · 65923</text>
+
+  <!-- stage 2 -->
+  <path d="M475 145 H508" stroke="#2157d6" stroke-width="4" marker-end="url(#kcar)"/>
+  <rect x="510" y="70" width="210" height="150" rx="16" fill="#e7f5ff" stroke="#7cc4f0" filter="url(#kcsh)"/>
+  <circle cx="540" cy="100" r="14" fill="#7cc4f0"/><text x="540" y="105" text-anchor="middle" font-size="14" font-weight="700" fill="#0b3a55">2</text>
+  <text x="625" y="105" text-anchor="middle" font-size="15" font-weight="700" fill="#0b4a6f">클라우드 메타데이터</text>
+  <text x="615" y="150" text-anchor="middle" font-size="12" fill="#12587f">169.254.169.254</text>
+  <text x="615" y="169" text-anchor="middle" font-size="11" fill="#2b6f95">→ 호스트 IAM 자격증명</text>
+
+  <!-- stage 3 -->
+  <path d="M720 145 H753" stroke="#2157d6" stroke-width="4" marker-end="url(#kcar)"/>
+  <rect x="755" y="70" width="210" height="150" rx="16" fill="#ffedd5" stroke="#f0a94d" filter="url(#kcsh)"/>
+  <circle cx="785" cy="100" r="14" fill="#f0a94d"/><text x="785" y="105" text-anchor="middle" font-size="14" font-weight="700" fill="#5b2c02">3</text>
+  <text x="870" y="105" text-anchor="middle" font-size="15" font-weight="700" fill="#7c3a03">내부-신뢰 승격</text>
+  <text x="860" y="150" text-anchor="middle" font-size="12" fill="#7c3a03">loopback 내부서비스 → admin</text>
+  <text x="860" y="169" text-anchor="middle" font-size="11" fill="#95521f">66014 · 66015</text>
+
+  <!-- stage 4 -->
+  <path d="M965 145 H998" stroke="#2157d6" stroke-width="4" marker-end="url(#kcar)"/>
+  <rect x="1000" y="70" width="210" height="150" rx="16" fill="#ffe5e5" stroke="#f0a0a0" filter="url(#kcsh)"/>
+  <circle cx="1030" cy="100" r="14" fill="#e0706f"/><text x="1030" y="105" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">4</text>
+  <text x="1115" y="105" text-anchor="middle" font-size="15" font-weight="700" fill="#8b1a1a">RCE</text>
+  <text x="1105" y="150" text-anchor="middle" font-size="12" fill="#8b1a1a">패키지 서비스 컨테이너</text>
+  <text x="1105" y="169" text-anchor="middle" font-size="11" fill="#a53a3a">65617 (역직렬화)</text>
+
+  <!-- stage 5 -->
+  <path d="M1210 145 H1243" stroke="#2157d6" stroke-width="4" marker-end="url(#kcar)"/>
+  <rect x="1245" y="70" width="215" height="150" rx="16" fill="#eef2f7" stroke="#a9b6c8" filter="url(#kcsh)"/>
+  <circle cx="1275" cy="100" r="14" fill="#8595ab"/><text x="1275" y="105" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">5</text>
+  <text x="1362" y="105" text-anchor="middle" font-size="15" font-weight="700" fill="#26364d">지속 · 측면이동</text>
+  <text x="1352" y="150" text-anchor="middle" font-size="12" fill="#3a4a63">파일쓰기 · 시크릿 수집</text>
+  <text x="1352" y="169" text-anchor="middle" font-size="11" fill="#516078">65921 · 66018</text>
+
+  <text x="740" y="258" text-anchor="middle" font-size="13" fill="#475569">낮은 전제(65924는 익명 접근 시 인증 불필요)에서 시작해, "허용된 패키지 프록시" 하나가 클라우드 계정·내부망·RCE로 이어진다.</text>
+  <text x="740" y="282" text-anchor="middle" font-size="12" fill="#94a3b8">keramas(2020)가 짚은 "SSRF로 내부-제한 서비스 도달"이 AI 실행 환경에서 전면 킬체인으로 실현.</text>
+</svg>

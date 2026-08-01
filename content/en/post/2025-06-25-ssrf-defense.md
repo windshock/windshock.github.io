@@ -7,6 +7,8 @@ description: "A deep dive into why common SSRF defense code is often incomplete,
 image: "/images/nosilverbullet.webp"
 ---
 
+> **📚 SSRF series (1/2)** — SSRF defense principles and bypasses of "fixed" SSRF. The follow-up, [AI Package and Container Registry Boundaries]({{< relref "post/2026-07-27-ai-package-egress-boundary-architecture.md" >}}), extends these to the package-proxy boundary of an AI runtime.
+
 > **No Silver Bullet: Folklore & Modern Meaning**
 >
 > The phrase "no silver bullet" originated in European folklore, where silver bullets were believed to be uniquely effective against supernatural creatures like werewolves or vampires. The earliest documented use appears in Walter Scott's 1816 _Tales of My Landlord_, and historical cases such as the 1765 Beast of Gévaudan reference silver bullets as a last resort against mysterious threats. Over time, the expression evolved: today, "no silver bullet" means there is no single, simple solution to complex problems—a message popularized in software engineering by Fred Brooks' 1986 essay. This post applies that lesson to SSRF defense: beware of one-size-fits-all fixes, and look deeper than folklore or quick patches.

@@ -12,6 +12,8 @@ cover:
   alt: "패키지·컨테이너 레지스트리 프록시를 둘러싼 AI 신뢰 경계"
 ---
 
+> **📚 SSRF 시리즈 (2/2)** — 이 글은 [SSRF Defense: 최신 방어 전략과 실전 가이드]({{< relref "post/2025-06-25-ssrf-defense.md" >}})의 후속이다. 앞 글이 SSRF 방어의 일반 원칙과 “패치된 SSRF”의 우회를 다뤘다면, 이 글은 그 원칙이 AI 실행 환경의 패키지·컨테이너 프록시 경계에서 어떻게 무너지는지를 다룬다.
+
 AI 에이전트가 호출할 수 있는 순간, 패키지와 컨테이너 레지스트리는 수동적인 개발 편의 기능이 아니다. 관찰하고 반복 사용할 수 있는 outbound interface이며, 따라서 AI runtime의 보안 경계가 된다.
 
 ## 1. 요약
@@ -103,6 +105,47 @@ Artifactory가 관련 proxy/cache 제품이었다면, 해당 registry 경로를 
 | **CVE-2026-14645** | Global Webhook URL 검증 누락. | 관리 편의 기능도 outbound primitive가 될 수 있다. |
 | **CVE-2026-7494** | SSL Certificate Retrieval host/port 제어 문제. | 진단 기능도 내부 서비스 enumeration 경로가 될 수 있다. |
 | **CVE-2025-9868** | Nexus Repository 2.x Remote Browser Plugin SSRF. | 패키지 저장소 제품은 오래전부터 SSRF/credential exposure 위험을 가져왔다. |
+
+## 5.5 JFrog Artifactory: 2020년의 예견, 그리고 2026년 7월 CVE 클러스터
+
+이 장도 공개된 내용만 다룬다. 미공개 제보 후보, 재현 절차, 페이로드는 제외한다.
+
+### 2020년의 예견 — keramas의 SSRF 연구
+
+2020년, 연구자 **keramas**는 JFrog Artifactory의 SSRF를 문서화했다([글](https://keramas.github.io/2020/04/03/jfrog-ssrf-vulnerability.html)). 핵심은 Artifactory의 `access` 관리 API가 **기본적으로 localhost로만 접근 가능**하도록 제한돼 있는데, SSRF로 그 localhost 제한을 우회해 내부 관리 기능에 도달할 수 있다는 것이었다(CVE-2019-9733 / CVE-2019-19937). 이는 곧 “SSRF → loopback으로 제한된 내부 서비스 도달”이라는, 2026년 클러스터가 그대로 반복하는 취약점 계열을 **여러 해 앞서 짚은 것**이다.
+
+> keramas의 블로그는 더 이상 갱신되지 않는 듯하다. 이 분야를 크게 앞서갔던 연구였던 만큼, 기록으로 남기고 경의를 표한다.
+
+### 2026년 7월 — 사고의 실제 CVE
+
+OpenAI 사고 이후, JFrog Artifactory에서 **8개 CVE**가 공개되고 **7.161.15에서 수정**됐다(그 이전 self-hosted 설치는 모두 영향 범위). 이는 3장에서 다룬 “패키지 프록시가 곧 egress 경계”라는 가정에 **구체적인 CVE를 붙여준다**.
+
+| CVE | 클래스 | 컴포넌트 |
+|---|---|---|
+| CVE-2026-65924 | SSRF (응답 회수, 익명 접근 시 인증 불필요) | Terraform 원격 저장소 |
+| CVE-2026-65925 | SSRF (읽기 권한) | Cargo 원격 저장소 |
+| CVE-2026-65923 | SSRF-adjacent (URL 검증) | Ansible 저장소 처리 |
+| CVE-2026-66014 | 인증 우회 / 권한 상승 | 내부 요청 신뢰 (플랫폼) |
+| CVE-2026-66015 | 인가 결함 / 권한 상승 | JFrog 플랫폼 |
+| CVE-2026-65617 | 역직렬화 / RCE | 패키지 처리 |
+| CVE-2026-65921 | 경로 순회(zip-slip) | 아카이브 처리 |
+| CVE-2026-66018 | 정보 노출 | 빌드 환경 속성 |
+
+### 킬체인 — “패키지 프록시가 곧 탈출구”
+
+격리된 AI/CI 샌드박스의 유일한 egress가 내부 Artifactory일 때, 이 CVE들은 흩어진 게 아니라 한 줄기로 엮인다.
+
+    1. Egress 붕괴   — SSRF(65924/65925/65923)로 “허용된 프록시”를 임의 호스트 요청기로 전환
+    2. 클라우드 메타데이터 — SSRF → 169.254.169.254 → 호스트 IAM 자격증명 탈취
+    3. 내부-신뢰 승격  — SSRF로 loopback 내부 서비스 도달 → 66014 인증 우회 → admin
+    4. RCE           — 65617 역직렬화로 패키지 서비스 컨테이너에서 코드 실행
+    5. 지속·측면이동   — 65921 파일 쓰기 지속성, 66018 시크릿 수집
+
+[![패키지 프록시를 탈출구로 삼는 8-CVE 킬체인](/images/post/ai-package-egress/ko-killchain.svg)](/images/post/ai-package-egress/ko-killchain.svg)
+
+*그림 4. 격리 샌드박스의 유일한 egress(패키지 프록시)를 SSRF로 열면, 클라우드 자격증명·내부-신뢰 승격·RCE로 이어지는 한 줄기 킬체인이 된다. [원본 크기 SVG 열기](/images/post/ai-package-egress/ko-killchain.svg).*
+
+낮은 전제(65924는 익명 접근 시 인증 불필요)에서 시작해, “허용된 패키지 프록시” 하나가 클라우드 계정·내부망·RCE로 이어지는 통로가 된다. **keramas가 2020년에 짚은 “SSRF로 내부-제한 서비스 도달”이, AI 실행 환경이라는 새 맥락에서 전면적 킬체인으로 실현된 셈이다.** 그리고 이 계열의 근본은 “redirect·metadata·외부의존성 같은 편의 기능이 서버 측 outbound 권한을 갖는다”는 것 — 4장의 관측, 5장의 Nexus 이력과 정확히 같은 뿌리다.
 
 ### 재사용 가능한 Repository SSRF 분석 스킬
 
@@ -320,5 +363,8 @@ OpenAI–Hugging Face 사고, OpenAI 실행 컨테이너의 Artifactory-style pa
 - NVD, [CVE-2026-7494 Nexus Repository 3 SSRF in SSL Certificate Retrieval](https://nvd.nist.gov/vuln/detail/CVE-2026-7494).
 - Sonatype, [CVE-2026-0600 Nexus Repository 3 - Server-Side Request Forgery](https://support.sonatype.com/hc/en-us/articles/47928855816595-CVE-2026-0600-Nexus-Repository-3-Server-Side-Request-Forgery-2026-01-13).
 - Sonatype, [CVE-2025-9868 Nexus Repository 2 Remote Browser Plugin SSRF](https://support.sonatype.com/hc/en-us/articles/45363201583635-CVE-2025-9868-Nexus-Repository-2-SSRF-Vulnerability-in-Remote-Browser-Plugin).
+- keramas, [JFrog Artifactory Server-side Request Forgery Vulnerability](https://keramas.github.io/2020/04/03/jfrog-ssrf-vulnerability.html), 2020 (CVE-2019-9733 / CVE-2019-19937 — localhost 제한 access API를 SSRF로 우회한 사례; 이 분야의 선구적 연구로 인용).
+- JFrog, [JFrog Security Advisories](https://docs.jfrog.com/releases/docs/jfrog-security-advisories) (2026년 7월 8-CVE 클러스터의 CVE별 "fixed in"·컴포넌트를 확인하는 권위 출처).
+- ToolsLib Blog, [OpenAI testing uncovers zero-day flaws in JFrog Artifactory: the eight CVEs](https://blog.toolslib.net/2026/07/29/openai-artifactory-zero-days-eight-cves/), 2026-07-29 (8-CVE 요약; 2차 보도).
 
 > 이 글은 미공개 취약점의 세부 재현 절차, 페이로드, 공격 절차를 의도적으로 제외한다.

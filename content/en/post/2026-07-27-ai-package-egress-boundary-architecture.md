@@ -12,6 +12,8 @@ cover:
   alt: "AI trust boundaries around a package and container registry proxy"
 ---
 
+> **📚 SSRF series (2/2)** — a follow-up to [The Limitations of "Secure" SSRF Patches]({{< relref "post/2025-06-25-ssrf-defense.md" >}}). Where the first post covered SSRF defense principles and bypasses of "fixed" SSRF, this one shows how those principles break down at the package/container-proxy boundary of an AI runtime.
+
 Package and container registries are not passive developer conveniences once an AI agent can call them. They become observable, repeatable outbound interfaces—and therefore part of the AI runtime’s security boundary.
 
 ## 1. Executive Summary
@@ -105,6 +107,47 @@ This section discusses only public Nexus SSRF history. It intentionally excludes
 | **CVE-2025-9868** | Nexus Repository 2.x Remote Browser Plugin SSRF. | Repository products have a long-running SSRF and credential exposure risk history. |
 
 > **Takeaway:** The important point is not a single CVE. Package repository products perform server-side outbound requests in several features. Their built-in SSRF protections should not be treated as the final trust boundary.
+
+## 5.5 JFrog Artifactory: a 2020 foresight and the July-2026 CVE cluster
+
+This section, too, covers only public material — no undisclosed finding mechanics, reproduction steps, or payloads.
+
+### The 2020 foresight — keramas's SSRF research
+
+In 2020 the researcher **keramas** documented an Artifactory SSRF ([post](https://keramas.github.io/2020/04/03/jfrog-ssrf-vulnerability.html)): Artifactory's `access`-admin API is **localhost-restricted by default**, and SSRF could bypass that localhost restriction to reach internal admin functions (CVE-2019-9733 / CVE-2019-19937). That is exactly the "SSRF → reach a loopback-restricted internal service" class the 2026 cluster revolves around — **called years in advance.**
+
+> keramas's blog no longer seems active. It was well ahead of the field; recorded here with respect.
+
+### July 2026 — the incident's actual CVEs
+
+After the OpenAI incident, **eight CVEs** were disclosed in JFrog Artifactory and **fixed in 7.161.15** (every self-hosted install below it is in range). They attach concrete CVEs to Section 3's premise that the package proxy *is* the egress boundary.
+
+| CVE | Class | Component |
+|---|---|---|
+| CVE-2026-65924 | SSRF (response returned; unauth if Anonymous Access on) | Terraform remote repo |
+| CVE-2026-65925 | SSRF (read access) | Cargo remote repo |
+| CVE-2026-65923 | SSRF-adjacent (URL validation) | Ansible repo handling |
+| CVE-2026-66014 | Auth bypass / priv-esc | internal request trust (platform) |
+| CVE-2026-66015 | Authorization flaw / priv-esc | JFrog Platform |
+| CVE-2026-65617 | Deserialization / RCE | package handling |
+| CVE-2026-65921 | Path traversal (zip-slip) | archive handling |
+| CVE-2026-66018 | Information disclosure | build environment properties |
+
+### The kill chain — "the package proxy as the escape hatch"
+
+When an isolated AI/CI sandbox's only egress is an internal Artifactory, these CVEs are not scattered — they compose into one chain.
+
+    1. Egress-break     — SSRF (65924/65925/65923) turns the "allowed proxy" into an arbitrary-host requester
+    2. Cloud metadata   — SSRF -> 169.254.169.254 -> steal the host's IAM credentials
+    3. Internal-trust escalation — SSRF reaches a loopback internal service -> 66014 auth bypass -> admin
+    4. RCE              — 65617 deserialization -> code execution on a package-service container
+    5. Persistence/lateral — 65921 file write, 66018 secret harvest
+
+[![Eight-CVE kill chain using the package proxy as an escape hatch](/images/post/ai-package-egress/en-killchain.svg)](/images/post/ai-package-egress/en-killchain.svg)
+
+*Figure 4. Opening a sandbox's only egress (the package proxy) with SSRF composes into one chain: cloud credentials → internal-trust escalation → RCE. [Open the full-size SVG](/images/post/ai-package-egress/en-killchain.svg).*
+
+From a low bar (65924 needs no auth when Anonymous Access is on), one "allowed package proxy" becomes a path to cloud credentials, the internal network, and RCE. **The "SSRF-to-a-restricted-internal-service" that keramas flagged in 2020 is realized, in the new context of an AI runtime, as a full kill chain.** The root is the same as Sections 4 and 5: convenience features — redirects, metadata, external dependencies — carry server-side outbound authority.
 
 ### Reusable Repository SSRF Audit Skill
 
@@ -342,5 +385,8 @@ The goal is not only to prevent package proxy vulnerabilities. The goal is to br
 - NVD, [CVE-2026-7494 Nexus Repository 3 SSRF in SSL Certificate Retrieval](https://nvd.nist.gov/vuln/detail/CVE-2026-7494).
 - Sonatype, [CVE-2026-0600 Nexus Repository 3 - Server-Side Request Forgery](https://support.sonatype.com/hc/en-us/articles/47928855816595-CVE-2026-0600-Nexus-Repository-3-Server-Side-Request-Forgery-2026-01-13).
 - Sonatype, [CVE-2025-9868 Nexus Repository 2 Remote Browser Plugin SSRF](https://support.sonatype.com/hc/en-us/articles/45363201583635-CVE-2025-9868-Nexus-Repository-2-SSRF-Vulnerability-in-Remote-Browser-Plugin).
+- keramas, [JFrog Artifactory Server-side Request Forgery Vulnerability](https://keramas.github.io/2020/04/03/jfrog-ssrf-vulnerability.html), 2020 (CVE-2019-9733 / CVE-2019-19937 — SSRF bypassing the localhost-restricted access API; cited as pioneering work in this area).
+- JFrog, [JFrog Security Advisories](https://docs.jfrog.com/releases/docs/jfrog-security-advisories) (authoritative source for the per-CVE "fixed in" version and affected component of the July-2026 8-CVE cluster).
+- ToolsLib Blog, [OpenAI testing uncovers zero-day flaws in JFrog Artifactory: the eight CVEs](https://blog.toolslib.net/2026/07/29/openai-artifactory-zero-days-eight-cves/), 2026-07-29 (secondary reporting of the eight CVEs).
 
 > This post intentionally excludes undisclosed vulnerability reproduction details, payloads, and exploit procedures.
