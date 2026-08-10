@@ -1,7 +1,7 @@
 ---
 title: "취약점을 찾는 AI와 침투 시나리오를 만드는 AI는 다르다"
 date: 2026-08-03
-draft: true
+draft: false
 featured: true
 description: "취약점을 공격자 관점의 보안 상태 전이로 구조화하고, 인간의 직관과 AI의 제한된 탐색을 결합해 짧고 근거 있는 공격 경로를 만드는 방법"
 tags:

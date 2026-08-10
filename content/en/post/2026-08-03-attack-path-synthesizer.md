@@ -1,7 +1,7 @@
 ---
 title: "Finding Vulnerabilities Is Not the Same as Building Attack Scenarios"
 date: 2026-08-03
-draft: true
+draft: false
 featured: true
 description: "A practical method for modeling vulnerabilities as attacker-relevant security state transitions and combining human intuition with bounded AI search"
 tags:
