@@ -15,6 +15,7 @@ tags:
   - ret2libc
   - ASLR
   - Vulnerability Research
+  - LLM
 categories:
   - Security Research
 ---
@@ -159,6 +160,58 @@ The opening question was "isn't this an unusual pattern?" The honest answer:
 - **By constraint, it's meaningful.** Under a harder condition — one-shot process, full ASLR, no cross-connection leak — assembling the leak and stage-2 into a single chain over one already-open socket is where the value is.
 
 Technique novelty and finding value are separate axes. The more common the class, the more "why is this still unfixed?" stands out — which strengthens, not weakens, the severity story. And being able to explain the composition precisely in public vocabulary (CWE/CAPEC/prior art) is far more useful than being dazzled by the impression.
+
+## 9. Appendix — the real bottleneck when doing this with an LLM
+
+This exploit didn't come out in one shot. It took several rounds of forming a
+hypothesis, disproving it against measurements, and narrowing again. Working with
+LLMs on vulnerability analysis, I've found that the biggest bottleneck is not
+always missing advanced technical knowledge. **It is believing a plausible
+explanation too quickly.**
+
+I ran into this during this binary analysis. The target was a server-side native
+helper binary launched by a web server to communicate with a third-party server.
+The real challenge was not simply proving an overflow, but proving that with ASLR
+enabled, the chain could continue within the same process: **leak → Stage2 →
+pivot → execution confirmation.**
+
+During the analysis, the LLM repeatedly made similar mistakes. It treated a single
+GDB observation as fact, interpreted a `recv` failure only as a socket-state issue,
+misunderstood where the ROP chain had to be placed, and mixed static ELF
+information with the actual runtime memory map. In the end, the key was not a more
+sophisticated exploit idea — it was **forcing the LLM not to jump to conclusions
+too early.**
+
+![ASLR-on to Stage2 — LLM bottlenecks in binary vulnerability analysis](/images/post/reverse-single-socket-staging/llm-bottlenecks.png)
+
+So for this kind of analysis, I enforce a few rules:
+
+1. **One GDB observation is not proof.** A register value or crash state seen once
+   at a breakpoint is a hypothesis until checked with repeated runs, `strace`,
+   memory dumps, or runtime maps.
+2. **Do not analyze `recv` using only fd, buf, and len.** The fourth argument,
+   flags, can also change behavior and may lead to `EAGAIN`. Check fd, buf, len,
+   flags, return value, and errno together.
+3. **Do not assume PLT or libc cleans arguments for you.** A normal wrapper may
+   prepare arguments correctly, but direct ROP or mid-function entry does not get
+   that for free. Function arguments are the caller's responsibility.
+4. **Separate static ELF information from runtime mappings.** Sections and segments
+   from `readelf` or `objdump` are not enough. Check what is actually mapped and
+   writable in the running process.
+5. **Look for internal wrappers first.** Before rebuilding a libc or syscall call,
+   check whether the binary already has a stable path for `select`, timeout, `recv`
+   flags, or argument setup.
+6. **With ASLR enabled, verify same-process continuity.** A leaked address may only
+   be valid inside that process instance. leak → Stage2 → pivot → execution
+   confirmation must happen in the same process.
+7. **Separate confirmed facts from assumptions.** Write conclusions in four
+   buckets: confirmed facts, disproven hypotheses, unknowns, and next experiments.
+
+These aren't abstractions. Rules 2 and 5 (recv flags and internal wrappers) are
+exactly what **03 (ret2csu + flags=0)** in the repo demonstrates; the "ROP chain
+placement" mistake is what **02 (front-load)** shows; and "same-process
+continuity" is what **01** proves in code. The failures behind these rules are
+what hardened into the three runnable labs.
 
 ---
 
