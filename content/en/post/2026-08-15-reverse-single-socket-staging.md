@@ -145,6 +145,12 @@ cd Linux-Reverse-Socket-Stagers/01-single-socket-reverse-stager
 
 It toggles full ASLR in an isolated container and reproduces `uid=0` from a single malicious response. The protocol, gadgets, and offsets are all this demo's own and unrelated to any product.
 
+The repo ships three runnable labs, each verified end-to-end in an isolated x86_64 container (`uid=0` under full ASLR — a marker proof plus a real `/bin/sh` over the reused socket):
+
+- **01 Single-Socket Reverse Staging** — the core technique of this post.
+- **02 Front-Load Source-Hijack** — when a post-overflow `memcpy` sources RIP from the *front* of the response, place the chain at payload offset 0.
+- **03 ret2csu + flags=0** — drive `send`/`recv` by ROP with no `pop rdx` and no `pop rcx`: `%rdx` via `__libc_csu_init` (ret2csu), `flags=0` via real wrapper functions.
+
 ## 8. Wrap-up
 
 The opening question was "isn't this an unusual pattern?" The honest answer:

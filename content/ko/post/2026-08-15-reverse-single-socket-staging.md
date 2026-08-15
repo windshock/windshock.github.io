@@ -145,6 +145,12 @@ cd Linux-Reverse-Socket-Stagers/01-single-socket-reverse-stager
 
 격리 컨테이너에서 full ASLR을 켜고, 단일 악성 응답으로 `uid=0`을 재현한다. 프로토콜·가젯·오프셋은 전부 이 데모의 것이며, 어떤 제품과도 무관하다.
 
+저장소에는 러너블 랩 세 개가 들어 있고, 셋 다 격리 x86_64 컨테이너에서 full ASLR `uid=0`으로 검증됐다(각각 marker 증명 + 재사용 소켓 위 실제 `/bin/sh`).
+
+- **01 단일 소켓 역방향 스테이징** — 본문의 핵심 기법.
+- **02 front-load 소스하이잭** — 후속 memcpy가 RIP를 응답 앞부분에서 가져올 때, 체인을 payload offset 0에 싣는 기법.
+- **03 ret2csu + flags=0** — `pop rdx`·`pop rcx` 없이 `send`/`recv`를 ROP로 구동. `rdx`는 `__libc_csu_init`(ret2csu), `flags=0`은 실제 래퍼 함수로 확보.
+
 ## 8. 정리
 
 처음 질문은 "이거 특이한 패턴 아냐?"였다. 정직한 답은 이렇다.
