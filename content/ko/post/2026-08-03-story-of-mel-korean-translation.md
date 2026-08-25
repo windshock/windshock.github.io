@@ -6,14 +6,14 @@ featured: true
 tags: ["Mind", "Programming History", "Hacker Culture", "Machine Code", "Self-Modifying Code", "Translation"]
 categories: ["프로그래밍 문화", "컴퓨터 역사"]
 description: "Ed Nather의 고전 해커 민속 The Story of Mel, a Real Programmer를 한국어로 옮기고, 드럼 메모리, one-plus-one 주소 지정, 자기 수정 코드, 오버플로 루프를 함께 해설한다."
-image: "/images/post/story-of-mel-korean-translation/cover.png"
+image: "/images/post/story-of-mel-korean-translation/cover.webp"
 ---
 
 멜 이야기는 초기 컴퓨터 시대의 기계어 프로그래밍이 단순한 옛날 무용담이 아니라, 하드웨어 구조와 프로그래머의 미학이 거의 같은 층위에서 움직이던 시절의 기록이라는 점에서 여전히 강하다.
 
 > 역자 주: 처음에는 Mel's Loop 쪽에 한국어 번역과 주석판을 기여하려고 했지만, 연락이 닿지 않아 우선 이 블로그에 비공식 번역본으로 정리해 둔다. 원문은 Ed Nather가 1983년 5월 21일 Usenet에 게시한 [The Story of Mel, a Real Programmer](https://melsloop.com/stories/the-story-of-mel)이며, [University of Utah 보존본](https://users.cs.utah.edu/~elb/folklore/mel.html)도 함께 참고할 수 있다.
 
-![멜 이야기, 진짜 프로그래머](/images/post/story-of-mel-korean-translation/cover.png)
+![멜 이야기, 진짜 프로그래머](/images/post/story-of-mel-korean-translation/cover.webp)
 
 # 멜 이야기, 진짜 프로그래머
 

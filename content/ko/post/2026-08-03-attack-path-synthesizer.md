@@ -16,14 +16,14 @@ tags:
 categories:
   - 보안 연구
   - AI 보안
-image: "/images/post/attack-path-synthesizer/cover.png"
+image: "/images/post/attack-path-synthesizer/cover.webp"
 ---
 
 # 취약점을 찾는 AI와 침투 시나리오를 만드는 AI는 다르다
 
 > 취약점을 하나씩 발견하는 능력과, 여러 취약점을 엮어 실제로 성립하는 침투 시나리오를 만드는 능력은 서로 다른 문제다. 전자는 주로 코드와 데이터 흐름을 분석하는 문제지만, 후자는 공격자가 얻은 능력과 시스템 조건이 누적되는 상태 공간을 탐색하는 문제다.
 
-![공격 탐색 공간을 항해하는 방법](/images/post/attack-path-synthesizer/cover.png)
+![공격 탐색 공간을 항해하는 방법](/images/post/attack-path-synthesizer/cover.webp)
 
 > **oh-my-secuaudit 시리즈** ([5편](/ko/post/2026-06-08-security-spec-test-repair-fuzzing/)이 보안 판단 기준을 회귀 테스트와 퍼징 seed로 실행 가능하게 만드는 이야기였다면, 이번 6편은 개별 finding 판단에서 근거 있는 공격 경로 합성으로 넘어가는 이야기다.)
 > 1. [Security Testing as Code — 진단을 코드로 구조화하는 실험](/ko/post/2026-03-17-security-testing-as-code/)
@@ -150,7 +150,7 @@ Malte Helmert의 Fast Downward는 고전 플래닝에서 causal graph, 계층적
 | 실제 환경은 부분관측이다 | `verified/supported/inferred/hypothetical`과 검증 단계 유지 |
 | 큰 공간은 휴리스틱으로 줄여야 한다 | 목표지향 backward search와 짧은 후보 우선 |
 
-![공격 경로 탐색이 어려운 이유](/images/post/attack-path-synthesizer/search-space.png)
+![공격 경로 탐색이 어려운 이유](/images/post/attack-path-synthesizer/search-space.webp)
 
 *어려운 점은 취약점을 찾는 것만이 아니다. 거대한 탐색 공간에서 계산 가능한 직접 연결과 조합 폭발 영역을 구분하고, 어떤 고가치 가지를 깊게 검증할지 정하는 것이다.*
 
@@ -294,7 +294,7 @@ C-002 결합
 
 중요한 것은 C-001과 C-002를 결합했을 때 **독립적으로는 없던 `내부 주소로 서버 요청`이라는 새로운 능력**이 생긴다는 점이다. 바로 이런 변화를 찾아야 한다.
 
-![상태 전이와 SSRF 예시 기반 공격 경로 인포그래픽](/images/post/attack-path-synthesizer/state-transition-ssrf.png)
+![상태 전이와 SSRF 예시 기반 공격 경로 인포그래픽](/images/post/attack-path-synthesizer/state-transition-ssrf.webp)
 
 *Finding을 상태 전이로 바꾸고, 계산 가능한 직접 연결과 어려운 탐색 영역을 구분하며, 제한된 탐색·가지치기·증거 검증을 통해 SSRF와 redirect 결합 같은 고가치 경로를 다루는 통합 흐름이다.*
 

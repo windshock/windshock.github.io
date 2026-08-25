@@ -4,7 +4,7 @@ date: 2026-08-15
 translationKey: "reverse-single-socket-staging"
 draft: false
 featured: true
-image: "/images/post/reverse-single-socket-staging/cover.png"
+image: "/images/post/reverse-single-socket-staging/cover.webp"
 description: "악성 서버가 접속해온 클라이언트를 치는 역방향 메모리 손상에서, 이미 열린 하나의 소켓으로 libc를 유출하고 stage2까지 받아 단일 ROP 체인으로 RCE를 완성하는 기법. 그리고 이게 왜 새로운 패턴이 아니라 잘 알려진 조합인지."
 tags:
   - Code
@@ -169,7 +169,7 @@ cd Linux-Reverse-Socket-Stagers/01-single-socket-reverse-stager
 
 분석 내내 LLM은 비슷한 실수를 반복했다. GDB 관측 한 번을 사실로 취급했고, recv 실패를 소켓 상태 문제로만 해석했으며, ROP 체인이 놓여야 할 위치를 오해했고, 정적 ELF 정보와 실제 런타임 메모리 맵을 뒤섞었다. 결국 열쇠는 더 정교한 익스플로잇 아이디어가 아니라 **LLM이 너무 일찍 결론으로 점프하지 못하게 강제하는 것**이었다.
 
-![ASLR-on to Stage2 — 바이너리 취약점 분석에서 LLM의 병목](/images/post/reverse-single-socket-staging/llm-bottlenecks.png)
+![ASLR-on to Stage2 — 바이너리 취약점 분석에서 LLM의 병목](/images/post/reverse-single-socket-staging/llm-bottlenecks.webp)
 
 그래서 이런 분석에는 몇 가지 규칙을 강제하기로 했다.
 

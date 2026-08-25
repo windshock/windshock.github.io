@@ -16,14 +16,14 @@ tags:
 categories:
   - Security Research
   - AI Security
-image: "/images/post/attack-path-synthesizer/cover.png"
+image: "/images/post/attack-path-synthesizer/cover.webp"
 ---
 
 # Finding Vulnerabilities Is Not the Same as Building Attack Scenarios
 
 > Finding individual vulnerabilities and combining several findings into a valid attack scenario are different problems. The former is often a code and data-flow analysis task. The latter is a planning problem over an evolving state: what the attacker can do, know, reach, or possess after every action.
 
-![Navigating the attack search space](/images/post/attack-path-synthesizer/cover.png)
+![Navigating the attack search space](/images/post/attack-path-synthesizer/cover.webp)
 
 > **oh-my-secuaudit series** ([post 5](/en/post/2026-06-08-security-spec-test-repair-fuzzing/) made security judgment criteria executable as regression tests and fuzzing seeds. This post 6 moves from judging individual findings to composing evidence-backed attack paths.)
 > 1. [Security Testing as Code — Structuring Assessment as Code](/en/post/2026-03-17-security-testing-as-code/)
@@ -158,7 +158,7 @@ The relationship between the literature and the Skill can be summarized as follo
 | Real environments are partially observable | Preserve evidence grades, hypotheses, and validation actions |
 | Large spaces require heuristics | Use goal-directed backward search and prefer short candidates |
 
-![Why attack-path search is difficult](/images/post/attack-path-synthesizer/search-space.png)
+![Why attack-path search is difficult](/images/post/attack-path-synthesizer/search-space.webp)
 
 *The hard part is not only finding vulnerabilities. It is navigating a huge search space, separating tractable joins from combinatorial explosion, and deciding which high-value branch deserves deeper validation.*
 
@@ -302,7 +302,7 @@ The final steps are not automatically true. The analyst must still verify that a
 
 The meaningful result of the combination is the creation of a new capability: **a server-side request to an attacker-selected internal address**. That change, rather than the mere presence of two findings, is what makes the chain interesting.
 
-![State transition and SSRF example attack-path infographic](/images/post/attack-path-synthesizer/state-transition-ssrf.png)
+![State transition and SSRF example attack-path infographic](/images/post/attack-path-synthesizer/state-transition-ssrf.webp)
 
 *A consolidated view of the method: turn findings into state transitions, separate tractable joins from hard search regions, use bounded search and pruning, and validate the high-value SSRF plus redirect path with evidence.*
 

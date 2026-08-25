@@ -4,7 +4,7 @@ date: 2026-08-15
 translationKey: "reverse-single-socket-staging"
 draft: false
 featured: true
-image: "/images/post/reverse-single-socket-staging/cover.png"
+image: "/images/post/reverse-single-socket-staging/cover.webp"
 description: "A malicious server corrupting a client that dials out to it, carrying both the libc leak and the second stage over one already-open socket in a single ROP chain. And why this is not a new pattern but a well-known composition."
 tags:
   - Code
@@ -182,7 +182,7 @@ information with the actual runtime memory map. In the end, the key was not a mo
 sophisticated exploit idea — it was **forcing the LLM not to jump to conclusions
 too early.**
 
-![ASLR-on to Stage2 — LLM bottlenecks in binary vulnerability analysis](/images/post/reverse-single-socket-staging/llm-bottlenecks.png)
+![ASLR-on to Stage2 — LLM bottlenecks in binary vulnerability analysis](/images/post/reverse-single-socket-staging/llm-bottlenecks.webp)
 
 So for this kind of analysis, I enforce a few rules:
 
