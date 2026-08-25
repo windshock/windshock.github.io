@@ -43,7 +43,7 @@ I turned that into a runnable lab and **measured** which mitigations actually ho
 (nginx + Tomcat×2 + a shared Postgres + Redis, two WAS instances behind a round-robin). Everything below is
 backed by that lab.
 
-**Repository (code + reproducible lab):** https://github.com/windshock/race-condition-lab
+**Repository (code + reproducible lab):** <https://github.com/windshock/race-condition-lab>
 
 Here is the whole thing in one picture, then the details.
 
@@ -75,8 +75,9 @@ requests all see the same stale state and all pass).
 
 The typical vulnerable pattern is `read → check → work → update`, none of it atomic. And it does **not**
 require a flood — two or three concurrent requests are enough. (An HTTP `Transfer-Encoding: chunked` or
-HTTP/2 single-packet trick can align request completions into a tiny window and make the race far more
-reproducible, but `chunked` is a legitimate feature; blocking it is not the real fix.)
+[HTTP/2 single-packet](https://portswigger.net/research/smashing-the-state-machine) trick can align request
+completions into a tiny window and make the race far more reproducible, but `chunked` is a legitimate
+feature; blocking it is not the real fix.)
 
 ---
 
@@ -153,8 +154,9 @@ Two clarifications the priority list should nail down:
 - **UNIQUE only covers "duplicate-key" invariants** (same voucher / coupon / one entry per event). It cannot
   cap a free counter (5-per-day) — the lab's [B] shows this. UNIQUE does not replace conditional UPDATE; it
   is the last line that stops an invalid state from being *persisted*.
-- **A Redis lock is mutual exclusion, not transactional atomicity.** Even holding the lock, a mid-section
-  crash can leave a partial commit. Atomicity is still the DB transaction's job.
+- **A Redis lock is mutual exclusion, not transactional atomicity** ([Kleppmann, *How to do distributed
+  locking*](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)). Even holding the
+  lock, a mid-section crash can leave a partial commit. Atomicity is still the DB transaction's job.
 
 ---
 
@@ -249,12 +251,14 @@ network round-trip and is not atomic with the DB commit anyway (only one of the 
    failure → UPDATE ... SET status=FAILED    WHERE id=? AND status=PENDING  + compensate (restore counter)
 ```
 
-- **Idempotency key** — the fundamental exactly-once device. If the external side doesn't support it, filter
-  duplicates via a UNIQUE(idempotency_key) on our "grant attempt" table.
-- **Outbox pattern** — write the reservation and the "message to send" in the *same transaction*; a worker
-  delivers it. Resolves the dual-write problem.
+- **[Idempotency key](https://docs.stripe.com/api/idempotent_requests)** — the fundamental exactly-once
+  device. If the external side doesn't support it, filter duplicates via a UNIQUE(idempotency_key) on our
+  "grant attempt" table.
+- **[Outbox pattern](https://microservices.io/patterns/data/transactional-outbox.html)** — write the
+  reservation and the "message to send" in the *same transaction*; a worker delivers it. Resolves the
+  dual-write problem.
 - **State machine + compensation** — `PENDING → CONFIRMED/FAILED`; if it cannot be confirmed, restore the
-  reservation (saga).
+  reservation ([saga](https://microservices.io/patterns/data/saga.html)).
 - **Reconciliation** — periodically reconcile with the external system; the final safety net.
 
 **Duplicate coupon cancellation** is a special case: cancellation is a state-transition CAS
@@ -350,9 +354,48 @@ cd race-condition-lab/realstack
 ./run_all.sh 20   # boots the stack + two scenarios × all modes A/B + PASS/FAIL (exit 1 if a mitigation leaks)
 ```
 
-- **Full guide (English / Korean)** and all code: https://github.com/windshock/race-condition-lab
+- **Full guide (English / Korean)** and all code: <https://github.com/windshock/race-condition-lab>
 - Vulnerable core and mitigation modes: `realstack/app/src/main/java/com/example/claim/ClaimTxService.java`
 - Mode routing and out-of-transaction exception conversion: `.../ClaimService.java`
 
 The lab intentionally keeps the vulnerable and naive-lock modes as negative controls, so you can watch a real
 stack leak and then watch the DB-native fixes hold — with no Redis lock required.
+
+---
+
+## References
+
+### Race conditions / TOCTOU
+1. **CWE-367 — Time-of-check Time-of-use (TOCTOU) Race Condition.** <https://cwe.mitre.org/data/definitions/367.html>
+2. **CWE-362 — Concurrent Execution using Shared Resource with Improper Synchronization.** <https://cwe.mitre.org/data/definitions/362.html>
+3. **James Kettle — *Smashing the State Machine: The True Potential of Web Race Conditions*, PortSwigger Research (Black Hat USA / DEF CON 31), 2023.** <https://portswigger.net/research/smashing-the-state-machine>
+4. **James Kettle — *Listen to the Whispers: Web Timing Attacks That Actually Work*, PortSwigger Research (Black Hat USA / DEF CON 32), 2024.** <https://portswigger.net/research/listen-to-the-whispers-web-timing-attacks-that-actually-work>
+5. **PortSwigger Web Security Academy — Race conditions.** <https://portswigger.net/web-security/race-conditions>
+6. **Mohammad Amin Nasiri — *H2SpaceX: HTTP/2 Single Packet Attack (Last Frame Synchronization) library*.** <https://github.com/nxenon/h2spacex> (HTTP/3: <https://github.com/nxenon/h3spacex>)
+7. **Federico Loi, Lorenzo Pisu, Leonardo Regano, Davide Maiorca, Giorgio Giacinto — *Race Against Time: Investigating the Factors that Influence Web Race Condition Exploits*, Computers & Security 160 (2026) 104740.** DOI: <https://doi.org/10.1016/j.cose.2025.104740>
+8. **Mohammad Amin Nasiri, Efstratios Chatzoglou, Georgios Kambourakis — *QUIC-er Races: HTTP/3 Won't Save You from TOCTOU Vulnerabilities*, Int. J. Information Security 25, 83 (2026).** DOI: <https://doi.org/10.1007/s10207-026-01258-6>
+
+### DB atomicity & locking
+9. **PostgreSQL — Transaction Isolation (READ COMMITTED).** <https://www.postgresql.org/docs/current/transaction-iso.html>
+10. **PostgreSQL — Explicit Locking (row locks, `FOR UPDATE`, deadlocks).** <https://www.postgresql.org/docs/current/explicit-locking.html>
+11. **PostgreSQL — `SELECT … FOR UPDATE` / `SKIP LOCKED`.** <https://www.postgresql.org/docs/current/sql-select.html>
+12. **PostgreSQL — `INSERT … ON CONFLICT` (UPSERT).** <https://www.postgresql.org/docs/current/sql-insert.html>
+13. **MySQL — Locking Reads (`SELECT … FOR UPDATE` / `FOR SHARE`).** <https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-reads.html>
+
+### Distributed locks
+14. **Redis — Distributed Locks (Redlock).** <https://redis.io/docs/latest/develop/use/patterns/distributed-locks/>
+15. **Martin Kleppmann — *How to do distributed locking*.** <https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html>
+16. **Redisson — Distributed locks and synchronizers.** <https://github.com/redisson/redisson/wiki/8.-Distributed-locks-and-synchronizers>
+
+### Reliable external side effects
+17. **Chris Richardson — Transactional Outbox pattern.** <https://microservices.io/patterns/data/transactional-outbox.html>
+18. **Chris Richardson — Saga pattern.** <https://microservices.io/patterns/data/saga.html>
+19. **Chris Richardson — Idempotent Consumer pattern.** <https://microservices.io/patterns/communication-style/idempotent-consumer.html>
+20. **Stripe API — Idempotent requests.** <https://docs.stripe.com/api/idempotent_requests>
+
+### Framework
+21. **Spring Framework — Declarative transaction management (`@Transactional`).** <https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html>
+
+### Lab
+22. **Repository & reproducible lab (this article's code and measurements).** <https://github.com/windshock/race-condition-lab>
+23. **Transfer/synchronization technique borrowed from *waf-ips-ids-retest* TC-24.** <https://github.com/windshock/waf-ips-ids-retest/>

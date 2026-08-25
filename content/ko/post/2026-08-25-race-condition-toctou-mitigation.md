@@ -41,7 +41,7 @@ lock timeout, 소유권 관리, fail-open/fail-close 정책, 다중 인스턴스
 이걸 실행 가능한 랩으로 만들어, 현실적인 토폴로지(nginx + Tomcat×2 + 공유 Postgres + Redis, 라운드로빈
 뒤 2개 WAS)에서 어떤 대응이 실제로 막는지 **실측**했다. 아래 내용은 전부 그 랩으로 뒷받침된다.
 
-**저장소(코드 + 재현 랩):** https://github.com/windshock/race-condition-lab
+**저장소(코드 + 재현 랩):** <https://github.com/windshock/race-condition-lab>
 
 먼저 한 장으로, 그다음 상세.
 
@@ -71,9 +71,10 @@ lock timeout, 소유권 관리, fail-open/fail-close 정책, 다중 인스턴스
 구간이 **레이스 윈도우**다(위 대표 이미지가 바로 이것 — 세 요청이 같은 이전 상태를 보고 모두 통과).
 
 전형적 취약 패턴은 `read → check → work → update`이고, 어느 것도 원자적이지 않다. 그리고 이건 대량
-요청이 **필요 없다** — 동시 2~3건이면 난다. (HTTP `Transfer-Encoding: chunked`나 HTTP/2 단일 패킷으로
-요청 완료 시점을 좁은 윈도우에 정렬하면 재현성이 크게 올라가지만, `chunked`는 정상 기능이고 이를 차단하는
-것이 근본 대응은 아니다.)
+요청이 **필요 없다** — 동시 2~3건이면 난다. (HTTP `Transfer-Encoding: chunked`나
+[HTTP/2 단일 패킷](https://portswigger.net/research/smashing-the-state-machine)으로 요청 완료 시점을 좁은
+윈도우에 정렬하면 재현성이 크게 올라가지만, `chunked`는 정상 기능이고 이를 차단하는 것이 근본 대응은
+아니다.)
 
 ---
 
@@ -146,8 +147,9 @@ JVM-local 락이 정확히 인스턴스 수(2개 WAS에서 2/20)만큼 새는 �
 - **UNIQUE는 "중복 키" 불변식**(같은 발급권/쿠폰/1회 응모)만 막는다. 자유 카운터(하루 5회)는 못
   막는다 — 랩 [B]가 증거. UNIQUE는 조건부 UPDATE를 대체하지 않고, 잘못된 상태가 *저장*되는 것을 막는
   최종선이다.
-- **Redis 락은 상호배제이지 트랜잭션 원자성이 아니다.** 락을 잡아도 임계구역 중간에 죽으면 부분 커밋이
-  남는다. 원자성은 여전히 DB 트랜잭션의 몫.
+- **Redis 락은 상호배제이지 트랜잭션 원자성이 아니다**([Kleppmann, *How to do distributed
+  locking*](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)). 락을 잡아도
+  임계구역 중간에 죽으면 부분 커밋이 남는다. 원자성은 여전히 DB 트랜잭션의 몫.
 
 ---
 
@@ -236,10 +238,12 @@ if (affected != 1) throw new LimitExceededException();
    실패 → UPDATE ... SET status=FAILED    WHERE id=? AND status=PENDING  + 보상(카운터 원복)
 ```
 
-- **멱등키** — 정확히-한-번 효과의 근본 장치. 외부가 지원 안 하면 우리 "지급 시도" 테이블의
-  UNIQUE(idempotency_key)로 중복 전송을 거른다.
-- **Outbox 패턴** — 예약과 "보낼 메시지"를 *같은 트랜잭션*으로 남기고 워커가 전송. dual-write 문제 해결.
-- **상태 머신 + 보상** — `PENDING → CONFIRMED/FAILED`; 확정 불가면 예약 원복(사가).
+- **[멱등키](https://docs.stripe.com/api/idempotent_requests)** — 정확히-한-번 효과의 근본 장치. 외부가
+  지원 안 하면 우리 "지급 시도" 테이블의 UNIQUE(idempotency_key)로 중복 전송을 거른다.
+- **[Outbox 패턴](https://microservices.io/patterns/data/transactional-outbox.html)** — 예약과 "보낼
+  메시지"를 *같은 트랜잭션*으로 남기고 워커가 전송. dual-write 문제 해결.
+- **상태 머신 + 보상** — `PENDING → CONFIRMED/FAILED`; 확정 불가면 예약
+  원복([사가](https://microservices.io/patterns/data/saga.html)).
 - **재조정(reconciliation)** — 외부와 주기적으로 대사; 최후의 안전망.
 
 **쿠폰 취소 중복**은 특수 케이스: 취소는 상태 전이 CAS
@@ -326,9 +330,48 @@ cd race-condition-lab/realstack
 ./run_all.sh 20   # 스택 기동 + 두 시나리오 × 전 모드 A/B + PASS/FAIL (완화 모드 누수 시 exit 1)
 ```
 
-- **전체 가이드(영문/한글)** 와 전체 코드: https://github.com/windshock/race-condition-lab
+- **전체 가이드(영문/한글)** 와 전체 코드: <https://github.com/windshock/race-condition-lab>
 - 취약 코어와 완화 모드: `realstack/app/src/main/java/com/example/claim/ClaimTxService.java`
 - 모드 라우팅과 트랜잭션 밖 예외 변환: `.../ClaimService.java`
 
 랩은 취약/비원자 락 모드를 음성 대조군으로 남겨둔다. 실제 스택이 새는 것을 보고, 이어서 DB 네이티브
 수정이 막는 것을 — Redis 락 없이 — 직접 확인할 수 있다.
+
+---
+
+## References
+
+### 레이스 컨디션 / TOCTOU
+1. **CWE-367 — Time-of-check Time-of-use (TOCTOU) Race Condition.** <https://cwe.mitre.org/data/definitions/367.html>
+2. **CWE-362 — Concurrent Execution using Shared Resource with Improper Synchronization.** <https://cwe.mitre.org/data/definitions/362.html>
+3. **James Kettle — *Smashing the State Machine: The True Potential of Web Race Conditions*, PortSwigger Research (Black Hat USA / DEF CON 31), 2023.** <https://portswigger.net/research/smashing-the-state-machine>
+4. **James Kettle — *Listen to the Whispers: Web Timing Attacks That Actually Work*, PortSwigger Research (Black Hat USA / DEF CON 32), 2024.** <https://portswigger.net/research/listen-to-the-whispers-web-timing-attacks-that-actually-work>
+5. **PortSwigger Web Security Academy — Race conditions.** <https://portswigger.net/web-security/race-conditions>
+6. **Mohammad Amin Nasiri — *H2SpaceX: HTTP/2 Single Packet Attack (Last Frame Synchronization) library*.** <https://github.com/nxenon/h2spacex> (HTTP/3: <https://github.com/nxenon/h3spacex>)
+7. **Federico Loi, Lorenzo Pisu, Leonardo Regano, Davide Maiorca, Giorgio Giacinto — *Race Against Time: Investigating the Factors that Influence Web Race Condition Exploits*, Computers & Security 160 (2026) 104740.** DOI: <https://doi.org/10.1016/j.cose.2025.104740>
+8. **Mohammad Amin Nasiri, Efstratios Chatzoglou, Georgios Kambourakis — *QUIC-er Races: HTTP/3 Won't Save You from TOCTOU Vulnerabilities*, Int. J. Information Security 25, 83 (2026).** DOI: <https://doi.org/10.1007/s10207-026-01258-6>
+
+### DB 원자성 · 잠금
+9. **PostgreSQL — Transaction Isolation (READ COMMITTED).** <https://www.postgresql.org/docs/current/transaction-iso.html>
+10. **PostgreSQL — Explicit Locking (행 잠금, `FOR UPDATE`, 데드락).** <https://www.postgresql.org/docs/current/explicit-locking.html>
+11. **PostgreSQL — `SELECT … FOR UPDATE` / `SKIP LOCKED`.** <https://www.postgresql.org/docs/current/sql-select.html>
+12. **PostgreSQL — `INSERT … ON CONFLICT` (UPSERT).** <https://www.postgresql.org/docs/current/sql-insert.html>
+13. **MySQL — Locking Reads (`SELECT … FOR UPDATE` / `FOR SHARE`).** <https://dev.mysql.com/doc/refman/8.0/en/innodb-locking-reads.html>
+
+### 분산 락
+14. **Redis — Distributed Locks (Redlock).** <https://redis.io/docs/latest/develop/use/patterns/distributed-locks/>
+15. **Martin Kleppmann — *How to do distributed locking*.** <https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html>
+16. **Redisson — Distributed locks and synchronizers.** <https://github.com/redisson/redisson/wiki/8.-Distributed-locks-and-synchronizers>
+
+### 외부 부수효과의 신뢰성 있는 처리
+17. **Chris Richardson — Transactional Outbox 패턴.** <https://microservices.io/patterns/data/transactional-outbox.html>
+18. **Chris Richardson — Saga 패턴.** <https://microservices.io/patterns/data/saga.html>
+19. **Chris Richardson — Idempotent Consumer 패턴.** <https://microservices.io/patterns/communication-style/idempotent-consumer.html>
+20. **Stripe API — Idempotent requests.** <https://docs.stripe.com/api/idempotent_requests>
+
+### 프레임워크
+21. **Spring Framework — Declarative transaction management (`@Transactional`).** <https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html>
+
+### 랩
+22. **저장소 · 재현 랩(이 글의 코드와 실측).** <https://github.com/windshock/race-condition-lab>
+23. **전송/동기화 기법 차용 출처: *waf-ips-ids-retest* TC-24.** <https://github.com/windshock/waf-ips-ids-retest/>
