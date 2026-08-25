@@ -135,6 +135,38 @@ READ/CHECK와 UPDATE 사이의 이 구간이 **레이스 윈도우**다. 위 대
 이용해 요청 완료 시점을 매우 가깝게 맞추면 재현성은 크게 높아진다. 다만 `chunked` 자체는 정상적인 HTTP 기능이며,
 이를 차단하는 것은 근본적인 대응이 아니다.
 
+### 여담: `chunked`는 공격자만의 기술이 아니다 — 프레임워크가 기본으로 만든다
+
+`chunked`를 "공격 기법"으로만 보기 쉽지만, 사실은 최신 프레임워크가 **기본값으로** 만들어내는 정상 트래픽이다.
+Spring Framework 6.1은 `RestClient`/`RestTemplate`의 **메모리 사용을 줄이기 위해** 대부분의
+`ClientHttpRequestFactory`가 요청 본문을 통째로 버퍼링하지 않도록 바꿨다
+([이슈 #30557](https://github.com/spring-projects/spring-framework/issues/30557)). 예전에는 이렇게 동작했다.
+
+```text
+Java 객체 → ByteArrayOutputStream에 전체 body 생성 → byte[] → HTTP 클라이언트 → 소켓
+```
+
+전체 body를 메모리에 들고 있어야 길이를 알 수 있었고, 그래서 `Content-Length`를 붙일 수 있었다. 6.1부터는
+직렬화하면서 곧바로 네트워크 스트림에 쓰기 때문에, JSON처럼 크기를 미리 알 수 없는 콘텐츠는 `Content-Length`
+없이 `chunked`로 나간다
+([6.1 릴리스 노트](https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-6.1-Release-Notes)).
+
+즉 트레이드오프는 "길이 계산을 포기했다"가 아니라 **"길이를 알려고 body 전체를 먼저 메모리에 만들어 두는
+과정을 포기했다"**이다. 340바이트 요청 하나만 보면 메모리 절약은 무의미하지만, 같은 API가 340B부터 300MB까지
+모두 처리해야 하므로 프레임워크는 작은 요청을 특별 취급하지 않고 streaming-first를 택했다. `Content-Length`
+소실과 `chunked`는 그 설계의 부작용이다.
+
+여기서 두 가지가 중요하다.
+
+- 이건 Spring의 **클라이언트(아웃바운드)** 동작이다. 그래서 "Spring 앱이 자동으로 레이스에 취약해진다"가 아니라,
+  **`chunked`가 개발자가 의식하지 않아도 자연스럽게 생기는 정상 트래픽**이라는 뜻이다. 그러니 nginx·WAF·IDS가
+  `chunked`를 이상 트래픽으로 취급하거나 `Content-Length`를 전제하면 오히려 오작동한다. 다시 말하지만
+  **`chunked`를 막는 것은 근본 대응이 아니다.**
+- 다만 프레임워크의 평범한 `chunked` 스트리밍이 곧 공격자의 last-byte/single-packet 동기화는 아니다. 공격자는
+  *마지막 바이트/프레임을 일부러 보류*해 레이스 윈도우를 좁힌다. 두 경우의 진짜 공통점은 다른 데 있다 —
+  **개발자가 의식하지 않은 저수준 구현 선택이 와이어 레벨 동작을 만든다.** 이건 이 글의 주제, 즉 개발자가
+  의식하지 않는 사이에 생기는 TOCTOU 윈도우와 정확히 같은 구조다.
+
 ---
 
 ## 2. 실제 스택 테스트 결과 (동시 요청 20건)
@@ -436,9 +468,11 @@ JPA의 `@Modifying @Query`도 affected rows를 반환할 수 있고, MyBatis의 
 19. **Chris Richardson — Idempotent Consumer 패턴.** <https://microservices.io/patterns/communication-style/idempotent-consumer.html>
 20. **Stripe API — Idempotent requests.** <https://docs.stripe.com/api/idempotent_requests>
 
-### 프레임워크
+### 프레임워크 · 클라이언트 구현
 21. **Spring Framework — Declarative transaction management (`@Transactional`).** <https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html>
+22. **Spring Framework 6.1 Release Notes — RestClient/RestTemplate의 요청 본문 버퍼링 축소(메모리 사용 감소), 일부 콘텐츠는 `Content-Length` 미설정.** <https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-6.1-Release-Notes>
+23. **Spring Framework Issue #30557 — *Remove buffering in ClientHttpRequestFactory implementations*.** <https://github.com/spring-projects/spring-framework/issues/30557>
 
 ### 랩
-22. **저장소 · 재현 랩(이 글의 코드와 실측).** <https://github.com/windshock/race-condition-lab>
-23. **전송/동기화 기법 차용 출처: *waf-ips-ids-retest* TC-24.** <https://github.com/windshock/waf-ips-ids-retest/>
+24. **저장소 · 재현 랩(이 글의 코드와 실측).** <https://github.com/windshock/race-condition-lab>
+25. **전송/동기화 기법 차용 출처: *waf-ips-ids-retest* TC-24.** <https://github.com/windshock/waf-ips-ids-retest/>

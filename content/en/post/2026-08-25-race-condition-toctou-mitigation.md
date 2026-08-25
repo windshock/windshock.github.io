@@ -134,6 +134,40 @@ require a flood — two or three concurrent requests are enough. (An HTTP `Trans
 completions into a tiny window and make the race far more reproducible, but `chunked` is a legitimate
 feature; blocking it is not the real fix.)
 
+### Aside: `chunked` isn't only an attacker's trick — frameworks emit it by default
+
+It's easy to see `chunked` as an "attack technique," but it's actually normal traffic that modern frameworks
+emit **by default**. Spring Framework 6.1 changed most `ClientHttpRequestFactory` implementations behind
+`RestClient`/`RestTemplate` to **stop buffering the whole request body, in order to reduce memory usage**
+([issue #30557](https://github.com/spring-projects/spring-framework/issues/30557)). The old flow was:
+
+```text
+Java object → build the whole body in a ByteArrayOutputStream → byte[] → HTTP client → socket
+```
+
+Holding the entire body in memory is what let it compute a length and set `Content-Length`. Since 6.1 it
+serializes straight to the network stream, so content whose size isn't known up front (like JSON) goes out
+**without `Content-Length`, as `chunked`**
+([6.1 release notes](https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-6.1-Release-Notes)).
+
+So the trade-off isn't "we gave up computing the length" — it's **"we gave up materializing the entire body
+in memory just to learn its length."** For a single 340-byte request the memory saving is meaningless, but
+the same API must handle everything from 340 B to 300 MB, so the framework chose streaming-first rather than
+special-casing tiny requests. The lost `Content-Length` and the `chunked` framing are side effects of that
+choice.
+
+Two things matter here:
+
+- This is Spring's **client (outbound)** behavior. So it does *not* mean "Spring apps become race-vulnerable
+  automatically." It means **`chunked` is normal traffic that appears without any developer intending it** —
+  so an nginx / WAF / IDS that treats `chunked` as anomalous, or assumes `Content-Length`, will misfire.
+  Again: **blocking `chunked` is not the real fix.**
+- A framework's ordinary `chunked` streaming is *not* the attacker's last-byte / single-packet
+  synchronization: the attacker deliberately *withholds the final byte/frame* to shrink the race window. What
+  the two really share is elsewhere — **a low-level implementation choice nobody consciously made produces
+  wire-level behavior** — which is exactly this article's theme: the TOCTOU window that appears while no
+  developer is looking.
+
 ---
 
 ## 2. What the real-stack test proved (20 concurrent requests)
@@ -431,9 +465,11 @@ Minimal-change fixes exist for JPA (`@Modifying @Query` with an affected-rows re
 19. **Chris Richardson — Idempotent Consumer pattern.** <https://microservices.io/patterns/communication-style/idempotent-consumer.html>
 20. **Stripe API — Idempotent requests.** <https://docs.stripe.com/api/idempotent_requests>
 
-### Framework
+### Framework / client implementation
 21. **Spring Framework — Declarative transaction management (`@Transactional`).** <https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html>
+22. **Spring Framework 6.1 Release Notes — RestClient/RestTemplate stop buffering request bodies (to reduce memory usage); some content types are sent without `Content-Length`.** <https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-6.1-Release-Notes>
+23. **Spring Framework Issue #30557 — *Remove buffering in ClientHttpRequestFactory implementations*.** <https://github.com/spring-projects/spring-framework/issues/30557>
 
 ### Lab
-22. **Repository & reproducible lab (this article's code and measurements).** <https://github.com/windshock/race-condition-lab>
-23. **Transfer/synchronization technique borrowed from *waf-ips-ids-retest* TC-24.** <https://github.com/windshock/waf-ips-ids-retest/>
+24. **Repository & reproducible lab (this article's code and measurements).** <https://github.com/windshock/race-condition-lab>
+25. **Transfer/synchronization technique borrowed from *waf-ips-ids-retest* TC-24.** <https://github.com/windshock/waf-ips-ids-retest/>
