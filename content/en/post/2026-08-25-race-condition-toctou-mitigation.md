@@ -53,6 +53,61 @@ Here is the whole thing in one picture, then the details.
 
 ---
 
+## Reproduce it yourself
+
+Everything below is measured; you can rerun it end-to-end:
+
+```bash
+git clone https://github.com/windshock/race-condition-lab
+cd race-condition-lab/realstack
+./run_all.sh 20   # boots the stack + two scenarios × all modes A/B + PASS/FAIL (exit 1 if a mitigation leaks)
+```
+
+- **Full guide (English / Korean)** and all code: <https://github.com/windshock/race-condition-lab>
+- Vulnerable core and mitigation modes: `realstack/app/src/main/java/com/example/claim/ClaimTxService.java`
+- Mode routing and out-of-transaction exception conversion: `.../ClaimService.java`
+
+The lab intentionally keeps the vulnerable and naive-lock modes as negative controls, so you can watch a real
+stack leak and then watch the DB-native fixes hold — with no Redis lock required.
+
+---
+
+## Key terms (glossary)
+
+A quick reference for the jargon used below.
+
+- **TOCTOU (Time-of-Check to Time-of-Use)** — a defect where the moment you *check* a value and the moment you
+  *use* it are separated, so the state can change in between.
+- **Race window** — the short interval between check and change; if another request slips in here, a race
+  occurs.
+- **Atomicity** — bundling several steps so they *all happen or none happen*, with no intermediate state
+  visible from outside.
+- **Invariant** — a rule that must always hold under any concurrency (e.g. "granted once", "the counter can
+  never go negative").
+- **CAS (Compare-And-Set)** — "change to Y only if the value is still X," done as one atomic operation. In a
+  database, a conditional UPDATE (`... WHERE used = false`) *is* a CAS.
+- **Affected rows** — how many rows an UPDATE actually changed. In a conditional UPDATE, `1` means you won,
+  `0` means someone else already did it.
+- **UPSERT / `ON CONFLICT`** — insert if absent, otherwise ignore/update, as one atomic statement; used to
+  prevent duplicate inserts.
+- **`SELECT … FOR UPDATE`** — read a row while taking a write lock on it (pessimistic locking), so other
+  transactions touching that row must wait.
+- **Idempotency key** — an identifier that makes repeated requests with the same key take effect only once,
+  so retries don't double-spend.
+- **Outbox pattern** — store the DB change and the "message to send" in the *same transaction*; a separate
+  worker delivers it later, avoiding the commit-vs-publish mismatch (dual-write).
+- **Saga / compensating transaction** — split one large operation into steps; if a later step fails, undo the
+  earlier ones with *compensating* actions to restore consistency. Used when the work spans services/DBs that
+  can't share a single transaction.
+- **Redlock** — a Redis-based distributed-lock algorithm; safe only if acquisition and release are handled
+  atomically.
+- **READ COMMITTED** — the default isolation level that reads only committed data; even here, an UPDATE
+  re-reads the latest committed row at execution time and re-evaluates its WHERE.
+- **Concurrency guard** — a supplementary control that caps how many requests run at once (e.g. "same user +
+  same object → one at a time").
+
+---
+
 ## 0. What the lab *proves* vs. what is only a *recommendation*
 
 Be honest about the boundary — over-reading the results leads to false confidence.
@@ -60,7 +115,7 @@ Be honest about the boundary — over-reading the results leads to false confide
 | Category | Content |
 |---|---|
 | **Proven by the lab** | Limits *inside a single DB* (1 voucher / 1 daily counter) let **exactly one** of 20 concurrent requests through when using conditional UPDATE, `FOR UPDATE`, or UNIQUE. A JVM-local lock leaks by the number of instances. A non-atomic Redis lock still leaks. |
-| **Recommendation only (outside the lab)** | Integrity when the side effect lives **outside the DB** — external point grants, payments, coupon cancellation. This cannot be proven with a single transaction; it needs **architecture** — reservation, idempotency keys, outbox, compensating transactions (section 4). |
+| **Recommendation only (outside the lab)** | Integrity when the side effect lives **outside the DB** — external point grants, payments, coupon cancellation. This cannot be proven with a single transaction; it needs **architecture** — reservation, idempotency keys, outbox, compensating transactions (section 6). |
 
 "Conditional UPDATE stops the race" is a proof about **DB-internal state**. "The points are granted exactly
 once" is a **distributed-systems design** problem. Do not conflate the two.
@@ -343,23 +398,6 @@ Minimal-change fixes exist for JPA (`@Modifying @Query` with an affected-rows re
 > We do not mandate a specific implementation (e.g. a Redis lock). The requirement is "guarantee atomicity so
 > that limits are not exceeded even under concurrent requests," and you choose the method from the priority
 > above to fit your service.
-
----
-
-## Reproduce it yourself
-
-```bash
-git clone https://github.com/windshock/race-condition-lab
-cd race-condition-lab/realstack
-./run_all.sh 20   # boots the stack + two scenarios × all modes A/B + PASS/FAIL (exit 1 if a mitigation leaks)
-```
-
-- **Full guide (English / Korean)** and all code: <https://github.com/windshock/race-condition-lab>
-- Vulnerable core and mitigation modes: `realstack/app/src/main/java/com/example/claim/ClaimTxService.java`
-- Mode routing and out-of-transaction exception conversion: `.../ClaimService.java`
-
-The lab intentionally keeps the vulnerable and naive-lock modes as negative controls, so you can watch a real
-stack leak and then watch the DB-native fixes hold — with no Redis lock required.
 
 ---
 
