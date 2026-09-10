@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Knowledge Commons Lab</title>
+<style>html,body{margin:0;min-height:100%;background:#0a1017;color:#eef4f4;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}main{min-height:100vh;display:grid;place-items:center;padding:2rem;text-align:center}small{color:#9dacb9}</style>
+</head>
+<body><main id="loading"><div><strong>Knowledge Commons Lab</strong><br><small>시뮬레이션을 불러오는 중...</small></div></main>
+<script>
+(async()=>{
+  try{
+    if(!('DecompressionStream' in window)) throw new Error('이 브라우저는 DecompressionStream을 지원하지 않습니다.');
+    const names=Array.from({length:8},(_,i)=>`./payload/part-${String(i).padStart(2,'0')}.b64`);
+    const parts=await Promise.all(names.map(async u=>{const r=await fetch(u,{cache:'no-cache'});if(!r.ok)throw new Error('시뮬레이션 데이터 로드 실패: '+r.status);return r.text();}));
+    const b64=parts.join('');
+    const raw=atob(b64), bytes=new Uint8Array(raw.length);
+    for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);
+    const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+    const html=await new Response(stream).text();
+    document.open();document.write(html);document.close();
+  }catch(e){
+    document.getElementById('loading').innerHTML='<div><strong>시뮬레이션을 열 수 없습니다.</strong><br><small>'+String(e.message||e)+'</small></div>';
+  }
+})();
+</script></body></html>
