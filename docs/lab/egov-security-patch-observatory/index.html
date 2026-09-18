@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#08111f" />
+  <meta name="robots" content="index,follow" />
+  <title>eGovFrame Security Patch Observatory</title>
+  <meta name="description" content="전자정부프레임워크(eGovFrame)의 공개 보안 패치, Project Canopy, KISA, NCSC/NIA 조치와 레거시 버전의 패치 갭을 코드 근거로 추적합니다." />
+  <link rel="canonical" href="https://windshock.github.io/lab/egov-security-patch-observatory/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="eGovFrame Security Patch Observatory" />
+  <meta property="og:description" content="버전이 아니라 코드로 추적하는 eGovFrame 보안 패치 갭 현황판" />
+  <meta property="og:url" content="https://windshock.github.io/lab/egov-security-patch-observatory/" />
+  <meta name="twitter:card" content="summary" />
+  <style>
+    :root {
+      --bg:#07101d;--bg2:#0a1424;--card:#0d1a2c;--card2:#0b1727;--line:#1f3350;
+      --text:#eef5ff;--muted:#99abc2;--soft:#c6d3e4;--cyan:#5eead4;--blue:#60a5fa;
+      --violet:#a78bfa;--amber:#fbbf24;--orange:#fb923c;--red:#fb7185;--green:#4ade80;
+      --shadow:0 20px 70px rgba(0,0,0,.34);--radius:18px;--max:1200px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:radial-gradient(circle at 80% -5%,rgba(96,165,250,.12),transparent 34%),radial-gradient(circle at 15% 18%,rgba(94,234,212,.07),transparent 28%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif;line-height:1.55}
+    a{color:inherit} button,input,select{font:inherit}.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+    .nav{position:sticky;top:0;z-index:30;border-bottom:1px solid rgba(111,143,182,.16);background:rgba(7,16,29,.82);backdrop-filter:blur(18px)}
+    .navin{height:64px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:800;letter-spacing:-.02em}.mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--cyan),var(--blue));display:grid;place-items:center;color:#04111d;font-size:15px;box-shadow:0 0 35px rgba(94,234,212,.18)}
+    .navlinks{display:flex;gap:18px;color:var(--muted);font-size:14px}.navlinks a{text-decoration:none}.navlinks a:hover{color:var(--text)}
+    .hero{padding:84px 0 44px}.heroGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(94,234,212,.24);color:#a7f3d0;background:rgba(16,185,129,.07);padding:7px 11px;border-radius:999px;font-size:12px;font-weight:750;letter-spacing:.05em;text-transform:uppercase}.dot{width:7px;height:7px;border-radius:99px;background:var(--green);box-shadow:0 0 14px var(--green)}
+    h1{font-size:clamp(42px,6vw,76px);line-height:1.02;letter-spacing:-.055em;margin:18px 0 18px;max-width:900px}.grad{background:linear-gradient(95deg,#f5fbff 10%,#8fdcff 55%,#86f5d5);-webkit-background-clip:text;background-clip:text;color:transparent}.lead{color:var(--soft);font-size:clamp(17px,2.2vw,21px);max-width:760px;margin:0 0 26px}.lead strong{color:white}.actions{display:flex;flex-wrap:wrap;gap:11px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);border-radius:12px;padding:11px 15px;text-decoration:none;background:#0c1a2b;color:var(--text);font-size:14px;font-weight:750;cursor:pointer}.btn.primary{background:linear-gradient(135deg,#1d4ed8,#0f766e);border-color:transparent}.btn:hover{transform:translateY(-1px);filter:brightness(1.07)}
+    .heroPanel{position:relative;border:1px solid rgba(96,165,250,.22);border-radius:24px;padding:24px;background:linear-gradient(180deg,rgba(16,35,58,.9),rgba(8,22,38,.9));box-shadow:var(--shadow);overflow:hidden}.heroPanel:after{content:"";position:absolute;width:220px;height:220px;border:1px solid rgba(94,234,212,.13);border-radius:50%;right:-80px;top:-80px;box-shadow:0 0 0 38px rgba(96,165,250,.025),0 0 0 78px rgba(167,139,250,.02)}.signal{position:relative;z-index:1}.signalTitle{font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:#8fa6c1}.signalBig{font-size:40px;font-weight:850;letter-spacing:-.04em;margin:4px 0}.signalDesc{color:var(--muted);font-size:13px}.miniTimeline{margin-top:24px;display:grid;gap:13px}.miniRow{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center;font-size:12px}.miniRow span:first-child{color:#7f94ac}.bar{height:8px;background:#12243c;border-radius:999px;overflow:hidden}.bar>i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--blue),var(--cyan))}.heroFoot{margin-top:19px;padding-top:18px;border-top:1px solid rgba(130,154,183,.15);font-size:12px;color:var(--muted)}
+    .controlBand{padding:16px 0 28px}.control{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 17px;border:1px solid var(--line);background:rgba(11,24,41,.82);border-radius:16px}.control strong{font-size:14px}.control small{display:block;color:var(--muted);margin-top:2px}.selectWrap{display:flex;align-items:center;gap:10px}.selectWrap label{font-size:12px;color:var(--muted)}select{background:#071321;color:var(--text);border:1px solid #2d4567;border-radius:10px;padding:9px 34px 9px 11px}
+    .section{padding:54px 0}.section.alt{background:linear-gradient(180deg,rgba(11,24,41,.5),rgba(7,16,29,0))}.sectionHead{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:22px}.kicker{font-size:12px;color:var(--cyan);text-transform:uppercase;letter-spacing:.14em;font-weight:800}.section h2{font-size:clamp(26px,4vw,38px);letter-spacing:-.035em;margin:6px 0 0}.sub{color:var(--muted);max-width:700px;font-size:14px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stat{padding:20px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,#0d1b2e,#091626)}.stat .n{font-size:34px;font-weight:850;letter-spacing:-.045em}.stat .l{font-size:12px;color:var(--muted);margin-top:4px}.stat .hint{font-size:11px;color:#71869f;margin-top:8px}.stat[data-tone=red] .n{color:#fda4af}.stat[data-tone=amber] .n{color:#fcd34d}.stat[data-tone=green] .n{color:#86efac}.stat[data-tone=blue] .n{color:#93c5fd}
+    .notice{margin-top:14px;padding:14px 16px;border:1px dashed #314a6d;border-radius:14px;color:#9db1c8;background:#0a1626;font-size:13px}.notice strong{color:#d9e6f5}
+    .filters{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 20px}.pill{border:1px solid #2b4263;background:#0b1829;color:#9fb2ca;padding:7px 10px;border-radius:999px;font-size:12px;cursor:pointer}.pill.active{background:#18324d;color:white;border-color:#3a628f}.timeline{position:relative;margin-left:10px}.timeline:before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:linear-gradient(var(--blue),#203752 78%,transparent)}.titem{position:relative;padding-left:38px;margin:0 0 15px}.titem:before{content:"";position:absolute;left:1px;top:18px;width:13px;height:13px;border-radius:50%;background:#081522;border:3px solid var(--blue);box-shadow:0 0 0 4px rgba(96,165,250,.08)}.tcard{display:grid;grid-template-columns:130px 1fr auto;gap:16px;align-items:start;border:1px solid var(--line);border-radius:15px;background:#0b1829;padding:15px 16px}.date{font-variant-numeric:tabular-nums;color:#93a6bf;font-size:12px;padding-top:3px}.tcard h3{font-size:15px;margin:0 0 5px}.tcard p{font-size:12px;color:var(--muted);margin:0}.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:9px}.tag{font-size:10px;color:#9db0c8;border:1px solid #263c59;background:#0b1523;padding:3px 6px;border-radius:7px}.source{display:inline-flex;font-size:10px;font-weight:800;padding:4px 7px;border-radius:7px;margin-right:8px;vertical-align:2px}.source.official{color:#bfdbfe;background:#172554}.source.canopy{color:#ddd6fe;background:#2e1065}.source.kisa{color:#bbf7d0;background:#052e16}.source.ncsc{color:#fde68a;background:#422006}.open{color:#8ecaff;text-decoration:none;font-size:12px;white-space:nowrap}.open:hover{text-decoration:underline}
+    .matrixTools{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px}.search{width:min(420px,100%);background:#091626;border:1px solid #2a4263;border-radius:11px;padding:10px 12px;color:white;outline:none}.search:focus{border-color:#4e78a8}.riskFilters{display:flex;gap:7px;flex-wrap:wrap}.tableWrap{border:1px solid var(--line);border-radius:16px;overflow:auto;background:#0a1727}.table{width:100%;border-collapse:collapse;min-width:880px}.table th{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#7f95ad;text-align:left;padding:12px;border-bottom:1px solid #253b59;background:#0b192a;position:sticky;top:0}.table td{padding:13px 12px;border-bottom:1px solid rgba(43,65,92,.55);font-size:13px;vertical-align:middle}.table tr:last-child td{border-bottom:0}.table tbody tr{cursor:pointer}.table tbody tr:hover{background:#0e1e32}.risk{display:inline-flex;align-items:center;gap:6px;text-transform:uppercase;font-size:10px;font-weight:900}.risk:before{content:"";width:7px;height:7px;border-radius:50%}.risk.critical{color:#fda4af}.risk.critical:before{background:var(--red);box-shadow:0 0 10px rgba(251,113,133,.5)}.risk.high{color:#fdba74}.risk.high:before{background:var(--orange)}.risk.medium{color:#fde68a}.risk.medium:before{background:var(--amber)}.status{display:inline-flex;padding:5px 8px;border-radius:8px;font-size:10px;font-weight:800;white-space:nowrap}.status.gap{color:#fecdd3;background:#4c0519}.status.patched{color:#bbf7d0;background:#052e16}.status.partial{color:#fde68a;background:#422006}.status.runtime,.status.review{color:#bfdbfe;background:#172554}.anchor{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px;color:#a8bad0;max-width:330px}.upstate{color:#b8c7d9;font-size:12px}
+    .method{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:method}.step{position:relative;padding:22px 18px;border:1px solid var(--line);border-radius:16px;background:#0a1727;min-height:168px}.step:before{counter-increment:method;content:"0" counter(method);display:block;color:#6495c8;font-weight:900;font-size:12px;letter-spacing:.1em;margin-bottom:28px}.step h3{font-size:16px;margin:0 0 7px}.step p{font-size:12px;color:var(--muted);margin:0}.arrow{position:absolute;right:-12px;top:42%;width:24px;height:24px;border:1px solid #2c4565;border-radius:50%;background:#081522;display:grid;place-items:center;color:#6784a5;z-index:2}
+    .evidenceGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.ev{border:1px solid var(--line);border-radius:16px;padding:18px;background:#0a1727}.ev h3{font-size:14px;margin:0 0 9px}.ev p,.ev li{font-size:12px;color:var(--muted)}.ev ul{margin:0;padding-left:18px}.refs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.ref{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 14px;border:1px solid #203753;background:#091626;border-radius:12px;text-decoration:none}.ref:hover{border-color:#3c638f}.ref b{font-size:12px}.ref small{display:block;color:#738aa5;margin-top:2px}.ref span{color:#78bffa;font-size:12px}
+    .cta{margin:40px auto 80px;border:1px solid rgba(94,234,212,.22);border-radius:24px;padding:30px;background:linear-gradient(135deg,rgba(10,34,51,.95),rgba(14,29,51,.95));display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;box-shadow:var(--shadow)}.cta h2{margin:0 0 7px;font-size:26px}.cta p{margin:0;color:#9fb1c7;font-size:13px;max-width:760px}.cta .actions{justify-content:flex-end}
+    footer{border-top:1px solid rgba(100,130,166,.18);padding:25px 0 40px;color:#7f93aa;font-size:11px}.foot{display:flex;justify-content:space-between;gap:20px;align-items:start}.foot a{color:#9ebbe0}
+    .drawer{position:fixed;inset:0;z-index:80;display:none}.drawer.open{display:block}.backdrop{position:absolute;inset:0;background:rgba(1,7,14,.72);backdrop-filter:blur(6px)}.panel{position:absolute;right:0;top:0;height:100%;width:min(660px,94vw);background:#081522;border-left:1px solid #28415f;overflow:auto;padding:26px 28px 45px;box-shadow:-30px 0 80px rgba(0,0,0,.4)}.close{position:sticky;top:0;float:right;border:1px solid #2a4363;background:#0d1b2e;color:white;border-radius:10px;width:36px;height:36px;cursor:pointer}.panel .meta{font-size:11px;color:#7990aa;text-transform:uppercase;letter-spacing:.08em}.panel h2{font-size:28px;letter-spacing:-.035em;margin:8px 0 8px;padding-right:45px}.panel .summary{color:#aebed1;font-size:13px}.detailBlock{margin-top:18px;padding:16px;border:1px solid #223a58;border-radius:14px;background:#0b192a}.detailBlock h4{margin:0 0 8px;font-size:12px;color:#a7c1df;text-transform:uppercase;letter-spacing:.08em}.detailBlock p{margin:0;color:#c5d2e1;font-size:13px}.code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11px!important;color:#b8d7ef!important;white-space:pre-wrap}.linkList{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.linkList a{font-size:12px;text-decoration:none;padding:8px 10px;border:1px solid #2a4567;border-radius:9px;color:#a7d8ff}
+    .empty{padding:32px;text-align:center;color:#7c91a8;font-size:13px}
+    @media(max-width:940px){.heroGrid{grid-template-columns:1fr}.heroPanel{max-width:680px}.cards{grid-template-columns:repeat(2,1fr)}.method{grid-template-columns:repeat(2,1fr)}.step:nth-child(2) .arrow{display:none}.evidenceGrid{grid-template-columns:1fr}.refs{grid-template-columns:1fr}.cta{grid-template-columns:1fr}.cta .actions{justify-content:flex-start}.tcard{grid-template-columns:100px 1fr}.tcard>.open{grid-column:2}.navlinks{display:none}}
+    @media(max-width:620px){.wrap{width:min(100% - 24px,var(--max))}.hero{padding-top:54px}.cards{grid-template-columns:1fr 1fr}.control{align-items:flex-start;flex-direction:column}.selectWrap{width:100%;justify-content:space-between}.matrixTools{align-items:stretch;flex-direction:column}.method{grid-template-columns:1fr}.arrow{display:none}.tcard{grid-template-columns:1fr}.tcard>.open{grid-column:auto}.date{padding:0}.section{padding:42px 0}.refs{grid-template-columns:1fr}.foot{flex-direction:column}.panel{padding:20px 18px}.cta{margin-bottom:40px}.tableWrap{overflow:visible;background:transparent;border:0}.table{min-width:0;display:block}.table thead{display:none}.table tbody,.table tr,.table td{display:block;width:100%}.table tbody{display:grid;gap:10px}.table tbody tr{position:relative;padding:14px 15px;border:1px solid var(--line);border-radius:14px;background:#0a1727}.table td{border:0;padding:3px 0}.table td:first-child{position:absolute;right:13px;top:13px;width:auto}.table td:nth-child(2){padding-right:90px}.table td:nth-child(3){margin-top:8px}.table .anchor{max-width:none;margin-top:7px;line-height:1.45}.table .upstate{margin-top:6px;color:#91a8c0}.table tbody tr:hover{background:#0d1c2f}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap navin">
+      <a class="brand" href="#top"><span class="mark">↯</span><span>eGovFrame Patch Observatory</span></a>
+      <div class="navlinks"><a href="#timeline">Patch timeline</a><a href="#matrix">Patch gap</a><a href="#method">Method</a><a href="#sources">Sources</a></div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap heroGrid">
+        <div>
+          <span class="eyebrow"><i class="dot"></i> Public defensive research · 2026-09-18</span>
+          <h1><span class="grad">eGovFrame Security<br>Patch Observatory</span></h1>
+          <p class="lead">전자정부프레임워크의 보안 변경을 <strong>릴리스 번호가 아니라 실제 코드와 패치 커밋</strong>으로 추적합니다. 오래된 공통컴포넌트에 어떤 보안 기능이 남아 있고, 어떤 수정이 뒤늦게 들어왔는지 한 화면에서 확인합니다.</p>
+          <div class="actions"><a class="btn primary" href="#matrix">3.9.0 Patch Gap 보기</a><a class="btn" href="#timeline">패치 계보 보기</a><a class="btn" href="https://github.com/eGovFramework/egovframe-common-components" target="_blank" rel="noopener">Upstream GitHub ↗</a></div>
+        </div>
+        <aside class="heroPanel" aria-label="Security patch signal">
+          <div class="signal">
+            <div class="signalTitle">Patch isolation signal</div>
+            <div class="signalBig">Version ≠ Fixed</div>
+            <div class="signalDesc">공통컴포넌트는 복사·커스터마이징되는 경우가 많아 upstream 패치가 운영 서비스에 자동 반영되지 않습니다.</div>
+            <div class="miniTimeline">
+              <div class="miniRow"><span>2023</span><div class="bar"><i style="width:32%"></i></div></div>
+              <div class="miniRow"><span>2024</span><div class="bar"><i style="width:43%"></i></div></div>
+              <div class="miniRow"><span>2025</span><div class="bar"><i style="width:58%"></i></div></div>
+              <div class="miniRow"><span>2026</span><div class="bar"><i style="width:96%"></i></div></div>
+            </div>
+            <div class="heroFoot">2026년 9월에도 소유권·관리자 권한 관련 수정이 계속 반영되고 있습니다. “최신 버전 사용”만으로 완전한 패치 여부를 증명할 수 없습니다.</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="controlBand">
+      <div class="wrap control">
+        <div><strong>Baseline 선택</strong><small id="baselineDescription">Deep-tracked legacy baseline used for the ETAX review.</small></div>
+        <div class="selectWrap"><label for="baseline">Compare against</label><select id="baseline"><option value="3.9.0">eGovFrame 3.9.0</option><option value="5.0.3">eGovFrame 5.0.3</option><option value="main">Current main</option></select></div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap">
+        <div class="sectionHead"><div><div class="kicker">Snapshot</div><h2>선택 기준의 패치 갭 신호</h2></div><p class="sub">아래 숫자는 전체 취약점 수가 아니라, 이 대시보드가 현재 추적하는 <strong>고우선순위 보안 기능/통제</strong>에 대한 상태입니다.</p></div>
+        <div class="cards">
+          <div class="stat" data-tone="blue"><div class="n" id="statTracked">-</div><div class="l">Tracked security events</div><div class="hint">공식 패치·Canopy·KISA·NCSC/NIA</div></div>
+          <div class="stat" data-tone="red"><div class="n" id="statGap">-</div><div class="l">Patch-gap candidates</div><div class="hint">선택 baseline에서 후속 보안수정 확인</div></div>
+          <div class="stat" data-tone="amber"><div class="n" id="statRuntime">-</div><div class="l">Runtime / partial checks</div><div class="hint">소스만으로 최종판정 불가</div></div>
+          <div class="stat" data-tone="green"><div class="n" id="statPatched">-</div><div class="l">Upstream fix present</div><div class="hint">업스트림 방어 패턴 확인</div></div>
+        </div>
+        <div class="notice"><strong>판정 원칙:</strong> “3.9.0이면 무조건 취약”처럼 버전만으로 단정하지 않습니다. 기능 존재 → 취약 시그니처 → 수정 시그니처 → 실제 런타임 접근통제 순서로 확인합니다.</div>
+      </div>
+    </section>
+
+    <section class="section" id="timeline">
+      <div class="wrap">
+        <div class="sectionHead"><div><div class="kicker">Patch lineage</div><h2>보안 패치 계보</h2></div><p class="sub">연도별 공식 보안패치와 2026년 Project Canopy, KISA, NCSC/NIA, 후속 권한수정 흐름을 함께 봅니다.</p></div>
+        <div class="filters" id="sourceFilters"><button class="pill active" data-source="all">All</button><button class="pill" data-source="official">Official</button><button class="pill" data-source="canopy">Canopy-linked</button><button class="pill" data-source="kisa">KISA</button><button class="pill" data-source="ncsc">NCSC/NIA</button></div>
+        <div class="timeline" id="timelineList"><div class="empty">Loading patch evidence…</div></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="matrix">
+      <div class="wrap">
+        <div class="sectionHead"><div><div class="kicker">Patch gap matrix</div><h2>기능별 패치 갭</h2></div><p class="sub">행을 클릭하면 취약 패턴, 수정 패턴, 실제 서비스에서 확인해야 할 런타임 조건을 볼 수 있습니다.</p></div>
+        <div class="matrixTools"><input class="search" id="search" type="search" placeholder="컴포넌트, URL, 기능 검색…" aria-label="Patch gap search"><div class="riskFilters"><button class="pill active" data-risk="all">All risk</button><button class="pill" data-risk="critical">Critical</button><button class="pill" data-risk="high">High</button></div></div>
+        <div class="tableWrap"><table class="table"><thead><tr><th>Risk</th><th>Component / feature</th><th>Baseline state</th><th>Feature anchor</th><th>Current upstream</th></tr></thead><tbody id="matrixBody"></tbody></table></div>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <div class="wrap">
+        <div class="sectionHead"><div><div class="kicker">Assessment method</div><h2>패치 여부를 확인하는 4단계</h2></div><p class="sub">CVE 스캐너의 버전 매칭을 넘어, 소스가 복사되고 변형되는 eGovFrame 특성에 맞춘 확인 순서입니다.</p></div>
+        <div class="method">
+          <div class="step"><span class="arrow">→</span><h3>Feature anchor</h3><p>패치 커밋이 건드린 Controller, URL, method, JSP, 설정 파일이 현재 시스템에 실제 존재하는지 찾습니다.</p></div>
+          <div class="step"><span class="arrow">→</span><h3>Vulnerable signature</h3><p>원본 구버전의 취약 코드 패턴이 남아 있는지 비교합니다. 버전 문자열만으로 판정하지 않습니다.</p></div>
+          <div class="step"><span class="arrow">→</span><h3>Fixed signature</h3><p>upstream 보안패치의 인증·인가·경로제한·메서드 제한·소유권 검증이 백포트됐는지 확인합니다.</p></div>
+          <div class="step"><h3>Runtime regression</h3><p>URL 보안, CSRF, 역할, 객체 소유권처럼 소스만으로 확정할 수 없는 항목은 실제 권한별 동작으로 재검증합니다.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="wrap evidenceGrid">
+        <div class="ev"><div class="kicker">Evidence levels</div><h3>현황판에서 사용하는 판정 수준</h3><ul><li><b>Patch gap candidate</b> — 구형 기능/패턴이 존재하고 후속 보안패치가 확인됨</li><li><b>Upstream fix present</b> — 최신 upstream에서 수정 패턴 확인</li><li><b>Partial</b> — 일부 보안조치는 있으나 이후 추가 수정 존재</li><li><b>Runtime verify</b> — URL security, 역할, 세션, CSRF 등 운영설정 검증 필요</li></ul></div>
+        <div class="ev"><div class="kicker">What this is not</div><h3>“취약 서비스 목록”이 아닙니다</h3><p>이 페이지는 공개 upstream과 공개 연구 결과를 기반으로 한 방어용 패치 인텔리전스입니다. 특정 운영기관이 실제 취약하다고 단정하지 않으며, 공격 payload나 운영 서비스 대상 PoC를 제공하지 않습니다.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="sources">
+      <div class="wrap">
+        <div class="sectionHead"><div><div class="kicker">Evidence & sources</div><h2>공개 근거</h2></div><p class="sub">각 판단은 가능하면 upstream 커밋과 공개 advisory로 되돌아갈 수 있도록 링크합니다.</p></div>
+        <div class="refs" id="referenceList"><div class="empty">Loading sources…</div></div>
+      </div>
+    </section>
+
+    <section class="wrap cta">
+      <div><div class="kicker">Deployment verification</div><h2>실제 서비스는 버전이 아니라 배포 코드로 확인해야 합니다.</h2><p>소스/WAR/SBOM을 upstream 보안 패치 계보와 비교하면 <b>NOT PRESENT · UNPATCHED · BACKPORTED · CUSTOM · RUNTIME-ONLY</b>로 패치 상태를 분리할 수 있습니다. 이 현황판은 그 분석을 위한 공개 베이스라인입니다.</p></div>
+      <div class="actions"><a class="btn primary" href="https://windshock.github.io/" target="_blank" rel="noopener">Research notes ↗</a><a class="btn" href="https://github.com/windshock" target="_blank" rel="noopener">GitHub ↗</a></div>
+    </section>
+  </main>
+
+  <footer><div class="wrap foot"><div>eGovFrame Security Patch Observatory · Public defensive research snapshot</div><div>Updated <b>2026-09-18</b> · <a href="https://github.com/eGovFramework/egovframe-common-components" target="_blank" rel="noopener">Upstream</a></div></div></footer>
+
+  <div class="drawer" id="drawer" aria-hidden="true"><div class="backdrop" data-close></div><aside class="panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle"><button class="close" type="button" data-close aria-label="Close">×</button><div id="drawerContent"></div></aside></div>
+
+<script>
+(() => {
+  const state={patches:null,components:null,baseline:'3.9.0',source:'all',risk:'all',query:''};
+  const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+  const statusMap={gap:['Patch gap candidate','gap'],patched:['Upstream fix present','patched'],partial:['Partial / later fixes','partial'],runtime:['Runtime verify','runtime'],review:['Code/config review','review']};
+  const baselineKey=()=>state.baseline==='3.9.0'?'baseline390':state.baseline==='5.0.3'?'baseline503':'baselineMain';
+  const esc=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  async function load(){
+    try{
+      const [p,c]=await Promise.all([fetch('./data/patches.json',{cache:'no-cache'}),fetch('./data/components.json',{cache:'no-cache'})]);
+      if(!p.ok||!c.ok) throw new Error('data load failed');
+      state.patches=await p.json(); state.components=await c.json(); renderAll(); bind();
+    }catch(e){
+      $('#timelineList').innerHTML='<div class="empty">데이터를 불러오지 못했습니다. GitHub Pages 경로에서 다시 열어주세요.</div>';
+      $('#referenceList').innerHTML='<div class="empty">Source data unavailable.</div>';
+      console.error(e);
+    }
+  }
+  function bind(){
+    $('#baseline').addEventListener('change',e=>{state.baseline=e.target.value;renderAll()});
+    $('#search').addEventListener('input',e=>{state.query=e.target.value.trim().toLowerCase();renderMatrix()});
+    $$('#sourceFilters .pill').forEach(b=>b.addEventListener('click',()=>{state.source=b.dataset.source; $$('#sourceFilters .pill').forEach(x=>x.classList.toggle('active',x===b));renderTimeline()}));
+    $$('.riskFilters .pill').forEach(b=>b.addEventListener('click',()=>{state.risk=b.dataset.risk; $$('.riskFilters .pill').forEach(x=>x.classList.toggle('active',x===b));renderMatrix()}));
+    $$('[data-close]').forEach(x=>x.addEventListener('click',closeDrawer));
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});
+  }
+  function renderAll(){renderBaseline();renderStats();renderTimeline();renderMatrix();renderRefs()}
+  function renderBaseline(){const b=state.components.baselines.find(x=>x.id===state.baseline);$('#baselineDescription').textContent=b?.description||''}
+  function renderStats(){
+    const k=baselineKey(), cs=state.components.components, vals=cs.map(c=>c[k]);
+    $('#statTracked').textContent=state.patches.events.length;
+    $('#statGap').textContent=vals.filter(v=>v==='gap').length;
+    $('#statRuntime').textContent=vals.filter(v=>v==='runtime'||v==='partial'||v==='review').length;
+    $('#statPatched').textContent=vals.filter(v=>v==='patched').length;
+  }
+  function renderTimeline(){
+    const es=state.patches.events.filter(e=>state.source==='all'||e.sourceClass===state.source).sort((a,b)=>a.date.localeCompare(b.date));
+    $('#timelineList').innerHTML=es.map(e=>`<article class="titem"><div class="tcard"><div class="date">${esc(e.date)}</div><div><h3><span class="source ${esc(e.sourceClass)}">${esc(e.source)}</span>${esc(e.title)}</h3><p>${esc(e.summary)}</p><div class="tags">${(e.components||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}${e.files?`<span class="tag">${e.files} files</span>`:''}</div></div><a class="open" href="${esc(e.url)}" target="_blank" rel="noopener">Evidence ↗</a></div></article>`).join('')||'<div class="empty">No events in this filter.</div>';
+  }
+  function renderMatrix(){
+    const k=baselineKey(); let cs=state.components.components.slice();
+    if(state.risk!=='all') cs=cs.filter(c=>c.risk===state.risk);
+    if(state.query) cs=cs.filter(c=>[c.component,c.area,c.featureAnchor,c.issue,c.upstreamState].join(' ').toLowerCase().includes(state.query));
+    const order={gap:0,partial:1,runtime:2,review:3,patched:4}; cs.sort((a,b)=>(order[a[k]]??8)-(order[b[k]]??8));
+    $('#matrixBody').innerHTML=cs.map(c=>{const [label,cl]=statusMap[c[k]]||[c[k],c[k]];return `<tr data-id="${esc(c.id)}"><td><span class="risk ${esc(c.risk)}">${esc(c.risk)}</span></td><td><b>${esc(c.component)}</b><div style="font-size:11px;color:#748aa3;margin-top:2px">${esc(c.area)}</div></td><td><span class="status ${esc(cl)}">${esc(label)}</span></td><td class="anchor">${esc(c.featureAnchor)}</td><td class="upstate">${esc(c.upstreamState)}</td></tr>`}).join('')||'<tr><td colspan="5"><div class="empty">No matching components.</div></td></tr>';
+    $$('#matrixBody tr[data-id]').forEach(tr=>tr.addEventListener('click',()=>openDrawer(tr.dataset.id)));
+  }
+  function renderRefs(){
+    $('#referenceList').innerHTML=state.patches.references.map(r=>`<a class="ref" href="${esc(r.url)}" target="_blank" rel="noopener"><div><b>${esc(r.title)}</b><small>${esc(r.type)}</small></div><span>↗</span></a>`).join('');
+  }
+  function openDrawer(id){
+    const c=state.components.components.find(x=>x.id===id);if(!c)return;const k=baselineKey();const [label,cl]=statusMap[c[k]]||[c[k],c[k]];
+    $('#drawerContent').innerHTML=`<div class="meta">${esc(c.area)} · ${esc(state.baseline)} baseline</div><h2 id="drawerTitle">${esc(c.component)}</h2><span class="risk ${esc(c.risk)}">${esc(c.risk)}</span> &nbsp; <span class="status ${esc(cl)}">${esc(label)}</span><p class="summary">${esc(c.issue)}</p><div class="detailBlock"><h4>Feature anchor</h4><p class="code">${esc(c.featureAnchor)}</p></div><div class="detailBlock"><h4>Vulnerable signature</h4><p class="code">${esc(c.vulnerableSignature)}</p></div><div class="detailBlock"><h4>Fixed signature</h4><p class="code">${esc(c.fixedSignature)}</p></div><div class="detailBlock"><h4>How to verify</h4><p>${esc(c.verify)}</p></div><div class="detailBlock"><h4>Evidence note</h4><p>${esc(c.evidence)}</p></div><div class="linkList">${(c.links||[]).map(([n,u])=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(n)} ↗</a>`).join('')}</div>`;
+    $('#drawer').classList.add('open');$('#drawer').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+  }
+  function closeDrawer(){ $('#drawer').classList.remove('open');$('#drawer').setAttribute('aria-hidden','true');document.body.style.overflow=''; }
+  load();
+})();
+</script>
+</body>
+</html>
