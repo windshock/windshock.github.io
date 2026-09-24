@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>이형관 | 정보보안팀장 경력기술서 & 포트폴리오</title>
+<style>
+  :root{
+    --ink:#132238;
+    --muted:#5b6878;
+    --line:#dce3ea;
+    --soft:#f5f8fb;
+    --navy:#153a5b;
+    --teal:#0b6f73;
+    --teal-soft:#e9f6f5;
+    --gold:#8a6a1f;
+    --gold-soft:#fbf6e8;
+    --danger:#8b3341;
+    --white:#fff;
+    --page:1120px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:#eef2f6;
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic","Segoe UI",sans-serif;
+    line-height:1.65;
+    word-break:keep-all;
+  }
+  a{color:var(--teal);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .toolbar{
+    position:fixed;right:18px;top:18px;z-index:20;display:flex;gap:8px;
+  }
+  .toolbar button{
+    border:0;border-radius:999px;padding:10px 16px;background:var(--ink);color:#fff;
+    font-weight:700;cursor:pointer;box-shadow:0 8px 22px rgba(19,34,56,.18)
+  }
+  .page{
+    width:min(var(--page),calc(100% - 32px));
+    margin:28px auto;
+    background:var(--white);
+    box-shadow:0 14px 40px rgba(23,42,67,.08);
+    border-radius:18px;
+    overflow:hidden;
+  }
+  .hero{
+    padding:54px 62px 40px;
+    background:linear-gradient(135deg,#102941 0%,#173f60 58%,#0d656a 100%);
+    color:#fff;
+  }
+  .hero-top{display:flex;justify-content:space-between;gap:28px;align-items:flex-start}
+  .eyebrow{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#b9e5e2}
+  h1{font-size:46px;line-height:1.12;margin:10px 0 8px;letter-spacing:-.04em}
+  .hero h2{margin:0;font-size:22px;font-weight:600;color:#dfeaf1}
+  .contact{font-size:14px;line-height:1.85;text-align:right;color:#dbe9ef;white-space:nowrap}
+  .contact a{color:#fff}
+  .hero-summary{
+    margin-top:34px;padding:22px 24px;border:1px solid rgba(255,255,255,.20);
+    border-radius:14px;background:rgba(255,255,255,.07);font-size:18px;line-height:1.75
+  }
+  .hero-summary strong{color:#fff}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .chip{font-size:13px;border:1px solid rgba(255,255,255,.24);padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.08)}
+
+  .content{padding:44px 62px 58px}
+  .section{margin:0 0 50px}
+  .section:last-child{margin-bottom:0}
+  .section-kicker{font-size:12px;font-weight:900;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px}
+  h3{font-size:29px;line-height:1.25;margin:0 0 16px;letter-spacing:-.035em}
+  h4{font-size:19px;margin:0 0 8px;letter-spacing:-.02em}
+  p{margin:0 0 12px}
+  .lead{font-size:17px;color:#35465a}
+  .small{font-size:13px;color:var(--muted)}
+  .muted{color:var(--muted)}
+
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  .card{border:1px solid var(--line);border-radius:14px;padding:19px 20px;background:#fff}
+  .card.soft{background:var(--soft)}
+  .card.teal{background:var(--teal-soft);border-color:#cde7e5}
+  .card.gold{background:var(--gold-soft);border-color:#eadfb9}
+  .metric{font-size:29px;font-weight:850;color:var(--navy);line-height:1.2;margin-bottom:3px}
+  .label{font-size:13px;font-weight:800;color:var(--teal);text-transform:uppercase;letter-spacing:.04em}
+
+  .callout{
+    border-left:5px solid var(--teal);background:var(--teal-soft);padding:20px 22px;border-radius:0 12px 12px 0;margin:18px 0;
+  }
+  .callout strong{color:#0b5457}
+  .quote{font-size:21px;font-weight:780;line-height:1.55;letter-spacing:-.025em}
+
+  .timeline{position:relative;margin-top:18px}
+  .timeline:before{content:"";position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:#dce5ec}
+  .role{position:relative;padding-left:38px;margin-bottom:30px}
+  .role:before{content:"";position:absolute;left:3px;top:8px;width:16px;height:16px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 5px #e9f6f5}
+  .role-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:8px}
+  .role-company{font-size:21px;font-weight:850;letter-spacing:-.025em}
+  .role-meta{font-size:14px;color:var(--muted);font-weight:700;text-align:right;white-space:nowrap}
+  ul{margin:9px 0 0;padding-left:21px}
+  li{margin:5px 0}
+  .compact li{margin:3px 0}
+
+  .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:780px}
+  th{background:#eef4f8;color:#23425e;font-size:12.5px;text-align:left;padding:12px 13px;border-bottom:1px solid var(--line);letter-spacing:.01em}
+  td{padding:12px 13px;border-bottom:1px solid #e7edf2;vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  .tag{display:inline-block;border-radius:999px;padding:3px 8px;font-size:11px;font-weight:800;background:#eaf0f5;color:#385269;margin-right:4px}
+  .tag.fin{background:#e7f5f4;color:#0d6467}
+  .tag.gov{background:#f8f0db;color:#795b13}
+  .tag.tech{background:#ecebf9;color:#4d4685}
+
+  .fit-row{display:grid;grid-template-columns:220px 1fr;gap:18px;padding:17px 0;border-bottom:1px solid var(--line)}
+  .fit-row:last-child{border-bottom:0}
+  .fit-title{font-weight:850;color:#29445c}
+
+  .case{padding:22px 0;border-bottom:1px solid var(--line)}
+  .case:last-child{border-bottom:0}
+  .case-title{display:flex;align-items:center;gap:9px;font-size:19px;font-weight:850;margin-bottom:8px}
+  .case-num{display:inline-grid;place-items:center;width:27px;height:27px;border-radius:8px;background:var(--navy);color:#fff;font-size:13px}
+  .case .why{margin-top:10px;font-size:14px;color:#3d5365;background:#f7f9fb;padding:10px 12px;border-radius:10px}
+
+  .evidence-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+  .evidence{border:1px solid var(--line);border-radius:12px;padding:15px 16px;background:#fff}
+  .evidence b{display:block;margin-bottom:4px}
+  .page-break{break-before:page}
+
+  @media(max-width:760px){
+    .page{width:100%;margin:0;border-radius:0}
+    .hero,.content,.footer{padding-left:24px;padding-right:24px}
+    .hero-top{display:block}.contact{text-align:left;margin-top:20px;white-space:normal}
+    h1{font-size:38px}.grid,.grid-3,.evidence-links{grid-template-columns:1fr}
+    .fit-row{grid-template-columns:1fr;gap:5px}
+    .role-head{display:block}.role-meta{text-align:left;margin-top:3px}
+    .toolbar{display:none}
+  }
+
+  @media print{
+    @page{size:A4;margin:11mm 10mm}
+    body{background:#fff;font-size:10.2pt;line-height:1.48}
+    .toolbar{display:none!important}
+    .page{width:auto;margin:0;box-shadow:none;border-radius:0;overflow:visible}
+    .hero{padding:10mm 12mm 8mm}
+    .content{padding:9mm 12mm 11mm}
+    h1{font-size:28pt}.hero h2{font-size:14pt}.hero-summary{font-size:11pt}
+    h3{font-size:18pt;margin-bottom:10px}h4{font-size:12.5pt}
+    .section{margin-bottom:9mm}
+    .card,.callout,.evidence,.table-wrap{break-inside:avoid}
+    .role,.case{break-inside:avoid}
+    a{color:inherit;text-decoration:none}
+  }
+</style>
+</head>
+<body>
+<div class="toolbar"><button onclick="window.print()">인쇄 / PDF 저장</button></div>
+
+<main class="page">
+  <header class="hero">
+    <div class="hero-top">
+      <div>
+        <div class="eyebrow">정보보안팀장 경력기술서 · 포트폴리오</div>
+        <h1>이형관 <span style="font-weight:500">Hyeongkwan Lee</span></h1>
+        <h2>우아한형제들 정보보안팀장 지원 · 경력기술서 & 포트폴리오</h2>
+      </div>
+      <div class="contact">
+        <div><a href="mailto:windshock@gmail.com">windshock@gmail.com</a></div>
+        <div><a href="https://github.com/windshock">github.com/windshock</a></div>
+        <div><a href="https://windshock.github.io/en/">windshock.github.io</a></div>
+        <div><a href="https://linkedin.com/in/windshock">linkedin.com/in/windshock</a></div>
+      </div>
+    </div>
+
+    <div class="hero-summary">
+      <strong>관리체계를 설계해 본 컨설턴트이자, 그 통제가 실제 기업 환경에서 작동하는지 운영하고 검증해 온 보안 리더입니다.</strong><br/>
+      약 19년간 정보보호관리체계, 위험평가, 전산감사, 개인정보보호·법규 준수, 보안성 검토, 취약점 진단과 플랫폼 보안 운영을 경험했습니다. 초기 커리어에서는 <strong>ISMS/PIMS/ISO 27001 계열 관리체계 컨설팅의 실무자부터 PM까지</strong> 수행했고, 이후 SK플래닛에서 서비스·인프라·소스코드·공급망 보안 업무를 맡아 정책과 통제가 실제 운영에서 작동하는지 지속적으로 검증해 왔습니다.
+      <div class="chips">
+        <span class="chip">ISMS / PIMS / ISO 27001</span>
+        <span class="chip">관리체계 컨설팅 PM</span>
+        <span class="chip">금융권 IT 통제 · 감사</span>
+        <span class="chip">5~15명 보안진단 업무 총괄</span>
+        <span class="chip">협력업체 · 공급망</span>
+        <span class="chip">VDI · 인프라</span>
+        <span class="chip">CISA</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="content">
+    <section class="section">
+      <div class="section-kicker">핵심 요약</div>
+      <h3>지원 직무에 맞춘 핵심 역량</h3>
+      <div class="grid-3">
+        <div class="card teal">
+          <div class="label">01 · 관리체계</div>
+          <div class="metric">전주기</div>
+          <p><b>ISMS/PIMS/ISO 27001 관리체계 컨설팅 PM</b>으로 현황분석, 자산·위험평가, 정책·지침 정비, 보호대책, 개선과제, 이행점검, 인증 대응까지 수행.</p>
+        </div>
+        <div class="card">
+          <div class="label">02 · 금융권 경험</div>
+          <div class="metric">4+</div>
+          <p>현대카드캐피탈, 신한데이타시스템, 메트라이프, CITI 등 <b>금융권 관리체계·감사·취약점평가</b> 프로젝트 경험.</p>
+        </div>
+        <div class="card">
+          <div class="label">03 · 조직 운영</div>
+          <div class="metric">5~15명</div>
+          <p>서비스·인프라·소스코드·공급망 진단의 계획 수립, 우선순위 조정, 담당 배분, 중요 이슈 기술검토, 결과 품질관리와 재검증을 담당.</p>
+        </div>
+        <div class="card">
+          <div class="label">04 · 위험관리</div>
+          <div class="metric">55.4%</div>
+          <p>공격경로 중심으로 개선 우선순위를 운영해 유효 공격경로를 <b>534개 → 238개</b>로 감소.</p>
+        </div>
+        <div class="card">
+          <div class="label">05 · 협력업체 · 공급망</div>
+          <div class="metric">다수 영역</div>
+          <p>결제 SDK, 인증/FIDO, VDI, 운영 에이전트, EDR/IPS 등 <b>외부 솔루션의 보안 경계</b>를 직접 검증하고 패치까지 추적.</p>
+        </div>
+        <div class="card gold">
+          <div class="label">06 · 기술 검증</div>
+          <div class="metric">KVE/CVE</div>
+          <p>직접 재현과 책임제보가 가능한 기술 깊이. KISA 취약점 신고포상제 <b>2025년 명예의 전당 6위</b>.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <div class="quote">“규제와 인증을 심사 대응으로 끝내지 않고, 정책·통제·보안성 검토·협력업체 관리·취약점 조치와 탐지·관제 기준 개선이 하나의 관리체계 안에서 이어지도록 만드는 것이 제 역할이라고 생각합니다.”</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-kicker">직무 연관성</div>
+      <h3>정보보안팀장 직무와 경력의 연결</h3>
+      <div class="fit-row">
+        <div class="fit-title">관리체계 구축·운영</div>
+        <div>ISMS/PIMS/ISO 27001 계열 컨설팅에서 <b>실무자와 PM 역할을 모두 경험</b>. 기업 내부에서만 수행할 수 있는 최종 승인·예산 집행·상시 통제 운영을 제외하면, 관리체계 구축·인증에 필요한 실무 전반을 수행했습니다.</div>
+      </div>
+      <div class="fit-row">
+        <div class="fit-title">정책·규정·지침 / 위험평가</div>
+        <div>현황 및 차이 분석, 정보자산 식별·분류, 위협·취약점 식별, 위험분석·평가, 위험처리 방향, 정책·지침·절차 정비, 보호대책 및 개선과제·중장기 개선계획 수립을 반복 수행했습니다.</div>
+      </div>
+      <div class="fit-row">
+        <div class="fit-title">금융권 보안 환경</div>
+        <div>현대카드캐피탈의 정보보안 컨설팅·ISO 27001, 신한데이타시스템 인증지원, 메트라이프 전산감사, CITI EVA 등 금융권 프로젝트를 수행했습니다. 최근에는 결제 SDK·FIDO·인증·쿠폰/제휴 API까지 전자거래의 기술 신뢰경계를 분석하고 있습니다.</div>
+      </div>
+      <div class="fit-row">
+        <div class="fit-title">보안 조직 운영</div>
+        <div>SK플래닛에서 5~15명 규모 보안진단 인력의 계획·우선순위·과제 배분·중요 이슈 검토·결과 품질·재검증을 운영하고, 보안설계검토 결과를 조치·장기 미조치 추적·탐지·관제 기반 보완조치까지 연결했습니다.</div>
+      </div>
+      <div class="fit-row">
+        <div class="fit-title">협력업체 · 공급망</div>
+        <div>외부 제품·SDK·에이전트·보안제품을 단순 구매품이 아니라 <b>조직의 신뢰경계</b>로 보고, 암호·인증·업데이트·실행권한·관리채널을 직접 검증하고 공급업체의 패치와 개선 조치까지 추적했습니다.</div>
+      </div>
+      <div class="fit-row">
+        <div class="fit-title">VDI / 망분리</div>
+        <div>VDI·AD·SAC를 SPOF 관점으로 분석하고 Cloud PC VDI RCE, Citrix VDI 정책 우회 등을 검증했습니다. 구성 준수 여부뿐 아니라 <b>통제가 실제로 우회 가능한지</b>까지 확인하는 관점이 강점입니다.</div>
+      </div>
+    </section>
+
+    <section class="section page-break">
+      <div class="section-kicker">경력</div>
+      <h3>경력기술서</h3>
+      <div class="timeline">
+        <div class="role">
+          <div class="role-head">
+            <div>
+              <div class="role-company">SK플래닛 · 정보보호팀</div>
+              <div class="muted"><b>매니저 (Security Engineer / Specialist)</b></div>
+            </div>
+            <div class="role-meta">2012.06 – 현재</div>
+          </div>
+          <ul>
+            <li><b>5~15명 규모 보안진단 업무 총괄</b>: 연간·분기 진단 계획 수립, 우선순위 조정, 담당 배분, 중요 이슈 기술검토, 산출물 품질관리와 재검증을 담당.</li>
+            <li>서비스 보안설계검토·모의해킹·취약점 진단 결과를 <b>조치 → 재검증 → 장기 미조치 추적 → 탐지·관제 기준 개선</b>으로 이어지는 운영방식을 정착.</li>
+            <li>서비스·인증·결제·외부 연동·인프라의 위험을 단순 취약점 목록이 아니라 <b>공격경로와 사업 영향</b> 기준으로 우선순위화.</li>
+            <li>결제 SDK, 인증 솔루션, VDI, 운영 에이전트, EDR/IPS 등 협력업체 제품의 신뢰경계를 검증하고 벤더 패치·개선 조치를 추적.</li>
+            <li>AI 에이전트 + 보안 스킬 + 사람 검증 방식, 개발자 자가점검용 규칙·프롬프트 등 반복 업무를 줄이는 보안 운영 자동화 추진.</li>
+          </ul>
+          <div class="grid" style="margin-top:14px">
+            <div class="card soft"><b>대표 성과</b><br/>유효 공격경로 55.4% 감소(534 → 238), 발견 건수보다 실제 공격 가능성 축소를 성과지표로 관리.</div>
+            <div class="card soft"><b>공급망·인프라</b><br/>FIDO, 결제 SDK, VDI, 운영 에이전트, EDR/IPS에서 취약점 발굴 및 KVE/CVE·벤더 패치로 연결.</div>
+          </div>
+        </div>
+
+        <div class="role">
+          <div class="role-head">
+            <div>
+              <div class="role-company">Ernst & Young · ITRA</div>
+              <div class="muted"><b>선임 컨설턴트</b></div>
+            </div>
+            <div class="role-meta">2010.11 – 2012.05</div>
+          </div>
+          <ul>
+            <li>ISO/IEC 27001, 개인정보보호 준수, 위험평가, 개선과제·중장기 개선계획 등 종합 정보보호 컨설팅 수행.</li>
+            <li>관리체계 컨설팅 경력 전반에서 실무자부터 프로젝트 책임자·PM까지 수행하며, 범위·일정·인력·품질·고객사 협의와 산출물 완성도를 관리.</li>
+            <li>현대중공업 ISO 27001 인증 컨설팅 및 개인정보보호 준수 진단.</li>
+            <li>CITI EVA: 글로벌 금융권 외부 거래 사이트 취약점평가, 싱가포르 지사와 영어 커뮤니케이션.</li>
+            <li>GS건설 정보보호컨설팅, STX 이행점검, KT 심화진단 등에서 기술 진단을 관리체계 개선과제로 전환.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-head">
+            <div>
+              <div class="role-company">Deloitte · ERS</div>
+              <div class="muted"><b>컨설턴트</b></div>
+            </div>
+            <div class="role-meta">2009.08 – 2010.10</div>
+          </div>
+          <ul>
+            <li>정보보호 컨설팅, 기획점검, 위험평가, 중장기 개선계획, 전산감사와 모의해킹을 함께 수행.</li>
+            <li>Deloitte TAX-BPO ISO 27001: 취약점 점검 및 위험평가.</li>
+            <li>신한데이타시스템 ISO 27001 인증 프로젝트: 인증지원.</li>
+            <li>메트라이프·유한킴벌리 전산감사, 포스코 보안기획점검/모의해킹.</li>
+            <li>두산 계열사 중요 시스템 진단 리더: 중요 시스템 점검 및 일정·품질 관리.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-head">
+            <div>
+              <div class="role-company">SECU BASE · 컨설팅본부</div>
+              <div class="muted"><b>주임 컨설턴트</b></div>
+            </div>
+            <div class="role-meta">2007.07 – 2009.07</div>
+          </div>
+          <ul>
+            <li>정보보호관리체계 현황분석·위험평가, 웹·C/S·모바일오피스 진단, 모의해킹.</li>
+            <li>현대카드캐피탈 정보보안 컨설팅 및 ISO 27001, 금호아시아나 정보보호관리체계 수립, 대한통운 ISO 27001 등 참여.</li>
+            <li>PIMS/개인정보보호 관점과 관리적·기술적 통제를 함께 검토하는 컨설팅 기반 축적.</li>
+            <li>UN APCICT 보안교육 교재 개발, 개발자 교육 및 금융권 피싱·파밍 시연 등 보안 인식제고 활동.</li>
+          </ul>
+        </div>
+
+        <div class="role">
+          <div class="role-head">
+            <div>
+              <div class="role-company">안랩 / SK인포섹</div>
+              <div class="muted"><b>모의해킹·취약점분석 컨설턴트(프리랜서)</b></div>
+            </div>
+            <div class="role-meta">2006</div>
+          </div>
+          <p>SK인포섹 취약점분석팀과 안랩 모의해킹팀에서 취약점 분석·모의해킹 프로젝트 수행.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section page-break">
+      <div class="section-kicker">관리체계 포트폴리오</div>
+      <h3>관리체계·금융권 컨설팅 포트폴리오</h3>
+      <p class="lead">초기 커리어에서 관리체계 컨설팅을 단순 참여가 아니라 <b>실무자 → 프로젝트 책임자 → PM</b>로 수행했습니다. 내부 보안책임자의 고유 권한을 제외하면, 조직이 관리체계를 구축하고 심사받기 위해 필요한 업무 전반을 경험했습니다.</p>
+
+      <div class="callout">
+        <b>관리체계 전주기 수행 범위</b><br/>
+        현황 및 차이 분석 → 정보자산 식별·분류 → 위협·취약점 식별 → 위험분석·평가 → 위험처리·보호대책 → 정책·지침·절차 정비 → 개선과제/중장기 개선계획 → 이행점검 → 인증심사 대응 및 후속조치
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th style="width:125px">기간</th><th>프로젝트</th><th>주요 수행</th><th style="width:235px">팀장 직무와의 연결</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>2007.10–12</td><td><b>현대카드캐피탈 정보보안 컨설팅</b><br/><span class="tag fin">금융</span></td><td>현황분석 · 모의해킹</td><td>금융 서비스의 관리·기술 통제를 함께 검토</td></tr>
+            <tr><td>2008.06–08</td><td><b>현대카드캐피탈 ISO 27001</b><br/><span class="tag fin">금융</span><span class="tag gov">인증</span></td><td>현황분석 · 위험분석</td><td>금융권 관리체계와 위험평가</td></tr>
+            <tr><td>2008.09–12</td><td><b>금호아시아나 정보보호관리체계 수립</b><br/><span class="tag gov">관리체계</span></td><td>현황분석 · 위험평가</td><td>대규모 조직의 관리체계 구축</td></tr>
+            <tr><td>2009.06–08</td><td><b>대한통운 ISO 27001</b><br/><span class="tag gov">인증</span></td><td>현황분석 · 위험평가</td><td>인증요건과 조직 위험의 연결</td></tr>
+            <tr><td>2009.08–10</td><td><b>신한데이타시스템 ISO 27001</b><br/><span class="tag fin">금융</span><span class="tag gov">인증</span></td><td>인증지원</td><td>금융 IT 조직의 심사·증적 대응</td></tr>
+            <tr><td>2009.10</td><td><b>메트라이프 전산감사</b><br/><span class="tag fin">금융</span></td><td>IT 감사</td><td>금융사 IT 통제의 독립적 점검</td></tr>
+            <tr><td>2009.10</td><td><b>유한킴벌리 전산감사</b></td><td>IT 감사</td><td>운영통제·증적 관점의 점검 경험</td></tr>
+            <tr><td>2010.02–05</td><td><b>Deloitte TAX-BPO ISO 27001</b><br/><span class="tag gov">인증</span></td><td>취약점 점검 · 위험평가</td><td>기술 위험을 관리체계 통제로 전환</td></tr>
+            <tr><td>2010.04</td><td><b>PIMS 모의 인증 컨설팅</b><br/><span class="tag gov">개인정보</span></td><td>모의인증</td><td>개인정보 관리체계 및 심사 관점 점검</td></tr>
+            <tr><td>2010.05</td><td><b>토요타 개인정보보호 컨설팅</b><br/><span class="tag gov">개인정보</span></td><td>개인정보보호 · 취약점 진단</td><td>개인정보 통제와 기술보안의 연결</td></tr>
+            <tr><td>2011.01–04</td><td><b>CITI EVA</b><br/><span class="tag fin">금융</span></td><td>외부 취약점평가(EVA)</td><td>글로벌 금융권 외부 서비스 보안</td></tr>
+            <tr><td>2011.04–09</td><td><b>현대중공업 ISO 27001</b><br/><span class="tag gov">인증</span></td><td>위험평가 · 중장기 개선계획</td><td>대규모 조직의 위험기반 단계별 개선계획</td></tr>
+            <tr><td>2012.01–02</td><td><b>현대중공업 개인정보보호 준수</b><br/><span class="tag gov">개인정보</span></td><td>개인정보보호 준수 · .NET C/S 진단</td><td>정책·법규 준수와 애플리케이션 통제를 함께 검토</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-kicker">운영 방식</div>
+      <h3>관리체계 경험을 현재 보안 운영으로 연결한 방식</h3>
+      <div class="grid">
+        <div class="card soft">
+          <h4>1. 발견보다 조치 완료까지</h4>
+          <p>위험 식별 → 기술 검증 → 영향도 판단 → 조치 우선순위 → 재검증 → 장기 미조치/보완통제까지 하나의 흐름으로 관리합니다.</p>
+        </div>
+        <div class="card soft">
+          <h4>2. 정책보다 통제의 실효성</h4>
+          <p>“정책에 있다”보다 실제 공격·운영환경에서 통제가 작동하는지를 확인합니다. VDI, 인증, 결제, EDR 등에서 이 접근을 반복했습니다.</p>
+        </div>
+        <div class="card soft">
+          <h4>3. 외부 의존성을 신뢰경계로 관리</h4>
+          <p>협력업체 제품·SDK·에이전트의 업데이트, 코드서명, 권한, 암호·인증, 운영채널을 분석하고 개선 이행을 추적합니다.</p>
+        </div>
+        <div class="card soft">
+          <h4>4. 반복업무는 자동화, 고위험 판단은 사람</h4>
+          <p>AI 에이전트, 보안 스킬, 탐지 규칙, PoC 회귀테스트를 도입해 전문가 시간을 고위험 이슈에 집중시키는 운영방식을 지향합니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section page-break">
+      <div class="section-kicker">대표 사례</div>
+      <h3>정보보안팀장 관점의 대표 사례</h3>
+
+      <div class="case">
+        <div class="case-title"><span class="case-num">1</span> 관리체계 PM · 위험기반 의사결정</div>
+        <p>ISMS/PIMS/ISO 27001 컨설팅에서 현황분석·위험평가·정책·절차 정비·개선과제·인증대응을 수행했고, PM으로 범위·일정·인력·품질과 고객사 협의를 총괄했습니다. 이후 기업 내부에서는 진단 결과를 조치·재검증·장기 미조치 추적·탐지·관제 기준 개선까지 이어지도록 운영했습니다.</p>
+        <div class="why"><b>팀장 역할과의 연결:</b> 관리체계를 문서가 아니라 위험·통제·증적·개선계획·책임소재를 연결하는 운영체계로 다룰 수 있습니다.</div>
+      </div>
+
+      <div class="case">
+        <div class="case-title"><span class="case-num">2</span> 금융권 IT 통제 · 감사 · 보안진단</div>
+        <p>현대카드캐피탈의 정보보안 컨설팅·ISO 27001, 신한데이타시스템 인증, 메트라이프 전산감사, CITI EVA를 수행했습니다. 금융회사 내부 보안조직 경력과는 다르지만, 외부 전문가 관점에서 금융 IT 조직의 통제와 증적, 기술 위험을 반복적으로 검토했습니다.</p>
+        <div class="why"><b>팀장 역할과의 연결:</b> 규제·감사 요구를 현업이 실행할 수 있는 보호대책과 개선과제로 번역하는 경험이 있습니다.</div>
+      </div>
+
+      <div class="case">
+        <div class="case-title"><span class="case-num">3</span> 협력업체 · 공급망 기술 위험관리</div>
+        <p>결제 SDK, FIDO·인증 솔루션, VDI, 운영 에이전트, EDR/IPS 등 외부 솔루션의 신뢰경계를 직접 분석해 취약점을 발굴하고 공급업체·KISA·CERT/CC에 책임제보, 패치와 개선 이행을 추적했습니다.</p>
+        <div class="why"><b>팀장 역할과의 연결:</b> 체크리스트형 협력업체 관리에 그치지 않고, 실제 서비스에 들어오는 제3자 기술의 위험을 검증할 수 있습니다.</div>
+      </div>
+
+      <div class="case">
+        <div class="case-title"><span class="case-num">4</span> VDI · 망분리 · 핵심 인프라</div>
+        <p>AD·SAC·VDI를 SPOF 관점으로 모델링하고 Cloud PC VDI RCE, Citrix VDI 정책 우회 등을 검증했습니다. 망분리 정책 자체뿐 아니라 관리채널, 업데이트 신뢰, 우회 가능성까지 평가했습니다.</p>
+        <div class="why"><b>팀장 역할과의 연결:</b> 규정 준수 여부와 기술적 실효성 사이의 간극을 직접 확인하고 개선 우선순위를 정할 수 있습니다.</div>
+      </div>
+
+      <div class="case">
+        <div class="case-title"><span class="case-num">5</span> Security Assessment as Code · 보안진단 자동화</div>
+        <p>보안진단 결과를 정적 보고서로 끝내지 않고 PoC·규칙·보안 스킬·회귀테스트로 관리하는 방식을 구축했습니다. 228개 API를 데이터 흐름 기준 5개 검토 단위로 압축하는 등 검토 범위와 반복업무를 자동화했습니다.</p>
+        <div class="why"><b>팀장 역할과의 연결:</b> 보안조직이 개발·운영의 병목이 되지 않도록 반복 통제는 자동화하고, 사람은 고위험 판단과 예외 의사결정에 집중하도록 설계합니다.</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-kicker">기술 검증</div>
+      <h3>기술 검증 역량 · 공개 포트폴리오</h3>
+      <p class="lead">팀장 역할의 중심은 관리체계와 운영이지만, 필요한 경우 <b>통제가 실제로 작동하는지 직접 재현·분석할 수 있는 깊이</b>를 갖추고 있습니다.</p>
+      <div class="evidence-links">
+        <div class="evidence"><b>KVE/CVE 책임제보</b>FIDO, VDI, 운영 에이전트, 오픈소스, 결제 SDK 등 다수 취약점 발굴·패치 유도. KISA 취약점 신고포상제 명예의 전당 6위.</div>
+        <div class="evidence"><b>Security Testing as Code</b>보안 진단 결과를 실행 가능한 PoC·규칙·회귀테스트로 버전 관리하는 방법론.<br/><a href="https://windshock.github.io/en/post/2026-03-17-security-testing-as-code/">관련 글 보기 →</a></div>
+        <div class="evidence"><b>SPOF in Cybersecurity</b>핵심 인프라의 단일 실패 지점을 그래프로 모델링해 공격경로를 우선순위화.<br/><a href="https://github.com/windshock/spofInCybersecurity">GitHub →</a></div>
+        <div class="evidence"><b>탐지 공백 재검증</b>WAF/IPS/IDS의 실제 탐지 공백을 재현하고 관제 조직 전달까지 연결.<br/><a href="https://github.com/windshock/waf-ips-ids-retest">GitHub →</a></div>
+        <div class="evidence"><b>공급망 사고 대응</b>악성 npm 사고 대응을 저장소·버전·빌드 로그·팀별 조치 보고서까지 자동화.<br/><a href="https://github.com/windshock/PoisonChain">GitHub →</a></div>
+        <div class="evidence"><b>AI · 에이전트 보안</b>MCP 등 AI 개발도구의 외부 입력 → 로컬 실행 → 권한 위임 경계를 공급망 보안 관점에서 분석.<br/><a href="https://github.com/windshock/mcpscan">GitHub →</a></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-kicker">자격 · 수상</div>
+      <h3>자격 · 수상 · 기본 정보</h3>
+      <div class="grid">
+        <div class="card"><b>자격</b><br/>CISA · 정보처리기사</div>
+        <div class="card"><b>수상</b><br/>KISA 취약점 신고포상제 명예의 전당 6위 (2025)<br/>Korea Hacking Challenge 2위 (2006)</div>
+        <div class="card"><b>학력</b><br/>숭실대학교 컴퓨터학부 학사</div>
+        <div class="card"><b>언어</b><br/>업무상 영어 기술 커뮤니케이션 및 문서 작성 가능</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-kicker">마무리</div>
+      <h3>정보보안팀장으로서의 역할 관점</h3>
+      <div class="callout">
+        <p class="quote">“관리체계와 규제를 운영할 수 있고, 필요하면 그 통제가 실제로 작동하는지 직접 검증할 수 있는 정보보안 리더.”</p>
+        <p>컨설팅 시절에는 정책·위험평가·인증·감사의 언어를 배웠고, 기업 내부에서는 서비스와 인프라의 실제 보안 통제를 운영하고 검증해 왔습니다. 정보보안팀장으로서는 규제와 인증, 상시 보안성 검토, 협력업체 위험관리, VDI·인프라 통제, 취약점 조치와 탐지·관제 기준 개선이 각각의 업무로 따로 움직이는 것이 아니라 <b>하나의 반복 가능한 관리체계</b>로 움직이도록 만드는 데 기여하겠습니다.</p>
+      </div>
+    </section>
+  </div>
+</main>
+</body>
+</html>
