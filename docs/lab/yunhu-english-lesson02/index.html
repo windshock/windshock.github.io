@@ -114,16 +114,16 @@
 <script>
 (() => {
   const WORDS = [
-    {word:'coat', meaning:'외투', emoji:'🧥', phonetic:'/koʊt/ · 코우트', chunks:['c','oa','t'], chunkAudio:[{label:'/k/',example:'cat',where:'첫소리'},{label:'/oʊ/',example:'coat',where:'가운데 소리'},{label:'/t/',example:'top',where:'첫소리'}], prefix:'c', missing:'oa', suffix:'t', sentence:'Put on a _____ right away.', ko:'지금 바로 외투를 입어라.'},
-    {word:'full', meaning:'배부른, 가득 찬', emoji:'😋', chunks:['f','u','ll'], chunkAudio:[{label:'/f/',example:'fish',where:'첫소리'},{label:'/ʊ/',example:'full',where:'가운데 소리'},{label:'/l/',example:'bell',where:'끝소리'}], prefix:'f', missing:'u', suffix:'ll', sentence:"I'm _____ now.", ko:'나는 지금 배부르다.'},
-    {word:'key', meaning:'열쇠', emoji:'🔑', chunks:['k','ey'], chunkAudio:[{label:'/k/',example:'key',where:'첫소리'},{label:'/iː/',example:'key',where:'끝소리'}], prefix:'k', missing:'ey', suffix:'', sentence:'Your _____s are on the table.', ko:'너의 열쇠는 탁자 위에 있다.'},
-    {word:'mask', meaning:'가면, 탈', emoji:'🎭', chunks:['ma','sk'], chunkAudio:[{label:'/mæ/',example:'mask',where:'앞부분'},{label:'/sk/',example:'mask',where:'끝부분'}], prefix:'m', missing:'a', suffix:'sk', sentence:'The kid is wearing an animal _____.', ko:'그 아이는 동물 가면을 쓰고 있다.'},
-    {word:'mouth', meaning:'입', emoji:'👄', chunks:['m','ou','th'], chunkAudio:[{label:'/m/',example:'moon',where:'첫소리'},{label:'/aʊ/',example:'mouth',where:'가운데 소리'},{label:'/θ/',example:'thin',where:'첫소리'}], prefix:'m', missing:'ou', suffix:'th', sentence:'The child has a cookie in her _____.', ko:'그 아이는 입 안에 쿠키가 있다.'},
-    {word:'paper', meaning:'종이', emoji:'📄', chunks:['pa','per'], chunkAudio:[{label:'/peɪ/',example:'paper',where:'앞부분'},{label:'/pər/',example:'paper',where:'끝부분'}], prefix:'p', missing:'a', suffix:'per', sentence:"Let's make a _____ airplane.", ko:'종이비행기를 만들자.'},
-    {word:'please', meaning:'부디, 제발', emoji:'🙏', chunks:['pl','ea','se'], chunkAudio:[{label:'/pl/',example:'please',where:'앞부분'},{label:'/iː/',example:'please',where:'가운데 소리'},{label:'/z/',example:'zoo',where:'첫소리처럼'}], prefix:'pl', missing:'ea', suffix:'se', sentence:'Open the window, _____.', ko:'창문 좀 열어 주세요.'},
-    {word:'salt', meaning:'소금', emoji:'🧂', chunks:['s','al','t'], chunkAudio:[{label:'/s/',example:'sun',where:'첫소리'},{label:'가운데 소리',example:'salt',where:'가운데'},{label:'/t/',example:'top',where:'첫소리'}], prefix:'s', missing:'a', suffix:'lt', sentence:'Put some _____ in the soup.', ko:'그 수프에 약간의 소금을 넣어라.'},
-    {word:'tell', meaning:'말하다', emoji:'🗣️', chunks:['t','e','ll'], chunkAudio:[{label:'/t/',example:'top',where:'첫소리'},{label:'/ɛ/',example:'bed',where:'가운데 소리'},{label:'/l/',example:'bell',where:'끝소리'}], prefix:'t', missing:'e', suffix:'ll', sentence:'Can you _____ me the story?', ko:'내게 그 이야기를 말해 줄 수 있니?'},
-    {word:'zoo', meaning:'동물원', emoji:'🦁', chunks:['z','oo'], chunkAudio:[{label:'/z/',example:'zoo',where:'첫소리'},{label:'/uː/',example:'moon',where:'가운데 소리'}], prefix:'z', missing:'oo', suffix:'', sentence:'There are many animals in the _____.', ko:'동물원에는 많은 동물이 있다.'}
+    {word:'coat', meaning:'외투', emoji:'🧥', phonetic:'/koʊt/ · 코우트', chunks:['c','oa','t'], chunkAudio:[{label:'/k/',example:'cat',where:'첫소리',cue:'ㅋ처럼 짧게 끊는 소리'},{label:'/oʊ/',example:'coat',where:'가운데 소리',cue:'오→우로 이어지는 소리'},{label:'/t/',example:'top',where:'첫소리',cue:'ㅌ처럼 짧게 끊는 소리'}], prefix:'c', missing:'oa', suffix:'t', sentence:'Put on a _____ right away.', ko:'지금 바로 외투를 입어라.'},
+    {word:'full', meaning:'배부른, 가득 찬', emoji:'😋', chunks:['f','u','ll'], chunkAudio:[{label:'/f/',example:'fish',where:'첫소리',cue:'윗니를 아랫입술에 대고 바람'},{label:'/ʊ/',example:'full',where:'가운데 소리',cue:'짧은 우 소리'},{label:'/l/',example:'bell',where:'끝소리',cue:'혀끝을 윗잇몸에 대는 ㄹ 소리'}], prefix:'f', missing:'u', suffix:'ll', sentence:"I'm _____ now.", ko:'나는 지금 배부르다.'},
+    {word:'key', meaning:'열쇠', emoji:'🔑', chunks:['k','ey'], chunkAudio:[{label:'/k/',example:'key',where:'첫소리'},{label:'/iː/',example:'key',where:'끝소리',cue:'길게 이 소리'}], prefix:'k', missing:'ey', suffix:'', sentence:'Your _____s are on the table.', ko:'너의 열쇠는 탁자 위에 있다.'},
+    {word:'mask', meaning:'가면, 탈', emoji:'🎭', chunks:['ma','sk'], chunkAudio:[{label:'/mæ/',example:'mask',where:'앞부분',cue:'매에 가까운 앞소리'},{label:'/sk/',example:'mask',where:'끝부분',cue:'s와 k를 붙여 내는 소리'}], prefix:'m', missing:'a', suffix:'sk', sentence:'The kid is wearing an animal _____.', ko:'그 아이는 동물 가면을 쓰고 있다.'},
+    {word:'mouth', meaning:'입', emoji:'👄', chunks:['m','ou','th'], chunkAudio:[{label:'/m/',example:'moon',where:'첫소리',cue:'입술을 붙이는 ㅁ 소리'},{label:'/aʊ/',example:'mouth',where:'가운데 소리',cue:'아→우로 이어지는 소리'},{label:'/θ/',example:'thin',where:'첫소리',cue:'혀를 이 사이에 두고 바람을 내는 th 소리'}], prefix:'m', missing:'ou', suffix:'th', sentence:'The child has a cookie in her _____.', ko:'그 아이는 입 안에 쿠키가 있다.'},
+    {word:'paper', meaning:'종이', emoji:'📄', chunks:['pa','per'], chunkAudio:[{label:'/peɪ/',example:'paper',where:'앞부분',cue:'페이에 가까운 앞소리'},{label:'/pər/',example:'paper',where:'끝부분',cue:'퍼에 가까운 약한 끝소리'}], prefix:'p', missing:'a', suffix:'per', sentence:"Let's make a _____ airplane.", ko:'종이비행기를 만들자.'},
+    {word:'please', meaning:'부디, 제발', emoji:'🙏', chunks:['pl','ea','se'], chunkAudio:[{label:'/pl/',example:'please',where:'앞부분',cue:'p와 l을 붙여 시작'},{label:'/iː/',example:'please',where:'가운데 소리',cue:'길게 이 소리'},{label:'/z/',example:'zoo',where:'첫소리처럼',cue:'목을 울리며 즈 소리'}], prefix:'pl', missing:'ea', suffix:'se', sentence:'Open the window, _____.', ko:'창문 좀 열어 주세요.'},
+    {word:'salt', meaning:'소금', emoji:'🧂', chunks:['s','al','t'], chunkAudio:[{label:'/s/',example:'sun',where:'첫소리',cue:'바람이 새는 ㅅ 소리'},{label:'/ɔː/ 쪽',example:'salt',where:'가운데',cue:'오에 가까운 길어진 가운데 소리'},{label:'/t/',example:'top',where:'첫소리',cue:'ㅌ처럼 짧게 끊는 소리'}], prefix:'s', missing:'a', suffix:'lt', sentence:'Put some _____ in the soup.', ko:'그 수프에 약간의 소금을 넣어라.'},
+    {word:'tell', meaning:'말하다', emoji:'🗣️', chunks:['t','e','ll'], chunkAudio:[{label:'/t/',example:'top',where:'첫소리',cue:'ㅌ처럼 짧게 끊는 소리'},{label:'/ɛ/',example:'bed',where:'가운데 소리',cue:'짧은 에 소리'},{label:'/l/',example:'bell',where:'끝소리',cue:'혀끝을 윗잇몸에 대는 ㄹ 소리'}], prefix:'t', missing:'e', suffix:'ll', sentence:'Can you _____ me the story?', ko:'내게 그 이야기를 말해 줄 수 있니?'},
+    {word:'zoo', meaning:'동물원', emoji:'🦁', chunks:['z','oo'], chunkAudio:[{label:'/z/',example:'zoo',where:'첫소리'},{label:'/uː/',example:'moon',where:'가운데 소리',cue:'길게 우 소리'}], prefix:'z', missing:'oo', suffix:'', sentence:'There are many animals in the _____.', ko:'동물원에는 많은 동물이 있다.'}
   ];
   const SETS = {
     A: {name:'A세트', words:[0,1,2,3,4], desc:'coat · full · key · mask · mouth'},
@@ -132,9 +132,9 @@
   };
   const STAGES = [
     {id:'recognize', name:'1단계 · 뜻 보고 찾기'},
-    {id:'chunks', name:'2단계 · 철자 조각 맞추기'},
+    {id:'chunks', name:'2단계 · 파닉스 소리 + 철자 조각'},
     {id:'partial', name:'3단계 · 빈칸 철자 쓰기'},
-    {id:'sentence', name:'4단계 · 문장 속 단어 찾기'}
+    {id:'sentence', name:'4단계 · 문장 뜻 → 단어 연결'}
   ];
   const STORAGE='yunhu_lesson02_state_v2';
   const screen=document.getElementById('screen');
@@ -258,7 +258,10 @@
     else if(id==='partial') renderPartial(w);
     else if(id==='sentence') renderSentence(w);
     else renderBonus(w);
-    const audio=document.getElementById('audioBtn'); if(audio) audio.onclick=()=>speak(w.word);
+    const audio=document.getElementById('audioBtn'); if(audio) audio.onclick=()=>{
+      if(stageId()==='sentence'){ state.hintsThis++; save(); }
+      speak(w.word);
+    };
     const star=document.getElementById('starBtn');
     if(star) star.onclick=()=>{ markStar(state.wordIds[state.pos]); recordSkip(); nextTask(100); };
   }
@@ -290,20 +293,31 @@
     cache.order=cache.order||shuffle(w.chunks.map((c,i)=>({c,i})));
     cache.assembled=cache.assembled||[];
     screen.innerHTML=`<section class="card">
-      ${commonTop(w,'조각을 눌러 단어 순서대로 놓아요.')}
+      ${commonTop(w,'먼저 각 철자 조각이 어떤 파닉스 소리를 내는지 듣고, 그 다음 순서대로 맞춰요.')}
       <div class="assembled" id="assembled" aria-label="만든 단어"></div>
       <div class="chunk-bank" id="bank"></div>
-      <div id="feedback" class="feedback">조각을 눌러 단어를 만들어요. 🔊 버튼으로 각 조각의 소리도 들어봐요.</div>
+      <button class="audio" type="button" id="blendBtn">🧩 조각 소리 → 단어 전체 듣기</button>
+      <div id="feedback" class="feedback">① 🔊로 파닉스 소리를 확인하고 ② 철자 조각을 눌러 단어를 만들어요.</div>
       <div class="actions"><button id="starBtn" class="star" type="button">★ 나중에 다시</button><button id="hintBtn" type="button">첫 조각 힌트</button></div>
     </section>`;
     drawChunks(w);
+    const blend=document.getElementById('blendBtn'); if(blend) blend.onclick=()=>playPhonicsBlend(w);
     document.getElementById('hintBtn').onclick=()=>{ state.hintsThis++; save(); feedback(`첫 조각은 <b>${esc(w.chunks[0])}</b>예요.`, ''); };
   }
   function playChunkCue(w, idx){
     const info=(w.chunkAudio||[])[idx];
     if(!info){ speak(w.word,.62); return; }
     speak(info.example,.62);
-    feedback(`<b>${esc(w.chunks[idx])}</b> → <b>${esc(info.label)}</b><br><span class="muted">“${esc(info.example)}”의 ${esc(info.where)}를 들어봐요. 정확한 소리는 예시 단어 안에서 들어요.</span>`, '');
+    feedback(`<b>${esc(w.chunks[idx])}</b> → <b>${esc(info.label)}</b><br>${info.cue?`<span>${esc(info.cue)}</span><br>`:''}<span class="muted">🔊에서는 “${esc(info.example)}” 안의 ${esc(info.where)}로 실제 소리를 확인해요.</span>`, '');
+  }
+  async function playPhonicsBlend(w){
+    const info=w.chunkAudio||[];
+    for(let i=0;i<info.length;i++){
+      speak(info[i].example,.56);
+      await new Promise(r=>setTimeout(r,850));
+    }
+    await new Promise(r=>setTimeout(r,180));
+    speak(w.word,.68);
   }
   function drawChunks(w){
     const bank=document.getElementById('bank'), made=document.getElementById('assembled');
@@ -364,13 +378,14 @@
     const opts=choiceOptions(w);
     screen.innerHTML=`<section class="card">
       <span class="stage">${esc(STAGES[state.stage].name)}</span>
-      <h2>문장 빈칸에 알맞은 단어는?</h2>
+      <h2>문장 뜻을 보고 알맞은 단어를 연결해요</h2>
       <div class="sentence" id="sentenceBox"><b>${esc(w.sentence)}</b><br><span class="muted">${esc(w.ko)}</span></div>
+      <div class="note" style="margin:10px 0"><b>빈칸에 들어갈 뜻:</b> <span style="font-size:21px;font-weight:850">${esc(w.meaning)}</span><br><span class="tiny">지금은 영어 문장을 혼자 해석하는 시험이 아니에요. 뜻을 보고 이미 배운 영어 단어와 연결하는 연습입니다.</span></div>
       <button class="audio" type="button" id="sentenceAudioBtn">🔊 문장 듣기</button>
-      <button class="audio" type="button" id="audioBtn">🔊 정답 단어 듣기</button>
+      <button class="audio" type="button" id="audioBtn">🔊 찾을 단어 소리 듣기 (도움)</button>
       <div class="choices">${opts.map(x=>`<button class="choice" type="button" data-v="${esc(x)}">${esc(x)}</button>`).join('')}</div>
-      <div id="feedback" class="feedback">문장 뜻도 함께 보고 골라요.</div>
-      <div class="actions"><button id="starBtn" class="star" type="button">★ 나중에 다시</button><button id="hintBtn" type="button">뜻 힌트</button></div>
+      <div id="feedback" class="feedback">영어 문장 전체를 이해하지 않아도 돼요. 위의 <b>빈칸 뜻</b>과 같은 영어 단어를 고르면 됩니다.</div>
+      <div class="actions"><button id="starBtn" class="star" type="button">★ 나중에 다시</button><button id="hintBtn" type="button">첫 글자 힌트</button></div>
       <button id="sentenceNextBtn" class="primary hidden" type="button" style="width:100%;margin-top:10px">다음 문제</button>
     </section>`;
     const buttons=[...document.querySelectorAll('.choice')];
@@ -398,10 +413,10 @@
           next.onclick=()=>nextTask(100);
         }
       }
-      else { b.classList.add('wrong'); state.attempts++; save(); feedback(`문장 뜻에서 “${esc(w.meaning)}”에 해당하는 단어를 다시 찾아보세요.`,'try'); }
+      else { b.classList.add('wrong'); state.attempts++; save(); feedback(`괜찮아요. 지금은 문장을 해석하는 문제가 아니에요. <b>${esc(w.meaning)}</b>이라는 뜻의 영어 단어를 다시 찾아보세요.`,'try'); }
     });
     const sentenceAudio=document.getElementById('sentenceAudioBtn'); if(sentenceAudio) sentenceAudio.onclick=()=>speak(sentencePromptForSpeech(w),.68);
-    document.getElementById('hintBtn').onclick=()=>{ state.hintsThis++; save(); feedback(`찾는 뜻은 <b>${esc(w.meaning)}</b>, 첫 글자는 <b>${esc(w.word[0])}</b>예요.`, ''); };
+    document.getElementById('hintBtn').onclick=()=>{ state.hintsThis++; save(); feedback(`첫 글자는 <b>${esc(w.word[0])}</b>예요. 뜻은 <b>${esc(w.meaning)}</b>입니다.`, ''); };
   }
   function renderBonus(w){
     screen.innerHTML=`<section class="card">
@@ -432,7 +447,7 @@
     if(state.mode==='bonus'){
       return `[윤후 영어 Lesson 02 - 보너스 전체 철자]\n단어 수: ${count}\n첫 시도 독립 철자: ${state.metrics.bonus.correct}/${count}\n힌트 사용: ${state.metrics.bonus.hints}회\n틀렸다가 다시 시도: ${state.metrics.bonus.wrong}회\n★ 다시 볼 단어: ${stars.length?stars.join(', '):'없음'}\n소요: 약 ${min}분`;
     }
-    return `[윤후 영어 Lesson 02 - ${SETS[state.setKey].name}]\n뜻 보고 찾기 첫 시도: ${state.metrics.recognize.correct}/${count}\n철자 조각 첫 시도: ${state.metrics.chunks.correct}/${count}\n빈칸 철자 첫 시도: ${state.metrics.partial.correct}/${count}\n문장 속 찾기 첫 시도: ${state.metrics.sentence.correct}/${count}\n힌트 사용: ${state.metrics.recognize.hints+state.metrics.chunks.hints+state.metrics.partial.hints+state.metrics.sentence.hints}회\n틀렸다가 다시 시도: ${state.metrics.recognize.wrong+state.metrics.chunks.wrong+state.metrics.partial.wrong+state.metrics.sentence.wrong}회\n★ 다시 볼 단어: ${stars.length?stars.join(', '):'없음'}\n소요: 약 ${min}분`;
+    return `[윤후 영어 Lesson 02 - ${SETS[state.setKey].name}]\n뜻 보고 찾기 첫 시도: ${state.metrics.recognize.correct}/${count}\n철자 조각 첫 시도: ${state.metrics.chunks.correct}/${count}\n빈칸 철자 첫 시도: ${state.metrics.partial.correct}/${count}\n문장 뜻→단어 연결 첫 시도: ${state.metrics.sentence.correct}/${count}\n힌트 사용: ${state.metrics.recognize.hints+state.metrics.chunks.hints+state.metrics.partial.hints+state.metrics.sentence.hints}회\n틀렸다가 다시 시도: ${state.metrics.recognize.wrong+state.metrics.chunks.wrong+state.metrics.partial.wrong+state.metrics.sentence.wrong}회\n★ 다시 볼 단어: ${stars.length?stars.join(', '):'없음'}\n소요: 약 ${min}분`;
   }
   function finish(){
     state.completed=true; save();
@@ -450,7 +465,7 @@
         <div class="metric">뜻 보고 찾기<b>${metricText(state.metrics.recognize,count)}</b></div>
         <div class="metric">철자 조각<b>${metricText(state.metrics.chunks,count)}</b></div>
         <div class="metric">빈칸 철자<b>${metricText(state.metrics.partial,count)}</b></div>
-        <div class="metric">문장 속 찾기<b>${metricText(state.metrics.sentence,count)}</b></div>`}
+        <div class="metric">문장 뜻→단어 연결<b>${metricText(state.metrics.sentence,count)}</b></div>`}
       </div>
       ${stars.length?`<div class="note">★ 다시 보면 좋은 단어: <b>${stars.map(esc).join(', ')}</b></div>`:'<div class="note">★로 넘긴 단어 없이 끝냈어요.</div>'}
       <div class="summary" id="summary">${esc(summary)}</div>
