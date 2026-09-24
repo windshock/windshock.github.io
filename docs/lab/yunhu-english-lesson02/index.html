@@ -359,24 +359,45 @@
     setTimeout(()=>inp.focus(),50);
   }
   function sentencePromptForSpeech(w){ return w.sentence.replace('_____s','...').replace('_____','...'); }
+  function completedSentence(w){ return w.sentence.replace('_____', w.word); }
   function renderSentence(w){
     const opts=choiceOptions(w);
     screen.innerHTML=`<section class="card">
       <span class="stage">${esc(STAGES[state.stage].name)}</span>
       <h2>문장 빈칸에 알맞은 단어는?</h2>
-      <div class="sentence"><b>${esc(w.sentence)}</b><br><span class="muted">${esc(w.ko)}</span></div>
+      <div class="sentence" id="sentenceBox"><b>${esc(w.sentence)}</b><br><span class="muted">${esc(w.ko)}</span></div>
       <button class="audio" type="button" id="sentenceAudioBtn">🔊 문장 듣기</button>
       <button class="audio" type="button" id="audioBtn">🔊 정답 단어 듣기</button>
       <div class="choices">${opts.map(x=>`<button class="choice" type="button" data-v="${esc(x)}">${esc(x)}</button>`).join('')}</div>
       <div id="feedback" class="feedback">문장 뜻도 함께 보고 골라요.</div>
       <div class="actions"><button id="starBtn" class="star" type="button">★ 나중에 다시</button><button id="hintBtn" type="button">뜻 힌트</button></div>
+      <button id="sentenceNextBtn" class="primary hidden" type="button" style="width:100%;margin-top:10px">다음 문제</button>
     </section>`;
     const buttons=[...document.querySelectorAll('.choice')];
     buttons.forEach(b=>b.onclick=()=>{
       if(feedbackLocked) return;
       buttons.forEach(x=>x.classList.remove('selected','wrong','correct'));
       b.classList.add('selected'); feedback('', '');
-      if(b.dataset.v===w.word){ b.classList.add('correct'); feedback(`<b>${esc(w.word)}</b>가 문장에 맞아요.`, 'good'); recordCorrect(); nextTask(); }
+      if(b.dataset.v===w.word){
+        b.classList.add('correct');
+        const full=completedSentence(w);
+        const box=document.getElementById('sentenceBox');
+        if(box) box.innerHTML=`<b>${esc(full)}</b><br><span class="muted">${esc(w.ko)}</span>`;
+        const sentenceAudio=document.getElementById('sentenceAudioBtn');
+        if(sentenceAudio){
+          sentenceAudio.textContent='🔊 완성 문장 듣기';
+          sentenceAudio.onclick=()=>speak(full,.68);
+        }
+        feedback(`<b>${esc(w.word)}</b>가 맞아요. 이제 정답이 들어간 완성 문장을 들어보세요.`, 'good');
+        recordCorrect();
+        feedbackLocked=true;
+        save();
+        const next=document.getElementById('sentenceNextBtn');
+        if(next){
+          next.classList.remove('hidden');
+          next.onclick=()=>nextTask(100);
+        }
+      }
       else { b.classList.add('wrong'); state.attempts++; save(); feedback(`문장 뜻에서 “${esc(w.meaning)}”에 해당하는 단어를 다시 찾아보세요.`,'try'); }
     });
     const sentenceAudio=document.getElementById('sentenceAudioBtn'); if(sentenceAudio) sentenceAudio.onclick=()=>speak(sentencePromptForSpeech(w),.68);
