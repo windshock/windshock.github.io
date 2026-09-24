@@ -56,6 +56,9 @@
   .chunk-bank { background:#f5f6fa; }
   .assembled { background:#fff; border:2px dashed #cbd2df; }
   .chunk { min-width:58px; min-height:50px; font-size:22px; font-weight:800; padding:10px 14px; }
+  .chunk-wrap { display:flex; align-items:stretch; gap:6px; }
+  .chunk-sound { min-width:48px; min-height:50px; padding:8px 10px; font-size:15px; background:#fff; border-color:#cdd5ff; color:#263f9b; font-weight:750; }
+  .chunk-sound small { display:block; font-size:11px; color:var(--muted); margin-top:2px; }
   .assembled .chunk { background:var(--accent-soft); border-color:#bec9ff; }
   .sentence { padding:15px; border-radius:16px; background:#f7f8fb; font-size:20px; line-height:1.55; margin:14px 0; }
   .home-grid { display:grid; gap:12px; margin-top:16px; }
@@ -111,16 +114,16 @@
 <script>
 (() => {
   const WORDS = [
-    {word:'coat', meaning:'외투', emoji:'🧥', phonetic:'/koʊt/ · 코우트', chunks:['c','oa','t'], prefix:'c', missing:'oa', suffix:'t', sentence:'Put on a _____ right away.', ko:'지금 바로 외투를 입어라.'},
-    {word:'full', meaning:'배부른, 가득 찬', emoji:'😋', chunks:['f','u','ll'], prefix:'f', missing:'u', suffix:'ll', sentence:"I'm _____ now.", ko:'나는 지금 배부르다.'},
-    {word:'key', meaning:'열쇠', emoji:'🔑', chunks:['k','ey'], prefix:'k', missing:'ey', suffix:'', sentence:'Your _____s are on the table.', ko:'너의 열쇠는 탁자 위에 있다.'},
-    {word:'mask', meaning:'가면, 탈', emoji:'🎭', chunks:['ma','sk'], prefix:'m', missing:'a', suffix:'sk', sentence:'The kid is wearing an animal _____.', ko:'그 아이는 동물 가면을 쓰고 있다.'},
-    {word:'mouth', meaning:'입', emoji:'👄', chunks:['m','ou','th'], prefix:'m', missing:'ou', suffix:'th', sentence:'The child has a cookie in her _____.', ko:'그 아이는 입 안에 쿠키가 있다.'},
-    {word:'paper', meaning:'종이', emoji:'📄', chunks:['pa','per'], prefix:'p', missing:'a', suffix:'per', sentence:"Let's make a _____ airplane.", ko:'종이비행기를 만들자.'},
-    {word:'please', meaning:'부디, 제발', emoji:'🙏', chunks:['pl','ea','se'], prefix:'pl', missing:'ea', suffix:'se', sentence:'Open the window, _____.', ko:'창문 좀 열어 주세요.'},
-    {word:'salt', meaning:'소금', emoji:'🧂', chunks:['s','al','t'], prefix:'s', missing:'a', suffix:'lt', sentence:'Put some _____ in the soup.', ko:'그 수프에 약간의 소금을 넣어라.'},
-    {word:'tell', meaning:'말하다', emoji:'🗣️', chunks:['t','e','ll'], prefix:'t', missing:'e', suffix:'ll', sentence:'Can you _____ me the story?', ko:'내게 그 이야기를 말해 줄 수 있니?'},
-    {word:'zoo', meaning:'동물원', emoji:'🦁', chunks:['z','oo'], prefix:'z', missing:'oo', suffix:'', sentence:'There are many animals in the _____.', ko:'동물원에는 많은 동물이 있다.'}
+    {word:'coat', meaning:'외투', emoji:'🧥', phonetic:'/koʊt/ · 코우트', chunks:['c','oa','t'], chunkAudio:[{label:'/k/',example:'cat',where:'첫소리'},{label:'/oʊ/',example:'coat',where:'가운데 소리'},{label:'/t/',example:'top',where:'첫소리'}], prefix:'c', missing:'oa', suffix:'t', sentence:'Put on a _____ right away.', ko:'지금 바로 외투를 입어라.'},
+    {word:'full', meaning:'배부른, 가득 찬', emoji:'😋', chunks:['f','u','ll'], chunkAudio:[{label:'/f/',example:'fish',where:'첫소리'},{label:'/ʊ/',example:'full',where:'가운데 소리'},{label:'/l/',example:'bell',where:'끝소리'}], prefix:'f', missing:'u', suffix:'ll', sentence:"I'm _____ now.", ko:'나는 지금 배부르다.'},
+    {word:'key', meaning:'열쇠', emoji:'🔑', chunks:['k','ey'], chunkAudio:[{label:'/k/',example:'key',where:'첫소리'},{label:'/iː/',example:'key',where:'끝소리'}], prefix:'k', missing:'ey', suffix:'', sentence:'Your _____s are on the table.', ko:'너의 열쇠는 탁자 위에 있다.'},
+    {word:'mask', meaning:'가면, 탈', emoji:'🎭', chunks:['ma','sk'], chunkAudio:[{label:'/mæ/',example:'mask',where:'앞부분'},{label:'/sk/',example:'mask',where:'끝부분'}], prefix:'m', missing:'a', suffix:'sk', sentence:'The kid is wearing an animal _____.', ko:'그 아이는 동물 가면을 쓰고 있다.'},
+    {word:'mouth', meaning:'입', emoji:'👄', chunks:['m','ou','th'], chunkAudio:[{label:'/m/',example:'moon',where:'첫소리'},{label:'/aʊ/',example:'mouth',where:'가운데 소리'},{label:'/θ/',example:'thin',where:'첫소리'}], prefix:'m', missing:'ou', suffix:'th', sentence:'The child has a cookie in her _____.', ko:'그 아이는 입 안에 쿠키가 있다.'},
+    {word:'paper', meaning:'종이', emoji:'📄', chunks:['pa','per'], chunkAudio:[{label:'/peɪ/',example:'paper',where:'앞부분'},{label:'/pər/',example:'paper',where:'끝부분'}], prefix:'p', missing:'a', suffix:'per', sentence:"Let's make a _____ airplane.", ko:'종이비행기를 만들자.'},
+    {word:'please', meaning:'부디, 제발', emoji:'🙏', chunks:['pl','ea','se'], chunkAudio:[{label:'/pl/',example:'please',where:'앞부분'},{label:'/iː/',example:'please',where:'가운데 소리'},{label:'/z/',example:'zoo',where:'첫소리처럼'}], prefix:'pl', missing:'ea', suffix:'se', sentence:'Open the window, _____.', ko:'창문 좀 열어 주세요.'},
+    {word:'salt', meaning:'소금', emoji:'🧂', chunks:['s','al','t'], chunkAudio:[{label:'/s/',example:'sun',where:'첫소리'},{label:'가운데 소리',example:'salt',where:'가운데'},{label:'/t/',example:'top',where:'첫소리'}], prefix:'s', missing:'a', suffix:'lt', sentence:'Put some _____ in the soup.', ko:'그 수프에 약간의 소금을 넣어라.'},
+    {word:'tell', meaning:'말하다', emoji:'🗣️', chunks:['t','e','ll'], chunkAudio:[{label:'/t/',example:'top',where:'첫소리'},{label:'/ɛ/',example:'bed',where:'가운데 소리'},{label:'/l/',example:'bell',where:'끝소리'}], prefix:'t', missing:'e', suffix:'ll', sentence:'Can you _____ me the story?', ko:'내게 그 이야기를 말해 줄 수 있니?'},
+    {word:'zoo', meaning:'동물원', emoji:'🦁', chunks:['z','oo'], chunkAudio:[{label:'/z/',example:'zoo',where:'첫소리'},{label:'/uː/',example:'moon',where:'가운데 소리'}], prefix:'z', missing:'oo', suffix:'', sentence:'There are many animals in the _____.', ko:'동물원에는 많은 동물이 있다.'}
   ];
   const SETS = {
     A: {name:'A세트', words:[0,1,2,3,4], desc:'coat · full · key · mask · mouth'},
@@ -290,20 +293,32 @@
       ${commonTop(w,'조각을 눌러 단어 순서대로 놓아요.')}
       <div class="assembled" id="assembled" aria-label="만든 단어"></div>
       <div class="chunk-bank" id="bank"></div>
-      <div id="feedback" class="feedback">한 조각씩 눌러서 단어를 만들어요.</div>
+      <div id="feedback" class="feedback">조각을 눌러 단어를 만들어요. 🔊 버튼으로 각 조각의 소리도 들어봐요.</div>
       <div class="actions"><button id="starBtn" class="star" type="button">★ 나중에 다시</button><button id="hintBtn" type="button">첫 조각 힌트</button></div>
     </section>`;
     drawChunks(w);
     document.getElementById('hintBtn').onclick=()=>{ state.hintsThis++; save(); feedback(`첫 조각은 <b>${esc(w.chunks[0])}</b>예요.`, ''); };
+  }
+  function playChunkCue(w, idx){
+    const info=(w.chunkAudio||[])[idx];
+    if(!info){ speak(w.word,.62); return; }
+    speak(info.example,.62);
+    feedback(`<b>${esc(w.chunks[idx])}</b> → <b>${esc(info.label)}</b><br><span class="muted">“${esc(info.example)}”의 ${esc(info.where)}를 들어봐요. 정확한 소리는 예시 단어 안에서 들어요.</span>`, '');
   }
   function drawChunks(w){
     const bank=document.getElementById('bank'), made=document.getElementById('assembled');
     bank.innerHTML=''; made.innerHTML='';
     cache.order.forEach(item=>{
       if(cache.assembled.includes(item.i)) return;
+      const wrap=document.createElement('div'); wrap.className='chunk-wrap';
       const b=document.createElement('button'); b.type='button'; b.className='chunk'; b.textContent=item.c;
       b.onclick=()=>{ if(feedbackLocked) return; cache.assembled.push(item.i); drawChunks(w); checkChunks(w); };
-      bank.appendChild(b);
+      const audio=document.createElement('button'); audio.type='button'; audio.className='chunk-sound';
+      const info=(w.chunkAudio||[])[item.i];
+      audio.innerHTML=`🔊<small>${info?esc(info.label):'소리'}</small>`;
+      audio.setAttribute('aria-label', item.c+' 조각 소리 듣기');
+      audio.onclick=()=>{ if(feedbackLocked) return; playChunkCue(w,item.i); };
+      wrap.appendChild(b); wrap.appendChild(audio); bank.appendChild(wrap);
     });
     cache.assembled.forEach((idx,pos)=>{
       const b=document.createElement('button'); b.type='button'; b.className='chunk'; b.textContent=w.chunks[idx];
