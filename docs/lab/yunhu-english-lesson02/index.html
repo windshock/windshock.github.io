@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>윤후 영어 Lesson 02 - 단어를 조각부터 익혀요</title>
+<style>
+  * { box-sizing: border-box; }
+  :root {
+    --bg:#f6f7fb; --card:#ffffff; --ink:#172033; --muted:#667085;
+    --line:#d9deea; --accent:#3559d9; --accent-soft:#eef2ff;
+    --good:#16794b; --good-soft:#eaf8f1; --bad:#b54708; --bad-soft:#fff4e5;
+    --star:#8a6500; --star-soft:#fff7cc;
+  }
+  html,body { margin:0; min-height:100%; background:var(--bg); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; }
+  body { padding: max(12px, env(safe-area-inset-top)) 12px max(22px, env(safe-area-inset-bottom)); }
+  button,input { font:inherit; }
+  button { min-height:48px; border-radius:14px; border:1px solid var(--line); background:#fff; color:var(--ink); padding:12px 14px; cursor:pointer; }
+  button:active { transform:scale(.99); }
+  button:disabled { opacity:.48; cursor:default; transform:none; }
+  .app { width:100%; max-width:720px; margin:0 auto; }
+  .topbar { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+  .brand { flex:1; min-width:0; }
+  .brand strong { display:block; font-size:17px; }
+  .brand span { display:block; color:var(--muted); font-size:13px; margin-top:2px; }
+  .mini { min-height:44px; padding:9px 11px; font-size:14px; }
+  .progress-wrap { margin:8px 0 14px; }
+  .progress-line { height:10px; background:#e5e7ef; border-radius:999px; overflow:hidden; }
+  .progress-bar { height:100%; width:0; background:var(--accent); border-radius:999px; transition:width .25s ease; }
+  .progress-text { margin-top:6px; font-size:13px; color:var(--muted); display:flex; justify-content:space-between; gap:8px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:22px; padding:18px; box-shadow:0 5px 18px rgba(24,39,75,.05); }
+  .stage { display:inline-flex; align-items:center; gap:6px; padding:7px 10px; border-radius:999px; background:var(--accent-soft); color:#263f9b; font-size:13px; font-weight:700; }
+  .emoji { font-size:68px; line-height:1.1; text-align:center; margin:14px 0 8px; }
+  h1 { font-size:26px; margin:8px 0; line-height:1.25; }
+  h2 { font-size:22px; margin:12px 0 8px; line-height:1.35; }
+  p { font-size:18px; line-height:1.55; margin:8px 0; }
+  .muted { color:var(--muted); font-size:15px; }
+  .korean { font-size:24px; font-weight:800; text-align:center; margin:6px 0 10px; }
+  .audio { width:100%; margin:8px 0 14px; background:#f7f8ff; border-color:#cdd5ff; font-weight:700; }
+  .choices { display:grid; gap:10px; margin-top:14px; }
+  .choice { width:100%; min-height:58px; text-align:left; font-size:20px; font-weight:700; padding:14px 16px; }
+  .choice.selected { border:2px solid var(--accent); background:var(--accent-soft); }
+  .choice.correct { border:2px solid var(--good); background:var(--good-soft); }
+  .choice.wrong { border:2px solid var(--bad); background:var(--bad-soft); }
+  .feedback { min-height:54px; margin-top:14px; padding:12px 14px; border-radius:14px; background:#f7f8fa; font-size:16px; line-height:1.45; }
+  .feedback.good { background:var(--good-soft); color:#0f5b39; }
+  .feedback.try { background:var(--bad-soft); color:#7a3805; }
+  .actions { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px; }
+  .primary { background:var(--accent); color:#fff; border-color:var(--accent); font-weight:800; }
+  .star { background:var(--star-soft); border-color:#eadc84; color:#674d00; font-weight:700; }
+  .word-line { text-align:center; font-size:34px; letter-spacing:.06em; font-weight:850; margin:18px 0; }
+  .input-row { display:flex; gap:10px; align-items:center; margin:14px 0; }
+  input[type=text] { width:100%; min-width:0; height:56px; border-radius:14px; border:2px solid #cfd5e3; padding:10px 14px; font-size:22px; text-align:center; text-transform:lowercase; background:#fff; }
+  input[type=text]:focus { outline:3px solid rgba(53,89,217,.16); border-color:var(--accent); }
+  .chunk-bank, .assembled { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; min-height:62px; padding:10px; border-radius:16px; margin:12px 0; }
+  .chunk-bank { background:#f5f6fa; }
+  .assembled { background:#fff; border:2px dashed #cbd2df; }
+  .chunk { min-width:58px; min-height:50px; font-size:22px; font-weight:800; padding:10px 14px; }
+  .assembled .chunk { background:var(--accent-soft); border-color:#bec9ff; }
+  .sentence { padding:15px; border-radius:16px; background:#f7f8fb; font-size:20px; line-height:1.55; margin:14px 0; }
+  .home-grid { display:grid; gap:12px; margin-top:16px; }
+  .setbtn { text-align:left; padding:16px; min-height:78px; }
+  .setbtn strong { display:block; font-size:19px; margin-bottom:4px; }
+  .setbtn span { color:var(--muted); font-size:14px; }
+  .note { margin-top:16px; padding:14px; border-radius:16px; background:#fff9e8; border:1px solid #f2df9c; font-size:15px; line-height:1.55; }
+  .result-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0; }
+  .metric { padding:14px; border-radius:16px; background:#f7f8fb; }
+  .metric b { display:block; font-size:24px; margin-top:4px; }
+  .summary { white-space:pre-wrap; background:#f6f7fb; border:1px solid var(--line); border-radius:14px; padding:14px; font-size:14px; line-height:1.5; margin-top:12px; }
+  .tiny { font-size:13px; color:var(--muted); }
+  .hidden { display:none !important; }
+  @media (min-width:600px) {
+    .card { padding:24px; }
+    .home-grid { grid-template-columns:1fr 1fr; }
+    .choices { grid-template-columns:1fr 1fr; }
+    .choices .choice:last-child:nth-child(odd) { grid-column:1 / -1; }
+  }
+  @media (max-width:390px) {
+    body { padding-left:10px; padding-right:10px; }
+    .card { padding:15px; border-radius:18px; }
+    .emoji { font-size:58px; }
+    h1 { font-size:23px; }
+    h2 { font-size:20px; }
+    p { font-size:17px; }
+    .korean { font-size:22px; }
+    .choice { font-size:19px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { scroll-behavior:auto !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="topbar">
+    <div class="brand">
+      <strong>윤후 영어 · Lesson 02</strong>
+      <span>단어를 조각부터 익혀요</span>
+    </div>
+    <button id="homeBtn" class="mini hidden" type="button">처음으로</button>
+  </div>
+
+  <div id="progressWrap" class="progress-wrap hidden">
+    <div class="progress-line"><div id="progressBar" class="progress-bar"></div></div>
+    <div class="progress-text"><span id="stageLabel"></span><span id="progressLabel"></span></div>
+  </div>
+
+  <main id="screen"></main>
+</div>
+
+<script>
+(() => {
+  const WORDS = [
+    {word:'coat', meaning:'외투', emoji:'🧥', phonetic:'/koʊt/ · 코우트', chunks:['c','oa','t'], prefix:'c', missing:'oa', suffix:'t', sentence:'Put on a _____ right away.', ko:'지금 바로 외투를 입어라.'},
+    {word:'full', meaning:'배부른, 가득 찬', emoji:'😋', chunks:['f','u','ll'], prefix:'f', missing:'u', suffix:'ll', sentence:"I'm _____ now.", ko:'나는 지금 배부르다.'},
+    {word:'key', meaning:'열쇠', emoji:'🔑', chunks:['k','ey'], prefix:'k', missing:'ey', suffix:'', sentence:'Your _____s are on the table.', ko:'너의 열쇠는 탁자 위에 있다.'},
+    {word:'mask', meaning:'가면, 탈', emoji:'🎭', chunks:['ma','sk'], prefix:'m', missing:'a', suffix:'sk', sentence:'The kid is wearing an animal _____.', ko:'그 아이는 동물 가면을 쓰고 있다.'},
+    {word:'mouth', meaning:'입', emoji:'👄', chunks:['m','ou','th'], prefix:'m', missing:'ou', suffix:'th', sentence:'The child has a cookie in her _____.', ko:'그 아이는 입 안에 쿠키가 있다.'},
+    {word:'paper', meaning:'종이', emoji:'📄', chunks:['pa','per'], prefix:'p', missing:'a', suffix:'per', sentence:"Let's make a _____ airplane.", ko:'종이비행기를 만들자.'},
+    {word:'please', meaning:'부디, 제발', emoji:'🙏', chunks:['pl','ea','se'], prefix:'pl', missing:'ea', suffix:'se', sentence:'Open the window, _____.', ko:'창문 좀 열어 주세요.'},
+    {word:'salt', meaning:'소금', emoji:'🧂', chunks:['s','al','t'], prefix:'s', missing:'a', suffix:'lt', sentence:'Put some _____ in the soup.', ko:'그 수프에 약간의 소금을 넣어라.'},
+    {word:'tell', meaning:'말하다', emoji:'🗣️', chunks:['t','e','ll'], prefix:'t', missing:'e', suffix:'ll', sentence:'Can you _____ me the story?', ko:'내게 그 이야기를 말해 줄 수 있니?'},
+    {word:'zoo', meaning:'동물원', emoji:'🦁', chunks:['z','oo'], prefix:'z', missing:'oo', suffix:'', sentence:'There are many animals in the _____.', ko:'동물원에는 많은 동물이 있다.'}
+  ];
+  const SETS = {
+    A: {name:'A세트', words:[0,1,2,3,4], desc:'coat · full · key · mask · mouth'},
+    B: {name:'B세트', words:[5,6,7,8,9], desc:'paper · please · salt · tell · zoo'},
+    ALL: {name:'전체 복습', words:[0,1,2,3,4,5,6,7,8,9], desc:'10개 단어를 한 번에 복습'}
+  };
+  const STAGES = [
+    {id:'recognize', name:'1단계 · 뜻 보고 찾기'},
+    {id:'chunks', name:'2단계 · 철자 조각 맞추기'},
+    {id:'partial', name:'3단계 · 빈칸 철자 쓰기'},
+    {id:'sentence', name:'4단계 · 문장 속 단어 찾기'}
+  ];
+  const STORAGE='yunhu_lesson02_state_v2';
+  const screen=document.getElementById('screen');
+  const progressWrap=document.getElementById('progressWrap');
+  const progressBar=document.getElementById('progressBar');
+  const progressLabel=document.getElementById('progressLabel');
+  const stageLabel=document.getElementById('stageLabel');
+  const homeBtn=document.getElementById('homeBtn');
+
+  let state=null;
+  let cache={};
+  let feedbackLocked=false;
+
+  function blankMetrics(){
+    const obj={};
+    STAGES.forEach(s=>obj[s.id]={correct:0, total:0, hints:0, wrong:0});
+    obj.bonus={correct:0,total:0,hints:0,wrong:0};
+    return obj;
+  }
+  function newState(setKey, bonusOnly=false, wordIds=null){
+    return {
+      setKey,
+      wordIds: wordIds || [...SETS[setKey].words],
+      stage: bonusOnly ? 4 : 0,
+      pos:0,
+      mode: bonusOnly ? 'bonus' : 'learn',
+      startedAt:Date.now(),
+      attempts:0,
+      hintsThis:0,
+      metrics:blankMetrics(),
+      starred:[],
+      completed:false
+    };
+  }
+  function save(){ if(state) localStorage.setItem(STORAGE, JSON.stringify(state)); }
+  function load(){
+    try { return JSON.parse(localStorage.getItem(STORAGE)||'null'); }
+    catch(e){ return null; }
+  }
+  function clearSaved(){ localStorage.removeItem(STORAGE); }
+  function shuffle(arr){
+    const a=[...arr];
+    for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+    return a;
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
+  function speak(text, rate=.72){
+    if(!('speechSynthesis' in window)) return;
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang='en-US'; u.rate=rate; u.pitch=1;
+    const voices=speechSynthesis.getVoices();
+    const preferred=voices.find(v=>/^en-US$/i.test(v.lang) && /Samantha|Ava|Allison|Alex|Google US English/i.test(v.name));
+    const en=preferred || voices.find(v=>/^en-US$/i.test(v.lang)) || voices.find(v=>/^en/i.test(v.lang));
+    if(en) u.voice=en;
+    speechSynthesis.speak(u);
+  }
+  function markStar(id){
+    if(!state.starred.includes(id)) state.starred.push(id);
+    save();
+  }
+  function currentWord(){ return WORDS[state.wordIds[state.pos]]; }
+  function stageId(){ return state.mode==='bonus' ? 'bonus' : STAGES[state.stage].id; }
+  function totalTasks(){ return state.mode==='bonus' ? state.wordIds.length : state.wordIds.length*STAGES.length; }
+  function doneTasks(){ return state.mode==='bonus' ? state.pos : state.stage*state.wordIds.length + state.pos; }
+  function updateProgress(){
+    const total=totalTasks(); const done=doneTasks();
+    const pct=Math.max(0,Math.min(100,Math.round(done/total*100)));
+    progressBar.style.width=pct+'%';
+    progressLabel.textContent=(Math.min(done+1,total))+' / '+total;
+    stageLabel.textContent=state.mode==='bonus' ? '보너스 · 전체 철자' : STAGES[state.stage].name;
+  }
+  function resetCurrent(){ state.attempts=0; state.hintsThis=0; cache={}; feedbackLocked=false; save(); }
+  function recordCorrect(){
+    const id=stageId();
+    state.metrics[id].total += 1;
+    state.metrics[id].correct += (state.attempts===0 ? 1 : 0);
+    state.metrics[id].hints += state.hintsThis;
+    state.metrics[id].wrong += state.attempts;
+  }
+  function recordSkip(){
+    const id=stageId();
+    state.metrics[id].total += 1;
+    state.metrics[id].hints += state.hintsThis;
+    state.metrics[id].wrong += state.attempts;
+  }
+  function nextTask(delay=450){
+    feedbackLocked=true;
+    save();
+    setTimeout(()=>{
+      state.pos++;
+      if(state.pos>=state.wordIds.length){
+        if(state.mode==='bonus') { finish(); return; }
+        state.stage++;
+        state.pos=0;
+        if(state.stage>=STAGES.length){ finish(); return; }
+      }
+      resetCurrent(); renderTask();
+    },delay);
+  }
+  function feedback(msg, cls=''){
+    const el=document.getElementById('feedback');
+    if(!el) return;
+    el.className='feedback '+cls;
+    el.innerHTML=msg;
+  }
+  function commonTop(w, subtitle){
+    return `<span class="stage">${esc(state.mode==='bonus'?'보너스 · 전체 철자':STAGES[state.stage].name)}</span>
+      <div class="emoji" aria-hidden="true">${w.emoji}</div>
+      <div class="korean">${esc(w.meaning)}</div>
+      ${w.phonetic?`<div class="muted" style="text-align:center;font-size:18px;margin-top:6px">발음 ${esc(w.phonetic)}</div>`:''}
+      ${subtitle?`<p class="muted" style="text-align:center">${subtitle}</p>`:''}
+      <button class="audio" type="button" id="audioBtn">🔊 단어 듣기</button>`;
+  }
+  function renderTask(){
+    homeBtn.classList.remove('hidden'); progressWrap.classList.remove('hidden'); updateProgress();
+    const w=currentWord();
+    const id=stageId();
+    if(id==='recognize') renderRecognize(w);
+    else if(id==='chunks') renderChunks(w);
+    else if(id==='partial') renderPartial(w);
+    else if(id==='sentence') renderSentence(w);
+    else renderBonus(w);
+    const audio=document.getElementById('audioBtn'); if(audio) audio.onclick=()=>speak(w.word);
+    const star=document.getElementById('starBtn');
+    if(star) star.onclick=()=>{ markStar(state.wordIds[state.pos]); recordSkip(); nextTask(100); };
+  }
+  function choiceOptions(target){
+    if(cache.options) return cache.options;
+    const pool=shuffle(WORDS.filter(x=>x.word!==target.word)).slice(0,2).map(x=>x.word);
+    cache.options=shuffle([target.word,...pool]);
+    return cache.options;
+  }
+  function renderRecognize(w){
+    const opts=choiceOptions(w);
+    screen.innerHTML=`<section class="card">
+      ${commonTop(w,'뜻과 그림을 보고 영어 단어를 골라요.')}
+      <div class="choices" id="choices">${opts.map(x=>`<button class="choice" type="button" data-v="${esc(x)}">${esc(x)}</button>`).join('')}</div>
+      <div id="feedback" class="feedback">처음에는 ‘보고 알아보기’부터 시작해요.</div>
+      <div class="actions"><button id="starBtn" class="star" type="button">★ 나중에 다시</button><button id="hintBtn" type="button">힌트 보기</button></div>
+    </section>`;
+    const buttons=[...document.querySelectorAll('.choice')];
+    buttons.forEach(b=>b.onclick=()=>{
+      if(feedbackLocked) return;
+      buttons.forEach(x=>x.classList.remove('selected','wrong','correct'));
+      b.classList.add('selected'); feedback('', '');
+      if(b.dataset.v===w.word){ b.classList.add('correct'); feedback('맞았어요. 이제 글자 조각으로도 만나게 됩니다.','good'); recordCorrect(); nextTask(); }
+      else { b.classList.add('wrong'); state.attempts++; save(); feedback('다른 단어예요. 🔊 소리를 한 번 듣고 다시 골라도 돼요.','try'); }
+    });
+    document.getElementById('hintBtn').onclick=()=>{ state.hintsThis++; save(); feedback(`첫 글자는 <b>${esc(w.word[0])}</b>예요.`, ''); };
+  }
+  function renderChunks(w){
+    cache.order=cache.order||shuffle(w.chunks.map((c,i)=>({c,i})));
+    cache.assembled=cache.assembled||[];
+    screen.innerHTML=`<section class="card">
+      ${commonTop(w,'조각을 눌러 단어 순서대로 놓아요.')}
+      <div class="assembled" id="assembled" aria-label="만든 단어"></div>
+      <div class="chunk-bank" id="bank"></div>
+      <div id="feedback" class="feedback">한 조각씩 눌러서 단어를 만들어요.</div>
+      <div class="actions"><button id="starBtn" class="star" type="button">★ 나중에 다시</button><button id="hintBtn" type="button">첫 조각 힌트</button></div>
+    </section>`;
+    drawChunks(w);
+    document.getElementById('hintBtn').onclick=()=>{ state.hintsThis++; save(); feedback(`첫 조각은 <b>${esc(w.chunks[0])}</b>예요.`, ''); };
+  }
+  function drawChunks(w){
+    const bank=document.getElementById('bank'), made=document.getElementById('assembled');
+    bank.innerHTML=''; made.innerHTML='';
+    cache.order.forEach(item=>{
+      if(cache.assembled.includes(item.i)) return;
+      const b=document.createElement('button'); b.type='button'; b.className='chunk'; b.textContent=item.c;
+      b.onclick=()=>{ if(feedbackLocked) return; cache.assembled.push(item.i); drawChunks(w); checkChunks(w); };
+      bank.appendChild(b);
+    });
+    cache.assembled.forEach((idx,pos)=>{
+      const b=document.createElement('button'); b.type='button'; b.className='chunk'; b.textContent=w.chunks[idx];
+      b.setAttribute('aria-label',w.chunks[idx]+' 조각 빼기');
+      b.onclick=()=>{ if(feedbackLocked) return; cache.assembled.splice(pos,1); feedback('조각을 다시 고를 수 있어요.',''); drawChunks(w); };
+      made.appendChild(b);
+    });
+  }
+  function checkChunks(w){
+    if(cache.assembled.length!==w.chunks.length) return;
+    const made=cache.assembled.map(i=>w.chunks[i]).join('');
+    if(made===w.word){ feedback(`<b>${esc(w.word)}</b> 완성! 조각 순서를 잘 맞췄어요.`, 'good'); recordCorrect(); nextTask(600); }
+    else {
+      state.attempts++; save(); feedback('순서가 조금 달라요. 만든 조각을 눌러 빼고 다시 놓아 보세요.','try');
+      if(state.attempts>=2){ state.hintsThis++; feedback(`첫 조각은 <b>${esc(w.chunks[0])}</b>예요. 그다음부터 다시 맞춰 보세요.`, 'try'); }
+    }
+  }
+  function renderPartial(w){
+    screen.innerHTML=`<section class="card">
+      ${commonTop(w,'빈칸에 빠진 철자만 써요. 전체 단어를 한 번에 외우지 않아도 됩니다.')}
+      <div class="word-line">${esc(w.prefix)} <span style="color:#8791a5">__</span> ${esc(w.suffix)}</div>
+      <div class="input-row"><input id="answer" type="text" inputmode="text" autocomplete="off" autocapitalize="none" spellcheck="false" aria-label="빠진 철자 입력"></div>
+      <button id="checkBtn" class="primary" type="button" style="width:100%">확인</button>
+      <div id="feedback" class="feedback">빠진 부분만 써 보세요.</div>
+      <div class="actions"><button id="starBtn" class="star" type="button">★ 나중에 다시</button><button id="hintBtn" type="button">조각 힌트</button></div>
+    </section>`;
+    const inp=document.getElementById('answer');
+    function check(){
+      if(feedbackLocked) return;
+      const v=inp.value.trim().toLowerCase();
+      feedback('', '');
+      if(v===w.missing){ feedback(`<b>${esc(w.word)}</b>가 되었어요.`, 'good'); recordCorrect(); nextTask(); }
+      else { state.attempts++; save(); feedback('빠진 글자 조각을 다시 생각해 보세요. 필요하면 힌트를 눌러도 됩니다.','try'); inp.focus(); inp.select(); }
+    }
+    document.getElementById('checkBtn').onclick=check;
+    inp.addEventListener('keydown',e=>{ if(e.key==='Enter') check(); });
+    document.getElementById('hintBtn').onclick=()=>{ state.hintsThis++; save(); feedback(`철자 조각: <b>${w.chunks.map(esc).join(' · ')}</b>`, ''); inp.focus(); };
+    setTimeout(()=>inp.focus(),50);
+  }
+  function renderSentence(w){
+    const opts=choiceOptions(w);
+    screen.innerHTML=`<section class="card">
+      <span class="stage">${esc(STAGES[state.stage].name)}</span>
+      <h2>문장 빈칸에 알맞은 단어는?</h2>
+      <div class="sentence"><b>${esc(w.sentence)}</b><br><span class="muted">${esc(w.ko)}</span></div>
+      <button class="audio" type="button" id="audioBtn">🔊 정답 단어 듣기</button>
+      <div class="choices">${opts.map(x=>`<button class="choice" type="button" data-v="${esc(x)}">${esc(x)}</button>`).join('')}</div>
+      <div id="feedback" class="feedback">문장 뜻도 함께 보고 골라요.</div>
+      <div class="actions"><button id="starBtn" class="star" type="button">★ 나중에 다시</button><button id="hintBtn" type="button">뜻 힌트</button></div>
+    </section>`;
+    const buttons=[...document.querySelectorAll('.choice')];
+    buttons.forEach(b=>b.onclick=()=>{
+      if(feedbackLocked) return;
+      buttons.forEach(x=>x.classList.remove('selected','wrong','correct'));
+      b.classList.add('selected'); feedback('', '');
+      if(b.dataset.v===w.word){ b.classList.add('correct'); feedback(`<b>${esc(w.word)}</b>가 문장에 맞아요.`, 'good'); recordCorrect(); nextTask(); }
+      else { b.classList.add('wrong'); state.attempts++; save(); feedback(`문장 뜻에서 “${esc(w.meaning)}”에 해당하는 단어를 다시 찾아보세요.`,'try'); }
+    });
+    document.getElementById('hintBtn').onclick=()=>{ state.hintsThis++; save(); feedback(`찾는 뜻은 <b>${esc(w.meaning)}</b>, 첫 글자는 <b>${esc(w.word[0])}</b>예요.`, ''); };
+  }
+  function renderBonus(w){
+    screen.innerHTML=`<section class="card">
+      ${commonTop(w,'보너스예요. 뜻만 보고 단어 전체를 써 봐요. 막히면 힌트를 써도 됩니다.')}
+      <div class="input-row"><input id="answer" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" aria-label="단어 전체 철자 입력" placeholder="영어 단어"></div>
+      <button id="checkBtn" class="primary" type="button" style="width:100%">확인</button>
+      <div id="feedback" class="feedback">전체 철자는 보너스 단계입니다.</div>
+      <div class="actions"><button id="starBtn" class="star" type="button">★ 다음에 다시</button><button id="hintBtn" type="button">철자 조각 보기</button></div>
+    </section>`;
+    const inp=document.getElementById('answer');
+    function check(){
+      if(feedbackLocked) return;
+      const v=inp.value.trim().toLowerCase();
+      if(v===w.word){ feedback(`<b>${esc(w.word)}</b> 전체 철자 성공!`, 'good'); recordCorrect(); nextTask(); }
+      else { state.attempts++; save(); feedback('아직 괜찮아요. 전체 철자가 막히면 조각 힌트를 보고 다시 해 보세요.','try'); inp.focus(); inp.select(); }
+    }
+    document.getElementById('checkBtn').onclick=check;
+    inp.addEventListener('keydown',e=>{ if(e.key==='Enter') check(); });
+    document.getElementById('hintBtn').onclick=()=>{ state.hintsThis++; save(); feedback(`조각: <b>${w.chunks.map(esc).join(' · ')}</b>`, ''); inp.focus(); };
+    setTimeout(()=>inp.focus(),50);
+  }
+  function metricText(m, total){ return `${m.correct}/${total}`; }
+  function uniqueStarWords(){ return [...new Set(state.starred)].map(i=>WORDS[i].word); }
+  function summaryText(){
+    const count=state.wordIds.length;
+    const min=Math.max(1,Math.round((Date.now()-state.startedAt)/60000));
+    const stars=uniqueStarWords();
+    if(state.mode==='bonus'){
+      return `[윤후 영어 Lesson 02 - 보너스 전체 철자]\n단어 수: ${count}\n첫 시도 독립 철자: ${state.metrics.bonus.correct}/${count}\n힌트 사용: ${state.metrics.bonus.hints}회\n틀렸다가 다시 시도: ${state.metrics.bonus.wrong}회\n★ 다시 볼 단어: ${stars.length?stars.join(', '):'없음'}\n소요: 약 ${min}분`;
+    }
+    return `[윤후 영어 Lesson 02 - ${SETS[state.setKey].name}]\n뜻 보고 찾기 첫 시도: ${state.metrics.recognize.correct}/${count}\n철자 조각 첫 시도: ${state.metrics.chunks.correct}/${count}\n빈칸 철자 첫 시도: ${state.metrics.partial.correct}/${count}\n문장 속 찾기 첫 시도: ${state.metrics.sentence.correct}/${count}\n힌트 사용: ${state.metrics.recognize.hints+state.metrics.chunks.hints+state.metrics.partial.hints+state.metrics.sentence.hints}회\n틀렸다가 다시 시도: ${state.metrics.recognize.wrong+state.metrics.chunks.wrong+state.metrics.partial.wrong+state.metrics.sentence.wrong}회\n★ 다시 볼 단어: ${stars.length?stars.join(', '):'없음'}\n소요: 약 ${min}분`;
+  }
+  function finish(){
+    state.completed=true; save();
+    progressBar.style.width='100%'; progressLabel.textContent=totalTasks()+' / '+totalTasks();
+    const count=state.wordIds.length;
+    const stars=uniqueStarWords();
+    const summary=summaryText();
+    const isBonus=state.mode==='bonus';
+    screen.innerHTML=`<section class="card">
+      <span class="stage">학습 완료</span>
+      <h1>${isBonus?'보너스 전체 철자':'오늘 세트'} 끝!</h1>
+      <p class="muted">정답 수만 보지 않고, <b>어느 도움 단계까지 혼자 되었는지</b>를 봅니다.</p>
+      <div class="result-grid">
+        ${isBonus ? `<div class="metric">첫 시도 전체 철자<b>${metricText(state.metrics.bonus,count)}</b></div><div class="metric">힌트 사용<b>${state.metrics.bonus.hints}회</b></div>` : `
+        <div class="metric">뜻 보고 찾기<b>${metricText(state.metrics.recognize,count)}</b></div>
+        <div class="metric">철자 조각<b>${metricText(state.metrics.chunks,count)}</b></div>
+        <div class="metric">빈칸 철자<b>${metricText(state.metrics.partial,count)}</b></div>
+        <div class="metric">문장 속 찾기<b>${metricText(state.metrics.sentence,count)}</b></div>`}
+      </div>
+      ${stars.length?`<div class="note">★ 다시 보면 좋은 단어: <b>${stars.map(esc).join(', ')}</b></div>`:'<div class="note">★로 넘긴 단어 없이 끝냈어요.</div>'}
+      <div class="summary" id="summary">${esc(summary)}</div>
+      <div class="actions"><button id="copyBtn" type="button">📋 결과 복사</button><button id="retryStarBtn" type="button" ${stars.length?'':'disabled'}>★만 다시 연습</button></div>
+      ${!isBonus?`<button id="bonusBtn" class="primary" type="button" style="width:100%;margin-top:10px">보너스: 전체 철자 ${count}개 도전</button>`:''}
+      <button id="backHome" type="button" style="width:100%;margin-top:10px">세트 선택으로</button>
+      <p class="tiny" style="margin-top:12px">부모님은 이 결과에서 ‘첫 시도’, ‘힌트 수’, ‘★ 단어’를 함께 보세요. 전체 철자 쓰기는 실패해도 학습 실패가 아닙니다.</p>
+    </section>`;
+    document.getElementById('copyBtn').onclick=async()=>{
+      try{ await navigator.clipboard.writeText(summary); document.getElementById('copyBtn').textContent='복사했어요 ✓'; }
+      catch(e){ const ta=document.createElement('textarea'); ta.value=summary; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); document.getElementById('copyBtn').textContent='복사했어요 ✓'; }
+    };
+    const retry=document.getElementById('retryStarBtn');
+    retry.onclick=()=>{
+      const ids=[...new Set(state.starred)]; if(!ids.length) return;
+      state=newState(state.setKey,false,ids); clearSaved(); save(); renderTask();
+    };
+    const bonus=document.getElementById('bonusBtn');
+    if(bonus) bonus.onclick=()=>{ const ids=[...state.wordIds]; state=newState(state.setKey,true,ids); clearSaved(); save(); renderTask(); };
+    document.getElementById('backHome').onclick=()=>{ clearSaved(); state=null; renderHome(); };
+  }
+  function renderHome(){
+    progressWrap.classList.add('hidden'); homeBtn.classList.add('hidden');
+    const old=load(); const canResume=old && !old.completed && old.wordIds && old.wordIds.length;
+    screen.innerHTML=`<section class="card">
+      <span class="stage">윤후 맞춤 학습</span>
+      <h1>한 번에 5개씩, 도움을 조금씩 줄여요.</h1>
+      <p>바로 전체 철자를 쓰지 않고 <b>뜻 찾기 → 철자 조각 → 일부 철자 → 문장</b> 순서로 갑니다.</p>
+      <div class="home-grid">
+        <button class="setbtn" type="button" data-set="A"><strong>A세트 · 오늘 5개</strong><span>${SETS.A.desc}</span></button>
+        <button class="setbtn" type="button" data-set="B"><strong>B세트 · 다음 5개</strong><span>${SETS.B.desc}</span></button>
+        <button class="setbtn" type="button" data-set="ALL"><strong>전체 복습 · 10개</strong><span>5개씩 해본 뒤 복습할 때 추천</span></button>
+        ${canResume?'<button class="setbtn primary" type="button" id="resumeBtn"><strong>이어하기</strong><span>방금 하던 학습부터 계속</span></button>':''}
+      </div>
+      <div class="note"><b>윤후에게 중요한 규칙</b><br>① 막히면 ★ 하고 넘어가도 돼요.<br>② 힌트를 쓰는 건 실패가 아니에요.<br>③ 전체 철자 쓰기는 마지막 보너스예요.</div>
+    </section>`;
+    document.querySelectorAll('[data-set]').forEach(b=>b.onclick=()=>{ state=newState(b.dataset.set); clearSaved(); save(); renderTask(); });
+    const resume=document.getElementById('resumeBtn'); if(resume) resume.onclick=()=>{ state=old; renderTask(); };
+  }
+  homeBtn.onclick=()=>{
+    const ok=confirm('학습을 멈추고 세트 선택 화면으로 갈까요? 지금 진행은 저장되어 있어요.');
+    if(ok) renderHome();
+  };
+  renderHome();
+})();
+</script>
+</body>
+</html>
