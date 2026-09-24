@@ -343,12 +343,14 @@
     document.getElementById('hintBtn').onclick=()=>{ state.hintsThis++; save(); feedback(`철자 조각: <b>${w.chunks.map(esc).join(' · ')}</b>`, ''); inp.focus(); };
     setTimeout(()=>inp.focus(),50);
   }
+  function sentencePromptForSpeech(w){ return w.sentence.replace('_____s','...').replace('_____','...'); }
   function renderSentence(w){
     const opts=choiceOptions(w);
     screen.innerHTML=`<section class="card">
       <span class="stage">${esc(STAGES[state.stage].name)}</span>
       <h2>문장 빈칸에 알맞은 단어는?</h2>
       <div class="sentence"><b>${esc(w.sentence)}</b><br><span class="muted">${esc(w.ko)}</span></div>
+      <button class="audio" type="button" id="sentenceAudioBtn">🔊 문장 듣기</button>
       <button class="audio" type="button" id="audioBtn">🔊 정답 단어 듣기</button>
       <div class="choices">${opts.map(x=>`<button class="choice" type="button" data-v="${esc(x)}">${esc(x)}</button>`).join('')}</div>
       <div id="feedback" class="feedback">문장 뜻도 함께 보고 골라요.</div>
@@ -362,6 +364,7 @@
       if(b.dataset.v===w.word){ b.classList.add('correct'); feedback(`<b>${esc(w.word)}</b>가 문장에 맞아요.`, 'good'); recordCorrect(); nextTask(); }
       else { b.classList.add('wrong'); state.attempts++; save(); feedback(`문장 뜻에서 “${esc(w.meaning)}”에 해당하는 단어를 다시 찾아보세요.`,'try'); }
     });
+    const sentenceAudio=document.getElementById('sentenceAudioBtn'); if(sentenceAudio) sentenceAudio.onclick=()=>speak(sentencePromptForSpeech(w),.68);
     document.getElementById('hintBtn').onclick=()=>{ state.hintsThis++; save(); feedback(`찾는 뜻은 <b>${esc(w.meaning)}</b>, 첫 글자는 <b>${esc(w.word[0])}</b>예요.`, ''); };
   }
   function renderBonus(w){
