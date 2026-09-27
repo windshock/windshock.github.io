@@ -59,6 +59,16 @@
   .chunk-wrap { display:flex; align-items:stretch; gap:6px; }
   .chunk-sound { min-width:48px; min-height:50px; padding:8px 10px; font-size:15px; background:#fff; border-color:#cdd5ff; color:#263f9b; font-weight:750; }
   .chunk-sound small { display:block; font-size:11px; color:var(--muted); margin-top:2px; }
+  .phonics-guide { margin:14px 0; padding:14px; border-radius:18px; background:#f8faff; border:1px solid #dbe3ff; }
+  .phonics-step-title { font-size:17px; font-weight:850; margin-bottom:10px; }
+  .phonics-map { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+  .phonics-card { min-width:0; padding:10px 7px; border:1px solid #d9deea; border-radius:14px; background:#fff; text-align:center; }
+  .phonics-grapheme { font-size:25px; font-weight:900; letter-spacing:.03em; }
+  .phonics-ipa { font-size:15px; font-weight:800; color:#3559d9; margin-top:2px; }
+  .phonics-cue { min-height:38px; font-size:12px; line-height:1.35; color:var(--muted); margin:5px 0 7px; }
+  .phonics-play { width:100%; min-height:44px; padding:8px 6px; font-size:14px; font-weight:800; background:#eef2ff; border-color:#cdd5ff; }
+  .assembly-title { margin:16px 0 6px; font-size:17px; font-weight:850; }
+  @media (max-width:390px) { .phonics-map { grid-template-columns:repeat(2,minmax(0,1fr)); } }
   .assembled .chunk { background:var(--accent-soft); border-color:#bec9ff; }
   .sentence { padding:15px; border-radius:16px; background:#f7f8fb; font-size:20px; line-height:1.55; margin:14px 0; }
   .home-grid { display:grid; gap:12px; margin-top:16px; }
@@ -121,7 +131,7 @@
     {word:'mouth', meaning:'입', emoji:'👄', chunks:['m','ou','th'], chunkAudio:[{label:'/m/',example:'moon',where:'첫소리',cue:'입술을 붙이는 ㅁ 소리'},{label:'/aʊ/',example:'mouth',where:'가운데 소리',cue:'아→우로 이어지는 소리'},{label:'/θ/',example:'thin',where:'첫소리',cue:'혀를 이 사이에 두고 바람을 내는 th 소리'}], prefix:'m', missing:'ou', suffix:'th', sentence:'The child has a cookie in her _____.', ko:'그 아이는 입 안에 쿠키가 있다.'},
     {word:'paper', meaning:'종이', emoji:'📄', chunks:['pa','per'], chunkAudio:[{label:'/peɪ/',example:'paper',where:'앞부분',cue:'페이에 가까운 앞소리'},{label:'/pər/',example:'paper',where:'끝부분',cue:'퍼에 가까운 약한 끝소리'}], prefix:'p', missing:'a', suffix:'per', sentence:"Let's make a _____ airplane.", ko:'종이비행기를 만들자.'},
     {word:'please', meaning:'부디, 제발', emoji:'🙏', chunks:['pl','ea','se'], chunkAudio:[{label:'/pl/',example:'please',where:'앞부분',cue:'p와 l을 붙여 시작'},{label:'/iː/',example:'please',where:'가운데 소리',cue:'길게 이 소리'},{label:'/z/',example:'zoo',where:'첫소리처럼',cue:'목을 울리며 즈 소리'}], prefix:'pl', missing:'ea', suffix:'se', sentence:'Open the window, _____.', ko:'창문 좀 열어 주세요.'},
-    {word:'salt', meaning:'소금', emoji:'🧂', chunks:['s','al','t'], chunkAudio:[{label:'/s/',example:'sun',where:'첫소리',cue:'바람이 새는 ㅅ 소리'},{label:'/ɔː/ 쪽',example:'salt',where:'가운데',cue:'오에 가까운 길어진 가운데 소리'},{label:'/t/',example:'top',where:'첫소리',cue:'ㅌ처럼 짧게 끊는 소리'}], prefix:'s', missing:'a', suffix:'lt', sentence:'Put some _____ in the soup.', ko:'그 수프에 약간의 소금을 넣어라.'},
+    {word:'salt', meaning:'소금', emoji:'🧂', chunks:['s','al','t'], chunkAudio:[{label:'/s/',example:'sun',where:'첫소리',cue:'바람이 새는 ㅅ 소리'},{label:'/ɔːl/',example:'salt',where:'가운데',cue:'오에 가까운 모음 뒤에 l을 붙이는 소리'},{label:'/t/',example:'top',where:'첫소리',cue:'ㅌ처럼 짧게 끊는 소리'}], prefix:'s', missing:'a', suffix:'lt', sentence:'Put some _____ in the soup.', ko:'그 수프에 약간의 소금을 넣어라.'},
     {word:'tell', meaning:'말하다', emoji:'🗣️', chunks:['t','e','ll'], chunkAudio:[{label:'/t/',example:'top',where:'첫소리',cue:'ㅌ처럼 짧게 끊는 소리'},{label:'/ɛ/',example:'bed',where:'가운데 소리',cue:'짧은 에 소리'},{label:'/l/',example:'bell',where:'끝소리',cue:'혀끝을 윗잇몸에 대는 ㄹ 소리'}], prefix:'t', missing:'e', suffix:'ll', sentence:'Can you _____ me the story?', ko:'내게 그 이야기를 말해 줄 수 있니?'},
     {word:'zoo', meaning:'동물원', emoji:'🦁', chunks:['z','oo'], chunkAudio:[{label:'/z/',example:'zoo',where:'첫소리'},{label:'/uː/',example:'moon',where:'가운데 소리',cue:'길게 우 소리'}], prefix:'z', missing:'oo', suffix:'', sentence:'There are many animals in the _____.', ko:'동물원에는 많은 동물이 있다.'}
   ];
@@ -136,6 +146,21 @@
     {id:'partial', name:'3단계 · 빈칸 철자 쓰기'},
     {id:'sentence', name:'4단계 · 문장 뜻 → 단어 연결'}
   ];
+  const PHONICS_SPRITE_URL='phonics-sprite.mp3';
+  const PHONICS_SEGMENTS={
+    k:[0.0000,0.2134], oU:[0.2134,0.5293], t:[0.7427,0.2137], f:[0.9563,0.2819],
+    U:[1.2382,0.4125], l:[1.6507,0.2151], i_long:[1.8657,0.4656], m:[2.3313,0.1881],
+    ae:[2.5194,0.5081], sk:[3.0275,0.2949], aU:[3.3224,0.5296], theta:[3.8520,0.2558],
+    p:[4.1078,0.2512], eI:[4.3590,0.5179], er:[4.8769,0.4125], pl:[5.2894,0.2548],
+    z:[5.5442,0.2581], O_l:[5.8023,0.5396], E:[6.3419,0.4758], s:[6.8177,0.2810],
+    u_long:[7.0987,0.4763]
+  };
+  const PHONICS_BY_LABEL={
+    '/k/':['k'], '/oʊ/':['oU'], '/t/':['t'], '/f/':['f'], '/ʊ/':['U'], '/l/':['l'],
+    '/iː/':['i_long'], '/mæ/':['m','ae'], '/sk/':['sk'], '/m/':['m'], '/aʊ/':['aU'],
+    '/θ/':['theta'], '/peɪ/':['p','eI'], '/pər/':['p','er'], '/pl/':['pl'], '/z/':['z'],
+    '/s/':['s'], '/ɔːl/':['O_l'], '/ɛ/':['E'], '/uː/':['u_long']
+  };
   const STORAGE='yunhu_lesson02_state_v2';
   const screen=document.getElementById('screen');
   const progressWrap=document.getElementById('progressWrap');
@@ -182,6 +207,7 @@
   }
   function esc(s){ return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m])); }
   function speak(text, rate=.72){
+    stopPhonics();
     if(!('speechSynthesis' in window)) return;
     speechSynthesis.cancel();
     const u=new SpeechSynthesisUtterance(text);
@@ -292,32 +318,95 @@
   function renderChunks(w){
     cache.order=cache.order||shuffle(w.chunks.map((c,i)=>({c,i})));
     cache.assembled=cache.assembled||[];
+    const map=w.chunks.map((chunk,i)=>{
+      const info=(w.chunkAudio||[])[i]||{};
+      return `<div class="phonics-card">
+        <div class="phonics-grapheme">${esc(chunk)}</div>
+        <div class="phonics-ipa">${esc(info.label||'소리')}</div>
+        <div class="phonics-cue">${esc(info.cue||'철자와 소리를 연결해요.')}</div>
+        <button class="phonics-play" type="button" data-phonics-index="${i}">🔊 이 소리 듣기</button>
+      </div>`;
+    }).join('');
     screen.innerHTML=`<section class="card">
-      ${commonTop(w,'먼저 각 철자 조각이 어떤 파닉스 소리를 내는지 듣고, 그 다음 순서대로 맞춰요.')}
+      ${commonTop(w,'지금은 정답 순서를 숨기지 않습니다. 철자 조각과 소리를 먼저 정확히 연결하는 연습이에요.')}
+      <div class="phonics-guide">
+        <div class="phonics-step-title">1. 철자 조각 ↔ 파닉스 소리 연결</div>
+        <div class="phonics-map">${map}</div>
+        <button class="audio" type="button" id="blendBtn">🧩 조각 소리 → 단어 전체 이어듣기</button>
+      </div>
+      <div class="assembly-title">2. 같은 소리를 떠올리며 조각 순서 맞추기</div>
       <div class="assembled" id="assembled" aria-label="만든 단어"></div>
       <div class="chunk-bank" id="bank"></div>
-      <button class="audio" type="button" id="blendBtn">🧩 조각 소리 → 단어 전체 듣기</button>
-      <div id="feedback" class="feedback">① 🔊로 파닉스 소리를 확인하고 ② 철자 조각을 눌러 단어를 만들어요.</div>
+      <div id="feedback" class="feedback">먼저 위의 🔊를 하나씩 눌러 <b>철자와 소리</b>를 연결한 뒤, 아래 조각을 맞춰 보세요.</div>
       <div class="actions"><button id="starBtn" class="star" type="button">★ 나중에 다시</button><button id="hintBtn" type="button">첫 조각 힌트</button></div>
     </section>`;
     drawChunks(w);
+    document.querySelectorAll('[data-phonics-index]').forEach(btn=>{
+      btn.onclick=()=>playChunkCue(w,Number(btn.dataset.phonicsIndex));
+    });
     const blend=document.getElementById('blendBtn'); if(blend) blend.onclick=()=>playPhonicsBlend(w);
-    document.getElementById('hintBtn').onclick=()=>{ state.hintsThis++; save(); feedback(`첫 조각은 <b>${esc(w.chunks[0])}</b>예요.`, ''); };
+    document.getElementById('hintBtn').onclick=()=>{ state.hintsThis++; save(); feedback(`첫 조각은 <b>${esc(w.chunks[0])}</b>예요. 위의 같은 조각 🔊를 다시 들어보세요.`, ''); };
   }
-  function playChunkCue(w, idx){
+  let phonicsCtx=null;
+  let phonicsBufferPromise=null;
+  let phonicsSource=null;
+  function stopPhonics(){
+    if(phonicsSource){ try{ phonicsSource.stop(); }catch(e){} phonicsSource=null; }
+  }
+  function phonicsKeys(info){ return PHONICS_BY_LABEL[info?.label] || []; }
+  async function getPhonicsBuffer(){
+    const AC=window.AudioContext||window.webkitAudioContext;
+    if(!AC) throw new Error('Web Audio unavailable');
+    if(!phonicsCtx) phonicsCtx=new AC();
+    if(phonicsCtx.state==='suspended') await phonicsCtx.resume();
+    if(!phonicsBufferPromise){
+      phonicsBufferPromise=fetch(PHONICS_SPRITE_URL)
+        .then(r=>{ if(!r.ok) throw new Error('phonics audio '+r.status); return r.arrayBuffer(); })
+        .then(b=>phonicsCtx.decodeAudioData(b));
+    }
+    return phonicsBufferPromise;
+  }
+  async function playPhonicsKeys(keys, gap=55){
+    if(!keys.length) throw new Error('No phonics key');
+    const buf=await getPhonicsBuffer();
+    stopPhonics();
+    for(const key of keys){
+      const seg=PHONICS_SEGMENTS[key];
+      if(!seg) continue;
+      await new Promise(resolve=>{
+        const src=phonicsCtx.createBufferSource();
+        phonicsSource=src; src.buffer=buf; src.connect(phonicsCtx.destination);
+        let done=false; const finish=()=>{ if(done)return; done=true; if(phonicsSource===src) phonicsSource=null; resolve(); };
+        src.onended=finish;
+        src.start(0,seg[0],seg[1]);
+        setTimeout(finish,Math.ceil((seg[1]+0.12)*1000));
+      });
+      if(gap) await new Promise(r=>setTimeout(r,gap));
+    }
+  }
+  async function playChunkCue(w, idx){
     const info=(w.chunkAudio||[])[idx];
-    if(!info){ speak(w.word,.62); return; }
-    speak(info.example,.62);
-    feedback(`<b>${esc(w.chunks[idx])}</b> → <b>${esc(info.label)}</b><br>${info.cue?`<span>${esc(info.cue)}</span><br>`:''}<span class="muted">🔊에서는 “${esc(info.example)}” 안의 ${esc(info.where)}로 실제 소리를 확인해요.</span>`, '');
+    if(!info) return;
+    try{
+      await playPhonicsKeys(phonicsKeys(info),25);
+      feedback(`<b>${esc(w.chunks[idx])}</b> 철자는 <b>${esc(info.label)}</b> 소리와 연결해요.<br><span>${esc(info.cue||'')}</span>`, '');
+    }catch(e){
+      feedback('파닉스 소리 파일을 불러오지 못했어요. 새로고침 후 다시 눌러 주세요.','try');
+    }
   }
   async function playPhonicsBlend(w){
-    const info=w.chunkAudio||[];
-    for(let i=0;i<info.length;i++){
-      speak(info[i].example,.56);
-      await new Promise(r=>setTimeout(r,850));
+    try{
+      for(let i=0;i<w.chunks.length;i++){
+        const info=(w.chunkAudio||[])[i];
+        await playPhonicsKeys(phonicsKeys(info),45);
+        await new Promise(r=>setTimeout(r,90));
+      }
+      await new Promise(r=>setTimeout(r,180));
+      speak(w.word,.68);
+      feedback('<b>조각 소리 → 전체 단어</b> 순서로 들었어요. 이제 같은 순서로 조각을 놓아 보세요.','');
+    }catch(e){
+      feedback('파닉스 소리 파일을 불러오지 못했어요.','try');
     }
-    await new Promise(r=>setTimeout(r,180));
-    speak(w.word,.68);
   }
   function drawChunks(w){
     const bank=document.getElementById('bank'), made=document.getElementById('assembled');
@@ -326,10 +415,10 @@
       if(cache.assembled.includes(item.i)) return;
       const wrap=document.createElement('div'); wrap.className='chunk-wrap';
       const b=document.createElement('button'); b.type='button'; b.className='chunk'; b.textContent=item.c;
-      b.onclick=()=>{ if(feedbackLocked) return; cache.assembled.push(item.i); drawChunks(w); checkChunks(w); };
+      b.onclick=()=>{ if(feedbackLocked) return; playChunkCue(w,item.i); cache.assembled.push(item.i); drawChunks(w); checkChunks(w); };
       const audio=document.createElement('button'); audio.type='button'; audio.className='chunk-sound';
       const info=(w.chunkAudio||[])[item.i];
-      audio.innerHTML=`🔊<small>${info?esc(info.label):'소리'}</small>`;
+      audio.innerHTML=`🔊<small>${info?esc(info.label):'소리'}</small>`; audio.title='이 철자 조각의 파닉스 소리';
       audio.setAttribute('aria-label', item.c+' 조각 소리 듣기');
       audio.onclick=()=>{ if(feedbackLocked) return; playChunkCue(w,item.i); };
       wrap.appendChild(b); wrap.appendChild(audio); bank.appendChild(wrap);
