@@ -24,6 +24,7 @@
   .brand strong { display:block; font-size:17px; }
   .brand span { display:block; color:var(--muted); font-size:13px; margin-top:2px; }
   .mini { min-height:44px; padding:9px 11px; font-size:14px; }
+  .download-link { display:flex; align-items:center; justify-content:center; width:100%; min-height:50px; margin-top:12px; border-radius:14px; border:1px solid #cdd5ff; background:#f7f8ff; color:#263f9b; font-weight:800; text-decoration:none; }
   .progress-wrap { margin:8px 0 14px; }
   .progress-line { height:10px; background:#e5e7ef; border-radius:999px; overflow:hidden; }
   .progress-bar { height:100%; width:0; background:var(--accent); border-radius:999px; transition:width .25s ease; }
@@ -590,6 +591,7 @@
         ${canResume?'<button class="setbtn primary" type="button" id="resumeBtn"><strong>이어하기</strong><span>방금 하던 학습부터 계속</span></button>':''}
       </div>
       <div class="note"><b>윤후에게 중요한 규칙</b><br>① 막히면 ★ 하고 넘어가도 돼요.<br>② 힌트를 쓰는 건 실패가 아니에요.<br>③ 전체 철자 쓰기는 마지막 보너스예요.</div>
+      <a class="download-link" href="yunhu-lesson02.html" download>⬇️ HTML 파일 다운로드</a>
     </section>`;
     document.querySelectorAll('[data-set]').forEach(b=>b.onclick=()=>{ state=newState(b.dataset.set); clearSaved(); save(); renderTask(); });
     const resume=document.getElementById('resumeBtn'); if(resume) resume.onclick=()=>{ state=old; renderTask(); };
