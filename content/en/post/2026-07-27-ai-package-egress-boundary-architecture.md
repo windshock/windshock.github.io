@@ -1,6 +1,7 @@
 ---
 title: "AI Package and Container Registry Boundaries: Egress Control Architecture for AI Runtimes"
 date: 2026-07-27
+lastmod: 2026-09-30
 draft: false
 featured: true
 tags: ["Mind", "AI Security", "Artifact Repository", "SSRF", "Egress Control"]
@@ -96,7 +97,7 @@ The two observed runtime designs control egress at different layers. OpenAI appe
 
 ## 5. Public Vulnerability Background: Nexus SSRF History
 
-This section discusses only public Nexus SSRF history. It intentionally excludes undisclosed vulnerability details, reproduction procedures, payloads, and any specific private finding mechanics.
+This section covers the Nexus SSRF history that already had assigned CVEs. Independently reproduced findings published later without mapped CVEs, and their disclosure status, are separated into Section 5.6.
 
 | Public issue | Summary | Meaning for AI package boundaries |
 |----|----|----|
@@ -110,7 +111,7 @@ This section discusses only public Nexus SSRF history. It intentionally excludes
 
 ## 5.5 JFrog Artifactory: a 2020 foresight and the July-2026 CVE cluster
 
-This section, too, covers only public material — no undisclosed finding mechanics, reproduction steps, or payloads.
+This section covers previously published issues with assigned CVEs. The independently reproduced findings published later are separated in Section 5.6 rather than blended into the CVE set.
 
 ### The 2020 foresight — keramas's SSRF research
 
@@ -120,7 +121,7 @@ In 2020 the researcher **keramas** documented an Artifactory SSRF ([post](https:
 
 ### July 2026 — the incident's actual CVEs
 
-After the OpenAI incident, **eight CVEs** were disclosed in JFrog Artifactory and **fixed in 7.161.15** (every self-hosted install below it is in range). They attach concrete CVEs to Section 3's premise that the package proxy *is* the egress boundary.
+After the OpenAI incident, **eight CVEs** were disclosed in JFrog Artifactory and fixed across several maintained branches. For example, 7.146.34 and 7.161.15 are fix points for their respective branches, but the affected range varies by CVE. It is therefore too broad to say that every self-hosted installation below 7.161.15 is affected by all eight issues. The CVEs attach concrete examples to Section 3's premise that the package proxy *is* the egress boundary.
 
 | CVE | Class | Component |
 |---|---|---|
@@ -149,7 +150,21 @@ When an isolated AI/CI sandbox's only egress is an internal Artifactory, these C
 
 From a low bar (65924 needs no auth when Anonymous Access is on), one "allowed package proxy" becomes a path to cloud credentials, the internal network, and RCE. **The "SSRF-to-a-restricted-internal-service" that keramas flagged in 2020 is realized, in the new context of an AI runtime, as a full kill chain.** The root is the same as Sections 4 and 5: convenience features — redirects, metadata, external dependencies — carry server-side outbound authority.
 
-### Reusable Repository SSRF Audit Skill
+## 5.6 September 30, 2026: three independently reproduced findings without mapped CVEs
+
+After the original article, I reproduced separate Nexus and Artifactory code paths in isolated labs and published the original reports, PoCs, logs, recordings, and hashes in the [`attack-path-synthesizer` No-CVE directory](https://github.com/windshock/attack-path-synthesizer/tree/main/no-cve). `NOCVE-*` is a local identifier used only by that repository, not an identifier issued by a CVE Numbering Authority.
+
+| ID | Reproduced mechanism | Evidence boundary | HackerOne outcome |
+|---|---|---|---|
+| [NOCVE-2026-001](https://github.com/windshock/attack-path-synthesizer/tree/main/no-cve/NOCVE-2026-001-nexus-apt-manifest-ssrf) | Nexus APT flat-proxy `Release` manifest paths can replace the snapshot-fetch host, while that private fetch path does not pass through `AntiSsrfService` | The archive contains E2E reproductions on 3.93.2, 3.94.0, and 3.94.1. After submission, the researcher reported E2E and bytecode confirmation on 3.95.0-07, but that follow-up transcript is not in the ZIP | **Informative.** The analyst could not find the methods in the current code; the researcher said the review used default `main` rather than `release-3.94.1-06`, supplied exact source permalinks and the 3.95 result, and requested mediation |
+| [NOCVE-2026-002](https://github.com/windshock/attack-path-synthesizer/tree/main/no-cve/NOCVE-2026-002-jfrog-artifactory-redirect-ssrf) | C-001: an Artifactory remote repository follows a private redirect under the default report-only guard. C-001a: with guards enforcing, an IPv4-mapped IPv6 representation and socket-normalization differential still reaches the internal IPv4 target | C-001 was reproduced on 7.146.29 and 7.161.15; the enforcing C-001a differential was reproduced on 7.161.15 | **Informative.** Internal-service requests and response retrieval were acknowledged, but upstream-response control and the other prerequisites were judged too weak a practical threat model |
+| [NOCVE-2026-003](https://github.com/windshock/attack-path-synthesizer/tree/main/no-cve/NOCVE-2026-003-jfrog-artifactory-npm-extdep-ssrf) | Artifactory Pro npm External Dependency Rewrite admits package-metadata URLs through an Ant-style pattern rather than a host/IP boundary, then fetches them server-side | With the feature enabled, the full attacker-controlled packument-to-RFC1918-canary chain was reproduced on 7.146.29 and 7.161.15. The feature itself is off by default | **Informative.** The analyst treated both feature enablement and a permissive pattern as prerequisites. The researcher replied with screenshots showing a newly created npm virtual repository already had `**` in its untouched Patterns Allow List |
+
+All three final HackerOne dispositions are **Informative**. They must not be described as vendor-confirmed or triaged vulnerabilities. The unresolved technical disagreements still matter: the Nexus dispute is about which source branch was reviewed, while the Artifactory dispute is less about whether an internal request occurred than whether the prerequisites constitute a practical security impact. The full comment sequence and unresolved points are preserved in the [public disclosure timeline](https://github.com/windshock/attack-path-synthesizer/blob/main/no-cve/DISCLOSURE-HISTORY.md).
+
+The packages use isolated RFC1918 canaries rather than real cloud metadata or third-party systems. Tested versions are historical evidence, not an automatically extended affected range, and the PoCs must be run only in a lab you own or are explicitly authorized to test.
+
+## 5.7 Reusable Repository SSRF Audit Skill
 
 The open-source [repository-ssrf-audit](https://github.com/windshock/repository-ssrf-audit) skill turns this review model into a reusable workflow. It keeps Nexus and JFrog Artifactory as explicit product routes, while the actual analysis remains portable: trace attacker-controlled input through parsing and URL transformations to the final network request, then compare the destination accepted by policy with the destination actually used by the socket.
 
@@ -371,6 +386,8 @@ The goal is not only to prevent package proxy vulnerabilities. The goal is to br
 ## References
 
 - [repository-ssrf-audit — reusable Nexus, JFrog Artifactory, and repository SSRF audit skill](https://github.com/windshock/repository-ssrf-audit)
+- [Attack Path Synthesizer — no-CVE Nexus/JFrog SSRF research packages](https://github.com/windshock/attack-path-synthesizer/tree/main/no-cve)
+- [HackerOne disclosure history and unresolved points](https://github.com/windshock/attack-path-synthesizer/blob/main/no-cve/DISCLOSURE-HISTORY.md)
 - OpenAI, [OpenAI and Hugging Face partner to address security incident during model evaluation](https://openai.com/index/hugging-face-model-evaluation-security-incident/), 2026-07-21.
 - Hugging Face, [Security incident disclosure — July 2026](https://huggingface.co/blog/security-incident-july-2026), 2026-07-16.
 - Hacktron AI, *Here’s How an OpenAI Model Went Rogue and Hacked Hugging Face*, 2026-07-23. Treated here as third-party reconstruction, not official confirmation.
@@ -389,4 +406,4 @@ The goal is not only to prevent package proxy vulnerabilities. The goal is to br
 - JFrog, [JFrog Security Advisories](https://docs.jfrog.com/releases/docs/jfrog-security-advisories) (authoritative source for the per-CVE "fixed in" version and affected component of the July-2026 8-CVE cluster).
 - ToolsLib Blog, [OpenAI testing uncovers zero-day flaws in JFrog Artifactory: the eight CVEs](https://blog.toolslib.net/2026/07/29/openai-artifactory-zero-days-eight-cves/), 2026-07-29 (secondary reporting of the eight CVEs).
 
-> This post intentionally excludes undisclosed vulnerability reproduction details, payloads, and exploit procedures.
+> Section 5.6 summarizes the bounded claims and evidence in the now-public isolated-lab packages. Reproduction procedures must be used only in environments you own or are explicitly authorized to test.

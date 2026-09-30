@@ -1,6 +1,7 @@
 ---
 title: "AI 실행 환경의 패키지⁠·⁠컨테이너 레지스트리 경계와 Egress 통제 구조"
 date: 2026-07-27
+lastmod: 2026-09-30
 draft: false
 featured: true
 tags: ["Mind", "AI 보안", "Artifact Repository", "SSRF", "Egress Control"]
@@ -96,7 +97,7 @@ Artifactory가 관련 proxy/cache 제품이었다면, 해당 registry 경로를 
 
 ## 5. 공개 취약점 사례: Nexus SSRF 이력
 
-이 장은 공개된 Nexus SSRF 이력만 다룬다. 미공개 제보 후보, 세부 재현 절차, 페이로드, 특정 manifest 구성은 본 보고서 범위에서 제외한다.
+이 장은 기존에 CVE가 배정된 Nexus SSRF 이력을 다룬다. 이후 독립 재현해 공개한 CVE 미배정 항목과 그 공개 상태는 5.6절에서 별도로 다룬다.
 
 | 공개 항목 | 요약 | AI 패키지 경계 관점의 의미 |
 |----|----|----|
@@ -108,7 +109,7 @@ Artifactory가 관련 proxy/cache 제품이었다면, 해당 registry 경로를 
 
 ## 5.5 JFrog Artifactory: 2020년의 예견, 그리고 2026년 7월 CVE 클러스터
 
-이 장도 공개된 내용만 다룬다. 미공개 제보 후보, 재현 절차, 페이로드는 제외한다.
+이 절은 기존에 CVE가 배정된 공개 내용을 다룬다. 이후 공개한 독립 재현 결과는 5.6절에서 기존 CVE와 분리한다.
 
 ### 2020년의 예견 — keramas의 SSRF 연구
 
@@ -118,7 +119,7 @@ Artifactory가 관련 proxy/cache 제품이었다면, 해당 registry 경로를 
 
 ### 2026년 7월 — 사고의 실제 CVE
 
-OpenAI 사고 이후, JFrog Artifactory에서 **8개 CVE**가 공개되고 **7.161.15에서 수정**됐다(그 이전 self-hosted 설치는 모두 영향 범위). 이는 3장에서 다룬 “패키지 프록시가 곧 egress 경계”라는 가정에 **구체적인 CVE를 붙여준다**.
+OpenAI 사고 이후 JFrog Artifactory에서 **8개 CVE**가 공개됐고, 여러 유지보수 브랜치에서 수정됐다. 예를 들어 7.146 계열은 7.146.34, 7.161 계열은 7.161.15가 수정 버전으로 제시되지만, 정확한 영향 범위는 CVE마다 다르다. 따라서 “7.161.15 미만의 모든 self-hosted 설치가 8개 전부에 영향받는다”고 일반화하면 안 된다. 이 CVE들은 3장에서 다룬 “패키지 프록시가 곧 egress 경계”라는 가정에 구체적인 사례를 붙여준다.
 
 | CVE | 클래스 | 컴포넌트 |
 |---|---|---|
@@ -147,7 +148,21 @@ OpenAI 사고 이후, JFrog Artifactory에서 **8개 CVE**가 공개되고 **7.1
 
 낮은 전제(65924는 익명 접근 시 인증 불필요)에서 시작해, “허용된 패키지 프록시” 하나가 클라우드 계정·내부망·RCE로 이어지는 통로가 된다. **keramas가 2020년에 짚은 “SSRF로 내부-제한 서비스 도달”이, AI 실행 환경이라는 새 맥락에서 전면적 킬체인으로 실현된 셈이다.** 그리고 이 계열의 근본은 “redirect·metadata·외부의존성 같은 편의 기능이 서버 측 outbound 권한을 갖는다”는 것 — 4장의 관측, 5장의 Nexus 이력과 정확히 같은 뿌리다.
 
-### 재사용 가능한 Repository SSRF 분석 스킬
+## 5.6 2026-09-30: CVE 미배정 독립 재현 3건 공개
+
+이 글을 처음 쓴 뒤 Nexus와 Artifactory의 별도 코드 경로를 격리 랩에서 재현했고, 원본 보고서·PoC·로그·영상·해시를 [`attack-path-synthesizer`의 No-CVE 디렉터리](https://github.com/windshock/attack-path-synthesizer/tree/main/no-cve)에 공개했다. `NOCVE-*`는 이 저장소 안에서만 쓰는 식별자이며 CVE Numbering Authority가 발급한 번호가 아니다.
+
+| ID | 재현한 메커니즘 | 증거 범위 | HackerOne 결과 |
+|---|---|---|---|
+| [NOCVE-2026-001](https://github.com/windshock/attack-path-synthesizer/tree/main/no-cve/NOCVE-2026-001-nexus-apt-manifest-ssrf) | Nexus APT flat proxy의 `Release` manifest 경로가 snapshot fetch의 host를 바꾸고, 해당 private fetch 경로가 `AntiSsrfService`를 거치지 않는 SSRF | 원본 ZIP에서 3.93.2·3.94.0·3.94.1 E2E 재현. 제출 후 연구자는 3.95.0-07에서도 E2E·bytecode를 확인했다고 보고했지만 그 후속 transcript는 ZIP에 없음 | **Informative.** 분석가는 현재 코드에서 해당 메서드를 찾지 못했다고 했고, 연구자는 기본 `main`이 아니라 `release-3.94.1-06`을 봐야 한다며 정확한 source permalink와 3.95 결과를 제출하고 mediation을 요청함 |
+| [NOCVE-2026-002](https://github.com/windshock/attack-path-synthesizer/tree/main/no-cve/NOCVE-2026-002-jfrog-artifactory-redirect-ssrf) | Artifactory remote repository가 기본 report-only guard에서 private redirect를 따르는 C-001, 그리고 guard enforcing 상태에서도 IPv4-mapped IPv6 표현과 socket 정규화 차이로 내부 IPv4에 도달하는 C-001a | C-001은 7.146.29 및 7.161.15, C-001a enforcing differential은 7.161.15에서 E2E 재현 | **Informative.** 내부 서비스 요청과 응답 회수는 인정됐지만, upstream 응답 통제와 다른 전제 때문에 실질적 위협 모델이 약하다고 판단됨 |
+| [NOCVE-2026-003](https://github.com/windshock/attack-path-synthesizer/tree/main/no-cve/NOCVE-2026-003-jfrog-artifactory-npm-extdep-ssrf) | Artifactory Pro npm External Dependency Rewrite가 package metadata의 외부 URL을 host/IP 경계가 아닌 Ant-style pattern으로 허용한 뒤 server-side fetch하는 SSRF | 기능을 켠 7.146.29와 7.161.15에서 attacker-controlled packument부터 RFC1918 canary까지 full chain 재현. 기능 자체는 기본 OFF | **Informative.** 분석가는 기능 ON과 permissive pattern 설정을 전제로 봤다. 연구자는 신규 npm virtual repository의 Patterns Allow List가 수정 전부터 `**`였으므로 별도 permissive-pattern 설정은 필요하지 않다고 스크린샷과 함께 정정함 |
+
+HackerOne의 최종 상태는 세 항목 모두 **Informative**이며, vendor-confirmed 또는 triaged 취약점으로 표현하면 안 된다. 동시에 종결 사유와 기술 증거 사이의 쟁점도 구분해야 한다. Nexus 건은 어떤 branch를 검토했는지가 핵심이고, Artifactory 건은 내부 요청이 발생했는지보다 그 전제를 현실적인 보안 영향으로 인정할지가 핵심이다. 전체 댓글 흐름과 미해결 쟁점은 [공개 타임라인](https://github.com/windshock/attack-path-synthesizer/blob/main/no-cve/DISCLOSURE-HISTORY.md)에 함께 기록했다.
+
+공개 패키지는 실제 cloud metadata나 제3자 시스템 대신 격리된 RFC1918 canary를 사용한다. 재현 버전은 역사적 증거이지 이후 버전까지 자동으로 확장되는 영향 범위가 아니며, PoC는 소유하거나 명시적으로 허가받은 랩에서만 실행해야 한다.
+
+## 5.7 재사용 가능한 Repository SSRF 분석 스킬
 
 오픈소스 [repository-ssrf-audit](https://github.com/windshock/repository-ssrf-audit) 스킬은 이 검토 모델을 다른 저장소 제품에도 재사용할 수 있는 절차로 정리한다. Nexus와 JFrog Artifactory라는 제품별 진입점은 명시적으로 유지하되, 핵심 분석은 범용적이다. 공격자 제어 입력이 parsing과 URL transformation을 거쳐 최종 network request에 도달하는 흐름을 추적하고, 정책이 허용한 목적지와 실제 socket이 사용한 목적지를 비교한다.
 
@@ -349,6 +364,8 @@ OpenAI–Hugging Face 사고, OpenAI 실행 컨테이너의 Artifactory-style pa
 ## 참고자료
 
 - [repository-ssrf-audit — Nexus, JFrog Artifactory 및 저장소 SSRF 분석을 위한 재사용 가능 스킬](https://github.com/windshock/repository-ssrf-audit)
+- [Attack Path Synthesizer — CVE 미배정 Nexus/JFrog SSRF 연구 패키지](https://github.com/windshock/attack-path-synthesizer/tree/main/no-cve)
+- [HackerOne 공개 경과 및 미해결 쟁점](https://github.com/windshock/attack-path-synthesizer/blob/main/no-cve/DISCLOSURE-HISTORY.md)
 - OpenAI, [OpenAI and Hugging Face partner to address security incident during model evaluation](https://openai.com/index/hugging-face-model-evaluation-security-incident/), 2026-07-21.
 - Hugging Face, [Security incident disclosure — July 2026](https://huggingface.co/blog/security-incident-july-2026), 2026-07-16.
 - Hacktron AI, *Here’s How an OpenAI Model Went Rogue and Hacked Hugging Face*, 2026-07-23. Treated here as third-party reconstruction, not official confirmation.
@@ -367,4 +384,4 @@ OpenAI–Hugging Face 사고, OpenAI 실행 컨테이너의 Artifactory-style pa
 - JFrog, [JFrog Security Advisories](https://docs.jfrog.com/releases/docs/jfrog-security-advisories) (2026년 7월 8-CVE 클러스터의 CVE별 "fixed in"·컴포넌트를 확인하는 권위 출처).
 - ToolsLib Blog, [OpenAI testing uncovers zero-day flaws in JFrog Artifactory: the eight CVEs](https://blog.toolslib.net/2026/07/29/openai-artifactory-zero-days-eight-cves/), 2026-07-29 (8-CVE 요약; 2차 보도).
 
-> 이 글은 미공개 취약점의 세부 재현 절차, 페이로드, 공격 절차를 의도적으로 제외한다.
+> 5.6절의 CVE 미배정 항목은 공개된 격리 랩 패키지의 주장과 증거 경계를 요약한다. 재현 절차는 소유하거나 명시적으로 허가받은 환경에서만 사용해야 한다.
