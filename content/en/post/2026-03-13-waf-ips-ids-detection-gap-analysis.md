@@ -222,6 +222,8 @@ plaintext HTTP path(`POST http://www.service-b.example.com/action.do`)4-cell ver
 
 IPS is inspecting the body (uncompressed JNDI → timeout), but the same payload passes through when compressed. Header-based detection operates normally (control). Since most IPS/WAF have body decompression settings (Snort `decompress_gzip`, Suricata `decompression.enabled`, Palo Alto/Fortinet Inspect Compressed Content), activation of these settings needs to be verified.
 
+> **Vendor Disclosure (2026-03-26)**: This deflate-encoding inspection gap was formally reported to **Trend Micro PSIRT** as a TippingPoint IPS detection bypass. The submission included a detailed report and minimal PoC demonstrating that deflate-compressed request bodies pass through TippingPoint IPS without triggering detection rules that successfully block the same payload in plaintext form. The sanitized PoC and full disclosure details are available in the [waf-ips-ids-retest](https://github.com/windshock/waf-ips-ids-retest) repository at [`references/trendmicro-tippingpoint-deflate-bypass.md`](https://github.com/windshock/waf-ips-ids-retest/blob/main/references/trendmicro-tippingpoint-deflate-bypass.md).
+
 #### Finding 2: IPS Body Inspection Confirmed Regardless of Content-Type (TC-09, Positive)
 
 The same JNDI body was sent with 6 Content-Type variants(`application/json`, `text/plain`, `application/xml`, `application/octet-stream`, `multipart/form-data`, CT none)via IPS-visible HTTP path, resulting in **all timeout (blocked)**. IPS was confirmed to inspect the entire body regardless of Content-Type.
@@ -1233,6 +1235,7 @@ PY | curl -X POST https://target.example.com/api/data \
 | Suricata | `suricata.yaml` → `app-layer.protocols.http.decompression.enabled: yes` |
 | Palo Alto | Threat Prevention profile → Inspect Compressed Content |
 | Fortinet | WAF/IPS profile → Decompress Content |
+| Trend Micro TippingPoint | Verify deflate decompression is active for request body inspection ([PSIRT reported 2026-03-26](https://github.com/windshock/waf-ips-ids-retest/blob/main/references/trendmicro-tippingpoint-deflate-bypass.md)) |
 
 **Judgment Criteria**:
 - If plaintext is blocked but compressed body passes → post-decompression inspection insufficient

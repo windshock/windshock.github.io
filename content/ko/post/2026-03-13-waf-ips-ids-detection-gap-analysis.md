@@ -221,6 +221,8 @@ plaintext HTTP 경로(`POST http://www.service-b.example.com/action.do`)에서 4
 
 IPS는 body를 검사하고 있으나(비압축 JNDI → timeout), 압축하면 동일 payload가 통과한다. header 기반 탐지는 정상 동작(대조군). 대부분의 IPS/WAF에 body decompression 설정이 존재하므로(Snort `decompress_gzip`, Suricata `decompression.enabled`, Palo Alto/Fortinet Inspect Compressed Content), 해당 설정 활성화 확인이 필요하다.
 
+> **벤더 공개 (2026-03-26)**: 이 deflate 인코딩 검사 공백은 TippingPoint IPS 탐지 우회로 **Trend Micro PSIRT**에 공식 보고되었다. 제출물에는 상세 리포트와 최소 PoC가 포함되어 있으며, deflate로 압축된 요청 body가 평문에서는 차단되는 동일 payload에 대해 TippingPoint IPS 탐지 규칙을 트리거하지 않고 통과하는 것을 실증했다. 정제된 PoC와 전체 공개 내용은 [waf-ips-ids-retest](https://github.com/windshock/waf-ips-ids-retest) 저장소의 [`references/trendmicro-tippingpoint-deflate-bypass.md`](https://github.com/windshock/waf-ips-ids-retest/blob/main/references/trendmicro-tippingpoint-deflate-bypass.md)에서 확인할 수 있다.
+
 #### 발견 2: Content-Type 무관하게 IPS body 검사 확인 (TC-09, 긍정)
 
 같은 JNDI body를 6종의 Content-Type(`application/json`, `text/plain`, `application/xml`, `application/octet-stream`, `multipart/form-data`, CT 없음)으로 IPS-visible HTTP 경로에서 전송한 결과, **전부 timeout(차단)**. IPS는 Content-Type과 무관하게 body 전체를 검사하고 있음이 확인되었다.
@@ -1232,6 +1234,7 @@ PY | curl -X POST https://target.example.com/api/data \
 | Suricata | `suricata.yaml` → `app-layer.protocols.http.decompression.enabled: yes` |
 | Palo Alto | Threat Prevention profile → Inspect Compressed Content |
 | Fortinet | WAF/IPS profile → Decompress Content |
+| Trend Micro TippingPoint | 요청 body 검사 시 deflate 압축 해제 활성화 확인 필요 ([PSIRT 보고 2026-03-26](https://github.com/windshock/waf-ips-ids-retest/blob/main/references/trendmicro-tippingpoint-deflate-bypass.md)) |
 
 **판정 기준**:
 - 평문은 차단되나 압축 body는 통과하면 → 복원 후 검사 미흡
