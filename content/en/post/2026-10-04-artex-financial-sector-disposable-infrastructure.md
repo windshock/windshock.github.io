@@ -29,7 +29,7 @@ This post combines public reporting available as of October 4, 2026 with infrast
 3. A separate Internet-exposure study published on October 4 identified 359 unique ARTEX-related IPs between September 23 and October 3. This should be read as **exposed ARTEX-related services**, not “359 attacker servers.”
 4. In a point-in-time Shodan/Censys snapshot I reviewed, ARTEX exposure overlapped with several providers already represented in my [anonymous-vps](https://github.com/windshock/anonymous-vps) inventory: CTG Server, Cloudie, Vultr, HostEONS, and ServerPoint.
 5. In the financial-sector IoC set shared for this investigation, ARISK, InterServer, and Vultr directly intersected with anonymous-vps provider ranges. AS215748 was kept only as a relationship candidate because it is owned by Westeros Communications, even though selected prefix metadata suggests links to ARISK/Light Cloud infrastructure.
-6. One IoC, 129.212.181.253:8443, is independently observable in multiple public HTTPS/TLS proxy lists. Not every IoC is a proxy, however; the list also includes large public cloud, hosting, and access-network addresses.
+6. One shared IoC — an 8443 endpoint in DigitalOcean's 129.212.181.0/24 range — is independently observable in multiple public HTTPS/TLS proxy lists. Not every IoC is a proxy, however; the set also includes large public cloud, hosting, and access-network addresses.
 7. The operational advantage is not necessarily “perfect anonymity.” It may be **short-lived, disposable egress that can be replaced before reputation and blocking catch up**.
 8. Microsoft disclosed in August 2026 that attacks against AI infrastructure included theft of LLM provider API keys and gateway credentials alongside XMRig cryptomining. AI access itself has become a monetizable asset.
 9. Financial institutions are likely to become more conservative about foreign VPS/hosting/proxy access, reassess non-customer-facing business and partner channels, and increase spending on AI-assisted proactive testing.
@@ -204,79 +204,54 @@ That also means turning all Internet-visible ARTEX instances into a blocklist wo
 
 ---
 
-## 4. Re-baselining the incident IoCs around the FSS-distributed list
+## 4. Re-analyzing the shared incident IoCs with public OSINT
 
-A Financial Supervisory Service (FSS) distribution obtained on October 6 changes the cleanest way to structure the incident IoCs in this article.
+Taking the IoCs shared/circulated in connection with the recent attacks on the financial sector as a starting point, I re-analyzed the individual IPs using public OSINT. The table below deliberately reports only the **range (e.g. /24) each IP belongs to, its ASN/provider, and a GeoIP country (for reference)** — not exact host addresses. The host-level IoC set itself is not published here.
 
-The document labels the intrusion type as **“suspected automated attack using an AI Agent”** and distributes 19 IP addresses. The country labels below are reproduced from that document as-is.
-
-| FSS-distributed IoC | Country label in document | Current infrastructure context |
+| Range analyzed (ASN / provider) | GeoIP country (ref.) | Infrastructure context |
 |---|---|---|
-| 38.244.50.120 | United States | Needs additional context |
-| 103.248.148.84 | Japan | ✅ ARISK / AS395793 / 103.248.148.0/23 |
-| 129.212.181.253 | United States | DigitalOcean range; port 8443 independently appears in public HTTPS/TLS proxy lists |
-| 124.155.252.63 | Hong Kong | Needs additional context |
-| 134.185.91.25 | Singapore | Needs additional context |
-| 203.160.133.172 | Vietnam | Needs additional context |
-| 23.158.220.98 | Thailand | Needs additional context |
-| 64.20.39.190 | United States | ✅ InterServer / AS19318 / 64.20.32.0/19 |
-| 209.209.85.38 | Malaysia | ⚠️ AS215748 Westeros; ARISK/Light Cloud relationship kept only as candidate |
-| 129.212.181.23 | United States | DigitalOcean / AS14061, 129.212.181.0/24 |
-| 101.53.80.20 | South Korea | ✅ ARISK / AS395793 / 101.53.80.0/24, KR-localized |
-| 74.82.60.23 | United States | Hurricane Electric / AS6939 |
-| 34.175.107.233 | Spain | Google Cloud Platform / AS396982 |
-| 18.183.215.124 | Japan | AWS EC2 / AS16509 / ap-northeast-1 |
-| 104.28.162.188 | Latvia | Cloudflare / AS13335 |
-| 104.28.164.188 | Sweden | Cloudflare / AS13335; some IP-intelligence sources classify it as WARP/proxy |
-| 104.28.164.196 | Sweden | Cloudflare / AS13335 |
-| 104.28.166.183 | Germany | Cloudflare / AS13335; some IP-intelligence sources classify it as WARP |
-| 104.28.155.179 | Germany | Cloudflare / AS13335 |
+| 103.248.148.0/23 — AS395793 ARISK | Japan | ✅ anonymous-vps overlap |
+| 101.53.80.0/24 — AS395793 ARISK | South Korea | ✅ anonymous-vps overlap, KR-localized |
+| 64.20.32.0/19 — AS19318 InterServer | United States | ✅ anonymous-vps overlap |
+| 209.209.85.0/24 — AS215748 Westeros | Malaysia | ⚠️ ARISK/Light Cloud relationship kept only as candidate |
+| 129.212.181.0/24 — AS14061 DigitalOcean | United States | multiple observations in the same /24; one 8443 endpoint in this range independently appears in public HTTPS/TLS proxy lists |
+| 34.175.0.0/16 — AS396982 Google Cloud | Spain | hyperscale public cloud |
+| 18.183.0.0/16 — AS16509 AWS EC2 (ap-northeast-1) | Japan | hyperscale public cloud |
+| 104.28.0.0/16 — AS13335 Cloudflare | Latvia/Sweden/Germany labels | many addresses; some classified as WARP/proxy egress |
+| AS6939 Hurricane Electric | United States | transit |
+| Other Hong Kong / Singapore / Vietnam / Thailand GeoIP ranges | — | needs additional context |
 
-This list is not identical to the supplemental IoC set I had been analyzing earlier. **The FSS-distributed 19 should be treated as the primary official set; previously shared Vultr and other addresses should be kept as supplemental IoCs rather than mixed into the same table.**
+The shared IoCs are not identical to the supplemental set I had been analyzing earlier. Even without publishing individual hosts, **at the range/provider level the direct anonymous-vps overlap is currently ARISK and InterServer.**
 
-That also changes one earlier statement in this post.
+- `103.248.148.0/23`, `101.53.80.0/24` → ARISK / AS395793
+- `64.20.32.0/19` → InterServer / AS19318
+- `209.209.85.0/24` → AS215748; ARISK/Light Cloud relationship remains candidate-only
 
-For the **19 FSS-distributed IoCs**, the current direct anonymous-vps provider overlap is:
+Vultr ranges appeared in a previously shared set but are not part of this analysis baseline. I therefore do not mix IoCs from different sources in this post.
 
-- `103.248.148.84` → ARISK / AS395793
-- `101.53.80.20` → ARISK / AS395793
-- `64.20.39.190` → InterServer / AS19318
-- `209.209.85.38` → AS215748; ARISK/Light Cloud relationship remains candidate-only
+### Patterns that stand out in the newly seen ranges
 
-Vultr `158.247.245.204` appeared in a previously shared supplemental set, but it is **not present in this FSS-distributed 19-IP document**. I therefore keep the official and supplemental sets separate from here on.
+Compared with the earlier working set, several patterns stand out in the newly seen ranges.
 
-### What stands out in the 10 newly seen addresses
-
-Compared with the earlier working set, 10 addresses are newly present in the FSS distribution.
-
-Several patterns are notable.
-
-1. **A Korea-localized ARISK prefix now appears directly in the official IoCs**
-   - `101.53.80.20`
-   - prefix: `101.53.80.0/24`
+1. **A Korea-localized ARISK prefix appears**
+   - `101.53.80.0/24`
    - origin: **AS395793 Arisk Communications**
    - already present in the anonymous-vps KR-localized dataset
 
-2. **Two addresses appear in the same DigitalOcean /24**
-   - `129.212.181.23`
-   - `129.212.181.253`
-   - both in `129.212.181.0/24`, AS14061 DigitalOcean
-   - `.253:8443` is independently distributed in public HTTPS/TLS proxy lists
+2. **Multiple observations in the same DigitalOcean /24**
+   - `129.212.181.0/24`, AS14061 DigitalOcean
+   - one 8443 endpoint in this range is independently distributed in public HTTPS/TLS proxy lists
 
 3. **Hyperscale public cloud is also represented**
-   - `34.175.107.233` → Google Cloud Platform
-   - `18.183.215.124` → AWS EC2 Tokyo
+   - Google Cloud Platform (`34.175.0.0/16`, AS396982)
+   - AWS EC2 Tokyo (`18.183.0.0/16`, AS16509)
 
-4. **Five addresses are in Cloudflare AS13335**
-   - `104.28.162.188`
-   - `104.28.164.188`
-   - `104.28.164.196`
-   - `104.28.166.183`
-   - `104.28.155.179`
+4. **Multiple ranges in Cloudflare AS13335**
+   - `104.28.0.0/16`, AS13335 Cloudflare
 
-The country labels in the FSS document are GeoIP-style location labels and should **not** be treated as attacker location or nationality, especially for Cloudflare/WARP-like egress. Some third-party IP-intelligence sources classify `104.28.164.188` and `104.28.166.183` as Cloudflare WARP/proxy addresses. That supports the possibility that the victim saw an egress layer rather than the origin host, but it does not prove how each address was used at the exact time of attack.
+The GeoIP country labels for these Cloudflare addresses vary, and should **not** be treated as attacker location or nationality, especially for Cloudflare/WARP-like egress. Some third-party IP-intelligence sources classify part of this range as Cloudflare WARP/proxy. That supports the possibility that the victim saw an egress layer rather than the origin host, but it does not prove how each address was used at the exact time of attack.
 
-The official IoCs therefore show a mixed infrastructure model:
+The shared IoCs therefore show a mixed infrastructure model:
 
 - anonymous/crypto-friendly VPS,
 - commodity VPS,
@@ -289,20 +264,13 @@ So **“mixed, replaceable VPS/cloud/proxy egress”** is a more accurate descri
 
 ---
 
-## 5. The clearest public proxy evidence: 129.212.181.253:8443
+## 5. A shared IoC that is independently observable as a public proxy
 
 It would be an overstatement to call every incident IoC a public proxy.
 
-The clearest public evidence is:
+Among the shared IoCs, the clearest public evidence points to **one TCP/8443 endpoint in DigitalOcean's `129.212.181.0/24` range.**
 
-**129.212.181.253:8443**
-
-The same endpoint is present in multiple public GitHub proxy datasets. For example:
-
-- [Proxifly HTTPS proxy list](https://github.com/proxifly/free-proxy-list/blob/main/proxies/protocols/https/data.txt)
-- [Proxifly U.S. HTTPS list](https://github.com/proxifly/free-proxy-list/blob/main/proxies/countries/US/data.txt)
-
-Both include 129.212.181.253:8443.
+Public proxy datasets — for example the [Proxifly free-proxy-list](https://github.com/proxifly/free-proxy-list) and [Intrude Live Proxy Intelligence](https://www.intrude.io/) — list an 8443 endpoint in this range as a TLS/HTTPS/anonymous proxy.
 
 This is useful independent evidence that the endpoint was being distributed as a publicly usable HTTPS proxy/egress point.
 
@@ -321,13 +289,11 @@ The defensible conclusion is simply:
 
 ## 6. There was a Korean-labeled IoC — and it maps to an ARISK prefix
 
-This section needs a direct correction after reviewing the FSS distribution.
+This section needs a direct correction after re-reading the shared IoCs.
 
-The official IoC list includes:
+The shared IoCs include a **South-Korea GeoIP range**, `101.53.80.0/24`.
 
-**`101.53.80.20 (South Korea)`**
-
-The address is inside `101.53.80.0/24`, currently originated by **AS395793 Arisk Communications**. It is also already present in the anonymous-vps [KR-localized CIDR dataset](https://github.com/windshock/anonymous-vps/blob/main/generated/context/kr-localized-cidrs.csv) as:
+This range is currently originated by **AS395793 Arisk Communications**. It is also already present in the anonymous-vps [KR-localized CIDR dataset](https://github.com/windshock/anonymous-vps/blob/main/generated/context/kr-localized-cidrs.csv) as:
 
 - `101.53.80.0/24`
 - provider: ARISK
@@ -338,9 +304,9 @@ So my earlier wording that there was no Korean operator range and only a Korea-l
 
 The more accurate distinction is:
 
-- the FSS-distributed list contains **one South-Korea-labeled IP**, `101.53.80.20`;
-- that IP is not best understood as a typical Korean residential/customer IP, but as a **Korea-localized prefix currently originated by ARISK**;
-- the previously discussed Vultr Korea address `158.247.245.204` belongs to a supplemental IoC set and is not in the FSS 19-IP distribution.
+- the shared IoCs contain **a South-Korea-labeled range**, `101.53.80.0/24` (ARISK);
+- it is not best understood as typical Korean residential/customer space, but as a **Korea-localized prefix currently originated by ARISK**;
+- the previously discussed Vultr Korea range belongs to a supplemental set and is not part of this analysis baseline.
 
 This matters for access-control design.
 
@@ -352,7 +318,7 @@ That is why defensive policy needs **ASN/provider context plus a service-specifi
 
 ## 7. Why I did not classify AS215748 as ARISK
 
-209.209.85.38 is routed within a prefix associated with AS215748, Westeros Communications (THAILAND) CO., LTD.
+One shared IoC falls in **209.209.85.0/24**, currently routed to AS215748, Westeros Communications (THAILAND) CO., LTD.
 
 Public registry/BGP evidence suggests selected prefixes have relationships to ARISK/Light Cloud infrastructure.
 
@@ -693,9 +659,9 @@ An attacker can still mine crypto, steal provider keys, abuse model spend, or pi
 
 ## 13. The FSS checklist shows that part of the response has already started
 
-When I first drafted this post, the following sections were framed as forecasts. After reviewing the FSS **IT-security self-inspection checklist for financial institutions**, some of them are no longer merely hypothetical.
+When I first drafted this post, the following sections were framed as forecasts. But in light of the FSS financial-sector IT-security self-inspection guidance reported publicly, some of them are no longer merely hypothetical.
 
-The FSS checklist explicitly asks institutions to verify:
+The publicly reported guidance asks institutions to verify the following:
 
 - blocking and investigation of attacker IPs shared by FSS/FSI,
 - removal of unnecessary externally exposed services, ports, APIs, and admin pages,
@@ -1041,7 +1007,7 @@ That is probably where defenders should look next.
 |---|---|
 | Shodan ARTEX Network/Org snapshot | CTG Server / Cloudie / Vultr |
 | Censys ARTEX Organization snapshot | HostEONS / ServerPoint / Vultr |
-| FSS-distributed 19 IoCs | ARISK / InterServer |
+| Shared incident IoCs (by range) | ARISK / InterServer |
 | Earlier supplemental IoCs | Vultr and other separately shared addresses |
 | Relationship candidate only | AS215748 Westeros ↔ ARISK/Light Cloud |
 
@@ -1073,8 +1039,8 @@ If the shared **HTTP/JSON fingerprint** is eventually published, it may become m
 
 ### Financial-sector incident and policy
 
-1. Korea Financial Supervisory Service (FSS), “Request for Financial-Sector IT Security Self-Inspection in Preparation for Security Incidents” and attached checklist, distributed 2026-10-02.
-2. Korea Financial Supervisory Service (FSS), distributed suspicious-IP list — intrusion type: “suspected automated attack using an AI Agent,” 2026-10.
+1. Korea Financial Supervisory Service (FSS), financial-sector IT security self-inspection guidance (incident preparedness) — as covered in public reporting, 2026-10-02.
+2. Attack IoCs shared/circulated in connection with the recent financial-sector attacks (source not disclosed); each IP's ASN/provider/proxy characteristics are independently verified via public OSINT in the body.
 3. Korea Financial Security Institute (FSI), [금융권 AI Agent 공격 현실화, 선제적 대응 강화 필요](https://www.fsec.or.kr/bbs/detail?bbsNo=12062&menuNo=69), 2026-09-21.
 4. Korea Financial Services Commission (FSC), [Second emergency relaxation of network-separation rules for AI security use](https://www.fsc.go.kr/po010104/87646), 2026-09-03.
 7. DailySecu, [ARTEX로 금융권 광범위 공격…AI가 파고든 API 권한검증 허점](https://www.dailysecu.com/news/articleView.html?idxno=208718), 2026-10-02.
