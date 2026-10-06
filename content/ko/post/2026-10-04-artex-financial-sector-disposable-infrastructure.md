@@ -959,17 +959,17 @@ AI 시대의 방어는 아마 그쪽을 봐야 할 것 같습니다.
 
 ### AI 인프라와 credential theft
 
-7. Microsoft Security Research, [When AI infrastructure becomes the target: Securing gateways and control points](https://www.microsoft.com/en-us/security/blog/2026/08/26/when-ai-infrastructure-becomes-target-securing-gateways-control-points/), 2026-08-26.
+9. Microsoft Security Research, [When AI infrastructure becomes the target: Securing gateways and control points](https://www.microsoft.com/en-us/security/blog/2026/08/26/when-ai-infrastructure-becomes-target-securing-gateways-control-points/), 2026-08-26.
 
 ### AI Pentest 모델 접근과 safeguards
 
-8. Anthropic, [Introducing Claude Fable 5.1 and Claude Mythos 5.1](https://www.anthropic.com/claude-fable-and-mythos-5-1), 2026-09.
+10. Anthropic, [Introducing Claude Fable 5.1 and Claude Mythos 5.1](https://www.anthropic.com/claude-fable-and-mythos-5-1), 2026-09.
 9. Anthropic, [Claude Mythos](https://www.anthropic.com/claude/mythos), accessed 2026-10-04.
 10. Anthropic, [Supported countries and regions](https://www.anthropic.com/supported-countries), accessed 2026-10-04.
 
 ### Infrastructure / proxy / provider context
 
-11. windshock, [anonymous-vps](https://github.com/windshock/anonymous-vps).
+13. windshock, [anonymous-vps](https://github.com/windshock/anonymous-vps).
 12. anonymous-vps, [generated provider ranges](https://github.com/windshock/anonymous-vps/blob/main/generated/detection/provider-ranges.csv).
 13. anonymous-vps, [KR-localized CIDRs](https://github.com/windshock/anonymous-vps/blob/main/generated/context/kr-localized-cidrs.csv).
 14. anonymous-vps, [ASN relationship data](https://github.com/windshock/anonymous-vps/blob/main/data/asns.yml).
