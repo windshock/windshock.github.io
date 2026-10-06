@@ -298,7 +298,7 @@ Although the 2023 amendments removed the criminal provision linking inadequate s
 
 The case of former Uber CSO Joseph Sullivan offers a useful comparison.
 
-The core reason Sullivan was convicted was **not that Uber was hacked**. The case focused on affirmative steps taken to conceal the 2016 breach while the FTC was investigating Uber's data-security practices. A jury convicted him of obstruction and misprision of felony, and the U.S. Court of Appeals for the Ninth Circuit upheld the conviction in 2025.
+The core reason Sullivan was convicted was **not that Uber was hacked**. The case focused on affirmative steps taken to conceal the 2016 breach while the FTC was investigating Uber's data-security practices. A jury convicted him of obstruction and misprision of felony, and the U.S. Court of Appeals for the Ninth Circuit upheld the conviction in March 2025.
 
 By contrast, the SEC's civil enforcement case against SolarWinds and its CISO, Timothy Brown, had significant portions dismissed by the court before the SEC voluntarily dismissed the remaining claims **with prejudice** in 2025.
 
@@ -486,7 +486,7 @@ That leaves two questions.
 20. Supreme Court of Korea, [HanaTour Fined KRW 10 Million over Customer-Data Breach](https://www.scourt.go.kr/portal/news/NewsViewAction.work?gubun=2&searchOption=&searchWord=&seqnum=4593), July 25, 2022, Case 2020Do11409.
 21. Yonhap News Agency, [HanaTour Fined KRW 10 Million over Leak of Customer Information](https://www.yna.co.kr/view/AKR20200106065600004), January 6, 2020 — first-instance ruling and details of the security-control failures.
 22. U.S. Department of Justice, [Former Chief Security Officer of Uber Convicted of Federal Charges for Covering Up Data Breach](https://www.justice.gov/usao-ndca/pr/former-chief-security-officer-uber-convicted-federal-charges-covering-data-breach), October 5, 2022.
-23. U.S. Court of Appeals for the Ninth Circuit, [United States v. Sullivan](https://cdn.ca9.uscourts.gov/datastore/opinions/2025/11/12/23-927.pdf), November 12, 2025 — conviction affirmed.
+23. U.S. Court of Appeals for the Ninth Circuit, [United States v. Sullivan, 131 F.4th 776 (9th Cir. 2025)](https://cdn.ca9.uscourts.gov/datastore/opinions/2025/03/13/23-927.pdf), March 13, 2025 — conviction affirmed.
 24. U.S. SEC, [SolarWinds Corp. and Timothy G. Brown — SEC Dismisses Civil Enforcement Action](https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26423), November 20, 2025.
 
 ---

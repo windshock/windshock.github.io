@@ -300,7 +300,7 @@ CISO도 2026년 개정 정보통신망법에서 비슷한 방향으로 강화됐
 
 미국의 Uber 전 CSO Joseph Sullivan 사건도 비교하기 좋습니다.
 
-Sullivan이 유죄판결을 받은 핵심은 **Uber가 해킹당했다는 사실 자체가 아니었습니다.** FTC가 Uber의 데이터보호 관행을 조사하던 상황에서 2016년 침해사고를 숨기기 위해 적극적으로 행동한 것이 핵심이었습니다. 배심원은 obstruction과 misprision of felony에 대해 유죄를 인정했고, 2025년 제9연방항소법원도 유죄판결을 유지했습니다.
+Sullivan이 유죄판결을 받은 핵심은 **Uber가 해킹당했다는 사실 자체가 아니었습니다.** FTC가 Uber의 데이터보호 관행을 조사하던 상황에서 2016년 침해사고를 숨기기 위해 적극적으로 행동한 것이 핵심이었습니다. 배심원은 obstruction과 misprision of felony에 대해 유죄를 인정했고, 2025년 3월 제9연방항소법원도 유죄판결을 유지했습니다.
 
 반대로 SEC가 SolarWinds와 CISO Timothy Brown을 상대로 제기했던 민사 집행소송은 상당 부분이 법원에서 기각된 뒤 2025년 SEC가 남은 사건까지 **with prejudice**로 취하했습니다.
 
@@ -486,7 +486,7 @@ CISO 형사책임 논쟁에서 출발했지만, 결국 제게 남은 질문은 C
 20. 대한민국 대법원, [‘고객정보 3만건 유출’ 하나투어, 벌금 1000만원 확정](https://www.scourt.go.kr/portal/news/NewsViewAction.work?gubun=2&searchOption=&searchWord=&seqnum=4593), 2022-07-25, 사건 2020도11409.
 21. 연합뉴스, [‘고객 46만명 정보 유출’ 하나투어에 벌금 1천만원](https://www.yna.co.kr/view/AKR20200106065600004), 2020-01-06 — 1심 및 구체적인 안전조치 미이행 내용.
 22. U.S. Department of Justice, [Former Chief Security Officer of Uber Convicted of Federal Charges for Covering Up Data Breach](https://www.justice.gov/usao-ndca/pr/former-chief-security-officer-uber-convicted-federal-charges-covering-data-breach), 2022-10-05.
-23. U.S. Court of Appeals for the Ninth Circuit, [United States v. Sullivan](https://cdn.ca9.uscourts.gov/datastore/opinions/2025/11/12/23-927.pdf), 2025-11-12 — 유죄판결 유지.
+23. U.S. Court of Appeals for the Ninth Circuit, [United States v. Sullivan, 131 F.4th 776 (9th Cir. 2025)](https://cdn.ca9.uscourts.gov/datastore/opinions/2025/03/13/23-927.pdf), 2025-03-13 — 유죄판결 유지.
 24. U.S. SEC, [SolarWinds Corp. and Timothy G. Brown — SEC Dismisses Civil Enforcement Action](https://www.sec.gov/enforcement-litigation/litigation-releases/lr-26423), 2025-11-20.
 
 ---
