@@ -1,6 +1,7 @@
 ---
 title: "ARTEX 금융권 공격을 인프라에서 다시 보기: AI Agent, Disposable VPS, 비대고객 업무채널"
 date: 2026-10-04
+lastmod: 2026-10-06
 draft: false
 featured: true
 tags: ["Mind", "AI 보안", "ARTEX", "Threat Intelligence", "Anonymous VPS", "금융보안", "AI Pentest", "API 보안"]
@@ -172,48 +173,88 @@ Shodan과 Censys 모두에서 반복해서 보이는 메시지는 비슷합니�
 
 ---
 
-## 4. 실제 금융권 IoC와 anonymous-vps를 교차해보면
+## 4. 금융감독원 전파 IoC를 다시 기준점으로 잡기
 
-이번에 공유받아 검토한 금융권 관련 IoC를 [anonymous-vps의 provider range](https://github.com/windshock/anonymous-vps/blob/main/generated/detection/provider-ranges.csv)와 대조한 결과는 다음과 같습니다.
+10월 6일 추가로 확보한 금융감독원 전파 문서를 기준으로 보면, 이 글에서 사건 IoC를 다루는 기준점을 조금 수정해야 합니다.
 
-| 사건 IoC | anonymous-vps 결과 | 해석 |
+금융감독원 문서는 침투유형을 **“AI Agent를 활용한 자동화 공격 추정”**으로 표기하고 총 19개 IP를 공유했습니다. 아래 국가 표기는 문서의 표기를 그대로 옮긴 것입니다.
+
+| 금융감독원 전파 IoC | 문서 표기 국가 | 현재 인프라 해석 |
 |---|---|---|
-| 38.244.50.120 | — | 현재 repo 직접 매칭 없음 |
-| 103.248.148.84 | ✅ ARISK / AS395793 / 103.248.148.0/23 | VPS/hosting inventory 직접 교차 |
-| 129.212.181.253 | — | repo 미매칭, 그러나 8443이 공개 HTTPS/TLS proxy 목록에 별도 관측 |
-| 124.155.252.63 | — | AS9304 HGC Global Communications 대역 |
-| 134.185.91.25 | — | 현재 repo 직접 매칭 없음 |
-| 203.160.133.172 | — | 현재 repo 직접 매칭 없음 |
-| 23.158.220.98 | — | 현재 repo 직접 매칭 없음 |
-| 64.20.39.190 | ✅ InterServer / AS19318 / 64.20.32.0/19 | VPS/hosting inventory 직접 교차 |
-| 209.209.85.38 | ⚠️ AS215748 → ARISK candidate_link | Westeros 소유, ARISK/Light Cloud 관계만 candidate |
-| 128.247.245.204 | — | 현재 repo 직접 매칭 없음 |
-| 52.199.104.217 | — | public cloud 계열, anonymous-vps 목적상 직접 매칭 아님 |
-| 34.143.224.40 | — | public cloud 계열, anonymous-vps 목적상 직접 매칭 아님 |
-| 18.141.198.40 | — | public cloud 계열, anonymous-vps 목적상 직접 매칭 아님 |
-| 8.166.138.183 | — | public cloud 계열, anonymous-vps 목적상 직접 매칭 아님 |
-| 156.229.166.79 | — | hosting 계열 정황, repo 직접 매칭 없음 |
-| 141.11.132.101 | — | AS151338 POLONETWORK, repo 직접 매칭 없음 |
-| 61.224.69.212 | — | 통신사/동적 가입자 계열 정황 |
-| 212.135.39.55 | — | 현재 AS61112 AkileCloud Network로 관측 |
-| 158.247.245.204 | ✅ Vultr / AS20473 / 158.247.192.0/18 | Vultr, GeoLite2 기준 KR 위치 |
-| 34.153.224.40 | — | public cloud 계열, anonymous-vps 목적상 직접 매칭 아님 |
-| 23.158.136.31 | — | AS61112 AkileCloud, repo 직접 매칭 없음 |
-| 54.249.223.154 | — | public cloud 계열, anonymous-vps 목적상 직접 매칭 아님 |
+| 38.244.50.120 | 미국 | 별도 추가 확인 필요 |
+| 103.248.148.84 | 일본 | ✅ ARISK / AS395793 / 103.248.148.0/23 |
+| 129.212.181.253 | 미국 | DigitalOcean 대역, 8443은 공개 HTTPS/TLS proxy 목록에 별도 관측 |
+| 124.155.252.63 | 홍콩 | 별도 추가 확인 필요 |
+| 134.185.91.25 | 싱가포르 | 별도 추가 확인 필요 |
+| 203.160.133.172 | 베트남 | 별도 추가 확인 필요 |
+| 23.158.220.98 | 태국 | 별도 추가 확인 필요 |
+| 64.20.39.190 | 미국 | ✅ InterServer / AS19318 / 64.20.32.0/19 |
+| 209.209.85.38 | 말레이시아 | ⚠️ AS215748 Westeros, ARISK/Light Cloud 관계만 candidate |
+| 129.212.181.23 | 미국 | DigitalOcean / AS14061, 129.212.181.0/24 |
+| 101.53.80.20 | 대한민국 | ✅ ARISK / AS395793 / 101.53.80.0/24, KR-localized |
+| 74.82.60.23 | 미국 | Hurricane Electric / AS6939 |
+| 34.175.107.233 | 스페인 | Google Cloud Platform / AS396982 |
+| 18.183.215.124 | 일본 | AWS EC2 / AS16509 / ap-northeast-1 |
+| 104.28.162.188 | 라트비아 | Cloudflare / AS13335 |
+| 104.28.164.188 | 스웨덴 | Cloudflare / AS13335, 일부 IP intelligence에서 WARP/proxy로 분류 |
+| 104.28.164.196 | 스웨덴 | Cloudflare / AS13335 |
+| 104.28.166.183 | 독일 | Cloudflare / AS13335, 일부 IP intelligence에서 WARP로 분류 |
+| 104.28.155.179 | 독일 | Cloudflare / AS13335 |
 
-여기서 **repo에 직접 걸리는 IP가 3개뿐이다**라는 식으로 해석하면 안 됩니다.
+이 목록은 제가 앞서 분석하던 별도 공유 IoC와 완전히 동일하지 않습니다. **금융감독원 전파 19개를 공식 기준 세트로 두고, 이전에 공유받은 Vultr 등 다른 IP는 supplemental IoC로 분리해 보는 것이 맞습니다.**
 
-이 저장소는 모든 데이터센터 IP를 악성으로 판정하기 위한 데이터베이스가 아닙니다. 예를 들어 AWS나 GCP 같은 대형 cloud 대역은 공격에도 쓰일 수 있지만 정상 사용량이 압도적으로 많기 때문에, 단순 ASN blocklist로 취급하는 것은 탐지 품질이 나쁩니다.
+특히 기존 글에서 “금융권 사건 IoC와 anonymous-vps의 직접 교차가 ARISK / InterServer / Vultr”라고 썼던 부분은 정정합니다.
 
-따라서 여기서 의미 있는 것은 숫자 자체가 아니라 **인프라 유형이 섞여 있다는 것**입니다.
+**금융감독원 전파 19개만 기준으로 직접 교차하는 provider는 현재 ARISK와 InterServer입니다.**
 
-- privacy/crypto-friendly VPS/hosting provider inventory와 직접 교차하는 IP
-- 대형 public cloud IP
-- 일반 hosting/IDC 대역
-- 실제 public proxy
-- 통신사 또는 dynamic access 성격의 대역
+- `103.248.148.84` → ARISK / AS395793
+- `101.53.80.20` → ARISK / AS395793
+- `64.20.39.190` → InterServer / AS19318
+- `209.209.85.38` → AS215748, ARISK/Light Cloud와의 관계는 candidate로만 유지
 
-이 구성은 “공격자가 하나의 고정 C2를 오래 유지했다”는 모델보다는 **여러 종류의 egress를 짧게 사용하고 교체할 수 있는 구조**와 더 잘 맞습니다.
+Vultr `158.247.245.204`는 앞서 별도 공유받은 IoC에는 있었지만, 이번 금융감독원 전파 PDF에는 없습니다. 따라서 앞으로 이 글에서는 **공식 전파 IoC와 supplemental IoC를 섞지 않습니다.**
+
+### 신규 10개에서 보이는 인프라 패턴
+
+이전 분석 세트와 비교하면 금융감독원 전파 문서에서 새로 확인된 IP는 10개입니다.
+
+그중 특히 눈에 띄는 것은 다음입니다.
+
+1. **ARISK의 한국 위치 대역이 공식 IoC에 직접 등장**
+   - `101.53.80.20`
+   - `101.53.80.0/24`
+   - origin: **AS395793 Arisk Communications**
+   - anonymous-vps의 KR-localized dataset에도 이미 포함
+
+2. **DigitalOcean 대역이 같은 /24에서 두 번 등장**
+   - `129.212.181.23`
+   - `129.212.181.253`
+   - 둘 다 `129.212.181.0/24`, AS14061 DigitalOcean
+   - 그중 `.253:8443`은 공개 HTTPS/TLS proxy 목록에서 별도로 관측
+
+3. **대형 Public Cloud도 포함**
+   - `34.175.107.233` → Google Cloud Platform
+   - `18.183.215.124` → AWS EC2 Tokyo
+
+4. **Cloudflare AS13335 주소가 5개 포함**
+   - `104.28.162.188`
+   - `104.28.164.188`
+   - `104.28.164.196`
+   - `104.28.166.183`
+   - `104.28.155.179`
+
+이 다섯 주소의 국가 표기는 금융감독원 문서의 GeoIP 표기와 일치하지만, **Cloudflare/WARP 계열 egress의 위치 표기를 공격자의 실제 위치로 읽으면 안 됩니다.** 일부 공개 IP intelligence는 `104.28.164.188`과 `104.28.166.183`을 Cloudflare WARP/proxy로 분류합니다. 이 점은 공격 인프라의 마지막 egress가 원래 공격 서버와 다를 수 있다는 가설을 강화하지만, 개별 주소의 실제 공격 시점 용도를 단정하는 근거로 사용하지 않습니다.
+
+결국 공식 IoC만 다시 놓고 보더라도 인프라 유형은 하나가 아닙니다.
+
+- anonymous/crypto-friendly VPS
+- commodity VPS
+- hyperscale public cloud
+- transit/hosting
+- Cloudflare egress
+- public proxy로 확인되는 endpoint
+
+따라서 **“anonymous VPS만 사용했다”**보다 **“쉽게 교체 가능한 VPS/Cloud/Proxy egress를 혼합했다”**는 표현이 더 정확합니다.
 
 ---
 
@@ -239,21 +280,32 @@ GitHub의 [Proxifly free-proxy-list](https://github.com/proxifly/free-proxy-list
 
 ---
 
-## 6. 한국 대역은 정말 없었나: “한국 사업자”와 “한국에 위치한 해외 VPS”를 나눠야 한다
+## 6. 한국 IP가 없었던 것이 아니라, 공식 IoC에 ARISK 한국 대역이 있었다
 
-공유받은 IoC에서 한국 위치로 확인되는 것은 **158.247.245.204**입니다.
+이 부분은 10월 6일 확보한 금융감독원 전파 문서 때문에 명확히 수정해야 합니다.
 
-이 IP는 Vultr / AS20473의 **158.247.192.0/18**에 속하며, anonymous-vps의 [kr-localized-cidrs.csv](https://github.com/windshock/anonymous-vps/blob/main/generated/context/kr-localized-cidrs.csv)에서도 GeoLite2 기준 KR로 분류됩니다.
+공식 IoC 목록에는 **`101.53.80.20 (대한민국)`**이 포함돼 있습니다.
 
-따라서 정확한 표현은 다음입니다.
+이 IP는 현재 BGP 기준 `101.53.80.0/24`에 속하며 **AS395793 Arisk Communications**가 origin으로 관측됩니다. [anonymous-vps의 KR-localized CIDR](https://github.com/windshock/anonymous-vps/blob/main/generated/context/kr-localized-cidrs.csv)에도 다음처럼 이미 들어 있습니다.
 
-- 한국 통신사/한국 사업자가 소유한 대역: 이 목록에서 뚜렷한 직접 매칭은 확인하지 못함
-- 한국에 위치한 해외 VPS/Cloud 대역: Vultr 158.247.192.0/18 포함
-- 사건 IoC: 158.247.245.204가 해당 대역에 포함
+- `101.53.80.0/24`
+- provider: ARISK
+- ASN: AS395793
+- GeoLite2 country: KR
 
-즉 **“국내 사업자 대역은 확인되지 않았지만, 한국에 호스팅된 해외 VPS IP는 하나 있다”**가 더 정확합니다.
+따라서 이전에 제가 썼던 **“국내 사업자 대역은 확인되지 않았고, 한국 위치의 해외 VPS는 Vultr 1건뿐”**이라는 문장은 더 이상 맞지 않습니다.
 
-이 차이는 방어정책에서도 중요합니다. 단순 GeoIP KR allow 정책만으로는 해외 사업자의 서울 리전 VPS를 정상 국내 접속과 구분할 수 없습니다.
+정확한 표현은 다음과 같습니다.
+
+- 금융감독원 공식 전파 IoC에 **대한민국 표기 IP 1건**이 존재한다: `101.53.80.20`
+- 이 IP는 일반 가정용/통신사 가입자 IP라기보다 **ARISK가 announce하는 한국 위치 /24**다.
+- 이전 별도 공유 IoC에는 Vultr Korea 대역 `158.247.245.204`도 있었지만, 그 주소는 이번 금융감독원 전파 19개에는 포함되지 않는다.
+
+이 차이는 방어정책에서도 중요합니다.
+
+**GeoIP가 KR이라고 해서 일반 국내 사용자 트래픽이라고 볼 수 없습니다.** 해외/anonymous VPS 사업자가 한국 위치 대역을 announce하거나 서울 리전을 운영할 수 있기 때문입니다.
+
+따라서 “해외 IP 차단”만으로 끝내기보다 **ASN/provider type + service-specific normal-access model**을 같이 봐야 합니다.
 
 ---
 
@@ -564,9 +616,26 @@ Microsoft가 AI gateway를 사실상 **Tier-0 secret store**처럼 다루라고 
 
 ---
 
-## 13. 앞으로의 대응 예상 1: 해외 VPS/Hosting 접근은 더 보수적으로 볼 가능성이 높다
+## 13. 금융감독원 체크리스트를 보면, 일부 대응은 이미 시작됐다
 
-여기부터는 제 전망입니다.
+이 글을 처음 작성할 때는 여기부터를 “전망”으로 썼습니다. 하지만 10월 2일 금융감독원이 배포한 **「침해사고 대비 금융권 IT보안 자체점검 체크리스트」**를 확인하고 나면 일부는 더 이상 전망만이 아닙니다.
+
+금융감독원은 금융회사에 다음을 직접 점검하도록 요구했습니다.
+
+- 금감원·금보원이 공유한 공격자 IP 차단 및 침해시도 확인
+- 대외 게이트웨이의 불필요한 서비스·포트·API·관리자페이지 제거
+- 외부 노출 IT자산과 서비스 전수 식별
+- 대고객뿐 아니라 **내부직원용, 상담, 협력업체, 유지보수 원격접속 서비스 전체** 점검
+- 로그인 없이 URL만으로 정보가 조회되는지 확인
+- 권한 없는 파일·데이터 접근 가능 여부 확인
+- 중요 서비스 MFA
+- 세션 무결성 및 **수평적 권한상승(타 고객 데이터 열람·수정) 차단**
+- Rate Limiting 등 자동화 봇 공격 통제
+- 비정상 URL/파라미터, 비인가 IP, 야간·휴일 관리자 접근 모니터링
+
+즉 **Attack Surface, Authorization, Automation Abuse, Monitoring**이 바로 사고 직후 공식 점검항목이 됐습니다.
+
+### 앞으로의 대응 예상 1: 해외 VPS/Hosting 접근은 더 보수적으로 볼 가능성이 높다
 
 금융권은 이미 여러 서비스에서 해외 IP를 제한하거나 위험도 기반으로 통제합니다. 그러나 모든 서비스에 동일한 정책을 적용할 수는 없습니다.
 
@@ -660,9 +729,11 @@ Anthropic은 2026년 9월 [Claude Fable 5.1 and Claude Mythos 5.1](https://www.a
 
 ---
 
-## 16. 앞으로의 대응 예상 3: 비대고객 업무·제휴 채널이 전수 재평가될 가능성이 높다
+## 16. 대응 예상 3: 비대고객 업무·제휴 채널은 이미 전수 재평가 대상이 됐다
 
-이번 사건이 남길 가장 직접적인 변화는 이쪽일 수 있습니다.
+이 부분도 이제 단순 전망이 아닙니다. 금융감독원 체크리스트는 외부 노출 IT자산과 서비스의 범위를 **대고객 서비스뿐 아니라 내부직원용 상담·협력업체·유지보수 원격접속 등 서비스 전체**로 명시했습니다.
+
+즉 “인터넷뱅킹/모바일뱅킹 같은 핵심 대고객 채널만 잘 지키면 된다”는 접근에서 벗어나, 인터넷에 노출된 비대고객 업무·제휴 채널 전체를 다시 inventory하고 접근통제와 취약점을 확인하라는 방향이 이미 공식화됐습니다.
 
 금융권이 앞으로 다시 보게 될 대상은 인터넷뱅킹과 모바일뱅킹만이 아닙니다.
 
@@ -845,7 +916,8 @@ AI 시대의 방어는 아마 그쪽을 봐야 할 것 같습니다.
 |---|---|
 | Shodan ARTEX Network/Org snapshot | CTG Server / Cloudie / Vultr |
 | Censys ARTEX Organization snapshot | HostEONS / ServerPoint / Vultr |
-| 금융권 사건 IoC | ARISK / InterServer / Vultr |
+| 금융감독원 전파 IoC 19개 | ARISK / InterServer |
+| 이전 supplemental IoC | Vultr 등 별도 공유 세트 |
 | 관계만 candidate | AS215748 Westeros ↔ ARISK/Light Cloud |
 
 이 교차는 **provider/infrastructure context**일 뿐, 해당 provider 또는 대역 전체에 대한 malicious verdict가 아닙니다.
@@ -876,12 +948,14 @@ AI 시대의 방어는 아마 그쪽을 봐야 할 것 같습니다.
 
 ### 금융권 사건 및 정책
 
-1. 금융보안원, [금융권 AI Agent 공격 현실화, 선제적 대응 강화 필요](https://www.fsec.or.kr/bbs/detail?bbsNo=12062&menuNo=69), 2026-09-21.
-2. 금융위원회, [보다 다양한 금융회사들이 AI 보안위협에 철저히 대비할 수 있도록 제2차 망분리 규제 긴급 완화 조치를 추진합니다](https://www.fsc.go.kr/po010104/87646), 2026-09-03.
-3. 데일리시큐, [ARTEX로 금융권 광범위 공격…AI가 파고든 API 권한검증 허점](https://www.dailysecu.com/news/articleView.html?idxno=208718), 2026-10-02.
-4. 헤럴드경제, [은행 연쇄 해킹 도구는 중국 ‘아르텍스 AI’…해커가 사용했다](https://v.daum.net/v/20261003123315260), 2026-10-03.
+1. 금융감독원, 「침해사고 대비 금융권 IT보안 자체점검 요청」 및 붙임 체크리스트, 2026-10-02, 금융권 배포문서.
+2. 금융감독원, 「전파 의심 IP 목록」 — 침투유형: “AI Agent를 활용한 자동화 공격 추정”, 2026-10.
+3. 금융보안원, [금융권 AI Agent 공격 현실화, 선제적 대응 강화 필요](https://www.fsec.or.kr/bbs/detail?bbsNo=12062&menuNo=69), 2026-09-21.
+4. 금융위원회, [보다 다양한 금융회사들이 AI 보안위협에 철저히 대비할 수 있도록 제2차 망분리 규제 긴급 완화 조치를 추진합니다](https://www.fsc.go.kr/po010104/87646), 2026-09-03.
+7. 데일리시큐, [ARTEX로 금융권 광범위 공격…AI가 파고든 API 권한검증 허점](https://www.dailysecu.com/news/articleView.html?idxno=208718), 2026-10-02.
+6. 헤럴드경제, [은행 연쇄 해킹 도구는 중국 ‘아르텍스 AI’…해커가 사용했다](https://v.daum.net/v/20261003123315260), 2026-10-03.
 5. 데일리시큐, [ARTEX 관련 고유 IP 359개 분석](https://www.dailysecu.com/news/articleView.html?idxno=208724), 2026-10-04.
-6. 연합뉴스, [AI로 상호금융까지 광범위 공격…“해킹 시도 훨씬 많을 수도”](https://www.yna.co.kr/view/AKR20261003042451002), 2026-10-04.
+8. 연합뉴스, [AI로 상호금융까지 광범위 공격…“해킹 시도 훨씬 많을 수도”](https://www.yna.co.kr/view/AKR20261003042451002), 2026-10-04.
 
 ### AI 인프라와 credential theft
 
