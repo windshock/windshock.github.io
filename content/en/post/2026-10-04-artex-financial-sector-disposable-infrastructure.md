@@ -1,6 +1,7 @@
 ---
 title: "Re-reading the ARTEX Attacks on Korea's Financial Sector: AI Agents, Disposable VPS Infrastructure, and Non-Customer-Facing Systems"
 date: 2026-10-04
+lastmod: 2026-10-06
 draft: false
 featured: true
 tags: ["Mind", "AI Security", "ARTEX", "Threat Intelligence", "Anonymous VPS", "Financial Security", "AI Pentest", "API Security"]
@@ -203,46 +204,88 @@ That also means turning all Internet-visible ARTEX instances into a blocklist wo
 
 ---
 
-## 4. Cross-checking the financial-sector IoCs against anonymous-vps
+## 4. Re-baselining the incident IoCs around the FSS-distributed list
 
-The following table compares the IoC set shared in this investigation with the [anonymous-vps generated provider ranges](https://github.com/windshock/anonymous-vps/blob/main/generated/detection/provider-ranges.csv).
+A Financial Supervisory Service (FSS) distribution obtained on October 6 changes the cleanest way to structure the incident IoCs in this article.
 
-| Incident IoC | anonymous-vps result | Interpretation |
+The document labels the intrusion type as **“suspected automated attack using an AI Agent”** and distributes 19 IP addresses. The country labels below are reproduced from that document as-is.
+
+| FSS-distributed IoC | Country label in document | Current infrastructure context |
 |---|---|---|
-| 38.244.50.120 | — | No direct current repo match |
-| 103.248.148.84 | ✅ ARISK / AS395793 / 103.248.148.0/23 | Direct VPS/hosting inventory overlap |
-| 129.212.181.253 | — | No repo match; port 8443 independently appears in public HTTPS/TLS proxy lists |
-| 124.155.252.63 | — | No direct current repo match |
-| 134.185.91.25 | — | No direct current repo match |
-| 203.160.133.172 | — | No direct current repo match |
-| 23.158.220.98 | — | No direct current repo match |
-| 64.20.39.190 | ✅ InterServer / AS19318 / 64.20.32.0/19 | Direct VPS/hosting inventory overlap |
-| 209.209.85.38 | ⚠️ AS215748 → ARISK candidate_link | Westeros-owned; ARISK/Light Cloud relationship kept only as candidate |
-| 128.247.245.204 | — | No direct current repo match |
-| 52.199.104.217 | — | No direct current repo match |
-| 34.143.224.40 | — | No direct current repo match |
-| 18.141.198.40 | — | No direct current repo match |
-| 8.166.138.183 | — | No direct current repo match |
-| 156.229.166.79 | — | No direct current repo match |
-| 141.11.132.101 | — | No direct current repo match |
-| 61.224.69.212 | — | No direct current repo match |
-| 212.135.39.55 | — | No direct current repo match |
-| 158.247.245.204 | ✅ Vultr / AS20473 / 158.247.192.0/18 | Vultr; GeoLite2-localized to KR in the repo context dataset |
-| 34.153.224.40 | — | No direct current repo match |
-| 23.158.136.31 | — | No direct current repo match |
-| 54.249.223.154 | — | No direct current repo match |
+| 38.244.50.120 | United States | Needs additional context |
+| 103.248.148.84 | Japan | ✅ ARISK / AS395793 / 103.248.148.0/23 |
+| 129.212.181.253 | United States | DigitalOcean range; port 8443 independently appears in public HTTPS/TLS proxy lists |
+| 124.155.252.63 | Hong Kong | Needs additional context |
+| 134.185.91.25 | Singapore | Needs additional context |
+| 203.160.133.172 | Vietnam | Needs additional context |
+| 23.158.220.98 | Thailand | Needs additional context |
+| 64.20.39.190 | United States | ✅ InterServer / AS19318 / 64.20.32.0/19 |
+| 209.209.85.38 | Malaysia | ⚠️ AS215748 Westeros; ARISK/Light Cloud relationship kept only as candidate |
+| 129.212.181.23 | United States | DigitalOcean / AS14061, 129.212.181.0/24 |
+| 101.53.80.20 | South Korea | ✅ ARISK / AS395793 / 101.53.80.0/24, KR-localized |
+| 74.82.60.23 | United States | Hurricane Electric / AS6939 |
+| 34.175.107.233 | Spain | Google Cloud Platform / AS396982 |
+| 18.183.215.124 | Japan | AWS EC2 / AS16509 / ap-northeast-1 |
+| 104.28.162.188 | Latvia | Cloudflare / AS13335 |
+| 104.28.164.188 | Sweden | Cloudflare / AS13335; some IP-intelligence sources classify it as WARP/proxy |
+| 104.28.164.196 | Sweden | Cloudflare / AS13335 |
+| 104.28.166.183 | Germany | Cloudflare / AS13335; some IP-intelligence sources classify it as WARP |
+| 104.28.155.179 | Germany | Cloudflare / AS13335 |
 
-The wrong conclusion would be:
+This list is not identical to the supplemental IoC set I had been analyzing earlier. **The FSS-distributed 19 should be treated as the primary official set; previously shared Vultr and other addresses should be kept as supplemental IoCs rather than mixed into the same table.**
 
-> “Only three IPs matched the repository, therefore only three were VPS/proxy infrastructure.”
+That also changes one earlier statement in this post.
 
-That is not what the project measures.
+For the **19 FSS-distributed IoCs**, the current direct anonymous-vps provider overlap is:
 
-anonymous-vps is not meant to classify every datacenter IP as malicious. Large cloud providers host enormous amounts of legitimate activity, so treating provider membership alone as a malicious verdict produces poor-quality detection.
+- `103.248.148.84` → ARISK / AS395793
+- `101.53.80.20` → ARISK / AS395793
+- `64.20.39.190` → InterServer / AS19318
+- `209.209.85.38` → AS215748; ARISK/Light Cloud relationship remains candidate-only
 
-What matters here is the **mix of infrastructure types** and the fact that the incident set includes infrastructure that can be short-lived, rented, proxied, or rapidly replaced.
+Vultr `158.247.245.204` appeared in a previously shared supplemental set, but it is **not present in this FSS-distributed 19-IP document**. I therefore keep the official and supplemental sets separate from here on.
 
-That fits a model of **replaceable egress** much better than a model of one long-lived fixed C2.
+### What stands out in the 10 newly seen addresses
+
+Compared with the earlier working set, 10 addresses are newly present in the FSS distribution.
+
+Several patterns are notable.
+
+1. **A Korea-localized ARISK prefix now appears directly in the official IoCs**
+   - `101.53.80.20`
+   - prefix: `101.53.80.0/24`
+   - origin: **AS395793 Arisk Communications**
+   - already present in the anonymous-vps KR-localized dataset
+
+2. **Two addresses appear in the same DigitalOcean /24**
+   - `129.212.181.23`
+   - `129.212.181.253`
+   - both in `129.212.181.0/24`, AS14061 DigitalOcean
+   - `.253:8443` is independently distributed in public HTTPS/TLS proxy lists
+
+3. **Hyperscale public cloud is also represented**
+   - `34.175.107.233` → Google Cloud Platform
+   - `18.183.215.124` → AWS EC2 Tokyo
+
+4. **Five addresses are in Cloudflare AS13335**
+   - `104.28.162.188`
+   - `104.28.164.188`
+   - `104.28.164.196`
+   - `104.28.166.183`
+   - `104.28.155.179`
+
+The country labels in the FSS document are GeoIP-style location labels and should **not** be treated as attacker location or nationality, especially for Cloudflare/WARP-like egress. Some third-party IP-intelligence sources classify `104.28.164.188` and `104.28.166.183` as Cloudflare WARP/proxy addresses. That supports the possibility that the victim saw an egress layer rather than the origin host, but it does not prove how each address was used at the exact time of attack.
+
+The official IoCs therefore show a mixed infrastructure model:
+
+- anonymous/crypto-friendly VPS,
+- commodity VPS,
+- hyperscale public cloud,
+- transit/hosting,
+- Cloudflare egress,
+- and at least one endpoint independently observable as a public proxy.
+
+So **“mixed, replaceable VPS/cloud/proxy egress”** is a more accurate description than “anonymous VPS only.”
 
 ---
 
@@ -276,27 +319,34 @@ The defensible conclusion is simply:
 
 ---
 
-## 6. Was there really no Korean IP?
+## 6. There was a Korean-labeled IoC — and it maps to an ARISK prefix
 
-There was one important distinction to make.
+This section needs a direct correction after reviewing the FSS distribution.
 
-158.247.245.204 belongs to Vultr / AS20473, within 158.247.192.0/18.
+The official IoC list includes:
 
-In the anonymous-vps [KR-localized CIDR dataset](https://github.com/windshock/anonymous-vps/blob/main/generated/context/kr-localized-cidrs.csv), that prefix is GeoLite2-localized to South Korea.
+**`101.53.80.20 (South Korea)`**
 
-So the accurate wording is:
+The address is inside `101.53.80.0/24`, currently originated by **AS395793 Arisk Communications**. It is also already present in the anonymous-vps [KR-localized CIDR dataset](https://github.com/windshock/anonymous-vps/blob/main/generated/context/kr-localized-cidrs.csv) as:
 
-- Korean telecom / Korean-owned operator ranges: no clear direct match identified in this set
-- Foreign VPS/cloud infrastructure physically or geolocated in Korea: yes
-- Incident IoC: 158.247.245.204 falls into Vultr's Korea-localized range
+- `101.53.80.0/24`
+- provider: ARISK
+- ASN: AS395793
+- GeoLite2 country: KR
 
-So:
+So my earlier wording that there was no Korean operator range and only a Korea-located Vultr address is no longer correct.
 
-**There may be no clearly Korean-owned operator range in the set, but there is at least one foreign VPS IP hosted/geolocated in Korea.**
+The more accurate distinction is:
 
-This also matters for defensive policy.
+- the FSS-distributed list contains **one South-Korea-labeled IP**, `101.53.80.20`;
+- that IP is not best understood as a typical Korean residential/customer IP, but as a **Korea-localized prefix currently originated by ARISK**;
+- the previously discussed Vultr Korea address `158.247.245.204` belongs to a supplemental IoC set and is not in the FSS 19-IP distribution.
 
-A simple “allow KR GeoIP” rule does not distinguish a domestic subscriber from a foreign cloud provider's Seoul region.
+This matters for access-control design.
+
+**A KR GeoIP result does not automatically mean ordinary domestic-user traffic.** Foreign or globally operated VPS providers can announce Korea-localized prefixes or operate Seoul-region infrastructure.
+
+That is why defensive policy needs **ASN/provider context plus a service-specific normal-access model**, not only country-based filtering.
 
 ---
 
@@ -641,9 +691,26 @@ An attacker can still mine crypto, steal provider keys, abuse model spend, or pi
 
 ---
 
-## 13. Likely defensive change #1: more conservative controls on overseas VPS/hosting access
+## 13. The FSS checklist shows that part of the response has already started
 
-From here onward, these are my forecasts.
+When I first drafted this post, the following sections were framed as forecasts. After reviewing the FSS **IT-security self-inspection checklist for financial institutions**, some of them are no longer merely hypothetical.
+
+The FSS checklist explicitly asks institutions to verify:
+
+- blocking and investigation of attacker IPs shared by FSS/FSI,
+- removal of unnecessary externally exposed services, ports, APIs, and admin pages,
+- full identification of Internet-exposed IT assets and services,
+- coverage not only of customer-facing systems but also **employee, call-center, partner, contractor, and remote-maintenance services**,
+- whether information can be accessed through a URL without proper login,
+- whether users can access files or data outside their authorization,
+- MFA for important services,
+- session integrity and controls against **horizontal privilege escalation**,
+- Rate Limiting and controls against automated bot attacks,
+- monitoring of abnormal URLs/parameters, unauthorized IPs, and off-hours administrator access.
+
+In other words, **Attack Surface, Authorization, Automation Abuse, and Monitoring** became explicit post-incident control items.
+
+### Likely defensive change #1: more conservative controls on overseas VPS/hosting access
 
 Financial institutions already use country- and risk-based access restrictions in many environments.
 
@@ -760,9 +827,11 @@ as much as model benchmark scores.
 
 ---
 
-## 16. Likely defensive change #3: non-customer-facing systems will be re-baselined
+## 16. Defensive change #3: non-customer-facing systems are already being re-baselined
 
-The most direct defensive consequence may be a broad reassessment of systems that were not historically treated with the same priority as customer-facing banking channels.
+This is no longer only a forecast. The FSS checklist explicitly defines the review scope to include not only customer-facing services but also employee, call-center, partner, contractor, and remote-maintenance services.
+
+That effectively formalizes a shift away from protecting only the most visible customer channels toward inventorying and reassessing the broader Internet-exposed business and partner estate.
 
 Likely targets for re-review include:
 
@@ -972,7 +1041,8 @@ That is probably where defenders should look next.
 |---|---|
 | Shodan ARTEX Network/Org snapshot | CTG Server / Cloudie / Vultr |
 | Censys ARTEX Organization snapshot | HostEONS / ServerPoint / Vultr |
-| Financial-sector incident IoCs | ARISK / InterServer / Vultr |
+| FSS-distributed 19 IoCs | ARISK / InterServer |
+| Earlier supplemental IoCs | Vultr and other separately shared addresses |
 | Relationship candidate only | AS215748 Westeros ↔ ARISK/Light Cloud |
 
 This is **provider/infrastructure context**, not a malicious-provider verdict.
@@ -1003,12 +1073,14 @@ If the shared **HTTP/JSON fingerprint** is eventually published, it may become m
 
 ### Financial-sector incident and policy
 
-1. Korea Financial Security Institute (FSI), [금융권 AI Agent 공격 현실화, 선제적 대응 강화 필요](https://www.fsec.or.kr/bbs/detail?bbsNo=12062&menuNo=69), 2026-09-21.
-2. Korea Financial Services Commission (FSC), [Second emergency relaxation of network-separation rules for AI security use](https://www.fsc.go.kr/po010104/87646), 2026-09-03.
-3. DailySecu, [ARTEX로 금융권 광범위 공격…AI가 파고든 API 권한검증 허점](https://www.dailysecu.com/news/articleView.html?idxno=208718), 2026-10-02.
-4. Herald Economy, [은행 연쇄 해킹 도구는 중국 ‘아르텍스 AI’…해커가 사용했다](https://v.daum.net/v/20261003123315260), 2026-10-03.
+1. Korea Financial Supervisory Service (FSS), “Request for Financial-Sector IT Security Self-Inspection in Preparation for Security Incidents” and attached checklist, distributed 2026-10-02.
+2. Korea Financial Supervisory Service (FSS), distributed suspicious-IP list — intrusion type: “suspected automated attack using an AI Agent,” 2026-10.
+3. Korea Financial Security Institute (FSI), [금융권 AI Agent 공격 현실화, 선제적 대응 강화 필요](https://www.fsec.or.kr/bbs/detail?bbsNo=12062&menuNo=69), 2026-09-21.
+4. Korea Financial Services Commission (FSC), [Second emergency relaxation of network-separation rules for AI security use](https://www.fsc.go.kr/po010104/87646), 2026-09-03.
+7. DailySecu, [ARTEX로 금융권 광범위 공격…AI가 파고든 API 권한검증 허점](https://www.dailysecu.com/news/articleView.html?idxno=208718), 2026-10-02.
+6. Herald Economy, [은행 연쇄 해킹 도구는 중국 ‘아르텍스 AI’…해커가 사용했다](https://v.daum.net/v/20261003123315260), 2026-10-03.
 5. DailySecu, [ARTEX 관련 고유 IP 359개 분석](https://www.dailysecu.com/news/articleView.html?idxno=208724), 2026-10-04.
-6. Yonhap News, [AI로 상호금융까지 광범위 공격…“해킹 시도 훨씬 많을 수도”](https://www.yna.co.kr/view/AKR20261003042451002), 2026-10-04.
+8. Yonhap News, [AI로 상호금융까지 광범위 공격…“해킹 시도 훨씬 많을 수도”](https://www.yna.co.kr/view/AKR20261003042451002), 2026-10-04.
 
 ### AI infrastructure and credential theft
 
