@@ -1,6 +1,79 @@
 {
   "schema": "yunhu-korean-audio-pack",
   "version": 1,
-  "updatedAt": "2026-10-08",
-  "items": []
+  "updatedAt": "2026-10-08T11:51:32.164Z",
+  "items": [
+    {
+      "id": "n:까두멀론",
+      "file": "voice-01.webm",
+      "mime": "audio/webm; codecs=opus",
+      "updatedAt": 1791459487321
+    },
+    {
+      "id": "n:꺼도람",
+      "file": "voice-02.webm",
+      "mime": "audio/webm; codecs=opus",
+      "updatedAt": 1791458441918
+    },
+    {
+      "id": "n:꼼서란",
+      "file": "voice-03.webm",
+      "mime": "audio/webm; codecs=opus",
+      "updatedAt": 1791458462662
+    },
+    {
+      "id": "n:다무린",
+      "file": "voice-04.webm",
+      "mime": "audio/webm; codecs=opus",
+      "updatedAt": 1791458431640
+    },
+    {
+      "id": "n:단무링",
+      "file": "voice-05.webm",
+      "mime": "audio/webm; codecs=opus",
+      "updatedAt": 1791458452891
+    },
+    {
+      "id": "n:뜨모랑실",
+      "file": "voice-06.webm",
+      "mime": "audio/webm; codecs=opus",
+      "updatedAt": 1791458474057
+    },
+    {
+      "id": "p:나는 가요.",
+      "file": "voice-07.webm",
+      "mime": "audio/webm; codecs=opus",
+      "updatedAt": 1791458504830
+    },
+    {
+      "id": "p:밥을 먹어요.",
+      "file": "voice-08.webm",
+      "mime": "audio/webm; codecs=opus",
+      "updatedAt": 1791458512759
+    },
+    {
+      "id": "p:책이 있어요.",
+      "file": "voice-09.webm",
+      "mime": "audio/webm; codecs=opus",
+      "updatedAt": 1791459471867
+    },
+    {
+      "id": "p:학교에 가요.",
+      "file": "voice-10.webm",
+      "mime": "audio/webm; codecs=opus",
+      "updatedAt": 1791458519867
+    },
+    {
+      "id": "s:구람이",
+      "file": "voice-11.webm",
+      "mime": "audio/webm; codecs=opus",
+      "updatedAt": 1791458531548
+    },
+    {
+      "id": "s:다린아",
+      "file": "voice-12.webm",
+      "mime": "audio/webm; codecs=opus",
+      "updatedAt": 1791458526480
+    }
+  ]
 }
