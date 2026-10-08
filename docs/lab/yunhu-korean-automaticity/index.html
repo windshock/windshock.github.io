@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>윤후 한글 자동성 훈련 · v4</title>
+<style>
+*{box-sizing:border-box}
+:root{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;color:#1f2937;background:#f6f7fb}
+body{margin:0;min-height:100vh;background:#f6f7fb}
+button,input,textarea{font:inherit}
+button{min-height:48px;border:0;border-radius:14px;padding:12px 16px;font-weight:750;cursor:pointer}
+button:disabled{opacity:.45;cursor:not-allowed}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #111827;outline-offset:2px}
+.app{width:100%;max-width:760px;margin:0 auto;padding:calc(14px + env(safe-area-inset-top)) 14px calc(28px + env(safe-area-inset-bottom))}
+header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+h1{font-size:24px;line-height:1.25;margin:0} h2{font-size:23px;margin:0 0 8px} h3{font-size:19px;margin:18px 0 8px}
+p{font-size:18px;line-height:1.55;margin:8px 0}.muted{color:#667085;font-size:15px}.tiny{font-size:13px;color:#667085}.center{text-align:center}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:18px;margin:12px 0;box-shadow:0 4px 16px rgba(17,24,39,.05)}
+.home-grid{display:grid;grid-template-columns:1fr;gap:12px}.mode{width:100%;text-align:left;background:#fff;border:1px solid #d0d5dd;color:#111827;padding:18px}.mode strong{display:block;font-size:20px;margin-bottom:5px}
+.primary{background:#111827;color:#fff;width:100%}.secondary{background:#eef2f6;color:#111827;width:100%}.soft{background:#fff;border:1px solid #d0d5dd;color:#111827}.audio{background:#0f766e;color:#fff;width:100%;font-size:19px}.record{background:#9f1239;color:#fff}.stop{background:#111827;color:#fff}.danger{background:#fff1f2;color:#9f1239;border:1px solid #fecdd3}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row>*{flex:1 1 0}.stack{display:grid;gap:10px}.progress{height:10px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin:10px 0 16px}.progress>div{height:100%;background:#111827;transition:width .2s ease}
+.notice{background:#fff7ed;border:1px solid #fed7aa;border-radius:14px;padding:12px 14px;margin:12px 0;font-size:15px;line-height:1.5}.goodnote{background:#ecfdf3;border:1px solid #abefc6;border-radius:14px;padding:12px 14px;margin:12px 0;font-size:15px;line-height:1.5}
+.tag{display:inline-block;padding:5px 10px;border-radius:999px;background:#eef2f6;font-size:14px;font-weight:700}.status-ok{color:#166534;font-weight:750}.status-no{color:#b42318;font-weight:750}.status-rec{color:#9f1239;font-weight:800}
+.record-list{display:grid;gap:12px}.record-item{border:1px solid #e5e7eb;border-radius:16px;padding:14px;background:#fafafa}.record-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.record-target{font-size:22px;font-weight:800;line-height:1.35}.record-cue{font-size:14px;color:#667085;margin-top:3px}.record-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.record-actions button{width:100%}.file-label{display:flex;align-items:center;justify-content:center;min-height:48px;border-radius:14px;padding:12px 16px;font-weight:750;background:#fff;border:1px solid #d0d5dd;color:#111827;cursor:pointer}.file-label input{display:none}
+.listen-only{padding:12px 0 4px;text-align:center}.listen-only .ear{font-size:54px;line-height:1;margin:10px 0}
+.jamo-word{display:flex;gap:8px;flex-wrap:nowrap;justify-content:center;margin:18px 0;width:100%}.syllable-block{width:82px;height:96px;border-radius:16px;border:2px solid #d0d5dd;background:#fafafa;font-size:27px;font-weight:800;padding:7px;display:grid;place-items:center;line-height:1}.syllable-block.active{border-color:#111827;background:#f3f4f6}
+.syllable-block.vertical{grid-template-columns:1fr 1fr;grid-template-rows:1fr 30px;column-gap:4px}.syllable-block.vertical .cho{grid-column:1;grid-row:1}.syllable-block.vertical .jung{grid-column:2;grid-row:1}.syllable-block.vertical .jong{grid-column:1 / span 2;grid-row:2;font-size:23px;align-self:end}
+.syllable-block.horizontal{grid-template-columns:1fr;grid-template-rows:28px 28px 26px}.syllable-block.horizontal .cho{grid-row:1}.syllable-block.horizontal .jung{grid-row:2}.syllable-block.horizontal .jong{grid-row:3;font-size:23px;align-self:end}.jung.blank{display:flex;align-items:center;justify-content:center;width:28px;height:34px;border-bottom:4px solid #111827}.syllable-block.horizontal .jung.blank{width:38px}.jong.empty{visibility:hidden}
+.vowels{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.vowel{background:#fff;border:2px solid #d0d5dd;font-size:24px;color:#111827}.feedback{min-height:32px;font-size:18px;font-weight:750;margin:10px 0}.ok{color:#166534}.no{color:#b42318}
+input[type=text]{width:100%;min-height:56px;border:2px solid #d0d5dd;border-radius:14px;padding:10px 14px;font-size:24px;text-align:center;background:#fff}.sentence{font-size:26px;line-height:1.5;text-align:center;font-weight:800;margin:20px 0}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}.choice{background:#fff;border:2px solid #d0d5dd;color:#111827;font-size:21px}.choice.selected{border-color:#111827;background:#f3f4f6}.particle-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.hidden{display:none!important}.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{background:#f8fafc;border-radius:14px;padding:14px}.metric b{display:block;font-size:25px;margin-top:3px}textarea{width:100%;min-height:190px;border:1px solid #d0d5dd;border-radius:14px;padding:12px;font-size:15px;line-height:1.5}
+@media (max-width:390px){.app{padding-left:10px;padding-right:10px}.card{padding:15px}h1{font-size:22px}.syllable-block{width:70px;height:88px;font-size:24px;padding:6px}.sentence{font-size:23px}.record-actions{grid-template-columns:1fr}.result-grid{grid-template-columns:1fr 1fr}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div><h1>윤후 한글 자동성 훈련</h1><div class="muted">부모 음성 · 소리→글자 · 조사 자동화</div></div>
+  <button class="soft" id="homeBtn" type="button">처음</button>
+</header>
+
+<main id="home" class="card">
+  <h2>오늘 연습</h2>
+  <p>이번 버전은 <b>브라우저 TTS 대신 부모가 녹음한 실제 목소리</b>를 사용합니다.</p>
+  <div id="audioReadiness" class="notice">녹음 상태를 확인하는 중…</div>
+  <div class="home-grid">
+    <button class="mode" type="button" data-start="recordings"><strong>🎙 부모 음성 준비</strong>무의미말·조사 문장·연음 소리를 한 번씩 녹음</button>
+    <button class="mode" type="button" data-start="nonsense"><strong>① 무의미말 소리→쓰기</strong>3~4음절 · 받침 1개→2개 · 모음 빈칸→전체 쓰기</button>
+    <button class="mode" type="button" data-start="particle"><strong>② 조사 자동화</strong>이/가 · 은/는 · 을/를 · 에를 짧은 문장으로 익히기</button>
+    <button class="mode" type="button" data-start="soundrule"><strong>③ 소리 바뀜 보너스</strong>연음을 글자와 실제 소리로 연결하기</button>
+    <button class="mode" type="button" data-start="results"><strong>부모 결과 보기</strong>첫 시도, 힌트, 다시 듣기, 조사별 결과 확인</button>
+  </div>
+  <p class="tiny">녹음은 서버로 전송하지 않고 이 브라우저의 저장소(IndexedDB)에 보관합니다. 브라우저 데이터를 지우면 녹음도 사라질 수 있습니다.</p>
+</main>
+
+<section id="recordings" class="hidden">
+  <div class="card">
+    <span class="tag">부모 모드</span>
+    <h2>윤후에게 들려줄 목소리 준비</h2>
+    <p>각 항목을 <b>평소 말하듯 자연스럽게 한 번</b> 읽어 주세요. 녹음 뒤 ▶ 재생으로 확인할 수 있습니다.</p>
+    <div id="secureNotice"></div>
+    <div class="row" style="margin:12px 0">
+      <button class="secondary" id="refreshRecordings" type="button">녹음 상태 새로고침</button>
+      <button class="danger" id="deleteAllAudio" type="button">모든 녹음 삭제</button>
+    </div>
+    <div id="recordList" class="record-list"></div>
+  </div>
+</section>
+
+<section id="nonsense" class="hidden">
+  <div class="card">
+    <span class="tag" id="nLevel"></span>
+    <h2 id="nTitle">1단계 · 소리만 들어요</h2>
+    <div class="progress"><div id="nProg"></div></div>
+    <div id="nListenStage" class="listen-only">
+      <div class="ear" aria-hidden="true">👂</div>
+      <p><b>글자는 아직 보지 않아요.</b><br>먼저 아빠 목소리를 듣고 머릿속에 기억해요.</p>
+      <button class="audio" id="nListen" type="button">🔊 아빠 목소리 듣기</button>
+      <div id="audioStatus" class="muted" role="status" aria-live="polite" style="text-align:center;margin-top:8px">버튼을 눌러 소리를 먼저 들어요.</div>
+      <button id="toBlankStage" class="primary hidden" type="button" style="margin-top:14px">들었어요 → 모음 찾기</button>
+    </div>
+    <div id="nBlankStage" class="hidden">
+      <h3 style="margin-top:4px">2단계 · 들은 소리의 모음을 찾아요</h3>
+      <p class="muted">초성·중성·종성을 실제 한글 자리대로 보고, 빈 모음을 순서대로 골라요.</p>
+      <button class="secondary" id="nRelistenBlank" type="button">🔊 다시 듣기</button>
+      <div id="jamoWord" class="jamo-word" aria-live="polite"></div>
+      <div id="vowelChoices" class="vowels"></div>
+      <div id="nFeedback" class="feedback" aria-live="polite"></div>
+      <button id="hideWriteBtn" class="primary hidden" type="button">3단계 · 가리고 전체 쓰기</button>
+    </div>
+    <div id="fullWriteBox" class="hidden">
+      <h3 style="margin-top:4px">3단계 · 전체를 기억해서 써요</h3>
+      <p class="sentence">방금 들은 말을 통째로 써 보세요.</p>
+      <input id="fullWrite" type="text" inputmode="text" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="무의미말 전체 쓰기">
+      <div class="row" style="margin-top:10px">
+        <button id="checkFull" class="primary" type="button">확인</button>
+        <button id="relistenFull" class="secondary" type="button">🔊 다시 듣기</button>
+      </div>
+      <button id="showHint" class="soft" type="button" style="width:100%;margin-top:10px">힌트: 첫 음절 보기</button>
+      <div id="fullFeedback" class="feedback" aria-live="polite"></div>
+    </div>
+    <button id="nextN" class="secondary hidden" type="button">다음 문제</button>
+  </div>
+</section>
+
+<section id="particle" class="hidden">
+  <div class="card">
+    <span class="tag" id="pStageTag"></span>
+    <h2 id="pTitle">알맞은 조사를 골라요</h2>
+    <div class="progress"><div id="pProg"></div></div>
+    <div id="particleChoiceStage">
+      <div id="pSentence" class="sentence"></div>
+      <div id="pChoices" class="particle-row"></div>
+      <div id="pFeedback" class="feedback" aria-live="polite"></div>
+      <button id="nextP" class="secondary hidden" type="button">다음 문제</button>
+    </div>
+    <div id="particleListenStage" class="hidden">
+      <p class="muted">글자는 아직 정답을 보여주지 않아요. 문장을 듣고 빈칸의 조사만 써요.</p>
+      <button id="pListen" class="audio" type="button">🔊 아빠 목소리 듣기</button>
+      <div id="pListenSentence" class="sentence"></div>
+      <input id="pInput" type="text" maxlength="1" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="조사 한 글자 쓰기">
+      <div class="row" style="margin-top:10px">
+        <button id="pCheckInput" class="primary" type="button">확인</button>
+        <button id="pRelisten" class="secondary" type="button">🔊 다시 듣기</button>
+      </div>
+      <div id="pAudioStatus" class="muted center" aria-live="polite"></div>
+      <div id="pInputFeedback" class="feedback" aria-live="polite"></div>
+      <button id="nextPListen" class="secondary hidden" type="button">다음 문제</button>
+    </div>
+  </div>
+</section>
+
+<section id="soundrule" class="hidden">
+  <div class="card">
+    <span class="tag">보너스 · 연음</span>
+    <h2>글자는 그대로, 소리는 이어져요</h2>
+    <div class="progress"><div id="sProg"></div></div>
+    <p class="muted">글자를 잠깐 본 뒤 아빠 목소리를 듣고, 같은 글자를 골라요.</p>
+    <div id="sPreview" class="sentence"></div>
+    <button id="sListen" class="audio" type="button">🔊 아빠 목소리 듣기</button>
+    <div id="sAudioStatus" class="muted center" aria-live="polite"></div>
+    <div id="sChoices" class="choices"></div>
+    <div id="sFeedback" class="feedback"></div>
+    <button id="nextS" class="secondary hidden" type="button">다음 문제</button>
+  </div>
+</section>
+
+<section id="results" class="hidden">
+  <div class="card">
+    <h2>부모 결과</h2>
+    <div id="metrics" class="result-grid"></div>
+    <h3>복사해서 ChatGPT에 보내기</h3>
+    <textarea id="summary" readonly></textarea>
+    <div class="row" style="margin-top:10px">
+      <button id="copySummary" class="primary" type="button">결과 복사</button>
+      <button id="resetAll" class="danger" type="button">학습 기록 초기화</button>
+    </div>
+  </div>
+</section>
+</div>
+
+<script>
+(() => {
+'use strict';
+const ALLOWED_VOWELS=['ㅏ','ㅓ','ㅗ','ㅜ','ㅡ','ㅣ'];
+const CHO=['ㄱ','ㄲ','ㄴ','ㄷ','ㄸ','ㄹ','ㅁ','ㅂ','ㅃ','ㅅ','ㅆ','ㅇ','ㅈ','ㅉ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+const JUNG=['ㅏ','ㅐ','ㅑ','ㅒ','ㅓ','ㅔ','ㅕ','ㅖ','ㅗ','ㅘ','ㅙ','ㅚ','ㅛ','ㅜ','ㅝ','ㅞ','ㅟ','ㅠ','ㅡ','ㅢ','ㅣ'];
+const JONG=['','ㄱ','ㄲ','ㄳ','ㄴ','ㄵ','ㄶ','ㄷ','ㄹ','ㄺ','ㄻ','ㄼ','ㄽ','ㄾ','ㄿ','ㅀ','ㅁ','ㅂ','ㅄ','ㅅ','ㅆ','ㅇ','ㅈ','ㅊ','ㅋ','ㅌ','ㅍ','ㅎ'];
+
+const nonsenseItems=[
+ {word:'다무린',level:'3음절 · 받침 1개'},
+ {word:'꺼도람',level:'3음절 · 받침 1개 · 쌍자음'},
+ {word:'단무링',level:'3음절 · 받침 2개'},
+ {word:'꼼서란',level:'3음절 · 받침 2개 · 쌍자음'},
+ {word:'뜨모랑실',level:'4음절 · 받침 2개 · 쌍자음'},
+ {word:'까두멀론',level:'4음절 · 받침 2개 · 쌍자음'}
+];
+const particleChoiceItems=[
+ {text:'책 __ 있어요.',options:['이','가'],answer:'이',group:'이/가'},
+ {text:'고양이 __ 와요.',options:['이','가'],answer:'가',group:'이/가'},
+ {text:'집 __ 조용해요.',options:['은','는'],answer:'은',group:'은/는'},
+ {text:'나 __ 가요.',options:['은','는'],answer:'는',group:'은/는'},
+ {text:'밥 __ 먹어요.',options:['을','를'],answer:'을',group:'을/를'},
+ {text:'사과 __ 먹어요.',options:['을','를'],answer:'를',group:'을/를'},
+ {text:'집 __ 가요.',options:['에','을'],answer:'에',group:'에'},
+ {text:'학교 __ 가요.',options:['에','가'],answer:'에',group:'에'}
+];
+const particleListenItems=[
+ {spoken:'책이 있어요.',shown:'책 __ 있어요.',answer:'이',group:'이/가'},
+ {spoken:'나는 가요.',shown:'나 __ 가요.',answer:'는',group:'은/는'},
+ {spoken:'밥을 먹어요.',shown:'밥 __ 먹어요.',answer:'을',group:'을/를'},
+ {spoken:'학교에 가요.',shown:'학교 __ 가요.',answer:'에',group:'에'}
+];
+const soundRuleItems=[
+ {word:'다린아',phonetic:'다리나',choices:['다린아','다리나']},
+ {word:'구람이',phonetic:'구라미',choices:['구람이','구라미']}
+];
+
+const recordingItems=[
+ ...nonsenseItems.map(x=>({id:'n:'+x.word,group:'무의미말',display:x.word,cue:x.level})),
+ ...particleListenItems.map(x=>({id:'p:'+x.spoken,group:'조사 문장',display:x.spoken,cue:'문장 전체를 자연스럽게 읽기'})),
+ ...soundRuleItems.map(x=>({id:'s:'+x.word,group:'연음',display:x.word,cue:'실제 읽을 소리: '+x.phonetic}))
+];
+
+const defaultState=()=>({
+ startedAt:Date.now(),
+ nonsense:{blankCorrect:0,blankTotal:0,fullFirstCorrect:0,fullTotal:0,audioReplays:0,hints:0,completed:0,wrongVowels:{}},
+ particle:{choiceFirstCorrect:0,choiceTotal:0,listenFirstCorrect:0,listenTotal:0,audioReplays:0,groups:{}},
+ soundrule:{firstCorrect:0,total:0},done:{nonsense:false,particle:false,soundrule:false}
+});
+let state=loadState();
+let nIndex=0,nParts=[],nPartIndex=0,nFirstBlankAttempts=[],nFullAttempts=0;
+let pIndex=0,pListenIndex=0,pChoiceAttempts=0,pInputAttempts=0;
+let sIndex=0,sAttempts=0;
+let currentRecorder=null,currentStream=null,currentChunks=[],currentRecordId=null;
+
+function $(id){return document.getElementById(id)}
+function loadState(){try{return Object.assign(defaultState(),JSON.parse(localStorage.getItem('yunhuKoreanAutoV4')||'{}'));}catch(e){return defaultState();}}
+function saveState(){localStorage.setItem('yunhuKoreanAutoV4',JSON.stringify(state));}
+function showSection(id){['home','recordings','nonsense','particle','soundrule','results'].forEach(x=>$(x).classList.toggle('hidden',x!==id));window.scrollTo({top:0,behavior:'smooth'});if(id==='recordings')renderRecordingList();if(id==='home')renderAudioReadiness();if(id==='results')renderResults();}
+function decomposeWord(word){return [...word].map(ch=>{const code=ch.charCodeAt(0)-0xAC00;if(code<0||code>11171)return{char:ch,cho:'',jung:'',jong:''};const cho=Math.floor(code/588),jung=Math.floor((code%588)/28),jong=code%28;return{char:ch,cho:CHO[cho],jung:JUNG[jung],jong:JONG[jong]};});}
+function markGroup(group,key,correct){if(!state.particle.groups[group])state.particle.groups[group]={choiceCorrect:0,choiceTotal:0,listenCorrect:0,listenTotal:0};const g=state.particle.groups[group];if(key==='choice'){g.choiceTotal++;if(correct)g.choiceCorrect++;}else{g.listenTotal++;if(correct)g.listenCorrect++;}}
+function pct(a,b){return b?Math.round(a/b*100):0}
+
+// IndexedDB audio storage
+const DB_NAME='yunhuKoreanAudioV4';const STORE='audio';
+function openDB(){return new Promise((resolve,reject)=>{if(!('indexedDB' in window)){reject(new Error('IndexedDB 미지원'));return;}const req=indexedDB.open(DB_NAME,1);req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains(STORE))db.createObjectStore(STORE,{keyPath:'id'});};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});}
+async function putAudio(id,blob){const db=await openDB();return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).put({id,blob,updatedAt:Date.now()});tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>{db.close();reject(tx.error);};});}
+async function getAudio(id){try{const db=await openDB();return await new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readonly');const req=tx.objectStore(STORE).get(id);req.onsuccess=()=>{db.close();resolve(req.result||null);};req.onerror=()=>{db.close();reject(req.error);};});}catch(e){return null;}}
+async function deleteAudio(id){const db=await openDB();return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).delete(id);tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>{db.close();reject(tx.error);};});}
+async function clearAudio(){const db=await openDB();return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).clear();tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>{db.close();reject(tx.error);};});}
+async function playAudioId(id,statusEl){const rec=await getAudio(id);if(!rec||!rec.blob){if(statusEl)statusEl.textContent='녹음이 없어요. 부모 음성 준비에서 먼저 녹음해 주세요.';return false;}try{const url=URL.createObjectURL(rec.blob);const audio=new Audio(url);if(statusEl)statusEl.textContent='🔊 아빠 목소리를 재생하고 있어요.';audio.onended=()=>{URL.revokeObjectURL(url);if(statusEl)statusEl.textContent='다시 듣고 싶으면 버튼을 눌러도 돼요.';};audio.onerror=()=>{URL.revokeObjectURL(url);if(statusEl)statusEl.textContent='녹음 재생에 실패했어요. 부모 음성 준비에서 다시 녹음해 주세요.';};await audio.play();return true;}catch(e){if(statusEl)statusEl.textContent='녹음 재생을 시작하지 못했어요.';return false;}}
+async function countRecorded(prefix){let count=0;for(const item of recordingItems.filter(x=>x.id.startsWith(prefix))){if(await getAudio(item.id))count++;}return count;}
+async function renderAudioReadiness(){const n=await countRecorded('n:'),p=await countRecorded('p:'),s=await countRecorded('s:');const ready=n===nonsenseItems.length&&p===particleListenItems.length&&s===soundRuleItems.length;$('audioReadiness').className=ready?'goodnote':'notice';$('audioReadiness').innerHTML=`<b>부모 음성 준비:</b> 무의미말 ${n}/${nonsenseItems.length} · 조사 문장 ${p}/${particleListenItems.length} · 연음 ${s}/${soundRuleItems.length}<br>${ready?'모든 음성이 준비됐어요. 바로 학습할 수 있습니다.':'필요한 파트만 먼저 녹음해도 됩니다.'}`;}
+
+function recordingSupportMessage(){const direct=!!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder);if(direct){return `<div class="goodnote"><b>직접 녹음 사용 가능.</b> 녹음 시작을 누르면 마이크 권한을 요청합니다.</div>`;}return `<div class="notice"><b>이 환경에서는 HTML 안에서 직접 마이크 녹음이 제한될 수 있어요.</b><br>음성 메모 등으로 녹음한 파일을 아래의 <b>오디오 파일 넣기</b>로 저장해 주세요. GitHub Pages(HTTPS)에서 열면 직접 녹음이 더 잘 동작합니다.</div>`;}
+async function renderRecordingList(){
+ $('secureNotice').innerHTML=recordingSupportMessage();const wrap=$('recordList');wrap.innerHTML='';
+ for(const item of recordingItems){const saved=await getAudio(item.id);const box=document.createElement('div');box.className='record-item';
+   box.innerHTML=`<div class="record-head"><div><div class="tag">${item.group}</div><div class="record-target">${item.display}</div><div class="record-cue">${item.cue}</div></div><div class="${saved?'status-ok':'status-no'}">${saved?'녹음됨 ✓':'미녹음'}</div></div><div class="record-actions"><button class="record" type="button" data-rec="${encodeURIComponent(item.id)}">● 녹음 시작</button><button class="stop hidden" type="button" data-stop="${encodeURIComponent(item.id)}">■ 녹음 종료</button><button class="secondary" type="button" data-play="${encodeURIComponent(item.id)}" ${saved?'':'disabled'}>▶ 재생</button><label class="file-label">오디오 파일 넣기<input type="file" accept="audio/*" data-file="${encodeURIComponent(item.id)}"></label><button class="danger" type="button" data-del="${encodeURIComponent(item.id)}" ${saved?'':'disabled'}>이 녹음 삭제</button></div><div class="muted" data-msg="${encodeURIComponent(item.id)}"></div>`;
+   wrap.appendChild(box);
+ }
+ wrap.querySelectorAll('[data-rec]').forEach(b=>b.addEventListener('click',()=>startRecording(decodeURIComponent(b.dataset.rec),b)));
+ wrap.querySelectorAll('[data-stop]').forEach(b=>b.addEventListener('click',()=>stopRecording(decodeURIComponent(b.dataset.stop))));
+ wrap.querySelectorAll('[data-play]').forEach(b=>b.addEventListener('click',()=>{const id=decodeURIComponent(b.dataset.play);playAudioId(id,wrap.querySelector(`[data-msg="${CSS.escape(encodeURIComponent(id))}"]`));}));
+ wrap.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',async()=>{await deleteAudio(decodeURIComponent(b.dataset.del));await renderRecordingList();await renderAudioReadiness();}));
+ wrap.querySelectorAll('[data-file]').forEach(inp=>inp.addEventListener('change',async()=>{const file=inp.files&&inp.files[0];if(!file)return;await putAudio(decodeURIComponent(inp.dataset.file),file);await renderRecordingList();await renderAudioReadiness();}));
+}
+function bestMime(){if(!window.MediaRecorder)return'';const types=['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/ogg;codecs=opus'];return types.find(t=>MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(t))||'';}
+async function startRecording(id,button){
+ if(currentRecorder&&currentRecorder.state==='recording')return;
+ const msg=document.querySelector(`[data-msg="${CSS.escape(encodeURIComponent(id))}"]`);
+ if(!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder)){if(msg)msg.textContent='직접 녹음이 지원되지 않아요. 오디오 파일 넣기를 사용해 주세요.';return;}
+ try{currentStream=await navigator.mediaDevices.getUserMedia({audio:true});currentChunks=[];currentRecordId=id;const mime=bestMime();currentRecorder=mime?new MediaRecorder(currentStream,{mimeType:mime}):new MediaRecorder(currentStream);currentRecorder.ondataavailable=e=>{if(e.data&&e.data.size)currentChunks.push(e.data);};currentRecorder.onstop=async()=>{const type=currentRecorder.mimeType||currentChunks[0]?.type||'audio/webm';const blob=new Blob(currentChunks,{type});await putAudio(currentRecordId,blob);currentStream?.getTracks().forEach(t=>t.stop());currentStream=null;currentRecorder=null;currentChunks=[];currentRecordId=null;await renderRecordingList();await renderAudioReadiness();};currentRecorder.start();if(msg){msg.className='status-rec';msg.textContent='● 녹음 중… 자연스럽게 한 번 읽고 녹음 종료를 누르세요.';}button.classList.add('hidden');const stopBtn=document.querySelector(`[data-stop="${CSS.escape(encodeURIComponent(id))}"]`);if(stopBtn)stopBtn.classList.remove('hidden');}catch(e){if(msg)msg.textContent='마이크를 열지 못했어요. 권한을 확인하거나 오디오 파일 넣기를 사용해 주세요.';currentStream?.getTracks().forEach(t=>t.stop());currentStream=null;currentRecorder=null;}}
+function stopRecording(id){if(currentRecorder&&currentRecorder.state==='recording'&&currentRecordId===id)currentRecorder.stop();}
+
+// Navigation
+[...document.querySelectorAll('[data-start]')].forEach(btn=>btn.addEventListener('click',()=>{const x=btn.dataset.start;if(x==='recordings')showSection('recordings');if(x==='nonsense'){nIndex=0;startNonsenseItem();showSection('nonsense');}if(x==='particle'){pIndex=0;pListenIndex=0;startParticleChoice();showSection('particle');}if(x==='soundrule'){sIndex=0;startSoundRule();showSection('soundrule');}if(x==='results')showSection('results');}));
+$('homeBtn').addEventListener('click',()=>showSection('home'));
+$('refreshRecordings').addEventListener('click',renderRecordingList);
+$('deleteAllAudio').addEventListener('click',async()=>{if(confirm('이 브라우저에 저장된 부모 음성을 모두 지울까요?')){await clearAudio();await renderRecordingList();await renderAudioReadiness();}});
+
+// Nonsense module
+function startNonsenseItem(){if(nIndex>=nonsenseItems.length){state.done.nonsense=true;saveState();showSection('results');return;}const item=nonsenseItems[nIndex];nParts=decomposeWord(item.word);nPartIndex=0;nFirstBlankAttempts=nParts.map(()=>0);nFullAttempts=0;$('nLevel').textContent=`${nIndex+1}/${nonsenseItems.length} · ${item.level}`;$('nProg').style.width=`${(nIndex/nonsenseItems.length)*100}%`;$('nTitle').textContent='1단계 · 소리만 들어요';$('nFeedback').textContent='';$('fullFeedback').textContent='';$('fullWrite').value='';$('nListenStage').classList.remove('hidden');$('nBlankStage').classList.add('hidden');$('fullWriteBox').classList.add('hidden');$('hideWriteBtn').classList.add('hidden');$('nextN').classList.add('hidden');$('toBlankStage').classList.add('hidden');$('audioStatus').textContent='버튼을 눌러 소리를 먼저 들어요.';renderJamo();renderVowels();}
+function renderJamo(){const wrap=$('jamoWord');wrap.innerHTML='';nParts.forEach((p,i)=>{const horizontal=['ㅗ','ㅜ','ㅡ'].includes(p.jung);const box=document.createElement('div');box.className=`syllable-block ${horizontal?'horizontal':'vertical'}${i===nPartIndex?' active':''}`;const cho=document.createElement('span');cho.className='cho';cho.textContent=p.cho;const jung=document.createElement('span');jung.className='jung'+(i>=nPartIndex?' blank':'');jung.textContent=i<nPartIndex?p.jung:'';const jong=document.createElement('span');jong.className='jong'+(p.jong?'':' empty');jong.textContent=p.jong||'ㅇ';box.append(cho,jung,jong);wrap.appendChild(box);});}
+function renderVowels(){const wrap=$('vowelChoices');wrap.innerHTML='';ALLOWED_VOWELS.forEach(v=>{const b=document.createElement('button');b.type='button';b.className='vowel';b.textContent=v;b.addEventListener('click',()=>chooseVowel(v));wrap.appendChild(b);});wrap.classList.toggle('hidden',nPartIndex>=nParts.length);}
+function chooseVowel(v){if(nPartIndex>=nParts.length)return;const target=nParts[nPartIndex].jung,idx=nPartIndex;nFirstBlankAttempts[idx]++;state.nonsense.blankTotal++;if(v===target){if(nFirstBlankAttempts[idx]===1)state.nonsense.blankCorrect++;$('nFeedback').className='feedback ok';$('nFeedback').textContent='✓ 맞았어요.';nPartIndex++;saveState();renderJamo();if(nPartIndex>=nParts.length){$('vowelChoices').classList.add('hidden');$('nFeedback').textContent='✓ 모음을 모두 찾았어요. 이제 글자를 가리고 전체를 써 봐요.';$('hideWriteBtn').classList.remove('hidden');}else renderVowels();}else{state.nonsense.wrongVowels[target]=(state.nonsense.wrongVowels[target]||0)+1;saveState();$('nFeedback').className='feedback no';$('nFeedback').textContent='다시 들어 보고 골라보세요.';}}
+$('nListen').addEventListener('click',async()=>{const ok=await playAudioId('n:'+nonsenseItems[nIndex].word,$('audioStatus'));if(ok)$('toBlankStage').classList.remove('hidden');});
+$('toBlankStage').addEventListener('click',()=>{$('nListenStage').classList.add('hidden');$('nBlankStage').classList.remove('hidden');$('nTitle').textContent='2단계 · 모음 찾기';});
+$('nRelistenBlank').addEventListener('click',async()=>{state.nonsense.audioReplays++;saveState();await playAudioId('n:'+nonsenseItems[nIndex].word,$('audioStatus'));});
+$('hideWriteBtn').addEventListener('click',()=>{$('nBlankStage').classList.add('hidden');$('nTitle').textContent='3단계 · 전체 기억쓰기';$('fullWriteBox').classList.remove('hidden');setTimeout(()=>$('fullWrite').focus(),150);});
+$('relistenFull').addEventListener('click',async()=>{state.nonsense.audioReplays++;saveState();await playAudioId('n:'+nonsenseItems[nIndex].word,$('audioStatus'));});
+$('showHint').addEventListener('click',()=>{state.nonsense.hints++;saveState();$('fullFeedback').className='feedback';$('fullFeedback').textContent=`힌트: 첫 음절은 “${[...nonsenseItems[nIndex].word][0]}”`;});
+$('checkFull').addEventListener('click',()=>{const ans=$('fullWrite').value.trim();if(!ans)return;nFullAttempts++;if(ans===nonsenseItems[nIndex].word){if(nFullAttempts===1)state.nonsense.fullFirstCorrect++;state.nonsense.fullTotal++;state.nonsense.completed++;saveState();$('fullFeedback').className='feedback ok';$('fullFeedback').textContent='✓ 맞았어요!';$('nextN').classList.remove('hidden');}else{if(nFullAttempts===1)state.nonsense.fullTotal++;saveState();$('fullFeedback').className='feedback no';$('fullFeedback').textContent='조금 달라요. 한 번 더 들어도 괜찮아요.';}});
+$('nextN').addEventListener('click',()=>{nIndex++;startNonsenseItem();});
+
+// Particle module
+function startParticleChoice(){if(pIndex>=particleChoiceItems.length){startParticleListen();return;}$('particleChoiceStage').classList.remove('hidden');$('particleListenStage').classList.add('hidden');const item=particleChoiceItems[pIndex];pChoiceAttempts=0;$('pStageTag').textContent=`1단계 · 고르기 ${pIndex+1}/${particleChoiceItems.length} · ${item.group}`;$('pTitle').textContent='알맞은 조사를 골라요';$('pProg').style.width=`${(pIndex/(particleChoiceItems.length+particleListenItems.length))*100}%`;$('pSentence').textContent=item.text;$('pChoices').innerHTML='';$('pFeedback').textContent='';$('nextP').classList.add('hidden');item.options.forEach(opt=>{const b=document.createElement('button');b.type='button';b.className='choice';b.textContent=opt;b.addEventListener('click',()=>answerParticleChoice(opt,b));$('pChoices').appendChild(b);});}
+function answerParticleChoice(opt,btn){const item=particleChoiceItems[pIndex];pChoiceAttempts++;[...$('pChoices').children].forEach(x=>x.classList.remove('selected'));btn.classList.add('selected');const correct=opt===item.answer;if(pChoiceAttempts===1){state.particle.choiceTotal++;if(correct)state.particle.choiceFirstCorrect++;markGroup(item.group,'choice',correct);saveState();}if(correct){$('pFeedback').className='feedback ok';$('pFeedback').textContent='✓ 맞았어요.';$('nextP').classList.remove('hidden');}else{$('pFeedback').className='feedback no';$('pFeedback').textContent='다시 생각해 볼까요?';}}
+$('nextP').addEventListener('click',()=>{pIndex++;startParticleChoice();});
+function startParticleListen(){if(pListenIndex>=particleListenItems.length){state.done.particle=true;saveState();showSection('results');return;}$('particleChoiceStage').classList.add('hidden');$('particleListenStage').classList.remove('hidden');const item=particleListenItems[pListenIndex];pInputAttempts=0;$('pStageTag').textContent=`2단계 · 듣고 쓰기 ${pListenIndex+1}/${particleListenItems.length}`;$('pTitle').textContent='문장을 듣고 조사만 써요';$('pProg').style.width=`${((particleChoiceItems.length+pListenIndex)/(particleChoiceItems.length+particleListenItems.length))*100}%`;$('pListenSentence').textContent=item.shown;$('pInput').value='';$('pInputFeedback').textContent='';$('pAudioStatus').textContent='';$('nextPListen').classList.add('hidden');}
+$('pListen').addEventListener('click',()=>playAudioId('p:'+particleListenItems[pListenIndex].spoken,$('pAudioStatus')));
+$('pRelisten').addEventListener('click',async()=>{state.particle.audioReplays++;saveState();await playAudioId('p:'+particleListenItems[pListenIndex].spoken,$('pAudioStatus'));});
+$('pCheckInput').addEventListener('click',()=>{const item=particleListenItems[pListenIndex],ans=$('pInput').value.trim();if(!ans)return;pInputAttempts++;const correct=ans===item.answer;if(pInputAttempts===1){state.particle.listenTotal++;if(correct)state.particle.listenFirstCorrect++;markGroup(item.group,'listen',correct);saveState();}if(correct){$('pInputFeedback').className='feedback ok';$('pInputFeedback').textContent='✓ 맞았어요.';$('nextPListen').classList.remove('hidden');}else{$('pInputFeedback').className='feedback no';$('pInputFeedback').textContent='문장을 한 번 더 듣고 다시 써 보세요.';}});
+$('nextPListen').addEventListener('click',()=>{pListenIndex++;startParticleListen();});
+
+// Sound-rule module
+function startSoundRule(){if(sIndex>=soundRuleItems.length){state.done.soundrule=true;saveState();showSection('results');return;}const item=soundRuleItems[sIndex];sAttempts=0;$('sProg').style.width=`${(sIndex/soundRuleItems.length)*100}%`;$('sPreview').textContent=item.word;$('sFeedback').textContent='';$('sAudioStatus').textContent='';$('nextS').classList.add('hidden');$('sChoices').innerHTML='';item.choices.forEach(opt=>{const b=document.createElement('button');b.type='button';b.className='choice';b.textContent=opt;b.addEventListener('click',()=>answerSoundRule(opt,b));$('sChoices').appendChild(b);});}
+$('sListen').addEventListener('click',()=>playAudioId('s:'+soundRuleItems[sIndex].word,$('sAudioStatus')));
+function answerSoundRule(opt,btn){const item=soundRuleItems[sIndex];sAttempts++;[...$('sChoices').children].forEach(x=>x.classList.remove('selected'));btn.classList.add('selected');const correct=opt===item.word;if(sAttempts===1){state.soundrule.total++;if(correct)state.soundrule.firstCorrect++;saveState();}if(correct){$('sFeedback').className='feedback ok';$('sFeedback').textContent=`✓ 맞아요. 글자는 “${item.word}”, 실제 소리는 “${item.phonetic}”처럼 이어져요.`;$('nextS').classList.remove('hidden');}else{$('sFeedback').className='feedback no';$('sFeedback').textContent='소리는 비슷해도, 처음 본 글자 모양을 기억해 보세요.';}}
+$('nextS').addEventListener('click',()=>{sIndex++;startSoundRule();});
+
+function renderResults(){const n=state.nonsense,p=state.particle,s=state.soundrule,mins=Math.max(1,Math.round((Date.now()-state.startedAt)/60000));$('metrics').innerHTML=`<div class="metric">모음 빈칸 첫 시도<b>${n.blankCorrect}/${n.blankTotal}</b></div><div class="metric">무의미말 전체 첫 시도<b>${n.fullFirstCorrect}/${n.fullTotal}</b></div><div class="metric">조사 고르기 첫 시도<b>${p.choiceFirstCorrect}/${p.choiceTotal}</b></div><div class="metric">조사 듣고쓰기 첫 시도<b>${p.listenFirstCorrect}/${p.listenTotal}</b></div><div class="metric">다시 듣기<b>${n.audioReplays+p.audioReplays}회</b></div><div class="metric">연음 보너스<b>${s.firstCorrect}/${s.total}</b></div>`;const groupLines=Object.entries(p.groups).map(([k,g])=>`  - ${k}: 고르기 ${g.choiceCorrect}/${g.choiceTotal}, 듣고쓰기 ${g.listenCorrect}/${g.listenTotal}`).join('\n')||'  - 아직 기록 없음';const vowelErrors=Object.entries(n.wrongVowels).sort((a,b)=>b[1]-a[1]).map(([v,c])=>`${v} ${c}회`).join(', ')||'없음';$('summary').value=`[윤후 한글 자동성 훈련 · v4 · 부모 음성]\n- 무의미말 범위: 모음 ㅏ/ㅓ/ㅗ/ㅜ/ㅡ/ㅣ, 종성 ㅁ/ㄴ/ㅇ/ㄹ, 3~4음절, 쌍자음 포함\n- 모음 빈칸 무힌트 첫 시도: ${n.blankCorrect}/${n.blankTotal} (${pct(n.blankCorrect,n.blankTotal)}%)\n- 무의미말 전체쓰기 첫 시도: ${n.fullFirstCorrect}/${n.fullTotal} (${pct(n.fullFirstCorrect,n.fullTotal)}%)\n- 무의미말 다시 듣기: ${n.audioReplays}회, 첫 음절 힌트: ${n.hints}회\n- 모음 오답 분포: ${vowelErrors}\n- 조사 고르기 첫 시도: ${p.choiceFirstCorrect}/${p.choiceTotal} (${pct(p.choiceFirstCorrect,p.choiceTotal)}%)\n- 조사 듣고쓰기 첫 시도: ${p.listenFirstCorrect}/${p.listenTotal} (${pct(p.listenFirstCorrect,p.listenTotal)}%)\n- 조사별:\n${groupLines}\n- 조사 문장 다시 듣기: ${p.audioReplays}회\n- 소리 바뀜(연음) 보너스 첫 시도: ${s.firstCorrect}/${s.total}\n- 화면상 경과 시간: 약 ${mins}분\n관찰할 점: 부모 실제 음성으로 들었을 때 특정 모음·받침·음절 길이에서 어떤 오류가 남는지, 다시 듣기 없이 유지되는 길이가 어디까지인지, 조사 이/가·은/는·을/를·에 중 어떤 대비가 흔들리는지.`;}
+$('copySummary').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('summary').value);$('copySummary').textContent='복사됨 ✓';setTimeout(()=>$('copySummary').textContent='결과 복사',1200);}catch(e){$('summary').select();document.execCommand('copy');}});
+$('resetAll').addEventListener('click',()=>{if(confirm('학습 결과 기록만 초기화할까요? 부모 음성 녹음은 남습니다.')){state=defaultState();saveState();renderResults();}});
+
+// Guard: nonsense items must stay in agreed Hangul range.
+for(const item of nonsenseItems){const parts=decomposeWord(item.word);if(parts.some(p=>!ALLOWED_VOWELS.includes(p.jung)||(p.jong&&!['ㅁ','ㄴ','ㅇ','ㄹ'].includes(p.jong))))console.warn('범위 밖 글자:',item.word,parts);}
+
+renderAudioReadiness();showSection('home');
+})();
+</script>
+</body>
+</html>
