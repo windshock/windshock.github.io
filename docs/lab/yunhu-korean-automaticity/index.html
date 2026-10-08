@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>윤후 한글 자동성 훈련 · v4</title>
+<title>윤후 한글 자동성 훈련 · v5</title>
 <style>
 *{box-sizing:border-box}
 :root{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;color:#1f2937;background:#f6f7fb}
@@ -52,7 +52,7 @@ input[type=text]{width:100%;min-height:56px;border:2px solid #d0d5dd;border-radi
     <button class="mode" type="button" data-start="soundrule"><strong>③ 소리 바뀜 보너스</strong>연음을 글자와 실제 소리로 연결하기</button>
     <button class="mode" type="button" data-start="results"><strong>부모 결과 보기</strong>첫 시도, 힌트, 다시 듣기, 조사별 결과 확인</button>
   </div>
-  <p class="tiny">녹음은 서버로 전송하지 않고 이 브라우저의 저장소(IndexedDB)에 보관합니다. 브라우저 데이터를 지우면 녹음도 사라질 수 있습니다.</p>
+  <p class="tiny">부모 음성은 이 브라우저에 보관되며 백업/복원이 가능합니다. GitHub 기본 음성팩을 등록하면 새 기기에서도 자동으로 내려받습니다. 이 기기에서 직접 녹음한 음성은 기본 음성팩보다 우선합니다.</p>
 </main>
 
 <section id="recordings" class="hidden">
@@ -61,6 +61,18 @@ input[type=text]{width:100%;min-height:56px;border:2px solid #d0d5dd;border-radi
     <h2>윤후에게 들려줄 목소리 준비</h2>
     <p>각 항목을 <b>평소 말하듯 자연스럽게 한 번</b> 읽어 주세요. 녹음 뒤 ▶ 재생으로 확인할 수 있습니다.</p>
     <div id="secureNotice"></div>
+
+    <div class="notice" id="audioBackupBox">
+      <b>음성 백업과 복원</b><br>
+      한 번 녹음한 부모 음성을 백업 파일로 저장하거나 다른 기기에서 복원할 수 있습니다. GitHub 기본 음성팩이 있으면 자동으로 내려받고, 이 기기에서 직접 녹음한 음성을 우선 사용합니다.
+    </div>
+    <div class="row" style="margin:12px 0">
+      <button class="secondary" id="exportAudioBackup" type="button">음성 백업 저장</button>
+      <label class="file-label">백업 불러오기<input id="importAudioBackupFile" type="file" accept="application/json,.json"></label>
+      <button class="secondary" id="syncRemoteAudio" type="button">GitHub 음성팩 새로고침</button>
+    </div>
+    <div id="backupStatus" class="muted" role="status" aria-live="polite">백업 파일은 나중에 ChatGPT에 보내 주면 GitHub 기본 음성팩으로 만들어 넣을 수 있습니다.</div>
+    <div id="remotePackStatus" class="muted" role="status" aria-live="polite" style="margin-top:5px">GitHub 기본 음성팩 확인 전입니다.</div>
     <div class="row" style="margin:12px 0">
       <button class="secondary" id="refreshRecordings" type="button">녹음 상태 새로고침</button>
       <button class="danger" id="deleteAllAudio" type="button">모든 녹음 삭제</button>
@@ -217,21 +229,40 @@ let sIndex=0,sAttempts=0;
 let currentRecorder=null,currentStream=null,currentChunks=[],currentRecordId=null;
 
 function $(id){return document.getElementById(id)}
-function loadState(){try{return Object.assign(defaultState(),JSON.parse(localStorage.getItem('yunhuKoreanAutoV4')||'{}'));}catch(e){return defaultState();}}
-function saveState(){localStorage.setItem('yunhuKoreanAutoV4',JSON.stringify(state));}
+const STATE_KEY='yunhuKoreanAuto';
+function loadState(){try{const raw=localStorage.getItem(STATE_KEY)||localStorage.getItem('yunhuKoreanAutoV4')||'{}';return Object.assign(defaultState(),JSON.parse(raw));}catch(e){return defaultState();}}
+function saveState(){localStorage.setItem(STATE_KEY,JSON.stringify(state));}
 function showSection(id){['home','recordings','nonsense','particle','soundrule','results'].forEach(x=>$(x).classList.toggle('hidden',x!==id));window.scrollTo({top:0,behavior:'smooth'});if(id==='recordings')renderRecordingList();if(id==='home')renderAudioReadiness();if(id==='results')renderResults();}
 function decomposeWord(word){return [...word].map(ch=>{const code=ch.charCodeAt(0)-0xAC00;if(code<0||code>11171)return{char:ch,cho:'',jung:'',jong:''};const cho=Math.floor(code/588),jung=Math.floor((code%588)/28),jong=code%28;return{char:ch,cho:CHO[cho],jung:JUNG[jung],jong:JONG[jong]};});}
 function markGroup(group,key,correct){if(!state.particle.groups[group])state.particle.groups[group]={choiceCorrect:0,choiceTotal:0,listenCorrect:0,listenTotal:0};const g=state.particle.groups[group];if(key==='choice'){g.choiceTotal++;if(correct)g.choiceCorrect++;}else{g.listenTotal++;if(correct)g.listenCorrect++;}}
 function pct(a,b){return b?Math.round(a/b*100):0}
 
 // IndexedDB audio storage
-const DB_NAME='yunhuKoreanAudioV4';const STORE='audio';
-function openDB(){return new Promise((resolve,reject)=>{if(!('indexedDB' in window)){reject(new Error('IndexedDB 미지원'));return;}const req=indexedDB.open(DB_NAME,1);req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains(STORE))db.createObjectStore(STORE,{keyPath:'id'});};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});}
-async function putAudio(id,blob){const db=await openDB();return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).put({id,blob,updatedAt:Date.now()});tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>{db.close();reject(tx.error);};});}
+const DB_NAME='yunhuKoreanAudio';
+const LEGACY_DB_NAME='yunhuKoreanAudioV4';
+const STORE='audio';
+const BACKUP_SCHEMA='yunhu-korean-audio-backup';
+const REMOTE_PACK_URL='./audio/manifest.json';
+
+function openNamedDB(name){return new Promise((resolve,reject)=>{if(!('indexedDB' in window)){reject(new Error('IndexedDB unavailable'));return;}const req=indexedDB.open(name,1);req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains(STORE))db.createObjectStore(STORE,{keyPath:'id'});};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error);});}
+function openDB(){return openNamedDB(DB_NAME);}
+async function putAudio(id,blob,options={}){const db=await openDB();const source=options.source||'local';const updatedAt=options.updatedAt||Date.now();const remoteUpdatedAt=options.remoteUpdatedAt||null;return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).put({id,blob,updatedAt,source,remoteUpdatedAt});tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>{db.close();reject(tx.error);};});}
 async function getAudio(id){try{const db=await openDB();return await new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readonly');const req=tx.objectStore(STORE).get(id);req.onsuccess=()=>{db.close();resolve(req.result||null);};req.onerror=()=>{db.close();reject(req.error);};});}catch(e){return null;}}
+async function getAllAudio(){try{const db=await openDB();return await new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readonly');const req=tx.objectStore(STORE).getAll();req.onsuccess=()=>{db.close();resolve(req.result||[]);};req.onerror=()=>{db.close();reject(req.error);};});}catch(e){return[];}}
 async function deleteAudio(id){const db=await openDB();return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).delete(id);tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>{db.close();reject(tx.error);};});}
 async function clearAudio(){const db=await openDB();return new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).clear();tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>{db.close();reject(tx.error);};});}
-async function playAudioId(id,statusEl){const rec=await getAudio(id);if(!rec||!rec.blob){if(statusEl)statusEl.textContent='녹음이 없어요. 부모 음성 준비에서 먼저 녹음해 주세요.';return false;}try{const url=URL.createObjectURL(rec.blob);const audio=new Audio(url);if(statusEl)statusEl.textContent='🔊 아빠 목소리를 재생하고 있어요.';audio.onended=()=>{URL.revokeObjectURL(url);if(statusEl)statusEl.textContent='다시 듣고 싶으면 버튼을 눌러도 돼요.';};audio.onerror=()=>{URL.revokeObjectURL(url);if(statusEl)statusEl.textContent='녹음 재생에 실패했어요. 부모 음성 준비에서 다시 녹음해 주세요.';};await audio.play();return true;}catch(e){if(statusEl)statusEl.textContent='녹음 재생을 시작하지 못했어요.';return false;}}
+
+async function readLegacyAudio(){return new Promise(resolve=>{if(!('indexedDB' in window)){resolve([]);return;}let newlyCreated=false;const req=indexedDB.open(LEGACY_DB_NAME);req.onupgradeneeded=()=>{newlyCreated=true;};req.onerror=()=>resolve([]);req.onsuccess=()=>{const db=req.result;if(newlyCreated||!db.objectStoreNames.contains(STORE)){db.close();if(newlyCreated)indexedDB.deleteDatabase(LEGACY_DB_NAME);resolve([]);return;}const tx=db.transaction(STORE,'readonly');const all=tx.objectStore(STORE).getAll();all.onsuccess=()=>{const rows=all.result||[];db.close();resolve(rows);};all.onerror=()=>{db.close();resolve([]);};};});}
+async function migrateLegacyAudio(){if(localStorage.getItem('yunhuAudioMigratedV4')==='1')return 0;const rows=await readLegacyAudio();let copied=0;for(const rec of rows){if(!rec||!rec.id||!rec.blob)continue;const existing=await getAudio(rec.id);if(!existing){await putAudio(rec.id,rec.blob,{source:'local',updatedAt:rec.updatedAt||Date.now()});copied++;}}localStorage.setItem('yunhuAudioMigratedV4','1');return copied;}
+
+function arrayBufferToBase64(buffer){const bytes=new Uint8Array(buffer);let binary='';const chunk=0x8000;for(let i=0;i<bytes.length;i+=chunk)binary+=String.fromCharCode(...bytes.subarray(i,i+chunk));return btoa(binary);}
+function base64ToBlob(base64,mime){const binary=atob(base64);const bytes=new Uint8Array(binary.length);for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);return new Blob([bytes],{type:mime||'audio/webm'});}
+async function exportAudioBackup(){const status=$('backupStatus');try{const rows=await getAllAudio();if(!rows.length){status.textContent="\ubc31\uc5c5\ud560 \ub179\uc74c\uc774 \uc544\uc9c1 \uc5c6\uc2b5\ub2c8\ub2e4.";return;}const recordings=[];for(const rec of rows){if(!rec.blob)continue;recordings.push({id:rec.id,mime:rec.blob.type||'audio/webm',updatedAt:rec.updatedAt||Date.now(),source:rec.source||'local',dataBase64:arrayBufferToBase64(await rec.blob.arrayBuffer())});}const payload={schema:BACKUP_SCHEMA,version:1,exportedAt:new Date().toISOString(),recordings};const blob=new Blob([JSON.stringify(payload)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');const d=new Date().toISOString().slice(0,10);a.href=url;a.download=`yunhu_korean_audio_backup_${d}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);status.textContent="\uc74c\uc131 {count}\uac1c\ub97c \ubc31\uc5c5 \ud30c\uc77c\ub85c \uc800\uc7a5\ud588\uc2b5\ub2c8\ub2e4.".replace('{count}',recordings.length);}catch(e){status.textContent="\uc74c\uc131 \ubc31\uc5c5 \ud30c\uc77c\uc744 \ub9cc\ub4e4\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4.";}}
+async function importAudioBackup(file){const status=$('backupStatus');try{const payload=JSON.parse(await file.text());if(!payload||payload.schema!==BACKUP_SCHEMA||!Array.isArray(payload.recordings))throw new Error('invalid');let count=0;for(const rec of payload.recordings){if(!rec||!rec.id||!rec.dataBase64)continue;const blob=base64ToBlob(rec.dataBase64,rec.mime);await putAudio(rec.id,blob,{source:'local',updatedAt:rec.updatedAt||Date.now()});count++;}status.textContent="\ubc31\uc5c5\uc5d0\uc11c \uc74c\uc131 {count}\uac1c\ub97c \ubcf5\uc6d0\ud588\uc2b5\ub2c8\ub2e4.".replace('{count}',count);await renderRecordingList();await renderAudioReadiness();}catch(e){status.textContent="\ubc31\uc5c5 \ud30c\uc77c\uc744 \uc77d\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4. \uc774 \ud398\uc774\uc9c0\uc5d0\uc11c \ub9cc\ub4e0 JSON \ubc31\uc5c5\uc778\uc9c0 \ud655\uc778\ud574 \uc8fc\uc138\uc694.";}}
+
+async function syncRemoteAudioPack(options={}){const status=$('remotePackStatus');try{if(status&&!options.silent)status.textContent="GitHub \uae30\ubcf8 \uc74c\uc131\ud329\uc744 \ud655\uc778\ud558\ub294 \uc911\uc785\ub2c8\ub2e4.";const res=await fetch(REMOTE_PACK_URL+'?t='+Date.now(),{cache:'no-store'});if(!res.ok)throw new Error('manifest');const manifest=await res.json();const items=Array.isArray(manifest.items)?manifest.items:[];let downloaded=0,keptLocal=0;for(const item of items){if(!item||!item.id||!item.file)continue;const existing=await getAudio(item.id);if(existing&&existing.source!=='remote'){keptLocal++;continue;}const remoteStamp=String(item.updatedAt||manifest.updatedAt||'');if(existing&&existing.source==='remote'&&String(existing.remoteUpdatedAt||'')===remoteStamp)continue;const audioRes=await fetch(new URL('./audio/'+item.file,location.href),{cache:'no-store'});if(!audioRes.ok)continue;const blob=await audioRes.blob();await putAudio(item.id,blob,{source:'remote',updatedAt:Date.now(),remoteUpdatedAt:remoteStamp});downloaded++;}if(status)status.textContent=items.length?"GitHub \uc74c\uc131\ud329 {total}\uac1c \ud655\uc778 \u00b7 {downloaded}\uac1c \ub0b4\ub824\ubc1b\uc74c \u00b7 \ub0b4 \ub179\uc74c {local}\uac1c \uc720\uc9c0".replace('{total}',items.length).replace('{downloaded}',downloaded).replace('{local}',keptLocal):"GitHub \uae30\ubcf8 \uc74c\uc131\ud329\uc740 \uc544\uc9c1 \ube44\uc5b4 \uc788\uc2b5\ub2c8\ub2e4. \ubc31\uc5c5 \ud30c\uc77c\uc744 \ubcf4\ub0b4 \uc8fc\uba74 \ucc44\uc6b8 \uc218 \uc788\uc2b5\ub2c8\ub2e4.";await renderAudioReadiness();if(!options.silent&&document.getElementById('recordings')&&!document.getElementById('recordings').classList.contains('hidden'))await renderRecordingList();return items.length;}catch(e){if(status)status.textContent="GitHub \uc74c\uc131\ud329\uc744 \ubd88\ub7ec\uc624\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4. \uc778\ud130\ub137 \uc5f0\uacb0 \ub4a4 \ub2e4\uc2dc \uc2dc\ub3c4\ud574 \uc8fc\uc138\uc694.";return 0;}}
+
+async function playAudioId(id,statusEl){const rec=await getAudio(id);if(!rec||!rec.blob){if(statusEl)statusEl.textContent="\uc800\uc7a5\ub41c \uc74c\uc131\uc774 \uc5c6\uc2b5\ub2c8\ub2e4. \ubd80\ubaa8 \uc74c\uc131 \uc900\ube44\uc5d0\uc11c \ub179\uc74c\ud558\uac70\ub098 \ubc31\uc5c5\uc744 \ubcf5\uc6d0\ud574 \uc8fc\uc138\uc694.";return false;}try{const url=URL.createObjectURL(rec.blob);const audio=new Audio(url);if(statusEl)statusEl.textContent="\ubd80\ubaa8 \ubaa9\uc18c\ub9ac\ub97c \uc7ac\uc0dd\ud558\uace0 \uc788\uc5b4\uc694.";audio.onended=()=>{URL.revokeObjectURL(url);if(statusEl)statusEl.textContent="\ub2e4\uc2dc \ub4e3\uace0 \uc2f6\uc73c\uba74 \ubc84\ud2bc\uc744 \ub20c\ub7ec\ub3c4 \ub3fc\uc694.";};audio.onerror=()=>{URL.revokeObjectURL(url);if(statusEl)statusEl.textContent="\uc74c\uc131 \uc7ac\uc0dd\uc5d0 \uc2e4\ud328\ud588\uc2b5\ub2c8\ub2e4.";};await audio.play();return true;}catch(e){if(statusEl)statusEl.textContent="\uc74c\uc131 \uc7ac\uc0dd\uc744 \uc2dc\uc791\ud558\uc9c0 \ubabb\ud588\uc2b5\ub2c8\ub2e4.";return false;}}
 async function countRecorded(prefix){let count=0;for(const item of recordingItems.filter(x=>x.id.startsWith(prefix))){if(await getAudio(item.id))count++;}return count;}
 async function renderAudioReadiness(){const n=await countRecorded('n:'),p=await countRecorded('p:'),s=await countRecorded('s:');const ready=n===nonsenseItems.length&&p===particleListenItems.length&&s===soundRuleItems.length;$('audioReadiness').className=ready?'goodnote':'notice';$('audioReadiness').innerHTML=`<b>부모 음성 준비:</b> 무의미말 ${n}/${nonsenseItems.length} · 조사 문장 ${p}/${particleListenItems.length} · 연음 ${s}/${soundRuleItems.length}<br>${ready?'모든 음성이 준비됐어요. 바로 학습할 수 있습니다.':'필요한 파트만 먼저 녹음해도 됩니다.'}`;}
 
@@ -261,6 +292,9 @@ function stopRecording(id){if(currentRecorder&&currentRecorder.state==='recordin
 $('homeBtn').addEventListener('click',()=>showSection('home'));
 $('refreshRecordings').addEventListener('click',renderRecordingList);
 $('deleteAllAudio').addEventListener('click',async()=>{if(confirm('이 브라우저에 저장된 부모 음성을 모두 지울까요?')){await clearAudio();await renderRecordingList();await renderAudioReadiness();}});
+$('exportAudioBackup').addEventListener('click',exportAudioBackup);
+$('importAudioBackupFile').addEventListener('change',async e=>{const file=e.target.files&&e.target.files[0];if(file)await importAudioBackup(file);e.target.value='';});
+$('syncRemoteAudio').addEventListener('click',()=>syncRemoteAudioPack({silent:false}));
 
 // Nonsense module
 function startNonsenseItem(){if(nIndex>=nonsenseItems.length){state.done.nonsense=true;saveState();showSection('results');return;}const item=nonsenseItems[nIndex];nParts=decomposeWord(item.word);nPartIndex=0;nFirstBlankAttempts=nParts.map(()=>0);nFullAttempts=0;$('nLevel').textContent=`${nIndex+1}/${nonsenseItems.length} · ${item.level}`;$('nProg').style.width=`${(nIndex/nonsenseItems.length)*100}%`;$('nTitle').textContent='1단계 · 소리만 들어요';$('nFeedback').textContent='';$('fullFeedback').textContent='';$('fullWrite').value='';$('nListenStage').classList.remove('hidden');$('nBlankStage').classList.add('hidden');$('fullWriteBox').classList.add('hidden');$('hideWriteBtn').classList.add('hidden');$('nextN').classList.add('hidden');$('toBlankStage').classList.add('hidden');$('audioStatus').textContent='버튼을 눌러 소리를 먼저 들어요.';renderJamo();renderVowels();}
@@ -292,14 +326,15 @@ $('sListen').addEventListener('click',()=>playAudioId('s:'+soundRuleItems[sIndex
 function answerSoundRule(opt,btn){const item=soundRuleItems[sIndex];sAttempts++;[...$('sChoices').children].forEach(x=>x.classList.remove('selected'));btn.classList.add('selected');const correct=opt===item.word;if(sAttempts===1){state.soundrule.total++;if(correct)state.soundrule.firstCorrect++;saveState();}if(correct){$('sFeedback').className='feedback ok';$('sFeedback').textContent=`✓ 맞아요. 글자는 “${item.word}”, 실제 소리는 “${item.phonetic}”처럼 이어져요.`;$('nextS').classList.remove('hidden');}else{$('sFeedback').className='feedback no';$('sFeedback').textContent='소리는 비슷해도, 처음 본 글자 모양을 기억해 보세요.';}}
 $('nextS').addEventListener('click',()=>{sIndex++;startSoundRule();});
 
-function renderResults(){const n=state.nonsense,p=state.particle,s=state.soundrule,mins=Math.max(1,Math.round((Date.now()-state.startedAt)/60000));$('metrics').innerHTML=`<div class="metric">모음 빈칸 첫 시도<b>${n.blankCorrect}/${n.blankTotal}</b></div><div class="metric">무의미말 전체 첫 시도<b>${n.fullFirstCorrect}/${n.fullTotal}</b></div><div class="metric">조사 고르기 첫 시도<b>${p.choiceFirstCorrect}/${p.choiceTotal}</b></div><div class="metric">조사 듣고쓰기 첫 시도<b>${p.listenFirstCorrect}/${p.listenTotal}</b></div><div class="metric">다시 듣기<b>${n.audioReplays+p.audioReplays}회</b></div><div class="metric">연음 보너스<b>${s.firstCorrect}/${s.total}</b></div>`;const groupLines=Object.entries(p.groups).map(([k,g])=>`  - ${k}: 고르기 ${g.choiceCorrect}/${g.choiceTotal}, 듣고쓰기 ${g.listenCorrect}/${g.listenTotal}`).join('\n')||'  - 아직 기록 없음';const vowelErrors=Object.entries(n.wrongVowels).sort((a,b)=>b[1]-a[1]).map(([v,c])=>`${v} ${c}회`).join(', ')||'없음';$('summary').value=`[윤후 한글 자동성 훈련 · v4 · 부모 음성]\n- 무의미말 범위: 모음 ㅏ/ㅓ/ㅗ/ㅜ/ㅡ/ㅣ, 종성 ㅁ/ㄴ/ㅇ/ㄹ, 3~4음절, 쌍자음 포함\n- 모음 빈칸 무힌트 첫 시도: ${n.blankCorrect}/${n.blankTotal} (${pct(n.blankCorrect,n.blankTotal)}%)\n- 무의미말 전체쓰기 첫 시도: ${n.fullFirstCorrect}/${n.fullTotal} (${pct(n.fullFirstCorrect,n.fullTotal)}%)\n- 무의미말 다시 듣기: ${n.audioReplays}회, 첫 음절 힌트: ${n.hints}회\n- 모음 오답 분포: ${vowelErrors}\n- 조사 고르기 첫 시도: ${p.choiceFirstCorrect}/${p.choiceTotal} (${pct(p.choiceFirstCorrect,p.choiceTotal)}%)\n- 조사 듣고쓰기 첫 시도: ${p.listenFirstCorrect}/${p.listenTotal} (${pct(p.listenFirstCorrect,p.listenTotal)}%)\n- 조사별:\n${groupLines}\n- 조사 문장 다시 듣기: ${p.audioReplays}회\n- 소리 바뀜(연음) 보너스 첫 시도: ${s.firstCorrect}/${s.total}\n- 화면상 경과 시간: 약 ${mins}분\n관찰할 점: 부모 실제 음성으로 들었을 때 특정 모음·받침·음절 길이에서 어떤 오류가 남는지, 다시 듣기 없이 유지되는 길이가 어디까지인지, 조사 이/가·은/는·을/를·에 중 어떤 대비가 흔들리는지.`;}
+function renderResults(){const n=state.nonsense,p=state.particle,s=state.soundrule,mins=Math.max(1,Math.round((Date.now()-state.startedAt)/60000));$('metrics').innerHTML=`<div class="metric">모음 빈칸 첫 시도<b>${n.blankCorrect}/${n.blankTotal}</b></div><div class="metric">무의미말 전체 첫 시도<b>${n.fullFirstCorrect}/${n.fullTotal}</b></div><div class="metric">조사 고르기 첫 시도<b>${p.choiceFirstCorrect}/${p.choiceTotal}</b></div><div class="metric">조사 듣고쓰기 첫 시도<b>${p.listenFirstCorrect}/${p.listenTotal}</b></div><div class="metric">다시 듣기<b>${n.audioReplays+p.audioReplays}회</b></div><div class="metric">연음 보너스<b>${s.firstCorrect}/${s.total}</b></div>`;const groupLines=Object.entries(p.groups).map(([k,g])=>`  - ${k}: 고르기 ${g.choiceCorrect}/${g.choiceTotal}, 듣고쓰기 ${g.listenCorrect}/${g.listenTotal}`).join('\n')||'  - 아직 기록 없음';const vowelErrors=Object.entries(n.wrongVowels).sort((a,b)=>b[1]-a[1]).map(([v,c])=>`${v} ${c}회`).join(', ')||'없음';$('summary').value=`[윤후 한글 자동성 훈련 · v5 · 부모 음성]\n- 무의미말 범위: 모음 ㅏ/ㅓ/ㅗ/ㅜ/ㅡ/ㅣ, 종성 ㅁ/ㄴ/ㅇ/ㄹ, 3~4음절, 쌍자음 포함\n- 모음 빈칸 무힌트 첫 시도: ${n.blankCorrect}/${n.blankTotal} (${pct(n.blankCorrect,n.blankTotal)}%)\n- 무의미말 전체쓰기 첫 시도: ${n.fullFirstCorrect}/${n.fullTotal} (${pct(n.fullFirstCorrect,n.fullTotal)}%)\n- 무의미말 다시 듣기: ${n.audioReplays}회, 첫 음절 힌트: ${n.hints}회\n- 모음 오답 분포: ${vowelErrors}\n- 조사 고르기 첫 시도: ${p.choiceFirstCorrect}/${p.choiceTotal} (${pct(p.choiceFirstCorrect,p.choiceTotal)}%)\n- 조사 듣고쓰기 첫 시도: ${p.listenFirstCorrect}/${p.listenTotal} (${pct(p.listenFirstCorrect,p.listenTotal)}%)\n- 조사별:\n${groupLines}\n- 조사 문장 다시 듣기: ${p.audioReplays}회\n- 소리 바뀜(연음) 보너스 첫 시도: ${s.firstCorrect}/${s.total}\n- 화면상 경과 시간: 약 ${mins}분\n관찰할 점: 부모 실제 음성으로 들었을 때 특정 모음·받침·음절 길이에서 어떤 오류가 남는지, 다시 듣기 없이 유지되는 길이가 어디까지인지, 조사 이/가·은/는·을/를·에 중 어떤 대비가 흔들리는지.`;}
 $('copySummary').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('summary').value);$('copySummary').textContent='복사됨 ✓';setTimeout(()=>$('copySummary').textContent='결과 복사',1200);}catch(e){$('summary').select();document.execCommand('copy');}});
 $('resetAll').addEventListener('click',()=>{if(confirm('학습 결과 기록만 초기화할까요? 부모 음성 녹음은 남습니다.')){state=defaultState();saveState();renderResults();}});
 
 // Guard: nonsense items must stay in agreed Hangul range.
 for(const item of nonsenseItems){const parts=decomposeWord(item.word);if(parts.some(p=>!ALLOWED_VOWELS.includes(p.jung)||(p.jong&&!['ㅁ','ㄴ','ㅇ','ㄹ'].includes(p.jong))))console.warn('범위 밖 글자:',item.word,parts);}
 
-renderAudioReadiness();showSection('home');
+async function initApp(){const migrated=await migrateLegacyAudio();if(migrated&&$('backupStatus'))$('backupStatus').textContent="\uae30\uc874 v4 \ub179\uc74c {count}\uac1c\ub97c \uc0c8 \uc800\uc7a5\uc18c\ub85c \uc62e\uacbc\uc2b5\ub2c8\ub2e4.".replace('{count}',migrated);await syncRemoteAudioPack({silent:true});await renderAudioReadiness();showSection('home');}
+initApp();
 })();
 </script>
 </body>
