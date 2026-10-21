@@ -6,6 +6,10 @@ featured: true
 tags: ["TrustAndCulture", "AI 보안", "보안 거버넌스", "제너럴리스트", "조직 부채", "취약점 분석", "NoHackingNoSecurity", "FollowTheMoney", "FollowThePower"]
 categories: ["보안 거버넌스", "AI 보안"]
 description: "금융권 AI 소스코드 분석의 오탐 40~60%를 출발점으로, 모델의 한계와 분석 환경의 한계를 구분하고 전문성·예산·결정권이 분리된 조직에 쌓이는 보안 부채를 살펴본다."
+image: "/images/post/ai-false-positives-security-debt/ko-cover.png"
+cover:
+  image: "/images/post/ai-false-positives-security-debt/ko-cover.png"
+  alt: "AI가 발견한 공격 경로가 검토·승인·결재·보완 절차와 오탐·체크리스트·보고용 결과 서류에 묻히는 보안 조직의 모습"
 ---
 
 금융권의 AI 소스코드 분석에서 오탐이 40~60%에 달했다는 보도를 보며, 저는 모델의 성능보다 먼저 **그 AI에게 무엇을 보여 주었고, 무엇을 검증하게 했으며, 그 결과를 조직이 어떻게 다룰 수 있었는지**가 궁금했습니다. 보안에서 위험을 발견하는 능력과 발견한 위험에 따라 조직의 결정을 바꾸는 능력은 서로 다른 문제이기 때문입니다.
