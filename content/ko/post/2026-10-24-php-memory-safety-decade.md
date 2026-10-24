@@ -7,6 +7,10 @@ translationKey: "php-memory-safety-decade"
 tags: ["Mind", "PHP", "Memory Safety", "PHP2Shell", "Vulnerability Research"]
 categories: ["취약점 연구", "소프트웨어 보안"]
 description: "2016~2026년 PHP 메모리 안전성 연구를 원 발견자와 코어 개발자의 공개 기록으로 되짚는다. 재진입, 실패 원자성, bailout 복구, 요청 간 수명이라는 반복 패턴과 PHP2Shell 연구의 한계를 살펴본다."
+image: "/images/post/php-memory-safety-decade/research-timeline-acknowledgments-en.svg"
+cover:
+  image: "/images/post/php-memory-safety-decade/research-timeline-acknowledgments-en.svg"
+  alt: "PHP 메모리 안전성 연구의 2016~2026년 연대표, 주요 연구자·기여자와 감사문"
 ---
 
 PHP의 메모리 안전성 문제를 지난 10년의 공개 기록으로 따라가 보면, 서로 다른 취약점들이 놀랄 만큼 비슷한 질문으로 돌아온다. **사용자 코드가 다시 실행되거나, 메모리 할당이 실패하거나, 요청이 끝났을 때, PHP 엔진은 자신이 관리하던 상태를 여전히 일관되게 유지할 수 있는가?** 이 글은 이 질문을 밝히는 데 기여한 취약점 발견자와 PHP 코어 개발자들의 연구를 돌아보고, 그들에게 감사를 전하기 위한 기술적 회고다.
@@ -68,13 +72,17 @@ PHP의 메모리 안전성 문제를 지난 10년의 공개 기록으로 따라�
 
 ## Research Credits & Acknowledgments — 연구자와 개발자들에게 감사하며
 
-이 글이 가능했던 것은 취약점을 발견하는 데 그치지 않고 재현 입력, 원인 분석, 패치 논의, 수정 과정의 한계까지 공개 기록으로 남긴 사람들 덕분이다. 당시의 어려움을 후대의 연구자가 다시 확인할 수 있게 해 준 그 노력에 감사한다.
+지난 10년간 공개된 취약점 제보, 재현 코드, 근본 원인 분석, 설계 논의와 패치가 없었다면 이 글도 작성할 수 없었다. **최초 발견과 후속 분석, PHP 코어 수정, 보안 감사, 배포·연구 지원은 서로 다른 공로**라는 점을 분명히 하며 감사를 전한다.
 
-[Taoguang Chen](https://bugs.php.net/bug.php?id=72530), [Yannay Livneh과 Check Point 연구진](https://blog.checkpoint.com/research/check-point-discovers-three-zero-day-vulnerabilities-web-programming-language-php-7/), [Chris Young의 공개 제보](https://bugs.php.net/bug.php?id=74103)는 초기 직렬화·재진입·메모리 안전성 연구의 중요한 출발점이다. [Emil Lerner(neex)](https://github.com/neex/phuip-fpizdam)의 PHP-FPM 발견과 [Orange Tsai](https://blog.orange.tw/posts/2019-10-an-analysis-and-thought-about-recently/)의 심층 분석에도 감사한다. 최초 발견과 후속 분석은 서로 다른 기여로 존중해야 한다.
+**초기 취약점 연구와 기술 분석.** [Taoguang Chen](https://bugs.php.net/bug.php?id=72530), [Yannay Livneh 및 Check Point 연구진](https://blog.checkpoint.com/research/check-point-discovers-three-zero-day-vulnerabilities-web-programming-language-php-7/), [Chris Young](https://bugs.php.net/bug.php?id=74103)의 재현과 분석은 PHP의 직렬화·GC·재진입을 이해하는 중요한 출발점이 되었다. [Emil Lerner(neex)](https://github.com/neex/phuip-fpizdam)의 PHP-FPM 취약점 발견과 [Orange Tsai](https://blog.orange.tw/posts/2019-10-an-analysis-and-thought-about-recently/)의 별도 기술 해설, [Charles Fol(cfreal)](https://blackalps.ch/ba-22/talk/generic-remote-exploit-techniques-for-the-php-allocator-and-0days)의 PHP 메모리 할당기 연구에도 감사한다.
 
-[Nikita Popov](https://github.com/php/php-src/pull/6903)를 비롯한 PHP 코어 개발자와 유지보수자들에게는 문제를 축소·수정하고, 해결되지 않은 설계 문제까지 공개적으로 토론한 작업에 감사를 전한다. [Quarkslab의 감사 연구진과 이를 지원한 조직들](https://thephp.foundation/blog/2025/04/10/php-core-security-audit-results/), [Yuancheng Jiang과 FlowFusion 공동 저자들](https://www.usenix.org/conference/usenixsecurity25/presentation/jiang-yuancheng), [Calif의 공개 연구](https://calif.io/research/php-uaf), [Wiz Research의 PHP2Shell 분석](https://www.wiz.io/blog/php2shell-php-rce) 및 공식 보안 권고를 작성·검증한 기여자들의 작업도 이 연구에 중요한 기준점을 제공했다.
+**PHP 코어 개발과 검증.** [Nikita Popov](https://github.com/php/php-src/pull/6903)를 비롯해 오류 핸들러·GC·메모리 소유권 문제를 분석하고 수정 방법의 한계까지 공개해 온 개발자들에게 감사한다. [PHP Foundation의 2024년 감사 결과 발표](https://thephp.foundation/blog/2025/04/10/php-core-security-audit-results/)에서 인정한 **Arnaud Le Blanc, Ilija Tovilo, Jakub Zelenka, Niels Dossche**와 다른 PHP 코어 유지보수자·보안팀·리뷰어·테스터들에게도 감사를 전한다. 이는 이 네 명을 동일한 2026년 패치의 공동 작성자로 지목하는 뜻이 아니다.
 
-여기 언급되지 않은 제보자, 테스트 작성자, 리뷰어, 수정 사항을 각 릴리스에 반영한 유지보수자들의 기여도 작지 않다. **이 글의 분석은 이들의 연구를 바탕으로 한 문헌 검토와 독립적인 제한적 실험이며, 원 발견의 공로를 대신하지 않는다.** 이름·기여·링크에 오류가 있다면 수정하겠다.
+**감사와 퍼징 연구.** [Quarkslab 감사의 공동 저자](https://blog.quarkslab.com/security-audit-of-php-src.html) **Angèle Bossuat, Julio Loayza Meneses, Mihail Kirov, Sébastien Rolland, Ramtine Tofighi Shirazi**와 [FlowFusion 논문의 공동 저자](https://www.usenix.org/conference/usenixsecurity25/presentation/jiang-yuancheng) **Yuancheng Jiang, Chuqi Zhang, Bonan Ruan, Jiahao Liu, Manuel Rigger, Roland H. C. Yap, Zhenkai Liang**에게 감사한다. 새로운 검증 방법을 공개한 공헌은 개별 취약점 발견과 마찬가지로 중요하다.
+
+**2026년 PHP2Shell 발견·검증·책임 있는 공개.** [PHP Foundation의 공식 감사문](https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/)은 **Ryan A(Calif)**와 **Amy Burnett(OpenAI Codex Security)**를 특별히 언급하고 Calif·OpenAI·Wiz의 연구와 신고·조정에 감사를 전한다. [Wiz Research의 원문](https://www.wiz.io/blog/php2shell-php-rce)에 이름이 실린 **Sagi Tzadik, Shir Tamari, Nir Ohfeld, Tomer Schwartz**에게도 감사를 전한다. 서로 다른 팀의 최초 신고, 독립 분석, 악용 가능성 검증, 패치 검증을 하나의 발견 공로로 합치지 않겠다.
+
+이 연구를 가능하게 한 **PHP Foundation, OSTIF, Sovereign Tech Agency, PHP 보안팀, 릴리스 관리자, 배포판과 LTS 패키지 유지보수자, 자원봉사자와 후원자들**도 함께 인정하고 싶다. 이 글은 전체 기여자의 완전한 목록이 아니며, 이름이 나온 연구자들이 내 글이나 [php2shell 프로젝트](https://github.com/windshock/php2shell)를 승인한다는 뜻도 아니다. 이름·역할·출처에 잘못이 있다면 수정하겠다.
 
 ---
 

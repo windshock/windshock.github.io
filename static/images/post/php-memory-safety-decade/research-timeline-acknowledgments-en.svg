@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-labelledby="mainTitle mainDesc">
+<title id="mainTitle">A Decade of PHP Memory-Safety Research (2016–2026)</title>
+<desc id="mainDesc">An English timeline of research on PHP memory safety from 2016 to 2026, followed by four recurring invariants and acknowledgments to discoverers, independent analysts, auditors, fuzzing researchers, core developers, security teams, release maintainers, and supporting organizations. This is a selected, non-exhaustive list.</desc>
+<defs>
+<linearGradient id="navy" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#081e38"/><stop offset=".58" stop-color="#12385c"/><stop offset="1" stop-color="#1a4269"/></linearGradient>
+<linearGradient id="page" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fbfdff"/><stop offset="1" stop-color="#eef3f9"/></linearGradient>
+<linearGradient id="muted" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#f0f6ff"/><stop offset="1" stop-color="#eaf0fb"/></linearGradient>
+<filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="9" flood-color="#0b2b51" flood-opacity=".08"/></filter>
+</defs>
+<rect width="1920" height="1080" fill="url(#page)"/>
+<rect width="1920" height="182" fill="url(#navy)"/>
+<path d="M0 161 L120 116 L205 159 L360 104 L460 159 L590 133 L740 165 L910 115 L1050 154 L1260 109 L1360 156 L1560 99 L1680 151 L1808 102 L1920 160 L1920 182 L0 182Z" fill="#345d82" opacity=".33"/>
+<path d="M0 168 L120 142 L300 170 L430 122 L585 172 L700 138 L900 171 L1096 130 L1220 168 L1380 134 L1514 166 L1680 124 L1790 168 L1920 140 L1920 182 L0 182Z" fill="#547da0" opacity=".36"/>
+<text x="70" y="70" font-family="Georgia,'Times New Roman',serif" font-size="51" font-weight="700" fill="#fff">A Decade of PHP Memory-Safety Research <tspan fill="#a9d2ff">(2016–2026)</tspan></text>
+<text x="70" y="119" font-family="Arial,sans-serif" font-size="25" fill="#d9eafc">Ten years of discoveries, difficult fixes, and people advancing PHP security.</text>
+<text x="71" y="159" font-family="Arial,sans-serif" font-size="16" letter-spacing="3.2" fill="#89bce6">HISTORICAL RESEARCH   /   ENGINEERING TRADEOFFS   /   PUBLIC CREDIT</text>
+<rect x="1462" y="139" width="388" height="29" rx="14.5" fill="#2e5b85" opacity=".9"/>
+<text x="1656" y="159" text-anchor="middle" font-size="16" font-family="Arial,sans-serif" fill="#f5faff">SELECTED MILESTONES — NOT EXHAUSTIVE</text>
+<text x="56" y="215" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="2" fill="#526d89">RESEARCH TIMELINE</text>
+<line x1="75" y1="264" x2="1843" y2="264" stroke="#6e92b7" stroke-width="3"/>
+<path d="M1830 255 L1845 264 L1830 273" fill="none" stroke="#6e92b7" stroke-width="3" stroke-linecap="round"/>
+
+<rect x="43" y="282" width="224" height="265" rx="14" fill="#fff" stroke="#dbe5ee" stroke-width="1.3" filter="url(#shadow)"/>
+<circle cx="155" cy="264" r="9" fill="#3185cb" stroke="#fff" stroke-width="3"/>
+<rect x="57" y="300" width="7" height="45" rx="3.5" fill="#3185cb"/>
+<text x="72" y="321" font-family="Arial,sans-serif" font-size="26" font-weight="750" fill="#162e4b">2016</text>
+<text x="59" y="364" font-family="Arial,sans-serif" font-size="20.5" font-weight="700" fill="#153556">Serialization</text>
+<text x="59" y="389" font-family="Arial,sans-serif" font-size="20.5" font-weight="700" fill="#153556">&amp; GC re-entrancy</text>
+<text x="59" y="439" font-family="Arial,sans-serif" font-size="18" fill="#4b6480">Object lifetime,</text>
+<text x="59" y="462" font-family="Arial,sans-serif" font-size="18" fill="#4b6480">destructors, callbacks</text>
+<line x1="59" x2="251" y1="489" y2="489" stroke="#dbe5ee"/>
+<text x="59" y="511" font-family="Arial,sans-serif" font-size="16.3" font-weight="600" fill="#3185cb">Taoguang Chen;</text>
+<text x="59" y="531" font-family="Arial,sans-serif" font-size="16.3" font-weight="600" fill="#3185cb">Check Point research</text>
+<rect x="277" y="282" width="224" height="265" rx="14" fill="#fff" stroke="#dbe5ee" stroke-width="1.3" filter="url(#shadow)"/>
+<circle cx="389" cy="264" r="9" fill="#1e9b94" stroke="#fff" stroke-width="3"/>
+<rect x="291" y="300" width="7" height="45" rx="3.5" fill="#1e9b94"/>
+<text x="306" y="321" font-family="Arial,sans-serif" font-size="26" font-weight="750" fill="#162e4b">2018</text>
+<text x="293" y="364" font-family="Arial,sans-serif" font-size="20.5" font-weight="700" fill="#153556">Failure atomicity</text>
+<text x="293" y="389" font-family="Arial,sans-serif" font-size="20.5" font-weight="700" fill="#153556">&amp; request lifetime</text>
+<text x="293" y="439" font-family="Arial,sans-serif" font-size="18" fill="#4b6480">OOM cleanup and</text>
+<text x="293" y="462" font-family="Arial,sans-serif" font-size="18" fill="#4b6480">cross-request pointers</text>
+<line x1="293" x2="485" y1="489" y2="489" stroke="#dbe5ee"/>
+<text x="293" y="511" font-family="Arial,sans-serif" font-size="16.3" font-weight="600" fill="#1e9b94">Historical PHP bug</text>
+<text x="293" y="531" font-family="Arial,sans-serif" font-size="16.3" font-weight="600" fill="#1e9b94">reports and fixes</text>
+<rect x="511" y="282" width="224" height="265" rx="14" fill="#fff" stroke="#dbe5ee" stroke-width="1.3" filter="url(#shadow)"/>
+<circle cx="623" cy="264" r="9" fill="#d76859" stroke="#fff" stroke-width="3"/>
+<rect x="525" y="300" width="7" height="45" rx="3.5" fill="#d76859"/>
+<text x="540" y="321" font-family="Arial,sans-serif" font-size="26" font-weight="750" fill="#162e4b">2019</text>
+<text x="527" y="364" font-family="Arial,sans-serif" font-size="20.5" font-weight="700" fill="#153556">PHP-FPM memory</text>
+<text x="527" y="389" font-family="Arial,sans-serif" font-size="20.5" font-weight="700" fill="#153556">safety research</text>
+<text x="527" y="439" font-family="Arial,sans-serif" font-size="18" fill="#4b6480">CVE-2019-11043:</text>
+<text x="527" y="462" font-family="Arial,sans-serif" font-size="18" fill="#4b6480">context matters</text>
+<line x1="527" x2="719" y1="489" y2="489" stroke="#dbe5ee"/>
+<text x="527" y="511" font-family="Arial,sans-serif" font-size="16.3" font-weight="600" fill="#d76859">Emil Lerner (neex);</text>
+<text x="527" y="531" font-family="Arial,sans-serif" font-size="16.3" font-weight="600" fill="#d76859">Orange Tsai analysis</text>
+<rect x="745" y="282" width="224" height="265" rx="14" fill="#fff" stroke="#dbe5ee" stroke-width="1.3" filter="url(#shadow)"/>
+<circle cx="857" cy="264" r="9" fill="#8167c6" stroke="#fff" stroke-width="3"/>
+<rect x="759" y="300" width="7" height="45" rx="3.5" fill="#8167c6"/>
+<text x="774" y="321" font-family="Arial,sans-serif" font-size="26" font-weight="750" fill="#162e4b">2021</text>
+<text x="761" y="364" font-family="Arial,sans-serif" font-size="20.5" font-weight="700" fill="#153556">Error-handler</text>
+<text x="761" y="389" font-family="Arial,sans-serif" font-size="20.5" font-weight="700" fill="#153556">safe points</text>
+<text x="761" y="439" font-family="Arial,sans-serif" font-size="18" fill="#4b6480">Re-entrancy during</text>
+<text x="761" y="462" font-family="Arial,sans-serif" font-size="18" fill="#4b6480">opcode execution</text>
+<line x1="761" x2="953" y1="489" y2="489" stroke="#dbe5ee"/>
+<text x="761" y="511" font-family="Arial,sans-serif" font-size="16.3" font-weight="600" fill="#8167c6">Nikita Popov</text>
+<text x="761" y="531" font-family="Arial,sans-serif" font-size="16.3" font-weight="600" fill="#8167c6">and PHP core</text>
+<rect x="979" y="282" width="224" height="265" rx="14" fill="#fff" stroke="#dbe5ee" stroke-width="1.3" filter="url(#shadow)"/>
+<circle cx="1091" cy="264" r="9" fill="#2393ae" stroke="#fff" stroke-width="3"/>
+<rect x="993" y="300" width="7" height="45" rx="3.5" fill="#2393ae"/>
+<text x="1008" y="321" font-family="Arial,sans-serif" font-size="26" font-weight="750" fill="#162e4b">2022–23</text>
+<text x="995" y="364" font-family="Arial,sans-serif" font-size="20.5" font-weight="700" fill="#153556">Bailout recovery</text>
+<text x="995" y="389" font-family="Arial,sans-serif" font-size="20.5" font-weight="700" fill="#153556">&amp; partial state</text>
+<text x="995" y="439" font-family="Arial,sans-serif" font-size="18" fill="#4b6480">SOAP / GC safety;</text>
+<text x="995" y="462" font-family="Arial,sans-serif" font-size="18" fill="#4b6480">closure initialization</text>
+<line x1="995" x2="1187" y1="489" y2="489" stroke="#dbe5ee"/>
+<text x="995" y="511" font-family="Arial,sans-serif" font-size="16.3" font-weight="600" fill="#2393ae">PHP issue reporters</text>
+<text x="995" y="531" font-family="Arial,sans-serif" font-size="16.3" font-weight="600" fill="#2393ae">and core maintainers</text>
+<rect x="1213" y="282" width="224" height="265" rx="14" fill="#fff" stroke="#dbe5ee" stroke-width="1.3" filter="url(#shadow)"/>
+<circle cx="1325" cy="264" r="9" fill="#de9d32" stroke="#fff" stroke-width="3"/>
+<rect x="1227" y="300" width="7" height="45" rx="3.5" fill="#de9d32"/>
+<text x="1242" y="321" font-family="Arial,sans-serif" font-size="26" font-weight="750" fill="#162e4b">2024</text>
+<text x="1229" y="364" font-family="Arial,sans-serif" font-size="20.5" font-weight="700" fill="#153556">Quarkslab PHP</text>
+<text x="1229" y="389" font-family="Arial,sans-serif" font-size="20.5" font-weight="700" fill="#153556">core audit</text>
+<text x="1229" y="439" font-family="Arial,sans-serif" font-size="18" fill="#4b6480">External analysis,</text>
+<text x="1229" y="462" font-family="Arial,sans-serif" font-size="18" fill="#4b6480">hardening questions</text>
+<line x1="1229" x2="1421" y1="489" y2="489" stroke="#dbe5ee"/>
+<text x="1229" y="511" font-family="Arial,sans-serif" font-size="16.3" font-weight="600" fill="#de9d32">Quarkslab auditors</text>
+<text x="1229" y="531" font-family="Arial,sans-serif" font-size="16.3" font-weight="600" fill="#de9d32">and PHP maintainers</text>
+<rect x="1447" y="282" width="224" height="265" rx="14" fill="#fff" stroke="#dbe5ee" stroke-width="1.3" filter="url(#shadow)"/>
+<circle cx="1559" cy="264" r="9" fill="#4486d1" stroke="#fff" stroke-width="3"/>
+<rect x="1461" y="300" width="7" height="45" rx="3.5" fill="#4486d1"/>
+<text x="1476" y="321" font-family="Arial,sans-serif" font-size="26" font-weight="750" fill="#162e4b">2025</text>
+<text x="1463" y="364" font-family="Arial,sans-serif" font-size="20.5" font-weight="700" fill="#153556">FlowFusion</text>
+<text x="1463" y="389" font-family="Arial,sans-serif" font-size="20.5" font-weight="700" fill="#153556">research</text>
+<text x="1463" y="439" font-family="Arial,sans-serif" font-size="18" fill="#4b6480">Dataflow-based</text>
+<text x="1463" y="462" font-family="Arial,sans-serif" font-size="18" fill="#4b6480">PHP test fusion</text>
+<line x1="1463" x2="1655" y1="489" y2="489" stroke="#dbe5ee"/>
+<text x="1463" y="511" font-family="Arial,sans-serif" font-size="16.3" font-weight="600" fill="#4486d1">Yuancheng Jiang</text>
+<text x="1463" y="531" font-family="Arial,sans-serif" font-size="16.3" font-weight="600" fill="#4486d1">and coauthors</text>
+<rect x="1681" y="282" width="224" height="265" rx="14" fill="#fff" stroke="#dbe5ee" stroke-width="1.3" filter="url(#shadow)"/>
+<circle cx="1793" cy="264" r="9" fill="#755acf" stroke="#fff" stroke-width="3"/>
+<rect x="1695" y="300" width="7" height="45" rx="3.5" fill="#755acf"/>
+<text x="1710" y="321" font-family="Arial,sans-serif" font-size="26" font-weight="750" fill="#162e4b">2026</text>
+<text x="1697" y="364" font-family="Arial,sans-serif" font-size="20.5" font-weight="700" fill="#153556">PHP2Shell and</text>
+<text x="1697" y="389" font-family="Arial,sans-serif" font-size="20.5" font-weight="700" fill="#153556">continued research</text>
+<text x="1697" y="439" font-family="Arial,sans-serif" font-size="18" fill="#4b6480">OOM, bailout,</text>
+<text x="1697" y="462" font-family="Arial,sans-serif" font-size="18" fill="#4b6480">cross-request state</text>
+<line x1="1697" x2="1889" y1="489" y2="489" stroke="#dbe5ee"/>
+<text x="1697" y="511" font-family="Arial,sans-serif" font-size="16.3" font-weight="600" fill="#755acf">Calif • OpenAI</text>
+<text x="1697" y="531" font-family="Arial,sans-serif" font-size="16.3" font-weight="600" fill="#755acf">• Wiz • PHP team</text>
+<rect x="43" y="569" width="1834" height="189" rx="18" fill="url(#navy)" filter="url(#shadow)"/>
+<text x="71" y="606" font-family="Georgia,serif" font-size="29" font-weight="700" fill="#fff">Recurring invariants</text>
+<text x="71" y="634" font-family="Arial,sans-serif" font-size="17" fill="#abcce9">Different bugs. Related</text>
+<text x="71" y="656" font-family="Arial,sans-serif" font-size="17" fill="#abcce9">underlying challenges.</text>
+<line x1="400" y1="590" x2="400" y2="735" stroke="#537597"/>
+
+<circle cx="451" cy="614" r="17" fill="#93d6bc" opacity=".9"/>
+<text x="424" y="664" font-family="Arial,sans-serif" font-size="21.5" font-weight="700" fill="#fff">Failure atomicity</text>
+<text x="424" y="693" font-family="Arial,sans-serif" font-size="17.5" fill="#d2e3f2">Do not expose partial state</text>
+<text x="424" y="715" font-family="Arial,sans-serif" font-size="17.5" fill="#d2e3f2">after failed initialization.</text>
+<line x1="763" y1="590" x2="763" y2="735" stroke="#537597"/>
+<circle cx="814" cy="614" r="17" fill="#b7a2ed" opacity=".9"/>
+<text x="787" y="664" font-family="Arial,sans-serif" font-size="21.5" font-weight="700" fill="#fff">Re-entrancy safety</text>
+<text x="787" y="693" font-family="Arial,sans-serif" font-size="17.5" fill="#d2e3f2">Callbacks must not invalidate</text>
+<text x="787" y="715" font-family="Arial,sans-serif" font-size="17.5" fill="#d2e3f2">live engine invariants.</text>
+<line x1="1126" y1="590" x2="1126" y2="735" stroke="#537597"/>
+<circle cx="1177" cy="614" r="17" fill="#9dc9f7" opacity=".9"/>
+<text x="1150" y="664" font-family="Arial,sans-serif" font-size="21.5" font-weight="700" fill="#fff">Recovery after bailout</text>
+<text x="1150" y="693" font-family="Arial,sans-serif" font-size="17.5" fill="#d2e3f2">Restore consistency or exit</text>
+<text x="1150" y="715" font-family="Arial,sans-serif" font-size="17.5" fill="#d2e3f2">safely after engine errors.</text>
+<line x1="1486" y1="590" x2="1486" y2="735" stroke="#537597"/>
+<circle cx="1537" cy="614" r="17" fill="#f7c77a" opacity=".9"/>
+<text x="1510" y="664" font-family="Arial,sans-serif" font-size="21.5" font-weight="700" fill="#fff">Cross-request ownership</text>
+<text x="1510" y="693" font-family="Arial,sans-serif" font-size="17.5" fill="#d2e3f2">Never retain freed request</text>
+<text x="1510" y="715" font-family="Arial,sans-serif" font-size="17.5" fill="#d2e3f2">storage in worker state.</text>
+<rect x="43" y="775" width="1834" height="234" rx="18" fill="#f8fbff" stroke="#ccdaea" stroke-width="1.5"/>
+<text x="70" y="815" font-family="Georgia,serif" font-size="32" font-weight="700" fill="#152f53">Research Credits &amp; Acknowledgments</text>
+<text x="72" y="838" font-family="Arial,sans-serif" font-size="17.5" fill="#52708d">A selected credit roll. Original discoveries, independent analyses, audits, fixes, and coordination are distinct contributions.</text>
+
+<rect x="68" y="859" width="443" height="122" rx="12" fill="#fff" stroke="#d7e2ef"/>
+<rect x="68" y="859" width="443" height="8" rx="4" fill="#2368ae"/>
+<text x="83" y="892" font-size="17.8" font-family="Arial,sans-serif" font-weight="700" fill="#2368ae">EARLY DISCOVERY &amp; ANALYSIS</text>
+<text x="83" y="923" font-size="16.8" font-family="Arial,sans-serif" fill="#254263">Taoguang Chen · Yannay Livneh / Check Point</text>
+<text x="83" y="944" font-size="16.8" font-family="Arial,sans-serif" fill="#254263">Emil Lerner (neex) · Orange Tsai</text>
+<text x="83" y="965" font-size="16.8" font-family="Arial,sans-serif" fill="#254263">Charles Fol (cfreal) · Chris Young</text>
+<rect x="522" y="859" width="443" height="122" rx="12" fill="#fff" stroke="#d7e2ef"/>
+<rect x="522" y="859" width="443" height="8" rx="4" fill="#7053b3"/>
+<text x="537" y="892" font-size="17.8" font-family="Arial,sans-serif" font-weight="700" fill="#7053b3">AUDIT &amp; FUZZING RESEARCH</text>
+<text x="537" y="923" font-size="16.8" font-family="Arial,sans-serif" fill="#254263">Quarkslab: Angèle Bossuat + four coauthors</text>
+<text x="537" y="944" font-size="16.8" font-family="Arial,sans-serif" fill="#254263">FlowFusion: Yuancheng Jiang + six coauthors</text>
+<text x="537" y="965" font-size="16.8" font-family="Arial,sans-serif" fill="#254263">Full names and original work cited in article</text>
+<rect x="976" y="859" width="443" height="122" rx="12" fill="#fff" stroke="#d7e2ef"/>
+<rect x="976" y="859" width="443" height="8" rx="4" fill="#bd4775"/>
+<text x="991" y="892" font-size="17.8" font-family="Arial,sans-serif" font-weight="700" fill="#bd4775">2026 RESEARCH &amp; DISCLOSURE</text>
+<text x="991" y="923" font-size="16.8" font-family="Arial,sans-serif" fill="#254263">Ryan A (Calif) · Amy Burnett (OpenAI)</text>
+<text x="991" y="944" font-size="16.8" font-family="Arial,sans-serif" fill="#254263">Wiz: Sagi Tzadik · Shir Tamari</text>
+<text x="991" y="965" font-size="16.8" font-family="Arial,sans-serif" fill="#254263">Nir Ohfeld · Tomer Schwartz</text>
+<rect x="1430" y="859" width="421" height="122" rx="12" fill="#fff" stroke="#d7e2ef"/>
+<rect x="1430" y="859" width="421" height="8" rx="4" fill="#257f8c"/>
+<text x="1445" y="892" font-size="17.8" font-family="Arial,sans-serif" font-weight="700" fill="#257f8c">CORE REPAIR &amp; COMMUNITY</text>
+<text x="1445" y="923" font-size="16.8" font-family="Arial,sans-serif" fill="#254263">Nikita Popov; PHP core/security teams</text>
+<text x="1445" y="944" font-size="16.8" font-family="Arial,sans-serif" fill="#254263">Arnaud Le Blanc · Ilija Tovilo</text>
+<text x="1445" y="965" font-size="16.8" font-family="Arial,sans-serif" fill="#254263">Jakub Zelenka · Niels Dossche + many more</text>
+<rect y="1022" width="1920" height="58" fill="#0e2b4c"/>
+<text x="960" y="1045" font-size="23.5" font-family="Georgia,serif" fill="#fff" font-weight="700" text-anchor="middle">To the researchers, discoverers, PHP core developers, reviewers, and maintainers — <tspan fill="#ffd681">thank you.</tspan></text>
+<text x="960" y="1068" font-size="15" font-family="Arial,sans-serif" fill="#c7dcef" text-anchor="middle">Also acknowledging PHP Foundation, OSTIF, Sovereign Tech Agency, release managers, distribution maintainers, sponsors, and many others.</text>
+</svg>

@@ -56,13 +56,32 @@ The underlying research surveyed original security write-ups, PHP's public bug d
 
 New reports [#24481](https://github.com/php/php-src/issues/24481) and [#24532](https://github.com/php/php-src/issues/24532) (unserialization re-entrancy/teardown), and [#24492](https://github.com/php/php-src/issues/24492) (hard-memory-limit termination regression) were useful **triage candidates** on the review date. Their existence does not establish independent, unpatched RCEs.
 
-## Recognizing researchers and maintainers accurately
+## Recognizing discoverers, researchers, and maintainers accurately
 
-[Taoguang Chen](https://bugs.php.net/bug.php?id=72530), [Yannay Livneh and Check Point](https://blog.checkpoint.com/research/check-point-discovers-three-zero-day-vulnerabilities-web-programming-language-php-7/), and [Chris Young](https://bugs.php.net/bug.php?id=74103) made important early public records available. [Emil Lerner (neex)](https://github.com/neex/phuip-fpizdam) disclosed a specific PHP-FPM finding; [Orange Tsai](https://blog.orange.tw/posts/2019-10-an-analysis-and-thought-about-recently/) contributed an independent technical explanation. **Original discovery, reduction, follow-up analysis, exploitation research, and patch design are distinct contributions**.
+Credits are organized by **original discovery, independent analysis, core remediation, auditing, fuzzing, disclosure coordination, and support**. This is a selected provenance map, not a complete roll of everyone who has contributed to PHP.
 
-The public record also matters because PHP core contributors published difficult cases that remained unresolved. [Nikita Popov's PR #6903](https://github.com/php/php-src/pull/6903) is valuable partly because it explains the structural problem and the limitations of an attempted repair. [#20018](https://github.com/php/php-src/issues/20018) aggregates ongoing design challenges. Reducing this history to a claim that maintainers were simply unaware or indifferent would erase important technical context.
+| Area | Individuals or organizations | Documented contribution and primary source |
+|---|---|---|
+| Early memory-safety findings | **Taoguang Chen** | [PHP GC/destructor bug #72530](https://bugs.php.net/bug.php?id=72530) and related reporting |
+| PHP 7 unserialization | **Yannay Livneh and the Check Point team** | [Original PHP 7 vulnerability research](https://blog.checkpoint.com/research/check-point-discovers-three-zero-day-vulnerabilities-web-programming-language-php-7/) |
+| Independent bug reports | **Chris Young** | [PHP issue #74103](https://bugs.php.net/bug.php?id=74103) |
+| PHP-FPM discovery | **Emil Lerner (neex)** | [CVE-2019-11043 research and proof-of-concept repository](https://github.com/neex/phuip-fpizdam) |
+| PHP-FPM independent analysis | **Orange Tsai** | [Separate follow-up technical analysis](https://blog.orange.tw/posts/2019-10-an-analysis-and-thought-about-recently/) |
+| Allocator research | **Charles Fol (cfreal)** | [Black Alps 2022 PHP allocator security presentation](https://blackalps.ch/ba-22/talk/generic-remote-exploit-techniques-for-the-php-allocator-and-0days) |
+| PHP engine design and fixes | **Nikita Popov** | [Deferred error-handler prototype #6903](https://github.com/php/php-src/pull/6903) and core work |
+| PHP-side 2024 core audit contributors | **Jakub Zelenka, Arnaud Le Blanc, Niels Dossche, Ilija Tovilo, Stas Malyshev, Dmitry Stogov, Derick Rethans, Roman Pronskiy** | [PHP Foundation's official audit acknowledgments](https://thephp.foundation/blog/2025/04/10/php-core-security-audit-results/), not a claim that all authored one 2026 patch |
+| 2024 Quarkslab security audit | **Angèle Bossuat, Julio Loayza Meneses, Mihail Kirov, Sébastien Rolland, Ramtine Tofighi Shirazi** | [Five original Quarkslab article coauthors](https://blog.quarkslab.com/security-audit-of-php-src.html) |
+| 2025 FlowFusion | **Yuancheng Jiang, Chuqi Zhang, Bonan Ruan, Jiahao Liu, Manuel Rigger, Roland H. C. Yap, Zhenkai Liang** | [Seven authors of the USENIX Security paper](https://www.usenix.org/conference/usenixsecurity25/presentation/jiang-yuancheng) |
+| 2026 Calif / PHP2Shell | **Ryan A** | [PHP Foundation's August 11 disclosure chronology and direct acknowledgment](https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/) |
+| 2026 OpenAI Codex Security | **Amy Burnett** | [Explicitly thanked by the PHP Foundation](https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/); individual first-discovery or patch authorship is not inferred |
+| 2026 Wiz Research | **Sagi Tzadik, Shir Tamari, Nir Ohfeld, Tomer Schwartz** | [Four bylined authors of Wiz's PHP2Shell research](https://www.wiz.io/blog/php2shell-php-rce) |
+| 2026 security operations/hardening | **Volker Dusch, Alexandre Daubois, Daniel Scherzer** and PHP security team | [PHP Foundation account of triage, coordination, and hardening](https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/), distinct from first discovery |
+| Audit coordination and funding | **OSTIF, Sovereign Tech Agency** | [PHP Foundation 2025 acknowledgment](https://thephp.foundation/blog/2025/04/10/php-core-security-audit-results/); names **Amir Montazery, Derek Zimmer, Helen Woeste** at OSTIF and **Abigail Garner** at STA |
+| Releases and research support | **PHP release managers, distribution/LTS package maintainers, sponsors, Alpha-Omega, OpenAI, Anthropic**, and others | [PHP Foundation 2026 acknowledgment](https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/); funding and tooling are not vulnerability first-discovery credits |
 
-The [Quarkslab audit researchers and their supporting organizations](https://thephp.foundation/blog/2025/04/10/php-core-security-audit-results/), [Yuancheng Jiang and the FlowFusion coauthors](https://www.usenix.org/conference/usenixsecurity25/presentation/jiang-yuancheng), [Calif](https://calif.io/research/php-uaf), [Wiz Research](https://www.wiz.io/blog/php2shell-php-rce), and all contributors who reviewed and shipped PHP fixes merit acknowledgment. This is not a complete credit list; missing names do not diminish their work.
+**Earlier foundations matter as well.** [Stefan Esser's Hardened-PHP and Suhosin research](https://www.blackhat.com/presentations/bh-usa-09/ESSER/BHUSA09-Esser-PostExploitationPHP-SLIDES.pdf) predates the 2016–2026 period and should be credited as background rather than placed under a fabricated timeline date.
+
+The PHP Foundation separately records Calif's August 11 report, OpenAI's independent report and subsequent additional work, and Wiz's August 24 report. Those findings should not be merged into one exclusive personal credit. The absence of someone's name here does not diminish their work, and the acknowledgment does not imply endorsement of this article.
 
 ## The Quarkslab audit and the later 2026 security response
 
